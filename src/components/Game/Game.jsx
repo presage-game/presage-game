@@ -1,6 +1,6 @@
 import { OrbitControls } from "@react-three/drei"
-import classes from "./Game.module.scss"
 import { Canvas } from "@react-three/fiber"
+import classes from "./Game.module.scss"
 import { Introduction } from "../scenes/introduction/Introduction"
 
 export const Game = () => {
@@ -8,7 +8,7 @@ export const Game = () => {
     <div className={classes.container}>
       <Canvas>
         <Introduction />
-        <OrbitControls />
+        <OrbitControls enableZoom={false} />
       </Canvas>
     </div>
   )
