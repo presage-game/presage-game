@@ -3,7 +3,7 @@ import reactLogo from "./assets/react.svg"
 import "./App.scss"
 import { useDispatch } from "react-redux"
 import { increase } from "./store/reducers/userReducer"
-import { Game } from "./Game"
+import { Game } from "./components/Game/Game.jsx"
 
 function App() {
   const [count, setCount] = useState(0)
