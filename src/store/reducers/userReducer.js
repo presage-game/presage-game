@@ -8,6 +8,7 @@ export const userSlice = createSlice({
   reducers: {
     increase: (state) => {
       state.value += 1
+      console.log("increase dispatch : " + state.value)
     },
   },
 })

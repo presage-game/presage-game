@@ -1,9 +1,17 @@
 import { useState } from "react"
 import reactLogo from "./assets/react.svg"
 import "./App.css"
+import { useDispatch } from "react-redux"
+import { increase } from "./store/reducers/userReducer"
 
 function App() {
   const [count, setCount] = useState(0)
+  const dispatch = useDispatch()
+
+  const handleCount = (count) => {
+    setCount(count + 1)
+    dispatch(increase())
+  }
 
   return (
     <div className="App">
@@ -17,7 +25,7 @@ function App() {
       </div>
       <h1>Vite + React</h1>
       <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>count is {count}</button>
+        <button onClick={() => handleCount(count + 1)}>count is {count}</button>
         <p>
           Edit <code>src/App.jsx</code> and save to test HMR
         </p>
