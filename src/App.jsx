@@ -1,6 +1,6 @@
 import { useState } from "react"
 import reactLogo from "./assets/react.svg"
-import "./App.css"
+import "./App.scss"
 import { useDispatch } from "react-redux"
 import { increase } from "./store/reducers/userReducer"
 import { Game } from "./Game"
