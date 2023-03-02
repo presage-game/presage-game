@@ -1,5 +1,4 @@
 import { Gltf, useGLTF, Box, CycleRaycast } from "@react-three/drei"
-import { Selection, Select, EffectComposer, Outline } from "@react-three/postprocessing"
 import { Plane } from "../vehicules/Plane/Plane"
 
 export const SceneOne = ({ onPlane }) => {
@@ -8,12 +7,7 @@ export const SceneOne = ({ onPlane }) => {
   return (
     <>
       <primitive object={obj.scene} dispose={null} />
-      <Selection>
-        <EffectComposer multisampling={8} autoClear={false}>
-          <Outline blur visibleEdgeColor="white" edgeStrength={100} width={2000} xRay={false} />
-        </EffectComposer>
-        <Plane scale={7} position={[0, 8, 0]} rotation={[0, Math.PI / 2, 0]} />
-      </Selection>
+      <Plane scale={7} position={[0, 8, 0]} rotation={[0, Math.PI / 2, 0]} />
     </>
   )
 }
