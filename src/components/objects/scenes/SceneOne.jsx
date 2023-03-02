@@ -1,16 +1,19 @@
-import { Gltf, useGLTF } from "@react-three/drei"
-import { Raycaster } from "three"
+import { Gltf, useGLTF, Box, CycleRaycast } from "@react-three/drei"
+import { Selection, Select, EffectComposer, Outline } from "@react-three/postprocessing"
+import { Plane } from "../vehicules/Plane/Plane"
 
 export const SceneOne = ({ onPlane }) => {
-  const raycaster = new Raycaster()
   const obj = useGLTF("assets/scenes/scene_1.glb")
-  console.log(obj)
-  console.log(obj.scene.children)
-  const intersects = raycaster.intersectObjects(obj.scene.children[0], true)
-  console.log(intersects)
-  if (intersects.length > 0) {
-    console.log("oui")
-  }
   //const plane = obj.scene.children[0].scale.z = 2;
-  return <primitive object={obj.scene} dispose={null} />
+  return (
+    <>
+      <primitive object={obj.scene} dispose={null} />
+      <Selection>
+        <EffectComposer multisampling={8} autoClear={false}>
+          <Outline blur visibleEdgeColor="white" edgeStrength={100} width={2000} xRay={false} />
+        </EffectComposer>
+        <Plane scale={7} position={[0, 8, 0]} rotation={[0, Math.PI / 2, 0]} />
+      </Selection>
+    </>
+  )
 }
