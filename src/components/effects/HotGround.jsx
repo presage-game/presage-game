@@ -104,7 +104,7 @@ const HotMaterial = shaderMaterial(
       vec3 pos = position;
       float noiseFreq = 3.5;
       float noiseAmp = 0.15; 
-      vec3 noisePos = vec3(pos.x * noiseFreq + time, pos.y, pos.z);
+      vec3 noisePos = vec3(pos.x, pos.y, pos.z * noiseFreq + time);
       pos.z += snoise(noisePos) * noiseAmp;
       vWave = pos.z;
       gl_Position = projectionMatrix * modelViewMatrix * vec4(pos, 1.);
@@ -121,7 +121,7 @@ const HotMaterial = shaderMaterial(
     {
         float wave = vWave * 0.25;
         vec3 VecTexture = texture2D(uTexture, vUv + wave).rgb; 
-        gl_FragColor = vec4(VecTexture, 1.);
+        gl_FragColor = vec4(VecTexture, 0.1);
     }
     `
 )
@@ -135,7 +135,7 @@ export const HotGround = (props) => {
 
   return (
     <Plane {...props}>
-      <hotMaterial ref={shaderRef} color="hotpink" time={time} />
+      <hotMaterial transparent ref={shaderRef} color="hotpink" time={time} />
     </Plane>
   )
 }
