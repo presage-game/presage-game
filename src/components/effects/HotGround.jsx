@@ -119,7 +119,7 @@ const HotMaterial = shaderMaterial(
 
     void main()
     {
-        float wave = vWave * 0.25;
+        float wave = vWave * 0.5;
         vec3 VecTexture = texture2D(uTexture, vUv + wave).rgb; 
         gl_FragColor = vec4(VecTexture, 0.1);
     }
@@ -131,7 +131,7 @@ extend({ HotMaterial })
 export const HotGround = (props) => {
   const shaderRef = useRef(null)
   let time = 1
-  useFrame(() => (shaderRef.current.time += 0.02))
+  useFrame(() => (shaderRef.current.time += 0.03))
 
   return (
     <Plane {...props}>

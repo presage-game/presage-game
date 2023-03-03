@@ -8,7 +8,7 @@ export const Introduction = () => {
       <PerspectiveCamera makeDefault position={[20, 3, 0]} rotation={[0, Math.PI / 2, 0]} />
       <color attach={"background"} args={["#D0FEEF"]} />
       <fog attach={"fog"} args={["orange",30,60]} />
-      <HotGround scale={5} args={[10,0.5,500,25]} position={[-30, 3, 0]} rotation={[0, Math.PI/2, 0]} />
+      <HotGround scale={5} args={[10,0.5,500,50]} position={[-30, 1.5, 0]} rotation={[-Math.PI / 2, Math.PI / 6, Math.PI / 2]} />
       <ambientLight intensity={0.7} />
       <SceneOne />
       <OrbitControls />
