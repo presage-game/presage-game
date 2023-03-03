@@ -103,7 +103,7 @@ const HotMaterial = shaderMaterial(
     void main() {
       vec3 pos = position;
       float noiseFreq = 3.5;
-      float noiseAmp = 0.15; 
+      float noiseAmp = 0.05; 
       vec3 noisePos = vec3(pos.x, pos.y, pos.z * noiseFreq + time);
       pos.z += snoise(noisePos) * noiseAmp;
       vWave = pos.z;
@@ -121,7 +121,7 @@ const HotMaterial = shaderMaterial(
     {
         float wave = vWave * 0.5;
         vec3 VecTexture = texture2D(uTexture, vUv + wave).rgb; 
-        gl_FragColor = vec4(VecTexture, 0.1);
+        gl_FragColor = vec4(VecTexture, 0.2);
     }
     `
 )
