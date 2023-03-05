@@ -1,9 +1,8 @@
-import { Gltf, useGLTF, Box, CycleRaycast } from "@react-three/drei"
-import { Plane } from "../vehicules/Plane/Plane"
+import { useGLTF } from "@react-three/drei"
+import { Plane } from "../../objects/vehicules/Plane/Plane"
 
-export const SceneOne = ({ onPlane }) => {
+export const IntroductionScene = () => {
   const obj = useGLTF("assets/scenes/scene_1.glb")
-  //const plane = obj.scene.children[0].scale.z = 2;
   return (
     <>
       <primitive object={obj.scene} dispose={null} />
