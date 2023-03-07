@@ -1,7 +1,7 @@
 import { useGLTF } from "@react-three/drei"
 import { Plane } from "../../objects/vehicules/Plane/Plane"
 
-export const IntroductionScene = () => {
+export const RegionEntranceOneScene = () => {
   const obj = useGLTF("assets/scenes/scene_1.glb")
   return (
     <>

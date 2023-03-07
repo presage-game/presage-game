@@ -1,9 +1,9 @@
 import { Environment, OrbitControls, PerspectiveCamera } from "@react-three/drei"
-import { IntroductionScene } from "./IntroductionScene"
+import { RegionEntranceOneScene } from "./RegionEntranceOneScene"
 import { ScreenQuad } from "@react-three/drei"
 import { HotGround } from "../../effects/HotGround"
 
-export const Introduction = () => {
+export const RegionEntranceOne = () => {
   //<fog attach={"fog"} args={["orange",30,60]} />
   /*
   <ScreenQuad scale={200} rotation={[0,Math.PI/2,0]} position={[-200, 0, -10]}>
@@ -22,7 +22,7 @@ export const Introduction = () => {
         rotation={[-Math.PI / 2, Math.PI / 6, Math.PI / 2]}
       />
       <ambientLight intensity={1} />
-      <IntroductionScene />
+      <RegionEntranceOneScene />
       <OrbitControls />
     </>
   )
