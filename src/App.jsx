@@ -1,5 +1,4 @@
 import { useState } from "react"
-import "./App.scss"
 import { Game } from "./components/Game/Game.jsx"
 import { Introduction } from "./components/Introduction/Introduction"
 

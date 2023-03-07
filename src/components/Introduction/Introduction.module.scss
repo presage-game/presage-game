@@ -1,0 +1,21 @@
+.card {
+  display: flex;
+  gap: 5px;
+  button {
+    color: white;
+    border: 0.1rem solid white;
+    padding: 1rem 2rem;
+    margin-right: 2rem;
+    margin-bottom: 2rem;
+  
+    &.active {
+      background-color: white;
+      pointer-events: none;
+      color: black;
+    }
+  }
+}
+
+.subTitle {
+  margin-bottom: 1rem;
+}
