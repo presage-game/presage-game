@@ -1,8 +1,8 @@
 import { Canvas } from "@react-three/fiber"
-import classes from "./Game.module.scss"
+import classes from "./Experience.module.scss"
 import { RegionEntranceOne } from "./scenes/RegionEntranceOne/RegionEntranceOne"
 
-export const Game = () => {
+export const Experience = () => {
   return (
     <div className={classes.container}>
       <Canvas>
