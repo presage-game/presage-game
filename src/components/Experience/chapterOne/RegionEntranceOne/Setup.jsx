@@ -2,6 +2,7 @@ import { Environment, OrbitControls, PerspectiveCamera } from "@react-three/drei
 import { Scene } from "./Scene"
 import { ScreenQuad } from "@react-three/drei"
 import { HotGround } from "../../effects/HotGround"
+import { AdinkraOne } from "../../objects/interactive/AdinkraOne/AdinkraOne"
 
 export const Setup = () => {
   //<fog attach={"fog"} args={["orange",30,60]} />
