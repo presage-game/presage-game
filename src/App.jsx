@@ -1,13 +1,11 @@
-import { useState } from "react"
+import { useSelector } from "react-redux"
 import { Experience } from "./components/Experience/Experience"
 import { Introduction } from "./components/Introduction/Introduction"
 
-function App() {
-  const [game, setGame] = useState(false)
+const App = () => {
+  const hasExperienceStarted = useSelector((state) => state.introduction.hasExperienceStarted)
 
-  return (
-    <div className="App">{!game ? <Introduction setGame={() => setGame(true)} /> : <Experience />}</div>
-  )
+  return <div className="App">{!hasExperienceStarted ? <Introduction /> : <Experience />}</div>
 }
 
 export default App
