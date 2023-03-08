@@ -3,6 +3,7 @@ import { Scene } from "./Scene"
 import { ScreenQuad } from "@react-three/drei"
 import { HotGround } from "../../effects/HotGround"
 import { AdinkraOne } from "../../objects/interactive/AdinkraOne/AdinkraOne"
+import { MathUtils } from "three"
 
 export const Setup = () => {
   //<fog attach={"fog"} args={["orange",30,60]} />
@@ -11,6 +12,20 @@ export const Setup = () => {
         <meshBasicMaterial />
   </ScreenQuad>
   */
+
+  const ref = useRef()
+  useFrame((state) => {
+    ref.current.rotation.y = MathUtils.lerp(
+      ref.current.rotation.y,
+      -(state.mouse.x * Math.PI) / 20 + Math.PI / 3,
+      0.05
+    )
+    ref.current.rotation.x = MathUtils.lerp(
+      ref.current.rotation.x,
+      ((state.mouse.y * Math.PI) / 20),
+      0.05
+    )
+  })
 
   return (
     <>
