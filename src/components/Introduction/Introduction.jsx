@@ -123,7 +123,7 @@ export const Introduction = () => {
             setShowIntroduction(true)
           }}
         >
-          Commencer
+          Démarrer
         </button>
       </div>
     )
@@ -136,7 +136,7 @@ export const Introduction = () => {
         <p style={{ marginTop: "2rem" }}>
           [Début de l'expérience. Variante de scénario N°{scenario}].
         </p>
-        <StartButton />
+        <StartButton text={"Continuer"} />
       </footer>
     )
   }

@@ -2,7 +2,7 @@ import { useDispatch } from 'react-redux'
 import { startExperience } from '../../store/reducers/introductionReducer'
 import './StartButton.scss'
 
-export const StartButton = () => {
+export const StartButton = ({text}) => {
   const dispatch = useDispatch()
 
   const endIntroduction = () => {
@@ -12,7 +12,7 @@ export const StartButton = () => {
   // Template
   return (
     <button className="StartButton" onClick={() => endIntroduction()}>
-      Démarrer le road trip
+      {text}
     </button>
   )
 }
