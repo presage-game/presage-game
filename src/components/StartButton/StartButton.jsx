@@ -1,6 +1,6 @@
 import { useDispatch } from 'react-redux'
 import { startExperience } from '../../store/reducers/introductionReducer'
-import './StartButton.scss'
+import styles from "./StartButton.module.scss"
 
 export const StartButton = ({text}) => {
   const dispatch = useDispatch()
@@ -11,7 +11,7 @@ export const StartButton = ({text}) => {
 
   // Template
   return (
-    <button className="StartButton" onClick={() => endIntroduction()}>
+    <button className={styles.container} onClick={() => endIntroduction()}>
       {text}
     </button>
   )
