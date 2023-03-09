@@ -3,16 +3,23 @@ import { Experience } from "./components/Experience/Experience"
 import { Introduction } from "./components/Introduction/Introduction"
 import { Interface } from "./components/Interface/Interface"
 import { StartButton } from "./components/StartButton/StartButton"
+import styles from "./App.module.scss"
 
 const App = () => {
   const hasExperienceStarted = useSelector((state) => state.introduction.hasExperienceStarted)
 
   return (
-    <div className="App">
-      {!hasExperienceStarted ? <Introduction /> : <Experience />}
+    <main className={styles.container}>
+      {!hasExperienceStarted ? (
+        <Introduction />
+      ) : (
+        <Experience />
+      )}
       {hasExperienceStarted && <Interface />}
-      {!hasExperienceStarted && <StartButton text={"Passer l'intro (debug)"} />}
-    </div>
+      {!hasExperienceStarted && (
+        <StartButton text={"Passer l'intro (debug)"} />
+      )}
+    </main>
   )
 }
 
