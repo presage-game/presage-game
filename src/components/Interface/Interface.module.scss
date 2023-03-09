@@ -60,11 +60,11 @@ h2 {
     text-transform: uppercase;
     font-weight: 400;
 
-    &--innerVoice {
+    &.innerVoice {
       color: #b958ff;
     }
 
-    &--npc {
+    &.npc {
       color: #ffb24d;
     }
   }
