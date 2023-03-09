@@ -37,7 +37,7 @@ export const Interface = () => {
   }, [])
 
   // Change the current scene and reset UI state
-  const changeScene = (event, data) => {
+  const changeScene = (data) => {
     setSceneIndex(data)
     setSpotIndex(0)
     setTextIndex(0)
@@ -46,7 +46,7 @@ export const Interface = () => {
   }
 
   // Change the current spot and reset UI state
-  const goToSpot = (event, data) => {
+  const goToSpot = (data) => {
     setSpotIndex(data)
     setTextIndex(0)
     setIsVoiceOver(false)
@@ -104,9 +104,9 @@ export const Interface = () => {
           {scriptData.map((scene, index) => (
             <button
               key={index}
-              onClick={(event) => {
+              onClick={() => {
                 handleButtonClick(index)
-                changeScene(event, index)
+                changeScene(index)
               }}
               ref={(el) => (buttons.current[index] = el)}
             >
@@ -117,7 +117,7 @@ export const Interface = () => {
         <hr />
         <div className={styles.spots}>
           {scriptData[sceneIndex].spots.map((spot, index) => (
-            <button key={index} className="spot" onClick={() => goToSpot(event, spot.index)}>
+            <button key={index} className="spot" onClick={() => goToSpot(spot.index)}>
               {spot.label}
             </button>
           ))}
