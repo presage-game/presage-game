@@ -1,0 +1,71 @@
+.container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: 400;
+  text-align: center;
+  margin: 0 auto;
+  display: block;
+}
+
+.startButton {
+  display: block;
+  margin: 0 auto;
+  margin-top: 2rem;
+  width: 100%;
+  max-width: 30rem;
+  padding: 1rem;
+  background-color: rgb(255, 178, 77);
+  cursor: pointer;
+  font-weight: 400;
+  text-align: center;
+  text-decoration: none;
+  color: black;
+
+  &:hover {
+    background-color: rgb(255, 157, 29);
+  }
+}
+
+.date {
+  color: grey;
+}
+
+.baseline {
+  margin-top: 2rem;
+}
+
+.options {
+  margin-top: 2rem;
+}
+
+.option {
+  color: rgb(255, 178, 77);
+  display: inline-block;
+  cursor: pointer;
+  margin-right: 2rem;
+
+  &:hover {
+    color: rgb(255, 157, 29);
+  }
+}
+
+.nextButton {
+  display: block;
+  color: grey;
+  margin-top: 2rem;
+  cursor: pointer;
+
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+.footer {
+  text-align: center;
+}

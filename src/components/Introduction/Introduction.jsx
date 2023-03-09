@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux"
 import introductionData from "../../assets/introduction.json"
 import { answerPrompt, completePrompts } from "../../store/reducers/introductionReducer"
 import { StartButton } from "../StartButton/StartButton"
-import "./Introduction.scss"
+import styles from "./Introduction.module.scss"
 
 import ambiance from "../../assets/audios/introduction/ambiance.mp3"
 import carEngine from "../../assets/audios/introduction/car-engine.mp3"
@@ -84,17 +84,17 @@ export const Introduction = () => {
 
       const options = section.options.map((option, i) => {
         return (
-          <div className="Introduction__option" key={i} onClick={() => showFollowingText(i)}>
+          <div className={styles.option} key={i} onClick={() => showFollowingText(i)}>
             {option.label}
           </div>
         )
       })
 
       const followingText = showFollowing && (
-        <p className="Introduction__baseline">
+        <p className={`${styles.baseline} ${true && styles.active}`}>
           {section.options[followingToShow].following}
           <button
-            className="Introduction__nextButton"
+            className={styles.nextButton}
             onClick={() => hideFollowingText(section.options[followingToShow]?.version)}
           >
             Suite...
@@ -103,10 +103,10 @@ export const Introduction = () => {
       )
 
       return (
-        <div className="Introduction__item" key={index}>
-          <span className="Introduction__date">{section.date}</span>
-          <p className="Introduction__baseline">{section.baseline}</p>
-          <div className="Introduction__options">{options}</div>
+        <div className={styles.item} key={index}>
+          <span className={styles.date}>{section.date}</span>
+          <p className={styles.baseline}>{section.baseline}</p>
+          <div className={styles.options}>{options}</div>
           {followingText}
         </div>
       )
@@ -115,10 +115,10 @@ export const Introduction = () => {
 
   const splashScreen = () => {
     return (
-      <div className="Introduction__splashScreen">
-        <h1 className="Introduction__title">Projet "Anan Uua"</h1>
+      <div className={styles.splashScreen}>
+        <h1 className={styles.title}>Projet "Anan Uua"</h1>
         <button
-          className="Introduction__start-button"
+          className={styles.startButton}
           onClick={() => {
             setShowIntroduction(true)
           }}
@@ -132,7 +132,7 @@ export const Introduction = () => {
   // Render the start button and completion message
   const renderCompletion = () => {
     return (
-      <footer className="Introduction__footer">
+      <footer className={styles.footer}>
         <p style={{ marginTop: "2rem" }}>
           [Début de l'expérience. Variante de scénario N°{scenario}].
         </p>
@@ -144,7 +144,7 @@ export const Introduction = () => {
   // Render the introduction section if the experience has not started
   return (
     !hasExperienceStarted && (
-      <section className="Introduction">
+      <section className={styles.container}>
         {!showIntroduction && splashScreen()}
         {showIntroduction && (
           <>
