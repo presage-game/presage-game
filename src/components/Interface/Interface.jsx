@@ -158,10 +158,12 @@ export const Interface = () => {
           <div className={styles.emitter}>
             {getTextEmitter() === "narrator" && <h2 className={styles.narrator}>Le narrateur</h2>}
             {getTextEmitter() === "innerVoice" && (
-              <h2 className={[`${styles.narrator} ${styles.innerVoice}`]}>Une voix</h2>
+              <h2 className={[`${styles.narrator} ${styles["narrator--innerVoice"]}`]}>Une voix</h2>
             )}
             {getTextEmitter() === "npc" && (
-              <h2 className={[`${styles.narrator} ${styles.npc}`]}>{getTextLabel()}</h2>
+              <h2 className={[`${styles.narrator} ${styles["narrator--npc"]}`]}>
+                {getTextLabel()}
+              </h2>
             )}
           </div>
           <div className={styles.content}>
