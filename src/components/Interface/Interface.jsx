@@ -1,5 +1,5 @@
-import scriptData from "../../assets/chapterTwo.json"
 import { useEffect, useRef, useState } from "react"
+import scriptData from "../../assets/chapterTwo.json"
 import styles from "./Interface.module.scss"
 
 export const Interface = () => {
@@ -13,9 +13,10 @@ export const Interface = () => {
   const [optionIndex, setOptionIndex] = useState(0)
 
   const buttons = useRef([])
+  const spotButtons = useRef([])
 
-  // Add this function to handle button clicks
-  const handleButtonClick = (index) => {
+  // Handle click on buttons
+  const handleSceneSelect = (index) => {
     buttons.current.forEach((button, i) => {
       if (i === index) {
         button.classList.toggle(styles.active)
@@ -23,18 +24,33 @@ export const Interface = () => {
         button.classList.remove(styles.active)
       }
     })
-  }
 
-  useEffect(() => {
-    if (scriptData[sceneIndex].voiceover.length > 0) {
-      setIsVoiceOver(true)
-      setDisplayUi(true)
-    }
-  }, [sceneIndex])
+    spotButtons.current.forEach((button, i) => {
+      if (button) {
+        if (button.classList.contains(styles.active)) {
+          button.classList.remove(styles.active)
+        }
+      }
+    })
+  }
 
   useEffect(() => {
     buttons.current[0].classList.add(styles.active)
   }, [])
+
+  const handleSpotSelect = (index) => {
+    spotButtons.current.forEach((button, i) => {
+      if (button) {
+        if (i === index) {
+          button.classList.toggle(styles.active)
+        } else {
+          if (button.classList.contains(styles.active)) {
+            button.classList.remove(styles.active)
+          }
+        }
+      }
+    })
+  }
 
   // Change the current scene and reset UI state
   const changeScene = (data) => {
@@ -53,6 +69,13 @@ export const Interface = () => {
     setDisplayUi(true)
     setDisplayOptions(true)
   }
+
+  useEffect(() => {
+    if (scriptData[sceneIndex].voiceover.length > 0) {
+      setIsVoiceOver(true)
+      setDisplayUi(true)
+    }
+  }, [sceneIndex])
 
   // Show the next text in the voiceover array
   const showMore = () => {
@@ -105,7 +128,7 @@ export const Interface = () => {
             <button
               key={index}
               onClick={() => {
-                handleButtonClick(index)
+                handleSceneSelect(index)
                 changeScene(index)
               }}
               ref={(el) => (buttons.current[index] = el)}
@@ -117,7 +140,14 @@ export const Interface = () => {
         <hr />
         <div className={styles.spots}>
           {scriptData[sceneIndex].spots.map((spot, index) => (
-            <button key={index} className="spot" onClick={() => goToSpot(spot.index)}>
+            <button
+              key={index}
+              ref={(el) => (spotButtons.current[index] = el)}
+              onClick={() => {
+                handleSpotSelect(index)
+                goToSpot(index)
+              }}
+            >
               {spot.label}
             </button>
           ))}
@@ -134,30 +164,25 @@ export const Interface = () => {
               <h2 className={[`${styles.narrator} ${styles.npc}`]}>{getTextLabel()}</h2>
             )}
           </div>
-
           <div className={styles.content}>
             {isVoiceOver && <p>{getIntroText()}</p>}
             {!isVoiceOver && displayOptions && <p>{getSpotText()}</p>}
             {hasOptions() && !isVoiceOver && !displayOptions && <p>{getOptionResponse()}</p>}
-
             {hasOptions() && hasMore() && !displayOptions && (
-              <button className="more" onClick={showMoreNPC}>
+              <button className={styles.more} onClick={showMoreNPC}>
                 Suite...
               </button>
             )}
-
             {!hasOptions() && hasMore() && (
               <button className={styles.more} onClick={showMore}>
                 Suite...
               </button>
             )}
-
             {!hasMore() && (
               <button className={styles.more} onClick={() => setDisplayUi(false)}>
                 Fermer.
               </button>
             )}
-
             {hasOptions() && displayOptions && (
               <div className={styles.options}>
                 {scriptData[sceneIndex].spots[spotIndex].spotVoiceover[textIndex].options.map(

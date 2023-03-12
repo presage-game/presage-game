@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from "react"
 import { useSelector, useDispatch } from "react-redux"
-import introductionData from "../../assets/introduction.json"
 import { answerPrompt, completePrompts } from "../../store/reducers/introductionReducer"
 import { StartButton } from "../StartButton/StartButton"
+import introductionData from "../../assets/introduction.json"
 import styles from "./Introduction.module.scss"
-
 import ambiance from "../../assets/audios/introduction/ambiance.mp3"
 import carEngine from "../../assets/audios/introduction/car-engine.mp3"
 
@@ -76,7 +75,7 @@ export const Introduction = () => {
   }
 
   // Render introduction prompts and following text
-  const renderPrompts = () => {
+  const render = () => {
     return introduction.map((section, index) => {
       if (index !== currentIndex) {
         return null
@@ -113,43 +112,33 @@ export const Introduction = () => {
     })
   }
 
-  const splashScreen = () => {
-    return (
-      <div className={styles.splashScreen}>
-        <h1 className={styles.title}>Projet "Anan Uua"</h1>
-        <button
-          className={styles.startButton}
-          onClick={() => {
-            setShowIntroduction(true)
-          }}
-        >
-          Démarrer
-        </button>
-      </div>
-    )
-  }
-
-  // Render the start button and completion message
-  const renderCompletion = () => {
-    return (
-      <footer className={styles.footer}>
-        <p style={{ marginTop: "2rem" }}>
-          [Début de l'expérience. Variante de scénario N°{scenario}].
-        </p>
-        <StartButton text={"Continuer"} />
-      </footer>
-    )
-  }
-
-  // Render the introduction section if the experience has not started
   return (
     !hasExperienceStarted && (
       <section className={styles.container}>
-        {!showIntroduction && splashScreen()}
+        {!showIntroduction && (
+          <div className={styles.splashScreen}>
+            <h1 className={styles.title}>Projet "Anan Uua"</h1>
+            <button
+              className={styles.startButton}
+              onClick={() => {
+                setShowIntroduction(true)
+              }}
+            >
+              Démarrer
+            </button>
+          </div>
+        )}
         {showIntroduction && (
           <>
-            {renderPrompts()}
-            {isPromptComplete && renderCompletion()}
+            {render()}
+            {isPromptComplete && (
+              <footer className={styles.footer}>
+                <p style={{ marginTop: "2rem" }}>
+                  [Début de l'expérience. Variante de scénario N°{scenario}].
+                </p>
+                <StartButton text={"Continuer"} />
+              </footer>
+            )}
           </>
         )}
       </section>
