@@ -55,17 +55,13 @@ export const Introduction = () => {
     }
   }, [currentIndex])
 
-  useEffect(() => {
-    // Stop the audios when the experience starts
-    // ...
-  }, [hasExperienceStarted])
-
   // Show the following text for a prompt and update local state
   const showFollowingText = (index) => {
     setFollowingToShow(index)
     setShowFollowing(true)
 
     // Play audio when user selects an option
+    // TODO
   }
 
   // Hide the following text for a prompt, update local state, and record user's answer
