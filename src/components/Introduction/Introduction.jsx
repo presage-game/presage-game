@@ -104,8 +104,8 @@ export const Introduction = () => {
       return (
         <div className={styles.item} key={index}>
           <span className={styles.date}>{section.date}</span>
-          <p className={styles.baseline}>{section.baseline}</p>
-          <div className={styles.options}>{options}</div>
+          {!showFollowing && <p className={styles.baseline}>{section.baseline}</p>}
+          {!showFollowing && <div className={styles.options}>{options}</div>}
           {followingText}
         </div>
       )
