@@ -47,18 +47,18 @@
   {
     "date": "11.10.97",
     "baseline": [
-      "Tu roules depuis six jours. Ton voyage a commencé à Marrakech, au Maroc. Tu as longé la mer pour atteindre Nouakchott, puis Saint-Louis, avant de finalement t’enfoncer dans les terres en direction du Mali."
+      "Tu roules depuis six jours. Ton voyage a commencé à Marrakech, au Maroc. Tu as longé la mer pour atteindre Nouakchott, puis Saint-Louis, avant de finalement t’enfoncer dans les terres en direction du Mali. Tu fais un détour par..."
     ],
     "options": [
       {
-        "label": "Tu t’émerveilles devant la Réserve du Ferlo Nord.",
+        "label": "La réserve du Ferlo Nord.",
         "following": [
           "Des hectares de pâturages s’étirent à l’horizon, parsemés de quelques arbres timides et recouverts d’une couche d’herbe jaunie et sèche. Alors que tu roules, tu crois apercevoir des gazelles. C’est peut-être ton *imagination*."
         ],
         "version": 1
       },
       {
-        "label": "Tu fais un détour par Richard Toll, au nord-ouest.",
+        "label": "Richard Toll, au nord-ouest.",
         "following": "Tu passes la nuit dans un petit hôtel de fortune au bord de la ville, cernée par des champs de canne à sucre et des rizières. Saint-Louis est à 100 km derrière toi. 374 pour Dakar. Demain matin, ces nombres vont continuer d’augmenter.",
         "version": 2
       }

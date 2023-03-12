@@ -3,6 +3,7 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  width: 80rem;
 }
 
 .title {
@@ -42,6 +43,7 @@
 
 .options {
   margin-top: 2rem;
+  text-align: center;
 }
 
 .option {
@@ -59,6 +61,7 @@
   display: block;
   color: grey;
   margin-top: 2rem;
+  width: 100%;
   cursor: pointer;
 
   &:hover {

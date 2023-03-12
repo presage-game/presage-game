@@ -8,7 +8,7 @@
   .spots {
     button {
       color: #ffffff;
-      border: 0.1rem solid white;
+      background-color: #000000cc;
       padding: 1rem 2rem;
       margin-right: 2rem;
       margin-bottom: 2rem;
@@ -28,6 +28,7 @@ button {
   &.more {
     margin-top: 2rem;
     color: #808080;
+    width: 100%;
   }
 }
 
@@ -46,14 +47,14 @@ h2 {
   width: 80rem;
   left: 50%;
   transform: translateX(-50%);
-  border: 0.2rem solid #ffffff;
   padding: 2rem;
   position: absolute;
   bottom: 2rem;
   background-color: #000000cc;
 
   .narrator {
-    text-transform: uppercase;
+    font-family: "Spectral SC", sans-serif;
+    letter-spacing: 0.2rem;
     font-weight: 400;
 
     &--innerVoice {
