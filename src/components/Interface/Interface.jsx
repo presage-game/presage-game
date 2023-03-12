@@ -1,8 +1,16 @@
 import { useEffect, useRef, useState } from "react"
+import { useSelector, useDispatch } from "react-redux"
+import { toggleBlackBars } from "../../store/reducers/uiReducer"
 import scriptData from "../../assets/chapterTwo.json"
 import styles from "./Interface.module.scss"
+import { BlackBars } from "../BlackBars/BlackBars"
 
 export const Interface = () => {
+  const dispatch = useDispatch()
+
+  // Redux selectors
+  const { showBlackBars } = useSelector((state) => state.ui)
+
   // Local state
   const [displayUi, setDisplayUi] = useState(false)
   const [sceneIndex, setSceneIndex] = useState(0)
@@ -122,38 +130,49 @@ export const Interface = () => {
 
   return (
     <section className={styles.container}>
-      <div className={styles.meta}>
-        <div className={styles.buttons}>
-          {scriptData.map((scene, index) => (
-            <button
-              key={index}
-              onClick={() => {
-                handleSceneSelect(index)
-                changeScene(index)
-              }}
-              ref={(el) => (buttons.current[index] = el)}
-            >
-              {scene.name}
-            </button>
-          ))}
+      {showBlackBars && <BlackBars />}
+      <button
+        className={styles.test}
+        onClick={() => {
+          dispatch(toggleBlackBars())
+        }}
+      >
+        Toggle black bars ({showBlackBars.toString()})
+      </button>
+      {!showBlackBars && (
+        <div className={styles.meta}>
+          <div className={styles.buttons}>
+            {scriptData.map((scene, index) => (
+              <button
+                key={index}
+                onClick={() => {
+                  handleSceneSelect(index)
+                  changeScene(index)
+                }}
+                ref={(el) => (buttons.current[index] = el)}
+              >
+                {scene.name}
+              </button>
+            ))}
+          </div>
+          <hr />
+          <div className={styles.spots}>
+            {scriptData[sceneIndex].spots.map((spot, index) => (
+              <button
+                key={index}
+                ref={(el) => (spotButtons.current[index] = el)}
+                onClick={() => {
+                  handleSpotSelect(index)
+                  goToSpot(index)
+                }}
+              >
+                {spot.label}
+              </button>
+            ))}
+          </div>
         </div>
-        <hr />
-        <div className={styles.spots}>
-          {scriptData[sceneIndex].spots.map((spot, index) => (
-            <button
-              key={index}
-              ref={(el) => (spotButtons.current[index] = el)}
-              onClick={() => {
-                handleSpotSelect(index)
-                goToSpot(index)
-              }}
-            >
-              {spot.label}
-            </button>
-          ))}
-        </div>
-      </div>
-      {displayUi && (
+      )}
+      {displayUi && !showBlackBars && (
         <div className={styles.dialogue}>
           <div className={styles.emitter}>
             {getTextEmitter() === "narrator" && <h2 className={styles.narrator}>Le narrateur</h2>}
