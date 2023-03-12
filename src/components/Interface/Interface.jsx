@@ -46,6 +46,39 @@ export const Interface = () => {
     buttons.current[0].classList.add(styles.active)
   }, [])
 
+  // Hide debug UI and text interface when black bars are active
+  useEffect(() => {
+    if (showBlackBars === true) {
+      setDisplayUi(false)
+      setDisplayOptions(false)
+
+      spotButtons.current.forEach((button) => {
+        if (button) {
+          button.style.display = "none"
+        }
+      })
+      buttons.current.forEach((button) => {
+        if (button) {
+          button.style.display = "none"
+        }
+      })
+    } else {
+      setDisplayUi(true)
+      setDisplayOptions(true)
+
+      spotButtons.current.forEach((button) => {
+        if (button) {
+          button.style.display = "inline"
+        }
+      })
+      buttons.current.forEach((button) => {
+        if (button) {
+          button.style.display = "inline"
+        }
+      })
+    }
+  }, [showBlackBars])
+
   const handleSpotSelect = (index) => {
     spotButtons.current.forEach((button, i) => {
       if (button) {
@@ -139,40 +172,38 @@ export const Interface = () => {
       >
         Toggle black bars ({showBlackBars.toString()})
       </button>
-      {!showBlackBars && (
-        <div className={styles.meta}>
-          <div className={styles.buttons}>
-            {scriptData.map((scene, index) => (
-              <button
-                key={index}
-                onClick={() => {
-                  handleSceneSelect(index)
-                  changeScene(index)
-                }}
-                ref={(el) => (buttons.current[index] = el)}
-              >
-                {scene.name}
-              </button>
-            ))}
-          </div>
-          <hr />
-          <div className={styles.spots}>
-            {scriptData[sceneIndex].spots.map((spot, index) => (
-              <button
-                key={index}
-                ref={(el) => (spotButtons.current[index] = el)}
-                onClick={() => {
-                  handleSpotSelect(index)
-                  goToSpot(index)
-                }}
-              >
-                {spot.label}
-              </button>
-            ))}
-          </div>
+      <div className={styles.meta}>
+        <div className={styles.buttons}>
+          {scriptData.map((scene, index) => (
+            <button
+              key={index}
+              onClick={() => {
+                handleSceneSelect(index)
+                changeScene(index)
+              }}
+              ref={(el) => (buttons.current[index] = el)}
+            >
+              {scene.name}
+            </button>
+          ))}
         </div>
-      )}
-      {displayUi && !showBlackBars && (
+        <hr />
+        <div className={styles.spots}>
+          {scriptData[sceneIndex].spots.map((spot, index) => (
+            <button
+              key={index}
+              ref={(el) => (spotButtons.current[index] = el)}
+              onClick={() => {
+                handleSpotSelect(index)
+                goToSpot(index)
+              }}
+            >
+              {spot.label}
+            </button>
+          ))}
+        </div>
+      </div>
+      {displayUi && (
         <div className={styles.dialogue}>
           <div className={styles.emitter}>
             {getTextEmitter() === "narrator" && <h2 className={styles.narrator}>Le narrateur</h2>}
