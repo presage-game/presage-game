@@ -7,14 +7,14 @@
     ],
     "options": [
       {
-        "label": "Tu souhaites t’échapper de ton quotidien.",
+        "label": "Pour t’échapper du quotidien.",
         "following": [
           "Cette routine absurde dans laquelle le reste du monde semble se complaire te paraît insupportable. Les objectifs trimestriels ; le tapage usuel de la machine à café ; les rangées de bureau réparties sur la hauteur d’un gratte-ciel. Ton corps et ton esprit te demandent *d’arrêter ça*."
         ],
         "version": 1
       },
       {
-        "label": "Tu veux renouer avec tes origines.",
+        "label": "Pour renouer avec tes origines.",
         "following": [
           "La ville a eu beau t’offrir tout ce qu’elle pouvait, l’idée de revenir chez toi a comme quelque chose de rassurant. Retrouver le soleil sous lequel tu es né et tu as grandi. Tout ce que tu as laissé derrière toi, le jour où tu es parti. La lettre d’amour à ton pays va s’écrire *ici et maintenant*."
         ],
