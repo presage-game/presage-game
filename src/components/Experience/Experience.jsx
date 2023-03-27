@@ -1,12 +1,12 @@
 import { Canvas } from "@react-three/fiber"
-import styles from "./Experience.module.scss"
-import { RegionEntranceOne } from "./scenes/RegionEntranceOne/RegionEntranceOne"
+import classes from "./Experience.module.scss"
+import { Setup } from "./chapterOne/RegionEntranceOne/Setup"
 
 export const Experience = () => {
   return (
-    <div className={styles.root}>
+    <div className={classes.root}>
       <Canvas>
-        <RegionEntranceOne />
+        <Setup />
       </Canvas>
     </div>
   )

@@ -1,7 +1,7 @@
 import { useGLTF, PerspectiveCamera, Environment, OrbitControls, Gltf } from "@react-three/drei"
-import { Model } from "./Scene_1"
+import { Model } from "./Model"
 
-export const RegionEntranceOneScene = () => {
+export const Scene = () => {
   //<Gltf src="/assets/scenes/scene_1.glb" />
 
   return (
