@@ -19,7 +19,7 @@ export const BlackBars = () => {
   }, [])
 
   return (
-    <div className={styles.container}>
+    <div className={styles.root}>
       <div className={styles.topBar} />
       <div className={styles.bottomBar} />
     </div>

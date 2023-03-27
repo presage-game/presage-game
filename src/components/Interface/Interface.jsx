@@ -1,9 +1,9 @@
 import { useEffect, useRef, useState } from "react"
 import { useSelector, useDispatch } from "react-redux"
-import { toggleBlackBars } from "../../store/reducers/uiReducer"
-import scriptData from "../../assets/chapterTwo.json"
+import { toggleBlackBars } from "@/store/reducers/uiReducer"
+import scriptData from "@/assets/chapterTwo.json"
 import styles from "./Interface.module.scss"
-import { BlackBars } from "../BlackBars/BlackBars"
+import { BlackBars } from "@/components/BlackBars/BlackBars"
 
 export const Interface = () => {
   const dispatch = useDispatch()
@@ -162,7 +162,7 @@ export const Interface = () => {
   }
 
   return (
-    <section className={styles.container}>
+    <section className={styles.root}>
       {showBlackBars && <BlackBars />}
       <button
         className={styles.test}

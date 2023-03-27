@@ -4,7 +4,7 @@ import { RegionEntranceOne } from "./scenes/RegionEntranceOne/RegionEntranceOne"
 
 export const Experience = () => {
   return (
-    <div className={styles.container}>
+    <div className={styles.root}>
       <Canvas>
         <RegionEntranceOne />
       </Canvas>

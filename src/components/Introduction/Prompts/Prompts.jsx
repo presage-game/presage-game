@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import { useDispatch } from "react-redux"
-import { answerPrompt, completePrompts } from "../../../store/reducers/introductionReducer"
-import styles from "./../Introduction.module.scss"
+import { answerPrompt } from "@/store/reducers/introductionReducer"
+import styles from "./Prompts.module.scss"
 
 export const Prompts = ({ introduction, currentIndex }) => {
   const dispatch = useDispatch()
@@ -50,7 +50,7 @@ export const Prompts = ({ introduction, currentIndex }) => {
     )
 
     return (
-      <div className={styles.item} key={index}>
+      <div className={styles.root} key={index}>
         <span className={styles.date}>{section.date}</span>
         {!showFollowing && <p className={styles.baseline}>{section.baseline}</p>}
         {!showFollowing && <div className={styles.options}>{options}</div>}
