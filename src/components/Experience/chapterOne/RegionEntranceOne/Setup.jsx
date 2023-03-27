@@ -1,13 +1,11 @@
-import { Environment, OrbitControls, PerspectiveCamera } from "@react-three/drei"
 import { Scene } from "./Scene"
-import { ScreenQuad } from "@react-three/drei"
 import { useFrame } from "@react-three/fiber"
 import { useRef } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { HotGround } from "../../effects/HotGround"
 import { changeNoLerp } from "../../../../store/reducers/userReducer"
 import { AdinkraOne } from "../../objects/interactive/AdinkraOne/AdinkraOne"
-import { CameraLerp } from "../../../../helpers/animations/cameraLerp"
+import { CameraLerp } from "../../../../helpers/animations/CameraLerp"
 
 export const Setup = () => {
   const dispatch = useDispatch()
@@ -18,11 +16,13 @@ export const Setup = () => {
 
   const ref = useRef()
   useFrame((state) => {
-    ref.current.rotation.y = CameraLerp(
-      ref.current.rotation.y,
-      !noLerp ? state.mouse.x : noLerpFocus.x,
-      Math.PI / 3
-    )
+    if (ref.current) {
+      ref.current.rotation.y = CameraLerp(
+        ref.current.rotation.y,
+        !noLerp ? state.mouse.x : noLerpFocus.x,
+        0
+      )
+    }
   })
 
   return (

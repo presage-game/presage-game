@@ -155,8 +155,8 @@ export const AdinkraOne = ({ switchLerp }) => {
 
   return (
     <>
-      <Plane args={[10, 6, 10, 6]} rotation={[0, Math.PI / 3, 0]} position={[10, 5, -10]}>
-        <Html position={[0, 0, 0.1]} transform>
+      <Plane args={[10, 6, 10, 6]} rotation={[0, -Math.PI / 3, 0]} position={[8, 0, -20]}>
+        <Html transform>
           <canvas
             onPointerEnter={() => switchLerp(true)}
             onPointerLeave={() => switchLerp(false)}
@@ -170,7 +170,7 @@ export const AdinkraOne = ({ switchLerp }) => {
           ></canvas>
         </Html>
       </Plane>
-      <Box position={[10, 9, -10]} onClick={() => initCanvas()}>
+      <Box position={[8, 4, -20]} onClick={() => initCanvas()}>
         <meshStandardMaterial color="purple" />
       </Box>
     </>
