@@ -70,7 +70,7 @@
         "label": "Débris du pont",
         "spotVoiceover": [
           {
-            "text": "Les ponts finissent indubitablement par céder. Que ce soit la faute des femmes et des hommes, ou bien simplement les affres du temps, cela n’a aucune importance aujourd’hui. Tu ne peux pas traverser.",
+            "text": "Les ponts finissent indubitablement par céder. Que ce soit la faute des femmes et des hommes, ou bien simplement les affres du temps, cela n’a aucune importance aujourd’hui. *Quelque chose* a fait que tu ne pourras jamais traverser cette rivière.",
             "emitter": "innerVoice"
           }
         ]

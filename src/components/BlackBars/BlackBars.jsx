@@ -4,8 +4,6 @@ import gsap from "gsap"
 
 export const BlackBars = () => {
   useLayoutEffect(() => {
-    // create a gsap timeline where each bar translates
-    // from the top and bottom of the screen
     const tl = gsap.timeline()
     tl.to(`.${styles.topBar}`, {
       duration: 2,
