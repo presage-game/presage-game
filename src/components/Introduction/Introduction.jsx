@@ -10,10 +10,9 @@ import ambiance from "../../assets/audios/introduction/ambiance.mp3"
 import carEngine from "../../assets/audios/introduction/car-engine.mp3"
 
 export const Introduction = () => {
-  const dispatch = useDispatch()
-
   const introduction = introductionData
 
+  const dispatch = useDispatch()
   const { currentIndex, isPromptComplete, hasExperienceStarted } = useSelector(
     (state) => state.introduction
   )
@@ -59,9 +58,7 @@ export const Introduction = () => {
         {showIntroduction && (
           <>
             <Prompts introduction={introduction} currentIndex={currentIndex} />
-            {isPromptComplete && (
-              <Footer />
-            )}
+            {isPromptComplete && <Footer />}
           </>
         )}
       </section>
