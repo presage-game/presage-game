@@ -3,9 +3,8 @@ import { useFrame } from "@react-three/fiber"
 import { useRef } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { HotGround } from "../../effects/HotGround"
-import { changeNoLerp } from "../../../../store/reducers/userReducer"
-import { AdinkraOne } from "../../objects/interactive/AdinkraOne/AdinkraOne"
-import { CameraLerp } from "../../../../helpers/animations/CameraLerp"
+import { changeNoLerp } from "@/store/reducers/userReducer"
+import { CameraLerp } from "@/helpers/animations/CameraLerp"
 
 export const Setup = () => {
   const dispatch = useDispatch()
@@ -33,8 +32,7 @@ export const Setup = () => {
         position={[-30, 1, 0]}
         rotation={[-Math.PI / 2, Math.PI / 6, Math.PI / 2]}
       />
-      <Scene cameraRef={ref} />
-      <AdinkraOne switchLerp={switchLerp} />
+      <Scene cameraRef={ref} switchLerp={switchLerp} />
     </>
   )
 }
