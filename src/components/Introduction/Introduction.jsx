@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react"
 import { useSelector, useDispatch } from "react-redux"
 import { answerPrompt, completePrompts } from "../../store/reducers/introductionReducer"
 import { StartButton } from "../StartButton/StartButton"
+import { Prompts } from "./Prompts/Prompts"
 import introductionData from "../../assets/introduction.json"
 import styles from "./Introduction.module.scss"
 import ambiance from "../../assets/audios/introduction/ambiance.mp3"
@@ -20,8 +21,6 @@ export const Introduction = () => {
 
   // Local state
   const [showIntroduction, setShowIntroduction] = useState(false)
-  const [showFollowing, setShowFollowing] = useState(false)
-  const [followingToShow, setFollowingToShow] = useState(null)
 
   // Play audio when introduction starts
   useEffect(() => {
@@ -55,59 +54,6 @@ export const Introduction = () => {
     }
   }, [currentIndex])
 
-  // Show the following text for a prompt and update local state
-  const showFollowingText = (index) => {
-    setFollowingToShow(index)
-    setShowFollowing(true)
-
-    // Play audio when user selects an option
-    // TODO
-  }
-
-  // Hide the following text for a prompt, update local state, and record user's answer
-  const hideFollowingText = (data) => {
-    setShowFollowing(false)
-    dispatch(answerPrompt(data))
-  }
-
-  // Render introduction prompts and following text
-  const render = () => {
-    return introduction.map((section, index) => {
-      if (index !== currentIndex) {
-        return null
-      }
-
-      const options = section.options.map((option, i) => {
-        return (
-          <div className={styles.option} key={i} onClick={() => showFollowingText(i)}>
-            {option.label}
-          </div>
-        )
-      })
-
-      const followingText = showFollowing && (
-        <p className={`${styles.baseline} ${true && styles.active}`}>
-          {section.options[followingToShow].following}
-          <button
-            className={styles.nextButton}
-            onClick={() => hideFollowingText(section.options[followingToShow]?.version)}
-          >
-            Suite...
-          </button>
-        </p>
-      )
-
-      return (
-        <div className={styles.item} key={index}>
-          <span className={styles.date}>{section.date}</span>
-          {!showFollowing && <p className={styles.baseline}>{section.baseline}</p>}
-          {!showFollowing && <div className={styles.options}>{options}</div>}
-          {followingText}
-        </div>
-      )
-    })
-  }
-
   return (
     !hasExperienceStarted && (
       <section className={styles.container}>
@@ -126,7 +72,7 @@ export const Introduction = () => {
         )}
         {showIntroduction && (
           <>
-            {render()}
+            <Prompts introduction={introduction} currentIndex={currentIndex} />
             {isPromptComplete && (
               <footer className={styles.footer}>
                 <p style={{ marginTop: "2rem" }}>
