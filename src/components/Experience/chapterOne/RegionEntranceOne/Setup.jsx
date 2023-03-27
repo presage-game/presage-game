@@ -1,15 +1,28 @@
-import { Environment, OrbitControls, PerspectiveCamera } from "@react-three/drei"
 import { Scene } from "./Scene"
-import { ScreenQuad } from "@react-three/drei"
+import { useFrame } from "@react-three/fiber"
+import { useRef } from "react"
+import { useDispatch, useSelector } from "react-redux"
 import { HotGround } from "../../effects/HotGround"
+import { changeNoLerp } from "@/store/reducers/userReducer"
+import { CameraLerp } from "@/helpers/animations/CameraLerp"
 
 export const Setup = () => {
-  //<fog attach={"fog"} args={["orange",30,60]} />
-  /*
-  <ScreenQuad scale={200} rotation={[0,Math.PI/2,0]} position={[-200, 0, -10]}>
-        <meshBasicMaterial />
-  </ScreenQuad>
-  */
+  const dispatch = useDispatch()
+  const switchLerp = (value) => dispatch(changeNoLerp(value))
+  const noLerp = useSelector((state) => state.user.noLerp)
+  const changeNoLerpFocus = (value) => dispatch(changeNoLerpFocus(value))
+  const noLerpFocus = useSelector((state) => state.user.noLerpFocus)
+
+  const ref = useRef()
+  useFrame((state) => {
+    if (ref.current) {
+      ref.current.rotation.y = CameraLerp(
+        ref.current.rotation.y,
+        !noLerp ? state.mouse.x : noLerpFocus.x,
+        0
+      )
+    }
+  })
 
   return (
     <>
@@ -19,7 +32,7 @@ export const Setup = () => {
         position={[-30, 1, 0]}
         rotation={[-Math.PI / 2, Math.PI / 6, Math.PI / 2]}
       />
-      <Scene />
+      <Scene cameraRef={ref} switchLerp={switchLerp} />
     </>
   )
 }
