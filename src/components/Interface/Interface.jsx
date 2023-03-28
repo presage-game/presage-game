@@ -6,6 +6,7 @@ import styles from "./Interface.module.scss"
 import { BlackBars } from "@/components/BlackBars/BlackBars"
 import { Meta } from "@/components/Interface/Meta/Meta"
 import { TextBox } from "@/components/Interface/TextBox/TextBox"
+import { AsideTextBox } from "@/components/Interface/AsideTextBox/AsideTextBox"
 
 export const Interface = () => {
   const dispatch = useDispatch()
@@ -18,6 +19,8 @@ export const Interface = () => {
   const [spotIndex, setSpotIndex] = useState(0)
   const [textIndex, setTextIndex] = useState(0)
 
+  const [textBoxStyle, setTextBoxStyle] = useState("classic")
+
   return (
     <section className={styles.root}>
       {showBlackBars && <BlackBars />}
@@ -29,6 +32,12 @@ export const Interface = () => {
       >
         Toggle black bars ({showBlackBars.toString()})
       </button> */}
+      <button
+        style={{ position: "absolute", right: "2rem", bottom: "2rem" }}
+        onClick={() => setTextBoxStyle(textBoxStyle === "classic" ? "aside" : "classic")}
+      >
+        Change TextBox ({textBoxStyle})
+      </button>
       <Meta
         sceneIndex={sceneIndex}
         scriptData={scriptData}
@@ -39,18 +48,36 @@ export const Interface = () => {
         setSpotIndex={setSpotIndex}
         setTextIndex={setTextIndex}
       />
-      <TextBox
-        sceneIndex={sceneIndex}
-        scriptData={scriptData}
-        isVoiceOver={isVoiceOver}
-        displayOptions={displayOptions}
-        spotIndex={spotIndex}
-        textIndex={textIndex}
-        displayUi={displayUi}
-        setTextIndex={setTextIndex}
-        setDisplayOptions={setDisplayOptions}
-        setDisplayUi={setDisplayUi}
-      />
+      {textBoxStyle === "classic" && (
+        <TextBox
+          textBoxStyle={textBoxStyle}
+          sceneIndex={sceneIndex}
+          scriptData={scriptData}
+          isVoiceOver={isVoiceOver}
+          displayOptions={displayOptions}
+          spotIndex={spotIndex}
+          textIndex={textIndex}
+          displayUi={displayUi}
+          setTextIndex={setTextIndex}
+          setDisplayOptions={setDisplayOptions}
+          setDisplayUi={setDisplayUi}
+        />
+      )}
+      {textBoxStyle === "aside" && (
+        <AsideTextBox
+          textBoxStyle={textBoxStyle}
+          sceneIndex={sceneIndex}
+          scriptData={scriptData}
+          isVoiceOver={isVoiceOver}
+          displayOptions={displayOptions}
+          spotIndex={spotIndex}
+          textIndex={textIndex}
+          displayUi={displayUi}
+          setTextIndex={setTextIndex}
+          setDisplayOptions={setDisplayOptions}
+          setDisplayUi={setDisplayUi}
+        />
+      )}
     </section>
   )
 }

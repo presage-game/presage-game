@@ -1,8 +1,8 @@
 import { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import styles from "./TextBox.module.scss"
+import styles from "@/components/Interface/TextBox/TextBox.module.scss"
 
-export const TextBox = ({
+export const AsideTextBox = ({
   sceneIndex,
   scriptData,
   isVoiceOver,
@@ -68,11 +68,11 @@ export const TextBox = ({
       {displayUi && (
         <motion.div
           key="textBox"
-          className={styles.classic}
-          initial={{ opacity: 0, y: 20, x: "-50%" }}
-          animate={{ opacity: 1, y: 0, x: "-50%" }}
-          exit={{ opacity: 0, y: -20, x: "-50%" }}
-          transition={{ y: { type: "spring", stiffness: 100 } }}
+          className={styles.aside}
+          initial={{ opacity: 0, x: -100 }}
+          animate={{ opacity: 1, x: 0 }}
+          exit={{ opacity: 0, x: -100 }}
+          transition={{ x: { type: "spring", stiffness: 100 } }}
         >
           <div>
             {getTextEmitter() === "narrator" && <h2 className={styles.narrator}>Le narrateur</h2>}
