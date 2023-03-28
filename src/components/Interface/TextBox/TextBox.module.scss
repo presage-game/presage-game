@@ -80,19 +80,20 @@
     font-size: 1.8rem;
     width: 100%;
     transition: ease-in-out 0.2s;
-    color: white;
     margin-top: 4rem;
 
     &--more {
       background-color: #ffb24d31;
+      color: white;
 
       &:hover {
-        background-color: #ffb24d;
+        background-color: #ffb24d70;
       }
     }
 
     &--close {
       background-color: #ffb24d;
+      color: black;
 
       &:hover {
         background-color: #ff9d1d;
