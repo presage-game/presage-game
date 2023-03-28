@@ -12,7 +12,26 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: flex-start;
+}
 
+.classic {
+  max-width: 100%;
+  width: 80rem;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 2rem;
+  position: absolute;
+  bottom: 2rem;
+  background-color: #000000cc;
+  border: 0.1rem solid #ffb24d31;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.aside,
+.classic {
   .narrator {
     font-family: "Spectral SC", sans-serif;
     letter-spacing: 0.2rem;
@@ -64,97 +83,14 @@
     font-size: 1.8rem;
     width: 100%;
     transition: ease-in-out 0.2s;
-    color: black;
-
-    &--more {
-      background-color: white;
-
-      &:hover {
-        background-color: rgb(211, 211, 211);
-      }
-    }
-
-    &--close {
-      background-color: #ffb24d;
-
-      &:hover {
-        background-color: #ff9d1d;
-      }
-    }
-  }
-}
-
-//
-
-.classic {
-  max-width: 100%;
-  width: 80rem;
-  left: 50%;
-  transform: translateX(-50%);
-  padding: 2rem;
-  position: absolute;
-  bottom: 2rem;
-  background-color: #000000cc;
-  border: 0.1rem solid #ffb24d31;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: flex-start;
-
-  .narrator {
-    font-family: "Spectral SC", sans-serif;
-    letter-spacing: 0.2rem;
-    font-weight: 400;
-
-    &--innerVoice {
-      color: #b958ff;
-    }
-
-    &--npc {
-      color: #ffb24d;
-    }
-  }
-
-  .content {
-    margin-top: 2rem;
-  }
-
-  .options {
-    margin-top: 2rem;
-
-    .optionsButton {
-      cursor: pointer;
-      display: block;
-      text-align: left;
-      letter-spacing: 0.1rem;
-      color: #ffb24d;
-      width: 100%;
-      transition: ease-in-out 0.2s;
-
-      &:hover {
-        color: #ff9d1d;
-      }
-    }
-  }
-
-  .bottomButton {
-    cursor: pointer;
-    text-transform: uppercase;
-    display: block;
-    padding: 1rem;
-    font-family: "Spectral SC", sans-serif;
-    letter-spacing: 0.1rem;
-    font-size: 1.8rem;
-    width: 100%;
-    transition: ease-in-out 0.2s;
+    color: white;
     margin-top: 4rem;
-    color: black;
 
     &--more {
-      background-color: white;
+      background-color: #ffb24d31;
 
       &:hover {
-        background-color: rgb(211, 211, 211);
+        background-color: #ffb24d;
       }
     }
 
