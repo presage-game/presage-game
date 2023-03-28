@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react"
 import { useSelector } from "react-redux"
-import styles from "@/components/Interface/Interface.module.scss"
+import styles from "./Meta.module.scss"
 
 export const Meta = ({
   sceneIndex,
@@ -113,7 +113,7 @@ export const Meta = ({
   }, [sceneIndex])
 
   return (
-    <div className={styles.meta}>
+    <div className={styles.root}>
       <div className={styles.buttons}>
         {scriptData.map((scene, index) => (
           <button

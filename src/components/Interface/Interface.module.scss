@@ -1,37 +1,3 @@
-.meta {
-  position: absolute;
-  top: 2rem;
-  right: 2rem;
-  width: 50%;
-
-  .buttons,
-  .spots {
-    button {
-      color: #ffffff;
-      background-color: #000000cc;
-      padding: 1rem 2rem;
-      margin-right: 2rem;
-      margin-bottom: 2rem;
-
-      &.active {
-        background-color: white;
-        pointer-events: none;
-        color: #000000;
-      }
-    }
-  }
-}
-
-hr {
-  margin-bottom: 2rem;
-  height: 0.1rem;
-  background-color: #ffffff;
-}
-
-h2 {
-  margin-bottom: 1rem;
-}
-
 .test {
   position: absolute;
   z-index: 20;
