@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { useSelector, useDispatch } from "react-redux"
-import { toggleBlackBars } from "@/store/reducers/uiReducer"
+import { toggleBlackBars, toggleIsOnMap } from "@/store/reducers/uiReducer"
 import scriptData from "@/assets/chapterTwo.json"
 import styles from "./Interface.module.scss"
 import { BlackBars } from "@/components/BlackBars/BlackBars"
@@ -9,7 +9,6 @@ import { TextBox } from "@/components/Interface/TextBox/TextBox"
 
 export const Interface = () => {
   const dispatch = useDispatch()
-
   const { showBlackBars } = useSelector((state) => state.ui)
 
   const [displayUi, setDisplayUi] = useState(false)
@@ -29,6 +28,14 @@ export const Interface = () => {
         }}
       >
         Toggle black bars ({showBlackBars.toString()})
+      </button>
+      <button
+        className={styles.testb}
+        onClick={() => {
+          dispatch(toggleIsOnMap())
+        }}
+      >
+        Display Map
       </button>
       <Meta
         sceneIndex={sceneIndex}

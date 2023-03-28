@@ -13,7 +13,7 @@ export const ui = createSlice({
       state.showBlackBars = !state.showBlackBars
     },
     toggleIsOnMap: (state) => {
-      state.isOnMap != state.isOnMap
+      state.isOnMap = !state.isOnMap
     },
   },
 })
