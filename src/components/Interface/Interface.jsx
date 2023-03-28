@@ -21,22 +21,14 @@ export const Interface = () => {
   return (
     <section className={styles.root}>
       {showBlackBars && <BlackBars />}
-      <button
+      {/* <button
         className={styles.test}
         onClick={() => {
           dispatch(toggleBlackBars())
         }}
       >
         Toggle black bars ({showBlackBars.toString()})
-      </button>
-      <button
-        className={styles.testb}
-        onClick={() => {
-          dispatch(toggleIsOnMap())
-        }}
-      >
-        Display Map
-      </button>
+      </button> */}
       <Meta
         sceneIndex={sceneIndex}
         scriptData={scriptData}
@@ -47,19 +39,18 @@ export const Interface = () => {
         setSpotIndex={setSpotIndex}
         setTextIndex={setTextIndex}
       />
-      {displayUi && (
-        <TextBox
-          sceneIndex={sceneIndex}
-          scriptData={scriptData}
-          isVoiceOver={isVoiceOver}
-          displayOptions={displayOptions}
-          spotIndex={spotIndex}
-          textIndex={textIndex}
-          setTextIndex={setTextIndex}
-          setDisplayOptions={setDisplayOptions}
-          setDisplayUi={setDisplayUi}
-        />
-      )}
+      <TextBox
+        sceneIndex={sceneIndex}
+        scriptData={scriptData}
+        isVoiceOver={isVoiceOver}
+        displayOptions={displayOptions}
+        spotIndex={spotIndex}
+        textIndex={textIndex}
+        displayUi={displayUi}
+        setTextIndex={setTextIndex}
+        setDisplayOptions={setDisplayOptions}
+        setDisplayUi={setDisplayUi}
+      />
     </section>
   )
 }

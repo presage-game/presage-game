@@ -2,7 +2,6 @@
   max-width: 100%;
   width: 80rem;
   left: 50%;
-  transform: translateX(-50%);
   padding: 2rem;
   position: absolute;
   bottom: 2rem;
@@ -22,9 +21,13 @@
     }
   }
 
+  .content {
+    margin-top: 2rem;
+  }
+
   .options {
     margin-top: 2rem;
-    border-top: 0.2rem solid #ffffff;
+    border-top: 0.1rem solid #808080;
     padding-top: 2rem;
     color: #ffb24d;
 
