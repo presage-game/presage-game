@@ -64,9 +64,22 @@
     font-size: 1.8rem;
     width: 100%;
     transition: ease-in-out 0.2s;
+    color: black;
 
-    &:hover {
-      background-color: #ff9d1d;
+    &--more {
+      background-color: white;
+
+      &:hover {
+        background-color: rgb(211, 211, 211);
+      }
+    }
+
+    &--close {
+      background-color: #ffb24d;
+
+      &:hover {
+        background-color: #ff9d1d;
+      }
     }
   }
 }
@@ -128,7 +141,6 @@
     cursor: pointer;
     text-transform: uppercase;
     display: block;
-    background-color: #ffb24d;
     padding: 1rem;
     font-family: "Spectral SC", sans-serif;
     letter-spacing: 0.1rem;
@@ -136,9 +148,22 @@
     width: 100%;
     transition: ease-in-out 0.2s;
     margin-top: 4rem;
+    color: black;
 
-    &:hover {
-      background-color: #ff9d1d;
+    &--more {
+      background-color: white;
+
+      &:hover {
+        background-color: rgb(211, 211, 211);
+      }
+    }
+
+    &--close {
+      background-color: #ffb24d;
+
+      &:hover {
+        background-color: #ff9d1d;
+      }
     }
   }
 }

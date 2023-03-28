@@ -137,17 +137,26 @@ export const TextBox = ({
             )}
           </div>
           {hasOptions() && hasMore() && !displayOptions && (
-            <button className={styles.bottomButton} onClick={showMoreNPC}>
+            <button
+              className={[`${styles.bottomButton} ${styles["bottomButton--more"]}`]}
+              onClick={showMoreNPC}
+            >
               Suite
             </button>
           )}
           {!hasOptions() && hasMore() && (
-            <button className={styles.bottomButton} onClick={showMore}>
+            <button
+              className={[`${styles.bottomButton} ${styles["bottomButton--more"]}`]}
+              onClick={showMore}
+            >
               Suite
             </button>
           )}
           {!hasMore() && (
-            <button className={styles.bottomButton} onClick={() => setDisplayUi(false)}>
+            <button
+              className={[`${styles.bottomButton} ${styles["bottomButton--close"]}`]}
+              onClick={() => setDisplayUi(false)}
+            >
               Fermer
             </button>
           )}
