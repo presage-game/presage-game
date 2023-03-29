@@ -26,11 +26,11 @@ export const CustomCamera = ({ initialPosition }) => {
   useFrame((state) => {
     if (ref.current) {
       if (!onFocusCamera) {
-        ref.current.position.x = CameraLerp(ref.current.position.x, defaultPosition.position.x)
-        ref.current.position.y = CameraLerp(ref.current.position.y, defaultPosition.position.y)
+        ref.current.position.x = CameraLerp(ref.current.position.x, -state.mouse.x * 5)
+        ref.current.position.y = CameraLerp(ref.current.position.y, -state.mouse.y * 2)
         ref.current.position.z = CameraLerp(ref.current.position.z, defaultPosition.position.z)
         ref.current.rotation.x = CameraLerp(ref.current.rotation.x, defaultPosition.rotation.x)
-        ref.current.rotation.y = CameraLerp(ref.current.rotation.y, state.mouse.x)
+        ref.current.rotation.y = CameraLerp(ref.current.rotation.y, defaultPosition.rotation.y)
         ref.current.rotation.z = CameraLerp(ref.current.rotation.z, defaultPosition.rotation.z)
       } else {
         ref.current.position.x = CameraLerp(

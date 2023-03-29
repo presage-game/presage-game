@@ -7,20 +7,15 @@ const initialState = {
   onFocusCamera: false,
   onFocusCameraPosition: {
     position: {
-      x: -30,
-      y: 0,
-      z: 15,
-    },
-    rotation: {
-      x: -Math.PI / 3,
+      x: 0,
       y: 0,
       z: 0,
     },
-  },
-  noLerp: false,
-  noLerpFocus: {
-    x: 0,
-    y: 0,
+    rotation: {
+      x: 0,
+      y: 0,
+      z: 0,
+    },
   },
 }
 
@@ -39,20 +34,11 @@ export const userSlice = createSlice({
       state.scene = action.payload
       state.onFocusCamera = false
     },
-    changeNoLerp: (state, action) => {
-      state.noLerp = action.payload
-    },
-    changeNoLerpFocus: (state, action) => {
-      state.noLerpFocus = action.payload
-    },
     changeOnFocusCamera: (state, action) => {
       state.onFocusCamera = action.payload
     },
     changeOnFocusCameraPosition: (state, action) => {
       state.onFocusCameraPosition = action.payload
-    },
-    resetOnFocusCameraPosition: (state, action) => {
-      state.onFocusCameraPosition
     },
   },
 })
