@@ -3,7 +3,6 @@ import { createSlice } from "@reduxjs/toolkit"
 const initialState = {
   gameCode: null,
   hasExperienceStarted: false,
-  scene: 1,
   onFocusCamera: false,
   onFocusCameraPosition: {
     position: {

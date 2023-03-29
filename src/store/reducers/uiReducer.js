@@ -12,12 +12,12 @@ export const ui = createSlice({
     toggleBlackBars: (state) => {
       state.showBlackBars = !state.showBlackBars
     },
-    toggleIsOnMap: (state) => {
+    toggleMap: (state) => {
       state.isOnMap = !state.isOnMap
     },
   },
 })
 
-export const { toggleBlackBars, toggleIsOnMap } = ui.actions
+export const { toggleBlackBars, toggleMap } = ui.actions
 
 export default ui.reducer

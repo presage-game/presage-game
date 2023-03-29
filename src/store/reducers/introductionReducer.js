@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit"
-import introductionData from "../../assets/introduction.json"
+import introductionData from "@/assets/data/introduction.json"
 
 const TIPPING_POINT = Object.keys(introductionData).length
 

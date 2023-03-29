@@ -1,15 +1,19 @@
 import React, { useEffect, useState } from "react"
 import { useSelector, useDispatch } from "react-redux"
+
 import { completePrompts } from "../../store/reducers/introductionReducer"
+import { changeGameCode } from "@/store/reducers/userReducer"
+import { createGame } from "@/database/gamecode"
+
 import { Prompts } from "./Prompts/Prompts"
 import { SplashScreen } from "./SplashScreen/SplashScreen"
 import { Footer } from "./Footer/Footer"
-import introductionData from "../../assets/introduction.json"
+
+import introductionData from "@/assets/data/introduction.json"
+import ambiance from "@/assets/audios/introduction/ambiance.mp3"
+import carEngine from "@/assets/audios/introduction/car-engine.mp3"
+
 import styles from "./Introduction.module.scss"
-import ambiance from "../../assets/audios/introduction/ambiance.mp3"
-import carEngine from "../../assets/audios/introduction/car-engine.mp3"
-import { createGame } from "@/database/gamecode"
-import { changeGameCode } from "@/store/reducers/userReducer"
 
 export const Introduction = () => {
   const introduction = introductionData
