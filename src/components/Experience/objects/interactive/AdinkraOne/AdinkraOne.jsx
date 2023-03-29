@@ -14,6 +14,7 @@ const initialData = {
 
 function getMousePos(canvas, evt) {
   var rect = canvas.getBoundingClientRect()
+  console.log(rect)
   return {
     x: evt.clientX - rect.left,
     y: evt.clientY - rect.top,
@@ -73,6 +74,7 @@ export const AdinkraOne = ({ switchLerp }) => {
       let prevY = data.currY
       let currX = mouse.x - canvasRef.current.offsetLeft
       let currY = mouse.y - canvasRef.current.offsetTop
+      console.log(currX + " | " + currY)
 
       setData({
         ...data,
