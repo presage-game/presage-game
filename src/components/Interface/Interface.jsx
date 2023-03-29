@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { useSelector, useDispatch } from "react-redux"
-import { toggleBlackBars, toggleIsOnMap } from "@/store/reducers/uiReducer"
-import scriptData from "@/assets/chapterTwo.json"
+import { toggleBlackBars, toggleMap } from "@/store/reducers/uiReducer"
+import scriptData from "@/assets/data/chapterOne/scenes.json"
 import styles from "./Interface.module.scss"
 import { BlackBars } from "@/components/BlackBars/BlackBars"
 import { Meta } from "@/components/Interface/Meta/Meta"
@@ -11,9 +11,9 @@ import { AsideTextBox } from "@/components/Interface/AsideTextBox/AsideTextBox"
 export const Interface = () => {
   const dispatch = useDispatch()
   const { showBlackBars, isOnMap } = useSelector((state) => state.ui)
+  const { scene: sceneIndex } = useSelector((state) => state.user)
 
   const [displayUi, setDisplayUi] = useState(false)
-  const [sceneIndex, setSceneIndex] = useState(0)
   const [isVoiceOver, setIsVoiceOver] = useState(false)
   const [displayOptions, setDisplayOptions] = useState(false)
   const [spotIndex, setSpotIndex] = useState(0)
@@ -24,14 +24,6 @@ export const Interface = () => {
   return (
     <section className={styles.root}>
       {showBlackBars && <BlackBars />}
-      {/* <button
-        className={styles.test}
-        onClick={() => {
-          dispatch(toggleBlackBars())
-        }}
-      >
-        Toggle black bars ({showBlackBars.toString()})
-      </button> */}
       <div
         style={{
           position: "absolute",
@@ -42,21 +34,29 @@ export const Interface = () => {
           alignItems: "flex-start",
         }}
       >
-        <button onClick={() => dispatch(toggleIsOnMap())}>
-          {isOnMap ? "Close map" : "Open map"}
-        </button>
+        <button onClick={() => dispatch(toggleMap())}>{isOnMap ? "Close map" : "Open map"}</button>
         <button onClick={() => setTextBoxStyle(textBoxStyle === "classic" ? "aside" : "classic")}>
-          Change TextBox ({textBoxStyle})
+          ({textBoxStyle === "classic" ? "Classic" : "Aside"})
         </button>
+        {/* <button
+          onClick={() => {
+            dispatch(toggleBlackBars())
+          }}
+        >
+          Black Bars
+        </button> */}
       </div>
+
+      <p>{displayUi.toString()}</p>
+
       {!isOnMap && (
         <Meta
           sceneIndex={sceneIndex}
           scriptData={scriptData}
+          displayUi={displayUi}
           setDisplayUi={setDisplayUi}
           setDisplayOptions={setDisplayOptions}
           setIsVoiceOver={setIsVoiceOver}
-          setSceneIndex={setSceneIndex}
           setSpotIndex={setSpotIndex}
           setTextIndex={setTextIndex}
         />

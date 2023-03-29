@@ -4,10 +4,10 @@ import { completePrompts } from "../../store/reducers/introductionReducer"
 import { Prompts } from "./Prompts/Prompts"
 import { SplashScreen } from "./SplashScreen/SplashScreen"
 import { Footer } from "./Footer/Footer"
-import introductionData from "../../assets/introduction.json"
+import introductionData from "@/assets/data/introduction.json"
 import styles from "./Introduction.module.scss"
-import ambiance from "../../assets/audios/introduction/ambiance.mp3"
-import carEngine from "../../assets/audios/introduction/car-engine.mp3"
+import ambiance from "@/assets/audios/introduction/ambiance.mp3"
+import carEngine from "@/assets/audios/introduction/car-engine.mp3"
 
 export const Introduction = () => {
   const introduction = introductionData

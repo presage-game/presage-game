@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit"
 const initialState = {
   value: 0,
   hasExperienceStarted: false,
-  scene: 1,
+  scene: 0,
   noLerp: false,
   noLerpFocus: {
     x: 0,

@@ -1,14 +1,20 @@
 import { useDispatch } from "react-redux"
 import { Scene } from "./Scene"
 import { changeScene } from "@/store/reducers/userReducer"
-import { toggleIsOnMap } from "@/store/reducers/uiReducer"
+import { toggleMap } from "@/store/reducers/uiReducer"
 
 export const Setup = () => {
   const dispatch = useDispatch()
 
   const goOnScene = (number) => {
-    dispatch(toggleIsOnMap())
+    dispatch(toggleMap())
     dispatch(changeScene(number))
+  }
+
+  const goOnPinPoint = (number) => {
+    dispatch(toggleMap())
+    // dispatch(changeScene(number))
+    console.log("going to the selected pinpoint", number)
   }
 
   return (
