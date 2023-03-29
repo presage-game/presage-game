@@ -155,8 +155,8 @@ export const AdinkraOne = ({ switchLerp }) => {
 
   return (
     <>
-      <Plane args={[10, 6, 10, 6]} rotation={[0, -Math.PI / 3, 0]} position={[8, 0, -20]}>
-        <Html transform>
+      <Plane args={[10, 6, 10, 6]} rotation={[0, 0, 0]} position={[8, 0, -20]}>
+        <Html className={classes.container} position={[0, 0.05, 0]} transform>
           <canvas
             onPointerEnter={() => switchLerp(true)}
             onPointerLeave={() => switchLerp(false)}
