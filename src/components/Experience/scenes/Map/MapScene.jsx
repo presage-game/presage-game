@@ -1,13 +1,14 @@
-import { useGLTF, useHelper } from "@react-three/drei"
+import { OrbitControls, useGLTF, useHelper } from "@react-three/drei"
 import { Pathfinding, PathfindingHelper } from "three-pathfinding"
 import { useFrame } from "@react-three/fiber"
 import React, { useRef } from "react"
-import { BoxHelper } from "three"
+import useFollowCam from './useFollowCam'
 
 export const MapScene = () => {
   const map = useGLTF("assets/scenes/map1.glb")
   const voiture = useGLTF("assets/vehicules/defender.glb")
   const navMesh = useGLTF("assets/scenes/navMesh1.glb")
+  const { pivot } = useFollowCam()
 
   voiture.scene.position.set(5, 0, 0)
 
@@ -17,7 +18,7 @@ export const MapScene = () => {
   const pathfinding = new Pathfinding()
   const pathfindinghelper = new PathfindingHelper()
   const ZONE = "level1"
-  const SPEED = 5
+  const SPEED = 7
   let navmesh
   let groupID
   let navpath
@@ -55,6 +56,7 @@ export const MapScene = () => {
       voitureGrpRef.current.position.add(distance.multiplyScalar(delta * SPEED))
       // Rotate player to face target
       voitureGrpRef.current.lookAt(targetPosition)
+      pivot.position.lerp(voitureGrpRef.current.position, delta * SPEED)
     } else {
       // Remove node from the path we calculated
       navpath.shift()
@@ -67,8 +69,8 @@ export const MapScene = () => {
 
   return (
     <>
-      <primitive  object={map.scene} dispose={null} />
-      <primitive onClick={(e) => click(e)}  object={navMesh.scene} dispose={null} visible={false}/>
+      <primitive object={map.scene} dispose={null} />
+      <primitive onClick={(e) => click(e)} object={navMesh.scene} dispose={null} visible={false} />
       <group ref={voitureGrpRef}>
         <primitive object={voiture.scene} dispose={null} />
       </group>
