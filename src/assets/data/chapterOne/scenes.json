@@ -7,7 +7,22 @@
         "emitter": "narrator"
       }
     ],
-    "spots": []
+    "spots": [
+      {
+        "index": 0,
+        "label": "Panneau routier",
+        "spotVoiceover": [
+          {
+            "text": "Ce texte doit encore être rédigé. Pour le moment, c'est juste un panneau. Parfois, un panneau est juste un panneau.",
+            "emitter": "narrator"
+          },
+          {
+            "text": "Foutus auteurs.",
+            "emitter": "innerVoice"
+          }
+        ]
+      }
+    ]
   },
   {
     "name": "Cercles mégalithiques",
