@@ -10,7 +10,7 @@ import { AsideTextBox } from "@/components/Interface/AsideTextBox/AsideTextBox"
 
 export const Interface = () => {
   const dispatch = useDispatch()
-  const { showBlackBars } = useSelector((state) => state.ui)
+  const { showBlackBars, isOnMap } = useSelector((state) => state.ui)
 
   const [displayUi, setDisplayUi] = useState(false)
   const [sceneIndex, setSceneIndex] = useState(0)
@@ -32,22 +32,35 @@ export const Interface = () => {
       >
         Toggle black bars ({showBlackBars.toString()})
       </button> */}
-      <button
-        style={{ position: "absolute", right: "2rem", bottom: "2rem" }}
-        onClick={() => setTextBoxStyle(textBoxStyle === "classic" ? "aside" : "classic")}
+      <div
+        style={{
+          position: "absolute",
+          right: "2rem",
+          bottom: "2rem",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "flex-start",
+        }}
       >
-        Change TextBox ({textBoxStyle})
-      </button>
-      <Meta
-        sceneIndex={sceneIndex}
-        scriptData={scriptData}
-        setDisplayUi={setDisplayUi}
-        setDisplayOptions={setDisplayOptions}
-        setIsVoiceOver={setIsVoiceOver}
-        setSceneIndex={setSceneIndex}
-        setSpotIndex={setSpotIndex}
-        setTextIndex={setTextIndex}
-      />
+        <button onClick={() => dispatch(toggleIsOnMap())}>
+          {isOnMap ? "Close map" : "Open map"}
+        </button>
+        <button onClick={() => setTextBoxStyle(textBoxStyle === "classic" ? "aside" : "classic")}>
+          Change TextBox ({textBoxStyle})
+        </button>
+      </div>
+      {!isOnMap && (
+        <Meta
+          sceneIndex={sceneIndex}
+          scriptData={scriptData}
+          setDisplayUi={setDisplayUi}
+          setDisplayOptions={setDisplayOptions}
+          setIsVoiceOver={setIsVoiceOver}
+          setSceneIndex={setSceneIndex}
+          setSpotIndex={setSpotIndex}
+          setTextIndex={setTextIndex}
+        />
+      )}
       {textBoxStyle === "classic" && (
         <TextBox
           textBoxStyle={textBoxStyle}
