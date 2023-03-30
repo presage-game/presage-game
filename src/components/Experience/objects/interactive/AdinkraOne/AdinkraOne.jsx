@@ -1,6 +1,6 @@
 import { Html, Plane, Box, useTexture, Decal } from "@react-three/drei"
 import classes from "./AdinkraOne.module.scss"
-import { useRef, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 
 const initialData = {
   prevX: 0,
@@ -13,10 +13,9 @@ const initialData = {
 
 function getMousePos(canvas, evt) {
   var rect = canvas.getBoundingClientRect()
-  console.log(rect)
   return {
-    x: (evt.clientX - rect.left) / (rect.right - rect.left) * canvas.width,
-    y: (evt.clientY - rect.top) / (rect.bottom - rect.top) * canvas.height,
+    x: ((evt.clientX - rect.left) / (rect.right - rect.left)) * canvas.width,
+    y: ((evt.clientY - rect.top) / (rect.bottom - rect.top)) * canvas.height,
   }
 }
 
@@ -141,7 +140,7 @@ export const AdinkraOne = ({ switchLerp }) => {
       ctx.beginPath()
       ctx.fillRect(0, 0, canvasRef.current.width, canvasRef.current.height)
       ctx.closePath()
-      ctx.globalCompositeOperation = 'destination-out'
+      ctx.globalCompositeOperation = "destination-out"
     }
   }
 
@@ -151,30 +150,29 @@ export const AdinkraOne = ({ switchLerp }) => {
         <meshBasicMaterial transparent color="#ffffff" opacity={0.1} />
         <Html className={classes.main} position={[0, 0, 0]} transform>
           <div
-            onPointerEnter={() => switchLerp(true)}
+            onPointerEnter={() => {
+              if (!game) {
+                initCanvas()
+                setGame(true)
+              }
+              switchLerp(true)
+            }}
             onPointerLeave={() => switchLerp(false)}
             className={classes.container}
           >
-            {!game ? (
-              <button onClick={() => setGame(true)}>lunch game</button>
-            ) : (
-              <canvas
-                onMouseDown={(e) => handleMDown(e)}
-                onMouseUp={() => {
-                  clearCanvas()
-                }}
-                onMouseMove={(e) => handleMMove(e)}
-                className={classes.canvas}
-                ref={canvasRef}
-              ></canvas>
-            )}
+            <canvas
+              onMouseDown={(e) => handleMDown(e)}
+              onMouseUp={() => {
+                clearCanvas()
+              }}
+              onMouseMove={(e) => handleMMove(e)}
+              className={classes.canvas}
+              ref={canvasRef}
+            ></canvas>
           </div>
         </Html>
       </Plane>
-      <Box position={[8, 4.8, -20]} onClick={() => initCanvas()}>
-        <meshStandardMaterial color="purple" />
-      </Box>
-      <Box args={[2, 2]} position={[8, 0, -22]} rotation={[0,0,0]}>
+      <Box args={[2, 2]} position={[8, 0, -22]} rotation={[0, 0, 0]}>
         <meshBasicMaterial />
         <Decal position={[0, 0, 0.3]} map={sankofaTexture} />
       </Box>
