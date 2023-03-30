@@ -1,18 +1,20 @@
-import { OrbitControls, useGLTF, useHelper } from "@react-three/drei"
+import { OrbitControls, useGLTF, OrthographicCamera } from "@react-three/drei"
 import { Pathfinding, PathfindingHelper } from "three-pathfinding"
 import { useFrame } from "@react-three/fiber"
-import React, { useRef } from "react"
-import useFollowCam from './useFollowCam'
+import React, { useRef, useMemo, useEffect } from "react"
+import useFollowCam from "./useFollowCam"
+import { Box3, Object3D} from "three"
 
 export const MapScene = () => {
   const map = useGLTF("assets/scenes/map1.glb")
   const voiture = useGLTF("assets/vehicules/defender.glb")
   const navMesh = useGLTF("assets/scenes/navMesh1.glb")
-  const { pivot } = useFollowCam()
+  const camRef = useRef()
 
   voiture.scene.position.set(5, 0, 0)
 
   const voitureGrpRef = useRef(null)
+  const cubeRef = useRef(null)
 
   // INITIALIZE THREE-PATHFINDING
   const pathfinding = new Pathfinding()
@@ -29,6 +31,21 @@ export const MapScene = () => {
       pathfinding.setZoneData(ZONE, Pathfinding.createZone(navmesh.geometry))
     }
   })
+
+  const pivot = useMemo(() => new Object3D(), [])
+
+  const followCam = useMemo(() => {
+    const o = new Object3D()
+    o.position.set(0, 1, 1.5)
+    return o
+  }, [])
+
+  useEffect(() => {
+    camRef.current.lookAt(5, 0, 0)
+    followCam.add(camRef.current)
+    pivot.add(followCam)
+  }, [])
+
 
   const click = (e) => {
     let target = e.point
@@ -58,8 +75,23 @@ export const MapScene = () => {
       voitureGrpRef.current.lookAt(targetPosition)
       pivot.position.lerp(voitureGrpRef.current.position, delta * SPEED)
     } else {
+      carEnterInCube()
       // Remove node from the path we calculated
       navpath.shift()
+    }
+  }
+
+  function carEnterInCube() {
+    if (cubeRef.current) {
+      const cube = cubeRef.current
+      const car = voitureGrpRef.current
+      const carBox = new Box3().setFromObject(car)
+      const cubeBox = new Box3().setFromObject(cube)
+      cube.material.color.set(0xff0000)
+
+      if (carBox.intersectsBox(cubeBox)) {
+        cube.material.color.set(0x00ff00)
+      }
     }
   }
 
@@ -74,7 +106,20 @@ export const MapScene = () => {
       <group ref={voitureGrpRef}>
         <primitive object={voiture.scene} dispose={null} />
       </group>
+      {/* <mesh ref={cubeRef} position={[0, 1, -30]}>
+        <boxGeometry args={[2, 2, 2]} />
+        <meshStandardMaterial color={"red"} />
+      </mesh> */}
+      <primitive object={pivot} dispose={null} />
       <primitive object={pathfindinghelper} dispose={null} />
+      <OrthographicCamera
+        makeDefault
+        ref={camRef}
+        position={[10, 20, 30]}
+        zoom={20}
+        near={0.1}
+        far={100}
+      />
     </>
   )
 }
