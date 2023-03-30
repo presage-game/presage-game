@@ -1,16 +1,7 @@
-.container {
+.root {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-
-  .mapButton {
-    position: absolute;
-    bottom: 30px;
-    right: 30px;
-    cursor: pointer;
-    background-color: rgba(255, 166, 0, 0.282);
-    padding: 10px 30px;
-  }
 }

@@ -1,0 +1,29 @@
+.root {
+  .title {
+    font-size: 8rem;
+    line-height: 1.2;
+    font-weight: 400;
+    text-align: center;
+    margin: 0 auto;
+    display: block;
+  }
+
+  .startButton {
+    display: block;
+    margin: 0 auto;
+    margin-top: 2rem;
+    width: 100%;
+    max-width: 30rem;
+    padding: 1rem;
+    background-color: rgb(255, 178, 77);
+    cursor: pointer;
+    font-weight: 400;
+    text-align: center;
+    text-decoration: none;
+    color: black;
+
+    &:hover {
+      background-color: rgb(255, 157, 29);
+    }
+  }
+}

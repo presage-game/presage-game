@@ -1,21 +1,8 @@
-.card {
-  display: flex;
-  gap: 5px;
-  button {
-    color: white;
-    border: 0.1rem solid white;
-    padding: 1rem 2rem;
-    margin-right: 2rem;
-    margin-bottom: 2rem;
-  
-    &.active {
-      background-color: white;
-      pointer-events: none;
-      color: black;
-    }
-  }
-}
-
-.subTitle {
-  margin-bottom: 1rem;
+.root {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80rem;
+  cursor: default;
 }
