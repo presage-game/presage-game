@@ -15,8 +15,8 @@ function getMousePos(canvas, evt) {
   var rect = canvas.getBoundingClientRect()
   console.log(rect)
   return {
-    x: evt.clientX - rect.left,
-    y: evt.clientY - rect.top,
+    x: (evt.clientX - rect.left) / (rect.right - rect.left) * canvas.width,
+    y: (evt.clientY - rect.top) / (rect.bottom - rect.top) * canvas.height,
   }
 }
 
@@ -28,7 +28,6 @@ const draw = (ctx, data) => {
   ctx.beginPath()
   ctx.moveTo(prevX, prevY)
   ctx.lineTo(currX, currY)
-  ctx.strokeStyle = "purple"
   ctx.lineWidth = 3
   ctx.stroke()
   ctx.closePath()
@@ -52,7 +51,6 @@ export const AdinkraOne = ({ switchLerp }) => {
     let dot_flag = true
     if (dot_flag) {
       ctx.beginPath()
-      ctx.fillStyle = "purple"
       ctx.fillRect(currX, currY, 3, 3)
       ctx.closePath()
       dot_flag = false
@@ -140,6 +138,10 @@ export const AdinkraOne = ({ switchLerp }) => {
     if (canvasRef.current !== null) {
       let ctx = canvasRef.current.getContext("2d")
       ctx.clearRect(0, 0, canvasRef.current.width, canvasRef.current.height)
+      ctx.beginPath()
+      ctx.fillRect(0, 0, canvasRef.current.width, canvasRef.current.height)
+      ctx.closePath()
+      ctx.globalCompositeOperation = 'destination-out'
     }
   }
 
