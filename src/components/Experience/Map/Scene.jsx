@@ -1,17 +1,13 @@
-import { Box, Environment, OrbitControls, Plane } from "@react-three/drei"
-import { PerspectiveCamera } from "@react-three/drei"
+import { MapScene } from "./MapScene"
 
 export const Scene = ({ goOnScene }) => {
   return (
     <>
-      <OrbitControls />
-      <PerspectiveCamera />
-      <ambientLight color={"orange"} />
-      <Box onClick={() => goOnScene(1)} position={[-2, 0, 0]} />
-      <Box onClick={() => goOnScene(2)} position={[2, 0, 0]} />
-      <Plane args={[15, 10]}>
-        <meshBasicMaterial color="orange" />
-      </Plane>
+      <color attach={"background"} args={["#D0FEEF"]} />
+      <ambientLight intensity={1} />
+      {/* <fog attach={"fog"} args={["black", 25, 120]} /> */}
+      <MapScene goOnScene={goOnScene} />
+      {/* <OrbitControls /> */}
     </>
   )
 }
