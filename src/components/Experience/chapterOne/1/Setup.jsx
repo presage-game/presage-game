@@ -8,6 +8,7 @@ export const Setup = () => {
   const changeFocus = (value) => dispatch(changeOnFocusCamera(value))
   const changeFocusPosition = (value) => dispatch(changeOnFocusCameraPosition(value))
 
+  //test des adinkra avec cette fonction
   const switchLerp = (value) => {
     changeFocusPosition({
       position: {
