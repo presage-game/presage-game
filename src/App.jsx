@@ -5,6 +5,7 @@ import { Interface } from "./components/Interface/Interface"
 import { useDispatch } from "react-redux"
 import { startExperience } from "./store/reducers/introductionReducer"
 import styles from "./App.module.scss"
+import { getGame } from "./database/gamecode"
 
 const App = () => {
   const dispatch = useDispatch()
@@ -15,7 +16,10 @@ const App = () => {
       {!hasExperienceStarted ? <Introduction /> : <Experience />}
       {hasExperienceStarted && <Interface />}
       {!hasExperienceStarted && (
-        <button onClick={() => dispatch(startExperience())}>Passer l'introduction</button>
+        <>
+          <button onClick={() => dispatch(startExperience())}>Passer l'introduction</button>
+          <button onClick={() => getGame(1)}>Get game (test bdd)</button>
+        </>
       )}
     </main>
   )
