@@ -1,14 +1,15 @@
 import { Box } from "@react-three/drei"
 import { motion } from "framer-motion-3d"
-import { useState } from "react"
+import { useRef, useState } from "react"
 
 export const AdinkraThree = ({ switchLerp }) => {
   const [active, setActive] = useState(false)
+  const RightBoxRef = useRef()
 
   const LeftBoxVariants = {
     on: {
-      x: 6,
-      z: -17,
+      x: 7,
+      z: -22,
     },
     off: {
       x: 4,
@@ -18,8 +19,8 @@ export const AdinkraThree = ({ switchLerp }) => {
 
   const RightBoxVariants = {
     on: {
-      x: 11,
-      z: -17,
+      x: 9,
+      z: -22,
     },
     off: {
       x: 13,
@@ -27,14 +28,39 @@ export const AdinkraThree = ({ switchLerp }) => {
     },
   }
 
+  const TransitionOptions = {
+    type: "tween",
+    duration: 4,
+  }
+
+  const holdComplete = () => {
+    if (active && RightBoxRef.current.position.x === 9) {
+      console.log("hold fini")
+    } else {
+      console.log("nop")
+    }
+  }
+
   return (
     <>
       <group>
-        <motion.mesh animate={active ? "on" : "off"} variants={RightBoxVariants} position={[13, -1, -19]}>
+        <motion.mesh
+          transition={TransitionOptions}
+          animate={active ? "on" : "off"}
+          variants={RightBoxVariants}
+          onAnimationComplete={holdComplete}
+          position={[13, -1, -19]}
+          ref={RightBoxRef}
+        >
           <boxGeometry args={[2, 2]} />
           <meshBasicMaterial />
         </motion.mesh>
-        <motion.mesh animate={active ? "on" : "off"} variants={LeftBoxVariants} position={[4, -1, -19]}>
+        <motion.mesh
+          transition={TransitionOptions}
+          animate={active ? "on" : "off"}
+          variants={LeftBoxVariants}
+          position={[4, -1, -19]}
+        >
           <boxGeometry args={[2, 2]} />
           <meshBasicMaterial />
         </motion.mesh>
