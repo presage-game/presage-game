@@ -1,6 +1,6 @@
 import { Html, Plane, Box, useTexture, Decal } from "@react-three/drei"
 import classes from "./AdinkraOne.module.scss"
-import { useEffect, useRef, useState } from "react"
+import { useRef, useState } from "react"
 
 const initialData = {
   prevX: 0,
@@ -72,7 +72,6 @@ export const AdinkraOne = ({ switchLerp }) => {
       let prevY = data.currY
       let currX = mouse.x - canvasRef.current.offsetLeft
       let currY = mouse.y - canvasRef.current.offsetTop
-      console.log(currX + " | " + currY)
 
       setData({
         ...data,
@@ -93,7 +92,6 @@ export const AdinkraOne = ({ switchLerp }) => {
     let imgData = canvasRef.current
       .getContext("2d")
       .getImageData(0, 0, canvasRef.current.width, canvasRef.current.height, { colorSpace: "srgb" })
-    console.log(imgData)
     let red = []
     let green = []
     let blue = []
@@ -111,22 +109,18 @@ export const AdinkraOne = ({ switchLerp }) => {
         type = 0
       }
     })
-    console.log(red)
-    console.log(green)
-    console.log(blue)
     let blackpixels = 0
     red.map((color, index) => {
-      if (color === 255) {
-        if (green[index] === 255) {
-          if (blue[index] === 255) {
+      if (color === 0) {
+        if (green[index] === 0) {
+          if (blue[index] === 0) {
             blackpixels++
           }
         }
       }
     })
-    console.log(blackpixels)
 
-    if (blackpixels > 2) {
+    if (blackpixels < 26500) {
       console.log("perdu")
     } else {
       console.log("gagné")
@@ -174,7 +168,7 @@ export const AdinkraOne = ({ switchLerp }) => {
       </Plane>
       <Box args={[2, 2]} position={[8, 0, -22]} rotation={[0, 0, 0]}>
         <meshBasicMaterial />
-        <Decal position={[0, 0, 0.3]} map={sankofaTexture} />
+        <Decal position={[0, 0, 0.5]} map={sankofaTexture} />
       </Box>
     </>
   )
