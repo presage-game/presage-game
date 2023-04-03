@@ -4,6 +4,7 @@ import { useRef, useState } from "react"
 
 export const AdinkraThree = ({ switchLerp }) => {
   const [active, setActive] = useState(false)
+  const [finished, setFinished] = useState(false)
   const RightBoxRef = useRef()
 
   const LeftBoxVariants = {
@@ -36,8 +37,9 @@ export const AdinkraThree = ({ switchLerp }) => {
   const holdComplete = () => {
     if (active && RightBoxRef.current.position.x === 9) {
       console.log("hold fini")
+      setFinished(true)
     } else {
-      console.log("nop")
+      console.log("hold pas terminé")
     }
   }
 
@@ -53,7 +55,7 @@ export const AdinkraThree = ({ switchLerp }) => {
           ref={RightBoxRef}
         >
           <boxGeometry args={[2, 2]} />
-          <meshBasicMaterial />
+          <meshBasicMaterial color={finished ? "green" : "white"} />
         </motion.mesh>
         <motion.mesh
           transition={TransitionOptions}
@@ -62,17 +64,21 @@ export const AdinkraThree = ({ switchLerp }) => {
           position={[4, -1, -19]}
         >
           <boxGeometry args={[2, 2]} />
-          <meshBasicMaterial />
+          <meshBasicMaterial color={finished ? "green" : "white"} />
         </motion.mesh>
         <Box
           position={[8, -1, -19]}
           onPointerDown={() => {
             switchLerp(true)
-            setActive(true)
+            if (!finished) {
+              setActive(true)
+            }
           }}
           onPointerUp={() => {
             switchLerp(false)
-            setActive(false)
+            if (!finished) {
+              setActive(false)
+            }
           }}
         />
       </group>
