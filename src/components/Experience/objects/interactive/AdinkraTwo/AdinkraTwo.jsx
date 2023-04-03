@@ -1,5 +1,5 @@
 import { Html, Plane, Box, useTexture, Decal } from "@react-three/drei"
-import classes from "./AdinkraOne.module.scss"
+import classes from "./AdinkraTwo.module.scss"
 import { useRef, useState } from "react"
 
 const initialData = {
@@ -32,7 +32,7 @@ const draw = (ctx, data) => {
   ctx.closePath()
 }
 
-export const AdinkraOne = ({ switchLerp }) => {
+export const AdinkraTwo = ({ switchLerp }) => {
   const sankofaTexture = useTexture("/assets/images/sankofa.png")
   const [game, setGame] = useState(false)
   const canvasRef = useRef(null)
