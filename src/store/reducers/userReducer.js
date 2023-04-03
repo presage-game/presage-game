@@ -4,10 +4,18 @@ const initialState = {
   value: 0,
   hasExperienceStarted: false,
   scene: 1,
-  noLerp: false,
-  noLerpFocus: {
-    x: 0,
-    y: 0,
+  onFocusCamera: false,
+  onFocusCameraPosition: {
+    position: {
+      x: 0,
+      y: 0,
+      z: 0,
+    },
+    rotation: {
+      x: 0,
+      y: 0,
+      z: 0,
+    },
   },
 }
 
@@ -24,16 +32,25 @@ export const userSlice = createSlice({
     },
     changeScene: (state, action) => {
       state.scene = action.payload
+      state.onFocusCamera = false
     },
-    changeNoLerp: (state, action) => {
-      state.noLerp = action.payload
+    changeOnFocusCamera: (state, action) => {
+      state.onFocusCamera = action.payload
     },
-    changeNoLerpFocus: (state, action) => {
-      state.noLerpFocus = action.payload
-    }
+    changeOnFocusCameraPosition: (state, action) => {
+      state.onFocusCameraPosition = action.payload
+    },
   },
 })
 
-export const { increase, startExperience, changeScene, changeNoLerp, changeNoLerpFocus } = userSlice.actions
+export const {
+  increase,
+  startExperience,
+  changeScene,
+  changeNoLerp,
+  changeNoLerpFocus,
+  changeOnFocusCamera,
+  changeOnFocusCameraPosition,
+} = userSlice.actions
 
 export default userSlice.reducer

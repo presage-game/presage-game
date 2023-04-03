@@ -1,5 +1,4 @@
-import { Html, Plane, Box } from "@react-three/drei"
-import sankofaImage from "../../../../../assets/ChapterOne/sankofa.png"
+import { Html, Plane, Box, useTexture, Decal } from "@react-three/drei"
 import classes from "./AdinkraOne.module.scss"
 import { useRef, useState } from "react"
 
@@ -15,8 +14,8 @@ const initialData = {
 function getMousePos(canvas, evt) {
   var rect = canvas.getBoundingClientRect()
   return {
-    x: evt.clientX - rect.left,
-    y: evt.clientY - rect.top,
+    x: ((evt.clientX - rect.left) / (rect.right - rect.left)) * canvas.width,
+    y: ((evt.clientY - rect.top) / (rect.bottom - rect.top)) * canvas.height,
   }
 }
 
@@ -28,13 +27,14 @@ const draw = (ctx, data) => {
   ctx.beginPath()
   ctx.moveTo(prevX, prevY)
   ctx.lineTo(currX, currY)
-  ctx.strokeStyle = "purple"
   ctx.lineWidth = 3
   ctx.stroke()
   ctx.closePath()
 }
 
 export const AdinkraOne = ({ switchLerp }) => {
+  const sankofaTexture = useTexture("/assets/images/sankofa.png")
+  const [game, setGame] = useState(false)
   const canvasRef = useRef(null)
   const [data, setData] = useState(initialData)
 
@@ -50,7 +50,6 @@ export const AdinkraOne = ({ switchLerp }) => {
     let dot_flag = true
     if (dot_flag) {
       ctx.beginPath()
-      ctx.fillStyle = "purple"
       ctx.fillRect(currX, currY, 3, 3)
       ctx.closePath()
       dot_flag = false
@@ -93,7 +92,6 @@ export const AdinkraOne = ({ switchLerp }) => {
     let imgData = canvasRef.current
       .getContext("2d")
       .getImageData(0, 0, canvasRef.current.width, canvasRef.current.height, { colorSpace: "srgb" })
-    console.log(imgData)
     let red = []
     let green = []
     let blue = []
@@ -111,22 +109,18 @@ export const AdinkraOne = ({ switchLerp }) => {
         type = 0
       }
     })
-    console.log(red)
-    console.log(green)
-    console.log(blue)
     let blackpixels = 0
     red.map((color, index) => {
-      if (color === 255) {
-        if (green[index] === 255) {
-          if (blue[index] === 255) {
+      if (color === 0) {
+        if (green[index] === 0) {
+          if (blue[index] === 0) {
             blackpixels++
           }
         }
       }
     })
-    console.log(blackpixels)
 
-    if (blackpixels > 2) {
+    if (blackpixels < 26500) {
       console.log("perdu")
     } else {
       console.log("gagné")
@@ -137,41 +131,44 @@ export const AdinkraOne = ({ switchLerp }) => {
     if (canvasRef.current !== null) {
       let ctx = canvasRef.current.getContext("2d")
       ctx.clearRect(0, 0, canvasRef.current.width, canvasRef.current.height)
-      let img = new Image()
-      img.src = sankofaImage
-
-      img.onload = () => {
-        console.log("chargé")
-        ctx.drawImage(
-          img,
-          canvasRef.current.width / 2 - 50,
-          canvasRef.current.height / 2 - 50,
-          100,
-          100
-        )
-      }
+      ctx.beginPath()
+      ctx.fillRect(0, 0, canvasRef.current.width, canvasRef.current.height)
+      ctx.closePath()
+      ctx.globalCompositeOperation = "destination-out"
     }
   }
 
   return (
     <>
-      <Plane args={[10, 6, 10, 6]} rotation={[0, -Math.PI / 3, 0]} position={[8, 0, -20]}>
-        <Html transform>
-          <canvas
-            onPointerEnter={() => switchLerp(true)}
-            onPointerLeave={() => switchLerp(false)}
-            onMouseDown={(e) => handleMDown(e)}
-            onMouseUp={() => {
-              clearCanvas()
+      <Plane args={[10, 6]} rotation={[0, 0, 0]} position={[8, 0.8, -20]}>
+        <meshBasicMaterial transparent color="#ffffff" opacity={0.1} />
+        <Html className={classes.main} position={[0, 0, 0]} transform>
+          <div
+            onPointerEnter={() => {
+              if (!game) {
+                initCanvas()
+                setGame(true)
+              }
+              switchLerp(true)
             }}
-            onMouseMove={(e) => handleMMove(e)}
-            className={classes.canvas}
-            ref={canvasRef}
-          ></canvas>
+            onPointerLeave={() => switchLerp(false)}
+            className={classes.container}
+          >
+            <canvas
+              onMouseDown={(e) => handleMDown(e)}
+              onMouseUp={() => {
+                clearCanvas()
+              }}
+              onMouseMove={(e) => handleMMove(e)}
+              className={classes.canvas}
+              ref={canvasRef}
+            ></canvas>
+          </div>
         </Html>
       </Plane>
-      <Box position={[8, 4, -20]} onClick={() => initCanvas()}>
-        <meshStandardMaterial color="purple" />
+      <Box args={[2, 2]} position={[8, 0, -22]} rotation={[0, 0, 0]}>
+        <meshBasicMaterial />
+        <Decal position={[0, 0, 0.5]} map={sankofaTexture} />
       </Box>
     </>
   )

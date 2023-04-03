@@ -1,28 +1,28 @@
 import { Scene } from "./Scene"
-import { useFrame } from "@react-three/fiber"
-import { useRef } from "react"
-import { useDispatch, useSelector } from "react-redux"
+import { useDispatch } from "react-redux"
 import { HotGround } from "../../effects/HotGround"
-import { changeNoLerp } from "@/store/reducers/userReducer"
-import { CameraLerp } from "@/helpers/animations/CameraLerp"
+import { changeOnFocusCamera, changeOnFocusCameraPosition } from "@/store/reducers/userReducer"
 
 export const Setup = () => {
   const dispatch = useDispatch()
-  const switchLerp = (value) => dispatch(changeNoLerp(value))
-  const noLerp = useSelector((state) => state.user.noLerp)
-  const changeNoLerpFocus = (value) => dispatch(changeNoLerpFocus(value))
-  const noLerpFocus = useSelector((state) => state.user.noLerpFocus)
+  const changeFocus = (value) => dispatch(changeOnFocusCamera(value))
+  const changeFocusPosition = (value) => dispatch(changeOnFocusCameraPosition(value))
 
-  const ref = useRef()
-  useFrame((state) => {
-    if (ref.current) {
-      ref.current.rotation.y = CameraLerp(
-        ref.current.rotation.y,
-        !noLerp ? state.mouse.x : noLerpFocus.x,
-        0
-      )
-    }
-  })
+  const switchLerp = (value) => {
+    changeFocusPosition({
+      position: {
+        x: -50,
+        y: 0,
+        z: 60,
+      },
+      rotation: {
+        x: -Math.PI / 3,
+        y: 0,
+        z: 0,
+      },
+    })
+    changeFocus(value)
+  }
 
   return (
     <>
@@ -32,7 +32,7 @@ export const Setup = () => {
         position={[-30, 1, 0]}
         rotation={[-Math.PI / 2, Math.PI / 6, Math.PI / 2]}
       />
-      <Scene cameraRef={ref} switchLerp={switchLerp} />
+      <Scene switchLerp={switchLerp} />
     </>
   )
 }
