@@ -18,7 +18,6 @@ const App = () => {
       {!hasExperienceStarted && (
         <>
           <button onClick={() => dispatch(startExperience())}>Passer l'introduction</button>
-          <button onClick={() => getGame(1)}>Get game (test bdd)</button>
         </>
       )}
     </main>
