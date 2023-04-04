@@ -14,6 +14,19 @@ export const getGame = async (code) => {
   return data
 }
 
+const gameExist = async (code) => {
+  const { data, error } = await supabase
+    .from("Users")
+    .select("game_code")
+    .eq("game_code", code)
+    .limit(1)
+    .single()
+  if (error) {
+    return false
+  }
+  return data
+}
+
 export const saveGame = async (code, partydata) => {
   const { data, error } = await supabase
     .from("Users")
@@ -26,9 +39,22 @@ export const saveGame = async (code, partydata) => {
 }
 
 export const createGame = async () => {
-  const gameCode = Math.floor(Math.random() * (999999 - 100000) + 100000)
-  console.log(gameCode)
-  const { data, error } = await supabase.from("Users").insert({ game_code: gameCode }).select().single()
+  let validCode = false
+  let finalGameCode = null
+  while (!validCode) {
+    const gameCode = Math.floor(Math.random() * (999999 - 100000) + 100000)
+    console.log(gameCode)
+    if(gameExist(gameCode) !== false) {
+      validCode = true
+      finalGameCode = gameCode
+    }
+  }
+
+  const { data, error } = await supabase
+    .from("Users")
+    .insert({ game_code: finalGameCode })
+    .select()
+    .single()
   console.log(data)
   if (error) {
     throw new Error(error)
