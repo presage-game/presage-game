@@ -1,13 +1,21 @@
 import { useState } from "react"
 import styles from "./SplashScreen.module.scss"
 import { getGame } from "@/database/gamecode"
+import { useDispatch } from "react-redux"
+import { changeGameCode } from "@/store/reducers/userReducer"
 
 export const SplashScreen = ({ setShowIntroduction }) => {
   const [code, setCode] = useState(1)
+  const dispatch = useDispatch()
 
-  const onSubmit = () => {
+  const onSubmit = async () => {
     console.log(code)
-    getGame(code)
+    try {
+      const data = await getGame(code)
+      dispatch(changeGameCode(data.game_code))
+    } catch (e) {
+      console.error(e)
+    }
   }
 
   return (

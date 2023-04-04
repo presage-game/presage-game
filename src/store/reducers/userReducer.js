@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit"
 
 const initialState = {
-  value: 0,
+  gameCode: null,
   hasExperienceStarted: false,
   scene: 1,
   onFocusCamera: false,
@@ -23,9 +23,8 @@ export const userSlice = createSlice({
   name: "user",
   initialState,
   reducers: {
-    increase: (state) => {
-      state.value += 1
-      console.log("increase dispatch : " + state.value)
+    changeGameCode: (state, action) => {
+      state.gameCode = action.payload
     },
     startExperience: (state) => {
       state.hasExperienceStarted = true
@@ -44,7 +43,7 @@ export const userSlice = createSlice({
 })
 
 export const {
-  increase,
+  changeGameCode,
   startExperience,
   changeScene,
   changeNoLerp,
