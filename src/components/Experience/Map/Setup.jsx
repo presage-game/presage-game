@@ -1,6 +1,6 @@
 import { useDispatch } from "react-redux"
 import { Scene } from "./Scene"
-import { changeScene } from "@/store/reducers/userReducer"
+import { changeScene, changePinpoint } from "@/store/reducers/userReducer"
 import { toggleMap } from "@/store/reducers/uiReducer"
 
 export const Setup = () => {
@@ -11,15 +11,13 @@ export const Setup = () => {
     dispatch(changeScene(number))
   }
 
-  const goOnPinPoint = (number) => {
-    dispatch(toggleMap())
-    // dispatch(changeScene(number))
-    console.log("going to the selected pinpoint", number)
+  const goOnPinpoint = (number) => {
+    dispatch(changePinpoint(number))
   }
 
   return (
     <>
-      <Scene goOnScene={goOnScene} />
+      <Scene goOnScene={goOnScene} goOnPinpoint={goOnPinpoint} />
       <color attach={"background"} args={["#D0FEEF"]} />
       <ambientLight intensity={1} />
       {/* <fog attach={"fog"} args={["black", 25, 120]} /> */}

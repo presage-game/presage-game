@@ -25,13 +25,6 @@ export const userSlice = createSlice({
     changeGameCode: (state, action) => {
       state.gameCode = action.payload
     },
-    startExperience: (state) => {
-      state.hasExperienceStarted = true
-    },
-    changeScene: (state, action) => {
-      state.scene = action.payload
-      state.onFocusCamera = false
-    },
     changeOnFocusCamera: (state, action) => {
       state.onFocusCamera = action.payload
     },
@@ -41,14 +34,7 @@ export const userSlice = createSlice({
   },
 })
 
-export const {
-  changeGameCode,
-  startExperience,
-  changeScene,
-  changeNoLerp,
-  changeNoLerpFocus,
-  changeOnFocusCamera,
-  changeOnFocusCameraPosition,
-} = userSlice.actions
+export const { changeGameCode, changeOnFocusCamera, changeOnFocusCameraPosition } =
+  userSlice.actions
 
 export default userSlice.reducer

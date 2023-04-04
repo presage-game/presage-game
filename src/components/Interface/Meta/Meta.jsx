@@ -46,8 +46,6 @@ export const Meta = ({
     setTextIndex(0)
     setDisplayUi(false)
     setDisplayOptions(false)
-
-    console.log("map toggled")
   }, [isOnMap])
 
   // Change the current spot and reset UI state

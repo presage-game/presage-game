@@ -1,0 +1,28 @@
+[
+  {
+    "name": "PINPOINT 0",
+    "voiceover": [
+      {
+        "text": "Un autre baobab se dresse le long de ta route. Tu as l’impression de revoir celui de ce matin, en un peu plus grand.",
+        "emitter": "narrator"
+      },
+      {
+        "text": "C’est le *même* baobab. Cette fois, il te faut connaître la vérité pour pouvoir continuer à rouler.",
+        "emitter": "innerVoice"
+      }
+    ]
+  },
+  {
+    "name": "PINPOINT 1",
+    "voiceover": [
+      {
+        "text": "Un autre baobab se dresse le long de ta route. Tu as l’impression de revoir celui de ce matin, en un peu plus grand.",
+        "emitter": "narrator"
+      },
+      {
+        "text": "C’est le *même* baobab. Cette fois, il te faut connaître la vérité pour pouvoir continuer à rouler.",
+        "emitter": "innerVoice"
+      }
+    ]
+  }
+]
