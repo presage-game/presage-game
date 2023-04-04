@@ -124,32 +124,32 @@ export const Scene = ({ goOnScene, goOnPinpoint }) => {
         ref={(el) => (cubeRef.current[0] = el)}
         scene={0}
         args={[5, 1, 5]}
-        position={[10, 0, -15]}
+        position={[-10, 0, -15]}
       />
       <Box
         ref={(el) => (cubeRef.current[1] = el)}
         scene={1}
         args={[5, 1, 5]}
-        position={[-10, 0, -15]}
+        position={[-2, 0, -70]}
       />
       <Box
         ref={(el) => (cubeRef.current[2] = el)}
         scene={2}
         args={[5, 1, 5]}
-        position={[0, 0, -35]}
+        position={[15, 0, -55]}
       />
       <Box
         ref={(el) => (smallCubeRef.current[0] = el)}
         pinpoint={0}
         args={[3, 1, 3]}
-        position={[0, 0, -55]}
+        position={[10, 0, -82]}
         material-color="hotpink"
       />
       <Box
         ref={(el) => (smallCubeRef.current[1] = el)}
         pinpoint={1}
         args={[3, 1, 3]}
-        position={[15, 0, -55]}
+        position={[8, 0, -15]}
         material-color="hotpink"
       />
       <primitive object={pivot} dispose={null} />
