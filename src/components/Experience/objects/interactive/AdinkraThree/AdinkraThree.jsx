@@ -68,17 +68,21 @@ export const AdinkraThree = ({ switchLerp }) => {
         </motion.mesh>
         <Box
           position={[8, -1, -19]}
-          onPointerDown={() => {
+          onPointerDown={(e) => {
+            e.stopPropagation()
             switchLerp(true)
             if (!finished) {
               setActive(true)
             }
+            e.target.setPointerCapture(e.pointerId)
           }}
-          onPointerUp={() => {
+          onPointerUp={(e) => {
+            e.stopPropagation()
             switchLerp(false)
             if (!finished) {
               setActive(false)
             }
+            e.target.releasePointerCapture(e.pointerId)
           }}
         />
       </group>
