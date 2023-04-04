@@ -13,3 +13,6 @@
 
 ### R3F Helpers
 - @react-three/drei
+
+### Environnment variables
+- VITE_SUPABASE_KEY
