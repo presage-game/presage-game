@@ -22,8 +22,9 @@ export const Interface = () => {
   const [textBoxStyle, setTextBoxStyle] = useState("classic")
 
   return (
-    <section className={styles.root}>
+    <>
       {showBlackBars && <BlackBars />}
+      
       <div
         style={{
           position: "absolute",
@@ -32,22 +33,22 @@ export const Interface = () => {
           display: "flex",
           flexDirection: "column",
           alignItems: "flex-start",
+          zIndex: "20",
+          mixBlendMode: "difference",
         }}
       >
         <button onClick={() => dispatch(toggleMap())}>{isOnMap ? "Close map" : "Open map"}</button>
-        <button onClick={() => setTextBoxStyle(textBoxStyle === "classic" ? "aside" : "classic")}>
+        {/* <button onClick={() => setTextBoxStyle(textBoxStyle === "classic" ? "aside" : "classic")}>
           ({textBoxStyle === "classic" ? "Classic" : "Aside"})
-        </button>
-        {/* <button
+        </button> */}
+        <button
           onClick={() => {
             dispatch(toggleBlackBars())
           }}
         >
           Black Bars
-        </button> */}
+        </button>
       </div>
-
-      <p>{displayUi.toString()}</p>
 
       {!isOnMap && (
         <Meta
@@ -63,7 +64,6 @@ export const Interface = () => {
       )}
       {textBoxStyle === "classic" && (
         <TextBox
-          textBoxStyle={textBoxStyle}
           sceneIndex={sceneIndex}
           scriptData={scriptData}
           isVoiceOver={isVoiceOver}
@@ -76,7 +76,7 @@ export const Interface = () => {
           setDisplayUi={setDisplayUi}
         />
       )}
-      {textBoxStyle === "aside" && (
+      {/* {textBoxStyle === "aside" && (
         <AsideTextBox
           textBoxStyle={textBoxStyle}
           sceneIndex={sceneIndex}
@@ -90,7 +90,7 @@ export const Interface = () => {
           setDisplayOptions={setDisplayOptions}
           setDisplayUi={setDisplayUi}
         />
-      )}
-    </section>
+      )} */}
+    </>
   )
 }

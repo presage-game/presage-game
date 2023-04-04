@@ -4,6 +4,7 @@ const initialState = {
   value: 0,
   hasExperienceStarted: false,
   scene: 0,
+  pinpoint: null,
   noLerp: false,
   noLerpFocus: {
     x: 0,
@@ -25,15 +26,25 @@ export const userSlice = createSlice({
     changeScene: (state, action) => {
       state.scene = action.payload
     },
+    changePinpoint: (state, action) => {
+      state.pinpoint = action.payload
+    },
     changeNoLerp: (state, action) => {
       state.noLerp = action.payload
     },
     changeNoLerpFocus: (state, action) => {
       state.noLerpFocus = action.payload
-    }
+    },
   },
 })
 
-export const { increase, startExperience, changeScene, changeNoLerp, changeNoLerpFocus } = userSlice.actions
+export const {
+  increase,
+  startExperience,
+  changeScene,
+  changePinpoint,
+  changeNoLerp,
+  changeNoLerpFocus,
+} = userSlice.actions
 
 export default userSlice.reducer

@@ -1,10 +1,11 @@
 import { Box, useGLTF, OrthographicCamera } from "@react-three/drei"
 import { Pathfinding, PathfindingHelper } from "three-pathfinding"
 import { useFrame } from "@react-three/fiber"
-import React, { useRef, useMemo, useEffect } from "react"
+import React, { useRef, useMemo, useEffect, useState } from "react"
 import { Box3, Object3D } from "three"
 
-export const Scene = ({ goOnScene }) => {
+export const Scene = ({ goOnScene, goOnPinpoint }) => {
+  // Handle Map
   const map = useGLTF("assets/scenes/map1.glb")
   const voiture = useGLTF("assets/vehicules/defender.glb")
   const navMesh = useGLTF("assets/scenes/navMesh1.glb")
@@ -16,7 +17,7 @@ export const Scene = ({ goOnScene }) => {
   const cubeRef = useRef([])
   const smallCubeRef = useRef([])
 
-  // INITIALIZE THREE-PATHFINDING
+  // Init Three Pathfinding
   const pathfinding = new Pathfinding()
   const pathfindinghelper = new PathfindingHelper()
   const ZONE = "level1"
@@ -102,7 +103,7 @@ export const Scene = ({ goOnScene }) => {
 
         if (box.containsPoint(voitureGrpRef.current.position)) {
           console.log("pinpoint n°: " + item.pinpoint)
-          goOnPinPoint(smallCubeRef.current[index].pinpoint)
+          goOnPinpoint(smallCubeRef.current[index].pinpoint)
         }
       }
     })
