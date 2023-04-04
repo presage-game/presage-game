@@ -13,7 +13,7 @@ export const Scene = ({ goOnScene }) => {
   voiture.scene.position.set(5, 0, 0)
 
   const voitureGrpRef = useRef(null)
-  const cubeRef = useRef(null)
+  const cubeRef = useRef([])
 
   // INITIALIZE THREE-PATHFINDING
   const pathfinding = new Pathfinding()
@@ -80,16 +80,12 @@ export const Scene = ({ goOnScene }) => {
   }
 
   function carEnterInCube() {
-    if (cubeRef.current) {
-      const cube = cubeRef.current
-      const car = voitureGrpRef.current
-      const carBox = new Box3().setFromObject(car)
-      const cubeBox = new Box3().setFromObject(cube)
-
-      if (carBox.intersectsBox(cubeBox)) {
-        goOnScene(1)
+    cubeRef.current.forEach((_, index) => {
+      const box = new Box3().setFromObject(cubeRef.current[index])
+      if (box.containsPoint(voitureGrpRef.current.position)) {
+        goOnScene(cubeRef.current[index].scene)
       }
-    }
+    })
   }
 
   useFrame((state, delta) => {
@@ -103,7 +99,26 @@ export const Scene = ({ goOnScene }) => {
       <group ref={voitureGrpRef}>
         <primitive object={voiture.scene} dispose={null} />
       </group>
-      <Box ref={cubeRef} args={[5, 1, 5]}   position={[11, 1, -15]} />
+      <Box
+        ref={(el) => (cubeRef.current[0] = el)}
+        scene={0}
+        args={[5, 1, 5]}
+        position={[10, 0, -15]}
+        material-color="orange"
+      />
+      <Box
+        ref={(el) => (cubeRef.current[1] = el)}
+        scene={1}
+        args={[5, 1, 5]}
+        position={[-10, 0, -15]}
+        material-color="hotpink"
+      />
+      <Box
+        ref={(el) => (cubeRef.current[2] = el)}
+        scene={2}
+        args={[5, 1, 5]}
+        position={[0, 0, -35]}
+      />
       <primitive object={pivot} dispose={null} />
       <primitive object={pathfindinghelper} dispose={null} />
       <OrthographicCamera
