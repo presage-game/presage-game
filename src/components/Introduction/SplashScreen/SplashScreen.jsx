@@ -3,6 +3,7 @@ import styles from "./SplashScreen.module.scss"
 import { getGame } from "@/database/gamecode"
 import { useDispatch } from "react-redux"
 import { changeGameCode } from "@/store/reducers/userReducer"
+import { startExperience } from "@/store/reducers/introductionReducer"
 
 export const SplashScreen = ({ setShowIntroduction }) => {
   const [code, setCode] = useState(1)
@@ -13,6 +14,7 @@ export const SplashScreen = ({ setShowIntroduction }) => {
     try {
       const data = await getGame(code)
       dispatch(changeGameCode(data.game_code))
+      dispatch(startExperience())
     } catch (e) {
       console.error(e)
     }

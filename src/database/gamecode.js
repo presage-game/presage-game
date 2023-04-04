@@ -26,9 +26,12 @@ export const saveGame = async (code, partydata) => {
 }
 
 export const createGame = async () => {
-  const { data, error } = await supabase.from("Users").insert()
+  const gameCode = Math.floor(Math.random() * (999999 - 100000) + 100000)
+  console.log(gameCode)
+  const { data, error } = await supabase.from("Users").insert({ game_code: gameCode }).select().single()
   console.log(data)
   if (error) {
     throw new Error(error)
   }
+  return data
 }

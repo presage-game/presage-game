@@ -8,6 +8,8 @@ import introductionData from "../../assets/introduction.json"
 import styles from "./Introduction.module.scss"
 import ambiance from "../../assets/audios/introduction/ambiance.mp3"
 import carEngine from "../../assets/audios/introduction/car-engine.mp3"
+import { createGame } from "@/database/gamecode"
+import { changeGameCode } from "@/store/reducers/userReducer"
 
 export const Introduction = () => {
   const introduction = introductionData
@@ -16,6 +18,7 @@ export const Introduction = () => {
   const { currentIndex, isPromptComplete, hasExperienceStarted } = useSelector(
     (state) => state.introduction
   )
+  const { gameCode } = useSelector((state) => state.user)
 
   const [showIntroduction, setShowIntroduction] = useState(false)
 
@@ -50,6 +53,16 @@ export const Introduction = () => {
       dispatch(completePrompts())
     }
   }, [currentIndex])
+
+  useEffect(() => {
+    if (isPromptComplete && gameCode === null) {
+      async function fetchData() {
+        const data = await createGame()
+        dispatch(changeGameCode(data.game_code))
+      }
+      fetchData()
+    }
+  }, [isPromptComplete])
 
   return (
     !hasExperienceStarted && (
