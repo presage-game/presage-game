@@ -14,6 +14,7 @@ export const Scene = ({ goOnScene }) => {
 
   const voitureGrpRef = useRef(null)
   const cubeRef = useRef([])
+  const smallCubeRef = useRef([])
 
   // INITIALIZE THREE-PATHFINDING
   const pathfinding = new Pathfinding()
@@ -80,10 +81,29 @@ export const Scene = ({ goOnScene }) => {
   }
 
   function carEnterInCube() {
-    cubeRef.current.forEach((_, index) => {
-      const box = new Box3().setFromObject(cubeRef.current[index])
-      if (box.containsPoint(voitureGrpRef.current.position)) {
-        goOnScene(cubeRef.current[index].scene)
+    // Use request animation frame?
+
+    // Handle scenes
+    cubeRef.current.forEach((item, index) => {
+      if (item.scene !== undefined) {
+        const box = new Box3().setFromObject(cubeRef.current[index])
+
+        if (box.containsPoint(voitureGrpRef.current.position)) {
+          console.log("scene n°: " + item.scene)
+          goOnScene(cubeRef.current[index].scene)
+        }
+      }
+    })
+
+    // Handle pinpoints
+    smallCubeRef.current.forEach((item, index) => {
+      if (item.pinpoint !== undefined) {
+        const box = new Box3().setFromObject(smallCubeRef.current[index])
+
+        if (box.containsPoint(voitureGrpRef.current.position)) {
+          console.log("pinpoint n°: " + item.pinpoint)
+          goOnPinPoint(smallCubeRef.current[index].pinpoint)
+        }
       }
     })
   }
@@ -104,20 +124,32 @@ export const Scene = ({ goOnScene }) => {
         scene={0}
         args={[5, 1, 5]}
         position={[10, 0, -15]}
-        material-color="orange"
       />
       <Box
         ref={(el) => (cubeRef.current[1] = el)}
         scene={1}
         args={[5, 1, 5]}
         position={[-10, 0, -15]}
-        material-color="hotpink"
       />
       <Box
         ref={(el) => (cubeRef.current[2] = el)}
         scene={2}
         args={[5, 1, 5]}
         position={[0, 0, -35]}
+      />
+      <Box
+        ref={(el) => (smallCubeRef.current[0] = el)}
+        pinpoint={0}
+        args={[3, 1, 3]}
+        position={[0, 0, -55]}
+        material-color="hotpink"
+      />
+      <Box
+        ref={(el) => (smallCubeRef.current[1] = el)}
+        pinpoint={1}
+        args={[3, 1, 3]}
+        position={[15, 0, -55]}
+        material-color="hotpink"
       />
       <primitive object={pivot} dispose={null} />
       <primitive object={pathfindinghelper} dispose={null} />
