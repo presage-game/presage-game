@@ -3,6 +3,8 @@ import styles from "./BlackBars.module.scss"
 import gsap from "gsap"
 
 export const BlackBars = () => {
+
+  // Redo with Framer Motion
   useLayoutEffect(() => {
     const tl = gsap.timeline()
     tl.to(`.${styles.topBar}`, {
