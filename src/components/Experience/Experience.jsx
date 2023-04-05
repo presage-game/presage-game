@@ -9,6 +9,7 @@ import { Setup as Map } from "./Map/Setup"
 import { Setup as RegionEntranceOne } from "./chapterOne/1/Setup"
 import { Setup as PhosphateMine } from "./chapterOne/2/Setup"
 
+import { Interface } from "@/components/Interface/Interface"
 import { MapTextBox } from "@/components/Interface/MapTextBox/MapTextBox"
 import scriptData from "@/assets/data/chapterOne/pinpoints.json"
 
@@ -23,15 +24,25 @@ export const Experience = () => {
 
   useEffect(() => {
     if (scriptData[pinpointIndex]?.voiceover?.length > 0) {
+      setTextIndex(0)
       setDisplayUi(true)
       setDisplayOptions(true)
     }
   }, [pinpointIndex])
 
+  useEffect(() => {
+    if (!isOnMap) {
+      setDisplayUi(false)
+      setDisplayOptions(false)
+      setTextIndex(0)
+    }
+  }, [isOnMap])
+
   return (
     <div className={styles.root}>
       {/* <Loader dataInterpolation={(p) => `Loading ${p.toFixed(2)}%`} /> */}
-      {isOnMap && displayUi && displayOptions && (
+      {<Interface />}
+      {isOnMap && displayUi && (
         <>
           <MapTextBox
             scriptData={scriptData}

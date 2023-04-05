@@ -1,6 +1,6 @@
 import { useDispatch } from "react-redux"
 import { Scene } from "./Scene"
-import { changeScene, changePinpoint } from "@/store/reducers/userReducer"
+import { changeScene, changePinpoint, resetPinpoint } from "@/store/reducers/userReducer"
 import { toggleMap } from "@/store/reducers/uiReducer"
 
 export const Setup = () => {
@@ -17,7 +17,7 @@ export const Setup = () => {
 
   return (
     <>
-      <Scene goOnScene={goOnScene} goOnPinpoint={goOnPinpoint} />
+      <Scene goOnScene={goOnScene} goOnPinpoint={goOnPinpoint} resetPinpoint={resetPinpoint} />
       <color attach={"background"} args={["#D0FEEF"]} />
       <ambientLight intensity={1} />
       {/* <fog attach={"fog"} args={["black", 25, 120]} /> */}

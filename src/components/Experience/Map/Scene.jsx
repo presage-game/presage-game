@@ -1,10 +1,13 @@
 import { Box, useGLTF, OrthographicCamera } from "@react-three/drei"
 import { Pathfinding, PathfindingHelper } from "three-pathfinding"
 import { useFrame } from "@react-three/fiber"
-import React, { useRef, useMemo, useEffect, useState } from "react"
+import React, { useRef, useMemo, useEffect } from "react"
+import { useDispatch } from "react-redux"
 import { Box3, Object3D } from "three"
 
-export const Scene = ({ goOnScene, goOnPinpoint }) => {
+export const Scene = ({ goOnScene, goOnPinpoint, resetPinpoint }) => {
+  const dispatch = useDispatch()
+
   // Handle Map
   const map = useGLTF("assets/scenes/map1.glb")
   const voiture = useGLTF("assets/vehicules/defender.glb")
@@ -45,6 +48,8 @@ export const Scene = ({ goOnScene, goOnPinpoint }) => {
     camRef.current.lookAt(5, 0, 0)
     followCam.add(camRef.current)
     pivot.add(followCam)
+
+    dispatch(resetPinpoint())
   }, [])
 
   const click = (e) => {
@@ -63,6 +68,7 @@ export const Scene = ({ goOnScene, goOnPinpoint }) => {
 
   function move(delta) {
     if (!navpath || navpath.length <= 0) return
+    carEnterInCube()
 
     let targetPosition = navpath[0]
     const distance = targetPosition.clone().sub(voitureGrpRef.current.position)
@@ -75,7 +81,6 @@ export const Scene = ({ goOnScene, goOnPinpoint }) => {
       voitureGrpRef.current.lookAt(targetPosition)
       pivot.position.lerp(voitureGrpRef.current.position, delta * SPEED)
     } else {
-      carEnterInCube()
       // Remove node from the path we calculated
       navpath.shift()
     }
@@ -92,6 +97,8 @@ export const Scene = ({ goOnScene, goOnPinpoint }) => {
         if (box.containsPoint(voitureGrpRef.current.position)) {
           console.log("scene n°: " + item.scene)
           goOnScene(cubeRef.current[index].scene)
+        } else {
+          // console.log("leaving the scene")
         }
       }
     })
@@ -104,6 +111,8 @@ export const Scene = ({ goOnScene, goOnPinpoint }) => {
         if (box.containsPoint(voitureGrpRef.current.position)) {
           console.log("pinpoint n°: " + item.pinpoint)
           goOnPinpoint(smallCubeRef.current[index].pinpoint)
+        } else {
+          // console.log("leaving the pinpoint")
         }
       }
     })
@@ -142,7 +151,7 @@ export const Scene = ({ goOnScene, goOnPinpoint }) => {
         ref={(el) => (smallCubeRef.current[0] = el)}
         pinpoint={0}
         args={[3, 1, 3]}
-        position={[10, 0, -82]}
+        position={[0, 0, -20]}
         material-color="hotpink"
       />
       <Box

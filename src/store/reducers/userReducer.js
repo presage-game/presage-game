@@ -29,6 +29,9 @@ export const userSlice = createSlice({
     changePinpoint: (state, action) => {
       state.pinpoint = action.payload
     },
+    resetPinpoint: (state) => {
+      state.pinpoint = null
+    },
     changeNoLerp: (state, action) => {
       state.noLerp = action.payload
     },
@@ -43,6 +46,7 @@ export const {
   startExperience,
   changeScene,
   changePinpoint,
+  resetPinpoint,
   changeNoLerp,
   changeNoLerpFocus,
 } = userSlice.actions

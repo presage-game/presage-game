@@ -1,8 +1,8 @@
 import { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import styles from "./TextBox.module.scss"
+import styles from "./SceneTextBox.module.scss"
 
-export const TextBox = ({
+export const SceneTextBox = ({
   sceneIndex,
   scriptData,
   isVoiceOver,
@@ -67,7 +67,7 @@ export const TextBox = ({
     <AnimatePresence>
       {displayUi && (
         <motion.div
-          key="textBox"
+          key="sceneTextBox"
           className={styles.classic}
           initial={{ opacity: 0, y: 20, x: "-50%" }}
           animate={{ opacity: 1, y: 0, x: "-50%" }}
