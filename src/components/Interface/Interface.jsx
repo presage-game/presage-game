@@ -5,8 +5,7 @@ import scriptData from "@/assets/data/chapterOne/scenes.json"
 import styles from "./Interface.module.scss"
 import { BlackBars } from "@/components/BlackBars/BlackBars"
 import { Meta } from "@/components/Interface/Meta/Meta"
-import { TextBox } from "@/components/Interface/TextBox/TextBox"
-import { AsideTextBox } from "@/components/Interface/AsideTextBox/AsideTextBox"
+import { SceneTextBox } from "@/components/Interface/SceneTextBox/SceneTextBox"
 
 export const Interface = () => {
   const dispatch = useDispatch()
@@ -19,12 +18,9 @@ export const Interface = () => {
   const [spotIndex, setSpotIndex] = useState(0)
   const [textIndex, setTextIndex] = useState(0)
 
-  const [textBoxStyle, setTextBoxStyle] = useState("classic")
-
   return (
-    <>
+    <div className={styles.root}>
       {showBlackBars && <BlackBars />}
-      
       <div
         style={{
           position: "absolute",
@@ -38,9 +34,6 @@ export const Interface = () => {
         }}
       >
         <button onClick={() => dispatch(toggleMap())}>{isOnMap ? "Close map" : "Open map"}</button>
-        {/* <button onClick={() => setTextBoxStyle(textBoxStyle === "classic" ? "aside" : "classic")}>
-          ({textBoxStyle === "classic" ? "Classic" : "Aside"})
-        </button> */}
         <button
           onClick={() => {
             dispatch(toggleBlackBars())
@@ -49,48 +42,32 @@ export const Interface = () => {
           Black Bars
         </button>
       </div>
-
       {!isOnMap && (
-        <Meta
-          sceneIndex={sceneIndex}
-          scriptData={scriptData}
-          displayUi={displayUi}
-          setDisplayUi={setDisplayUi}
-          setDisplayOptions={setDisplayOptions}
-          setIsVoiceOver={setIsVoiceOver}
-          setSpotIndex={setSpotIndex}
-          setTextIndex={setTextIndex}
-        />
+        <>
+          <Meta
+            sceneIndex={sceneIndex}
+            scriptData={scriptData}
+            displayUi={displayUi}
+            setDisplayUi={setDisplayUi}
+            setDisplayOptions={setDisplayOptions}
+            setIsVoiceOver={setIsVoiceOver}
+            setSpotIndex={setSpotIndex}
+            setTextIndex={setTextIndex}
+          />
+          <SceneTextBox
+            sceneIndex={sceneIndex}
+            scriptData={scriptData}
+            isVoiceOver={isVoiceOver}
+            displayOptions={displayOptions}
+            spotIndex={spotIndex}
+            textIndex={textIndex}
+            displayUi={displayUi}
+            setTextIndex={setTextIndex}
+            setDisplayOptions={setDisplayOptions}
+            setDisplayUi={setDisplayUi}
+          />
+        </>
       )}
-      {textBoxStyle === "classic" && (
-        <TextBox
-          sceneIndex={sceneIndex}
-          scriptData={scriptData}
-          isVoiceOver={isVoiceOver}
-          displayOptions={displayOptions}
-          spotIndex={spotIndex}
-          textIndex={textIndex}
-          displayUi={displayUi}
-          setTextIndex={setTextIndex}
-          setDisplayOptions={setDisplayOptions}
-          setDisplayUi={setDisplayUi}
-        />
-      )}
-      {/* {textBoxStyle === "aside" && (
-        <AsideTextBox
-          textBoxStyle={textBoxStyle}
-          sceneIndex={sceneIndex}
-          scriptData={scriptData}
-          isVoiceOver={isVoiceOver}
-          displayOptions={displayOptions}
-          spotIndex={spotIndex}
-          textIndex={textIndex}
-          displayUi={displayUi}
-          setTextIndex={setTextIndex}
-          setDisplayOptions={setDisplayOptions}
-          setDisplayUi={setDisplayUi}
-        />
-      )} */}
-    </>
+    </div>
   )
 }

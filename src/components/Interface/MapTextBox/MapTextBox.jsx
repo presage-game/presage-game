@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import styles from "@/components/Interface/TextBox/TextBox.module.scss"
+import styles from "@/components/Interface/SceneTextBox/SceneTextBox.module.scss"
 
 export const MapTextBox = ({
   scriptData,
@@ -17,9 +17,9 @@ export const MapTextBox = ({
 
   const getTextEmitter = () => scriptData[pinpointIndex].voiceover[textIndex].emitter
 
-  const getTextLabel = () => scriptData[pinpointIndex].voiceover[textIndex]?.label
+  const getTextLabel = () => scriptData[pinpointIndex].name
 
-  const hasMore = () => scriptData[pinpointIndex].voiceover[textIndex].length > textIndex + 1
+  const hasMore = () => scriptData[pinpointIndex].voiceover.length > textIndex + 1
 
   // Show the next text in the voiceover array
   const showMore = () => {
@@ -52,7 +52,7 @@ export const MapTextBox = ({
     <AnimatePresence>
       {displayUi && (
         <motion.div
-          key="textBox"
+          key="mapTextBox"
           className={styles.classic}
           initial={{ opacity: 0, y: 20, x: "-50%" }}
           animate={{ opacity: 1, y: 0, x: "-50%" }}
@@ -87,7 +87,7 @@ export const MapTextBox = ({
               </p>
             )}
 
-            {hasOptions() && !isVoiceOver && !displayOptions && (
+            {hasOptions() && !displayOptions && (
               <p className={styles.content}>
                 {getOptionResponse()
                   .split(" ")
@@ -120,14 +120,16 @@ export const MapTextBox = ({
               Suite
             </button>
           )}
-          {!hasMore() && (
+          {((displayOptions && !hasOptions() && !hasMore()) ||
+            (!hasMore() && !displayOptions && hasOptions())) && (
             <button
-              className={[`${styles.bottomButton} ${styles["bottomButton--close"]}`]}
+              className={`${styles.bottomButton} ${styles["bottomButton--close"]}`}
               onClick={() => setDisplayUi(false)}
             >
               Fermer
             </button>
           )}
+
           {hasOptions() && displayOptions && (
             <div className={styles.options}>
               {scriptData[pinpointIndex].voiceover[textIndex].options.map((option, index) => (

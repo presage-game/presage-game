@@ -1,27 +1,45 @@
 [
   {
-    "name": "PINPOINT 0",
+    "name": "Ancienne mine de phosphate",
     "voiceover": [
       {
-        "text": "Un autre baobab se dresse le long de ta route. Tu as l’impression de revoir celui de ce matin, en un peu plus grand.",
+        "text": "Tu es accueilli(e) par les restes d’un portail rouillé que le vent fait cliqueter par cycles, et sur lequel tu réussis à lire “Gaïa Minerals Group”. La rouille est en train d’oxyder les barreaux des échafaudages.",
         "emitter": "narrator"
       },
       {
-        "text": "C’est le *même* baobab. Cette fois, il te faut connaître la vérité pour pouvoir continuer à rouler.",
+        "text": "Tu sens le vent s’engouffrer à l’intérieur du site d’excavation.",
+        "emitter": "innerVoice"
+      },
+      {
+        "text": "Un engin colossal monté sur des chenilles envahit la mine à ciel ouvert. C’est une excavatrice à godets, construite dans les années 20. Elle n’a pas été utilisée depuis longtemps.",
+        "emitter": "narrator"
+      },
+      {
+        "text": "Tu te sens tout(e) petit(e) à côté de cette machine.",
         "emitter": "innerVoice"
       }
     ]
   },
   {
-    "name": "PINPOINT 1",
+    "name": "Autostoppeur",
     "voiceover": [
       {
-        "text": "Un autre baobab se dresse le long de ta route. Tu as l’impression de revoir celui de ce matin, en un peu plus grand.",
+        "text": "Un autostoppeur se tient debout, sur le bord de la route. Il est vêtu d’un manteau de fourrure et d’un chapeau de feutre. Il a l’air d’avoir oublié de se raser depuis quelques jours.",
         "emitter": "narrator"
       },
       {
-        "text": "C’est le *même* baobab. Cette fois, il te faut connaître la vérité pour pouvoir continuer à rouler.",
-        "emitter": "innerVoice"
+        "text": "Hey. Il se passe quoi dans le coin ?",
+        "options": [
+          {
+            "text": "Je ne sais pas.",
+            "response": "Dommage."
+          },
+          {
+            "text": "Aucune idée.",
+            "response": "D'accord."
+          }
+        ],
+        "emitter": "npc"
       }
     ]
   }
