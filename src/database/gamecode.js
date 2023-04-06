@@ -14,7 +14,7 @@ export const getGame = async (code) => {
   return data
 }
 
-const gameExist = async (code) => {
+const gameExists = async (code) => {
   const { data, error } = await supabase
     .from("Users")
     .select("game_code")
@@ -44,7 +44,7 @@ export const createGame = async () => {
   while (!validCode) {
     const gameCode = Math.floor(Math.random() * (999999 - 100000) + 100000)
     console.log(gameCode)
-    if(gameExist(gameCode) !== false) {
+    if(gameExists(gameCode) !== false) {
       validCode = true
       finalGameCode = gameCode
     }
