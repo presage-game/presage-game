@@ -12,6 +12,7 @@
     "@react-three/drei": "^9.56.25",
     "@react-three/fiber": "^8.11.2",
     "@reduxjs/toolkit": "^1.9.3",
+    "@supabase/supabase-js": "^2.13.1",
     "framer-motion": "^10.9.2",
     "framer-motion-3d": "^10.10.0",
     "gsap": "file:gsap-bonus.tgz",
