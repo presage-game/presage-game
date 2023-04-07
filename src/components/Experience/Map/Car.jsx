@@ -6,6 +6,7 @@ export const Car = ({animationsName = "Survey"}) => {
   const animations = useAnimations(car.animations, car.scene)
 
 
+
   useEffect(() => {
     const action = animations.actions[animationsName]
     action.reset().fadeIn(0.5).play()
@@ -19,6 +20,9 @@ export const Car = ({animationsName = "Survey"}) => {
   //     animations.actions.Walk.play()
   //     animations.actions.Walk.crossFadeFrom(animations.actions.Run, 1)
   //   }, 3000)
+
+  return <primitive object={car.scene} scale={0.03} />
+}
 
   return <primitive object={car.scene} scale={0.03} />
 }
