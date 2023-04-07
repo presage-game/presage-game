@@ -10,9 +10,8 @@ export const Scene = ({ switchLerp }) => {
   return (
     <>
       <Environment preset="park" />
-      <AdinkraThree switchLerp={switchLerp} />
       <CustomCamera />
-      <Model position={[8, -15, 100]} />
+      <Model position={[8, -15, 94]} />
     </>
   )
 }
