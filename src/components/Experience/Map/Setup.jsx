@@ -1,6 +1,7 @@
 import { useDispatch } from "react-redux"
 import { Scene } from "./Scene"
 import { changeScene, changePinpoint, resetScene, resetPinpoint } from "@/store/reducers/mapReducer"
+import { OrbitControls } from "@react-three/drei"
 
 export const Setup = () => {
   const dispatch = useDispatch()
@@ -27,7 +28,7 @@ export const Setup = () => {
       <color attach={"background"} args={["#D0FEEF"]} />
       <ambientLight intensity={1} />
       {/* <fog attach={"fog"} args={["black", 25, 120]} /> */}
-      {/* <OrbitControls /> */}
+      <OrbitControls />
     </>
   )
 }

@@ -1,10 +1,10 @@
 import React, { useRef, useMemo, useEffect, useState } from "react"
 import { useSelector } from "react-redux"
-
-import { Box3, Object3D } from "three"
+import { Box3, Object3D, Quaternion, Vector3, CameraHelper } from "three"
 import { Box, useGLTF, OrthographicCamera, Gltf } from "@react-three/drei"
 import { useFrame } from "@react-three/fiber"
 import { Pathfinding, PathfindingHelper } from "three-pathfinding"
+
 
 export const Scene = ({ goOnScene, goOnPinpoint, resetScene, resetPinpoint }) => {
   const audioPath = "src/assets/audios/chapterOne/pinpoints/pinpoint" // TODO: Update this path
@@ -14,9 +14,14 @@ export const Scene = ({ goOnScene, goOnPinpoint, resetScene, resetPinpoint }) =>
   const [pinpointAudio, setPinpointAudio] = useState(null)
   const [audioPlaying, setAudioPlaying] = useState(false)
 
+
+
   // Handle map
   const navMesh = useGLTF("assets/scenes/navMesh1.glb")
   const camRef = useRef()
+  const [helper, setHelper] = useState(false)
+
+  let pointerDown = false
 
   const voitureGrpRef = useRef(null)
   const cubeRef = useRef([])
@@ -48,10 +53,14 @@ export const Scene = ({ goOnScene, goOnPinpoint, resetScene, resetPinpoint }) =>
     return o
   }, [])
 
+
+
   useEffect(() => {
     camRef.current.lookAt(5, 0, 0)
     followCam.add(camRef.current)
     pivot.add(followCam)
+    let help =  new CameraHelper(camRef.current)
+    setHelper(help)
 
     resetScene()
   }, [])
@@ -62,6 +71,7 @@ export const Scene = ({ goOnScene, goOnPinpoint, resetScene, resetPinpoint }) =>
     // find closest node to agent, just in case agent is out of bounds
     const closest = pathfinding.getClosestNode(voitureGrpRef.current.position, ZONE, groupID)
     navpath = pathfinding.findPath(closest.centroid, target, ZONE, groupID)
+
     if (navpath) {
       pathfindinghelper.reset()
       pathfindinghelper.setPlayerPosition(voitureGrpRef.current.position)
@@ -81,8 +91,13 @@ export const Scene = ({ goOnScene, goOnPinpoint, resetScene, resetPinpoint }) =>
       distance.normalize()
       // Move player to target
       voitureGrpRef.current.position.add(distance.multiplyScalar(delta * SPEED))
-      // Rotate player to face target
-      voitureGrpRef.current.lookAt(targetPosition)
+      // do a slowly turn to the target
+      const targetRotation = new Quaternion().setFromUnitVectors(
+        new Vector3(0, 0, 1),
+        distance.clone().normalize()
+      )
+      voitureGrpRef.current.quaternion.slerp(targetRotation, delta * SPEED)
+      // Move camera to target
       pivot.position.lerp(voitureGrpRef.current.position, delta * SPEED)
     } else {
       // Remove node from the path we calculated
@@ -147,15 +162,23 @@ export const Scene = ({ goOnScene, goOnPinpoint, resetScene, resetPinpoint }) =>
       pinpointIndex !== null && resetPinpoint()
     }
   }
-
   useFrame((state, delta) => {
-    move(delta)
+    if (pointerDown) {
+      move(delta)
+    }
   })
 
   return (
     <>
-      <Gltf src="assets/scenes/map1.glb" />
-      <primitive onClick={(e) => click(e)} object={navMesh.scene} dispose={null} visible={false} />
+      <primitive object={map.scene} dispose={null} />
+      <primitive
+        onPointerDown={() => (pointerDown = true)}
+        onPointerMove={(e) => (pointerDown ? click(e) : null)}
+        onPointerUp={(e) => (pointerDown = false)}
+        object={navMesh.scene}
+        dispose={null}
+        visible={false}
+      />
       <group ref={voitureGrpRef}>
         <Gltf src="assets/vehicules/defender.glb" position={[5, 0, 0]} />
       </group>
@@ -198,9 +221,10 @@ export const Scene = ({ goOnScene, goOnPinpoint, resetScene, resetPinpoint }) =>
         ref={camRef}
         position={[15, 15, 15]}
         zoom={20}
-        near={0.1}
+        near={-50}
         far={100}
       />
+      {helper && <primitive object={helper} />}
     </>
   )
 }
