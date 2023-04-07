@@ -1,7 +1,7 @@
-import { Model } from "./Model"
+import { Model } from "./2"
 import { CustomCamera } from "../../tools/CustomCamera/CustomCamera"
 import { AdinkraThree } from "../../objects/interactive/AdinkraThree/AdinkraThree"
-import { Gltf } from "@react-three/drei"
+import { Environment, Gltf } from "@react-three/drei"
 
 export const Scene = ({ switchLerp }) => {
   //<ambientLight color={"orange"} />
@@ -9,9 +9,10 @@ export const Scene = ({ switchLerp }) => {
 
   return (
     <>
+      <Environment preset="park" />
       <AdinkraThree switchLerp={switchLerp} />
       <CustomCamera />
-      <Gltf position={[8, -15, 100]} src="/assets/scenes/scene_1.2.glb" />
+      <Model position={[8, -15, 100]} />
     </>
   )
 }
