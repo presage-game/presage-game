@@ -11,7 +11,7 @@ export const Scene = ({ switchLerp }) => {
     <>
       <Environment preset="park" />
       <CustomCamera />
-      <Model position={[8, -15, 94]} />
+      <Model position={[9, -15, 93]} />
     </>
   )
 }
