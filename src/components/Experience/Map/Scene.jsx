@@ -19,7 +19,6 @@ export const Scene = ({ goOnScene, goOnPinpoint, resetScene, resetPinpoint }) =>
   // Handle map
   const navMesh = useGLTF("assets/scenes/navMesh1.glb")
   const camRef = useRef()
-  const [helper, setHelper] = useState(false)
 
   let pointerDown = false
 
@@ -224,7 +223,6 @@ export const Scene = ({ goOnScene, goOnPinpoint, resetScene, resetPinpoint }) =>
         near={-50}
         far={100}
       />
-      {helper && <primitive object={helper} />}
     </>
   )
 }

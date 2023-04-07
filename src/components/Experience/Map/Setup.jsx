@@ -28,7 +28,7 @@ export const Setup = () => {
       <color attach={"background"} args={["#D0FEEF"]} />
       <ambientLight intensity={1} />
       {/* <fog attach={"fog"} args={["black", 25, 120]} /> */}
-      <OrbitControls />
+      {/* <OrbitControls /> */}
     </>
   )
 }
