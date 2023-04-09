@@ -45,40 +45,6 @@
     ]
   },
   {
-    "name": "Ancienne mine de phosphate",
-    "voiceover": [],
-    "spots": [
-      {
-        "index": 0,
-        "label": "Entrée de la mine",
-        "spotVoiceover": [
-          {
-            "text": "Tu es accueilli(e) par les restes d’un portail rouillé que le vent fait cliqueter par cycles, et sur lequel tu réussis à lire “Gaïa Minerals Group”. La rouille est en train d’oxyder les barreaux des échafaudages.",
-            "emitter": "narrator"
-          },
-          {
-            "text": "Tu sens le vent s’engouffrer à l’intérieur.",
-            "emitter": "innerVoice"
-          }
-        ]
-      },
-      {
-        "index": 1,
-        "label": "Excavatrice abandonnée",
-        "spotVoiceover": [
-          {
-            "text": "Un engin colossal monté sur une paire de chenilles envahit la mine à ciel ouvert. C’est une excavatrice géante à godets. Elle n’a pas été utilisée depuis de *nombreuses* années.",
-            "emitter": "narrator"
-          },
-          {
-            "text": "Tu te sens tout(e) petit(e) à côté de cette machine.",
-            "emitter": "innerVoice"
-          }
-        ]
-      }
-    ]
-  },
-  {
     "name": "Route vers la savane",
     "voiceover": [
       {
