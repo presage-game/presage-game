@@ -2,12 +2,9 @@ import { Box, useGLTF, OrthographicCamera } from "@react-three/drei"
 import { Pathfinding, PathfindingHelper } from "three-pathfinding"
 import { useFrame } from "@react-three/fiber"
 import React, { useRef, useMemo, useEffect } from "react"
-import { useDispatch } from "react-redux"
 import { Box3, Object3D } from "three"
 
-export const Scene = ({ goOnScene, goOnPinpoint, resetPinpoint }) => {
-  const dispatch = useDispatch()
-
+export const Scene = ({ goOnScene, goOnPinpoint }) => {
   // Handle Map
   const map = useGLTF("assets/scenes/map1.glb")
   const voiture = useGLTF("assets/vehicules/defender.glb")
@@ -48,8 +45,6 @@ export const Scene = ({ goOnScene, goOnPinpoint, resetPinpoint }) => {
     camRef.current.lookAt(5, 0, 0)
     followCam.add(camRef.current)
     pivot.add(followCam)
-
-    dispatch(resetPinpoint())
   }, [])
 
   const click = (e) => {

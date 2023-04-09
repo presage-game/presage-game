@@ -10,53 +10,17 @@ import { Setup as RegionEntranceOne } from "./chapterOne/1/Setup"
 import { Setup as PhosphateMine } from "./chapterOne/2/Setup"
 
 import { Interface } from "@/components/Interface/Interface"
-import { MapTextBox } from "@/components/Interface/MapTextBox/MapTextBox"
-import scriptData from "@/assets/data/chapterOne/pinpoints.json"
 
 export const Experience = () => {
-  const isOnMap = useSelector((state) => state.ui.isOnMap)
-  const scene = useSelector((state) => state.user.scene)
-  const { pinpoint: pinpointIndex } = useSelector((state) => state.user)
-
-  const [displayUi, setDisplayUi] = useState(false)
-  const [displayOptions, setDisplayOptions] = useState(false)
-  const [textIndex, setTextIndex] = useState(0)
-
-  useEffect(() => {
-    if (scriptData[pinpointIndex]?.voiceover?.length > 0) {
-      setTextIndex(0)
-      setDisplayUi(true)
-      setDisplayOptions(true)
-    }
-  }, [pinpointIndex])
-
-  useEffect(() => {
-    if (!isOnMap) {
-      setDisplayUi(false)
-      setDisplayOptions(false)
-      setTextIndex(0)
-    }
-  }, [isOnMap])
+  const { scene } = useSelector((state) => state.user)
+  const { mapActive } = useSelector((state) => state.ui)
 
   return (
     <div className={styles.root}>
-      {/* <Loader dataInterpolation={(p) => `Loading ${p.toFixed(2)}%`} /> */}
-      {<Interface />}
-      {isOnMap && displayUi && (
-        <>
-          <MapTextBox
-            scriptData={scriptData}
-            pinpointIndex={pinpointIndex}
-            displayUi={displayUi}
-            displayOptions={displayOptions}
-            textIndex={textIndex}
-            setDisplayUi={setDisplayUi}
-            setTextIndex={setTextIndex}
-            setDisplayOptions={setDisplayOptions}
-          />
-        </>
-      )}
-      <Canvas>{isOnMap ? <Map /> : scene === 0 ? <RegionEntranceOne /> : <PhosphateMine />}</Canvas>
+      <Interface mapActive={mapActive} />
+      <Canvas>
+        {mapActive ? <Map /> : scene === 0 ? <RegionEntranceOne /> : <PhosphateMine />}
+      </Canvas>
     </div>
   )
 }

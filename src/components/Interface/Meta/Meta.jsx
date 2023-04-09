@@ -5,14 +5,14 @@ import styles from "./Meta.module.scss"
 export const Meta = ({
   sceneIndex,
   scriptData,
-  displayUi,
-  setDisplayUi,
-  setDisplayOptions,
+  showText,
+  setShowText,
+  setShowOptions,
   setIsVoiceOver,
   setSpotIndex,
   setTextIndex,
 }) => {
-  const { isOnMap } = useSelector((state) => state.ui)
+  const { mapActive } = useSelector((state) => state.ui)
   const spotButtons = useRef([])
 
   const handleSpotSelect = (index) => {
@@ -30,7 +30,7 @@ export const Meta = ({
   }
 
   useEffect(() => {
-    if (!displayUi) {
+    if (!showText) {
       spotButtons.current.forEach((button) => {
         if (button) {
           if (button.classList.contains(styles.active)) {
@@ -39,28 +39,28 @@ export const Meta = ({
         }
       })
     }
-  }, [displayUi])
+  }, [showText])
 
   useEffect(() => {
     setSpotIndex(0)
     setTextIndex(0)
-    setDisplayUi(false)
-    setDisplayOptions(false)
-  }, [isOnMap])
+    setShowText(false)
+    setShowOptions(false)
+  }, [mapActive])
 
   // Change the current spot and reset UI state
   const goToSpot = (data) => {
     setSpotIndex(data)
     setTextIndex(0)
     setIsVoiceOver(false)
-    setDisplayUi(true)
-    setDisplayOptions(true)
+    setShowText(true)
+    setShowOptions(true)
   }
 
   useEffect(() => {
     if (scriptData[sceneIndex].voiceover.length > 0) {
       setIsVoiceOver(true)
-      setDisplayUi(true)
+      setShowText(true)
     }
   }, [sceneIndex])
 
