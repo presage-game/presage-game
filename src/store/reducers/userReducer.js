@@ -1,8 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit"
 
 const initialState = {
-  value: 0,
-  hasExperienceStarted: false,
   scene: 0,
   pinpoint: null,
   noLerp: false,
@@ -16,13 +14,6 @@ export const userSlice = createSlice({
   name: "user",
   initialState,
   reducers: {
-    increase: (state) => {
-      state.value += 1
-      console.log("increase dispatch : " + state.value)
-    },
-    startExperience: (state) => {
-      state.hasExperienceStarted = true
-    },
     changeScene: (state, action) => {
       state.scene = action.payload
     },
@@ -31,6 +22,7 @@ export const userSlice = createSlice({
     },
     resetPinpoint: (state) => {
       state.pinpoint = null
+      console.log("resetPinpoint dispatch : " + state.pinpoint)
     },
     changeNoLerp: (state, action) => {
       state.noLerp = action.payload
