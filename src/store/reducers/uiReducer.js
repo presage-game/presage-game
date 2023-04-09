@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit"
 
 const initialState = {
   showBlackBars: false,
-  isOnMap: false,
+  mapActive: false,
 }
 
 export const ui = createSlice({
@@ -13,7 +13,7 @@ export const ui = createSlice({
       state.showBlackBars = !state.showBlackBars
     },
     toggleMap: (state) => {
-      state.isOnMap = !state.isOnMap
+      state.mapActive = !state.mapActive
     },
   },
 })
