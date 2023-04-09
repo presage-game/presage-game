@@ -1,10 +1,19 @@
-import { Box, useGLTF, OrthographicCamera } from "@react-three/drei"
-import { Pathfinding, PathfindingHelper } from "three-pathfinding"
-import { useFrame } from "@react-three/fiber"
-import React, { useRef, useMemo, useEffect } from "react"
+import React, { useRef, useMemo, useEffect, useState } from "react"
+import { resetPinpoint } from "@/store/reducers/userReducer"
+import { useDispatch } from "react-redux"
+
 import { Box3, Object3D } from "three"
+import { Box, useGLTF, OrthographicCamera } from "@react-three/drei"
+import { useFrame } from "@react-three/fiber"
+import { Pathfinding, PathfindingHelper } from "three-pathfinding"
 
 export const Scene = ({ goOnScene, goOnPinpoint }) => {
+  const dispatch = useDispatch()
+  const audioPath = "src/assets/audios/chapterOne/pinpoints/pinpoint" // TODO: Update this path
+
+  const [pinpointAudio, setPinpointAudio] = useState(null)
+  const [audioPlaying, setAudioPlaying] = useState(false)
+
   // Handle Map
   const map = useGLTF("assets/scenes/map1.glb")
   const voiture = useGLTF("assets/vehicules/defender.glb")
@@ -82,15 +91,12 @@ export const Scene = ({ goOnScene, goOnPinpoint }) => {
   }
 
   function carEnterInCube() {
-    // Use request animation frame?
-
     // Handle scenes
     cubeRef.current.forEach((item, index) => {
       if (item.scene !== undefined) {
         const box = new Box3().setFromObject(cubeRef.current[index])
 
         if (box.containsPoint(voitureGrpRef.current.position)) {
-          console.log("scene n°: " + item.scene)
           goOnScene(cubeRef.current[index].scene)
         } else {
           // console.log("leaving the scene")
@@ -99,18 +105,39 @@ export const Scene = ({ goOnScene, goOnPinpoint }) => {
     })
 
     // Handle pinpoints
+    let isPinpointIntersecting = false
+
     smallCubeRef.current.forEach((item, index) => {
       if (item.pinpoint !== undefined) {
         const box = new Box3().setFromObject(smallCubeRef.current[index])
 
         if (box.containsPoint(voitureGrpRef.current.position)) {
-          console.log("pinpoint n°: " + item.pinpoint)
           goOnPinpoint(smallCubeRef.current[index].pinpoint)
-        } else {
-          // console.log("leaving the pinpoint")
+
+          if (!audioPlaying) {
+            const audio = new Audio(`${audioPath}-${smallCubeRef.current[index].pinpoint}.mp3`)
+            audio.volume = 1
+            audio.play()
+
+            setAudioPlaying(true)
+            setPinpointAudio(audio)
+          }
+
+          isPinpointIntersecting = true
         }
       }
     })
+
+    // Not intersecting with any pinpoint
+    if (!isPinpointIntersecting && pinpointAudio !== null) {
+      pinpointAudio.pause()
+      pinpointAudio.currentTime = 0
+
+      setAudioPlaying(false)
+      setPinpointAudio(null)
+
+      dispatch(resetPinpoint())
+    }
   }
 
   useFrame((state, delta) => {
