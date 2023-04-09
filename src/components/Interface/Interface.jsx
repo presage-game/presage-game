@@ -6,15 +6,16 @@ import styles from "./Interface.module.scss"
 import { BlackBars } from "@/components/BlackBars/BlackBars"
 import { Meta } from "@/components/Interface/Meta/Meta"
 import { SceneTextBox } from "@/components/Interface/SceneTextBox/SceneTextBox"
+import { MapTextBox } from "@/components/Interface/MapTextBox/MapTextBox"
 
-export const Interface = () => {
+export const Interface = ({ mapActive }) => {
   const dispatch = useDispatch()
-  const { showBlackBars, isOnMap } = useSelector((state) => state.ui)
+  const { showBlackBars } = useSelector((state) => state.ui)
   const { scene: sceneIndex } = useSelector((state) => state.user)
 
-  const [displayUi, setDisplayUi] = useState(false)
+  const [showText, setShowText] = useState(false)
   const [isVoiceOver, setIsVoiceOver] = useState(false)
-  const [displayOptions, setDisplayOptions] = useState(false)
+  const [showOptions, setShowOptions] = useState(false)
   const [spotIndex, setSpotIndex] = useState(0)
   const [textIndex, setTextIndex] = useState(0)
 
@@ -33,7 +34,9 @@ export const Interface = () => {
           mixBlendMode: "difference",
         }}
       >
-        <button onClick={() => dispatch(toggleMap())}>{isOnMap ? "Close map" : "Open map"}</button>
+        <button onClick={() => dispatch(toggleMap())}>
+          {mapActive ? "Close map" : "Open map"}
+        </button>
         <button
           onClick={() => {
             dispatch(toggleBlackBars())
@@ -42,14 +45,14 @@ export const Interface = () => {
           Black Bars
         </button>
       </div>
-      {!isOnMap && (
+      {!mapActive && (
         <>
           <Meta
             sceneIndex={sceneIndex}
             scriptData={scriptData}
-            displayUi={displayUi}
-            setDisplayUi={setDisplayUi}
-            setDisplayOptions={setDisplayOptions}
+            showText={showText}
+            setShowText={setShowText}
+            setShowOptions={setShowOptions}
             setIsVoiceOver={setIsVoiceOver}
             setSpotIndex={setSpotIndex}
             setTextIndex={setTextIndex}
@@ -58,16 +61,17 @@ export const Interface = () => {
             sceneIndex={sceneIndex}
             scriptData={scriptData}
             isVoiceOver={isVoiceOver}
-            displayOptions={displayOptions}
+            showOptions={showOptions}
             spotIndex={spotIndex}
             textIndex={textIndex}
-            displayUi={displayUi}
+            showText={showText}
             setTextIndex={setTextIndex}
-            setDisplayOptions={setDisplayOptions}
-            setDisplayUi={setDisplayUi}
+            setShowOptions={setShowOptions}
+            setShowText={setShowText}
           />
         </>
       )}
+      <MapTextBox mapActive={mapActive} />
     </div>
   )
 }
