@@ -5,7 +5,9 @@ import { Prompts } from "./Prompts/Prompts"
 import { SplashScreen } from "./SplashScreen/SplashScreen"
 import { Footer } from "./Footer/Footer"
 import introductionData from "@/assets/data/introduction.json"
+
 import styles from "./Introduction.module.scss"
+
 import ambiance from "@/assets/audios/introduction/ambiance.mp3"
 import carEngine from "@/assets/audios/introduction/car-engine.mp3"
 
@@ -23,7 +25,7 @@ export const Introduction = () => {
   useEffect(() => {
     if (showIntroduction) {
       const ambianceAudio = new Audio(ambiance)
-      ambianceAudio.volume = 0.5
+      ambianceAudio.volume = 1
 
       const carAudio = new Audio(carEngine)
       carAudio.volume = 1
