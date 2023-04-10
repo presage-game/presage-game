@@ -8,7 +8,6 @@ import { createGame } from "@/database/gamecode"
 import { Prompts } from "./Prompts/Prompts"
 import { SplashScreen } from "./SplashScreen/SplashScreen"
 import { Footer } from "./Footer/Footer"
-
 import introductionData from "@/assets/data/introduction.json"
 
 import styles from "./Introduction.module.scss"
