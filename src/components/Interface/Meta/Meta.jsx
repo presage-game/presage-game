@@ -57,13 +57,6 @@ export const Meta = ({
     setShowOptions(true)
   }
 
-  useEffect(() => {
-    if (scriptData[sceneIndex].voiceover.length > 0) {
-      setIsVoiceOver(true)
-      setShowText(true)
-    }
-  }, [sceneIndex])
-
   return (
     <div className={styles.root}>
       <div className={styles.spots}>
