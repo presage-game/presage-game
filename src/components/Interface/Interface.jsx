@@ -13,8 +13,11 @@ import { IntersectionPopup } from "@/components/Interface/IntersectionPopup/Inte
 export const Interface = ({ mapActive }) => {
   const dispatch = useDispatch()
 
-  const { scene: sceneIndex, isPinpointActive } = useSelector((state) => state.user)
-  const { pinpoint: pinpointIndex } = useSelector((state) => state.user)
+  const {
+    scene: sceneIndex,
+    isPinpointActive,
+    pinpoint: pinpointIndex,
+  } = useSelector((state) => state.map)
 
   const [isPopupVisible, setIsPopupVisible] = useState(true)
 

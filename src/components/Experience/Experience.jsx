@@ -12,7 +12,7 @@ import { BlackBars } from "@/components/BlackBars/BlackBars"
 import styles from "./Experience.module.scss"
 
 export const Experience = () => {
-  const { scene } = useSelector((state) => state.user)
+  const { scene } = useSelector((state) => state.map)
   const { mapActive, showBlackBars } = useSelector((state) => state.ui)
 
   return (

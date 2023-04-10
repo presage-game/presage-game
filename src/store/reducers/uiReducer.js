@@ -5,7 +5,7 @@ const initialState = {
   mapActive: false,
 }
 
-export const ui = createSlice({
+export const uiSlice = createSlice({
   name: "ui",
   initialState,
   reducers: {
@@ -18,6 +18,6 @@ export const ui = createSlice({
   },
 })
 
-export const { toggleBlackBars, toggleMap } = ui.actions
+export const { toggleBlackBars, toggleMap } = uiSlice.actions
 
-export default ui.reducer
+export default uiSlice.reducer

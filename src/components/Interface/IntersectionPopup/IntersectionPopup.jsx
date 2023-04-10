@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux"
-import { changeScene, showPinpoint } from "@/store/reducers/userReducer"
+import { changeScene, showPinpoint } from "@/store/reducers/mapReducer"
 import { toggleMap } from "@/store/reducers/uiReducer"
 
 import styles from "@/components/Interface/IntersectionPopup/IntersectionPopup.module.scss"
