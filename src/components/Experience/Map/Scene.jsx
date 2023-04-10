@@ -1,7 +1,8 @@
 import React, { useRef, useMemo, useEffect, useState } from "react"
-import { resetPinpoint } from "@/store/reducers/userReducer"
-import { useDispatch } from "react-redux"
+import { resetPinpoint, resetScene } from "@/store/reducers/userReducer"
+import { useDispatch, useSelector } from "react-redux"
 
+import { useSpring as useSpringReact } from "react-spring"
 import { Box3, Object3D } from "three"
 import { Box, useGLTF, OrthographicCamera } from "@react-three/drei"
 import { useFrame } from "@react-three/fiber"
@@ -11,10 +12,12 @@ export const Scene = ({ goOnScene, goOnPinpoint }) => {
   const dispatch = useDispatch()
   const audioPath = "src/assets/audios/chapterOne/pinpoints/pinpoint" // TODO: Update this path
 
+  const { pinpoint: pinpointIndex } = useSelector((state) => state.user)
+
   const [pinpointAudio, setPinpointAudio] = useState(null)
   const [audioPlaying, setAudioPlaying] = useState(false)
 
-  // Handle Map
+  // Handle map
   const map = useGLTF("assets/scenes/map1.glb")
   const voiture = useGLTF("assets/vehicules/defender.glb")
   const navMesh = useGLTF("assets/scenes/navMesh1.glb")
@@ -25,6 +28,10 @@ export const Scene = ({ goOnScene, goOnPinpoint }) => {
   const voitureGrpRef = useRef(null)
   const cubeRef = useRef([])
   const smallCubeRef = useRef([])
+
+  const [cameraZoom, setCameraZoom] = useState(20)
+
+  const spring = useSpringReact({ cameraZoom })
 
   // Init Three Pathfinding
   const pathfinding = new Pathfinding()
@@ -54,6 +61,8 @@ export const Scene = ({ goOnScene, goOnPinpoint }) => {
     camRef.current.lookAt(5, 0, 0)
     followCam.add(camRef.current)
     pivot.add(followCam)
+
+    dispatch(resetScene())
   }, [])
 
   const click = (e) => {
@@ -92,14 +101,16 @@ export const Scene = ({ goOnScene, goOnPinpoint }) => {
 
   function carEnterInCube() {
     // Handle scenes
+    let isSceneIntersecting = false
+
     cubeRef.current.forEach((item, index) => {
       if (item.scene !== undefined) {
         const box = new Box3().setFromObject(cubeRef.current[index])
 
         if (box.containsPoint(voitureGrpRef.current.position)) {
           goOnScene(cubeRef.current[index].scene)
-        } else {
-          // console.log("leaving the scene")
+
+          isSceneIntersecting = true
         }
       }
     })
@@ -128,6 +139,12 @@ export const Scene = ({ goOnScene, goOnPinpoint }) => {
       }
     })
 
+    // Not intersecting with any scene
+    if (!isSceneIntersecting && pinpointIndex === null) {
+      dispatch(resetScene())
+      console.log("LEAVING A SCENE")
+    }
+
     // Not intersecting with any pinpoint
     if (!isPinpointIntersecting && pinpointAudio !== null) {
       pinpointAudio.pause()
@@ -155,13 +172,13 @@ export const Scene = ({ goOnScene, goOnPinpoint }) => {
         ref={(el) => (cubeRef.current[0] = el)}
         scene={0}
         args={[5, 1, 5]}
-        position={[-10, 0, -15]}
+        position={[-13, 0, -13]}
       />
       <Box
         ref={(el) => (cubeRef.current[1] = el)}
         scene={1}
         args={[5, 1, 5]}
-        position={[-2, 0, -70]}
+        position={[10, 0, -80]}
       />
       <Box
         ref={(el) => (cubeRef.current[2] = el)}
@@ -172,15 +189,15 @@ export const Scene = ({ goOnScene, goOnPinpoint }) => {
       <Box
         ref={(el) => (smallCubeRef.current[0] = el)}
         pinpoint={0}
-        args={[3, 1, 3]}
-        position={[0, 0, -20]}
+        args={[5, 1, 5]}
+        position={[-7, 0, -3]}
         material-color="hotpink"
       />
       <Box
         ref={(el) => (smallCubeRef.current[1] = el)}
         pinpoint={1}
-        args={[3, 1, 3]}
-        position={[8, 0, -15]}
+        args={[5, 1, 5]}
+        position={[10, 0, -15]}
         material-color="hotpink"
       />
       <primitive object={pivot} dispose={null} />
@@ -188,8 +205,8 @@ export const Scene = ({ goOnScene, goOnPinpoint }) => {
       <OrthographicCamera
         makeDefault
         ref={camRef}
-        position={[10, 20, 30]}
-        zoom={20}
+        position={[15, 15, 15]}
+        zoom={cameraZoom}
         near={0.1}
         far={100}
       />

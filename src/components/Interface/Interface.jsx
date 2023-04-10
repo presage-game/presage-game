@@ -1,27 +1,25 @@
 import { useState } from "react"
 import { useSelector, useDispatch } from "react-redux"
 import { toggleBlackBars, toggleMap } from "@/store/reducers/uiReducer"
+
 import scriptData from "@/assets/data/chapterOne/scenes.json"
+import pinpointsData from "@/assets/data/chapterOne/pinpoints.json"
 import styles from "./Interface.module.scss"
-import { BlackBars } from "@/components/BlackBars/BlackBars"
-import { Meta } from "@/components/Interface/Meta/Meta"
+
 import { SceneTextBox } from "@/components/Interface/SceneTextBox/SceneTextBox"
 import { MapTextBox } from "@/components/Interface/MapTextBox/MapTextBox"
+import { IntersectionPopup } from "@/components/Interface/IntersectionPopup/IntersectionPopup"
 
 export const Interface = ({ mapActive }) => {
   const dispatch = useDispatch()
-  const { showBlackBars } = useSelector((state) => state.ui)
-  const { scene: sceneIndex } = useSelector((state) => state.user)
 
-  const [showText, setShowText] = useState(false)
-  const [isVoiceOver, setIsVoiceOver] = useState(false)
-  const [showOptions, setShowOptions] = useState(false)
-  const [spotIndex, setSpotIndex] = useState(0)
-  const [textIndex, setTextIndex] = useState(0)
+  const { scene: sceneIndex, isPinpointActive } = useSelector((state) => state.user)
+  const { pinpoint: pinpointIndex } = useSelector((state) => state.user)
+
+  const [isPopupVisible, setIsPopupVisible] = useState(true)
 
   return (
     <div className={styles.root}>
-      {showBlackBars && <BlackBars />}
       <div
         style={{
           position: "absolute",
@@ -45,33 +43,27 @@ export const Interface = ({ mapActive }) => {
           Black Bars
         </button>
       </div>
-      {!mapActive && (
+      {!mapActive && <SceneTextBox sceneIndex={sceneIndex} scriptData={scriptData} />}
+      {mapActive && (
         <>
-          <Meta
-            sceneIndex={sceneIndex}
+          <IntersectionPopup
             scriptData={scriptData}
-            showText={showText}
-            setShowText={setShowText}
-            setShowOptions={setShowOptions}
-            setIsVoiceOver={setIsVoiceOver}
-            setSpotIndex={setSpotIndex}
-            setTextIndex={setTextIndex}
+            pinpointsData={pinpointsData}
+            sceneIndex={sceneIndex}
+            pinpointIndex={pinpointIndex}
+            isPopupVisible={isPopupVisible}
+            setIsPopupVisible={setIsPopupVisible}
+            isPinpointActive={isPinpointActive}
           />
-          <SceneTextBox
-            sceneIndex={sceneIndex}
-            scriptData={scriptData}
-            isVoiceOver={isVoiceOver}
-            showOptions={showOptions}
-            spotIndex={spotIndex}
-            textIndex={textIndex}
-            showText={showText}
-            setTextIndex={setTextIndex}
-            setShowOptions={setShowOptions}
-            setShowText={setShowText}
+          <MapTextBox
+            pinpointsData={pinpointsData}
+            pinpointIndex={pinpointIndex}
+            mapActive={mapActive}
+            isPopupVisible={isPopupVisible}
+            setIsPopupVisible={setIsPopupVisible}
           />
         </>
       )}
-      <MapTextBox mapActive={mapActive} />
     </div>
   )
 }

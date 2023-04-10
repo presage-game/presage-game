@@ -1,22 +1,23 @@
-import { Canvas } from "@react-three/fiber"
-import { Loader } from "@react-three/drei"
 import { useSelector } from "react-redux"
-import { useEffect } from "react"
-import { useState } from "react"
-import styles from "./Experience.module.scss"
+
+import { Canvas } from "@react-three/fiber"
 
 import { Setup as Map } from "./Map/Setup"
 import { Setup as RegionEntranceOne } from "./chapterOne/1/Setup"
 import { Setup as PhosphateMine } from "./chapterOne/2/Setup"
 
 import { Interface } from "@/components/Interface/Interface"
+import { BlackBars } from "@/components/BlackBars/BlackBars"
+
+import styles from "./Experience.module.scss"
 
 export const Experience = () => {
   const { scene } = useSelector((state) => state.user)
-  const { mapActive } = useSelector((state) => state.ui)
+  const { mapActive, showBlackBars } = useSelector((state) => state.ui)
 
   return (
     <div className={styles.root}>
+      {showBlackBars && <BlackBars />}
       <Interface mapActive={mapActive} />
       <Canvas>
         {mapActive ? <Map /> : scene === 0 ? <RegionEntranceOne /> : <PhosphateMine />}
