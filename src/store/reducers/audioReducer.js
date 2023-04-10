@@ -8,12 +8,12 @@ const initialState = {
   isSpeaking: false,
 }
 
-export const audio = createSlice({
+export const audioSlice = createSlice({
   name: "audio",
   initialState,
   reducers: {},
 })
 
-export const {} = audio.actions
+export const {} = audioSlice.actions
 
-export default audio.reducer
+export default audioSlice.reducer

@@ -11,7 +11,7 @@ const initialState = {
   hasExperienceStarted: false,
 }
 
-export const introduction = createSlice({
+export const introductionSlice = createSlice({
   name: "introduction",
   initialState,
   reducers: {
@@ -34,6 +34,6 @@ export const introduction = createSlice({
   },
 })
 
-export const { answerPrompt, completePrompts, startExperience } = introduction.actions
+export const { answerPrompt, completePrompts, startExperience } = introductionSlice.actions
 
-export default introduction.reducer
+export default introductionSlice.reducer

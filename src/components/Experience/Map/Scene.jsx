@@ -1,5 +1,5 @@
 import React, { useRef, useMemo, useEffect, useState } from "react"
-import { resetPinpoint, resetScene } from "@/store/reducers/userReducer"
+import { resetPinpoint, resetScene } from "@/store/reducers/mapReducer"
 import { useDispatch, useSelector } from "react-redux"
 
 import { useSpring as useSpringReact } from "react-spring"
@@ -12,7 +12,7 @@ export const Scene = ({ goOnScene, goOnPinpoint }) => {
   const dispatch = useDispatch()
   const audioPath = "src/assets/audios/chapterOne/pinpoints/pinpoint" // TODO: Update this path
 
-  const { pinpoint: pinpointIndex } = useSelector((state) => state.user)
+  const { pinpoint: pinpointIndex } = useSelector((state) => state.map)
 
   const [pinpointAudio, setPinpointAudio] = useState(null)
   const [audioPlaying, setAudioPlaying] = useState(false)

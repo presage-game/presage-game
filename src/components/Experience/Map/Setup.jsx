@@ -1,6 +1,6 @@
 import { useDispatch } from "react-redux"
 import { Scene } from "./Scene"
-import { changeScene, changePinpoint } from "@/store/reducers/userReducer"
+import { changeScene, changePinpoint } from "@/store/reducers/mapReducer"
 
 export const Setup = () => {
   const dispatch = useDispatch()

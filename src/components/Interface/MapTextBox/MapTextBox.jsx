@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { motion, AnimatePresence } from "framer-motion"
-import { resetScene, resetPinpoint, showPinpoint } from "@/store/reducers/userReducer"
+import { resetScene, resetPinpoint, showPinpoint } from "@/store/reducers/mapReducer"
 
 import styles from "@/components/Interface/SceneTextBox/SceneTextBox.module.scss"
 
 export const MapTextBox = ({ pinpointsData, pinpointIndex, mapActive }) => {
-  const { isPinpointActive } = useSelector((state) => state.user)
+  const { isPinpointActive } = useSelector((state) => state.map)
 
   const [showText, setShowText] = useState(pinpointIndex !== null)
   const [showOptions, setShowOptions] = useState(pinpointIndex !== null)
