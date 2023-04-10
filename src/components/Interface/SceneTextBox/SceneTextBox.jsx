@@ -1,19 +1,13 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import styles from "./SceneTextBox.module.scss"
 
-export const SceneTextBox = ({
-  sceneIndex,
-  scriptData,
-  isVoiceOver,
-  showOptions,
-  spotIndex,
-  textIndex,
-  showText,
-  setTextIndex,
-  setShowOptions,
-  setShowText,
-}) => {
+export const SceneTextBox = ({ sceneIndex, scriptData }) => {
+  const [showText, setShowText] = useState(false)
+  const [isVoiceOver, setIsVoiceOver] = useState(false)
+  const [showOptions, setShowOptions] = useState(false)
+  const [spotIndex, setSpotIndex] = useState(0)
+  const [textIndex, setTextIndex] = useState(0)
   const [optionIndex, setOptionIndex] = useState(0)
   const [key, setKey] = useState(0)
 
@@ -62,6 +56,13 @@ export const SceneTextBox = ({
     setShowOptions(false)
     setKey((prevKey) => prevKey + 1)
   }
+
+  useEffect(() => {
+    if (scriptData[sceneIndex].voiceover.length > 0) {
+      setIsVoiceOver(true)
+      setShowText(true)
+    }
+  }, [sceneIndex])
 
   return (
     <AnimatePresence>

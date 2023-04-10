@@ -1,14 +1,11 @@
-import { useEffect } from "react"
 import { useDispatch } from "react-redux"
 import { Scene } from "./Scene"
 import { changeScene, changePinpoint } from "@/store/reducers/userReducer"
-import { toggleMap } from "@/store/reducers/uiReducer"
 
 export const Setup = () => {
   const dispatch = useDispatch()
 
   const goOnScene = (number) => {
-    dispatch(toggleMap())
     dispatch(changeScene(number))
   }
 
