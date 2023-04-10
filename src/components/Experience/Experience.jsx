@@ -13,11 +13,11 @@ import styles from "./Experience.module.scss"
 
 export const Experience = () => {
   const { scene } = useSelector((state) => state.map)
-  const { mapActive, showBlackBars } = useSelector((state) => state.ui)
+  const { mapActive } = useSelector((state) => state.ui)
 
   return (
     <div className={styles.root}>
-      {showBlackBars && <BlackBars />}
+      <BlackBars />
       <Interface mapActive={mapActive} />
       <Canvas>
         {mapActive ? <Map /> : scene === 0 ? <RegionEntranceOne /> : <PhosphateMine />}
