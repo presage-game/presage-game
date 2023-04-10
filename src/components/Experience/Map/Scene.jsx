@@ -2,7 +2,6 @@ import React, { useRef, useMemo, useEffect, useState } from "react"
 import { resetPinpoint, resetScene } from "@/store/reducers/mapReducer"
 import { useDispatch, useSelector } from "react-redux"
 
-import { useSpring as useSpringReact } from "react-spring"
 import { Box3, Object3D } from "three"
 import { Box, useGLTF, OrthographicCamera } from "@react-three/drei"
 import { useFrame } from "@react-three/fiber"
