@@ -28,10 +28,6 @@ export const Scene = ({ goOnScene, goOnPinpoint }) => {
   const cubeRef = useRef([])
   const smallCubeRef = useRef([])
 
-  const [cameraZoom, setCameraZoom] = useState(20)
-
-  const spring = useSpringReact({ cameraZoom })
-
   // Init Three Pathfinding
   const pathfinding = new Pathfinding()
   const pathfindinghelper = new PathfindingHelper()
@@ -141,7 +137,6 @@ export const Scene = ({ goOnScene, goOnPinpoint }) => {
     // Not intersecting with any scene
     if (!isSceneIntersecting && pinpointIndex === null) {
       dispatch(resetScene())
-      console.log("LEAVING A SCENE")
     }
 
     // Not intersecting with any pinpoint
@@ -205,7 +200,7 @@ export const Scene = ({ goOnScene, goOnPinpoint }) => {
         makeDefault
         ref={camRef}
         position={[15, 15, 15]}
-        zoom={cameraZoom}
+        zoom={20}
         near={0.1}
         far={100}
       />
