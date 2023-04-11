@@ -14,9 +14,16 @@ const App = () => {
     <main className={styles.root}>
       {!hasExperienceStarted ? <Introduction /> : <Experience />}
       {!hasExperienceStarted && (
-        <>
-          <button onClick={() => dispatch(startExperience())}>Passer l'introduction</button>
-        </>
+        <button
+          style={{
+            position: "absolute",
+            top: "2rem",
+            left: "2rem",
+          }}
+          onClick={() => dispatch(startExperience())}
+        >
+          (Passer l'introduction)
+        </button>
       )}
     </main>
   )
