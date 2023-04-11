@@ -19,11 +19,10 @@ export const Introduction = () => {
   const introduction = introductionData
 
   const dispatch = useDispatch()
-  const { currentIndex, isPromptComplete, hasExperienceStarted } = useSelector(
-    (state) => state.introduction
-  )
+  const { isPromptComplete, hasExperienceStarted } = useSelector((state) => state.introduction)
   const { gameCode } = useSelector((state) => state.user)
 
+  const [currentIndex, setCurrentIndex] = useState(0)
   const [showIntroduction, setShowIntroduction] = useState(false)
 
   // Play audio when introduction starts
@@ -74,7 +73,11 @@ export const Introduction = () => {
         {!showIntroduction && <SplashScreen setShowIntroduction={setShowIntroduction} />}
         {showIntroduction && (
           <>
-            <Prompts introduction={introduction} currentIndex={currentIndex} />
+            <Prompts
+              introduction={introduction}
+              currentIndex={currentIndex}
+              setCurrentIndex={setCurrentIndex}
+            />
             {isPromptComplete && <Footer />}
           </>
         )}

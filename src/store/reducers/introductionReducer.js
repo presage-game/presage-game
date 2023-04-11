@@ -4,7 +4,6 @@ import introductionData from "@/assets/data/introduction.json"
 const TIPPING_POINT = Object.keys(introductionData).length
 
 const initialState = {
-  currentIndex: 0,
   score: 0,
   scenario: "",
   isPromptComplete: false,
@@ -17,7 +16,6 @@ export const introductionSlice = createSlice({
   reducers: {
     answerPrompt: (state, action) => {
       state.score += action.payload
-      state.currentIndex++
     },
     completePrompts: (state) => {
       state.isPromptComplete = true
