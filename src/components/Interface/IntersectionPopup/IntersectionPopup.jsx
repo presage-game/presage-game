@@ -2,6 +2,8 @@ import { useDispatch } from "react-redux"
 import { changeScene, showPinpoint } from "@/store/reducers/mapReducer"
 import { toggleMap } from "@/store/reducers/uiReducer"
 
+import { motion, AnimatePresence } from "framer-motion"
+
 import styles from "@/components/Interface/IntersectionPopup/IntersectionPopup.module.scss"
 
 export const IntersectionPopup = ({
@@ -28,9 +30,16 @@ export const IntersectionPopup = ({
   }
 
   return (
-    <>
+    <AnimatePresence>
       {pinpointIndex !== null && !isPinpointActive && (
-        <div className={styles.root} onClick={triggerPinpoint}>
+        <motion.div
+          className={styles.root}
+          onClick={triggerPinpoint}
+          initial={{ opacity: 0, x: "-50%", scale: 0.9 }}
+          animate={{ opacity: 1, x: "-50%", scale: 1 }}
+          exit={{ opacity: 0, x: "-50%", scale: 0.9 }}
+          transition={{ scale: { type: "spring", stiffness: 100 } }}
+        >
           <div className={styles.popup}>
             <h2 className={styles.title}>{pinpointsData[pinpointIndex]?.name}</h2>
             <div className={styles.icon}>
@@ -46,10 +55,17 @@ export const IntersectionPopup = ({
               </svg>
             </div>
           </div>
-        </div>
+        </motion.div>
       )}
       {pinpointIndex === null && sceneIndex !== null && (
-        <div className={styles.root} onClick={() => triggerScene(sceneIndex)}>
+        <motion.div
+          className={styles.root}
+          onClick={() => triggerScene(sceneIndex)}
+          initial={{ opacity: 0, x: "-50%", scale: 0.9 }}
+          animate={{ opacity: 1, x: "-50%", scale: 1 }}
+          exit={{ opacity: 0, x: "-50%", scale: 0.9 }}
+          transition={{ scale: { type: "spring", stiffness: 100 } }}
+        >
           <div className={styles.popup}>
             <h2 className={styles.title}>{scriptData[sceneIndex]?.name}</h2>
             <div className={styles.icon}>
@@ -69,8 +85,8 @@ export const IntersectionPopup = ({
               </svg>
             </div>
           </div>
-        </div>
+        </motion.div>
       )}
-    </>
+    </AnimatePresence>
   )
 }
