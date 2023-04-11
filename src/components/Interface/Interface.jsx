@@ -35,15 +35,17 @@ export const Interface = ({ mapActive }) => {
           mixBlendMode: "difference",
         }}
       >
-        <button onClick={() => dispatch(toggleMap())}>
-          {mapActive ? "Close map" : "Open map"}
-        </button>
+        {sceneIndex !== null && !mapActive && (
+          <button onClick={() => dispatch(toggleMap())}>
+            {mapActive ? "Close map" : "Go to map"}
+          </button>
+        )}
         <button
           onClick={() => {
             dispatch(toggleBlackBars())
           }}
         >
-          Black Bars
+          Cinematic mode
         </button>
       </div>
       {!mapActive && <SceneTextBox sceneIndex={sceneIndex} scriptData={scriptData} />}
