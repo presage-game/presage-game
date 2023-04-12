@@ -11,7 +11,7 @@ export const Scene = ({ goOnScene, goOnPinpoint }) => {
   const dispatch = useDispatch()
   const audioPath = "src/assets/audios/chapterOne/pinpoints/pinpoint" // TODO: Update this path
 
-  const { pinpoint: pinpointIndex } = useSelector((state) => state.map)
+  const { pinpoint: pinpointIndex, scene: sceneIndex } = useSelector((state) => state.map)
 
   const [pinpointAudio, setPinpointAudio] = useState(null)
   const [audioPlaying, setAudioPlaying] = useState(false)
@@ -99,7 +99,7 @@ export const Scene = ({ goOnScene, goOnPinpoint }) => {
         const box = new Box3().setFromObject(cubeRef.current[index])
 
         if (box.containsPoint(voitureGrpRef.current.position)) {
-          goOnScene(cubeRef.current[index].scene)
+          sceneIndex !== cubeRef.current[index].scene && goOnScene(cubeRef.current[index].scene)
 
           isSceneIntersecting = true
         }
@@ -114,7 +114,8 @@ export const Scene = ({ goOnScene, goOnPinpoint }) => {
         const box = new Box3().setFromObject(smallCubeRef.current[index])
 
         if (box.containsPoint(voitureGrpRef.current.position)) {
-          goOnPinpoint(smallCubeRef.current[index].pinpoint)
+          pinpointIndex !== smallCubeRef.current[index].pinpoint &&
+            goOnPinpoint(smallCubeRef.current[index].pinpoint)
 
           if (!audioPlaying) {
             const audio = new Audio(`${audioPath}-${smallCubeRef.current[index].pinpoint}.mp3`)
@@ -131,7 +132,7 @@ export const Scene = ({ goOnScene, goOnPinpoint }) => {
     })
 
     // Not intersecting with any scene
-    if (!isSceneIntersecting && pinpointIndex === null) {
+    if (!isSceneIntersecting && pinpointIndex === null && sceneIndex !== null) {
       dispatch(resetScene())
     }
 
@@ -143,7 +144,7 @@ export const Scene = ({ goOnScene, goOnPinpoint }) => {
       setAudioPlaying(false)
       setPinpointAudio(null)
 
-      dispatch(resetPinpoint())
+      pinpointIndex !== null && dispatch(resetPinpoint())
     }
   }
 
