@@ -3,7 +3,7 @@ import { resetPinpoint, resetScene } from "@/store/reducers/mapReducer"
 import { useDispatch, useSelector } from "react-redux"
 
 import { Box3, Object3D } from "three"
-import { Box, useGLTF, OrthographicCamera } from "@react-three/drei"
+import { Box, useGLTF, OrthographicCamera, Gltf } from "@react-three/drei"
 import { useFrame } from "@react-three/fiber"
 import { Pathfinding, PathfindingHelper } from "three-pathfinding"
 
@@ -17,12 +17,8 @@ export const Scene = ({ goOnScene, goOnPinpoint }) => {
   const [audioPlaying, setAudioPlaying] = useState(false)
 
   // Handle map
-  const map = useGLTF("assets/scenes/map1.glb")
-  const voiture = useGLTF("assets/vehicules/defender.glb")
   const navMesh = useGLTF("assets/scenes/navMesh1.glb")
   const camRef = useRef()
-
-  voiture.scene.position.set(5, 0, 0)
 
   const voitureGrpRef = useRef(null)
   const cubeRef = useRef([])
@@ -157,10 +153,10 @@ export const Scene = ({ goOnScene, goOnPinpoint }) => {
 
   return (
     <>
-      <primitive object={map.scene} dispose={null} />
+      <Gltf src="assets/scenes/map1.glb" />
       <primitive onClick={(e) => click(e)} object={navMesh.scene} dispose={null} visible={false} />
       <group ref={voitureGrpRef}>
-        <primitive object={voiture.scene} dispose={null} />
+        <Gltf src="assets/vehicules/defender.glb" position={[5, 0, 0]} />
       </group>
       <Box
         ref={(el) => (cubeRef.current[0] = el)}
