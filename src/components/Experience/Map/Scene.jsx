@@ -25,20 +25,24 @@ export const Scene = ({ goOnScene, goOnPinpoint }) => {
   const smallCubeRef = useRef([])
 
   // Init Three Pathfinding
-  const pathfinding = new Pathfinding()
-  const pathfindinghelper = new PathfindingHelper()
+  const pathfinding = useMemo(() => new Pathfinding(), [])
+  const pathfindinghelper = useMemo(() => new PathfindingHelper(), [])
   const ZONE = "level1"
   const SPEED = 7
   let navmesh
   let groupID
   let navpath
 
-  navMesh.scene.traverse((node) => {
-    if (!navmesh && node.isObject3D && node.children && node.children.length > 0) {
-      navmesh = node.children[0]
-      pathfinding.setZoneData(ZONE, Pathfinding.createZone(navmesh.geometry))
-    }
-  })
+  useMemo(
+    () =>
+      navMesh.scene.traverse((node) => {
+        if (!navmesh && node.isObject3D && node.children && node.children.length > 0) {
+          navmesh = node.children[0]
+          pathfinding.setZoneData(ZONE, Pathfinding.createZone(navmesh.geometry))
+        }
+      }),
+    []
+  )
 
   const pivot = useMemo(() => new Object3D(), [])
 
