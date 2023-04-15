@@ -1,14 +1,12 @@
 import React, { useRef, useMemo, useEffect, useState } from "react"
-import { resetPinpoint, resetScene } from "@/store/reducers/mapReducer"
-import { useDispatch, useSelector } from "react-redux"
+import { useSelector } from "react-redux"
 
 import { Box3, Object3D } from "three"
 import { Box, useGLTF, OrthographicCamera, Gltf } from "@react-three/drei"
 import { useFrame } from "@react-three/fiber"
 import { Pathfinding, PathfindingHelper } from "three-pathfinding"
 
-export const Scene = ({ goOnScene, goOnPinpoint }) => {
-  const dispatch = useDispatch()
+export const Scene = ({ goOnScene, goOnPinpoint, resetScene, resetPinpoint }) => {
   const audioPath = "src/assets/audios/chapterOne/pinpoints/pinpoint" // TODO: Update this path
 
   const { pinpoint: pinpointIndex, scene: sceneIndex } = useSelector((state) => state.map)
@@ -29,20 +27,18 @@ export const Scene = ({ goOnScene, goOnPinpoint }) => {
   const pathfindinghelper = useMemo(() => new PathfindingHelper(), [])
   const ZONE = "level1"
   const SPEED = 7
-  let navmesh
-  let groupID
+
   let navpath
 
-  useMemo(
-    () =>
-      navMesh.scene.traverse((node) => {
-        if (!navmesh && node.isObject3D && node.children && node.children.length > 0) {
-          navmesh = node.children[0]
-          pathfinding.setZoneData(ZONE, Pathfinding.createZone(navmesh.geometry))
-        }
-      }),
-    []
-  )
+  useMemo(() => {
+    let navmesh
+    navMesh.scene.traverse((node) => {
+      if (!navmesh && node.isObject3D && node.children && node.children.length > 0) {
+        navmesh = node.children[0]
+        pathfinding.setZoneData(ZONE, Pathfinding.createZone(navmesh.geometry))
+      }
+    })
+  }, [])
 
   const pivot = useMemo(() => new Object3D(), [])
 
@@ -57,12 +53,12 @@ export const Scene = ({ goOnScene, goOnPinpoint }) => {
     followCam.add(camRef.current)
     pivot.add(followCam)
 
-    dispatch(resetScene())
+    resetScene()
   }, [])
 
   const click = (e) => {
     let target = e.point
-    groupID = pathfinding.getGroup(ZONE, voitureGrpRef.current.position)
+    let groupID = pathfinding.getGroup(ZONE, voitureGrpRef.current.position)
     // find closest node to agent, just in case agent is out of bounds
     const closest = pathfinding.getClosestNode(voitureGrpRef.current.position, ZONE, groupID)
     navpath = pathfinding.findPath(closest.centroid, target, ZONE, groupID)
@@ -137,7 +133,7 @@ export const Scene = ({ goOnScene, goOnPinpoint }) => {
 
     // Not intersecting with any scene
     if (!isSceneIntersecting && pinpointIndex === null && sceneIndex !== null) {
-      dispatch(resetScene())
+      resetScene()
     }
 
     // Not intersecting with any pinpoint
@@ -148,7 +144,7 @@ export const Scene = ({ goOnScene, goOnPinpoint }) => {
       setAudioPlaying(false)
       setPinpointAudio(null)
 
-      pinpointIndex !== null && dispatch(resetPinpoint())
+      pinpointIndex !== null && resetPinpoint()
     }
   }
 
