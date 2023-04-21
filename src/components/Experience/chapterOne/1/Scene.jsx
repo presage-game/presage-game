@@ -1,7 +1,7 @@
-import { Model } from "./2"
+import { Model } from "./Model"
 import { CustomCamera } from "../../tools/CustomCamera/CustomCamera"
 import { AdinkraThree } from "../../objects/interactive/AdinkraThree/AdinkraThree"
-import { Environment, Gltf } from "@react-three/drei"
+import { Environment } from "@react-three/drei"
 
 export const Scene = ({ switchLerp }) => {
   //<ambientLight color={"orange"} />
