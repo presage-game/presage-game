@@ -1,83 +1,74 @@
 import { useState } from "react"
 import { useSelector, useDispatch } from "react-redux"
-import { toggleBlackBars, toggleIsOnMap } from "@/store/reducers/uiReducer"
-import scriptData from "@/assets/chapterTwo.json"
+import { toggleBlackBars, toggleMap } from "@/store/reducers/uiReducer"
+
+import scriptData from "@/assets/data/chapterOne/scenes.json"
+import pinpointsData from "@/assets/data/chapterOne/pinpoints.json"
 import styles from "./Interface.module.scss"
-import { BlackBars } from "@/components/BlackBars/BlackBars"
-import { Meta } from "@/components/Interface/Meta/Meta"
-import { TextBox } from "@/components/Interface/TextBox/TextBox"
-import { AsideTextBox } from "@/components/Interface/AsideTextBox/AsideTextBox"
 
-export const Interface = () => {
+import { SceneTextBox } from "@/components/Interface/SceneTextBox/SceneTextBox"
+import { MapTextBox } from "@/components/Interface/MapTextBox/MapTextBox"
+import { IntersectionPopup } from "@/components/Interface/IntersectionPopup/IntersectionPopup"
+
+export const Interface = ({ mapActive }) => {
   const dispatch = useDispatch()
-  const { showBlackBars } = useSelector((state) => state.ui)
 
-  const [displayUi, setDisplayUi] = useState(false)
-  const [sceneIndex, setSceneIndex] = useState(0)
-  const [isVoiceOver, setIsVoiceOver] = useState(false)
-  const [displayOptions, setDisplayOptions] = useState(false)
-  const [spotIndex, setSpotIndex] = useState(0)
-  const [textIndex, setTextIndex] = useState(0)
+  const {
+    scene: sceneIndex,
+    isPinpointActive,
+    pinpoint: pinpointIndex,
+  } = useSelector((state) => state.map)
 
-  const [textBoxStyle, setTextBoxStyle] = useState("classic")
+  const [isPopupVisible, setIsPopupVisible] = useState(true)
 
   return (
-    <section className={styles.root}>
-      {showBlackBars && <BlackBars />}
-      {/* <button
-        className={styles.test}
-        onClick={() => {
-          dispatch(toggleBlackBars())
+    <div className={styles.root}>
+      <div
+        style={{
+          position: "absolute",
+          right: "2rem",
+          bottom: "2rem",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "flex-start",
+          zIndex: "20",
+          mixBlendMode: "difference",
         }}
       >
-        Toggle black bars ({showBlackBars.toString()})
-      </button> */}
-      <button
-        style={{ position: "absolute", right: "2rem", bottom: "2rem" }}
-        onClick={() => setTextBoxStyle(textBoxStyle === "classic" ? "aside" : "classic")}
-      >
-        Change TextBox ({textBoxStyle})
-      </button>
-      <Meta
-        sceneIndex={sceneIndex}
-        scriptData={scriptData}
-        setDisplayUi={setDisplayUi}
-        setDisplayOptions={setDisplayOptions}
-        setIsVoiceOver={setIsVoiceOver}
-        setSceneIndex={setSceneIndex}
-        setSpotIndex={setSpotIndex}
-        setTextIndex={setTextIndex}
-      />
-      {textBoxStyle === "classic" && (
-        <TextBox
-          textBoxStyle={textBoxStyle}
-          sceneIndex={sceneIndex}
-          scriptData={scriptData}
-          isVoiceOver={isVoiceOver}
-          displayOptions={displayOptions}
-          spotIndex={spotIndex}
-          textIndex={textIndex}
-          displayUi={displayUi}
-          setTextIndex={setTextIndex}
-          setDisplayOptions={setDisplayOptions}
-          setDisplayUi={setDisplayUi}
-        />
+        {sceneIndex !== null && !mapActive && (
+          <button onClick={() => dispatch(toggleMap())}>
+            {mapActive ? "Close map" : "Go to map"}
+          </button>
+        )}
+        <button
+          onClick={() => {
+            dispatch(toggleBlackBars())
+          }}
+        >
+          Cinematic mode
+        </button>
+      </div>
+      {!mapActive && <SceneTextBox sceneIndex={sceneIndex} scriptData={scriptData} />}
+      {mapActive && (
+        <>
+          <IntersectionPopup
+            scriptData={scriptData}
+            pinpointsData={pinpointsData}
+            sceneIndex={sceneIndex}
+            pinpointIndex={pinpointIndex}
+            isPopupVisible={isPopupVisible}
+            setIsPopupVisible={setIsPopupVisible}
+            isPinpointActive={isPinpointActive}
+          />
+          <MapTextBox
+            pinpointsData={pinpointsData}
+            pinpointIndex={pinpointIndex}
+            mapActive={mapActive}
+            isPopupVisible={isPopupVisible}
+            setIsPopupVisible={setIsPopupVisible}
+          />
+        </>
       )}
-      {textBoxStyle === "aside" && (
-        <AsideTextBox
-          textBoxStyle={textBoxStyle}
-          sceneIndex={sceneIndex}
-          scriptData={scriptData}
-          isVoiceOver={isVoiceOver}
-          displayOptions={displayOptions}
-          spotIndex={spotIndex}
-          textIndex={textIndex}
-          displayUi={displayUi}
-          setTextIndex={setTextIndex}
-          setDisplayOptions={setDisplayOptions}
-          setDisplayUi={setDisplayUi}
-        />
-      )}
-    </section>
+    </div>
   )
 }

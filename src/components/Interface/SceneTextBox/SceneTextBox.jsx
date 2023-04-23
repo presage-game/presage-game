@@ -1,33 +1,37 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import styles from "./TextBox.module.scss"
+import styles from "./SceneTextBox.module.scss"
 
-export const TextBox = ({
-  sceneIndex,
-  scriptData,
-  isVoiceOver,
-  displayOptions,
-  spotIndex,
-  textIndex,
-  displayUi,
-  setTextIndex,
-  setDisplayOptions,
-  setDisplayUi,
-}) => {
+export const SceneTextBox = ({ sceneIndex, scriptData }) => {
+  const [showText, setShowText] = useState(false)
+  const [isVoiceOver, setIsVoiceOver] = useState(false)
+  const [showOptions, setShowOptions] = useState(false)
+  const [spotIndex, setSpotIndex] = useState(0)
+  const [textIndex, setTextIndex] = useState(0)
   const [optionIndex, setOptionIndex] = useState(0)
   const [key, setKey] = useState(0)
 
   const getTextEmitter = () =>
     !isVoiceOver
-      ? scriptData[sceneIndex].spots[spotIndex].spotVoiceover[textIndex].emitter
-      : scriptData[sceneIndex].voiceover[textIndex].emitter
+      ? scriptData[sceneIndex]?.spots[spotIndex]?.spotVoiceover[textIndex]?.emitter
+      : scriptData[sceneIndex]?.voiceover[textIndex]?.emitter
 
-  const getTextLabel = () => (!isVoiceOver ? scriptData[sceneIndex].spots[spotIndex].label : null)
+  const getTextLabel = () => (!isVoiceOver ? scriptData[sceneIndex].spots[spotIndex]?.label : null)
+
+  const getIntroText = () =>
+    scriptData[sceneIndex]?.voiceover && scriptData[sceneIndex]?.voiceover[textIndex]?.text
+
+  const getSpotText = () => scriptData[sceneIndex]?.spots[spotIndex]?.spotVoiceover[textIndex]?.text
 
   const hasMore = () => (isVoiceOver ? hasMoreIntroText() : hasMoreSpotText())
 
-  const getIntroText = () =>
-    scriptData[sceneIndex].voiceover && scriptData[sceneIndex].voiceover[textIndex].text
+  const hasMoreIntroText = () => scriptData[sceneIndex]?.voiceover?.length > textIndex + 1
+
+  const hasMoreSpotText = () =>
+    scriptData[sceneIndex].spots[spotIndex]?.spotVoiceover?.length > textIndex + 1
+
+  const hasOptions = () =>
+    scriptData[sceneIndex]?.spots[spotIndex]?.spotVoiceover[textIndex]?.options?.length > 0
 
   // Show the next text in the voiceover array
   const showMore = () => {
@@ -37,37 +41,34 @@ export const TextBox = ({
 
   const showMoreNPC = () => {
     setTextIndex(textIndex + 1)
-    setDisplayOptions(true)
+    setShowOptions(true)
     setKey((prevKey) => prevKey + 1)
   }
-
-  const hasMoreIntroText = () => scriptData[sceneIndex].voiceover.length > textIndex + 1
-
-  const getSpotText = () => scriptData[sceneIndex].spots[spotIndex].spotVoiceover[textIndex].text
 
   const getOptionResponse = () => {
     const option =
-      scriptData[sceneIndex].spots[spotIndex].spotVoiceover[textIndex].options[optionIndex]
+      scriptData[sceneIndex]?.spots[spotIndex]?.spotVoiceover[textIndex]?.options[optionIndex]
     return option.response
   }
 
-  const hasMoreSpotText = () =>
-    scriptData[sceneIndex].spots[spotIndex].spotVoiceover.length > textIndex + 1
-
-  const hasOptions = () =>
-    scriptData[sceneIndex]?.spots[spotIndex]?.spotVoiceover[textIndex]?.options?.length > 0
-
   const chooseResponse = (data) => {
     setOptionIndex(data)
-    setDisplayOptions(false)
+    setShowOptions(false)
     setKey((prevKey) => prevKey + 1)
   }
 
+  useEffect(() => {
+    if (scriptData[sceneIndex].voiceover.length > 0) {
+      setIsVoiceOver(true)
+      setShowText(true)
+    }
+  }, [sceneIndex])
+
   return (
     <AnimatePresence>
-      {displayUi && (
+      {showText && (
         <motion.div
-          key="textBox"
+          key="sceneTextBox"
           className={styles.classic}
           initial={{ opacity: 0, y: 20, x: "-50%" }}
           animate={{ opacity: 1, y: 0, x: "-50%" }}
@@ -102,7 +103,7 @@ export const TextBox = ({
               </p>
             )}
 
-            {!isVoiceOver && displayOptions && (
+            {!isVoiceOver && showOptions && (
               <p className={styles.content}>
                 {getSpotText()
                   .split(" ")
@@ -119,7 +120,7 @@ export const TextBox = ({
               </p>
             )}
 
-            {hasOptions() && !isVoiceOver && !displayOptions && (
+            {hasOptions() && !isVoiceOver && !showOptions && (
               <p className={styles.content}>
                 {getOptionResponse()
                   .split(" ")
@@ -136,7 +137,7 @@ export const TextBox = ({
               </p>
             )}
           </div>
-          {hasOptions() && hasMore() && !displayOptions && (
+          {hasOptions() && hasMore() && !showOptions && (
             <button
               className={[`${styles.bottomButton} ${styles["bottomButton--more"]}`]}
               onClick={showMoreNPC}
@@ -155,21 +156,21 @@ export const TextBox = ({
           {!hasMore() && (
             <button
               className={[`${styles.bottomButton} ${styles["bottomButton--close"]}`]}
-              onClick={() => setDisplayUi(false)}
+              onClick={() => setShowText(false)}
             >
               Fermer
             </button>
           )}
-          {hasOptions() && displayOptions && (
+          {hasOptions() && showOptions && (
             <div className={styles.options}>
-              {scriptData[sceneIndex].spots[spotIndex].spotVoiceover[textIndex].options.map(
+              {scriptData[sceneIndex]?.spots[spotIndex]?.spotVoiceover[textIndex]?.options.map(
                 (option, index) => (
                   <button
                     key={index}
                     className={styles.optionsButton}
                     onClick={() => chooseResponse(index)}
                   >
-                    {option.text}
+                    {option?.text}
                   </button>
                 )
               )}

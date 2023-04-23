@@ -1,23 +1,21 @@
 import { createSlice } from "@reduxjs/toolkit"
-import introductionData from "../../assets/introduction.json"
+import introductionData from "@/assets/data/introduction.json"
 
 const TIPPING_POINT = Object.keys(introductionData).length
 
 const initialState = {
-  currentIndex: 0,
   score: 0,
   scenario: "",
   isPromptComplete: false,
   hasExperienceStarted: false,
 }
 
-export const introduction = createSlice({
+export const introductionSlice = createSlice({
   name: "introduction",
   initialState,
   reducers: {
     answerPrompt: (state, action) => {
       state.score += action.payload
-      state.currentIndex++
     },
     completePrompts: (state) => {
       state.isPromptComplete = true
@@ -34,6 +32,6 @@ export const introduction = createSlice({
   },
 })
 
-export const { answerPrompt, completePrompts, startExperience } = introduction.actions
+export const { answerPrompt, completePrompts, startExperience } = introductionSlice.actions
 
-export default introduction.reducer
+export default introductionSlice.reducer

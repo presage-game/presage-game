@@ -1,32 +1,34 @@
 import React, { useEffect, useState } from "react"
 import { useSelector, useDispatch } from "react-redux"
+
+import introductionData from "@/assets/data/introduction.json"
+import ambiance from "@/assets/audios/introduction/ambiance.mp3"
+import carEngine from "@/assets/audios/introduction/car-engine.mp3"
+import styles from "./Introduction.module.scss"
+
 import { completePrompts } from "../../store/reducers/introductionReducer"
+import { changeGameCode } from "@/store/reducers/userReducer"
+import { createGame } from "@/database/gamecode"
+
 import { Prompts } from "./Prompts/Prompts"
 import { SplashScreen } from "./SplashScreen/SplashScreen"
 import { Footer } from "./Footer/Footer"
-import introductionData from "../../assets/introduction.json"
-import styles from "./Introduction.module.scss"
-import ambiance from "../../assets/audios/introduction/ambiance.mp3"
-import carEngine from "../../assets/audios/introduction/car-engine.mp3"
-import { createGame } from "@/database/gamecode"
-import { changeGameCode } from "@/store/reducers/userReducer"
 
 export const Introduction = () => {
   const introduction = introductionData
 
   const dispatch = useDispatch()
-  const { currentIndex, isPromptComplete, hasExperienceStarted } = useSelector(
-    (state) => state.introduction
-  )
+  const { isPromptComplete, hasExperienceStarted } = useSelector((state) => state.introduction)
   const { gameCode } = useSelector((state) => state.user)
 
+  const [currentIndex, setCurrentIndex] = useState(0)
   const [showIntroduction, setShowIntroduction] = useState(false)
 
   // Play audio when introduction starts
   useEffect(() => {
     if (showIntroduction) {
       const ambianceAudio = new Audio(ambiance)
-      ambianceAudio.volume = 0.5
+      ambianceAudio.volume = 1
 
       const carAudio = new Audio(carEngine)
       carAudio.volume = 1
@@ -70,7 +72,11 @@ export const Introduction = () => {
         {!showIntroduction && <SplashScreen setShowIntroduction={setShowIntroduction} />}
         {showIntroduction && (
           <>
-            <Prompts introduction={introduction} currentIndex={currentIndex} />
+            <Prompts
+              introduction={introduction}
+              currentIndex={currentIndex}
+              setCurrentIndex={setCurrentIndex}
+            />
             {isPromptComplete && <Footer />}
           </>
         )}

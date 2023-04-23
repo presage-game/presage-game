@@ -2,22 +2,22 @@ import { createSlice } from "@reduxjs/toolkit"
 
 const initialState = {
   showBlackBars: false,
-  isOnMap: false,
+  mapActive: false,
 }
 
-export const ui = createSlice({
+export const uiSlice = createSlice({
   name: "ui",
   initialState,
   reducers: {
     toggleBlackBars: (state) => {
       state.showBlackBars = !state.showBlackBars
     },
-    toggleIsOnMap: (state) => {
-      state.isOnMap = !state.isOnMap
+    toggleMap: (state) => {
+      state.mapActive = !state.mapActive
     },
   },
 })
 
-export const { toggleBlackBars, toggleIsOnMap } = ui.actions
+export const { toggleBlackBars, toggleMap } = uiSlice.actions
 
-export default ui.reducer
+export default uiSlice.reducer

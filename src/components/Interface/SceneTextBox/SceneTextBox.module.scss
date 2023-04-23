@@ -32,6 +32,8 @@
 
 .aside,
 .classic {
+  z-index: 100;
+
   .narrator {
     font-family: "Spectral SC", sans-serif;
     letter-spacing: 0.2rem;
@@ -57,7 +59,6 @@
       cursor: pointer;
       display: block;
       text-align: left;
-      margin-top: 0.2rem;
       color: #ffb24d;
       width: 100%;
       transition: ease-in-out 0.2s;
@@ -83,11 +84,11 @@
     margin-top: 4rem;
 
     &--more {
-      background-color: #ffb24d31;
+      background-color: #765b35;
       color: white;
 
       &:hover {
-        background-color: #ffb24d70;
+        background-color: #604d32;
       }
     }
 

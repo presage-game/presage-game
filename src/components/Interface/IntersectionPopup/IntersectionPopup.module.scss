@@ -1,0 +1,35 @@
+.root {
+  position: absolute;
+  top: 25%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  background-color: #000000cc;
+  padding: 1rem 5rem;
+  text-align: center;
+  cursor: pointer;
+  transition: ease-in-out .25s;
+  transition-property: background-color, color, fill;
+
+  &:hover {
+    background-color: white;
+    color: black;
+  }
+
+  &:hover .icon svg path {
+    fill: black;
+    stroke: black;
+  }
+
+  .title {
+    font-family: "Spectral SC", sans-serif;
+    letter-spacing: 0.2rem;
+    font-weight: 400;
+    display: block;
+  }
+
+  .icon svg {
+    width: 4rem;
+    margin: 0.5rem auto 0 auto;
+  }
+}

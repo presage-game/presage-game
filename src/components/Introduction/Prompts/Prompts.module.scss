@@ -1,6 +1,8 @@
 .root {
   .date {
     color: grey;
+    display: block;
+    margin-bottom: 2rem;
   }
 
   .baseline {
@@ -24,14 +26,23 @@
   }
 
   .nextButton {
-    display: block;
-    color: grey;
-    margin-top: 2rem;
-    width: 100%;
     cursor: pointer;
+    text-transform: uppercase;
+    display: block;
+    background-color: #ffb24d;
+    padding: 1rem;
+    font-family: "Spectral SC", sans-serif;
+    letter-spacing: 0.2rem;
+    font-weight: 400;
+    font-size: 1.8rem;
+    width: 100%;
+    transition: ease-in-out 0.2s;
+    margin-top: 4rem;
+    background-color: #765b35;
+    color: white;
 
     &:hover {
-      text-decoration: none;
+      background-color: #604d32;
     }
   }
 }
