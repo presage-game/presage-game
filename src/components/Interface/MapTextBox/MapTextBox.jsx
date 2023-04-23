@@ -21,9 +21,6 @@ export const MapTextBox = ({ pinpointsData, pinpointIndex, mapActive }) => {
       setShowText(false)
       setShowOptions(false)
       setTextIndex(0)
-
-      dispatch(resetScene())
-      dispatch(resetPinpoint())
     }
   }, [mapActive])
 
