@@ -61,5 +61,5 @@ export const CustomCamera = ({ initialPosition }) => {
     }
   })
 
-  return <PerspectiveCamera ref={ref} makeDefault />
+  return <PerspectiveCamera fov={40} ref={ref} makeDefault />
 }
