@@ -48,9 +48,10 @@ export const getMaterials = async (variant) =>
     toonFiveTone.minFilter = NearestFilter
     toonFiveTone.magFilter = NearestFilter
 
+    const MaterialsColor = variant === "default" ? defaultMaterials : variantMaterials
+
     const floorMaterial = new MeshToonMaterial({
-      color:
-        variant === "default" ? defaultMaterials.floorMaterial : variantMaterials.floorMaterial,
+      color: variant === MaterialsColor.floorMaterial,
       gradientMap: toonFiveTone,
     })
 
@@ -60,43 +61,37 @@ export const getMaterials = async (variant) =>
     // })
 
     const roadMaterial = new MeshStandardMaterial({
-      color: variant === "default" ? defaultMaterials.roadMaterial : variantMaterials.roadMaterial,
+      color: variant === MaterialsColor.roadMaterial,
       side: DoubleSide,
     })
 
     const fenceMaterial = new MeshToonMaterial({
-      color:
-        variant === "default" ? defaultMaterials.fenceMaterial : variantMaterials.fenceMaterial,
+      color: MaterialsColor.fenceMaterial,
       gradientMap: toonFiveTone,
     })
 
     const leafMaterial = new MeshToonMaterial({
-      color: variant === "default" ? defaultMaterials.leafMaterial : variantMaterials.leafMaterial,
+      color: MaterialsColor.leafMaterial,
       gradientMap: toonThreeTone,
     })
 
     const treeMaterial = new MeshToonMaterial({
-      color: variant === "default" ? defaultMaterials.treeMaterial : variantMaterials.treeMaterial,
+      color: MaterialsColor.treeMaterial,
       gradientMap: toonThreeTone,
     })
 
     const stoneMaterial = new MeshToonMaterial({
-      color:
-        variant === "default" ? defaultMaterials.stoneMaterial : variantMaterials.stoneMaterial,
+      color: MaterialsColor.stoneMaterial,
       gradientMap: toonFiveTone,
     })
 
     const cloudMaterial = new MeshToonMaterial({
-      color:
-        variant === "default" ? defaultMaterials.cloudMaterial : variantMaterials.cloudMaterial,
+      color: MaterialsColor.cloudMaterial,
       gradientMap: toonThreeTone,
     })
 
     const backgroundMaterial = new MeshToonMaterial({
-      color:
-        variant === "default"
-          ? defaultMaterials.backgroundMaterial
-          : variantMaterials.backgroundMaterial,
+      color: MaterialsColor.backgroundMaterial,
     })
 
     return {
