@@ -1,4 +1,26 @@
-import { DoubleSide, LoadingManager, MeshToonMaterial, NearestFilter, TextureLoader } from "three"
+import { DoubleSide, LoadingManager, MeshStandardMaterial, MeshToonMaterial, NearestFilter, TextureLoader } from "three"
+
+const defaultMaterials = {
+  floorMaterial: "#F6B791",
+  roadMaterial: "#F6B791",
+  fenceMaterial: "#757271",
+  leafMaterial: "#4F7552",
+  treeMaterial: "#704D46",
+  stoneMaterial: "#7A675C",
+  cloudMaterial: "#C3FDFD",
+  backgroundMaterial: "#69D6FF",
+}
+
+const variantMaterials = {
+  floorMaterial: "#CF5D3B",
+  roadMaterial: "#CF5D3B",
+  fenceMaterial: "#757271",
+  leafMaterial: "#CF4F3B",
+  treeMaterial: "#704D46",
+  stoneMaterial: "#7A675C",
+  cloudMaterial: "#CFA03B",
+  backgroundMaterial: "#BED273",
+}
 
 const getTextures = () =>
   new Promise((resolve, reject) => {
@@ -10,7 +32,7 @@ const getTextures = () =>
     ].map((filename) => loader.load(filename))
   })
 
-export const getMaterials = async () =>
+export const getMaterials = async (variant) =>
   await getTextures().then((result) => {
     const toonThreeTone = result[0]
     toonThreeTone.minFilter = NearestFilter
@@ -20,38 +42,54 @@ export const getMaterials = async () =>
     toonFiveTone.magFilter = NearestFilter
 
     const floorMaterial = new MeshToonMaterial({
-      color: "#FDEAD2",
+      color:
+        variant === "default" ? defaultMaterials.floorMaterial : variantMaterials.floorMaterial,
       gradientMap: toonFiveTone,
     })
 
-    const roadMaterial = new MeshToonMaterial({
-      color: "#F1DFC9",
+    // const roadMaterial = new MeshToonMaterial({
+    //   color: variant === "default" ? defaultMaterials.roadMaterial : variantMaterials.roadMaterial,
+    //   side: DoubleSide,
+    // })
+
+    const roadMaterial = new MeshStandardMaterial({
+      color: variant === "default" ? defaultMaterials.roadMaterial : variantMaterials.roadMaterial,
       side: DoubleSide,
     })
 
     const fenceMaterial = new MeshToonMaterial({
-      color: "#8D8A85",
+      color:
+        variant === "default" ? defaultMaterials.fenceMaterial : variantMaterials.fenceMaterial,
       gradientMap: toonFiveTone,
     })
 
     const leafMaterial = new MeshToonMaterial({
-      color: "#4F7552",
-      gradientMap: toonFiveTone,
+      color: variant === "default" ? defaultMaterials.leafMaterial : variantMaterials.leafMaterial,
+      gradientMap: toonThreeTone,
     })
 
     const treeMaterial = new MeshToonMaterial({
-      color: "#704D46",
+      color: variant === "default" ? defaultMaterials.treeMaterial : variantMaterials.treeMaterial,
       gradientMap: toonThreeTone,
     })
 
     const stoneMaterial = new MeshToonMaterial({
-      color: "#8D8A85",
+      color:
+        variant === "default" ? defaultMaterials.stoneMaterial : variantMaterials.stoneMaterial,
       gradientMap: toonFiveTone,
     })
 
     const cloudMaterial = new MeshToonMaterial({
-      color: "#C3FDFD",
+      color:
+        variant === "default" ? defaultMaterials.cloudMaterial : variantMaterials.cloudMaterial,
       gradientMap: toonThreeTone,
+    })
+
+    const backgroundMaterial = new MeshToonMaterial({
+      color:
+        variant === "default"
+          ? defaultMaterials.backgroundMaterial
+          : variantMaterials.backgroundMaterial,
     })
 
     return {
@@ -62,5 +100,6 @@ export const getMaterials = async () =>
       treeMaterial,
       stoneMaterial,
       cloudMaterial,
+      backgroundMaterial,
     }
   })
