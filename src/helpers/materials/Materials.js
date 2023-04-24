@@ -1,8 +1,15 @@
-import { DoubleSide, LoadingManager, MeshStandardMaterial, MeshToonMaterial, NearestFilter, TextureLoader } from "three"
+import {
+  DoubleSide,
+  LoadingManager,
+  MeshStandardMaterial,
+  MeshToonMaterial,
+  NearestFilter,
+  TextureLoader,
+} from "three"
 
 const defaultMaterials = {
   floorMaterial: "#F6B791",
-  roadMaterial: "#F6B791",
+  roadMaterial: "#2D2D2C",
   fenceMaterial: "#757271",
   leafMaterial: "#4F7552",
   treeMaterial: "#704D46",
