@@ -7,7 +7,7 @@ import { CustomCamera } from "../../tools/CustomCamera/CustomCamera"
 import { Environment } from "@react-three/drei"
 
 export const Setup = () => {
-  const [variant, setVariant] = useState("dream")
+  const [variant, setVariant] = useState("default")
 
   const dispatch = useDispatch()
   const changeFocus = (value) => dispatch(changeOnFocusCamera(value))
@@ -34,7 +34,7 @@ export const Setup = () => {
       <Environment preset="forest" />
       <CustomCamera />
       <directionalLight
-        intensity={0.5}
+        intensity={variant === "default" ? 0.9 : 0.5}
         decay={2}
         position={[-50, 50, 50]}
         rotation={[-Math.PI / 2, 0, 0]}
