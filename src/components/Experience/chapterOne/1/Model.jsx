@@ -1145,4 +1145,4 @@ export function Model(props) {
   )
 }
 
-useGLTF.preload("/scene_1.2-transformed.glb")
+useGLTF.preload("/assets/scenes/scene_1.2-transformed.glb")
