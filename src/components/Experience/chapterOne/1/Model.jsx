@@ -4,7 +4,7 @@ Command: npx gltfjsx@6.1.4 ./public/assets/scenes/scene_1.2.glb --transform
 */
 
 import React, { useEffect, useState } from "react"
-import { useGLTF, PerspectiveCamera } from "@react-three/drei"
+import { useGLTF } from "@react-three/drei"
 import { getMaterials } from "@/helpers/materials/Materials"
 
 export function Model(props) {
@@ -12,24 +12,15 @@ export function Model(props) {
   const [Materials, setMaterials] = useState(null)
 
   useEffect(() => {
-    getMaterials().then((result) => setMaterials(result))
+    getMaterials(props.variant).then((result) => setMaterials(result))
   }, [])
 
   if (Materials === null) {
-    return (<group></group>);
+    return <group></group>
   }
 
   return (
     <group {...props} dispose={null}>
-      <PerspectiveCamera
-        makeDefault={false}
-        far={1000}
-        near={0.1}
-        fov={32.27}
-        position={[-8.29, 16.58, -89.6]}
-        rotation={[-0.1, 0.16, 0.03]}
-      />
-      <directionalLight intensity={0.9} decay={2} rotation={[-Math.PI / 2, 0, 0]} />
       <group position={[91.19, 10.23, -490.8]} rotation={[Math.PI / 2, 0, -0.44]} scale={0}>
         <mesh geometry={nodes.Mesh009.geometry} material={Materials.stoneMaterial} />
         <mesh geometry={nodes.Mesh009_1.geometry} material={materials.Material} />
@@ -72,7 +63,7 @@ export function Model(props) {
       </group>
       <mesh
         geometry={nodes.Fond_color.geometry}
-        material={materials["Material.030"]}
+        material={Materials.backgroundMaterial}
         position={[-106.78, 27.75, -554.83]}
         rotation={[1.35, 0, 0]}
         scale={[475.89, 185.83, 185.83]}
