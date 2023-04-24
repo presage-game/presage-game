@@ -1,36 +1,72 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { Scene } from "./Scene"
 import { useDispatch } from "react-redux"
-import { HotGround } from "../../effects/HotGround"
 import { changeOnFocusCamera, changeOnFocusCameraPosition } from "@/store/reducers/userReducer"
 import { CustomCamera } from "../../tools/CustomCamera/CustomCamera"
 import { Environment } from "@react-three/drei"
 
 export const Setup = () => {
   const [variant, setVariant] = useState("default")
+  const [pubHovered, setPubHovered] = useState(false)
+  const [mapHovered, setMapHovered] = useState(false)
 
   const dispatch = useDispatch()
   const changeFocus = (value) => dispatch(changeOnFocusCamera(value))
   const changeFocusPosition = (value) => dispatch(changeOnFocusCameraPosition(value))
 
-  // const switchLerp = (value) => {
-  //   changeFocusPosition({
-  //     position: {
-  //       x: -50,
-  //       y: 0,
-  //       z: 60,
-  //     },
-  //     rotation: {
-  //       x: -Math.PI / 3,
-  //       y: 0,
-  //       z: 0,
-  //     },
-  //   })
-  //   changeFocus(value)
-  // }
+  useEffect(() => {
+    if (pubHovered) {
+      setMapHovered(false)
+      changeFocusPosition({
+        position: {
+          x: -12,
+          y: -2,
+          z: 190,
+        },
+        rotation: {
+          x: Math.PI / 6,
+          y: Math.PI / 6,
+          z: 0,
+        },
+      })
+      changeFocus(true)
+    } else if (mapHovered) {
+      setPubHovered(false)
+      changeFocusPosition({
+        position: {
+          x: -40,
+          y: -5,
+          z: 190,
+        },
+        rotation: {
+          x: 0,
+          y: Math.PI / 3,
+          z: 0,
+        },
+      })
+      changeFocus(true)
+    } else {
+      changeFocus(false)
+    }
+  }, [pubHovered, mapHovered])
 
-  const [pubHovered, setPubHovered] = useState(false)
-  const [mapHovered, setMapHovered] = useState(false)
+  /*
+  const switchLerp = (value) => {
+    changeFocusPosition({
+      position: {
+        x: -50,
+        y: 0,
+        z: 60,
+      },
+      rotation: {
+        x: -Math.PI / 3,
+        y: 0,
+        z: 0,
+      },
+    })
+    changeFocus(value)
+  }
+  */
 
   return (
     <>
@@ -53,7 +89,9 @@ export const Setup = () => {
       <Scene
         variant={variant}
         setVariant={setVariant}
+        mapHovered={mapHovered}
         setMapHovered={setMapHovered}
+        pubHovered={pubHovered}
         setPubHovered={setPubHovered}
       />
     </>

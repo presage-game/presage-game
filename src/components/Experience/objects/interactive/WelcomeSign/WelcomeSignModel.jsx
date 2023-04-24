@@ -8,7 +8,7 @@ import { useGLTF, useTexture } from "@react-three/drei"
 import { getMaterials } from "@/helpers/materials/Materials"
 import { MeshBasicMaterial } from "three"
 
-export const Model = ({ position, rotation, setMapHovered, setPubHovered }) => {
+export const Model = ({ position, rotation, onMapClick, onPubClick }) => {
   const { nodes, materials } = useGLTF("assets/objects/signs/welcome_sign.glb")
   const mapTexture = useTexture("assets/images/nyalaande_map.png")
   mapTexture.flipY = false
@@ -65,15 +65,12 @@ export const Model = ({ position, rotation, setMapHovered, setPubHovered }) => {
         <mesh geometry={nodes.Cube196.geometry} material={Materials.fenceMaterial} />
         <mesh geometry={nodes.Cube196_1.geometry} material={materials["Material.010"]} />
       </group>
-      <group position={[3.8, 6.07, 2.66]} rotation={[0.02, -0.14, 0]} scale={[0.09, 1.32, -1.98]}>
+      <group onClick={onPubClick} position={[3.8, 6.07, 2.66]} rotation={[0.02, -0.14, 0]} scale={[0.09, 1.32, -1.98]}>
         <mesh geometry={nodes.Cube185.geometry} material={new MeshBasicMaterial({ map: truckTexture })} />
         <mesh geometry={nodes.Cube185_1.geometry} material={Materials.outlineMaterial} />
       </group>
       <group
-        onClick={() => {
-          console.log("map")
-          setMapHovered(true)
-        }}
+        onClick={onMapClick}
         position={[1.14, 7.06, -5.08]}
         rotation={[-0.04, -0.98, -0.05]}
         scale={[0.12, 2.55, -1.6]}
