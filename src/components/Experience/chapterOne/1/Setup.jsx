@@ -1,33 +1,72 @@
+import { useState, useEffect } from "react"
 import { Scene } from "./Scene"
-import { useState } from "react"
 import { useDispatch } from "react-redux"
-import { HotGround } from "../../effects/HotGround"
 import { changeOnFocusCamera, changeOnFocusCameraPosition } from "@/store/reducers/userReducer"
 import { CustomCamera } from "../../tools/CustomCamera/CustomCamera"
 import { Environment } from "@react-three/drei"
 
 export const Setup = () => {
   const [variant, setVariant] = useState("default")
+  const [pubClicked, setPubClicked] = useState(false)
+  const [mapClicked, setMapClicked] = useState(false)
 
   const dispatch = useDispatch()
   const changeFocus = (value) => dispatch(changeOnFocusCamera(value))
   const changeFocusPosition = (value) => dispatch(changeOnFocusCameraPosition(value))
 
-  // const switchLerp = (value) => {
-  //   changeFocusPosition({
-  //     position: {
-  //       x: -50,
-  //       y: 0,
-  //       z: 60,
-  //     },
-  //     rotation: {
-  //       x: -Math.PI / 3,
-  //       y: 0,
-  //       z: 0,
-  //     },
-  //   })
-  //   changeFocus(value)
-  // }
+  useEffect(() => {
+    if (pubClicked) {
+      setMapClicked(false)
+      changeFocusPosition({
+        position: {
+          x: -12,
+          y: -2,
+          z: 190,
+        },
+        rotation: {
+          x: Math.PI / 6,
+          y: Math.PI / 6,
+          z: 0,
+        },
+      })
+      changeFocus(true)
+    } else if (mapClicked) {
+      setPubClicked(false)
+      changeFocusPosition({
+        position: {
+          x: -40,
+          y: -5,
+          z: 190,
+        },
+        rotation: {
+          x: 0,
+          y: Math.PI / 3,
+          z: 0,
+        },
+      })
+      changeFocus(true)
+    } else {
+      changeFocus(false)
+    }
+  }, [pubClicked, mapClicked])
+
+  /*
+  const switchLerp = (value) => {
+    changeFocusPosition({
+      position: {
+        x: -50,
+        y: 0,
+        z: 60,
+      },
+      rotation: {
+        x: -Math.PI / 3,
+        y: 0,
+        z: 0,
+      },
+    })
+    changeFocus(value)
+  }
+  */
 
   return (
     <>
@@ -46,7 +85,15 @@ export const Setup = () => {
         position={[-30, 1, 0]}
         rotation={[-Math.PI / 2, Math.PI / 6, Math.PI / 2]}
       /> */}
-      <Scene variant={variant} setVariant={setVariant} />
+
+      <Scene
+        variant={variant}
+        setVariant={setVariant}
+        mapClicked={mapClicked}
+        setMapClicked={setMapClicked}
+        pubClicked={pubClicked}
+        setPubClicked={setPubClicked}
+      />
     </>
   )
 }
