@@ -99,6 +99,10 @@ export const getMaterials = async (variant) =>
       color: "#000000"
     })
 
+    const selectedMaterial = new MeshBasicMaterial({
+      color: "#FFFFFF"
+    })
+
     return {
       floorMaterial,
       roadMaterial,
@@ -108,6 +112,7 @@ export const getMaterials = async (variant) =>
       stoneMaterial,
       cloudMaterial,
       backgroundMaterial,
-      outlineMaterial
+      outlineMaterial,
+      selectedMaterial
     }
   })
