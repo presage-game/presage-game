@@ -19,14 +19,14 @@ const defaultMaterials = {
 }
 
 const variantMaterials = {
-  floorMaterial: "#CF5D3B",
-  roadMaterial: "#CF5D3B",
+  floorMaterial: "#918E8D",
+  roadMaterial: "#2D2D2C",
   fenceMaterial: "#757271",
-  leafMaterial: "#CF4F3B",
+  leafMaterial: "#D8BF66",
   treeMaterial: "#704D46",
   stoneMaterial: "#7A675C",
-  cloudMaterial: "#CFA03B",
-  backgroundMaterial: "#BED273",
+  cloudMaterial: "#C65948",
+  backgroundMaterial: "#C65948",
 }
 
 const getTextures = () =>
