@@ -6,10 +6,10 @@ import { WelcomeSign } from "../../objects/interactive/WelcomeSign/WelcomeSign"
 export const Scene = ({
   variant,
   setVariant,
-  pubHovered,
-  setPubHovered,
-  mapHovered,
-  setMapHovered,
+  pubClicked,
+  setPubClicked,
+  mapClicked,
+  setMapClicked,
 }) => {
   //<ambientLight color={"orange"} />
   //<Model position={[8, -15, -12]} rotation={[0, 0, 0]} />
@@ -20,10 +20,10 @@ export const Scene = ({
       <Environment preset="park" />
       <CustomCamera />
       <WelcomeSign
-        pubHovered={pubHovered}
-        setPubHovered={setPubHovered}
-        mapHovered={mapHovered}
-        setMapHovered={setMapHovered}
+        pubClicked={pubClicked}
+        setPubClicked={setPubClicked}
+        mapClicked={mapClicked}
+        setMapClicked={setMapClicked}
       />
     </>
   )

@@ -1,12 +1,12 @@
 import { Model } from "./WelcomeSignModel"
 
-export const WelcomeSign = ({ mapHovered, setMapHovered, pubHovered, setPubHovered }) => {
+export const WelcomeSign = ({ mapClicked, setMapClicked, pubClicked, setPubClicked }) => {
   return (
     <Model
       position={[5, -6, -40]}
       rotation={[0, -Math.PI / 2, 0]}
-      onMapClick={() => setMapHovered(!mapHovered)}
-      onPubClick={() => setPubHovered(!pubHovered)}
+      onMapClick={() => setMapClicked(!mapClicked)}
+      onPubClick={() => setPubClicked(!pubClicked)}
     />
   )
 }

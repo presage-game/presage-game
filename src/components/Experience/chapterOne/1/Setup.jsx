@@ -7,16 +7,16 @@ import { Environment } from "@react-three/drei"
 
 export const Setup = () => {
   const [variant, setVariant] = useState("default")
-  const [pubHovered, setPubHovered] = useState(false)
-  const [mapHovered, setMapHovered] = useState(false)
+  const [pubClicked, setPubClicked] = useState(false)
+  const [mapClicked, setMapClicked] = useState(false)
 
   const dispatch = useDispatch()
   const changeFocus = (value) => dispatch(changeOnFocusCamera(value))
   const changeFocusPosition = (value) => dispatch(changeOnFocusCameraPosition(value))
 
   useEffect(() => {
-    if (pubHovered) {
-      setMapHovered(false)
+    if (pubClicked) {
+      setMapClicked(false)
       changeFocusPosition({
         position: {
           x: -12,
@@ -30,8 +30,8 @@ export const Setup = () => {
         },
       })
       changeFocus(true)
-    } else if (mapHovered) {
-      setPubHovered(false)
+    } else if (mapClicked) {
+      setPubClicked(false)
       changeFocusPosition({
         position: {
           x: -40,
@@ -48,7 +48,7 @@ export const Setup = () => {
     } else {
       changeFocus(false)
     }
-  }, [pubHovered, mapHovered])
+  }, [pubClicked, mapClicked])
 
   /*
   const switchLerp = (value) => {
@@ -89,10 +89,10 @@ export const Setup = () => {
       <Scene
         variant={variant}
         setVariant={setVariant}
-        mapHovered={mapHovered}
-        setMapHovered={setMapHovered}
-        pubHovered={pubHovered}
-        setPubHovered={setPubHovered}
+        mapClicked={mapClicked}
+        setMapClicked={setMapClicked}
+        pubClicked={pubClicked}
+        setPubClicked={setPubClicked}
       />
     </>
   )
