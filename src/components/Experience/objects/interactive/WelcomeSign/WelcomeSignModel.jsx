@@ -36,11 +36,17 @@ export const Model = ({
     <group position={position} rotation={rotation} dispose={null}>
       <group position={[3.69, 6.6, 2.46]} rotation={[0.02, -0.13, 0]} scale={[-0.01, 0.01, 0.01]}>
         <mesh geometry={nodes.Mesh027.geometry} material={Materials.fenceMaterial} />
-        <mesh geometry={nodes.Mesh027_1.geometry} material={pubHovered ? Materials.selectedMaterial : Materials.outlineMaterial} />
+        <mesh
+          geometry={nodes.Mesh027_1.geometry}
+          material={pubHovered ? Materials.selectedMaterial : Materials.outlineMaterial}
+        />
       </group>
       <group position={[3.68, 5.46, 2.44]} rotation={[0.02, -0.13, 0]} scale={[-0.01, 0.01, 0.01]}>
         <mesh geometry={nodes.Mesh027.geometry} material={Materials.fenceMaterial} />
-        <mesh geometry={nodes.Mesh027_1.geometry} material={pubHovered ? Materials.selectedMaterial : Materials.outlineMaterial} />
+        <mesh
+          geometry={nodes.Mesh027_1.geometry}
+          material={pubHovered ? Materials.selectedMaterial : Materials.outlineMaterial}
+        />
       </group>
       <group
         position={[1.2, 8.45, -5.32]}
@@ -48,7 +54,10 @@ export const Model = ({
         scale={[-0.01, 0.01, 0.01]}
       >
         <mesh geometry={nodes.Mesh027.geometry} material={Materials.fenceMaterial} />
-        <mesh geometry={nodes.Mesh027_1.geometry} material={mapHovered ? Materials.selectedMaterial : Materials.outlineMaterial} />
+        <mesh
+          geometry={nodes.Mesh027_1.geometry}
+          material={mapHovered ? Materials.selectedMaterial : Materials.outlineMaterial}
+        />
       </group>
       <group
         position={[1.14, 6.41, -5.32]}
@@ -56,15 +65,24 @@ export const Model = ({
         scale={[-0.01, 0.01, 0.01]}
       >
         <mesh geometry={nodes.Mesh027.geometry} material={Materials.fenceMaterial} />
-        <mesh geometry={nodes.Mesh027_1.geometry} material={mapHovered ? Materials.selectedMaterial : Materials.outlineMaterial} />
+        <mesh
+          geometry={nodes.Mesh027_1.geometry}
+          material={mapHovered ? Materials.selectedMaterial : Materials.outlineMaterial}
+        />
       </group>
       <group position={[3.69, 4.71, 2.33]} rotation={[0.02, -0.13, 0]} scale={[-0.01, 0.01, 0.01]}>
         <mesh geometry={nodes.Mesh014.geometry} material={Materials.fenceMaterial} />
-        <mesh geometry={nodes.Mesh014_1.geometry} material={pubHovered ? Materials.selectedMaterial : Materials.outlineMaterial} />
+        <mesh
+          geometry={nodes.Mesh014_1.geometry}
+          material={pubHovered ? Materials.selectedMaterial : Materials.outlineMaterial}
+        />
       </group>
       <group position={[3.8, 6.07, 2.66]} rotation={[0.02, -0.14, 0]} scale={[0.09, 1.32, -1.98]}>
         <mesh geometry={nodes.Cube184.geometry} material={Materials.fenceMaterial} />
-        <mesh geometry={nodes.Cube184_1.geometry} material={mapHovered ? Materials.selectedMaterial : Materials.outlineMaterial} />
+        <mesh
+          geometry={nodes.Cube184_1.geometry}
+          material={mapHovered ? Materials.selectedMaterial : Materials.outlineMaterial}
+        />
       </group>
       <group
         position={[1.14, 7.06, -5.08]}
@@ -103,7 +121,10 @@ export const Model = ({
           geometry={nodes.Cube197.geometry}
           material={new MeshBasicMaterial({ map: mapTexture })}
         />
-        <mesh geometry={nodes.Cube197_1.geometry} material={mapHovered ? Materials.selectedMaterial : Materials.outlineMaterial} />
+        <mesh
+          geometry={nodes.Cube197_1.geometry}
+          material={mapHovered ? Materials.selectedMaterial : Materials.outlineMaterial}
+        />
       </group>
       <group
         position={[1.15, 4.41, -5.36]}
@@ -111,15 +132,24 @@ export const Model = ({
         scale={[-0.01, 0.01, 0.01]}
       >
         <mesh geometry={nodes.Mesh041.geometry} material={Materials.fenceMaterial} />
-        <mesh geometry={nodes.Mesh041_1.geometry} material={mapHovered ? Materials.selectedMaterial : Materials.outlineMaterial} />
+        <mesh
+          geometry={nodes.Mesh041_1.geometry}
+          material={mapHovered ? Materials.selectedMaterial : Materials.outlineMaterial}
+        />
       </group>
       <group position={[0.84, 9.37, -4.15]} rotation={[3.1, 0.98, 1.62]} scale={[0.03, 0.23, 0.03]}>
         <mesh geometry={nodes.Cube194.geometry} material={Materials.fenceMaterial} />
-        <mesh geometry={nodes.Cube194_1.geometry} material={mapHovered ? Materials.selectedMaterial : Materials.outlineMaterial} />
+        <mesh
+          geometry={nodes.Cube194_1.geometry}
+          material={mapHovered ? Materials.selectedMaterial : Materials.outlineMaterial}
+        />
       </group>
       <group position={[2.2, 9.34, -5.06]} rotation={[3.1, 0.98, 1.62]} scale={[0.03, 0.23, 0.03]}>
         <mesh geometry={nodes.Cube194.geometry} material={Materials.fenceMaterial} />
-        <mesh geometry={nodes.Cube194_1.geometry} material={mapHovered ? Materials.selectedMaterial : Materials.outlineMaterial} />
+        <mesh
+          geometry={nodes.Cube194_1.geometry}
+          material={mapHovered ? Materials.selectedMaterial : Materials.outlineMaterial}
+        />
       </group>
     </group>
   )
