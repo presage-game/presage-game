@@ -3,6 +3,7 @@ import {
   LoadingManager,
   MeshStandardMaterial,
   MeshToonMaterial,
+  MeshBasicMaterial,
   NearestFilter,
   TextureLoader,
 } from "three"
@@ -91,7 +92,11 @@ export const getMaterials = async (variant) =>
     })
 
     const backgroundMaterial = new MeshToonMaterial({
-      color: MaterialsColor.backgroundMaterial,
+      color: MaterialsColor.backgroundMaterial
+    })
+    
+    const outlineMaterial = new MeshBasicMaterial({
+      color: "#000000"
     })
 
     return {
@@ -103,5 +108,6 @@ export const getMaterials = async (variant) =>
       stoneMaterial,
       cloudMaterial,
       backgroundMaterial,
+      outlineMaterial
     }
   })
