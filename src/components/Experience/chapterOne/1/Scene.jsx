@@ -3,15 +3,19 @@ import { CustomCamera } from "../../tools/CustomCamera/CustomCamera"
 import { AdinkraThree } from "../../objects/interactive/AdinkraThree/AdinkraThree"
 import { Environment } from "@react-three/drei"
 
-export const Scene = ({ switchLerp }) => {
-  //<ambientLight color={"orange"} />
-  //<Model position={[8, -15, -12]} rotation={[0, 0, 0]} />
-
+export const Scene = ({ switchLerp, variant, setVariant }) => {
   return (
     <>
-      <Environment preset="park" />
+      <Environment preset="forest" />
       <CustomCamera />
-      <Model position={[9, -15, 93]} />
+      <directionalLight
+        intensity={0.9}
+        decay={2}
+        position={[-50, 50, 50]}
+        rotation={[-Math.PI / 2, 0, 0]}
+      />
+      {variant === "!default" && <ambientLight color={"white"} intensity={0.5} />}
+      <Model position={[9, -15, 93]} variant={variant} setVariant={setVariant} />
     </>
   )
 }

@@ -1,4 +1,5 @@
 import { Scene } from "./Scene"
+import { useState } from "react"
 import { useDispatch } from "react-redux"
 import { HotGround } from "../../effects/HotGround"
 import { changeOnFocusCamera, changeOnFocusCameraPosition } from "@/store/reducers/userReducer"
@@ -8,7 +9,8 @@ export const Setup = () => {
   const changeFocus = (value) => dispatch(changeOnFocusCamera(value))
   const changeFocusPosition = (value) => dispatch(changeOnFocusCameraPosition(value))
 
-  //test des adinkra avec cette fonction
+  const [variant, setVariant] = useState("default")
+
   const switchLerp = (value) => {
     changeFocusPosition({
       position: {
@@ -33,7 +35,7 @@ export const Setup = () => {
         position={[-30, 1, 0]}
         rotation={[-Math.PI / 2, Math.PI / 6, Math.PI / 2]}
       />
-      <Scene switchLerp={switchLerp} />
+      <Scene switchLerp={switchLerp} variant={variant} setVariant={setVariant} />
     </>
   )
 }
