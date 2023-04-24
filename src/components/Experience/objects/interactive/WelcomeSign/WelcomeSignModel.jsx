@@ -10,7 +10,10 @@ import { MeshBasicMaterial } from "three"
 
 export const Model = ({ position, rotation, setMapHovered, setPubHovered }) => {
   const { nodes, materials } = useGLTF("assets/objects/signs/welcome_sign.glb")
-  const map = useTexture("assets/images/nyalaande_map.png")
+  const mapTexture = useTexture("assets/images/nyalaande_map.png")
+  mapTexture.flipY = false
+  const truckTexture = useTexture("assets/images/truck.jpg")
+  truckTexture.flipY = false
   const [Materials, setMaterials] = useState(null)
 
   useEffect(() => {
@@ -63,7 +66,7 @@ export const Model = ({ position, rotation, setMapHovered, setPubHovered }) => {
         <mesh geometry={nodes.Cube196_1.geometry} material={materials["Material.010"]} />
       </group>
       <group position={[3.8, 6.07, 2.66]} rotation={[0.02, -0.14, 0]} scale={[0.09, 1.32, -1.98]}>
-        <mesh geometry={nodes.Cube185.geometry} material={Materials.leafMaterial} />
+        <mesh geometry={nodes.Cube185.geometry} material={new MeshBasicMaterial({ map: truckTexture })} />
         <mesh geometry={nodes.Cube185_1.geometry} material={Materials.outlineMaterial} />
       </group>
       <group
@@ -75,7 +78,7 @@ export const Model = ({ position, rotation, setMapHovered, setPubHovered }) => {
         rotation={[-0.04, -0.98, -0.05]}
         scale={[0.12, 2.55, -1.6]}
       >
-        <mesh geometry={nodes.Cube197.geometry} material={new MeshBasicMaterial({ map: map })} />
+        <mesh geometry={nodes.Cube197.geometry} material={new MeshBasicMaterial({ map: mapTexture })} />
         <mesh geometry={nodes.Cube197_1.geometry} material={Materials.outlineMaterial} />
       </group>
       <group

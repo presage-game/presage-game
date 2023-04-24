@@ -1,5 +1,5 @@
-import { Scene } from "./Scene"
 import { useState } from "react"
+import { Scene } from "./Scene"
 import { useDispatch } from "react-redux"
 import { HotGround } from "../../effects/HotGround"
 import { changeOnFocusCamera, changeOnFocusCameraPosition } from "@/store/reducers/userReducer"
@@ -29,6 +29,9 @@ export const Setup = () => {
   //   changeFocus(value)
   // }
 
+  const [pubHovered, setPubHovered] = useState(false)
+  const [mapHovered, setMapHovered] = useState(false)
+
   return (
     <>
       <Environment preset="forest" />
@@ -46,7 +49,13 @@ export const Setup = () => {
         position={[-30, 1, 0]}
         rotation={[-Math.PI / 2, Math.PI / 6, Math.PI / 2]}
       /> */}
-      <Scene variant={variant} setVariant={setVariant} />
+
+      <Scene
+        variant={variant}
+        setVariant={setVariant}
+        setMapHovered={setMapHovered}
+        setPubHovered={setPubHovered}
+      />
     </>
   )
 }

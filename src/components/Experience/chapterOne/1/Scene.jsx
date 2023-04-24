@@ -5,13 +5,9 @@ import { Environment } from "@react-three/drei"
 import { WelcomeSign } from "../../objects/interactive/WelcomeSign/WelcomeSign"
 import { useState } from "react"
 
+export const Scene = ({ variant, setVariant, setPubHovered, setMapHovered }) => {
   //<ambientLight color={"orange"} />
   //<Model position={[8, -15, -12]} rotation={[0, 0, 0]} />
-  
-
-export const Scene = ({ variant, setVariant }) => {
-  const [pubHovered, setPubHovered] = useState(false)
-  const [mapHovered, setMapHovered] = useState(false)
 
   return (
     <>
