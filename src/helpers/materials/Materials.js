@@ -51,7 +51,7 @@ export const getMaterials = async (variant) =>
     const MaterialsColor = variant === "default" ? defaultMaterials : variantMaterials
 
     const floorMaterial = new MeshToonMaterial({
-      color: variant === MaterialsColor.floorMaterial,
+      color: MaterialsColor.floorMaterial,
       gradientMap: toonFiveTone,
     })
 
@@ -61,7 +61,7 @@ export const getMaterials = async (variant) =>
     // })
 
     const roadMaterial = new MeshStandardMaterial({
-      color: variant === MaterialsColor.roadMaterial,
+      color: MaterialsColor.roadMaterial,
       side: DoubleSide,
     })
 
