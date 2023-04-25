@@ -50,9 +50,6 @@ export const Scene = ({ goOnScene, goOnPinpoint, resetScene, resetPinpoint }) =>
     camRef.current.lookAt(5, 0, 0)
     followCam.add(camRef.current)
     pivot.add(followCam)
-    let help =  new CameraHelper(camRef.current)
-    setHelper(help)
-
     resetScene()
   }, [])
 
@@ -73,7 +70,7 @@ export const Scene = ({ goOnScene, goOnPinpoint, resetScene, resetPinpoint }) =>
   }
 
   function move(delta) {
-    if (!navpath || navpath.length <= 0) return
+    if (!navPath || navPath.length <= 0) return
     carEnterInCube()
 
     let targetPosition = navPath[0]

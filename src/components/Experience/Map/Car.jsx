@@ -23,6 +23,3 @@ export const Car = ({animationsName = "Survey"}) => {
 
   return <primitive object={car.scene} scale={0.03} />
 }
-
-  return <primitive object={car.scene} scale={0.03} />
-}
