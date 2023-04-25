@@ -1,6 +1,7 @@
 import { useDispatch } from "react-redux"
 import { Scene } from "./Scene"
 import { changeScene, changePinpoint, resetScene, resetPinpoint } from "@/store/reducers/mapReducer"
+import { OrbitControls } from "@react-three/drei"
 
 export const Setup = () => {
   const dispatch = useDispatch()

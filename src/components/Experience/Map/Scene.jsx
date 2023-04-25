@@ -1,10 +1,10 @@
 import React, { useRef, useMemo, useEffect, useState } from "react"
 import { useSelector } from "react-redux"
-
-import { Box3, Object3D } from "three"
+import { Box3, Object3D, Quaternion, Vector3, CameraHelper } from "three"
 import { Box, useGLTF, OrthographicCamera, Gltf } from "@react-three/drei"
 import { useFrame } from "@react-three/fiber"
 import { Pathfinding, PathfindingHelper } from "three-pathfinding"
+import { Car } from "./Car"
 
 export const Scene = ({ goOnScene, goOnPinpoint, resetScene, resetPinpoint }) => {
   const audioPath = "src/assets/audios/chapterOne/pinpoints/pinpoint" // TODO: Update this path
@@ -14,9 +14,12 @@ export const Scene = ({ goOnScene, goOnPinpoint, resetScene, resetPinpoint }) =>
   const [pinpointAudio, setPinpointAudio] = useState(null)
   const [audioPlaying, setAudioPlaying] = useState(false)
 
-  // Handle map
+
+  const map = useGLTF("assets/scenes/map1.glb")
   const navMesh = useGLTF("assets/scenes/navMesh1.glb")
   const camRef = useRef()
+
+  const [pointerDown, setPointerDown] = useState(false)
 
   const voitureGrpRef = useRef(null)
   const cubeRef = useRef([])
@@ -26,19 +29,14 @@ export const Scene = ({ goOnScene, goOnPinpoint, resetScene, resetPinpoint }) =>
   const pathfinding = useMemo(() => new Pathfinding(), [])
   const pathfindinghelper = useMemo(() => new PathfindingHelper(), [])
   const ZONE = "level1"
-  const SPEED = 7
+  const SPEED = 8
+  let navPath = null
 
-  let navpath
-
-  useMemo(() => {
-    let navmesh
-    navMesh.scene.traverse((node) => {
-      if (!navmesh && node.isObject3D && node.children && node.children.length > 0) {
-        navmesh = node.children[0]
-        pathfinding.setZoneData(ZONE, Pathfinding.createZone(navmesh.geometry))
-      }
-    })
-  }, [])
+  navMesh.scene.traverse((node) => {
+    if (node.isObject3D && node.children && node.children.length > 0) {
+      pathfinding.setZoneData(ZONE, Pathfinding.createZone(node.children[0].geometry))
+    }
+  })
 
   const pivot = useMemo(() => new Object3D(), [])
 
@@ -52,7 +50,6 @@ export const Scene = ({ goOnScene, goOnPinpoint, resetScene, resetPinpoint }) =>
     camRef.current.lookAt(5, 0, 0)
     followCam.add(camRef.current)
     pivot.add(followCam)
-
     resetScene()
   }, [])
 
@@ -61,32 +58,39 @@ export const Scene = ({ goOnScene, goOnPinpoint, resetScene, resetPinpoint }) =>
     let groupID = pathfinding.getGroup(ZONE, voitureGrpRef.current.position)
     // find closest node to agent, just in case agent is out of bounds
     const closest = pathfinding.getClosestNode(voitureGrpRef.current.position, ZONE, groupID)
-    navpath = pathfinding.findPath(closest.centroid, target, ZONE, groupID)
-    if (navpath) {
+
+    navPath = pathfinding.findPath(closest.centroid, target, ZONE, groupID)
+
+    if (navPath) {
       pathfindinghelper.reset()
       pathfindinghelper.setPlayerPosition(voitureGrpRef.current.position)
       pathfindinghelper.setTargetPosition(target)
-      pathfindinghelper.setPath(navpath)
+      pathfindinghelper.setPath(navPath)
     }
   }
 
   function move(delta) {
-    if (!navpath || navpath.length <= 0) return
+    if (!navPath || navPath.length <= 0) return
     carEnterInCube()
 
-    let targetPosition = navpath[0]
+    let targetPosition = navPath[0]
     const distance = targetPosition.clone().sub(voitureGrpRef.current.position)
 
     if (distance.lengthSq() > 0.05 * 0.05) {
       distance.normalize()
       // Move player to target
       voitureGrpRef.current.position.add(distance.multiplyScalar(delta * SPEED))
-      // Rotate player to face target
-      voitureGrpRef.current.lookAt(targetPosition)
+      // do a slowly turn to the target
+      const targetRotation = new Quaternion().setFromUnitVectors(
+        new Vector3(0, 0, 1),
+        distance.clone().normalize()
+      )
+      voitureGrpRef.current.quaternion.slerp(targetRotation, delta * SPEED)
+      // Move camera to target
       pivot.position.lerp(voitureGrpRef.current.position, delta * SPEED)
     } else {
       // Remove node from the path we calculated
-      navpath.shift()
+      navPath.shift()
     }
   }
 
@@ -149,15 +153,23 @@ export const Scene = ({ goOnScene, goOnPinpoint, resetScene, resetPinpoint }) =>
   }
 
   useFrame((state, delta) => {
-    move(delta)
+    if (pointerDown) {
+      move(delta)
+    }
   })
 
   return (
     <>
-      <Gltf src="assets/scenes/map1.glb" />
-      <primitive onClick={(e) => click(e)} object={navMesh.scene} dispose={null} visible={false} />
+      <primitive object={map.scene} dispose={null} onPointerUp={(e) => setPointerDown(false)} />
+      <primitive
+        onPointerDown={() => setPointerDown(true)}
+        onPointerMove={(e) => (pointerDown ? click(e) : null)}
+        object={navMesh.scene}
+        dispose={null}
+        visible={false}
+      />
       <group ref={voitureGrpRef}>
-        <Gltf src="assets/vehicules/defender.glb" position={[5, 0, 0]} />
+        <Car animationsName={pointerDown ? "Run" : "Survey"} />
       </group>
       <Box
         ref={(el) => (cubeRef.current[0] = el)}
@@ -198,7 +210,7 @@ export const Scene = ({ goOnScene, goOnPinpoint, resetScene, resetPinpoint }) =>
         ref={camRef}
         position={[15, 15, 15]}
         zoom={20}
-        near={0.1}
+        near={-50}
         far={100}
       />
     </>
