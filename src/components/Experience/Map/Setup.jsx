@@ -16,17 +16,22 @@ export const Setup = () => {
 
   const resetSceneFunction = () => {
     dispatch(resetScene())
-  } 
+  }
 
   const resetPinpointFunction = () => {
     dispatch(resetPinpoint())
-  } 
+  }
 
   return (
     <>
-      <Scene goOnScene={goOnScene} goOnPinpoint={goOnPinpoint} resetScene={resetSceneFunction} resetPinpoint={resetPinpointFunction} />
+      <Scene
+        goOnScene={goOnScene}
+        goOnPinpoint={goOnPinpoint}
+        resetScene={resetSceneFunction}
+        resetPinpoint={resetPinpointFunction}
+      />
       <color attach={"background"} args={["#D0FEEF"]} />
-      <ambientLight intensity={1} />
+      {/* <ambientLight intensity={1} /> */}
       {/* <fog attach={"fog"} args={["black", 25, 120]} /> */}
       {/* <OrbitControls /> */}
     </>
