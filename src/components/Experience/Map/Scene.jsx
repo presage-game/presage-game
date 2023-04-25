@@ -63,7 +63,7 @@ export const Scene = ({ goOnScene, goOnPinpoint, resetScene, resetPinpoint }) =>
     const closest = pathfinding.getClosestNode(voitureGrpRef.current.position, ZONE, groupID)
 
     navPath = pathfinding.findPath(closest.centroid, target, ZONE, groupID)
-    
+
     if (navPath) {
       pathfindinghelper.reset()
       pathfindinghelper.setPlayerPosition(voitureGrpRef.current.position)
@@ -154,6 +154,7 @@ export const Scene = ({ goOnScene, goOnPinpoint, resetScene, resetPinpoint }) =>
       pinpointIndex !== null && resetPinpoint()
     }
   }
+
   useFrame((state, delta) => {
     if (pointerDown) {
       move(delta)
@@ -162,9 +163,9 @@ export const Scene = ({ goOnScene, goOnPinpoint, resetScene, resetPinpoint }) =>
 
   return (
     <>
-      <primitive object={map.scene} dispose={null} onPointerUp={(e) => (setPointerDown(false))} />
+      <primitive object={map.scene} dispose={null} onPointerUp={(e) => setPointerDown(false)} />
       <primitive
-        onPointerDown={() => (setPointerDown(true))}
+        onPointerDown={() => setPointerDown(true)}
         onPointerMove={(e) => (pointerDown ? click(e) : null)}
         object={navMesh.scene}
         dispose={null}
