@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { useSelector, useDispatch } from "react-redux"
 import { toggleBlackBars, toggleMap } from "@/store/reducers/uiReducer"
 
@@ -9,8 +9,10 @@ import styles from "./Interface.module.scss"
 import { SceneTextBox } from "@/components/Interface/SceneTextBox/SceneTextBox"
 import { MapTextBox } from "@/components/Interface/MapTextBox/MapTextBox"
 import { IntersectionPopup } from "@/components/Interface/IntersectionPopup/IntersectionPopup"
+import { Collection } from "@/components/Interface/Collection/Collection"
+import { Options } from "@/components/Interface/Options/Options"
 
-export const Interface = ({ mapActive }) => {
+export const Interface = ({ mapActive, spotIndex }) => {
   const dispatch = useDispatch()
 
   const {
@@ -21,34 +23,39 @@ export const Interface = ({ mapActive }) => {
 
   const [isPopupVisible, setIsPopupVisible] = useState(true)
 
+  useEffect(() => {
+    console.log("spotIndex", spotIndex)
+  }, [spotIndex])
+
   return (
     <div className={styles.root}>
       <div
         style={{
           position: "absolute",
-          right: "2rem",
-          bottom: "2rem",
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "flex-start",
-          zIndex: "20",
+          zIndex: "10",
           mixBlendMode: "difference",
+          top: "2rem",
+          left: "50%",
+          transform: "translateX(-50%)",
         }}
       >
         {sceneIndex !== null && !mapActive && (
-          <button onClick={() => dispatch(toggleMap())}>
-            {mapActive ? "Close map" : "Go to map"}
+          <button style={{ cursor: "pointer" }} onClick={() => dispatch(toggleMap())}>
+            {mapActive ? "Close map" : "[Go to map]"}
           </button>
         )}
         <button
+          style={{ marginLeft: "3rem", cursor: "pointer" }}
           onClick={() => {
             dispatch(toggleBlackBars())
           }}
         >
-          Cinematic mode
+          [Cinematic mode]
         </button>
       </div>
-      {!mapActive && <SceneTextBox sceneIndex={sceneIndex} scriptData={scriptData} />}
+      {!mapActive && (
+        <SceneTextBox sceneIndex={sceneIndex} scriptData={scriptData} spotIndex={spotIndex} />
+      )}
       {mapActive && (
         <>
           <IntersectionPopup
@@ -69,6 +76,8 @@ export const Interface = ({ mapActive }) => {
           />
         </>
       )}
+      <Collection />
+      <Options />
     </div>
   )
 }

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { motion, AnimatePresence } from "framer-motion"
-import { resetScene, resetPinpoint, showPinpoint } from "@/store/reducers/mapReducer"
+import { showPinpoint } from "@/store/reducers/mapReducer"
 
 import styles from "@/components/Interface/SceneTextBox/SceneTextBox.module.scss"
 

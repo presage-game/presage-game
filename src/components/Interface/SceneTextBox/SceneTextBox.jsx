@@ -2,14 +2,22 @@ import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import styles from "./SceneTextBox.module.scss"
 
-export const SceneTextBox = ({ sceneIndex, scriptData }) => {
+export const SceneTextBox = ({ sceneIndex, scriptData, spotIndex }) => {
   const [showText, setShowText] = useState(false)
   const [isVoiceOver, setIsVoiceOver] = useState(false)
   const [showOptions, setShowOptions] = useState(false)
-  const [spotIndex, setSpotIndex] = useState(0)
   const [textIndex, setTextIndex] = useState(0)
   const [optionIndex, setOptionIndex] = useState(0)
   const [key, setKey] = useState(0)
+
+  useEffect(() => {
+    if (spotIndex !== undefined) {
+      setTextIndex(0)
+      setIsVoiceOver(false)
+      setShowText(true)
+      setShowOptions(true)
+    }
+  }, [spotIndex])
 
   const getTextEmitter = () =>
     !isVoiceOver
@@ -69,11 +77,11 @@ export const SceneTextBox = ({ sceneIndex, scriptData }) => {
       {showText && (
         <motion.div
           key="sceneTextBox"
-          className={styles.classic}
-          initial={{ opacity: 0, y: 20, x: "-50%" }}
-          animate={{ opacity: 1, y: 0, x: "-50%" }}
-          exit={{ opacity: 0, y: -20, x: "-50%" }}
-          transition={{ y: { type: "spring", stiffness: 100 } }}
+          className={styles.aside}
+          initial={{ opacity: 0, y: 0, x: "-20%" }}
+          animate={{ opacity: 1, y: 0, x: "0%" }}
+          exit={{ opacity: 0, y: 0, x: "-20%" }}
+          transition={{ x: { type: "spring", stiffness: 100 } }}
         >
           <div>
             {getTextEmitter() === "narrator" && <h2 className={styles.narrator}>Le narrateur</h2>}
