@@ -19,9 +19,9 @@ export const Setup = () => {
       setMapClicked(false)
       changeFocusPosition({
         position: {
-          x: -12,
+          x: -21,
           y: -2,
-          z: 190,
+          z: 210,
         },
         rotation: {
           x: Math.PI / 6,
@@ -34,13 +34,13 @@ export const Setup = () => {
       setPubClicked(false)
       changeFocusPosition({
         position: {
-          x: -40,
-          y: -5,
-          z: 190,
+          x: 80,
+          y: -3,
+          z: 130,
         },
         rotation: {
           x: 0,
-          y: Math.PI / 3,
+          y: -Math.PI / 4,
           z: 0,
         },
       })
