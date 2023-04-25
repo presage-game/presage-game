@@ -32,7 +32,7 @@ export const Experience = () => {
         {mapActive ? <Map /> : scene === 0 ? <RegionEntranceOne /> : <PhosphateMine />}
         {HighGraphics && (
           <EffectComposer multisampling={0}>
-            <SSAO samples={20} radius={10} intensity={30} luminanceInfluence={0.4} />
+            <SSAO samples={30} radius={10} intensity={30} luminanceInfluence={0.2} distanceFalloff={0.7} />
           </EffectComposer>
         )}
       </Canvas>
