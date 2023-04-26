@@ -80,7 +80,7 @@ export const SceneTextBox = ({ mapActive, sceneIndex, scriptData, spotIndex }) =
 
   return (
     <AnimatePresence>
-      {showText && (
+      {showText && spotIndex !== null && (
         <motion.div
           key="sceneTextBox"
           className={styles.aside}

@@ -25,9 +25,9 @@ export const Experience = () => {
         {mapActive ? (
           <Map />
         ) : scene === 0 ? (
-          <RegionEntranceOne setSpotIndex={setSpotIndex} />
+          <RegionEntranceOne spotIndex={spotIndex} setSpotIndex={setSpotIndex} />
         ) : (
-          <MegalithicCircles setSpotIndex={setSpotIndex} />
+          <MegalithicCircles spotIndex={spotIndex} setSpotIndex={setSpotIndex} />
         )}
       </Canvas>
     </div>

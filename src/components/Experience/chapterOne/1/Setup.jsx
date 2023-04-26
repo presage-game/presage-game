@@ -5,7 +5,7 @@ import { changeOnFocusCamera, changeOnFocusCameraPosition } from "@/store/reduce
 import { CustomCamera } from "../../tools/CustomCamera/CustomCamera"
 import { Environment } from "@react-three/drei"
 
-export const Setup = ({ setSpotIndex }) => {
+export const Setup = ({ spotIndex, setSpotIndex }) => {
   const [variant, setVariant] = useState("default")
   const [pubClicked, setPubClicked] = useState(false)
   const [mapClicked, setMapClicked] = useState(false)
@@ -20,13 +20,13 @@ export const Setup = ({ setSpotIndex }) => {
       setSpotIndex(0)
       changeFocusPosition({
         position: {
-          x: -21,
+          x: -20,
           y: -2,
-          z: 210,
+          z: 205,
         },
         rotation: {
           x: Math.PI / 6,
-          y: Math.PI / 6,
+          y: Math.PI / 15,
           z: 0,
         },
       })
@@ -36,7 +36,7 @@ export const Setup = ({ setSpotIndex }) => {
       setSpotIndex(1)
       changeFocusPosition({
         position: {
-          x: 80,
+          x: 75,
           y: -3,
           z: 130,
         },
@@ -49,6 +49,13 @@ export const Setup = ({ setSpotIndex }) => {
       changeFocus(true)
     } else {
       changeFocus(false)
+    }
+  }, [pubClicked, mapClicked])
+
+  useEffect(() => {
+    if (pubClicked === false && mapClicked === false) {
+      console.log("RESET THE INDEX")
+      setSpotIndex(null)
     }
   }, [pubClicked, mapClicked])
 

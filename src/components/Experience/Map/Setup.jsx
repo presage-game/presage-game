@@ -31,9 +31,9 @@ export const Setup = () => {
         resetPinpoint={resetPinpointFunction}
       />
       <color attach={"background"} args={["#D0FEEF"]} />
-      {/* <ambientLight intensity={1} /> */}
-      {/* <fog attach={"fog"} args={["black", 25, 120]} /> */}
-      {/* <OrbitControls /> */}
+      <directionalLight intensity={1} />
+      <ambientLight intensity={0.2} />
+      <fog attach={"fog"} args={["black", 25, 120]} />
     </>
   )
 }
