@@ -4,7 +4,7 @@ Command: npx gltfjsx@6.1.4 ./public/assets/scenes/scene_1.2.glb --transform
 */
 
 import React, { useEffect, useState } from "react"
-import { useGLTF } from "@react-three/drei"
+import { Box, useGLTF } from "@react-three/drei"
 import { getMaterials } from "@/helpers/materials/Materials"
 
 export function Model(props) {

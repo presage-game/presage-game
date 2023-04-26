@@ -1,6 +1,7 @@
 import { useState } from "react"
 import { Model as MapSignModel } from "./MapSign"
 import { Model as CitiesSignModel } from "./CitiesSign"
+import { Box } from "@react-three/drei"
 
 export const WelcomeSign = ({ mapClicked, setMapClicked, pubClicked, setPubClicked }) => {
   const [mapHovered, setMapHovered] = useState(false)
