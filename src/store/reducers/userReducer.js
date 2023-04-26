@@ -28,11 +28,6 @@ const initialState = {
       name: "Adinkra 2",
       description: "Adinkra 2 description",
     },
-    {
-      id: 3,
-      name: "Adinkra 3",
-      description: "Adinkra 3 description",
-    },
   ],
 }
 
@@ -48,6 +43,9 @@ export const userSlice = createSlice({
     },
     changeOnFocusCameraPosition: (state, action) => {
       state.onFocusCameraPosition = action.payload
+    },
+    collectAdinkra: (state, action) => {
+      state.collectedAdinkras.push(action.payload)
     },
   },
 })

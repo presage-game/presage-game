@@ -87,7 +87,6 @@ export const Setup = ({ setSpotIndex }) => {
         position={[-30, 1, 0]}
         rotation={[-Math.PI / 2, Math.PI / 6, Math.PI / 2]}
       /> */}
-
       <Scene
         variant={variant}
         setVariant={setVariant}
