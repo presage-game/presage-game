@@ -2,7 +2,7 @@ import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import styles from "./SceneTextBox.module.scss"
 
-export const SceneTextBox = ({ sceneIndex, scriptData, spotIndex }) => {
+export const SceneTextBox = ({ mapActive, sceneIndex, scriptData, spotIndex }) => {
   const [showText, setShowText] = useState(false)
   const [isVoiceOver, setIsVoiceOver] = useState(false)
   const [showOptions, setShowOptions] = useState(false)
@@ -18,6 +18,12 @@ export const SceneTextBox = ({ sceneIndex, scriptData, spotIndex }) => {
       setShowOptions(true)
     }
   }, [spotIndex])
+
+  useEffect(() => {
+    setTextIndex(0)
+    setShowText(false)
+    setShowOptions(false)
+  }, [mapActive])
 
   const getTextEmitter = () =>
     !isVoiceOver
@@ -78,112 +84,118 @@ export const SceneTextBox = ({ sceneIndex, scriptData, spotIndex }) => {
         <motion.div
           key="sceneTextBox"
           className={styles.aside}
-          initial={{ opacity: 0, y: 0, x: "-20%" }}
-          animate={{ opacity: 1, y: 0, x: "0%" }}
-          exit={{ opacity: 0, y: 0, x: "-20%" }}
+          initial={{ opacity: 0, y: "-50%", x: "-20%" }}
+          animate={{ opacity: 1, y: "-50%", x: "0%" }}
+          exit={{ opacity: 0, y: "-50%", x: "-20%" }}
           transition={{ x: { type: "spring", stiffness: 100 } }}
         >
-          <div>
-            {getTextEmitter() === "narrator" && <h2 className={styles.narrator}>Le narrateur</h2>}
-            {getTextEmitter() === "innerVoice" && (
-              <h2 className={[`${styles.narrator} ${styles["narrator--innerVoice"]}`]}>Une voix</h2>
-            )}
-            {getTextEmitter() === "npc" && (
-              <h2 className={[`${styles.narrator} ${styles["narrator--npc"]}`]}>
-                {getTextLabel()}
-              </h2>
-            )}
+          <div className={styles.container}>
+            <div>
+              {getTextEmitter() === "narrator" && <h2 className={styles.narrator}>Le narrateur</h2>}
+              {getTextEmitter() === "innerVoice" && (
+                <h2 className={[`${styles.narrator} ${styles["narrator--innerVoice"]}`]}>
+                  Une voix
+                </h2>
+              )}
+              {getTextEmitter() === "npc" && (
+                <h2 className={[`${styles.narrator} ${styles["narrator--npc"]}`]}>
+                  {getTextLabel()}
+                </h2>
+              )}
 
-            {isVoiceOver && (
-              <p className={styles.content}>
-                {getIntroText()
-                  .split(" ")
-                  .map((word, index) => (
-                    <motion.span
-                      key={`${textIndex}-${spotIndex}-${index}-${key}`}
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      transition={{ duration: 0.25, delay: index * 0.1 }}
-                    >
-                      {word}{" "}
-                    </motion.span>
-                  ))}
-              </p>
-            )}
+              {isVoiceOver && (
+                <p className={styles.content}>
+                  {getIntroText()
+                    .split(" ")
+                    .map((word, index) => (
+                      <motion.span
+                        key={`${textIndex}-${spotIndex}-${index}-${key}`}
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ duration: 0.25, delay: index * 0.1 }}
+                      >
+                        {word}{" "}
+                      </motion.span>
+                    ))}
+                </p>
+              )}
 
-            {!isVoiceOver && showOptions && (
-              <p className={styles.content}>
-                {getSpotText()
-                  .split(" ")
-                  .map((word, index) => (
-                    <motion.span
-                      key={`${textIndex}-${spotIndex}-${index}-${key}`}
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.25, delay: index * 0.1 }}
-                    >
-                      {word}{" "}
-                    </motion.span>
-                  ))}
-              </p>
-            )}
+              {!isVoiceOver && showOptions && (
+                <p className={styles.content}>
+                  {getSpotText()
+                    .split(" ")
+                    .map((word, index) => (
+                      <motion.span
+                        key={`${textIndex}-${spotIndex}-${index}-${key}`}
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.25, delay: index * 0.1 }}
+                      >
+                        {word}{" "}
+                      </motion.span>
+                    ))}
+                </p>
+              )}
 
-            {hasOptions() && !isVoiceOver && !showOptions && (
-              <p className={styles.content}>
-                {getOptionResponse()
-                  .split(" ")
-                  .map((word, index) => (
-                    <motion.span
-                      key={`${textIndex}-${spotIndex}-${index}-${key}`}
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.25, delay: index * 0.1 }}
-                    >
-                      {word}{" "}
-                    </motion.span>
-                  ))}
-              </p>
-            )}
-          </div>
-          {hasOptions() && hasMore() && !showOptions && (
-            <button
-              className={[`${styles.bottomButton} ${styles["bottomButton--more"]}`]}
-              onClick={showMoreNPC}
-            >
-              Suite
-            </button>
-          )}
-          {!hasOptions() && hasMore() && (
-            <button
-              className={[`${styles.bottomButton} ${styles["bottomButton--more"]}`]}
-              onClick={showMore}
-            >
-              Suite
-            </button>
-          )}
-          {!hasMore() && (
-            <button
-              className={[`${styles.bottomButton} ${styles["bottomButton--close"]}`]}
-              onClick={() => setShowText(false)}
-            >
-              Fermer
-            </button>
-          )}
-          {hasOptions() && showOptions && (
-            <div className={styles.options}>
-              {scriptData[sceneIndex]?.spots[spotIndex]?.spotVoiceover[textIndex]?.options.map(
-                (option, index) => (
-                  <button
-                    key={index}
-                    className={styles.optionsButton}
-                    onClick={() => chooseResponse(index)}
-                  >
-                    {option?.text}
-                  </button>
-                )
+              {hasOptions() && !isVoiceOver && !showOptions && (
+                <p className={styles.content}>
+                  {getOptionResponse()
+                    .split(" ")
+                    .map((word, index) => (
+                      <motion.span
+                        key={`${textIndex}-${spotIndex}-${index}-${key}`}
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.25, delay: index * 0.1 }}
+                      >
+                        {word}{" "}
+                      </motion.span>
+                    ))}
+                </p>
               )}
             </div>
-          )}
+            {hasOptions() && hasMore() && !showOptions && (
+              <button
+                className={[`${styles.bottomButton} ${styles["bottomButton--more"]}`]}
+                onClick={showMoreNPC}
+              >
+                Suite
+              </button>
+            )}
+            {!hasOptions() && hasMore() && (
+              <button
+                className={[`${styles.bottomButton} ${styles["bottomButton--more"]}`]}
+                onClick={showMore}
+              >
+                Suite
+              </button>
+            )}
+            {!hasMore() && (
+              <button
+                className={[`${styles.bottomButton} ${styles["bottomButton--close"]}`]}
+                onClick={() => {
+                  setShowText(false)
+                }}
+              >
+                Fermer
+              </button>
+            )}
+            {hasOptions() && showOptions && (
+              <div className={styles.options}>
+                {scriptData[sceneIndex]?.spots[spotIndex]?.spotVoiceover[textIndex]?.options.map(
+                  (option, index) => (
+                    <button
+                      key={index}
+                      className={styles.optionsButton}
+                      onClick={() => chooseResponse(index)}
+                    >
+                      {option?.text}
+                    </button>
+                  )
+                )}
+              </div>
+            )}
+          </div>
         </motion.div>
       )}
     </AnimatePresence>

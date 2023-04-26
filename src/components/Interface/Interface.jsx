@@ -54,7 +54,12 @@ export const Interface = ({ mapActive, spotIndex }) => {
         </button>
       </div>
       {!mapActive && (
-        <SceneTextBox sceneIndex={sceneIndex} scriptData={scriptData} spotIndex={spotIndex} />
+        <SceneTextBox
+          mapActive={mapActive}
+          sceneIndex={sceneIndex}
+          scriptData={scriptData}
+          spotIndex={spotIndex}
+        />
       )}
       {mapActive && (
         <>

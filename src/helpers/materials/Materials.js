@@ -9,7 +9,7 @@ import {
 } from "three"
 
 const defaultMaterials = {
-  floorMaterial: "#CE896A",
+  floorMaterial: "#F6B791",
   roadMaterial: "#2D2D2C",
   fenceMaterial: "#757271",
   leafMaterial: "#4F7552",

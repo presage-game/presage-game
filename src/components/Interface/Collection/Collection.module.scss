@@ -13,7 +13,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 0.15rem dashed white;
+    border: 0.15rem dashed #f0edd9;
 
     &:not(:first-child) {
       margin-top: 1.25rem;
@@ -25,7 +25,7 @@
     }
 
     &.active {
-      border: 0.15rem solid white;
+      border: 0.15rem solid #f0edd9;
     }
 
     &.active {

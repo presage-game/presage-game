@@ -72,7 +72,7 @@ export const Setup = ({ setSpotIndex }) => {
 
   return (
     <>
-      <Environment preset="forest" />
+      <Environment preset="park" />
       <CustomCamera />
       <directionalLight
         intensity={variant === "default" ? 0.9 : 0.5}

@@ -1,18 +1,28 @@
 .aside {
   max-width: 100%;
-  height: calc(100% - 4rem);
   width: 50rem;
   left: 2rem;
   padding: 2rem;
   position: absolute;
-  bottom: 2rem;
-  border-radius: 0.4rem;
-  background-color: #000000cc;
-  border: 0.15rem solid #ffb24d31;
+  top: 50%;
+  transform: translateY(-50%);
+  border-radius: 0.8rem;
+  background-color: rgb(254, 255, 241);
+  // background: linear-gradient(217deg, rgba(229, 230, 210, 0.8), rgba(215, 210, 173, 0.857) 70.71%),
+  //   linear-gradient(127deg, rgba(222, 198, 145, 0.8), rgba(249, 238, 185, 0.893) 70.71%),
+  //   linear-gradient(336deg, rgba(219, 209, 170, 0.8), rgba(244, 226, 185, 0.749) 70.71%);
+  // border: 0.15rem solid black;
+  border: 0.15rem solid rgb(0, 0, 0);
+  color: black;
+}
+
+.container {
+  border-radius: 0.8rem;
+  width: 100%;
+  padding: 2rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  align-items: flex-start;
 }
 
 .classic {
@@ -23,8 +33,9 @@
   padding: 2rem;
   position: absolute;
   bottom: 2rem;
-  background-color: #000000cc;
-  border: 0.15rem solid #ffb24d31;
+  background-color: #f0edd9;
+  border: 0.15rem solid black;
+  color: black;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -46,7 +57,7 @@
     }
 
     &--npc {
-      color: #ffb24d;
+      color: rgb(185, 144, 105);
     }
   }
 
@@ -61,12 +72,12 @@
       cursor: pointer;
       display: block;
       text-align: left;
-      color: #ffb24d;
+      color: rgb(185, 144, 105);
       width: 100%;
       transition: ease-in-out 0.2s;
 
       &:hover {
-        color: #ff9d1d;
+        color: rgb(185, 144, 105);
       }
     }
   }
@@ -75,7 +86,7 @@
     cursor: pointer;
     text-transform: uppercase;
     display: block;
-    background-color: #ffb24d;
+    background-color: rgb(185, 144, 105);
     padding: 1rem;
     font-family: "Spectral SC", sans-serif;
     letter-spacing: 0.2rem;
@@ -87,21 +98,13 @@
     border-radius: 0.4rem;
 
     &--more {
-      background-color: #81653d;
+      background-color: rgb(185, 144, 105);
       color: white;
-
-      &:hover {
-        background-color: #715c3d;
-      }
     }
 
     &--close {
-      background-color: #ffb24d;
-      color: black;
-
-      &:hover {
-        background-color: #ff9d1d;
-      }
+      background-color: rgb(185, 144, 105);
+      color: white;
     }
   }
 }

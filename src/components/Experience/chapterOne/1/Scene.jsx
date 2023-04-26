@@ -14,8 +14,6 @@ export const Scene = ({
   return (
     <>
       <Model position={[9, -15, 93]} variant={variant} setVariant={setVariant} />
-      <Environment preset="park" />
-      <CustomCamera />
       <WelcomeSign
         pubClicked={pubClicked}
         setPubClicked={setPubClicked}
