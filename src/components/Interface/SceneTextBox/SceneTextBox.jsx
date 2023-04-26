@@ -11,7 +11,7 @@ export const SceneTextBox = ({ mapActive, sceneIndex, scriptData, spotIndex }) =
   const [key, setKey] = useState(0)
 
   useEffect(() => {
-    if (spotIndex !== undefined) {
+    if (spotIndex !== null) {
       setTextIndex(0)
       setIsVoiceOver(false)
       setShowText(true)
