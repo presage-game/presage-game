@@ -48,14 +48,8 @@ export const Setup = ({ spotIndex, setSpotIndex }) => {
       })
       changeFocus(true)
     } else {
-      changeFocus(false)
-    }
-  }, [pubClicked, mapClicked])
-
-  useEffect(() => {
-    if (pubClicked === false && mapClicked === false) {
-      console.log("RESET THE INDEX")
       setSpotIndex(null)
+      changeFocus(false)
     }
   }, [pubClicked, mapClicked])
 
