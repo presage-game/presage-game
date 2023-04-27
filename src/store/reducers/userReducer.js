@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit"
 
 const initialState = {
   gameCode: null,
+  scenario: "",
   hasExperienceStarted: false,
   onFocusCamera: false,
   onFocusCameraPosition: {
@@ -16,6 +17,18 @@ const initialState = {
       z: 0,
     },
   },
+  collectedAdinkras: [
+    {
+      id: 1,
+      name: "Adinkra 1",
+      description: "Adinkra 1 description",
+    },
+    {
+      id: 2,
+      name: "Adinkra 2",
+      description: "Adinkra 2 description",
+    },
+  ],
 }
 
 export const userSlice = createSlice({
@@ -30,6 +43,9 @@ export const userSlice = createSlice({
     },
     changeOnFocusCameraPosition: (state, action) => {
       state.onFocusCameraPosition = action.payload
+    },
+    collectAdinkra: (state, action) => {
+      state.collectedAdinkras.push(action.payload)
     },
   },
 })

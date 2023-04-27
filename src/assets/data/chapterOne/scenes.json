@@ -21,6 +21,20 @@
             "emitter": "innerVoice"
           }
         ]
+      },
+      {
+        "index": 1,
+        "label": "Deuxième panneau routier",
+        "spotVoiceover": [
+          {
+            "text": "Même chose. Faut rédiger ça, les mecs, sérieux.",
+            "emitter": "narrator"
+          },
+          {
+            "text": "Ils en foutent pas une.",
+            "emitter": "innerVoice"
+          }
+        ]
       }
     ]
   },

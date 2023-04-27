@@ -6,6 +6,8 @@ const initialState = {
   isTrackPlaying: false,
   isAmbiancePlaying: false,
   isSpeaking: false,
+  isMuted: true,
+  volume: 0.5,
 }
 
 export const audioSlice = createSlice({

@@ -5,7 +5,7 @@ import { changeOnFocusCamera, changeOnFocusCameraPosition } from "@/store/reduce
 import { CustomCamera } from "../../tools/CustomCamera/CustomCamera"
 import { Environment } from "@react-three/drei"
 
-export const Setup = () => {
+export const Setup = ({ spotIndex, setSpotIndex }) => {
   const [variant, setVariant] = useState("default")
   const [pubClicked, setPubClicked] = useState(false)
   const [mapClicked, setMapClicked] = useState(false)
@@ -17,24 +17,26 @@ export const Setup = () => {
   useEffect(() => {
     if (pubClicked) {
       setMapClicked(false)
+      setSpotIndex(0)
       changeFocusPosition({
         position: {
-          x: -21,
+          x: -20,
           y: -2,
-          z: 210,
+          z: 205,
         },
         rotation: {
           x: Math.PI / 6,
-          y: Math.PI / 6,
+          y: Math.PI / 15,
           z: 0,
         },
       })
       changeFocus(true)
     } else if (mapClicked) {
       setPubClicked(false)
+      setSpotIndex(1)
       changeFocusPosition({
         position: {
-          x: 80,
+          x: 75,
           y: -3,
           z: 130,
         },
@@ -46,6 +48,7 @@ export const Setup = () => {
       })
       changeFocus(true)
     } else {
+      setSpotIndex(null)
       changeFocus(false)
     }
   }, [pubClicked, mapClicked])
@@ -70,7 +73,7 @@ export const Setup = () => {
 
   return (
     <>
-      <Environment preset="forest" />
+      <Environment preset="park" />
       <CustomCamera />
       <directionalLight
         intensity={variant === "default" ? 0.9 : 0.5}
@@ -85,7 +88,6 @@ export const Setup = () => {
         position={[-30, 1, 0]}
         rotation={[-Math.PI / 2, Math.PI / 6, Math.PI / 2]}
       /> */}
-
       <Scene
         variant={variant}
         setVariant={setVariant}
