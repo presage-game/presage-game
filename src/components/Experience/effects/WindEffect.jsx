@@ -1,25 +1,27 @@
 import { Line } from "@react-three/drei"
 import { useFrame } from "@react-three/fiber"
-import { useMotionValue, useSpring } from "framer-motion"
-import { useEffect, useRef } from "react"
-import { Line3 } from "three"
+import { useEffect, useRef, useState } from "react"
+import { getMaterials } from "@/helpers/materials/Materials"
 
 export const WindEffect = () => {
   const lineRef = useRef(null)
-  const val = useMotionValue(0)
-  const movement = useSpring(0, { stiffness: 1000, damping: 10, duration: 10 })
+  const [Materials, setMaterials] = useState(null)
+
   useEffect(() => {
-    movement.set(30)
-    val.set(30)
+    getMaterials().then((result) => setMaterials(result))
   }, [])
-  useEffect(() => console.log(val), [val])
 
   useFrame(() => {
-    lineRef.current.position.x = val.get()
-    if(lineRef.current.position.x === 30) {
-      lineRef.current.position.x = 0
+    if (Materials !== null) {
+      lineRef.current.position.x += 0.5
+      lineRef.current.position.z += 0.3
+      if (lineRef.current.position.x >= 60) {
+        lineRef.current.position.x = -30
+        if (lineRef.current.position.z >= 30) {
+          lineRef.current.position.z = -90
+        }
+      }
     }
-    console.log(val.get())
   })
   /*
   <CatmullRomLine
@@ -35,17 +37,21 @@ export const WindEffect = () => {
     <Line points={catPoints} dashed={false} lineWidth={100} />
   */
 
+  if (Materials === null) {
+    return <></>
+  }
+
   return (
     <>
       <Line
         ref={lineRef}
-        position={[0, 0, 1]}
         points={[
-          [-5, 8, -90],
-          [0, 8, -92],
+          [-5, 8, -93],
+          [0, 8, -90],
         ]}
+        segments
         lineWidth={2}
-        color={"#BDD9E0"}
+        material={Materials.outlineMaterial}
       />
     </>
   )
