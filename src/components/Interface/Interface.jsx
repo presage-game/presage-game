@@ -4,7 +4,6 @@ import { toggleBlackBars, toggleMap } from "@/store/reducers/uiReducer"
 
 import scriptData from "@/assets/data/chapterOne/scenes.json"
 import pinpointsData from "@/assets/data/chapterOne/pinpoints.json"
-import styles from "./Interface.module.scss"
 
 import { SceneTextBox } from "@/components/Interface/SceneTextBox/SceneTextBox"
 import { MapTextBox } from "@/components/Interface/MapTextBox/MapTextBox"
@@ -28,7 +27,7 @@ export const Interface = ({ mapActive, spotIndex }) => {
   }, [spotIndex])
 
   return (
-    <div className={styles.root}>
+    <>
       <div
         style={{
           position: "absolute",
@@ -83,6 +82,6 @@ export const Interface = ({ mapActive, spotIndex }) => {
       )}
       <Collection />
       <Options />
-    </div>
+    </>
   )
 }

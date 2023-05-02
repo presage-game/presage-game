@@ -4,7 +4,6 @@ import { Introduction } from "./components/Introduction/Introduction"
 import { useDispatch } from "react-redux"
 import { startExperience } from "./store/reducers/introductionReducer"
 import styles from "./App.module.scss"
-import { getGame } from "./database/gamecode"
 
 const App = () => {
   const dispatch = useDispatch()
