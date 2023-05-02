@@ -2,12 +2,12 @@ import { useSelector } from "react-redux"
 import { Experience } from "./components/Experience/Experience"
 import { Introduction } from "./components/Introduction/Introduction"
 import { useDispatch } from "react-redux"
-import { startExperience } from "./store/reducers/introductionReducer"
+import { startExperience } from "./store/reducers/userReducer"
 import styles from "./App.module.scss"
 
 const App = () => {
   const dispatch = useDispatch()
-  const { hasExperienceStarted } = useSelector((state) => state.introduction)
+  const { hasExperienceStarted } = useSelector((state) => state.user)
 
   return (
     <main className={styles.root}>

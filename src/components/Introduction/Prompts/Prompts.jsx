@@ -1,25 +1,40 @@
 import React, { useState } from "react"
-import { useDispatch } from "react-redux"
-import { answerPrompt } from "@/store/reducers/introductionReducer"
 import { motion, AnimatePresence } from "framer-motion"
 import { Button } from "@/components/Button/Button"
 import styles from "./Prompts.module.scss"
+import { useDispatch } from "react-redux"
+import { setScore } from "@/store/reducers/userReducer"
 
 export const Prompts = ({ introduction, currentIndex, setCurrentIndex }) => {
   const dispatch = useDispatch()
+  // const { score, scenario } = useSelector((state) => state.user)
+  const TIPPING_POINT = Object.keys(introduction).length
 
   const [showFollowing, setShowFollowing] = useState(false)
   const [followingToShow, setFollowingToShow] = useState(null)
-  const [key, setKey] = useState(0)
+  const [isPromptComplete, setIsPromptComplete] = useState(false)
+  // const [key, setKey] = useState(0)
 
-  // Hide the following text for a prompt, update local state, and record user's answer
+  const answerPrompt = (data) => {
+    dispatch(setScore(data))
+  }
+
+  // const completePrompts = (state) => {
+  //   setIsPromptComplete(true)
+
+  //   if (score <= TIPPING_POINT) {
+  //     scenario = "1"
+  //   } else {
+  //     scenario = "2"
+  //   }
+  // }
+
   const goToNext = (data) => {
     setCurrentIndex(currentIndex + 1)
     setShowFollowing(false)
-    dispatch(answerPrompt(data))
+    answerPrompt(data)
   }
 
-  // Show the following text for a prompt and update local state
   const showFollowingText = (index) => {
     setFollowingToShow(index)
     setShowFollowing(true)
@@ -57,7 +72,12 @@ export const Prompts = ({ introduction, currentIndex, setCurrentIndex }) => {
                 >
                   {section.options.map((option, i) => {
                     return (
-                      <Button text={option.label} key={i} onClick={() => showFollowingText(i)} />
+                      <Button
+                        text={option.label}
+                        key={i}
+                        onClick={() => showFollowingText(i)}
+                        variant="splashScreen"
+                      />
                     )
                   })}
                 </motion.div>
