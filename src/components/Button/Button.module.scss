@@ -1,0 +1,38 @@
+.root {
+  cursor: pointer;
+  text-transform: uppercase;
+  display: block;
+  letter-spacing: 0.1rem;
+  font-size: 1.6rem;
+  margin: 0 auto;
+  min-width: 30rem;
+  background-color: #fefff1;
+  color: #3e3a2f;
+  border-radius: 0.8rem;
+  padding: 0.8rem;
+  font-family: "Rowdies", cursive;
+  border: 0.1rem solid black;
+
+  .buttonBorder {
+    padding: 0.8rem;
+    border-radius: 0.8rem;
+    border: 0.1rem solid #e9e7dc;
+  }
+
+  &:hover {
+    background-color: #fdc463;
+    transform: scale(1.02);
+  }
+
+  &:hover .buttonBorder {
+    border: 0.1rem solid #d9a957;
+  }
+
+  &.splashScreen {
+    background-color: red;
+  }
+
+  &.boxText {
+    background-color: blue;
+  }
+}

@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { motion, AnimatePresence } from "framer-motion"
 import { showPinpoint } from "@/store/reducers/mapReducer"
+  import { Button } from "@/components/Button/Button"
 
 import styles from "@/components/Interface/SceneTextBox/SceneTextBox.module.scss"
 
@@ -121,46 +122,25 @@ export const MapTextBox = ({ pinpointsData, pinpointIndex, mapActive }) => {
             )}
           </div>
           {hasOptions() && hasMore() && !showOptions && (
-            <button
-              className={[`${styles.bottomButton} ${styles["bottomButton--more"]}`]}
-              onClick={showMoreNPC}
-            >
-              Suite
-            </button>
+            <Button text={"Suite"} onClick={showMoreNPC} />
           )}
-          {!hasOptions() && hasMore() && (
-            <button
-              className={[`${styles.bottomButton} ${styles["bottomButton--more"]}`]}
-              onClick={showMore}
-            >
-              Suite
-            </button>
-          )}
+          {!hasOptions() && hasMore() && <Button text={"Suite"} onClick={showMore} />}
           {((showOptions && !hasOptions() && !hasMore()) ||
             (!hasMore() && !showOptions && hasOptions())) && (
-            <button
-              className={`${styles.bottomButton} ${styles["bottomButton--close"]}`}
+            <Button
+              text={"Fermer"}
               onClick={() => {
                 setShowText(false)
                 setTextIndex(0)
                 setShowOptions(false)
                 dispatch(showPinpoint())
               }}
-            >
-              Fermer
-            </button>
+            />
           )}
-
           {hasOptions() && showOptions && (
             <div className={styles.options}>
               {pinpointsData[pinpointIndex]?.voiceover[textIndex]?.options?.map((option, index) => (
-                <button
-                  key={index}
-                  className={styles.optionsButton}
-                  onClick={() => chooseResponse(index)}
-                >
-                  {option.text}
-                </button>
+                <Button text={option.text} onClick={() => chooseResponse(index)} />
               ))}
             </div>
           )}

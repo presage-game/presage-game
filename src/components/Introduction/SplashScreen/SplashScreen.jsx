@@ -1,5 +1,8 @@
 import { useState } from "react"
+import { Button } from "@/components/Button/Button"
+
 import styles from "./SplashScreen.module.scss"
+
 import { getGame } from "@/database/gamecode"
 import { useDispatch } from "react-redux"
 import { changeGameCode } from "@/store/reducers/userReducer"
@@ -22,16 +25,17 @@ export const SplashScreen = ({ setShowIntroduction }) => {
 
   return (
     <div className={styles.root}>
-      <h1 className={styles.title}>Projet An-Uua</h1>
-      <button
-        className={styles.startButton}
+      <h1 className={styles.title}>Présage</h1>
+      <Button
+        text="Commencer"
         onClick={() => {
           setShowIntroduction(true)
         }}
-      >
-        Commencer
-      </button>
-      <div className={styles.loadGame}>
+        variant="test"
+      />
+      <Button text="Continuer" />
+      <Button text="Bonus" />
+      {/* <div className={styles.loadGame}>
         <label htmlFor="tentacles">Continuer une partie :</label>
         <input
           type="number"
@@ -44,7 +48,7 @@ export const SplashScreen = ({ setShowIntroduction }) => {
           onChange={(e) => setCode(e.target.value)}
         />
         <button onClick={onSubmit}>Envoyer</button>
-      </div>
+      </div> */}
     </div>
   )
 }

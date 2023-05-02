@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
+import { Button } from "@/components/Button/Button"
+
 import styles from "./SceneTextBox.module.scss"
 
 export const SceneTextBox = ({ mapActive, sceneIndex, scriptData, spotIndex }) => {
@@ -119,7 +121,6 @@ export const SceneTextBox = ({ mapActive, sceneIndex, scriptData, spotIndex }) =
                     ))}
                 </p>
               )}
-
               {!isVoiceOver && showOptions && (
                 <p className={styles.content}>
                   {getSpotText()
@@ -136,7 +137,6 @@ export const SceneTextBox = ({ mapActive, sceneIndex, scriptData, spotIndex }) =
                     ))}
                 </p>
               )}
-
               {hasOptions() && !isVoiceOver && !showOptions && (
                 <p className={styles.content}>
                   {getOptionResponse()
@@ -155,42 +155,22 @@ export const SceneTextBox = ({ mapActive, sceneIndex, scriptData, spotIndex }) =
               )}
             </div>
             {hasOptions() && hasMore() && !showOptions && (
-              <button
-                className={[`${styles.bottomButton} ${styles["bottomButton--more"]}`]}
-                onClick={showMoreNPC}
-              >
-                Suite
-              </button>
+              <Button text="Suite" onClick={showMore} />
             )}
-            {!hasOptions() && hasMore() && (
-              <button
-                className={[`${styles.bottomButton} ${styles["bottomButton--more"]}`]}
-                onClick={showMore}
-              >
-                Suite
-              </button>
-            )}
+            {!hasOptions() && hasMore() && <Button text="Suite" onClick={showMoreNPC} />}
             {!hasMore() && (
-              <button
-                className={[`${styles.bottomButton} ${styles["bottomButton--close"]}`]}
+              <Button
+                text="Fermer"
                 onClick={() => {
                   setShowText(false)
                 }}
-              >
-                Fermer
-              </button>
+              />
             )}
             {hasOptions() && showOptions && (
               <div className={styles.options}>
                 {scriptData[sceneIndex]?.spots[spotIndex]?.spotVoiceover[textIndex]?.options.map(
                   (option, index) => (
-                    <button
-                      key={index}
-                      className={styles.optionsButton}
-                      onClick={() => chooseResponse(index)}
-                    >
-                      {option?.text}
-                    </button>
+                    <Button text={option?.text} onClick={() => chooseResponse(index)} />
                   )
                 )}
               </div>

@@ -2,6 +2,7 @@ import React, { useState } from "react"
 import { useDispatch } from "react-redux"
 import { answerPrompt } from "@/store/reducers/introductionReducer"
 import { motion, AnimatePresence } from "framer-motion"
+import { Button } from "@/components/Button/Button"
 import styles from "./Prompts.module.scss"
 
 export const Prompts = ({ introduction, currentIndex, setCurrentIndex }) => {
@@ -56,9 +57,7 @@ export const Prompts = ({ introduction, currentIndex, setCurrentIndex }) => {
                 >
                   {section.options.map((option, i) => {
                     return (
-                      <div className={styles.option} key={i} onClick={() => showFollowingText(i)}>
-                        {option.label}
-                      </div>
+                      <Button text={option.label} key={i} onClick={() => showFollowingText(i)} />
                     )
                   })}
                 </motion.div>
@@ -83,12 +82,10 @@ export const Prompts = ({ introduction, currentIndex, setCurrentIndex }) => {
                   exit={{ opacity: 0, y: -20 }}
                   transition={{ duration: 1, delay: 2 }}
                 >
-                  <button
-                    className={styles.nextButton}
+                  <Button
+                    text="Continuer"
                     onClick={() => goToNext(section.options[followingToShow]?.version)}
-                  >
-                    Suite...
-                  </button>
+                  />
                 </motion.div>
               </>
             )}
