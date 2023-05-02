@@ -13,12 +13,12 @@
         "label": "Panneau routier",
         "spotVoiceover": [
           {
-            "text": "Ce texte doit encore être rédigé. Pour le moment, c'est juste un panneau. Parfois, un panneau est juste un panneau.",
+            "text": "Les distances qui vous séparent des villes quadrillent l’espace d’un panneau routier tout neuf et tout récemment installé.",
             "emitter": "narrator"
           },
           {
-            "text": "Foutus auteurs.",
-            "emitter": "innerVoice"
+            "text": "La première ville est à trente kilomètres d’ici.",
+            "emitter": "narrator"
           }
         ]
       },
@@ -27,12 +27,8 @@
         "label": "Deuxième panneau routier",
         "spotVoiceover": [
           {
-            "text": "Même chose. Faut rédiger ça, les mecs, sérieux.",
+            "text": "Un tracé jaune couvre la hauteur de la carte, partant du nord-ouest jusqu’au sud-est, et jalonnée de points d’intérêt. Des pastilles de couleur rouge attirent ton regard.",
             "emitter": "narrator"
-          },
-          {
-            "text": "Ils en foutent pas une.",
-            "emitter": "innerVoice"
           }
         ]
       }
