@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { motion, AnimatePresence } from "framer-motion"
 import { showPinpoint } from "@/store/reducers/mapReducer"
-  import { Button } from "@/components/Button/Button"
+import { Button } from "@/components/Button/Button"
 
 import styles from "@/components/Interface/SceneTextBox/SceneTextBox.module.scss"
 
@@ -78,15 +78,13 @@ export const MapTextBox = ({ pinpointsData, pinpointIndex, mapActive }) => {
           exit={{ opacity: 0, y: -20, x: "-50%" }}
           transition={{ y: { type: "spring", stiffness: 100 } }}
         >
-          <div>
+          <>
             {getTextEmitter() === "narrator" && <h2 className={styles.narrator}>Le narrateur</h2>}
             {getTextEmitter() === "innerVoice" && (
-              <h2 className={[`${styles.narrator} ${styles["narrator--innerVoice"]}`]}>Une voix</h2>
+              <h2 className={`${styles.narrator} ${styles.innerVoice}`}>Une voix</h2>
             )}
             {getTextEmitter() === "npc" && (
-              <h2 className={[`${styles.narrator} ${styles["narrator--npc"]}`]}>
-                {getTextLabel()}
-              </h2>
+              <h2 className={`${styles.narrator} ${styles.npc}`}>{getTextLabel()}</h2>
             )}
             {showOptions && (
               <p className={styles.content}>
@@ -120,15 +118,15 @@ export const MapTextBox = ({ pinpointsData, pinpointIndex, mapActive }) => {
                   ))}
               </p>
             )}
-          </div>
+          </>
           {hasOptions() && hasMore() && !showOptions && (
-            <Button text={"Suite"} onClick={showMoreNPC} />
+            <Button text="Suite" onClick={showMoreNPC} />
           )}
-          {!hasOptions() && hasMore() && <Button text={"Suite"} onClick={showMore} />}
+          {!hasOptions() && hasMore() && <Button text="Suite" onClick={showMore} />}
           {((showOptions && !hasOptions() && !hasMore()) ||
             (!hasMore() && !showOptions && hasOptions())) && (
             <Button
-              text={"Fermer"}
+              text="Fermer"
               onClick={() => {
                 setShowText(false)
                 setTextIndex(0)
@@ -138,11 +136,15 @@ export const MapTextBox = ({ pinpointsData, pinpointIndex, mapActive }) => {
             />
           )}
           {hasOptions() && showOptions && (
-            <div className={styles.options}>
+            <>
               {pinpointsData[pinpointIndex]?.voiceover[textIndex]?.options?.map((option, index) => (
-                <Button text={option.text} onClick={() => chooseResponse(index)} />
+                <Button
+                  text={option.text}
+                  onClick={() => chooseResponse(index)}
+                  variant="splashScreen"
+                />
               ))}
-            </div>
+            </>
           )}
         </motion.div>
       )}

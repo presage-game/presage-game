@@ -48,11 +48,11 @@
     font-weight: 600;
     text-transform: uppercase;
 
-    &--innerVoice {
+    &.innerVoice {
       color: #b958ff;
     }
 
-    &--npc {
+    &.npc {
       color: rgb(142, 112, 84);
     }
   }
