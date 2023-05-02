@@ -1,39 +1,21 @@
 .root {
   .title {
-    font-size: 8rem;
+    font-size: 15rem;
     line-height: 1.2;
-    font-weight: 400;
+    font-weight: 300;
+    color: #fefff1;
     text-align: center;
-    margin: 0 auto;
+    margin: 0 auto 4rem auto;
     display: block;
-  }
-
-  .startButton {
-    cursor: pointer;
+    font-family: "Rowdies", cursive;
     text-transform: uppercase;
-    display: block;
-    background-color: #ffb24d;
-    padding: 1rem;
-    letter-spacing: 0.2rem;
-    font-weight: 400;
-    font-size: 1.8rem;
-    width: 100%;
-    transition: ease-in-out 0.2s;
-    margin: 4rem auto 0 auto;
-    max-width: 40rem;
-    background-color: #ffb24d;
-    color: black;
-
-    &:hover {
-      background-color: #ff9d1d;
-    }
   }
 }
 
 .loadGame {
   margin-top: 2rem;
   display: flex;
-  gap: 10px;
+  gap: 1rem;
   align-items: center;
   justify-content: center;
 
@@ -45,10 +27,9 @@
 
   /* Firefox */
   input[type="number"] {
-    background: rgb(255, 178, 77);
+    background: #fefff1;
     padding: 1rem;
     cursor: pointer;
-    font-weight: 400;
     color: black;
     -moz-appearance: textfield;
   }

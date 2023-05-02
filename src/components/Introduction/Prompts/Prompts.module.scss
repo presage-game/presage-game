@@ -1,47 +1,45 @@
 .root {
+  text-align: center;
+
   .date {
-    color: grey;
-    display: block;
     margin-bottom: 2rem;
+    display: block;
+    color: grey;
   }
 
   .baseline {
-    margin-top: 2rem;
+    max-width: 60rem;
+    margin-bottom: 4rem;
   }
 
-  .options {
-    margin-top: 2rem;
-    text-align: center;
-  }
-
-  .option {
-    color: rgb(255, 178, 77);
-    display: inline-block;
-    cursor: pointer;
-    margin-right: 2rem;
-
-    &:hover {
-      color: rgb(255, 157, 29);
-    }
-  }
-
-  .nextButton {
+  .option, .nextButton {
     cursor: pointer;
     text-transform: uppercase;
     display: block;
-    background-color: #ffb24d;
-    padding: 1rem;
-    letter-spacing: 0.2rem;
-    font-weight: 400;
-    font-size: 1.8rem;
+    letter-spacing: 0.1rem;
+    font-size: 1.6rem;
     width: 100%;
-    transition: ease-in-out 0.2s;
-    margin-top: 4rem;
-    background-color: #765b35;
-    color: white;
+    margin: 2rem auto;
+    max-width: 35rem;
+    background-color: #fefff1;
+    color: #3e3a2f;
+    border-radius: 0.8rem;
+    padding: 0.8rem;
+    font-family: "Rowdies", cursive;
+    border: 0.15rem solid black;
+
+    .buttonBorder {
+      padding: 0.8rem;
+      border-radius: 0.8rem;
+      border: 0.1rem solid #e9e7dc;
+    }
 
     &:hover {
-      background-color: #604d32;
+      background-color: #fdc463;
+    }
+
+    &:hover .buttonBorder {
+      border: 0.1rem solid #d9a957;
     }
   }
 }
