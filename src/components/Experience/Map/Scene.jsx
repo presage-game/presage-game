@@ -59,10 +59,7 @@ export const Scene = ({ goOnScene, goOnPinpoint, resetScene, resetPinpoint }) =>
   }, [])
 
   const click = (e, delta) => {
-    console.log("event")
-    console.log(e)
     let target = e.point
-    console.log(target)
     let groupID = pathfinding.getGroup(ZONE, voitureGrpRef.current.position)
     // find closest node to agent, just in case agent is out of bounds
     const closest = pathfinding.getClosestNode(voitureGrpRef.current.position, ZONE, groupID)
@@ -70,7 +67,6 @@ export const Scene = ({ goOnScene, goOnPinpoint, resetScene, resetPinpoint }) =>
     if (pathfinding.findPath(closest.centroid, target, ZONE, groupID) !== null) {
       navPath = pathfinding.findPath(closest.centroid, target, ZONE, groupID)
     }
-    console.log(navPath)
 
     if (navPath) {
       pathfindinghelper.reset()
@@ -86,7 +82,6 @@ export const Scene = ({ goOnScene, goOnPinpoint, resetScene, resetPinpoint }) =>
     carEnterInCube()
 
     let targetPosition = navPath[0]
-    console.log("targetPosition :" + targetPosition)
     const distance = targetPosition.clone().sub(voitureGrpRef.current.position)
 
     if (distance.lengthSq() > 0.05 * 0.05) {
@@ -108,7 +103,6 @@ export const Scene = ({ goOnScene, goOnPinpoint, resetScene, resetPinpoint }) =>
   }
 
   function carEnterInCube() {
-    console.log("carEnterInCube")
     // Handle scenes
     let isSceneIntersecting = false
 
@@ -172,9 +166,8 @@ export const Scene = ({ goOnScene, goOnPinpoint, resetScene, resetPinpoint }) =>
       raycaster.setFromCamera(pointer, state.camera)
       const objects = raycaster.intersectObjects(state.scene.children)
 
-      if (objects.length > 0) {
-        console.log(objects)
-        click({ point: objects[0].point }, delta)
+      if (objects.length > 1) {
+        click({ point: objects[1].point }, delta)
       }
     }
   })
