@@ -1,5 +1,4 @@
 import { Html, Plane, Box, useTexture, Decal } from "@react-three/drei"
-import classes from "./AdinkraTwo.module.scss"
 import { useRef, useState } from "react"
 
 const initialData = {

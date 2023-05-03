@@ -1,4 +1,4 @@
-.root {
+.IntersectionPopup {
   position: absolute;
   top: 25%;
   left: 50%;
@@ -12,7 +12,7 @@
   cursor: pointer;
   transition: ease-in-out 0.25s;
   transition-property: background-color, color, fill;
-  color: #3e3a2f;;
+  color: #3e3a2f;
 
   svg path {
     fill: #3e3a2f;
@@ -24,19 +24,14 @@
     // transform: translateX(-50%) scale(1.05) !important;
   }
 
-  // &:hover .icon svg path {
-  //   fill: #f0edd9;
-  //   stroke: #f0edd9;
-  // }
-
-  .title {
+  &_-title {
     font-size: 1.6rem;
     letter-spacing: 0.1rem;
     font-family: "Rowdies", cursive;
     text-transform: uppercase;
   }
 
-  .icon svg {
+  &__icon svg {
     width: 3.5rem;
     margin: 0.5rem auto 0 auto;
   }
