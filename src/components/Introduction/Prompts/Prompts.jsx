@@ -52,7 +52,7 @@ export const Prompts = ({ introduction, currentIndex, setCurrentIndex }) => {
         <AnimatePresence>
           <div className="Prompts" key={index}>
             {!showFollowing && (
-              <div className="item">
+              <div className="item item--prompt">
                 <motion.div
                   className="baseline"
                   initial={{ opacity: 0, y: 20 }}
@@ -85,7 +85,7 @@ export const Prompts = ({ introduction, currentIndex, setCurrentIndex }) => {
               </div>
             )}
             {showFollowing && (
-              <div className="item">
+              <div className="item item--following">
                 <motion.div
                   key="following"
                   className="baseline"

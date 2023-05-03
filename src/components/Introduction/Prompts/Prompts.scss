@@ -6,6 +6,12 @@
     margin: 0 auto;
     text-align: center;
 
+    &--following {
+      .Button {
+        margin: 0 auto;
+      }
+    }
+
     .baseline,
     .following {
       margin-bottom: 3rem;
