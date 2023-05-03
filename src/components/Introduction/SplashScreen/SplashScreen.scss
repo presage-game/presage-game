@@ -11,6 +11,8 @@
 
   &__container {
     .Button {
+      width: 40rem;
+
       &:not(:first-child) {
         margin-top: 1rem;
       }

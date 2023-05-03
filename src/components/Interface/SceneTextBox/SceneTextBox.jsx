@@ -94,7 +94,7 @@ export const SceneTextBox = ({ mapActive, sceneIndex, scriptData, spotIndex }) =
           <div className="TextBox__inner">
             {getTextEmitter() === "narrator" && <h2 className="narrator">Le narrateur</h2>}
             {getTextEmitter() === "innerVoice" && (
-              <h2 className="narrator narrator--innerVoice">Une voix</h2>
+              <h2 className="narrator narrator--innerVoice">Voix de la radio</h2>
             )}
             {getTextEmitter() === "npc" && (
               <h2 className="narrator narrator--npc">{getTextLabel()}</h2>
