@@ -141,7 +141,7 @@ export const AdinkraTwo = ({ switchLerp }) => {
     <>
       <Plane args={[10, 6]} rotation={[0, 0, 0]} position={[8, 0.8, -20]}>
         <meshBasicMaterial transparent color="#ffffff" opacity={0.1} />
-        <Html className={classes.main} position={[0, 0, 0]} transform>
+        <Html position={[0, 0, 0]} transform>
           <div
             onPointerEnter={() => {
               if (!game) {
@@ -151,7 +151,6 @@ export const AdinkraTwo = ({ switchLerp }) => {
               switchLerp(true)
             }}
             onPointerLeave={() => switchLerp(false)}
-            className={classes.container}
           >
             <canvas
               onMouseDown={(e) => handleMDown(e)}
@@ -159,7 +158,6 @@ export const AdinkraTwo = ({ switchLerp }) => {
                 clearCanvas()
               }}
               onMouseMove={(e) => handleMMove(e)}
-              className={classes.canvas}
               ref={canvasRef}
             ></canvas>
           </div>
