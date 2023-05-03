@@ -1,86 +1,65 @@
 import { Line } from "@react-three/drei"
 import { useFrame } from "@react-three/fiber"
 import { useEffect, useRef, useState } from "react"
-import { getMaterials } from "@/helpers/materials/Materials"
 
 export const WindEffect = () => {
   const lineRef = useRef(null)
-  const [Materials, setMaterials] = useState(null)
 
-
-  useEffect(() => {
-    getMaterials().then((result) => setMaterials(result))
-  }, [])
+  const config = {
+    x: {
+      min: -110,
+      max: 90,
+      speed: 0.5,
+    },
+    z: {
+      min: -90,
+      max: -60,
+      speed: 0.3,
+    },
+    lineWidth: 1,
+    linePositions: [
+      [
+        [-20, 8, -93],
+        [-15, 8, -90],
+      ],
+      [
+        [-5, 6, -83],
+        [0, 6, -80],
+      ],
+      [
+        [10, 8, -43],
+        [15, 8, -40],
+      ],
+      [
+        [-5, 8, -23],
+        [0, 8, -20],
+      ],
+    ],
+  }
 
   useFrame(() => {
-    if (Materials !== null) {
-      lineRef.current.position.x += 0.5
-      lineRef.current.position.z += 0.3
-      if (lineRef.current.position.x >= 80) {
-        lineRef.current.position.x = -30
-        if (lineRef.current.position.z >= -60) {
-          lineRef.current.position.z = -90
-        }
+    lineRef.current.position.x += config.x.speed
+    lineRef.current.position.z += config.z.speed
+    if (lineRef.current.position.x >= config.x.max) {
+      lineRef.current.position.x = config.x.min
+      if (lineRef.current.position.z >= config.z.max) {
+        lineRef.current.position.z = config.z.min
       }
     }
   })
-  /*
-  <CatmullRomLine
-      points={catPoints}
-      closed={false} // Default
-      curveType="centripetal" // One of "centripetal" (default), "chordal", or "catmullrom"
-      tension={0.5}
-      color={"red"}
-      segments={20}
-      lineWidth={12}
-      dashed={true}
-    />
-    <Line points={catPoints} dashed={false} lineWidth={100} />
-  */
-
-  if (Materials === null) {
-    return <></>
-  }
 
   return (
     <>
       <group ref={lineRef}>
-        <Line
-          points={[
-            [-20, 8, -93],
-            [-15, 8, -90],
-          ]}
-          segments
-          lineWidth={1.8}
-          color={"white"}
-        />
-        <Line
-          points={[
-            [-5, 8, -83],
-            [0, 8, -80],
-          ]}
-          segments
-          lineWidth={2}
-          color={"white"}
-        />
-        <Line
-          points={[
-            [10, 8, -43],
-            [15, 8, -40],
-          ]}
-          segments
-          lineWidth={2}
-          color={"white"}
-        />
-        <Line
-          points={[
-            [-5, 8, -23],
-            [0, 8, -20],
-          ]}
-          segments
-          lineWidth={2}
-          color={"white"}
-        />
+        {config.linePositions.map((position, index) => (
+          <Line
+            key={index}
+            points={position}
+            segments
+            lineWidth={config.lineWidth}
+            color={"white"}
+          />
+        ))}
       </group>
     </>
   )
