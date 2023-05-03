@@ -1,7 +1,7 @@
 import React, { useRef, useMemo, useEffect, useState } from "react"
 import { useSelector } from "react-redux"
-import { Box3, Object3D, Quaternion, Vector3, CameraHelper } from "three"
-import { Box, useGLTF, OrthographicCamera, Gltf } from "@react-three/drei"
+import { Box3, Object3D, Quaternion, Vector3, Raycaster, Vector2 } from "three"
+import { Box, useGLTF, OrthographicCamera } from "@react-three/drei"
 import { useFrame } from "@react-three/fiber"
 import { Pathfinding, PathfindingHelper } from "three-pathfinding"
 import { Car } from "./Car"
@@ -13,7 +13,6 @@ export const Scene = ({ goOnScene, goOnPinpoint, resetScene, resetPinpoint }) =>
 
   const [pinpointAudio, setPinpointAudio] = useState(null)
   const [audioPlaying, setAudioPlaying] = useState(false)
-
 
   const map = useGLTF("assets/scenes/map1.glb")
   const navMesh = useGLTF("assets/scenes/navMesh1.glb")
@@ -46,6 +45,12 @@ export const Scene = ({ goOnScene, goOnPinpoint, resetScene, resetPinpoint }) =>
     return o
   }, [])
 
+  const raycaster = useMemo(() => new Raycaster(), [])
+  const lastMouse = {
+    x: 0,
+    y: 0,
+  }
+
   useEffect(() => {
     camRef.current.lookAt(5, 0, 0)
     followCam.add(camRef.current)
@@ -53,13 +58,15 @@ export const Scene = ({ goOnScene, goOnPinpoint, resetScene, resetPinpoint }) =>
     resetScene()
   }, [])
 
-  const click = (e) => {
+  const click = (e, delta) => {
     let target = e.point
     let groupID = pathfinding.getGroup(ZONE, voitureGrpRef.current.position)
     // find closest node to agent, just in case agent is out of bounds
     const closest = pathfinding.getClosestNode(voitureGrpRef.current.position, ZONE, groupID)
 
-    navPath = pathfinding.findPath(closest.centroid, target, ZONE, groupID)
+    if (pathfinding.findPath(closest.centroid, target, ZONE, groupID) !== null) {
+      navPath = pathfinding.findPath(closest.centroid, target, ZONE, groupID)
+    }
 
     if (navPath) {
       pathfindinghelper.reset()
@@ -67,6 +74,7 @@ export const Scene = ({ goOnScene, goOnPinpoint, resetScene, resetPinpoint }) =>
       pathfindinghelper.setTargetPosition(target)
       pathfindinghelper.setPath(navPath)
     }
+    move(delta)
   }
 
   function move(delta) {
@@ -154,16 +162,21 @@ export const Scene = ({ goOnScene, goOnPinpoint, resetScene, resetPinpoint }) =>
 
   useFrame((state, delta) => {
     if (pointerDown) {
-      move(delta)
+      let pointer = new Vector2(state.mouse.x, state.mouse.y)
+      raycaster.setFromCamera(pointer, state.camera)
+      const objects = raycaster.intersectObjects(state.scene.children)
+
+      if (objects.length > 1) {
+        click({ point: objects[1].point }, delta)
+      }
     }
   })
 
   return (
     <>
-      <primitive object={map.scene} dispose={null} onPointerUp={(e) => setPointerDown(false)} />
+      <primitive object={map.scene} dispose={null} onPointerUp={() => setPointerDown(false)} />
       <primitive
         onPointerDown={() => setPointerDown(true)}
-        onPointerMove={(e) => (pointerDown ? click(e) : null)}
         object={navMesh.scene}
         dispose={null}
         visible={false}
