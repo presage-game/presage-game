@@ -67,7 +67,9 @@ export const Scene = ({ goOnScene, goOnPinpoint, resetScene, resetPinpoint }) =>
     // find closest node to agent, just in case agent is out of bounds
     const closest = pathfinding.getClosestNode(voitureGrpRef.current.position, ZONE, groupID)
 
-    navPath = pathfinding.findPath(closest.centroid, target, ZONE, groupID)
+    if (pathfinding.findPath(closest.centroid, target, ZONE, groupID) !== null) {
+      navPath = pathfinding.findPath(closest.centroid, target, ZONE, groupID)
+    }
     console.log(navPath)
 
     if (navPath) {
