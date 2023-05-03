@@ -7,6 +7,7 @@ export const WindEffect = () => {
   const lineRef = useRef(null)
   const [Materials, setMaterials] = useState(null)
 
+
   useEffect(() => {
     getMaterials().then((result) => setMaterials(result))
   }, [])
@@ -15,9 +16,9 @@ export const WindEffect = () => {
     if (Materials !== null) {
       lineRef.current.position.x += 0.5
       lineRef.current.position.z += 0.3
-      if (lineRef.current.position.x >= 60) {
+      if (lineRef.current.position.x >= 80) {
         lineRef.current.position.x = -30
-        if (lineRef.current.position.z >= 30) {
+        if (lineRef.current.position.z >= -60) {
           lineRef.current.position.z = -90
         }
       }
@@ -43,16 +44,44 @@ export const WindEffect = () => {
 
   return (
     <>
-      <Line
-        ref={lineRef}
-        points={[
-          [-5, 8, -93],
-          [0, 8, -90],
-        ]}
-        segments
-        lineWidth={2}
-        material={Materials.outlineMaterial}
-      />
+      <group ref={lineRef}>
+        <Line
+          points={[
+            [-20, 8, -93],
+            [-15, 8, -90],
+          ]}
+          segments
+          lineWidth={1.8}
+          color={"white"}
+        />
+        <Line
+          points={[
+            [-5, 8, -83],
+            [0, 8, -80],
+          ]}
+          segments
+          lineWidth={2}
+          color={"white"}
+        />
+        <Line
+          points={[
+            [10, 8, -43],
+            [15, 8, -40],
+          ]}
+          segments
+          lineWidth={2}
+          color={"white"}
+        />
+        <Line
+          points={[
+            [-5, 8, -23],
+            [0, 8, -20],
+          ]}
+          segments
+          lineWidth={2}
+          color={"white"}
+        />
+      </group>
     </>
   )
 }
