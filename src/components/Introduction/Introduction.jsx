@@ -4,7 +4,6 @@ import { useSelector, useDispatch } from "react-redux"
 import introductionData from "@/assets/data/introduction.json"
 import ambiance from "@/assets/audios/introduction/ambiance.mp3"
 import carEngine from "@/assets/audios/introduction/car-engine.mp3"
-import styles from "./Introduction.module.scss"
 
 import { completePrompts, changeGameCode } from "@/store/reducers/userReducer"
 import { createGame } from "@/database/gamecode"
@@ -12,6 +11,8 @@ import { createGame } from "@/database/gamecode"
 import { Prompts } from "./Prompts/Prompts"
 import { SplashScreen } from "./SplashScreen/SplashScreen"
 import { Footer } from "./Footer/Footer"
+
+import "./Introduction.scss"
 
 export const Introduction = () => {
   const introduction = introductionData
@@ -67,7 +68,7 @@ export const Introduction = () => {
 
   return (
     !hasExperienceStarted && (
-      <section className={styles.root}>
+      <section className="Introduction">
         {!showIntroduction && <SplashScreen setShowIntroduction={setShowIntroduction} />}
         {showIntroduction && (
           <>

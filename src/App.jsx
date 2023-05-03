@@ -3,14 +3,15 @@ import { Experience } from "./components/Experience/Experience"
 import { Introduction } from "./components/Introduction/Introduction"
 import { useDispatch } from "react-redux"
 import { startExperience } from "./store/reducers/userReducer"
-import styles from "./App.module.scss"
+
+import "./App.scss"
 
 const App = () => {
   const dispatch = useDispatch()
   const { hasExperienceStarted } = useSelector((state) => state.user)
 
   return (
-    <main className={styles.root}>
+    <main className="App">
       {!hasExperienceStarted ? <Introduction /> : <Experience />}
       {!hasExperienceStarted && (
         <button

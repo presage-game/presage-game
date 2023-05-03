@@ -6,8 +6,8 @@
   z-index: 10;
   background-color: #f0edd9;
   padding: 1rem 2rem;
-  border-radius: 0.4rem;
-  border: 0.15rem solid black;
+  border-radius: 0.8rem;
+  border: 0.15rem solid #3e3a2f;
   text-align: center;
   cursor: pointer;
   transition: ease-in-out 0.25s;
@@ -15,19 +15,19 @@
   color: #3e3a2f;;
 
   svg path {
-    fill: black;
-    stroke: black;
+    fill: #3e3a2f;
+    stroke: #3e3a2f;
   }
 
   &:hover {
-    background-color: black;
-    color: #f0edd9;
+    background-color: #fdc463;
+    // transform: translateX(-50%) scale(1.05) !important;
   }
 
-  &:hover .icon svg path {
-    fill: #f0edd9;
-    stroke: #f0edd9;
-  }
+  // &:hover .icon svg path {
+  //   fill: #f0edd9;
+  //   stroke: #f0edd9;
+  // }
 
   .title {
     font-size: 1.6rem;

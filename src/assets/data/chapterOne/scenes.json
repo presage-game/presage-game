@@ -27,7 +27,7 @@
         "label": "Deuxième panneau routier",
         "spotVoiceover": [
           {
-            "text": "Un tracé jaune couvre la hauteur de la carte, partant du nord-ouest jusqu’au sud-est, et jalonnée de points d’intérêt. Des pastilles de couleur rouge attirent ton regard.",
+            "text": "Un tracé jaune part du nord-ouest de la carte et finit sa course au sud-est, jalonné de points d’intérêt décrivant des curiosités. Des pastilles de couleur rouge et des noms écrits en blancs attirent ton regard.",
             "emitter": "narrator"
           }
         ]

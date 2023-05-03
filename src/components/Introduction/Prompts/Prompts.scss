@@ -1,0 +1,35 @@
+.Prompts {
+  text-align: center;
+
+  .item {
+    max-width: 44%;
+    margin: 0 auto;
+    text-align: center;
+
+    .baseline,
+    .following {
+      margin-bottom: 3rem;
+
+      &__date {
+        margin-bottom: 1rem;
+        display: block;
+        color: grey;
+      }
+    }
+
+    .Button {
+      text-align: center;
+
+      &:not(:first-child) {
+        margin-left: 3rem;
+      }
+    }
+
+    .options {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      // border: 0.1rem solid red;
+    }
+  }
+}

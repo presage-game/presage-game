@@ -1,12 +1,12 @@
 import { useState } from "react"
 import { Button } from "@/components/Button/Button"
 
-import styles from "./SplashScreen.module.scss"
-
 import { getGame } from "@/database/gamecode"
 import { useDispatch } from "react-redux"
 import { changeGameCode } from "@/store/reducers/userReducer"
 import { startExperience } from "@/store/reducers/userReducer"
+
+import "./SplashScreen.scss"
 
 export const SplashScreen = ({ setShowIntroduction }) => {
   const [code, setCode] = useState(1)
@@ -24,17 +24,19 @@ export const SplashScreen = ({ setShowIntroduction }) => {
   }
 
   return (
-    <div className={styles.root}>
-      <h1 className={styles.title}>Présage</h1>
-      <Button
-        text="Commencer"
-        onClick={() => {
-          setShowIntroduction(true)
-        }}
-        variant="splashScreen"
-      />
-      <Button text="Continuer" variant="splashScreen" />
-      <Button text="Bonus" variant="splashScreen" />
+    <div className="SplashScreen">
+      <h1 className="SplashScreen__title">Présage</h1>
+      <div className="SplashScreen__container">
+        <Button
+          text="Commencer"
+          onClick={() => {
+            setShowIntroduction(true)
+          }}
+          variant="main"
+        />
+        <Button text="Continuer" />
+        <Button text="Bonus" />
+      </div>
       {/* <div className={styles.loadGame}>
         <label htmlFor="tentacles">Continuer une partie :</label>
         <input

@@ -10,7 +10,7 @@ import { Setup as MegalithicCircles } from "./chapterOne/2/Setup"
 import { Interface } from "@/components/Interface/Interface"
 import { BlackBars } from "@/components/BlackBars/BlackBars"
 
-import styles from "./Experience.module.scss"
+import "./Experience.scss"
 
 export const Experience = () => {
   const { scene } = useSelector((state) => state.map)
@@ -18,7 +18,7 @@ export const Experience = () => {
   const [spotIndex, setSpotIndex] = useState(null)
 
   return (
-    <div className={styles.root}>
+    <div className="Experience">
       <BlackBars />
       <Interface mapActive={mapActive} spotIndex={spotIndex} />
       <Canvas>

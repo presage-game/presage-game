@@ -1,0 +1,46 @@
+.Button {
+  cursor: pointer;
+  text-transform: uppercase;
+  display: block;
+  font-size: 1.6rem;
+  // margin: 0 auto;
+  // min-width: 30rem;
+  background-color: #fefff1;
+  border-radius: 0.8rem;
+  padding: 0.8rem;
+  letter-spacing: 0.1rem;
+  font-family: "Rowdies", cursive;
+  color: #3e3a2f;
+  border: 0.1rem solid #3e3a2f;
+  transition: ease-in-out 0.25s;
+
+  &:hover {
+    background-color: #fdc463;
+  }
+
+  &__border {
+    padding: 0.8rem;
+    border-radius: 0.8rem;
+    border: 0.1rem solid #e9e7dc;
+  }
+
+  &:hover .Button__border {
+    border: 0.1rem solid #d9a957;
+  }
+
+  &--main {
+    background-color: #fdc463;
+
+    // &:hover {
+    //   background-color: #f8b643;
+    // }
+
+    .Button__border {
+      border: 0.1rem solid #d9a957;
+    }
+
+    // &:hover .Button__border {
+    //   border: 0.1rem solid #d8a54b;
+    // }
+  }
+}

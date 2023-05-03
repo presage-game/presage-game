@@ -3,15 +3,15 @@ import { Button } from "@/components/Button/Button"
 import { useDispatch } from "react-redux"
 import { startExperience } from "@/store/reducers/userReducer"
 
-import styles from "./Footer.module.scss"
+import "./Footer.scss"
 
 export const Footer = () => {
   const { scenario, gameCode } = useSelector((state) => state.user)
   const dispatch = useDispatch()
 
   return (
-    <footer className={styles.root}>
-      <div className={styles.baseline}>
+    <footer className="Footer">
+      <div className="Footer__baseline">
         <p>[Début de l'expérience. Variante de scénario N°{scenario}].</p>
         <p>[Votre code partie : {gameCode}]</p>
       </div>

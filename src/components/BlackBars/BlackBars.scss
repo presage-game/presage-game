@@ -1,4 +1,4 @@
-.root {
+.BlackBars {
   position: absolute;
   top: 0;
   left: 0;
@@ -7,21 +7,20 @@
   z-index: 10;
   pointer-events: none;
 
-  .topBar,
-  .bottomBar {
+  .bar {
     position: absolute;
     width: 100%;
     height: 10rem;
     background-color: #000000;
-  }
 
-  .topBar {
-    top: 0;
-    left: 0;
-  }
+    &--top {
+      top: 0;
+      left: 0;
+    }
 
-  .bottomBar {
-    bottom: 0;
-    left: 0;
+    &--bottom {
+      bottom: 0;
+      left: 0;
+    }
   }
 }

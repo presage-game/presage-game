@@ -1,0 +1,41 @@
+.SplashScreen {
+  &__title {
+    font-size: 15rem;
+    font-weight: 300;
+    color: #fefff1;
+    text-align: center;
+    display: block;
+    font-family: "Rowdies", cursive;
+    text-transform: uppercase;
+  }
+
+  &__container {
+    .Button {
+      &:not(:first-child) {
+        margin-top: 1rem;
+      }
+    }
+  }
+}
+
+// .loadGame {
+//   margin-top: 2rem;
+//   display: flex;
+//   gap: 1rem;
+//   align-items: center;
+//   justify-content: center;
+
+//   input::-webkit-outer-spin-button,
+//   input::-webkit-inner-spin-button {
+//     -webkit-appearance: none;
+//     margin: 0;
+//   }
+
+//   input[type="number"] {
+//     background: #fefff1;
+//     padding: 1rem;
+//     cursor: pointer;
+//     color: black;
+//     -moz-appearance: textfield;
+//   }
+// }
