@@ -1,8 +1,8 @@
 import React, { useRef, useMemo, useEffect, useState } from "react"
 import { useSelector } from "react-redux"
-import { Box3, Object3D, Quaternion, Vector3, CameraHelper, Raycaster, Vector2 } from "three"
-import { Box, useGLTF, OrthographicCamera, Gltf } from "@react-three/drei"
-import { useFrame, useThree } from "@react-three/fiber"
+import { Box3, Object3D, Quaternion, Vector3, Raycaster, Vector2 } from "three"
+import { Box, useGLTF, OrthographicCamera } from "@react-three/drei"
+import { useFrame } from "@react-three/fiber"
 import { Pathfinding, PathfindingHelper } from "three-pathfinding"
 import { Car } from "./Car"
 
