@@ -5,6 +5,7 @@ import { changeOnFocusCamera, changeOnFocusCameraPosition } from "@/store/reduce
 import { CustomCamera } from "../../tools/CustomCamera/CustomCamera"
 import { Environment } from "@react-three/drei"
 import { WindEffect } from "../../effects/WindEffect"
+import { RainEffect } from "../../effects/RainEffect"
 
 export const Setup = ({ spotIndex, setSpotIndex }) => {
   const [variant, setVariant] = useState("default")
@@ -90,6 +91,7 @@ export const Setup = ({ spotIndex, setSpotIndex }) => {
         rotation={[-Math.PI / 2, Math.PI / 6, Math.PI / 2]}
       /> */}
       <WindEffect />
+      <RainEffect />
       <Scene
         variant={variant}
         setVariant={setVariant}
