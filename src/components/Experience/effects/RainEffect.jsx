@@ -1,14 +1,15 @@
-import { Line } from "@react-three/drei"
+import { useTexture } from "@react-three/drei"
 import { useFrame } from "@react-three/fiber"
-import { useEffect, useRef, useState } from "react"
-import { BufferGeometry, Float32BufferAttribute, MathUtils, PointsMaterial, Vector3 } from "three"
+import { useRef } from "react"
+import { BufferGeometry, Float32BufferAttribute, PointsMaterial } from "three"
 
 export const RainEffect = () => {
+  const disc = useTexture("/assets/materials/rain/disc.png")
   const lineRef = useRef(null)
   const rainGeometry = new BufferGeometry()
   const rainGeoPositions = []
 
-  for (let i = 0; i < 100; i++) {
+  for (let i = 0; i < 30000; i++) {
     const x = Math.random() * 400 - 200
     const y = Math.random() * 500 - 250
     const z = Math.random() * 400 - 200
@@ -22,7 +23,7 @@ export const RainEffect = () => {
   const config = {
     y: {
       min: 100,
-      max: -12,
+      max: -100,
       speed: 0.3,
     },
     z: {
@@ -54,7 +55,7 @@ export const RainEffect = () => {
     <>
       <group ref={lineRef}>
         <points
-          material={new PointsMaterial({ transparent: true, size: 10, alphaTest: 0.5, color: 0xaaaaaa })}
+          material={new PointsMaterial({ transparent: true, sizeAttenuation: true, size: 0.5, alphaTest: 0.8, color: 0x000000, map: disc })}
           geometry={rainGeometry}
         ></points>
       </group>
