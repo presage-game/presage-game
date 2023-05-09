@@ -1,6 +1,6 @@
 import { Line } from "@react-three/drei"
 import { useFrame } from "@react-three/fiber"
-import { useEffect, useRef, useState } from "react"
+import { useRef } from "react"
 
 export const WindEffect = () => {
   const lineRef = useRef(null)
@@ -9,12 +9,12 @@ export const WindEffect = () => {
     x: {
       min: -110,
       max: 90,
-      speed: 0.5,
+      speed: 30,
     },
     z: {
       min: -90,
       max: -60,
-      speed: 0.3,
+      speed: 18,
     },
     lineWidth: 1,
     linePositions: [
@@ -41,9 +41,10 @@ export const WindEffect = () => {
     ],
   }
 
-  useFrame(() => {
-    lineRef.current.position.x += config.x.speed
-    lineRef.current.position.z += config.z.speed
+  useFrame((state,delta) => {
+    console.log(delta)
+    lineRef.current.position.x += config.x.speed * delta
+    lineRef.current.position.z += config.z.speed * delta
     if (lineRef.current.position.x >= config.x.max) {
       lineRef.current.position.x = config.x.min
       if (lineRef.current.position.z >= config.z.max) {
