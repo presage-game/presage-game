@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 
 import { Canvas } from "@react-three/fiber"
 
@@ -16,6 +16,10 @@ export const Experience = () => {
   const { scene } = useSelector((state) => state.map)
   const { mapActive } = useSelector((state) => state.ui)
   const [spotIndex, setSpotIndex] = useState(null)
+
+  useEffect(() => {
+    console.log(scene)
+  }, [scene])
 
   return (
     <div className={styles.root}>
