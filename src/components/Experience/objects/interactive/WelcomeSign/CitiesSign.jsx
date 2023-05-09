@@ -6,7 +6,7 @@ Command: npx gltfjsx@6.1.4 cities_sign.glb --transform
 import React, { useState, useEffect } from "react"
 import { useGLTF, useTexture } from "@react-three/drei"
 import { getMaterials } from "@/helpers/materials/Materials"
-import { MeshBasicMaterial } from "three"
+import { MeshToonMaterial } from "three"
 
 export function Model({ position, rotation, pubHovered, setPubHovered, onPubClick }) {
   const { nodes, materials } = useGLTF("assets/objects/signs/cities_sign.glb")
@@ -61,7 +61,7 @@ export function Model({ position, rotation, pubHovered, setPubHovered, onPubClic
       >
         <mesh
           geometry={nodes.Cube185.geometry}
-          material={new MeshBasicMaterial({ map: citiesSignTexture })}
+          material={new MeshToonMaterial({ map: citiesSignTexture })}
         />
         <mesh
           geometry={nodes.Cube185_1.geometry}

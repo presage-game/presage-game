@@ -5,7 +5,7 @@ Command: npx gltfjsx@6.1.4 map_sign.glb --transform
 
 import React, { useState, useEffect } from "react"
 import { getMaterials } from "@/helpers/materials/Materials"
-import { Material, MeshBasicMaterial } from "three"
+import { MeshToonMaterial } from "three"
 import { useGLTF, useTexture } from "@react-three/drei"
 
 export function Model({ position, rotation, mapHovered, setMapHovered, onMapClick }) {
@@ -56,7 +56,7 @@ export function Model({ position, rotation, mapHovered, setMapHovered, onMapClic
       >
         <mesh
           geometry={nodes.Cube197.geometry}
-          material={new MeshBasicMaterial({ map: mapTexture })}
+          material={new MeshToonMaterial({ map: mapTexture })}
         />
         <mesh
           geometry={nodes.Cube197_1.geometry}
