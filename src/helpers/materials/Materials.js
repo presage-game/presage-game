@@ -6,6 +6,8 @@ import {
   MeshBasicMaterial,
   NearestFilter,
   TextureLoader,
+  Vector2,
+  RepeatWrapping,
 } from "three"
 
 const defaultMaterials = {
@@ -39,6 +41,7 @@ const getTextures = () =>
     const textures = [
       "/assets/materials/toon/threeTone.jpg",
       "/assets/materials/toon/fiveTone.jpg",
+      "/assets/materials/floor/floor.png"
     ].map((filename) => loader.load(filename))
   })
 
@@ -50,10 +53,21 @@ export const getMaterials = async (variant) =>
     const toonFiveTone = result[1]
     toonFiveTone.minFilter = NearestFilter
     toonFiveTone.magFilter = NearestFilter
+    const floorTexture = result[2]
+    floorTexture.wrapS = RepeatWrapping;
+    floorTexture.wrapT = RepeatWrapping;
+    floorTexture.repeat = new Vector2(4,2);
 
     const MaterialsColor = variant === "default" ? defaultMaterials : variantMaterials
 
     const floorMaterial = new MeshToonMaterial({
+      color: MaterialsColor.floorMaterial,
+      gradientMap: toonFiveTone,
+      map: floorTexture,
+      side: DoubleSide
+    })
+
+    const sandMaterial = new MeshToonMaterial({
       color: MaterialsColor.floorMaterial,
       gradientMap: toonFiveTone,
     })
