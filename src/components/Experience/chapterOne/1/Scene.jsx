@@ -1,4 +1,5 @@
 import { Model } from "./Model"
+import { Plane } from "@react-three/drei"
 import { WelcomeSign } from "../../objects/interactive/WelcomeSign/WelcomeSign"
 
 export const Scene = ({

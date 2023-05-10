@@ -4,19 +4,28 @@ Command: npx gltfjsx@6.1.11 scene_1_final.glb --transform
 */
 
 import React, { useEffect, useState } from "react"
-import { Plane, useGLTF } from "@react-three/drei"
+import { Plane, useGLTF, useTexture } from "@react-three/drei"
 import { getMaterials } from "@/helpers/materials/Materials"
-import { MeshBasicMaterial, DoubleSide } from "three"
+import { MeshBasicMaterial, DoubleSide, RepeatWrapping, NearestFilter } from "three"
 
 export function Model(props) {
   const { nodes, materials } = useGLTF("/assets/scenes/scene_1.glb")
   const [Materials, setMaterials] = useState(null)
+  const floorTexture = useTexture("/assets/materials/floor/grand.png")
+  floorTexture.wrapS = RepeatWrapping
+  floorTexture.wrapT = RepeatWrapping
+  floorTexture.repeat.set(100, 100)
+  floorTexture.magFilter = NearestFilter
+  floorTexture.minFilter = NearestFilter
+  const fiveTone = useTexture("/assets/materials/toon/fiveTone.jpg")
+  fiveTone.minFilter = NearestFilter
+  fiveTone.magFilter = NearestFilter
 
   useEffect(() => {
     getMaterials(props.variant).then((result) => setMaterials(result))
   }, [])
 
-  if (Materials === null) {
+  if (Materials === null || floorTexture === null || fiveTone === null) {
     return <group></group>
   }
 
