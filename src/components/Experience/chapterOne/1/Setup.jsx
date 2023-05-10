@@ -76,7 +76,6 @@ export const Setup = ({ setSpotIndex, setShowText, isVoiceOver }) => {
     changeFocus(value)
   }
   */
-
   return (
     <>
       <Environment preset="park" />
@@ -97,9 +96,24 @@ export const Setup = ({ setSpotIndex, setShowText, isVoiceOver }) => {
       <GoToMap args={[5, 5, 50]} position={[-1, -2.5, -80]} />
       <Suspense fallback={null}>
         <PositionalAudio
-          url="/assets/audios/atmospheric/1/wind.mp3"
           autoplay
+          url="/assets/audios/atmospheric/1/wind.mp3"
           loop
+          distance={3}
+          position={[-12, -2.5, -50]}
+        />
+        <PositionalAudio
+          url="/assets/audios/atmospheric/1/metal.mp3"
+          loop
+          autoplay
+          distance={0.6}
+          position={[5, -2.2, -40]}
+        />
+        <PositionalAudio
+          url="/assets/audios/atmospheric/1/metal2.mp3"
+          loop
+          autoplay
+          distance={0.6}
           position={[-12, -2.5, -30]}
         />
       </Suspense>
