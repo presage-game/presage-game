@@ -1,9 +1,9 @@
-import { useState, useEffect } from "react"
+import { useState, useEffect, Suspense } from "react"
 import { Scene } from "./Scene"
 import { useDispatch } from "react-redux"
 import { changeOnFocusCamera, changeOnFocusCameraPosition } from "@/store/reducers/userReducer"
 import { CustomCamera } from "../../tools/CustomCamera/CustomCamera"
-import { Environment } from "@react-three/drei"
+import { Environment, PositionalAudio } from "@react-three/drei"
 import { WindEffect } from "../../effects/WindEffect"
 import { GoToMap } from "../../objects/interactive/GoToMap/GoToMap"
 
@@ -95,6 +95,14 @@ export const Setup = ({ setSpotIndex, setShowText, isVoiceOver }) => {
         rotation={[-Math.PI / 2, Math.PI / 6, Math.PI / 2]}
       /> */}
       <GoToMap args={[5, 5, 50]} position={[-1, -2.5, -80]} />
+      <Suspense fallback={null}>
+        <PositionalAudio
+          url="/assets/audios/atmospheric/1/wind.mp3"
+          autoplay
+          loop
+          position={[-12, -2.5, -30]}
+        />
+      </Suspense>
       <WindEffect />
       <Scene
         variant={variant}
