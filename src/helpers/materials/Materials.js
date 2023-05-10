@@ -8,6 +8,7 @@ import {
   TextureLoader,
   Vector2,
   RepeatWrapping,
+  BackSide,
 } from "three"
 
 const defaultMaterials = {
@@ -41,7 +42,7 @@ const getTextures = () =>
     const textures = [
       "/assets/materials/toon/threeTone.jpg",
       "/assets/materials/toon/fiveTone.jpg",
-      "/assets/materials/floor/floor.png"
+      "/assets/materials/floor/grand.png"
     ].map((filename) => loader.load(filename))
   })
 
@@ -54,17 +55,18 @@ export const getMaterials = async (variant) =>
     toonFiveTone.minFilter = NearestFilter
     toonFiveTone.magFilter = NearestFilter
     const floorTexture = result[2]
-    floorTexture.wrapS = RepeatWrapping;
-    floorTexture.wrapT = RepeatWrapping;
-    floorTexture.repeat = new Vector2(4,2);
+    floorTexture.wrapS = RepeatWrapping
+    floorTexture.wrapT = RepeatWrapping
+    floorTexture.repeat.set(1,1)
+    floorTexture.magFilter = NearestFilter
+    floorTexture.minFilter = NearestFilter
 
     const MaterialsColor = variant === "default" ? defaultMaterials : variantMaterials
 
     const floorMaterial = new MeshToonMaterial({
       color: MaterialsColor.floorMaterial,
       gradientMap: toonFiveTone,
-      map: floorTexture,
-      side: DoubleSide
+      map: floorTexture
     })
 
     const sandMaterial = new MeshToonMaterial({
@@ -126,6 +128,7 @@ export const getMaterials = async (variant) =>
 
     return {
       floorMaterial,
+      sandMaterial,
       roadMaterial,
       fenceMaterial,
       houseMaterial,

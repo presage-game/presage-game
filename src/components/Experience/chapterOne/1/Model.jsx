@@ -4,7 +4,7 @@ Command: npx gltfjsx@6.1.11 scene_1_final.glb --transform
 */
 
 import React, { useEffect, useState } from "react"
-import { useGLTF } from "@react-three/drei"
+import { Plane, useGLTF } from "@react-three/drei"
 import { getMaterials } from "@/helpers/materials/Materials"
 import { MeshBasicMaterial, DoubleSide } from "three"
 
