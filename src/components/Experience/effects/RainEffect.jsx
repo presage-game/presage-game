@@ -16,7 +16,6 @@ export const RainEffect = () => {
 
     rainGeoPositions.push(x, y, z)
   }
-  console.log(rainGeoPositions)
 
   rainGeometry.setAttribute("position", new Float32BufferAttribute(rainGeoPositions, 3))
 
