@@ -136,7 +136,6 @@ export const Scene = ({
         if (box.containsPoint(voitureGrpRef.current.position)) {
           pinpointIndex !== smallCubeRef.current[index].pinpoint &&
             goOnPinpoint(smallCubeRef.current[index].pinpoint)
-
           isPinpointIntersecting = true
           intersectPinpoint(true)
         }
