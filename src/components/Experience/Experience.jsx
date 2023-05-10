@@ -9,13 +9,13 @@ import { Setup as MegalithicCircles } from "./chapterOne/2/Setup"
 
 import { Interface } from "@/components/Interface/Interface"
 import { BlackBars } from "@/components/BlackBars/BlackBars"
-import { Curtain } from "@/components/Curtain/Curtain"
+import { AudioManager } from "@/components/AudioManager/AudioManager"
 
 import "./Experience.scss"
 import { Preload, Stats } from "@react-three/drei"
 
 export const Experience = () => {
-  const { scene } = useSelector((state) => state.map)
+  const { scene, pinpoint } = useSelector((state) => state.map)
   const { mapActive } = useSelector((state) => state.ui)
 
   const [spotIndex, setSpotIndex] = useState(null)
@@ -53,6 +53,7 @@ export const Experience = () => {
         <Preload all />
         <Stats />
       </Canvas>
+      <AudioManager sceneIndex={scene} pinpointIndex={pinpoint} mapActive={mapActive} />
     </div>
   )
 }

@@ -7,17 +7,13 @@ import { Pathfinding, PathfindingHelper } from "three-pathfinding"
 import { Car } from "./Car"
 
 export const Scene = ({ goOnScene, goOnPinpoint, resetScene, resetPinpoint }) => {
-  const audioPath = "src/assets/audios/chapterOne/pinpoints/pinpoint" // TODO: Update this path
-
   const { pinpoint: pinpointIndex, scene: sceneIndex } = useSelector((state) => state.map)
-
-  const [pinpointAudio, setPinpointAudio] = useState(null)
-  const [audioPlaying, setAudioPlaying] = useState(false)
-  const [startSound] = useState(() => new Audio("assets/vehicules/truck/start.mp3"))
 
   const map = useGLTF("assets/scenes/map1.glb")
   const navMesh = useGLTF("assets/scenes/navMesh1.glb")
   const camRef = useRef()
+
+  const [startSound] = useState(() => new Audio("assets/vehicules/truck/start.mp3"))
 
   const [pointerDown, setPointerDown] = useState(false)
 
@@ -132,16 +128,6 @@ export const Scene = ({ goOnScene, goOnPinpoint, resetScene, resetPinpoint }) =>
         if (box.containsPoint(voitureGrpRef.current.position)) {
           pinpointIndex !== smallCubeRef.current[index].pinpoint &&
             goOnPinpoint(smallCubeRef.current[index].pinpoint)
-
-          if (!audioPlaying) {
-            const audio = new Audio(`${audioPath}-${smallCubeRef.current[index].pinpoint}.mp3`)
-            audio.volume = 1
-            audio.play()
-
-            setAudioPlaying(true)
-            setPinpointAudio(audio)
-          }
-
           isPinpointIntersecting = true
         }
       }
@@ -153,13 +139,7 @@ export const Scene = ({ goOnScene, goOnPinpoint, resetScene, resetPinpoint }) =>
     }
 
     // Not intersecting with any pinpoint
-    if (!isPinpointIntersecting && pinpointAudio !== null) {
-      pinpointAudio.pause()
-      pinpointAudio.currentTime = 0
-
-      setAudioPlaying(false)
-      setPinpointAudio(null)
-
+    if (!isPinpointIntersecting) {
       pinpointIndex !== null && resetPinpoint()
     }
   }
