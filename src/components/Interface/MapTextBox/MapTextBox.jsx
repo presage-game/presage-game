@@ -2,8 +2,9 @@ import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { motion, AnimatePresence } from "framer-motion"
 import { showPinpoint } from "@/store/reducers/mapReducer"
+import { Button } from "@/components/Button/Button"
 
-import styles from "@/components/Interface/SceneTextBox/SceneTextBox.module.scss"
+import "@/components/Interface/SceneTextBox/TextBox.scss"
 
 export const MapTextBox = ({ pinpointsData, pinpointIndex, mapActive }) => {
   const { isPinpointActive } = useSelector((state) => state.map)
@@ -70,25 +71,23 @@ export const MapTextBox = ({ pinpointsData, pinpointIndex, mapActive }) => {
     <AnimatePresence>
       {isPinpointActive && showText && pinpointIndex !== null && pinpointIndex >= 0 && (
         <motion.div
-          key="mapTextBox"
-          className={styles.classic}
+          key="textBox"
+          className="TextBox TextBox--bottom"
           initial={{ opacity: 0, y: 20, x: "-50%" }}
           animate={{ opacity: 1, y: 0, x: "-50%" }}
           exit={{ opacity: 0, y: -20, x: "-50%" }}
           transition={{ y: { type: "spring", stiffness: 100 } }}
         >
-          <div>
-            {getTextEmitter() === "narrator" && <h2 className={styles.narrator}>Le narrateur</h2>}
+          <div className="TextBox__inner">
+            {getTextEmitter() === "narrator" && <h2 className="narrator">Le narrateur</h2>}
             {getTextEmitter() === "innerVoice" && (
-              <h2 className={[`${styles.narrator} ${styles["narrator--innerVoice"]}`]}>Une voix</h2>
+              <h2 className="narrator narrator--innerVoice">Voix de la radio</h2>
             )}
             {getTextEmitter() === "npc" && (
-              <h2 className={[`${styles.narrator} ${styles["narrator--npc"]}`]}>
-                {getTextLabel()}
-              </h2>
+              <h2 className="narrator narrator--npc">{getTextLabel()}</h2>
             )}
             {showOptions && (
-              <p className={styles.content}>
+              <p className="content">
                 {getText()
                   .split(" ")
                   .map((word, index) => (
@@ -104,7 +103,7 @@ export const MapTextBox = ({ pinpointsData, pinpointIndex, mapActive }) => {
               </p>
             )}
             {hasOptions() && !showOptions && (
-              <p className={styles.content}>
+              <p className="content">
                 {getOptionResponse()
                   .split(" ")
                   .map((word, index) => (
@@ -121,48 +120,31 @@ export const MapTextBox = ({ pinpointsData, pinpointIndex, mapActive }) => {
             )}
           </div>
           {hasOptions() && hasMore() && !showOptions && (
-            <button
-              className={[`${styles.bottomButton} ${styles["bottomButton--more"]}`]}
-              onClick={showMoreNPC}
-            >
-              Suite
-            </button>
+            <Button text="Suite" onClick={showMoreNPC} />
           )}
-          {!hasOptions() && hasMore() && (
-            <button
-              className={[`${styles.bottomButton} ${styles["bottomButton--more"]}`]}
-              onClick={showMore}
-            >
-              Suite
-            </button>
-          )}
+          {!hasOptions() && hasMore() && <Button text="Suite" onClick={showMore} />}
           {((showOptions && !hasOptions() && !hasMore()) ||
             (!hasMore() && !showOptions && hasOptions())) && (
-            <button
-              className={`${styles.bottomButton} ${styles["bottomButton--close"]}`}
+            <Button
+              text="Fermer"
               onClick={() => {
                 setShowText(false)
                 setTextIndex(0)
                 setShowOptions(false)
                 dispatch(showPinpoint())
               }}
-            >
-              Fermer
-            </button>
+            />
           )}
-
           {hasOptions() && showOptions && (
-            <div className={styles.options}>
+            <>
               {pinpointsData[pinpointIndex]?.voiceover[textIndex]?.options?.map((option, index) => (
-                <button
-                  key={index}
-                  className={styles.optionsButton}
+                <Button
+                  text={option.text}
                   onClick={() => chooseResponse(index)}
-                >
-                  {option.text}
-                </button>
+                  variant="splashScreen"
+                />
               ))}
-            </div>
+            </>
           )}
         </motion.div>
       )}

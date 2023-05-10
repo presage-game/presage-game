@@ -1,4 +1,4 @@
-.root {
+.Collection {
   position: absolute;
   top: 3rem;
   right: 3rem;
@@ -13,23 +13,22 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 0.15rem dashed #f0edd9;
+    border: 0.1rem dashed #f0edd9;
+    opacity: 0.5;
 
     &:not(:first-child) {
       margin-top: 1.25rem;
     }
 
-    .icon {
+    &__icon {
       width: 60%;
       display: none;
     }
 
-    &.active {
-      border: 0.15rem solid #f0edd9;
-    }
+    &--active {
+      opacity: 1;
 
-    &.active {
-      .icon {
+      .item__icon {
         display: block;
       }
     }
