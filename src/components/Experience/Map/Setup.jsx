@@ -40,9 +40,11 @@ export const Setup = () => {
   }
 
   useEffect(() => {
-    console.log("isSceneIntersecting", isSceneIntersecting)
-    console.log("isPinpointIntersecting", isPinpointIntersecting)
-  }, [isSceneIntersecting, isPinpointIntersecting])
+    return () => {
+      dispatch(intersectScene(false))
+      console.log("Scene intersecting reset")
+    }
+  }, [])
 
   return (
     <>
