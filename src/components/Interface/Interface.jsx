@@ -10,6 +10,7 @@ import { MapTextBox } from "@/components/Interface/MapTextBox/MapTextBox"
 import { IntersectionPopup } from "@/components/Interface/IntersectionPopup/IntersectionPopup"
 import { Collection } from "@/components/Interface/Collection/Collection"
 import { Options } from "@/components/Interface/Options/Options"
+import { Cursor } from "./Cursor/Cursor"
 
 export const Interface = ({ mapActive, spotIndex }) => {
   const dispatch = useDispatch()
@@ -80,6 +81,7 @@ export const Interface = ({ mapActive, spotIndex }) => {
           />
         </>
       )}
+      <Cursor />
       <Collection />
       <Options />
     </>

@@ -1,0 +1,10 @@
+.Cursor {
+    width: 20px;
+    height: 20px;
+    background: yellow;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    pointer-events: none;
+}
