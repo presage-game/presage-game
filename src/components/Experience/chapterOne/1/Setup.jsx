@@ -99,7 +99,7 @@ export const Setup = ({ setSpotIndex, setShowText, isVoiceOver }) => {
           autoplay
           url="/assets/audios/atmospheric/1/wind.mp3"
           loop
-          distance={3}
+          distance={4}
           position={[-12, -2.5, -50]}
         />
         <PositionalAudio
