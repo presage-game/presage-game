@@ -39,11 +39,6 @@ export const Interface = ({ mapActive, spotIndex }) => {
           transform: "translateX(-50%)",
         }}
       >
-        {sceneIndex !== null && !mapActive && (
-          <button style={{ cursor: "pointer" }} onClick={() => dispatch(toggleMap())}>
-            {mapActive ? "Close map" : "[Go to map]"}
-          </button>
-        )}
         <button
           style={{ marginLeft: "3rem", cursor: "pointer" }}
           onClick={() => {

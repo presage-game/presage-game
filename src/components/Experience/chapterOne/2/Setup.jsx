@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux"
 import { changeOnFocusCamera, changeOnFocusCameraPosition } from "@/store/reducers/userReducer"
 import { CustomCamera } from "../../tools/CustomCamera/CustomCamera"
 import { Environment } from "@react-three/drei"
+import { GoToMap } from "../../objects/interactive/GoToMap/GoToMap"
 
 export const Setup = () => {
   const [variant, setVariant] = useState("default")
@@ -79,6 +80,7 @@ export const Setup = () => {
         rotation={[-Math.PI / 2, 0, 0]}
       />
       {variant !== "default" && <ambientLight color={"#C65948"} intensity={0.5} />}
+      <GoToMap args={[5, 5, 5]} position={[40, -2.5, -90]} />
       <Scene
         variant={variant}
         setVariant={setVariant}
