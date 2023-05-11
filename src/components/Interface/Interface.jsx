@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import { useSelector, useDispatch } from "react-redux"
-import { toggleBlackBars, toggleMap } from "@/store/reducers/uiReducer"
+import { toggleBlackBars } from "@/store/reducers/uiReducer"
 
 import scriptData from "@/assets/data/chapterOne/scenes.json"
 import pinpointsData from "@/assets/data/chapterOne/pinpoints.json"
@@ -10,6 +10,7 @@ import { MapTextBox } from "@/components/Interface/MapTextBox/MapTextBox"
 import { IntersectionPopup } from "@/components/Interface/IntersectionPopup/IntersectionPopup"
 import { Collection } from "@/components/Interface/Collection/Collection"
 import { Options } from "@/components/Interface/Options/Options"
+import { Cursor } from "./Cursor/Cursor"
 
 export const Interface = ({ mapActive, spotIndex }) => {
   const dispatch = useDispatch()
@@ -38,11 +39,6 @@ export const Interface = ({ mapActive, spotIndex }) => {
           transform: "translateX(-50%)",
         }}
       >
-        {sceneIndex !== null && !mapActive && (
-          <button style={{ cursor: "pointer" }} onClick={() => dispatch(toggleMap())}>
-            {mapActive ? "Close map" : "[Go to map]"}
-          </button>
-        )}
         <button
           style={{ marginLeft: "3rem", cursor: "pointer" }}
           onClick={() => {
@@ -80,6 +76,7 @@ export const Interface = ({ mapActive, spotIndex }) => {
           />
         </>
       )}
+      <Cursor />
       <Collection />
       <Options />
     </>
