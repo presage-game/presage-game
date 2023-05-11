@@ -6,7 +6,14 @@ import { useFrame } from "@react-three/fiber"
 import { Pathfinding, PathfindingHelper } from "three-pathfinding"
 import { Car } from "./Car"
 
-export const Scene = ({ goOnScene, goOnPinpoint, resetScene, resetPinpoint }) => {
+export const Scene = ({
+  goOnScene,
+  goOnPinpoint,
+  resetScene,
+  resetPinpoint,
+  intersectScene,
+  intersectPinpoint,
+}) => {
   const { pinpoint: pinpointIndex, scene: sceneIndex } = useSelector((state) => state.map)
 
   const map = useGLTF("assets/scenes/map1.glb")
@@ -114,6 +121,7 @@ export const Scene = ({ goOnScene, goOnPinpoint, resetScene, resetPinpoint }) =>
           sceneIndex !== cubeRef.current[index].scene && goOnScene(cubeRef.current[index].scene)
 
           isSceneIntersecting = true
+          intersectScene(true)
         }
       }
     })
@@ -128,7 +136,9 @@ export const Scene = ({ goOnScene, goOnPinpoint, resetScene, resetPinpoint }) =>
         if (box.containsPoint(voitureGrpRef.current.position)) {
           pinpointIndex !== smallCubeRef.current[index].pinpoint &&
             goOnPinpoint(smallCubeRef.current[index].pinpoint)
+
           isPinpointIntersecting = true
+          intersectPinpoint(true)
         }
       }
     })
@@ -136,11 +146,13 @@ export const Scene = ({ goOnScene, goOnPinpoint, resetScene, resetPinpoint }) =>
     // Not intersecting with any scene
     if (!isSceneIntersecting && pinpointIndex === null && sceneIndex !== null) {
       resetScene()
+      intersectScene(false)
     }
 
     // Not intersecting with any pinpoint
     if (!isPinpointIntersecting) {
       pinpointIndex !== null && resetPinpoint()
+      intersectPinpoint(false)
     }
   }
 

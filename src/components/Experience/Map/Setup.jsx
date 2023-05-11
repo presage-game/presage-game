@@ -1,8 +1,18 @@
-import { useDispatch } from "react-redux"
+import { useEffect } from "react"
+import { useDispatch, useSelector } from "react-redux"
 import { Scene } from "./Scene"
-import { changeScene, changePinpoint, resetScene, resetPinpoint } from "@/store/reducers/mapReducer"
+import {
+  changeScene,
+  changePinpoint,
+  resetScene,
+  resetPinpoint,
+  intersectScene,
+  intersectPinpoint,
+} from "@/store/reducers/mapReducer"
 
 export const Setup = () => {
+  const { isSceneIntersecting, isPinpointIntersecting } = useSelector((state) => state.map)
+
   const dispatch = useDispatch()
 
   const goOnScene = (number) => {
@@ -21,6 +31,19 @@ export const Setup = () => {
     dispatch(resetPinpoint())
   }
 
+  const intersectSceneFunction = (intersect) => {
+    dispatch(intersectScene(intersect))
+  }
+
+  const intersectPinpointFunction = (intersect) => {
+    dispatch(intersectPinpoint(intersect))
+  }
+
+  useEffect(() => {
+    console.log("isSceneIntersecting", isSceneIntersecting)
+    console.log("isPinpointIntersecting", isPinpointIntersecting)
+  }, [isSceneIntersecting, isPinpointIntersecting])
+
   return (
     <>
       <directionalLight intensity={1} />
@@ -30,6 +53,8 @@ export const Setup = () => {
         goOnPinpoint={goOnPinpoint}
         resetScene={resetSceneFunction}
         resetPinpoint={resetPinpointFunction}
+        intersectScene={intersectSceneFunction}
+        intersectPinpoint={intersectPinpointFunction}
       />
     </>
   )

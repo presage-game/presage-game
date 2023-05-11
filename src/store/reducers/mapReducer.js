@@ -3,6 +3,8 @@ import { createSlice } from "@reduxjs/toolkit"
 const initialState = {
   scene: 0,
   pinpoint: null,
+  isSceneIntersecting: false,
+  isPinpointIntersecting: false,
   isPinpointActive: false,
 }
 
@@ -19,6 +21,12 @@ export const mapSlice = createSlice({
     changePinpoint: (state, action) => {
       state.pinpoint = action.payload
     },
+    intersectScene: (state, action) => {
+      state.isSceneIntersecting = action.payload
+    },
+    intersectPinpoint: (state, action) => {
+      state.isPinpointIntersecting = action.payload
+    },
     showPinpoint: (state) => {
       state.isPinpointActive = !state.isPinpointActive
     },
@@ -34,6 +42,8 @@ export const {
   changePinpoint,
   showPinpoint,
   resetPinpoint,
+  intersectScene,
+  intersectPinpoint,
 } = mapSlice.actions
 
 export default mapSlice.reducer
