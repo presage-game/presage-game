@@ -25,7 +25,7 @@ export const Scene = ({ goOnScene, goOnPinpoint, resetScene, resetPinpoint }) =>
   const pathfinding = useMemo(() => new Pathfinding(), [])
   const pathfindinghelper = useMemo(() => new PathfindingHelper(), [])
   const ZONE = "level1"
-  const SPEED = 8
+  const SPEED = 10
   let navPath = null
 
   navMesh.scene.traverse((node) => {
@@ -174,32 +174,32 @@ export const Scene = ({ goOnScene, goOnPinpoint, resetScene, resetPinpoint }) =>
         ref={(el) => (cubeRef.current[0] = el)}
         scene={0}
         args={[5, 1, 5]}
-        position={[-13, 0, -13]}
+        position={[-13, 0.1, -13]}
       />
       <Box
         ref={(el) => (cubeRef.current[1] = el)}
         scene={1}
         args={[5, 1, 5]}
-        position={[10, 0, -80]}
+        position={[10, 0.1, -80]}
       />
       <Box
         ref={(el) => (cubeRef.current[2] = el)}
         scene={2}
         args={[5, 1, 5]}
-        position={[15, 0, -55]}
+        position={[15, 0.1, -55]}
       />
       <Box
         ref={(el) => (smallCubeRef.current[0] = el)}
         pinpoint={0}
         args={[5, 1, 5]}
-        position={[-7, 0, -3]}
+        position={[-7, 0.1, -3]}
         material-color="hotpink"
       />
       <Box
         ref={(el) => (smallCubeRef.current[1] = el)}
         pinpoint={1}
         args={[5, 1, 5]}
-        position={[10, 0, -15]}
+        position={[10, 0.1, -15]}
         material-color="hotpink"
       />
       <primitive object={pivot} dispose={null} />
