@@ -1,4 +1,4 @@
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { changeScene, showPinpoint } from "@/store/reducers/mapReducer"
 import { changeMouseVariant, toggleMap } from "@/store/reducers/uiReducer"
 
@@ -14,6 +14,8 @@ export const IntersectionPopup = ({
   setIsPopupVisible,
   isPinpointActive,
 }) => {
+  const { isSceneIntersecting, isPinpointIntersecting } = useSelector((state) => state.map)
+
   const dispatch = useDispatch()
 
   const triggerPinpoint = () => {
@@ -32,7 +34,7 @@ export const IntersectionPopup = ({
 
   return (
     <AnimatePresence>
-      {pinpointIndex !== null && !isPinpointActive && (
+      {isPinpointIntersecting && !isPinpointActive && (
         <motion.div
           className="IntersectionPopup"
           onClick={triggerPinpoint}
@@ -60,7 +62,7 @@ export const IntersectionPopup = ({
           </div>
         </motion.div>
       )}
-      {pinpointIndex === null && sceneIndex !== null && (
+      {isSceneIntersecting && (
         <motion.div
           className="IntersectionPopup"
           onClick={() => triggerScene(sceneIndex)}

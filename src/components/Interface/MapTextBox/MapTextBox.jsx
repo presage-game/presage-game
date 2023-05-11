@@ -7,7 +7,9 @@ import { Button } from "@/components/Button/Button"
 import "@/components/Interface/SceneTextBox/TextBox.scss"
 
 export const MapTextBox = ({ pinpointsData, pinpointIndex, mapActive }) => {
-  const { isPinpointActive } = useSelector((state) => state.map)
+  const { isPinpointIntersecting, isPinpointActive } = useSelector(
+    (state) => state.map
+  )
 
   const [showText, setShowText] = useState(pinpointIndex !== null)
   const [showOptions, setShowOptions] = useState(pinpointIndex !== null)
@@ -69,7 +71,7 @@ export const MapTextBox = ({ pinpointsData, pinpointIndex, mapActive }) => {
 
   return (
     <AnimatePresence>
-      {isPinpointActive && showText && pinpointIndex !== null && pinpointIndex >= 0 && (
+      {isPinpointActive && showText && isPinpointIntersecting && (
         <motion.div
           key="textBox"
           className="TextBox TextBox--bottom"
