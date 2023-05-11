@@ -1,6 +1,6 @@
 import { useDispatch } from "react-redux"
 import { changeScene, showPinpoint } from "@/store/reducers/mapReducer"
-import { toggleMap } from "@/store/reducers/uiReducer"
+import { changeMouseVariant, toggleMap } from "@/store/reducers/uiReducer"
 
 import { motion, AnimatePresence } from "framer-motion"
 
@@ -25,6 +25,7 @@ export const IntersectionPopup = ({
   }
 
   const triggerScene = (index) => {
+    dispatch(changeMouseVariant("default"))
     dispatch(toggleMap())
     dispatch(changeScene(index))
   }
@@ -35,6 +36,8 @@ export const IntersectionPopup = ({
         <motion.div
           className="IntersectionPopup"
           onClick={triggerPinpoint}
+          onPointerEnter={() => dispatch(changeMouseVariant("buttonHover"))}
+          onPointerLeave={() => dispatch(changeMouseVariant("default"))}
           initial={{ opacity: 0, x: "-50%", scale: 0.9 }}
           animate={{ opacity: 1, x: "-50%", scale: 1 }}
           exit={{ opacity: 0, x: "-50%", scale: 0.9 }}
@@ -61,6 +64,8 @@ export const IntersectionPopup = ({
         <motion.div
           className="IntersectionPopup"
           onClick={() => triggerScene(sceneIndex)}
+          onPointerEnter={() => dispatch(changeMouseVariant("buttonHover"))}
+          onPointerLeave={() => dispatch(changeMouseVariant("default"))}
           initial={{ opacity: 0, x: "-50%", scale: 0.9 }}
           animate={{ opacity: 1, x: "-50%", scale: 1 }}
           exit={{ opacity: 0, x: "-50%", scale: 0.9 }}

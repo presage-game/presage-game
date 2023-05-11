@@ -42,7 +42,6 @@ export const WindEffect = () => {
   }
 
   useFrame((state,delta) => {
-    console.log(delta)
     lineRef.current.position.x += config.x.speed * delta
     lineRef.current.position.z += config.z.speed * delta
     if (lineRef.current.position.x >= config.x.max) {

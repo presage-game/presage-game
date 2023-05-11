@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import { useSelector, useDispatch } from "react-redux"
-import { toggleBlackBars, toggleMap } from "@/store/reducers/uiReducer"
+import { toggleBlackBars } from "@/store/reducers/uiReducer"
 
 import scriptData from "@/assets/data/chapterOne/scenes.json"
 import pinpointsData from "@/assets/data/chapterOne/pinpoints.json"
