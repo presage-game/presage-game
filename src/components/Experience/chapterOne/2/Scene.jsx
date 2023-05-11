@@ -7,15 +7,13 @@ import { AdinkraOne } from "../../objects/interactive/AdinkraOne/AdinkraOne"
 export const Scene = ({
   variant,
   setVariant,
-  pubClicked,
-  setPubClicked,
-  mapClicked,
-  setMapClicked,
+  adinkraFocused,
+  setAdinkraFocused
 }) => {
   return (
     <>
       <Model position={[9, -15, 93]} variant={variant} setVariant={setVariant} />
-      <AdinkraOne />
+      <AdinkraOne adinkraFocused={adinkraFocused} setAdinkraFocused={setAdinkraFocused} />
       <Environment preset="park" />
     </>
   )

@@ -7,21 +7,19 @@ import { Environment } from "@react-three/drei"
 
 export const Setup = () => {
   const [variant, setVariant] = useState("default")
-  const [pubClicked, setPubClicked] = useState(false)
-  const [mapClicked, setMapClicked] = useState(false)
+  const [adinkraFocused, setAdinkraFocused] = useState(false)
 
   const dispatch = useDispatch()
   const changeFocus = (value) => dispatch(changeOnFocusCamera(value))
   const changeFocusPosition = (value) => dispatch(changeOnFocusCameraPosition(value))
 
   useEffect(() => {
-    if (pubClicked) {
-      setMapClicked(false)
+    if (adinkraFocused) {
       changeFocusPosition({
         position: {
-          x: -21,
+          x: 61,
           y: -2,
-          z: 210,
+          z: 140,
         },
         rotation: {
           x: Math.PI / 6,
@@ -30,25 +28,10 @@ export const Setup = () => {
         },
       })
       changeFocus(true)
-    } else if (mapClicked) {
-      setPubClicked(false)
-      changeFocusPosition({
-        position: {
-          x: 80,
-          y: -3,
-          z: 130,
-        },
-        rotation: {
-          x: 0,
-          y: -Math.PI / 4,
-          z: 0,
-        },
-      })
-      changeFocus(true)
     } else {
       changeFocus(false)
     }
-  }, [pubClicked, mapClicked])
+  }, [adinkraFocused])
 
   /*
   const switchLerp = (value) => {
@@ -82,10 +65,8 @@ export const Setup = () => {
       <Scene
         variant={variant}
         setVariant={setVariant}
-        mapClicked={mapClicked}
-        setMapClicked={setMapClicked}
-        pubClicked={pubClicked}
-        setPubClicked={setPubClicked}
+        adinkraFocused={adinkraFocused}
+        setAdinkraFocused={setAdinkraFocused}
       />
     </>
   )
