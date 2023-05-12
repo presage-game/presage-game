@@ -3,7 +3,7 @@ import { Scene } from "./Scene"
 import { useDispatch } from "react-redux"
 import { changeOnFocusCamera, changeOnFocusCameraPosition } from "@/store/reducers/userReducer"
 import { CustomCamera } from "../../tools/CustomCamera/CustomCamera"
-import { Environment, PositionalAudio } from "@react-three/drei"
+import { Environment, PositionalAudio, Sky } from "@react-three/drei"
 import { WindEffect } from "../../effects/WindEffect"
 import { GoToMap } from "../../objects/interactive/GoToMap/GoToMap"
 
@@ -80,6 +80,7 @@ export const Setup = ({ setSpotIndex, setShowText, isVoiceOver }) => {
     <>
       <Environment preset="park" />
       <CustomCamera />
+      <Sky />
       <directionalLight
         intensity={variant === "default" ? 0.9 : 0.5}
         decay={2}
