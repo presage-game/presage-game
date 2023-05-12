@@ -1,11 +1,10 @@
 import { useAnimations, useGLTF } from "@react-three/drei"
 import React, { useEffect } from "react"
+import { Smoke } from "./Smoke"
 
-export const Car = ({animationsName = "Survey"}) => {
-  const car = useGLTF("assets/vehicules/Fox/glTF/Fox.gltf")
+export const Car = ({ animationsName = "Take 001" }) => {
+  const car = useGLTF("assets/vehicules/testplane-transformed.glb")
   const animations = useAnimations(car.animations, car.scene)
-
-
 
   useEffect(() => {
     const action = animations.actions[animationsName]
@@ -16,10 +15,20 @@ export const Car = ({animationsName = "Survey"}) => {
     }
   }, [animationsName])
 
-  //   window.setTimeout(() => {
-  //     animations.actions.Walk.play()
-  //     animations.actions.Walk.crossFadeFrom(animations.actions.Run, 1)
-  //   }, 3000)
+  window.setTimeout(() => {
+    // animations.actions.Walk.play()
+    // animations.actions.Walk.crossFadeFrom(animations.actions.Run, 1)
+  }, 3000)
 
-  return <primitive object={car.scene} scale={0.03} />
+  return (
+    <group>
+      <primitive object={car.scene} scale={2.5} />
+      {animationsName === "Take 001" && (
+        <>
+          <Smoke position={{ x: -0.5, y: 0, z: 0.5 }} />{" "}
+          <Smoke position={{ x: 0.5, y: 0, z: 0.5 }} />
+        </>
+      )}
+    </group>
+  )
 }

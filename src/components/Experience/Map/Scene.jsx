@@ -1,7 +1,7 @@
 import React, { useRef, useMemo, useEffect, useState } from "react"
 import { useSelector } from "react-redux"
-import { Box3, Object3D, Quaternion, Vector3, CameraHelper } from "three"
-import { Box, useGLTF, OrthographicCamera, Gltf } from "@react-three/drei"
+import { Box3, Object3D, Quaternion, Vector3, CameraHelper, BoxHelper } from "three"
+import { Box, useGLTF, OrthographicCamera, Gltf, useHelper } from "@react-three/drei"
 import { useFrame } from "@react-three/fiber"
 import { Pathfinding, PathfindingHelper } from "three-pathfinding"
 import { Car } from "./Car"
@@ -13,7 +13,6 @@ export const Scene = ({ goOnScene, goOnPinpoint, resetScene, resetPinpoint }) =>
 
   const [pinpointAudio, setPinpointAudio] = useState(null)
   const [audioPlaying, setAudioPlaying] = useState(false)
-
 
   const map = useGLTF("assets/scenes/map1.glb")
   const navMesh = useGLTF("assets/scenes/navMesh1.glb")
@@ -158,6 +157,8 @@ export const Scene = ({ goOnScene, goOnPinpoint, resetScene, resetPinpoint }) =>
     }
   })
 
+  useHelper(voitureGrpRef, BoxHelper, "cyan")
+
   return (
     <>
       <primitive object={map.scene} dispose={null} onPointerUp={(e) => setPointerDown(false)} />
@@ -169,7 +170,7 @@ export const Scene = ({ goOnScene, goOnPinpoint, resetScene, resetPinpoint }) =>
         visible={false}
       />
       <group ref={voitureGrpRef}>
-        <Car animationsName={pointerDown ? "Run" : "Survey"} />
+          <Car animationsName={pointerDown ? "Take 001" : "Take 001"} />
       </group>
       <Box
         ref={(el) => (cubeRef.current[0] = el)}
