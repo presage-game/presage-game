@@ -25,7 +25,7 @@ export const SplashScreen = ({ setShowIntroduction }) => {
 
   return (
     <div className="SplashScreen">
-      <h1 className="SplashScreen__title">Présage</h1>
+      <h1 className="SplashScreen__title">Presage</h1>
       <div className="SplashScreen__container">
         <Button
           text="Commencer"
