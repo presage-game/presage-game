@@ -36,7 +36,7 @@ export const AudioManager = ({ sceneIndex, pinpointIndex, mapActive }) => {
       ambianceAudio.play()
       ambianceGainNode.gain.linearRampToValueAtTime(0.2, audioCtx.currentTime + 4)
     } else if (!isSceneIntersecting && mapActive) {
-      ambianceGainNode.gain.linearRampToValueAtTime(0, audioCtx.currentTime + 4)
+      ambianceGainNode.gain.linearRampToValueAtTime(0, audioCtx.currentTime + 2)
     }
   }, [isSceneIntersecting])
 
@@ -46,7 +46,7 @@ export const AudioManager = ({ sceneIndex, pinpointIndex, mapActive }) => {
       ambianceAudio.play()
       ambianceGainNode.gain.linearRampToValueAtTime(0.2, audioCtx.currentTime + 4)
     } else {
-      ambianceGainNode.gain.linearRampToValueAtTime(0, audioCtx.currentTime + 4)
+      ambianceGainNode.gain.linearRampToValueAtTime(0, audioCtx.currentTime + 2)
     }
   }, [isPinpointIntersecting])
 
@@ -55,7 +55,7 @@ export const AudioManager = ({ sceneIndex, pinpointIndex, mapActive }) => {
     if (sceneIndex !== null && !isSceneIntersecting && !mapActive) {
       trackAudio.src = `src/assets/audios/chapterOne/scenes/scene-${sceneIndex}-track.mp3`
       trackAudio.play()
-      trackGainNode.gain.linearRampToValueAtTime(1.0, audioCtx.currentTime + 4)
+      trackGainNode.gain.linearRampToValueAtTime(0.75, audioCtx.currentTime + 4)
     }
   }, [sceneIndex, isSceneIntersecting])
 
@@ -66,7 +66,7 @@ export const AudioManager = ({ sceneIndex, pinpointIndex, mapActive }) => {
 
       mapAudio.src = `src/assets/audios/map/map-track.mp3`
       mapAudio.play()
-      mapGainNode.gain.linearRampToValueAtTime(0.75, audioCtx.currentTime + 4)
+      mapGainNode.gain.linearRampToValueAtTime(0.5, audioCtx.currentTime + 4)
     } else {
       mapGainNode.gain.linearRampToValueAtTime(0, audioCtx.currentTime + 4)
     }
