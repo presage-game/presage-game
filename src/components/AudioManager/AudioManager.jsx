@@ -36,7 +36,7 @@ export const AudioManager = ({ sceneIndex, pinpointIndex, mapActive }) => {
       ambianceAudio.play()
       ambianceGainNode.gain.linearRampToValueAtTime(0.2, audioCtx.currentTime + 4)
     } else if (!isSceneIntersecting && mapActive) {
-      ambianceGainNode.gain.linearRampToValueAtTime(0, audioCtx.currentTime + 2)
+      ambianceGainNode.gain.linearRampToValueAtTime(0, audioCtx.currentTime + 4)
     }
   }, [isSceneIntersecting])
 
@@ -46,7 +46,7 @@ export const AudioManager = ({ sceneIndex, pinpointIndex, mapActive }) => {
       ambianceAudio.play()
       ambianceGainNode.gain.linearRampToValueAtTime(0.2, audioCtx.currentTime + 4)
     } else {
-      ambianceGainNode.gain.linearRampToValueAtTime(0, audioCtx.currentTime + 2)
+      ambianceGainNode.gain.linearRampToValueAtTime(0, audioCtx.currentTime + 4)
     }
   }, [isPinpointIntersecting])
 
