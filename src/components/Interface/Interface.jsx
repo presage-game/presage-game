@@ -12,7 +12,14 @@ import { Collection } from "@/components/Interface/Collection/Collection"
 import { Options } from "@/components/Interface/Options/Options"
 import { Cursor } from "./Cursor/Cursor"
 
-export const Interface = ({ mapActive, spotIndex }) => {
+export const Interface = ({
+  mapActive,
+  spotIndex,
+  showText,
+  setShowText,
+  isVoiceOver,
+  setIsVoiceOver,
+}) => {
   const dispatch = useDispatch()
 
   const {
@@ -22,10 +29,6 @@ export const Interface = ({ mapActive, spotIndex }) => {
   } = useSelector((state) => state.map)
 
   const [isPopupVisible, setIsPopupVisible] = useState(true)
-
-  useEffect(() => {
-    console.log("spotIndex", spotIndex)
-  }, [spotIndex])
 
   return (
     <>
@@ -54,6 +57,10 @@ export const Interface = ({ mapActive, spotIndex }) => {
           sceneIndex={sceneIndex}
           scriptData={scriptData}
           spotIndex={spotIndex}
+          showText={showText}
+          setShowText={setShowText}
+          isVoiceOver={isVoiceOver}
+          setIsVoiceOver={setIsVoiceOver}
         />
       )}
       {mapActive && (

@@ -4,13 +4,59 @@ import { Button } from "@/components/Button/Button"
 
 import "./TextBox.scss"
 
-export const SceneTextBox = ({ mapActive, sceneIndex, scriptData, spotIndex }) => {
-  const [showText, setShowText] = useState(false)
-  const [isVoiceOver, setIsVoiceOver] = useState(false)
+export const SceneTextBox = ({
+  mapActive,
+  sceneIndex,
+  scriptData,
+  spotIndex,
+  showText,
+  setShowText,
+  isVoiceOver,
+  setIsVoiceOver,
+}) => {
   const [showOptions, setShowOptions] = useState(false)
   const [textIndex, setTextIndex] = useState(0)
   const [optionIndex, setOptionIndex] = useState(0)
   const [key, setKey] = useState(0)
+
+  const getTextEmitter = () =>
+    !isVoiceOver
+      ? scriptData[sceneIndex]?.spots[spotIndex]?.spotVoiceover[textIndex]?.emitter
+      : scriptData[sceneIndex]?.voiceover[textIndex]?.emitter
+  const getTextLabel = () => (!isVoiceOver ? scriptData[sceneIndex].spots[spotIndex]?.label : null)
+
+  const getIntroText = () =>
+    scriptData[sceneIndex]?.voiceover && scriptData[sceneIndex]?.voiceover[textIndex]?.text
+  const getSpotText = () => scriptData[sceneIndex]?.spots[spotIndex]?.spotVoiceover[textIndex]?.text
+
+  const hasMore = () => (isVoiceOver ? hasMoreIntroText() : hasMoreSpotText())
+  const hasMoreIntroText = () => scriptData[sceneIndex]?.voiceover?.length > textIndex + 1
+  const hasMoreSpotText = () =>
+    scriptData[sceneIndex].spots[spotIndex]?.spotVoiceover?.length > textIndex + 1
+  const hasOptions = () =>
+    scriptData[sceneIndex]?.spots[spotIndex]?.spotVoiceover[textIndex]?.options?.length > 0
+
+  // Show the next text in the voiceover array
+  const showMore = () => {
+    setTextIndex(textIndex + 1)
+    setKey((prevKey) => prevKey + 1)
+  }
+  const showMoreNPC = () => {
+    setTextIndex(textIndex + 1)
+    setShowOptions(true)
+    setKey((prevKey) => prevKey + 1)
+  }
+
+  const getOptionResponse = () => {
+    const option =
+      scriptData[sceneIndex]?.spots[spotIndex]?.spotVoiceover[textIndex]?.options[optionIndex]
+    return option.response
+  }
+  const chooseResponse = (data) => {
+    setOptionIndex(data)
+    setShowOptions(false)
+    setKey((prevKey) => prevKey + 1)
+  }
 
   useEffect(() => {
     if (spotIndex !== null) {
@@ -27,52 +73,6 @@ export const SceneTextBox = ({ mapActive, sceneIndex, scriptData, spotIndex }) =
     setShowOptions(false)
   }, [mapActive])
 
-  const getTextEmitter = () =>
-    !isVoiceOver
-      ? scriptData[sceneIndex]?.spots[spotIndex]?.spotVoiceover[textIndex]?.emitter
-      : scriptData[sceneIndex]?.voiceover[textIndex]?.emitter
-
-  const getTextLabel = () => (!isVoiceOver ? scriptData[sceneIndex].spots[spotIndex]?.label : null)
-
-  const getIntroText = () =>
-    scriptData[sceneIndex]?.voiceover && scriptData[sceneIndex]?.voiceover[textIndex]?.text
-
-  const getSpotText = () => scriptData[sceneIndex]?.spots[spotIndex]?.spotVoiceover[textIndex]?.text
-
-  const hasMore = () => (isVoiceOver ? hasMoreIntroText() : hasMoreSpotText())
-
-  const hasMoreIntroText = () => scriptData[sceneIndex]?.voiceover?.length > textIndex + 1
-
-  const hasMoreSpotText = () =>
-    scriptData[sceneIndex].spots[spotIndex]?.spotVoiceover?.length > textIndex + 1
-
-  const hasOptions = () =>
-    scriptData[sceneIndex]?.spots[spotIndex]?.spotVoiceover[textIndex]?.options?.length > 0
-
-  // Show the next text in the voiceover array
-  const showMore = () => {
-    setTextIndex(textIndex + 1)
-    setKey((prevKey) => prevKey + 1)
-  }
-
-  const showMoreNPC = () => {
-    setTextIndex(textIndex + 1)
-    setShowOptions(true)
-    setKey((prevKey) => prevKey + 1)
-  }
-
-  const getOptionResponse = () => {
-    const option =
-      scriptData[sceneIndex]?.spots[spotIndex]?.spotVoiceover[textIndex]?.options[optionIndex]
-    return option.response
-  }
-
-  const chooseResponse = (data) => {
-    setOptionIndex(data)
-    setShowOptions(false)
-    setKey((prevKey) => prevKey + 1)
-  }
-
   useEffect(() => {
     if (scriptData[sceneIndex].voiceover.length > 0) {
       setIsVoiceOver(true)
@@ -82,7 +82,7 @@ export const SceneTextBox = ({ mapActive, sceneIndex, scriptData, spotIndex }) =
 
   return (
     <AnimatePresence>
-      {showText && spotIndex !== null && (
+      {showText && (
         <motion.div
           key="textBox"
           className="TextBox TextBox--aside"

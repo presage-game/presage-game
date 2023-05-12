@@ -7,7 +7,7 @@ import { Environment } from "@react-three/drei"
 import { WindEffect } from "../../effects/WindEffect"
 import { GoToMap } from "../../objects/interactive/GoToMap/GoToMap"
 
-export const Setup = ({ spotIndex, setSpotIndex }) => {
+export const Setup = ({ setSpotIndex, setShowText, isVoiceOver }) => {
   const [variant, setVariant] = useState("default")
   const [pubClicked, setPubClicked] = useState(false)
   const [mapClicked, setMapClicked] = useState(false)
@@ -52,6 +52,10 @@ export const Setup = ({ spotIndex, setSpotIndex }) => {
     } else {
       setSpotIndex(null)
       changeFocus(false)
+
+      if(!isVoiceOver) {
+        setShowText(false)
+      }
     }
   }, [pubClicked, mapClicked])
 
