@@ -11,7 +11,7 @@ export const Scene = ({
 }) => {
   return (
     <>
-      <Model position={[9, -15, 93]} variant={variant} setVariant={setVariant} />
+      <Model position={[11, -15, 93]} variant={variant} setVariant={setVariant} />
       <WelcomeSign
         pubClicked={pubClicked}
         setPubClicked={setPubClicked}

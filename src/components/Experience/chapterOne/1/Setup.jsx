@@ -80,7 +80,7 @@ export const Setup = ({ setSpotIndex, setShowText, isVoiceOver }) => {
     <>
       <Environment preset="park" />
       <CustomCamera />
-      <Sky />
+      <Sky sunPosition={[0, 1, 0]} />
       <directionalLight
         intensity={variant === "default" ? 0.9 : 0.5}
         decay={2}
