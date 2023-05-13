@@ -307,20 +307,20 @@ export function Model(props) {
         rotation={[-Math.PI, 0.82, -Math.PI]}
         scale={[0.69, 0.46, 0.94]}
       >
-        <mesh geometry={nodes.Cube122_1.geometry} material={nodes.Cube122_1.material} />
-        <mesh geometry={nodes.Cube122_2.geometry} material={nodes.Cube122_2.material} />
+        <mesh geometry={nodes.Cube122_1.geometry} material={Materials.leafMaterial} />
+        <mesh geometry={nodes.Cube122_2.geometry} material={Materials.outlineMaterial} />
       </group>
       <group position={[-27.59, 17.95, -227.11]} rotation={[0, -0.37, 0]} scale={[0.8, 0.61, 0.8]}>
-        <mesh geometry={nodes.Cube011_1.geometry} material={nodes.Cube011_1.material} />
-        <mesh geometry={nodes.Cube011_2.geometry} material={nodes.Cube011_2.material} />
+        <mesh geometry={nodes.Cube011_1.geometry} material={Materials.leafMaterial} />
+        <mesh geometry={nodes.Cube011_2.geometry} material={Materials.outlineMaterial} />
       </group>
       <group position={[-27.59, 13.22, -226.57]} scale={0.54}>
-        <mesh geometry={nodes.Cube039_1.geometry} material={nodes.Cube039_1.material} />
-        <mesh geometry={nodes.Cube039_2.geometry} material={nodes.Cube039_2.material} />
+        <mesh geometry={nodes.Cube039_1.geometry} material={Materials.treeMaterial} />
+        <mesh geometry={nodes.Cube039_2.geometry} material={Materials.outlineMaterial} />
       </group>
       <group position={[61.06, 11.81, -383.02]} scale={0.27}>
-        <mesh geometry={nodes.Cube024_1.geometry} material={nodes.Cube024_1.material} />
-        <mesh geometry={nodes.Cube024_2.geometry} material={nodes.Cube024_2.material} />
+        <mesh geometry={nodes.Cube024_1.geometry} material={Materials.treeMaterial} />
+        <mesh geometry={nodes.Cube024_2.geometry} material={Materials.outlineMaterial} />
       </group>
       <mesh
         geometry={nodes.Cube024.geometry}
@@ -329,100 +329,76 @@ export function Model(props) {
         scale={0.17}
       />
       <group position={[59.24, 18.34, -381.63]} rotation={[0.17, -0.29, -0.19]} scale={0.2}>
-        <mesh geometry={nodes.Cube027_1.geometry} material={nodes.Cube027_1.material} />
-        <mesh geometry={nodes.Cube027_2.geometry} material={nodes.Cube027_2.material} />
+        <mesh geometry={nodes.Cube027_1.geometry} material={Materials.leafMaterial} />
+        <mesh geometry={nodes.Cube027_2.geometry} material={Materials.outlineMaterial} />
       </group>
       <group position={[59.23, 16.96, -383.2]} rotation={[0, 0, 0.18]} scale={[0.2, 0.2, 0.23]}>
-        <mesh geometry={nodes.Cube028_1.geometry} material={nodes.Cube028_1.material} />
-        <mesh geometry={nodes.Cube028_2.geometry} material={nodes.Cube028_2.material} />
+        <mesh geometry={nodes.Cube028_1.geometry} material={Materials.leafMaterial} />
+        <mesh geometry={nodes.Cube028_2.geometry} material={Materials.outlineMaterial} />
       </group>
       <group position={[56.98, 15.12, -405.67]} scale={[0.22, 0.22, 0.26]}>
-        <mesh geometry={nodes.Cube028_1.geometry} material={nodes.Cube028_1.material} />
-        <mesh geometry={nodes.Cube028_2.geometry} material={nodes.Cube028_2.material} />
+        <mesh geometry={nodes.Cube028_1.geometry} material={Materials.leafMaterial} />
+        <mesh geometry={nodes.Cube028_2.geometry} material={Materials.outlineMaterial} />
       </group>
       <group position={[66.62, 16.92, -370.56]} scale={[0.33, 0.33, 0.39]}>
-        <mesh geometry={nodes.Cube028_1.geometry} material={nodes.Cube028_1.material} />
-        <mesh geometry={nodes.Cube028_2.geometry} material={nodes.Cube028_2.material} />
+        <mesh geometry={nodes.Cube028_1.geometry} material={Materials.leafMaterial} />
+        <mesh geometry={nodes.Cube028_2.geometry} material={Materials.outlineMaterial} />
       </group>
       <group
         position={[-56.13, 15.97, -525.09]}
         rotation={[-Math.PI, 1.31, -Math.PI]}
         scale={[-0.44, 0.44, 0.52]}
       >
-        <mesh geometry={nodes.Cube028_1.geometry} material={nodes.Cube028_1.material} />
-        <mesh geometry={nodes.Cube028_2.geometry} material={nodes.Cube028_2.material} />
+        <mesh geometry={nodes.Cube028_1.geometry} material={Materials.leafMaterial} />
+        <mesh geometry={nodes.Cube028_2.geometry} material={Materials.outlineMaterial} />
       </group>
       <group position={[62.09, 17.39, -382.37]} rotation={[0, 0, -0.08]} scale={[0.18, 0.2, 0.28]}>
-        <mesh geometry={nodes.Cube029_1.geometry} material={nodes.Cube029_1.material} />
-        <mesh geometry={nodes.Cube029_2.geometry} material={nodes.Cube029_2.material} />
+        <mesh geometry={nodes.Cube029_1.geometry} material={Materials.leafMaterial} />
+        <mesh geometry={nodes.Cube029_2.geometry} material={Materials.outlineMaterial} />
       </group>
       <group position={[60.94, 18.31, -382.08]} scale={[0.28, 0.2, 0.25]}>
-        <mesh geometry={nodes.Cube104_1.geometry} material={nodes.Cube104_1.material} />
-        <mesh geometry={nodes.Cube104_2.geometry} material={nodes.Cube104_2.material} />
+        <mesh geometry={nodes.Cube104_1.geometry} material={Materials.leafMaterial} />
+        <mesh geometry={nodes.Cube104_2.geometry} material={Materials.outlineMaterial} />
       </group>
       <group position={[63.87, 11.85, -406.44]} scale={0.22}>
-        <mesh geometry={nodes.Cube_1.geometry} material={nodes.Cube_1.material} />
-        <mesh geometry={nodes.Cube_2.geometry} material={nodes.Cube_2.material} />
+        <mesh geometry={nodes.Cube_1.geometry} material={Materials.treeMaterial} />
+        <mesh geometry={nodes.Cube_2.geometry} material={Materials.outlineMaterial} />
       </group>
       <group position={[76.94, 12.02, -371.71]} scale={0.33}>
-        <mesh geometry={nodes.Cube_1.geometry} material={nodes.Cube_1.material} />
-        <mesh geometry={nodes.Cube_2.geometry} material={nodes.Cube_2.material} />
-      </group>
-      <group
-        position={[-54.09, 9.35, -511.23]}
-        rotation={[-Math.PI, 1.31, -Math.PI]}
-        scale={[-0.44, 0.44, 0.44]}
-      >
-        <mesh geometry={nodes.Cube_1.geometry} material={nodes.Cube_1.material} />
-        <mesh geometry={nodes.Cube_2.geometry} material={nodes.Cube_2.material} />
+        <mesh geometry={nodes.Cube_1.geometry} material={Materials.treeMaterial} />
+        <mesh geometry={nodes.Cube_2.geometry} material={Materials.outlineMaterial} />
       </group>
       <group position={[57.34, 11.83, -402.59]} scale={0.27}>
-        <mesh geometry={nodes.Cube010_1.geometry} material={nodes.Cube010_1.material} />
-        <mesh geometry={nodes.Cube010_2.geometry} material={nodes.Cube010_2.material} />
+        <mesh geometry={nodes.Cube010_1.geometry} material={Materials.treeMaterial} />
+        <mesh geometry={nodes.Cube010_2.geometry} material={Materials.outlineMaterial} />
       </group>
       <group position={[67.17, 12, -365.96]} scale={0.4}>
-        <mesh geometry={nodes.Cube010_1.geometry} material={nodes.Cube010_1.material} />
-        <mesh geometry={nodes.Cube010_2.geometry} material={nodes.Cube010_2.material} />
-      </group>
-      <group
-        position={[-49.92, 9.32, -525.96]}
-        rotation={[-Math.PI, 1.31, -Math.PI]}
-        scale={[-0.54, 0.54, 0.54]}
-      >
-        <mesh geometry={nodes.Cube010_1.geometry} material={nodes.Cube010_1.material} />
-        <mesh geometry={nodes.Cube010_2.geometry} material={nodes.Cube010_2.material} />
+        <mesh geometry={nodes.Cube010_1.geometry} material={Materials.treeMaterial} />
+        <mesh geometry={nodes.Cube010_2.geometry} material={Materials.outlineMaterial} />
       </group>
       <group position={[55.66, 13.25, -405.91]} scale={[0.27, 0.27, 0.38]}>
-        <mesh geometry={nodes.Cube041_1.geometry} material={nodes.Cube041_1.material} />
-        <mesh geometry={nodes.Cube041_2.geometry} material={nodes.Cube041_2.material} />
+        <mesh geometry={nodes.Cube041_1.geometry} material={Materials.leafMaterial} />
+        <mesh geometry={nodes.Cube041_2.geometry} material={Materials.outlineMaterial} />
       </group>
       <group position={[64.66, 14.12, -370.92]} scale={[0.41, 0.41, 0.56]}>
-        <mesh geometry={nodes.Cube041_1.geometry} material={nodes.Cube041_1.material} />
-        <mesh geometry={nodes.Cube041_2.geometry} material={nodes.Cube041_2.material} />
-      </group>
-      <group
-        position={[-57.27, 12.19, -527.53]}
-        rotation={[-Math.PI, 1.31, -Math.PI]}
-        scale={[-0.55, 0.55, 0.76]}
-      >
-        <mesh geometry={nodes.Cube041_1.geometry} material={nodes.Cube041_1.material} />
-        <mesh geometry={nodes.Cube041_2.geometry} material={nodes.Cube041_2.material} />
+        <mesh geometry={nodes.Cube041_1.geometry} material={Materials.leafMaterial} />
+        <mesh geometry={nodes.Cube041_2.geometry} material={Materials.outlineMaterial} />
       </group>
       <group
         position={[57.49, 14.49, -405.66]}
         rotation={[0.09, 1.17, -0.14]}
         scale={[0.33, 0.27, 0.53]}
       >
-        <mesh geometry={nodes.Cube017_1.geometry} material={nodes.Cube017_1.material} />
-        <mesh geometry={nodes.Cube017_2.geometry} material={nodes.Cube017_2.material} />
+        <mesh geometry={nodes.Cube017_1.geometry} material={Materials.leafMaterial} />
+        <mesh geometry={nodes.Cube017_2.geometry} material={Materials.outlineMaterial} />
       </group>
       <group
         position={[67.39, 15.98, -370.55]}
         rotation={[0.09, 1.17, -0.14]}
         scale={[0.49, 0.41, 0.79]}
       >
-        <mesh geometry={nodes.Cube017_1.geometry} material={nodes.Cube017_1.material} />
-        <mesh geometry={nodes.Cube017_2.geometry} material={nodes.Cube017_2.material} />
+        <mesh geometry={nodes.Cube017_1.geometry} material={Materials.leafMaterial} />
+        <mesh geometry={nodes.Cube017_2.geometry} material={Materials.outlineMaterial} />
       </group>
       <group
         position={[-55.84, 14.7, -524.09]}
@@ -537,8 +513,8 @@ export function Model(props) {
         <mesh geometry={nodes.Cube026_2.geometry} material={nodes.Cube026_2.material} />
       </group>
       <group position={[69.11, 12.04, -403.38]} rotation={[0, 0.54, 0]} scale={0.22}>
-        <mesh geometry={nodes.Cube030_1.geometry} material={nodes.Cube030_1.material} />
-        <mesh geometry={nodes.Cube030_2.geometry} material={nodes.Cube030_2.material} />
+        <mesh geometry={nodes.Cube030_1.geometry} material={Materials.treeMaterial} />
+        <mesh geometry={nodes.Cube030_2.geometry} material={Materials.outlineMaterial} />
       </group>
       <group position={[66.61, 14.37, -401]} rotation={[0.09, -0.1, 0.2]} scale={0.22}>
         <mesh geometry={nodes.Cube031_1.geometry} material={nodes.Cube031_1.material} />
@@ -597,270 +573,231 @@ export function Model(props) {
         <mesh geometry={nodes.Cube034_2.geometry} material={nodes.Cube034_2.material} />
       </group>
       <group position={[68.84, 14.58, -403.62]} rotation={[0, 0.54, 0]} scale={[0.19, 0.16, 0.16]}>
-        <mesh geometry={nodes.Cube035_1.geometry} material={nodes.Cube035_1.material} />
-        <mesh geometry={nodes.Cube035_2.geometry} material={nodes.Cube035_2.material} />
-      </group>
-      <group
-        position={[-46.02, 14.88, -502.96]}
-        rotation={[0, 1.28, 0]}
-        scale={[-0.39, 0.33, 0.33]}
-      >
-        <mesh geometry={nodes.Cube035_1.geometry} material={nodes.Cube035_1.material} />
-        <mesh geometry={nodes.Cube035_2.geometry} material={nodes.Cube035_2.material} />
+        <mesh geometry={nodes.Cube035_1.geometry} material={Materials.leafMaterial} />
+        <mesh geometry={nodes.Cube035_2.geometry} material={Materials.outlineMaterial} />
       </group>
       <group
         position={[69.37, 14.89, -403.94]}
         rotation={[0, 0.54, -0.15]}
         scale={[0.19, 0.16, 0.19]}
       >
-        <mesh geometry={nodes.Cube036_1.geometry} material={nodes.Cube036_1.material} />
-        <mesh geometry={nodes.Cube036_2.geometry} material={nodes.Cube036_2.material} />
-      </group>
-      <group
-        position={[-46.37, 15.5, -501.77]}
-        rotation={[0, 1.28, 0.15]}
-        scale={[-0.39, 0.33, 0.37]}
-      >
-        <mesh geometry={nodes.Cube036_1.geometry} material={nodes.Cube036_1.material} />
-        <mesh geometry={nodes.Cube036_2.geometry} material={nodes.Cube036_2.material} />
+        <mesh geometry={nodes.Cube036_1.geometry} material={Materials.leafMaterial} />
+        <mesh geometry={nodes.Cube036_2.geometry} material={Materials.outlineMaterial} />
       </group>
       <mesh
         geometry={nodes.Cube036.geometry}
-        material={nodes.Cube036.material}
+        material={Materials.leafMaterial}
         position={[68.96, 15.92, -403.88]}
         rotation={[-0.03, 0.43, 0.03]}
         scale={[0.16, 0.18, 0.15]}
-      />
-      <mesh
-        geometry={nodes.Cube111.geometry}
-        material={nodes.Cube111.material}
-        position={[-46.48, 17.58, -502.6]}
-        rotation={[-0.16, 1.4, 0.14]}
-        scale={[-0.32, 0.36, 0.3]}
       />
       <group
         position={[67.72, 14.95, -403.1]}
         rotation={[-0.07, 0.73, -0.16]}
         scale={[0.18, 0.11, 0.16]}
       >
-        <mesh geometry={nodes.Cube038_1.geometry} material={nodes.Cube038_1.material} />
-        <mesh geometry={nodes.Cube038_2.geometry} material={nodes.Cube038_2.material} />
-      </group>
-      <group
-        position={[-45.58, 15.62, -505.44]}
-        rotation={[-0.12, 1.1, 0.32]}
-        scale={[-0.37, 0.22, 0.32]}
-      >
-        <mesh geometry={nodes.Cube038_1.geometry} material={nodes.Cube038_1.material} />
-        <mesh geometry={nodes.Cube038_2.geometry} material={nodes.Cube038_2.material} />
+        <mesh geometry={nodes.Cube038_1.geometry} material={Materials.leafMaterial} />
+        <mesh geometry={nodes.Cube038_2.geometry} material={Materials.outlineMaterial} />
       </group>
       <group position={[69.29, 15.95, -408.57]} rotation={[0, -0.81, 0]} scale={[0.54, 0.41, 0.54]}>
-        <mesh geometry={nodes.Cube040_1.geometry} material={nodes.Cube040_1.material} />
-        <mesh geometry={nodes.Cube040_2.geometry} material={nodes.Cube040_2.material} />
-      </group>
-      <group
-        position={[-55.47, 17.64, -499.55]}
-        rotation={[-Math.PI, 0.5, -Math.PI]}
-        scale={[-1.09, 0.83, 1.09]}
-      >
-        <mesh geometry={nodes.Cube040_1.geometry} material={nodes.Cube040_1.material} />
-        <mesh geometry={nodes.Cube040_2.geometry} material={nodes.Cube040_2.material} />
+        <mesh geometry={nodes.Cube040_1.geometry} material={Materials.leafMaterial} />
+        <mesh geometry={nodes.Cube040_2.geometry} material={Materials.outlineMaterial} />
       </group>
       <group position={[58.34, 12.01, -399.06]} rotation={[0, 0.33, 0]} scale={0.2}>
-        <mesh geometry={nodes.Cube068_1.geometry} material={nodes.Cube068_1.material} />
-        <mesh geometry={nodes.Cube068_2.geometry} material={nodes.Cube068_2.material} />
+        <mesh geometry={nodes.Cube068_1.geometry} material={Materials.treeMaterial} />
+        <mesh geometry={nodes.Cube068_2.geometry} material={Materials.outlineMaterial} />
       </group>
       <group position={[-42.51, 9.69, -525.83]} rotation={[0, 1.5, 0]} scale={[-0.4, 0.4, 0.4]}>
-        <mesh geometry={nodes.Cube068_1.geometry} material={nodes.Cube068_1.material} />
-        <mesh geometry={nodes.Cube068_2.geometry} material={nodes.Cube068_2.material} />
+        <mesh geometry={nodes.Cube068_1.geometry} material={Materials.treeMaterial} />
+        <mesh geometry={nodes.Cube068_2.geometry} material={Materials.outlineMaterial} />
       </group>
       <group position={[72.17, 12, -399.94]} rotation={[0, 0.44, 0]} scale={0.31}>
-        <mesh geometry={nodes.Cube069_1.geometry} material={nodes.Cube069_1.material} />
-        <mesh geometry={nodes.Cube069_2.geometry} material={nodes.Cube069_2.material} />
+        <mesh geometry={nodes.Cube069_1.geometry} material={Materials.treeMaterial} />
+        <mesh geometry={nodes.Cube069_2.geometry} material={Materials.outlineMaterial} />
       </group>
       <group position={[-37.13, 9.66, -498.36]} rotation={[0, 1.39, 0]} scale={[-0.63, 0.63, 0.63]}>
-        <mesh geometry={nodes.Cube069_1.geometry} material={nodes.Cube069_1.material} />
-        <mesh geometry={nodes.Cube069_2.geometry} material={nodes.Cube069_2.material} />
+        <mesh geometry={nodes.Cube069_1.geometry} material={Materials.treeMaterial} />
+        <mesh geometry={nodes.Cube069_2.geometry} material={Materials.outlineMaterial} />
       </group>
       <group position={[67.28, 11.82, -397.77]} scale={0.22}>
-        <mesh geometry={nodes.Cube070_1.geometry} material={nodes.Cube070_1.material} />
-        <mesh geometry={nodes.Cube070_2.geometry} material={nodes.Cube070_2.material} />
+        <mesh geometry={nodes.Cube070_1.geometry} material={Materials.treeMaterial} />
+        <mesh geometry={nodes.Cube070_2.geometry} material={Materials.outlineMaterial} />
       </group>
       <group
         position={[-35.4, 9.29, -509.02]}
         rotation={[-Math.PI, 1.31, -Math.PI]}
         scale={[-0.44, 0.44, 0.44]}
       >
-        <mesh geometry={nodes.Cube070_1.geometry} material={nodes.Cube070_1.material} />
-        <mesh geometry={nodes.Cube070_2.geometry} material={nodes.Cube070_2.material} />
+        <mesh geometry={nodes.Cube070_1.geometry} material={Materials.treeMaterial} />
+        <mesh geometry={nodes.Cube070_2.geometry} material={Materials.outlineMaterial} />
       </group>
       <group position={[61.3, 11.85, -398.64]} rotation={[0, 0.72, 0]} scale={[0.2, 0.18, 0.2]}>
-        <mesh geometry={nodes.Cube071_1.geometry} material={nodes.Cube071_1.material} />
-        <mesh geometry={nodes.Cube071_2.geometry} material={nodes.Cube071_2.material} />
+        <mesh geometry={nodes.Cube071_1.geometry} material={Materials.treeMaterial} />
+        <mesh geometry={nodes.Cube071_2.geometry} material={Materials.outlineMaterial} />
       </group>
       <group position={[68.4, 13.59, -397.61]} scale={[0.24, 0.22, 0.16]}>
-        <mesh geometry={nodes.Cube072_1.geometry} material={nodes.Cube072_1.material} />
-        <mesh geometry={nodes.Cube072_2.geometry} material={nodes.Cube072_2.material} />
+        <mesh geometry={nodes.Cube072_1.geometry} material={Materials.leafMaterial} />
+        <mesh geometry={nodes.Cube072_2.geometry} material={Materials.outlineMaterial} />
       </group>
       <group
         position={[-34.51, 12.87, -506.91]}
         rotation={[-Math.PI, 1.31, -Math.PI]}
         scale={[-0.49, 0.44, 0.32]}
       >
-        <mesh geometry={nodes.Cube072_1.geometry} material={nodes.Cube072_1.material} />
-        <mesh geometry={nodes.Cube072_2.geometry} material={nodes.Cube072_2.material} />
+        <mesh geometry={nodes.Cube072_1.geometry} material={Materials.leafMaterial} />
+        <mesh geometry={nodes.Cube072_2.geometry} material={Materials.outlineMaterial} />
       </group>
       <group position={[65.74, 14.63, -397.66]} scale={[0.24, 0.23, 0.17]}>
-        <mesh geometry={nodes.Cube073_1.geometry} material={nodes.Cube073_1.material} />
-        <mesh geometry={nodes.Cube073_2.geometry} material={nodes.Cube073_2.material} />
+        <mesh geometry={nodes.Cube073_1.geometry} material={Materials.leafMaterial} />
+        <mesh geometry={nodes.Cube073_2.geometry} material={Materials.outlineMaterial} />
       </group>
       <group
         position={[-35.99, 14.98, -512.08]}
         rotation={[-Math.PI, 1.31, -Math.PI]}
         scale={[-0.49, 0.46, 0.34]}
       >
-        <mesh geometry={nodes.Cube073_1.geometry} material={nodes.Cube073_1.material} />
-        <mesh geometry={nodes.Cube073_2.geometry} material={nodes.Cube073_2.material} />
+        <mesh geometry={nodes.Cube073_1.geometry} material={Materials.leafMaterial} />
+        <mesh geometry={nodes.Cube073_2.geometry} material={Materials.outlineMaterial} />
       </group>
       <group position={[68.01, 16.34, -397.37]} scale={[0.28, 0.24, 0.3]}>
-        <mesh geometry={nodes.Cube074_1.geometry} material={nodes.Cube074_1.material} />
-        <mesh geometry={nodes.Cube074_2.geometry} material={nodes.Cube074_2.material} />
+        <mesh geometry={nodes.Cube074_1.geometry} material={Materials.leafMaterial} />
+        <mesh geometry={nodes.Cube074_2.geometry} material={Materials.outlineMaterial} />
       </group>
       <group
         position={[-34.25, 18.43, -507.81]}
         rotation={[-Math.PI, 1.31, -Math.PI]}
         scale={[-0.57, 0.48, 0.61]}
       >
-        <mesh geometry={nodes.Cube074_1.geometry} material={nodes.Cube074_1.material} />
-        <mesh geometry={nodes.Cube074_2.geometry} material={nodes.Cube074_2.material} />
+        <mesh geometry={nodes.Cube074_1.geometry} material={Materials.leafMaterial} />
+        <mesh geometry={nodes.Cube074_2.geometry} material={Materials.outlineMaterial} />
       </group>
       <group
         position={[66.8, 15.78, -398.19]}
         rotation={[-0.17, 1, 0.08]}
         scale={[0.28, 0.24, 0.3]}
       >
-        <mesh geometry={nodes.Cube075_1.geometry} material={nodes.Cube075_1.material} />
-        <mesh geometry={nodes.Cube075_2.geometry} material={nodes.Cube075_2.material} />
+        <mesh geometry={nodes.Cube075_1.geometry} material={Materials.leafMaterial} />
+        <mesh geometry={nodes.Cube075_2.geometry} material={Materials.outlineMaterial} />
       </group>
       <group
         position={[-36.48, 17.3, -509.74]}
         rotation={[-0.14, 0.82, 0.16]}
         scale={[-0.57, 0.48, 0.61]}
       >
-        <mesh geometry={nodes.Cube075_1.geometry} material={nodes.Cube075_1.material} />
-        <mesh geometry={nodes.Cube075_2.geometry} material={nodes.Cube075_2.material} />
+        <mesh geometry={nodes.Cube075_1.geometry} material={Materials.leafMaterial} />
+        <mesh geometry={nodes.Cube075_2.geometry} material={Materials.outlineMaterial} />
       </group>
       <group position={[61, 13.67, -398.86]} rotation={[0, 0.72, 0]} scale={[0.2, 0.16, 0.16]}>
-        <mesh geometry={nodes.Cube076_1.geometry} material={nodes.Cube076_1.material} />
-        <mesh geometry={nodes.Cube076_2.geometry} material={nodes.Cube076_2.material} />
+        <mesh geometry={nodes.Cube076_1.geometry} material={Materials.leafMaterial} />
+        <mesh geometry={nodes.Cube076_2.geometry} material={Materials.outlineMaterial} />
       </group>
       <group position={[-40.76, 13.04, -520.73]} rotation={[0, 1.11, 0]} scale={[-0.4, 0.33, 0.33]}>
-        <mesh geometry={nodes.Cube076_1.geometry} material={nodes.Cube076_1.material} />
-        <mesh geometry={nodes.Cube076_2.geometry} material={nodes.Cube076_2.material} />
+        <mesh geometry={nodes.Cube076_1.geometry} material={Materials.leafMaterial} />
+        <mesh geometry={nodes.Cube076_2.geometry} material={Materials.outlineMaterial} />
       </group>
       <group position={[61.86, 15.09, -398.16]} rotation={[0, 0.72, 0]} scale={[0.2, 0.16, 0.16]}>
-        <mesh geometry={nodes.Cube077_1.geometry} material={nodes.Cube077_1.material} />
-        <mesh geometry={nodes.Cube077_2.geometry} material={nodes.Cube077_2.material} />
+        <mesh geometry={nodes.Cube077_1.geometry} material={Materials.leafMaterial} />
+        <mesh geometry={nodes.Cube077_2.geometry} material={Materials.outlineMaterial} />
       </group>
       <group position={[-38.96, 15.91, -519.41]} rotation={[0, 1.11, 0]} scale={[-0.4, 0.33, 0.33]}>
-        <mesh geometry={nodes.Cube077_1.geometry} material={nodes.Cube077_1.material} />
-        <mesh geometry={nodes.Cube077_2.geometry} material={nodes.Cube077_2.material} />
+        <mesh geometry={nodes.Cube077_1.geometry} material={Materials.leafMaterial} />
+        <mesh geometry={nodes.Cube077_2.geometry} material={Materials.outlineMaterial} />
       </group>
       <group position={[62.48, 15.19, -399.26]} rotation={[0, 0.27, -0.08]} scale={0.32}>
-        <mesh geometry={nodes.Cube078_1.geometry} material={nodes.Cube078_1.material} />
-        <mesh geometry={nodes.Cube078_2.geometry} material={nodes.Cube078_2.material} />
+        <mesh geometry={nodes.Cube078_1.geometry} material={Materials.leafMaterial} />
+        <mesh geometry={nodes.Cube078_2.geometry} material={Materials.outlineMaterial} />
       </group>
       <group
         position={[-40.78, 16.1, -517.63]}
         rotation={[0, 1.56, 0.08]}
         scale={[-0.66, 0.66, 0.66]}
       >
-        <mesh geometry={nodes.Cube078_1.geometry} material={nodes.Cube078_1.material} />
-        <mesh geometry={nodes.Cube078_2.geometry} material={nodes.Cube078_2.material} />
+        <mesh geometry={nodes.Cube078_1.geometry} material={Materials.leafMaterial} />
+        <mesh geometry={nodes.Cube078_2.geometry} material={Materials.outlineMaterial} />
       </group>
       <group position={[58.75, 14.8, -399.87]} rotation={[0.02, 0.34, -0.01]} scale={0.22}>
-        <mesh geometry={nodes.Cube061_1.geometry} material={nodes.Cube061_1.material} />
-        <mesh geometry={nodes.Cube061_2.geometry} material={nodes.Cube061_2.material} />
+        <mesh geometry={nodes.Cube061_1.geometry} material={Materials.leafMaterial} />
+        <mesh geometry={nodes.Cube061_2.geometry} material={Materials.outlineMaterial} />
       </group>
       <group
         position={[-43.88, 15.31, -524.6]}
         rotation={[0.18, 1.49, -0.17]}
         scale={[-0.44, 0.44, 0.44]}
       >
-        <mesh geometry={nodes.Cube061_1.geometry} material={nodes.Cube061_1.material} />
-        <mesh geometry={nodes.Cube061_2.geometry} material={nodes.Cube061_2.material} />
+        <mesh geometry={nodes.Cube061_1.geometry} material={Materials.leafMaterial} />
+        <mesh geometry={nodes.Cube061_2.geometry} material={Materials.outlineMaterial} />
       </group>
       <group position={[58.4, 14.39, -399.65]} rotation={[0.02, 0.34, -0.01]} scale={0.14}>
-        <mesh geometry={nodes.Cube062_1.geometry} material={nodes.Cube062_1.material} />
-        <mesh geometry={nodes.Cube062_2.geometry} material={nodes.Cube062_2.material} />
+        <mesh geometry={nodes.Cube062_1.geometry} material={Materials.leafMaterial} />
+        <mesh geometry={nodes.Cube062_2.geometry} material={Materials.outlineMaterial} />
       </group>
       <group
         position={[-43.64, 14.49, -525.39]}
         rotation={[0.18, 1.49, -0.17]}
         scale={[-0.29, 0.29, 0.29]}
       >
-        <mesh geometry={nodes.Cube062_1.geometry} material={nodes.Cube062_1.material} />
-        <mesh geometry={nodes.Cube062_2.geometry} material={nodes.Cube062_2.material} />
+        <mesh geometry={nodes.Cube062_1.geometry} material={Materials.leafMaterial} />
+        <mesh geometry={nodes.Cube062_2.geometry} material={Materials.outlineMaterial} />
       </group>
       <group position={[59.03, 13.32, -399.17]} rotation={[0.02, 0.34, -0.01]} scale={0.09}>
-        <mesh geometry={nodes.Cube063_1.geometry} material={nodes.Cube063_1.material} />
-        <mesh geometry={nodes.Cube063_2.geometry} material={nodes.Cube063_2.material} />
+        <mesh geometry={nodes.Cube063_1.geometry} material={Materials.leafMaterial} />
+        <mesh geometry={nodes.Cube063_2.geometry} material={Materials.outlineMaterial} />
       </group>
       <group
         position={[-42.37, 12.33, -524.42]}
         rotation={[0.18, 1.49, -0.17]}
         scale={[-0.19, 0.19, 0.19]}
       >
-        <mesh geometry={nodes.Cube063_1.geometry} material={nodes.Cube063_1.material} />
-        <mesh geometry={nodes.Cube063_2.geometry} material={nodes.Cube063_2.material} />
+        <mesh geometry={nodes.Cube063_1.geometry} material={Materials.leafMaterial} />
+        <mesh geometry={nodes.Cube063_2.geometry} material={Materials.outlineMaterial} />
       </group>
       <group position={[58.11, 14.85, -398.4]} rotation={[0.02, 0.34, -0.01]} scale={0.22}>
-        <mesh geometry={nodes.Cube079_1.geometry} material={nodes.Cube079_1.material} />
-        <mesh geometry={nodes.Cube079_2.geometry} material={nodes.Cube079_2.material} />
+        <mesh geometry={nodes.Cube079_1.geometry} material={Materials.leafMaterial} />
+        <mesh geometry={nodes.Cube079_2.geometry} material={Materials.outlineMaterial} />
       </group>
       <group
         position={[-41.35, 15.42, -526.62]}
         rotation={[0.18, 1.49, -0.17]}
         scale={[-0.44, 0.44, 0.44]}
       >
-        <mesh geometry={nodes.Cube079_1.geometry} material={nodes.Cube079_1.material} />
-        <mesh geometry={nodes.Cube079_2.geometry} material={nodes.Cube079_2.material} />
+        <mesh geometry={nodes.Cube079_1.geometry} material={Materials.leafMaterial} />
+        <mesh geometry={nodes.Cube079_2.geometry} material={Materials.outlineMaterial} />
       </group>
       <group position={[57.02, 14.58, -397.84]} rotation={[0.02, 0.34, -0.01]} scale={0.22}>
-        <mesh geometry={nodes.Cube080_1.geometry} material={nodes.Cube080_1.material} />
-        <mesh geometry={nodes.Cube080_2.geometry} material={nodes.Cube080_2.material} />
+        <mesh geometry={nodes.Cube080_1.geometry} material={Materials.leafMaterial} />
+        <mesh geometry={nodes.Cube080_2.geometry} material={Materials.outlineMaterial} />
       </group>
       <group
         position={[-40.81, 14.87, -529.02]}
         rotation={[0.18, 1.49, -0.17]}
         scale={[-0.44, 0.44, 0.44]}
       >
-        <mesh geometry={nodes.Cube080_1.geometry} material={nodes.Cube080_1.material} />
-        <mesh geometry={nodes.Cube080_2.geometry} material={nodes.Cube080_2.material} />
+        <mesh geometry={nodes.Cube080_1.geometry} material={Materials.leafMaterial} />
+        <mesh geometry={nodes.Cube080_2.geometry} material={Materials.outlineMaterial} />
       </group>
       <group position={[71.19, 14.89, -399.5]} rotation={[0, 0.44, 0]} scale={0.22}>
-        <mesh geometry={nodes.Cube081_1.geometry} material={nodes.Cube081_1.material} />
-        <mesh geometry={nodes.Cube081_2.geometry} material={nodes.Cube081_2.material} />
+        <mesh geometry={nodes.Cube081_1.geometry} material={Materials.leafMaterial} />
+        <mesh geometry={nodes.Cube081_2.geometry} material={Materials.outlineMaterial} />
       </group>
       <group
         position={[-36.78, 15.51, -500.49]}
         rotation={[0, 1.39, 0]}
         scale={[-0.44, 0.44, 0.44]}
       >
-        <mesh geometry={nodes.Cube081_1.geometry} material={nodes.Cube081_1.material} />
-        <mesh geometry={nodes.Cube081_2.geometry} material={nodes.Cube081_2.material} />
+        <mesh geometry={nodes.Cube081_1.geometry} material={Materials.leafMaterial} />
+        <mesh geometry={nodes.Cube081_2.geometry} material={Materials.outlineMaterial} />
       </group>
       <group position={[73.3, 15.16, -400.42]} rotation={[0, 0.44, 0]} scale={[0.29, 0.22, 0.32]}>
-        <mesh geometry={nodes.Cube082_1.geometry} material={nodes.Cube082_1.material} />
-        <mesh geometry={nodes.Cube082_2.geometry} material={nodes.Cube082_2.material} />
+        <mesh geometry={nodes.Cube082_1.geometry} material={Materials.leafMaterial} />
+        <mesh geometry={nodes.Cube082_2.geometry} material={Materials.outlineMaterial} />
       </group>
       <group
         position={[-37.49, 16.06, -495.89]}
         rotation={[0, 1.39, 0]}
         scale={[-0.58, 0.44, 0.65]}
       >
-        <mesh geometry={nodes.Cube082_1.geometry} material={nodes.Cube082_1.material} />
-        <mesh geometry={nodes.Cube082_2.geometry} material={nodes.Cube082_2.material} />
+        <mesh geometry={nodes.Cube082_1.geometry} material={Materials.leafMaterial} />
+        <mesh geometry={nodes.Cube082_2.geometry} material={Materials.outlineMaterial} />
       </group>
       <group position={[72.34, 14.87, -400.66]} rotation={[0, 0.44, 0]} scale={0.19}>
         <mesh geometry={nodes.Cube083_1.geometry} material={Materials.leafMaterial} />
@@ -915,7 +852,7 @@ export function Model(props) {
         <mesh geometry={nodes.Cube047_2.geometry} material={Materials.outlineMaterial} />
       </group>
       <group position={[72.78, 11.85, -395.52]} rotation={[0, 0.63, 0]} scale={0.22}>
-        <mesh geometry={nodes.Cube009_1.geometry} material={Materials.leafMaterial} />
+        <mesh geometry={nodes.Cube009_1.geometry} material={Materials.treeMaterial} />
         <mesh geometry={nodes.Cube009_2.geometry} material={Materials.outlineMaterial} />
       </group>
       <group position={[65.22, 11.85, -394.64]} rotation={[0, 0.08, 0]} scale={0.22}>
@@ -927,11 +864,11 @@ export function Model(props) {
         rotation={[-Math.PI, 1.39, -Math.PI]}
         scale={[-0.44, 0.44, 0.44]}
       >
-        <mesh geometry={nodes.Cube019_1.geometry} material={Materials.leafMaterial} />
+        <mesh geometry={nodes.Cube019_1.geometry} material={Materials.treeMaterial} />
         <mesh geometry={nodes.Cube019_2.geometry} material={Materials.outlineMaterial} />
       </group>
       <group position={[60.5, 11.85, -395.26]} rotation={[-Math.PI, 1.32, -Math.PI]} scale={0.31}>
-        <mesh geometry={nodes.Cube090_1.geometry} material={Materials.leafMaterial} />
+        <mesh geometry={nodes.Cube090_1.geometry} material={Materials.treeMaterial} />
         <mesh geometry={nodes.Cube090_2.geometry} material={Materials.outlineMaterial} />
       </group>
       <group position={[56.03, 11.85, -394.53]} rotation={[0, 0.63, 0]} scale={0.22}>
@@ -939,7 +876,7 @@ export function Model(props) {
         <mesh geometry={nodes.Cube098_2.geometry} material={Materials.outlineMaterial} />
       </group>
       <group position={[-34.85, 9.35, -532.65]} rotation={[0, 1.2, 0]} scale={[-0.44, 0.44, 0.44]}>
-        <mesh geometry={nodes.Cube098_1.geometry} material={Materials.leafMaterial} />
+        <mesh geometry={nodes.Cube098_1.geometry} material={Materials.treeMaterial} />
         <mesh geometry={nodes.Cube098_2.geometry} material={Materials.outlineMaterial} />
       </group>
       <group
@@ -1115,7 +1052,7 @@ export function Model(props) {
         <mesh geometry={nodes.Cube049_2.geometry} material={Materials.outlineMaterial} />
       </group>
       <group position={[69.13, 11.85, -409.06]} rotation={[0, -0.44, 0]} scale={[0.22, 0.22, 0.18]}>
-        <mesh geometry={nodes.Cube052_1.geometry} material={Materials.leafMaterial} />
+        <mesh geometry={nodes.Cube052_1.geometry} material={Materials.treeMaterial} />
         <mesh geometry={nodes.Cube052_2.geometry} material={Materials.outlineMaterial} />
       </group>
       <group
