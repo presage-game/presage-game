@@ -9,8 +9,8 @@ export const WelcomeSign = ({ mapClicked, setMapClicked, pubClicked, setPubClick
   return (
     <>
       <MapSignModel
-        position={[-12, -2.5, -30]}
-        rotation={[0, -Math.PI / 2, 0]}
+        position={[-11, -2.5, -29]}
+        rotation={[0, -Math.PI / 2.5, 0]}
         mapHovered={mapHovered}
         setMapHovered={setMapHovered}
         onMapClick={() => setMapClicked(!mapClicked)}

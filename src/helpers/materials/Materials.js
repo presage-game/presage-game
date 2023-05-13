@@ -12,6 +12,7 @@ const defaultMaterials = {
   floorMaterial: "#F6B791",
   roadMaterial: "#2D2D2C",
   fenceMaterial: "#757271",
+  houseMaterial: '#8D6363',
   leafMaterial: "#4F7552",
   treeMaterial: "#704D46",
   stoneMaterial: "#7A675C",
@@ -23,6 +24,7 @@ const variantMaterials = {
   floorMaterial: "#918E8D",
   roadMaterial: "#2D2D2C",
   fenceMaterial: "#757271",
+  houseMaterial: '#8D6363',
   leafMaterial: "#D8BF66",
   treeMaterial: "#704D46",
   stoneMaterial: "#7A675C",
@@ -71,6 +73,11 @@ export const getMaterials = async (variant) =>
       gradientMap: toonFiveTone,
     })
 
+    const houseMaterial = new MeshToonMaterial({
+      color: MaterialsColor.houseMaterial,
+      gradientMap: toonFiveTone,
+    })
+
     const leafMaterial = new MeshToonMaterial({
       color: MaterialsColor.leafMaterial,
       gradientMap: toonThreeTone,
@@ -107,6 +114,7 @@ export const getMaterials = async (variant) =>
       floorMaterial,
       roadMaterial,
       fenceMaterial,
+      houseMaterial,
       leafMaterial,
       treeMaterial,
       stoneMaterial,

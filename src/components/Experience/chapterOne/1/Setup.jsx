@@ -40,7 +40,7 @@ export const Setup = ({ setSpotIndex, setShowText, isVoiceOver }) => {
         position: {
           x: 75,
           y: -3,
-          z: 130,
+          z: 120,
         },
         rotation: {
           x: 0,

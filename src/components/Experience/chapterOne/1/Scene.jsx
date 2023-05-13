@@ -1,4 +1,4 @@
-import { Model } from "./Scene_1_final"
+import { Model } from "./Model"
 import { WelcomeSign } from "../../objects/interactive/WelcomeSign/WelcomeSign"
 
 export const Scene = ({
