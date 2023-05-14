@@ -1,6 +1,7 @@
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import { useSelector, useDispatch } from "react-redux"
-import { toggleBlackBars } from "@/store/reducers/uiReducer"
+import { toggleBlackBars, toggleMap } from "@/store/reducers/uiReducer"
+import { toggleMute } from "@/store/reducers/audioReducer"
 
 import scriptData from "@/assets/data/chapterOne/scenes.json"
 import pinpointsData from "@/assets/data/chapterOne/pinpoints.json"
@@ -27,6 +28,7 @@ export const Interface = ({
     isPinpointActive,
     pinpoint: pinpointIndex,
   } = useSelector((state) => state.map)
+  const { isMuted } = useSelector((state) => state.audio)
 
   const [isPopupVisible, setIsPopupVisible] = useState(true)
 
@@ -42,6 +44,15 @@ export const Interface = ({
           transform: "translateX(-50%)",
         }}
       >
+        <button style={{ cursor: "pointer" }} onClick={() => dispatch(toggleMap())}>
+          {mapActive ? "Close map" : "[Go to map]"}
+        </button>
+        <button
+          style={{ marginLeft: "3rem", cursor: "pointer" }}
+          onClick={() => dispatch(toggleMute())}
+        >
+          {isMuted ? "Unmute" : "Mute"}
+        </button>
         <button
           style={{ marginLeft: "3rem", cursor: "pointer" }}
           onClick={() => {

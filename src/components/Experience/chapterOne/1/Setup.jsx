@@ -8,7 +8,7 @@ import { WindEffect } from "../../effects/WindEffect"
 import { GoToMap } from "../../objects/interactive/GoToMap/GoToMap"
 import { CloudsEffect } from "../../effects/CloudsEffect"
 
-export const Setup = ({ setSpotIndex, setShowText, isVoiceOver }) => {
+export const Setup = ({ setSpotIndex }) => {
   const [variant, setVariant] = useState("default")
   const [pubClicked, setPubClicked] = useState(false)
   const [mapClicked, setMapClicked] = useState(false)

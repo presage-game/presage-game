@@ -14,6 +14,23 @@ const trackAudio = new Audio()
 const ambianceAudio = new Audio()
 const mapAudio = new Audio()
 
+/* Experimental */
+trackAudio.addEventListener("ended", () => {
+  trackAudio.currentTime = 0
+  trackAudio.play()
+})
+
+ambianceAudio.addEventListener("ended", () => {
+  ambianceAudio.currentTime = 0
+  ambianceAudio.play()
+})
+
+mapAudio.addEventListener("ended", () => {
+  mapAudio.currentTime = 0
+  mapAudio.play()
+})
+/* --- */
+
 // Source nodes
 const trackSourceNode = audioCtx.createMediaElementSource(trackAudio)
 const ambianceSourceNode = audioCtx.createMediaElementSource(ambianceAudio)
@@ -29,46 +46,62 @@ mapGainNode.connect(audioCtx.destination)
 
 export const AudioManager = ({ sceneIndex, pinpointIndex, mapActive }) => {
   const { isSceneIntersecting, isPinpointIntersecting } = useSelector((state) => state.map)
+  const { isMuted } = useSelector((state) => state.audio)
 
   useEffect(() => {
-    if (isSceneIntersecting) {
-      ambianceAudio.src = `src/assets/audios/chapterOne/scenes/scene-${sceneIndex}-ambiance.mp3`
+    if (isSceneIntersecting && !isMuted) {
+      ambianceAudio.src = `/audios/scenes/${sceneIndex}/sounds/ambiance.mp3`
       ambianceAudio.play()
-      ambianceGainNode.gain.linearRampToValueAtTime(0.2, audioCtx.currentTime + 4)
+      ambianceGainNode.gain.linearRampToValueAtTime(0.1, audioCtx.currentTime + 2)
     } else if (!isSceneIntersecting && mapActive) {
-      ambianceGainNode.gain.linearRampToValueAtTime(0, audioCtx.currentTime + 4)
+      ambianceGainNode.gain.linearRampToValueAtTime(0, audioCtx.currentTime + 2)
     }
-  }, [isSceneIntersecting])
+  }, [isSceneIntersecting, isMuted])
 
   useEffect(() => {
-    if (isPinpointIntersecting) {
-      ambianceAudio.src = `src/assets/audios/chapterOne/pinpoints/pinpoint-${pinpointIndex}-ambiance.mp3`
+    if (isPinpointIntersecting && !isMuted) {
+      ambianceAudio.src = `/audios/pinpoints/${pinpointIndex}/sounds/ambiance.mp3`
       ambianceAudio.play()
-      ambianceGainNode.gain.linearRampToValueAtTime(0.2, audioCtx.currentTime + 4)
+      ambianceGainNode.gain.linearRampToValueAtTime(0.1, audioCtx.currentTime + 2)
     } else {
-      ambianceGainNode.gain.linearRampToValueAtTime(0, audioCtx.currentTime + 4)
+      ambianceGainNode.gain.linearRampToValueAtTime(0, audioCtx.currentTime + 2)
     }
-  }, [isPinpointIntersecting])
+  }, [isPinpointIntersecting, isMuted])
 
   useEffect(() => {
     // If we enter the scene
-    if (sceneIndex !== null && !isSceneIntersecting && !mapActive) {
-      trackAudio.src = `src/assets/audios/chapterOne/scenes/scene-${sceneIndex}-track.mp3`
+    if (sceneIndex !== null && !isSceneIntersecting && !mapActive && !isMuted) {
+      trackAudio.src = `/audios/scenes/${sceneIndex}/sounds/track.mp3`
       trackAudio.play()
       trackGainNode.gain.linearRampToValueAtTime(0.75, audioCtx.currentTime + 4)
+
+      // If ambianceAudio is not already playing
+      // if (ambianceAudio.currentTime === 0) {
+      //   ambianceAudio.src = `src/assets/audios/scenes/scene-${sceneIndex}-ambiance.mp3`
+      //   ambianceAudio.play()
+      //   ambianceGainNode.gain.linearRampToValueAtTime(0.1, audioCtx.currentTime + 2)
+      // }
     }
-  }, [sceneIndex, isSceneIntersecting])
+  }, [sceneIndex, isSceneIntersecting, isMuted])
 
   useEffect(() => {
-    if (mapActive) {
+    if (mapActive && !isMuted) {
       trackGainNode.gain.linearRampToValueAtTime(0, audioCtx.currentTime + 4)
       ambianceGainNode.gain.linearRampToValueAtTime(0, audioCtx.currentTime + 4)
 
-      mapAudio.src = `src/assets/audios/map/map-track.mp3`
+      mapAudio.src = `/audios/map/track.mp3`
       mapAudio.play()
       mapGainNode.gain.linearRampToValueAtTime(0.5, audioCtx.currentTime + 4)
     } else {
       mapGainNode.gain.linearRampToValueAtTime(0, audioCtx.currentTime + 4)
     }
-  }, [mapActive])
+  }, [mapActive, isMuted])
+
+  useEffect(() => {
+    if (isMuted) {
+      trackGainNode.gain.linearRampToValueAtTime(0, audioCtx.currentTime + 2)
+      ambianceGainNode.gain.linearRampToValueAtTime(0, audioCtx.currentTime + 2)
+      mapGainNode.gain.linearRampToValueAtTime(0, audioCtx.currentTime + 2)
+    }
+  }, [isMuted])
 }
