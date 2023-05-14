@@ -1,10 +1,15 @@
 import { useEffect, useState } from "react"
 import { Box } from "@react-three/drei"
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
+import { collectAdinkra } from "@/store/reducers/userReducer"
 
 export const AdinkraOne = ({ adinkraFocused, setAdinkraFocused }) => {
+  const { collectedAdinkras } = useSelector((state) => state.user)
   const dispatch = useDispatch()
   const [melodic, setMelodic] = useState([])
+  const [gameFinished, setGameFinished] = useState(false)
+
+  const goodMelodic = [1,2,3,4]
 
   const rizzPlayer = new Audio("/assets/audio/adinkraOne/Rizz.mp3")
   const pianoPlayer = new Audio("/assets/audio/adinkraOne/Piano.mp3")
@@ -42,8 +47,16 @@ export const AdinkraOne = ({ adinkraFocused, setAdinkraFocused }) => {
     if (melodic.length >= 4) {
       console.log("final melodic")
       // check melodic
-      if (true) {
+      if (JSON.stringify(melodic) === JSON.stringify(goodMelodic)) {
         console.log("good melodic")
+        if(!gameFinished) {
+          dispatch(collectAdinkra({
+            id: 1,
+            name: "Adinkra 1",
+            description: "Adinkra 1 description good",
+          }))
+          setGameFinished(true)
+        }
       } else {
         console.log("bad melodic")
       }
@@ -51,6 +64,13 @@ export const AdinkraOne = ({ adinkraFocused, setAdinkraFocused }) => {
       setAdinkraFocused(false)
     }
   }, [melodic])
+
+  useEffect(() => {
+    const AdinkraOneCollected = collectedAdinkras.filter((adinkra) => adinkra.id === 1)
+    if(AdinkraOneCollected.length > 0) {
+      setGameFinished(true)
+    }
+  })
 
   return (
     <>
