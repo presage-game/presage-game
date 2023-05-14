@@ -6,6 +6,7 @@ import { CustomCamera } from "../../tools/CustomCamera/CustomCamera"
 import { Environment, PositionalAudio, Sky } from "@react-three/drei"
 import { WindEffect } from "../../effects/WindEffect"
 import { GoToMap } from "../../objects/interactive/GoToMap/GoToMap"
+import { CloudsEffect } from "../../effects/CloudsEffect"
 
 export const Setup = ({ setSpotIndex, setShowText, isVoiceOver }) => {
   const [variant, setVariant] = useState("default")
@@ -53,7 +54,7 @@ export const Setup = ({ setSpotIndex, setShowText, isVoiceOver }) => {
       setSpotIndex(null)
       changeFocus(false)
 
-      if(!isVoiceOver) {
+      if (!isVoiceOver) {
         setShowText(false)
       }
     }
@@ -80,7 +81,13 @@ export const Setup = ({ setSpotIndex, setShowText, isVoiceOver }) => {
     <>
       <Environment preset="park" />
       <CustomCamera />
-      <Sky  sunPosition={[10, 1, 2]} azimuth={180} rayleigh={2.0} mieCoefficient={0.05} mieDirectionalG={0.828} />
+      <Sky
+        sunPosition={[10, 1, 2]}
+        azimuth={180}
+        rayleigh={2.0}
+        mieCoefficient={0.05}
+        mieDirectionalG={0.828}
+      />
       <directionalLight
         intensity={variant === "default" ? 0.9 : 0.5}
         decay={2}
@@ -119,6 +126,7 @@ export const Setup = ({ setSpotIndex, setShowText, isVoiceOver }) => {
         />
       </Suspense>
       <WindEffect />
+      <CloudsEffect position={[0, 40, -300]} variant={variant} />
       <Scene
         variant={variant}
         setVariant={setVariant}
