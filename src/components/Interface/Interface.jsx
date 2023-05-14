@@ -44,19 +44,14 @@ export const Interface = ({
           transform: "translateX(-50%)",
         }}
       >
-        {!mapActive && (
-          <button style={{ cursor: "pointer" }} onClick={() => dispatch(toggleMap())}>
-            Go to map
-          </button>
-        )}
         <button
-          style={{ marginLeft: "3rem", cursor: "pointer" }}
+          style={{ marginLeft: "3rem", cursor: "none" }}
           onClick={() => dispatch(toggleMute())}
         >
           {isMuted ? "Unmute" : "Mute"}
         </button>
         <button
-          style={{ marginLeft: "3rem", cursor: "pointer" }}
+          style={{ marginLeft: "3rem", cursor: "none" }}
           onClick={() => {
             dispatch(toggleBlackBars())
           }}
