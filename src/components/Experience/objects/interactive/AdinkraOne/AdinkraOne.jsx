@@ -21,34 +21,52 @@ export const AdinkraOne = ({ adinkraFocused, setAdinkraFocused }) => {
     setMelodic(newMelodic)
   }
 
+  const playSound = (note) => {
+    if(note === 1 || note === 2) {
+      rizzPlayer.play()
+    } else if (note === 3 || note === 4) {
+      pianoPlayer.play()
+    }
+    
+  }
+
+  const signClick = (note) => {
+    if (adinkraFocused) {
+      addNote(note)
+      playSound(note)
+    }
+  }
+
   useEffect(() => {
     console.log(melodic)
-    if(melodic.length >= 4) {
-        console.log("final melodic")
-        // check melodic
-        if(true) {
-            console.log("good melodic")
-        } else {
-            console.log("bad melodic")
-        }
-        setMelodic([])
-        setAdinkraFocused(false)
+    if (melodic.length >= 4) {
+      console.log("final melodic")
+      // check melodic
+      if (true) {
+        console.log("good melodic")
+      } else {
+        console.log("bad melodic")
+      }
+      setMelodic([])
+      setAdinkraFocused(false)
     }
   }, [melodic])
 
   return (
     <>
       <group onClick={checkFocused} position={[-8, 0, -30]} rotation={[0, -Math.PI / 6, 0]}>
-        <Box
-          onClick={() => {
-            addNote(1)
-            rizzPlayer.play()
-          }}
-          position={[-3, 0, 0]}
-        />
-        <Box position={[-1, 0, 0]} />
-        <Box position={[1, 0, 0]} />
-        <Box position={[3, 0, 0]} />
+        <Box onClick={() => signClick(1)} position={[-3, 0, 0]}>
+          <meshBasicMaterial color={melodic.includes(1) ? "green" : "white"} />
+        </Box>
+        <Box onClick={() => signClick(2)} position={[-1, 0, 0]}>
+          <meshBasicMaterial color={melodic.includes(2) ? "green" : "white"} />
+        </Box>
+        <Box onClick={() => signClick(3)} position={[1, 0, 0]}>
+          <meshBasicMaterial color={melodic.includes(3) ? "green" : "white"} />
+        </Box>
+        <Box onClick={() => signClick(4)} position={[3, 0, 0]}>
+          <meshBasicMaterial color={melodic.includes(4) ? "green" : "white"} />
+        </Box>
       </group>
     </>
   )
