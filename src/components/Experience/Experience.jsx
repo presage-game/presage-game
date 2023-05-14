@@ -9,7 +9,7 @@ import { Setup as MegalithicCircles } from "./chapterOne/2/Setup"
 
 import { Interface } from "@/components/Interface/Interface"
 import { BlackBars } from "@/components/BlackBars/BlackBars"
-import { AudioManager } from "@/components/AudioManager/AudioManager"
+import { AudioManager } from "@/components/Experience/tools/AudioManager/AudioManager"
 
 import "./Experience.scss"
 import { Preload, Stats } from "@react-three/drei"
