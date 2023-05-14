@@ -11,8 +11,6 @@ import {
 } from "@/store/reducers/mapReducer"
 
 export const Setup = () => {
-  const { isSceneIntersecting, isPinpointIntersecting } = useSelector((state) => state.map)
-
   const dispatch = useDispatch()
 
   const goOnScene = (number) => {
