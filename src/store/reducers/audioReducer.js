@@ -1,16 +1,19 @@
 import { createSlice } from "@reduxjs/toolkit"
 
 const initialState = {
-  isMuted: true,
-  volume: 1,
+  isMuted: false,
 }
 
 export const audioSlice = createSlice({
   name: "audio",
   initialState,
-  reducers: {},
+  reducers: {
+    toggleMute: (state) => {
+      state.isMuted = !state.isMuted
+    },
+  },
 })
 
-export const {} = audioSlice.actions
+export const { toggleMute } = audioSlice.actions
 
 export default audioSlice.reducer
