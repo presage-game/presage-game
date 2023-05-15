@@ -33,7 +33,7 @@ export const CloudsEffect = ({ position, variant, numberOfClouds }) => {
     x: {
       min: -450,
       max: 450,
-      speed: 0.03,
+      speed: 0.01,
     },
     z: {
       min: -90,
