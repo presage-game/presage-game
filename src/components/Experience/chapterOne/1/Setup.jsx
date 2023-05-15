@@ -126,7 +126,7 @@ export const Setup = ({ setSpotIndex, setShowText, isVoiceOver }) => {
         />
       </Suspense>
       <WindEffect />
-      <CloudsEffect position={[0, 40, -300]} variant={variant} />
+      <CloudsEffect position={[0, 40, -300]} variant={variant} numberOfClouds={10} />
       <Scene
         variant={variant}
         setVariant={setVariant}
