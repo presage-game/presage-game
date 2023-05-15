@@ -68,6 +68,7 @@ export const {
   changeGameCode,
   changeOnFocusCamera,
   changeOnFocusCameraPosition,
+  collectAdinkra
 } = userSlice.actions
 
 export default userSlice.reducer
