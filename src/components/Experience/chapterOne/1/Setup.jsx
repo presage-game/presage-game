@@ -1,11 +1,12 @@
-import { useState, useEffect } from "react"
+import { useState, useEffect, Suspense } from "react"
 import { Scene } from "./Scene"
 import { useDispatch } from "react-redux"
 import { changeOnFocusCamera, changeOnFocusCameraPosition } from "@/store/reducers/userReducer"
 import { CustomCamera } from "../../tools/CustomCamera/CustomCamera"
-import { Environment } from "@react-three/drei"
+import { Environment, PositionalAudio, Sky } from "@react-three/drei"
 import { WindEffect } from "../../effects/WindEffect"
 import { GoToMap } from "../../objects/interactive/GoToMap/GoToMap"
+import { CloudsEffect } from "../../effects/CloudsEffect"
 
 export const Setup = ({ setSpotIndex, setShowText, isVoiceOver }) => {
   const [variant, setVariant] = useState("default")
@@ -40,7 +41,7 @@ export const Setup = ({ setSpotIndex, setShowText, isVoiceOver }) => {
         position: {
           x: 75,
           y: -3,
-          z: 130,
+          z: 120,
         },
         rotation: {
           x: 0,
@@ -53,7 +54,7 @@ export const Setup = ({ setSpotIndex, setShowText, isVoiceOver }) => {
       setSpotIndex(null)
       changeFocus(false)
 
-      if(!isVoiceOver) {
+      if (!isVoiceOver) {
         setShowText(false)
       }
     }
@@ -76,11 +77,17 @@ export const Setup = ({ setSpotIndex, setShowText, isVoiceOver }) => {
     changeFocus(value)
   }
   */
-
   return (
     <>
       <Environment preset="park" />
       <CustomCamera />
+      <Sky
+        sunPosition={[10, 1, 2]}
+        azimuth={180}
+        rayleigh={2.0}
+        mieCoefficient={0.05}
+        mieDirectionalG={0.828}
+      />
       <directionalLight
         intensity={variant === "default" ? 0.9 : 0.5}
         decay={2}
@@ -95,7 +102,31 @@ export const Setup = ({ setSpotIndex, setShowText, isVoiceOver }) => {
         rotation={[-Math.PI / 2, Math.PI / 6, Math.PI / 2]}
       /> */}
       <GoToMap args={[5, 5, 50]} position={[-1, -2.5, -80]} />
+      <Suspense fallback={null}>
+        <PositionalAudio
+          autoplay
+          url="/assets/audios/atmospheric/1/wind.mp3"
+          loop
+          distance={4}
+          position={[-12, -2.5, -50]}
+        />
+        <PositionalAudio
+          url="/assets/audios/atmospheric/1/metal.mp3"
+          loop
+          autoplay
+          distance={0.6}
+          position={[5, -2.2, -40]}
+        />
+        <PositionalAudio
+          url="/assets/audios/atmospheric/1/metal2.mp3"
+          loop
+          autoplay
+          distance={0.6}
+          position={[-12, -2.5, -30]}
+        />
+      </Suspense>
       <WindEffect />
+      <CloudsEffect position={[0, 40, -300]} variant={variant} numberOfClouds={20} />
       <Scene
         variant={variant}
         setVariant={setVariant}
