@@ -44,7 +44,6 @@ export const CloudsEffect = ({ position, variant, numberOfClouds }) => {
 
   useFrame(() => {
     cloudsRef.current.position.x += config.x.speed
-    console.log(cloudsRef.current.position.x)
     cloudsRef.current.position.z += config.z.speed
     if (cloudsRef.current.position.x >= config.x.max) {
       cloudsRef.current.position.x = config.x.min
