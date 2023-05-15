@@ -35,7 +35,7 @@ export const AdinkraOne = ({ adinkraFocused, setAdinkraFocused }) => {
     
   }
 
-  const signClick = (note) => {
+  const markClick = (note) => {
     if (adinkraFocused) {
       addNote(note)
       playSound(note)
@@ -66,8 +66,8 @@ export const AdinkraOne = ({ adinkraFocused, setAdinkraFocused }) => {
   }, [melodic])
 
   useEffect(() => {
-    const AdinkraOneCollected = collectedAdinkras.filter((adinkra) => adinkra.id === 1)
-    if(AdinkraOneCollected.length > 0) {
+    const isAdinkraOneCollected = collectedAdinkras.filter((adinkra) => adinkra.id === 1)
+    if(isAdinkraOneCollected.length > 0) {
       setGameFinished(true)
     }
   })
@@ -75,16 +75,16 @@ export const AdinkraOne = ({ adinkraFocused, setAdinkraFocused }) => {
   return (
     <>
       <group onClick={checkFocused} position={[-8, 0, -30]} rotation={[0, -Math.PI / 6, 0]}>
-        <Box onClick={() => signClick(1)} position={[-3, 0, 0]}>
+        <Box onClick={() => markClick(1)} position={[-3, 0, 0]}>
           <meshBasicMaterial color={melodic.includes(1) ? "green" : "white"} />
         </Box>
-        <Box onClick={() => signClick(2)} position={[-1, 0, 0]}>
+        <Box onClick={() => markClick(2)} position={[-1, 0, 0]}>
           <meshBasicMaterial color={melodic.includes(2) ? "green" : "white"} />
         </Box>
-        <Box onClick={() => signClick(3)} position={[1, 0, 0]}>
+        <Box onClick={() => markClick(3)} position={[1, 0, 0]}>
           <meshBasicMaterial color={melodic.includes(3) ? "green" : "white"} />
         </Box>
-        <Box onClick={() => signClick(4)} position={[3, 0, 0]}>
+        <Box onClick={() => markClick(4)} position={[3, 0, 0]}>
           <meshBasicMaterial color={melodic.includes(4) ? "green" : "white"} />
         </Box>
       </group>
