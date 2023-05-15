@@ -11,12 +11,13 @@ export const CloudsEffect = ({ position, variant, numberOfClouds }) => {
     const tab = []
 
     for (let i = 0; i < numberOfClouds; i++) {
-      const x = Math.random() * 100
-      const y = Math.random() * 10
-      const z = Math.random() * 100
-  
+      const x = Math.random() * 300
+      const xdir = Math.random() > 0.5 ? 1 : -1
+      const y = Math.random() * 30
+      const z = Math.random() * 200
+
       tab.push({
-        x: x,
+        x: x * xdir,
         y: y,
         z: z,
       })
@@ -28,12 +29,10 @@ export const CloudsEffect = ({ position, variant, numberOfClouds }) => {
   const cloudsPositions = useMemo(() => generateClouds(), [numberOfClouds])
   const { nodes } = useGLTF("/assets/objects/clouds/cloud.glb")
 
-  
-
   const config = {
     x: {
-      min: 100,
-      max: -100,
+      min: -450,
+      max: 450,
       speed: 0.03,
     },
     z: {
@@ -44,9 +43,10 @@ export const CloudsEffect = ({ position, variant, numberOfClouds }) => {
   }
 
   useFrame(() => {
-    cloudsRef.current.position.x -= config.x.speed
+    cloudsRef.current.position.x += config.x.speed
+    console.log(cloudsRef.current.position.x)
     cloudsRef.current.position.z += config.z.speed
-    if (cloudsRef.current.position.x <= config.x.max) {
+    if (cloudsRef.current.position.x >= config.x.max) {
       cloudsRef.current.position.x = config.x.min
       if (cloudsRef.current.position.z >= config.z.max) {
         cloudsRef.current.position.z = config.z.min
