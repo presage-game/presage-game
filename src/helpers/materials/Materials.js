@@ -6,16 +6,14 @@ import {
   MeshBasicMaterial,
   NearestFilter,
   TextureLoader,
-  Vector2,
   RepeatWrapping,
-  BackSide,
 } from "three"
 
 const defaultMaterials = {
   floorMaterial: "#F6B791",
   roadMaterial: "#2D2D2C",
   fenceMaterial: "#757271",
-  houseMaterial: '#8D6363',
+  houseMaterial: "#8D6363",
   leafMaterial: "#4F7552",
   treeMaterial: "#704D46",
   stoneMaterial: "#7A675C",
@@ -27,7 +25,7 @@ const variantMaterials = {
   floorMaterial: "#918E8D",
   roadMaterial: "#2D2D2C",
   fenceMaterial: "#757271",
-  houseMaterial: '#8D6363',
+  houseMaterial: "#8D6363",
   leafMaterial: "#D8BF66",
   treeMaterial: "#704D46",
   stoneMaterial: "#7A675C",
@@ -42,7 +40,7 @@ const getTextures = () =>
     const textures = [
       "/assets/materials/toon/threeTone.jpg",
       "/assets/materials/toon/fiveTone.jpg",
-      "/assets/materials/floor/grand.png"
+      "/assets/materials/floor/floorTexture.png",
     ].map((filename) => loader.load(filename))
   })
 
@@ -57,7 +55,7 @@ export const getMaterials = async (variant) =>
     const floorTexture = result[2]
     floorTexture.wrapS = RepeatWrapping
     floorTexture.wrapT = RepeatWrapping
-    floorTexture.repeat.set(2,2)
+    floorTexture.repeat.set(8, 8)
     floorTexture.magFilter = NearestFilter
     floorTexture.minFilter = NearestFilter
 
@@ -66,7 +64,7 @@ export const getMaterials = async (variant) =>
     const floorMaterial = new MeshToonMaterial({
       color: MaterialsColor.floorMaterial,
       gradientMap: toonFiveTone,
-      map: floorTexture
+      map: floorTexture,
     })
 
     const sandMaterial = new MeshToonMaterial({
@@ -115,15 +113,15 @@ export const getMaterials = async (variant) =>
     })
 
     const backgroundMaterial = new MeshToonMaterial({
-      color: MaterialsColor.backgroundMaterial
+      color: MaterialsColor.backgroundMaterial,
     })
-    
+
     const outlineMaterial = new MeshBasicMaterial({
-      color: "#000000"
+      color: "#000000",
     })
 
     const selectedMaterial = new MeshBasicMaterial({
-      color: "#FFFFFF"
+      color: "#FFFFFF",
     })
 
     return {
@@ -138,6 +136,6 @@ export const getMaterials = async (variant) =>
       cloudMaterial,
       backgroundMaterial,
       outlineMaterial,
-      selectedMaterial
+      selectedMaterial,
     }
   })
