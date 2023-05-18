@@ -4,41 +4,21 @@ Command: npx gltfjsx@6.1.11 scene_1_final.glb --transform
 */
 
 import React, { useEffect, useState } from "react"
-import { Plane, useGLTF, useTexture } from "@react-three/drei"
+import { useGLTF } from "@react-three/drei"
 import { getMaterials } from "@/helpers/materials/Materials"
-import { MeshBasicMaterial, DoubleSide, RepeatWrapping, NearestFilter } from "three"
+import { MeshBasicMaterial, DoubleSide } from "three"
 
 export function Model(props) {
   const { nodes, materials } = useGLTF("/assets/scenes/scene_1.glb")
   const [Materials, setMaterials] = useState(null)
-  const floorTexture = useTexture("/assets/materials/floor/grand.png")
-  floorTexture.wrapS = RepeatWrapping
-  floorTexture.wrapT = RepeatWrapping
-  floorTexture.repeat.set(100, 100)
-  floorTexture.magFilter = NearestFilter
-  floorTexture.minFilter = NearestFilter
-  const fiveTone = useTexture("/assets/materials/toon/fiveTone.jpg")
-  fiveTone.minFilter = NearestFilter
-  fiveTone.magFilter = NearestFilter
 
   useEffect(() => {
     getMaterials(props.variant).then((result) => setMaterials(result))
   }, [])
 
-  if (Materials === null || floorTexture === null || fiveTone === null) {
+  if (Materials === null) {
     return <group></group>
   }
-
-  /*
-    texture de sable : a tester dans la branche ou la texture de sable est importé
-    <mesh
-        geometry={nodes.Sand_texture.geometry}
-        material={Materials.floorMaterial}
-        position={[-10.33, 11.94, -128.84]}
-        rotation={[Math.PI, 0, Math.PI]}
-        scale={[30.68, 19.93, 25.69]}
-      />
-  */
 
   return (
     <group {...props} dispose={null}>
@@ -62,7 +42,7 @@ export function Model(props) {
         <mesh geometry={nodes.Mesh010.geometry} material={Materials.stoneMaterial} />
         <mesh geometry={nodes.Mesh010_1.geometry} material={Materials.outlineMaterial} />
       </group>
-      
+
       <group position={[-20.01, 12.36, -129.87]} rotation={[0.43, 0, 0]} scale={[0.1, 0.1, 0.18]}>
         <mesh geometry={nodes.Sphere_1.geometry} material={Materials.stoneMaterial} />
         <mesh geometry={nodes.Sphere_2.geometry} material={Materials.outlineMaterial} />
@@ -1106,10 +1086,12 @@ export function Model(props) {
       </group>
       <mesh
         geometry={nodes.Route_2003.geometry}
-        material={new MeshBasicMaterial({
-          color: "#000000",
-          side: DoubleSide
-        })}
+        material={
+          new MeshBasicMaterial({
+            color: "#000000",
+            side: DoubleSide,
+          })
+        }
         position={[-3.44, 12, -261.49]}
         rotation={[0, 0.52, 0]}
         scale={[2.09, 1, 2.72]}
@@ -1318,6 +1300,13 @@ export function Model(props) {
         <mesh geometry={nodes.Cube182_1.geometry} material={Materials.houseMaterial} />
         <mesh geometry={nodes.Cube182_2.geometry} material={Materials.outlineMaterial} />
       </group>
+      <mesh
+        geometry={nodes.Sand_texture.geometry}
+        material={Materials.floorMaterial}
+        position={[-10.33, 12.04, -128.84]}
+        rotation={[Math.PI, 0, Math.PI]}
+        scale={[30.68, 19.93, 25.69]}
+      />
     </group>
   )
 }

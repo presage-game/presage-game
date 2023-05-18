@@ -57,7 +57,7 @@ export const getMaterials = async (variant) =>
     const floorTexture = result[2]
     floorTexture.wrapS = RepeatWrapping
     floorTexture.wrapT = RepeatWrapping
-    floorTexture.repeat.set(1,1)
+    floorTexture.repeat.set(2,2)
     floorTexture.magFilter = NearestFilter
     floorTexture.minFilter = NearestFilter
 
