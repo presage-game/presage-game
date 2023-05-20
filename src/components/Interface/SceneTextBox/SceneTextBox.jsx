@@ -87,45 +87,46 @@ export const SceneTextBox = ({
     }
   }, [sceneIndex])
 
-  const [audioFile, setAudioFile] = useState(`audios/scenes/${sceneIndex}/voiceover/intro.mp3`)
+  const currentAudio = new Audio()
+  currentAudio.volume = 0.75
+
+  const getAudioFile = (filePath) =>
+    fetch(filePath, { method: "HEAD" })
+      .then((response) => (response.ok ? filePath : null))
+      .catch(() => null)
+
+  const [audioFile, setAudioFile] = useState(null)
   const [introPlayed, setIntroPlayed] = useState(false)
-  const currentAudio = new Audio(audioFile)
-  currentAudio.volume = 0.2
 
   useEffect(() => {
-    const checkFileExists = async (filePath) => {
-      try {
-        const response = await fetch(filePath, { method: "HEAD" })
-        if (response.ok) {
-          setAudioFile(filePath)
-        }
-      } catch (error) {
-        return
-      }
-    }
-
     if (spotIndex === null && !introPlayed) {
-      // If spotIndex is null and intro hasn't been played, play intro audio file
-      const introAudioFile = `audios/scenes/${sceneIndex}/voiceover/intro.mp3`
-      checkFileExists(introAudioFile)
+      getAudioFile(`audios/scenes/${sceneIndex}/voiceover/intro.mp3`).then((file) => {
+        if (file) {
+          setAudioFile(file)
+        }
+      })
       setIntroPlayed(true)
     } else if (spotIndex !== null) {
-      // If spotIndex is not null, create and play audio file based on spotIndex and textIndex
-      const newAudioFile = `audios/scenes/${sceneIndex}/voiceover/${spotIndex}-${textIndex}.mp3`
-      checkFileExists(newAudioFile)
+      getAudioFile(`audios/scenes/${sceneIndex}/voiceover/${spotIndex}-${textIndex}.mp3`).then(
+        (file) => {
+          if (file) {
+            setAudioFile(file)
+          }
+        }
+      )
     }
   }, [spotIndex, textIndex, sceneIndex, introPlayed])
 
   useEffect(() => {
     if (audioFile !== null) {
+      currentAudio.src = audioFile
       currentAudio.load()
       currentAudio.play()
     }
 
-    // Stop the current audio when textIndex changes
     return () => {
-      currentAudio.currentTime = 0
       currentAudio.pause()
+      currentAudio.currentTime = 0
     }
   }, [audioFile, textIndex])
 

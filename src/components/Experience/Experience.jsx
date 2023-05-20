@@ -33,7 +33,6 @@ export const Experience = () => {
         isVoiceOver={isVoiceOver}
         setIsVoiceOver={setIsVoiceOver}
       />
-      {/* {scene !== null && mapActive && <Curtain />} */}
       <Canvas style={{ position: "absolute", top: "0%", height: "100%" }}>
         {mapActive ? (
           <Map />
