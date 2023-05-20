@@ -13,7 +13,7 @@ export const Collection = () => {
     <div className="Collection">
       {adinkrasIcons.map((icon, index) => {
         return (
-          <div className={`item ${collectedAdinkras[index] && "item--active"}`}>
+          <div key={index} className={`item ${collectedAdinkras[index] ? "item--active" : ""}`}>
             <div className="item__icon">
               <img src={icon} />
             </div>

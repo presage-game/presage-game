@@ -9,7 +9,7 @@ export const Options = () => {
 
   return (
     <div className="Options">
-      <div className={`volume ${!isMuted && "volume--is-muted"}`}>
+      <div className={`volume ${!isMuted ? "volume--is-muted" : ""}`}>
         <div className="volume__icon">
           <img src={volumeIcon} />
         </div>
