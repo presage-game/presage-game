@@ -1,5 +1,8 @@
 import { useState, useEffect } from "react"
+import { useSelector } from "react-redux"
+
 import { motion, AnimatePresence } from "framer-motion"
+
 import { Button } from "@/components/Button/Button"
 
 import "./TextBox.scss"
@@ -87,6 +90,13 @@ export const SceneTextBox = ({
     }
   }, [sceneIndex])
 
+  useEffect(() => {
+    if (!hasMoreIntroText()) {
+      setIntroPlayed(true)
+    }
+  }, [textIndex])
+
+  const { isMuted, volume } = useSelector((state) => state.audio)
   const currentAudio = new Audio()
   currentAudio.volume = 0.75
 
@@ -99,14 +109,13 @@ export const SceneTextBox = ({
   const [introPlayed, setIntroPlayed] = useState(false)
 
   useEffect(() => {
-    if (spotIndex === null && !introPlayed) {
-      getAudioFile(`audios/scenes/${sceneIndex}/voiceover/intro.mp3`).then((file) => {
+    if (spotIndex === null && !introPlayed && getIntroText()) {
+      getAudioFile(`audios/scenes/${sceneIndex}/voiceover/intro-${textIndex}.mp3`).then((file) => {
         if (file) {
           setAudioFile(file)
         }
       })
-      setIntroPlayed(true)
-    } else if (spotIndex !== null) {
+    } else if (spotIndex !== null && getSpotText()) {
       getAudioFile(`audios/scenes/${sceneIndex}/voiceover/${spotIndex}-${textIndex}.mp3`).then(
         (file) => {
           if (file) {
