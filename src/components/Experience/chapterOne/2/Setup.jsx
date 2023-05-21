@@ -4,7 +4,9 @@ import { useDispatch } from "react-redux"
 import { changeOnFocusCamera, changeOnFocusCameraPosition } from "@/store/reducers/userReducer"
 import { CustomCamera } from "../../tools/CustomCamera/CustomCamera"
 import { Environment } from "@react-three/drei"
+import { CloudsEffect } from "../../effects/CloudsEffect"
 import { GoToMap } from "../../objects/interactive/GoToMap/GoToMap"
+import { TempestEffect } from "../../effects/TempestEffect"
 
 export const Setup = () => {
   const [variant, setVariant] = useState("default")
@@ -64,6 +66,9 @@ export const Setup = () => {
       />
       {variant !== "default" && <ambientLight color={"#C65948"} intensity={0.5} />}
       <GoToMap args={[5, 5, 5]} position={[40, -2.5, -90]} />
+      <fog attach={"fog"} args={["#F6B791", 100, 700]} />
+      <TempestEffect />
+      <CloudsEffect position={[0, 40, -300]} variant={variant} numberOfClouds={20} />
       <Scene
         variant={variant}
         setVariant={setVariant}
