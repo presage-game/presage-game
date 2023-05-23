@@ -1,16 +1,12 @@
-import { shaderMaterial, useTexture } from "@react-three/drei"
 import { useFrame } from "@react-three/fiber"
 import { useMemo, useRef } from "react"
 import {
   BackSide,
   BoxGeometry,
-  BufferGeometry,
   Color,
   Data3DTexture,
-  Float32BufferAttribute,
   GLSL3,
   LinearFilter,
-  PointsMaterial,
   RawShaderMaterial,
   RedFormat,
   Vector3,
@@ -213,8 +209,7 @@ const Sand = ({ position }) => {
     if (meshRef.current) {
       meshRef.current.rotation.y -= 0.1 * delta
     }
-    console.log(material.uniforms.frame.value)
-    material.uniforms.frame.value += 10
+    material.uniforms.frame.value += delta
   })
 
   return (

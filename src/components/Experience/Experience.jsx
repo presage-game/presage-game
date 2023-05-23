@@ -44,6 +44,7 @@ export const Experience = () => {
           />
         ) : (
           <MegalithicCircles
+            variant={"tempest"}
             setSpotIndex={setSpotIndex}
             setShowText={setShowText}
             isVoiceOver={isVoiceOver}

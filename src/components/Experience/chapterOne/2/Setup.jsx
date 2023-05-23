@@ -8,8 +8,7 @@ import { CloudsEffect } from "../../effects/CloudsEffect"
 import { GoToMap } from "../../objects/interactive/GoToMap/GoToMap"
 import { TempestEffect } from "../../effects/TempestEffect"
 
-export const Setup = () => {
-  const [variant, setVariant] = useState("default")
+export const Setup = ({variant}) => {
   const [adinkraFocused, setAdinkraFocused] = useState(false)
 
   const dispatch = useDispatch()
@@ -36,24 +35,6 @@ export const Setup = () => {
     }
   }, [adinkraFocused])
 
-  /*
-  const switchLerp = (value) => {
-    changeFocusPosition({
-      position: {
-        x: -50,
-        y: 0,
-        z: 60,
-      },
-      rotation: {
-        x: -Math.PI / 3,
-        y: 0,
-        z: 0,
-      },
-    })
-    changeFocus(value)
-  }
-  */
-
   return (
     <>
       <Environment preset="forest" />
@@ -64,13 +45,18 @@ export const Setup = () => {
         position={[-50, 50, 50]}
         rotation={[-Math.PI / 2, 0, 0]}
       />
-      {variant !== "default" && <ambientLight color={"#C65948"} intensity={0.5} />}
       <GoToMap args={[5, 5, 5]} position={[40, -2.5, -90]} />
-      <fog attach={"fog"} args={["#be915b", 1, 50]} />
-      <TempestEffect />
+      {variant === "default" ? (
+        <CloudsEffect />
+      ) : (
+        <>
+          <fog attach={"fog"} args={["#be915b", 1, 50]} />
+          <TempestEffect />
+          <ambientLight color={"#C65948"} intensity={0.5} />
+        </>
+      )}
       <Scene
-        variant={variant}
-        setVariant={setVariant}
+        variant={"default"}
         adinkraFocused={adinkraFocused}
         setAdinkraFocused={setAdinkraFocused}
       />
