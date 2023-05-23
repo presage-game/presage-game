@@ -1,6 +1,6 @@
 import { shaderMaterial, useTexture } from "@react-three/drei"
 import { useFrame } from "@react-three/fiber"
-import { useRef } from "react"
+import { useMemo, useRef } from "react"
 import {
   BackSide,
   BoxGeometry,
@@ -19,39 +19,41 @@ import { ImprovedNoise } from "@/helpers/textures/ImprovedNoise"
 
 const Sand = ({ position }) => {
   const meshRef = useRef(null)
+  const texture = useMemo(() => {
+    //texture
+    const size = 128
+    const data = new Uint8Array(size * size * size)
 
-  //texture
-  const size = 128
-  const data = new Uint8Array(size * size * size)
+    let i = 0
+    const scale = 0.05
+    const perlin = new ImprovedNoise()
+    const vector = new Vector3()
 
-  let i = 0
-  const scale = 0.05
-  const perlin = new ImprovedNoise()
-  const vector = new Vector3()
-
-  for (let z = 0; z < size; z++) {
-    for (let y = 0; y < size; y++) {
-      for (let x = 0; x < size; x++) {
-        const d =
-          1.0 -
-          vector
-            .set(x, y, z)
-            .subScalar(size / 2)
-            .divideScalar(size)
-            .length()
-        data[i] =
-          (128 + 128 * perlin.noise((x * scale) / 1.5, y * scale, (z * scale) / 1.5)) * d * d
-        i++
+    for (let z = 0; z < size; z++) {
+      for (let y = 0; y < size; y++) {
+        for (let x = 0; x < size; x++) {
+          const d =
+            1.0 -
+            vector
+              .set(x, y, z)
+              .subScalar(size / 2)
+              .divideScalar(size)
+              .length()
+          data[i] =
+            (128 + 128 * perlin.noise((x * scale) / 1.5, y * scale, (z * scale) / 1.5)) * d * d
+          i++
+        }
       }
     }
-  }
 
-  const texture = new Data3DTexture(data, size, size, size)
-  texture.format = RedFormat
-  texture.minFilter = LinearFilter
-  texture.magFilter = LinearFilter
-  texture.unpackAlignment = 1
-  texture.needsUpdate = true
+    const texture = new Data3DTexture(data, size, size, size)
+    texture.format = RedFormat
+    texture.minFilter = LinearFilter
+    texture.magFilter = LinearFilter
+    texture.unpackAlignment = 1
+    texture.needsUpdate = true
+    return texture
+  }, [])
 
   // Material
 
@@ -208,7 +210,7 @@ const Sand = ({ position }) => {
   })
 
   useFrame((state, delta) => {
-    if(meshRef.current) {
+    if (meshRef.current) {
       meshRef.current.rotation.y -= 0.1 * delta
     }
     console.log(material.uniforms.frame.value)
@@ -227,8 +229,6 @@ const Sand = ({ position }) => {
 }
 
 export const TempestEffect = () => {
-  
-
   return (
     <>
       <Sand position={[0, 0, -40]} />
