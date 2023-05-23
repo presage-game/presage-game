@@ -18,6 +18,8 @@ import {
 import { ImprovedNoise } from "@/helpers/textures/ImprovedNoise"
 
 const Sand = ({ position }) => {
+  const meshRef = useRef(null)
+
   //texture
   const size = 128
   const data = new Uint8Array(size * size * size)
@@ -190,13 +192,13 @@ const Sand = ({ position }) => {
   const material = new RawShaderMaterial({
     glslVersion: GLSL3,
     uniforms: {
-      base: { value: new Color(0xe7c093) },
+      base: { value: new Color(0xbe915b) },
       map: { value: texture },
       cameraPos: { value: new Vector3() },
-      threshold: { value: 0.25 },
-      opacity: { value: 0.25 },
-      range: { value: 0.1 },
-      steps: { value: 100 },
+      threshold: { value: 0.24 },
+      opacity: { value: 0.03 },
+      range: { value: 0 },
+      steps: { value: 92 },
       frame: { value: 0 },
     },
     vertexShader,
@@ -205,7 +207,23 @@ const Sand = ({ position }) => {
     transparent: true,
   })
 
-  return <mesh position={position} geometry={new BoxGeometry(1, 1, 1)} material={material} />
+  useFrame((state, delta) => {
+    if(meshRef.current) {
+      meshRef.current.rotation.y -= 0.1 * delta
+    }
+    console.log(material.uniforms.frame.value)
+    material.uniforms.frame.value += 10
+  })
+
+  return (
+    <mesh
+      ref={meshRef}
+      position={position}
+      geometry={new BoxGeometry(10, 5, 10)}
+      material={material}
+      scale={50}
+    />
+  )
 }
 
 export const TempestEffect = () => {
@@ -214,7 +232,7 @@ export const TempestEffect = () => {
   const rainGeometry = new BufferGeometry()
   const rainGeoPositions = []
 
-  for (let i = 0; i < 60000; i++) {
+  for (let i = 0; i < 30000; i++) {
     const x = Math.random() * 400 - 200
     const y = Math.random() * 300 - 250
     const z = Math.random() * 400 - 200
@@ -276,7 +294,7 @@ export const TempestEffect = () => {
           geometry={rainGeometry}
         ></points>
       </group>
-      <Sand position={[0, 0, -20]} />
+      <Sand position={[0, 0, -40]} />
     </>
   )
 }

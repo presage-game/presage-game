@@ -66,9 +66,8 @@ export const Setup = () => {
       />
       {variant !== "default" && <ambientLight color={"#C65948"} intensity={0.5} />}
       <GoToMap args={[5, 5, 5]} position={[40, -2.5, -90]} />
-      <fog attach={"fog"} args={["#F6B791", 100, 700]} />
+      <fog attach={"fog"} args={["#be915b", 0, 1000]} />
       <TempestEffect />
-      <CloudsEffect position={[0, 40, -300]} variant={variant} numberOfClouds={20} />
       <Scene
         variant={variant}
         setVariant={setVariant}
