@@ -137,13 +137,24 @@ export const SceneTextBox = ({
 
   useEffect(() => {
     if (audioFile !== null && textIndex !== null) {
+      if (!currentAudio.paused) {
+        currentAudio.pause()
+      }
+
       currentAudio.src = audioFile
-      currentAudio.play()
+      currentAudio.load()
+
+      const playPromise = currentAudio.play()
+      if (playPromise !== undefined) {
+        playPromise.catch((error) => {
+          return
+        })
+      }
     }
 
     return () => {
-      currentAudio.pause()
       currentAudio.currentTime = 0
+      currentAudio.pause()
     }
   }, [audioFile, textIndex])
 
