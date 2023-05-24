@@ -2,7 +2,7 @@ import * as THREE from "three"
 import React, { useRef, useState } from "react"
 import { useFrame } from "@react-three/fiber"
 
-export const Smoke = ({position}) => {
+export const Smoke = ({ position }) => {
   let vs = []
   let fs = []
   let mesh = []
