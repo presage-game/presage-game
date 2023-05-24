@@ -189,6 +189,7 @@ const Sand = ({ position }) => {
 
   const material = new RawShaderMaterial({
     glslVersion: GLSL3,
+    precision: "lowp",
     uniforms: {
       base: { value: new Color(0xbe915b) },
       map: { value: texture },

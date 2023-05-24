@@ -1,4 +1,4 @@
-import { Model } from "./Model"
+import { Model } from "./Scene_cercles"
 import { Environment } from "@react-three/drei"
 import { AdinkraOne } from "../../objects/interactive/AdinkraOne/AdinkraOne"
 
