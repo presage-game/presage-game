@@ -1,6 +1,7 @@
 import { useSelector } from "react-redux"
 import { Experience } from "./components/Experience/Experience"
 import { Introduction } from "./components/Introduction/Introduction"
+import { Cursor } from "@/components/Interface/Cursor/Cursor"
 import { useDispatch } from "react-redux"
 import { startExperience } from "./store/reducers/userReducer"
 
@@ -12,6 +13,7 @@ const App = () => {
 
   return (
     <main className="App">
+      <Cursor />
       {!hasExperienceStarted ? <Introduction /> : <Experience />}
       {!hasExperienceStarted && (
         <button
