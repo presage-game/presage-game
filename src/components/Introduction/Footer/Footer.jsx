@@ -12,8 +12,7 @@ export const Footer = () => {
   return (
     <footer className="Footer">
       <div className="Footer__baseline">
-        <p>[Début de l'expérience. Variante de scénario N°{scenario}].</p>
-        <p>[Votre code partie : {gameCode}]</p>
+        <p>Code partie: {gameCode}</p>
       </div>
       <Button text="Continuer" onClick={() => dispatch(startExperience())} />
     </footer>
