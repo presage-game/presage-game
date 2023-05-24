@@ -12,6 +12,7 @@ import { BlackBars } from "@/components/BlackBars/BlackBars"
 import { Curtain } from "@/components/Curtain/Curtain"
 
 import "./Experience.scss"
+import { Preload, Stats } from "@react-three/drei"
 
 export const Experience = () => {
   const { scene } = useSelector((state) => state.map)
@@ -49,6 +50,8 @@ export const Experience = () => {
             isVoiceOver={isVoiceOver}
           />
         )}
+        <Preload all />
+        <Stats />
       </Canvas>
     </div>
   )
