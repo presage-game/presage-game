@@ -4,6 +4,12 @@ import { useSelector } from "react-redux"
 // Context
 const audioCtx = new AudioContext()
 
+window.addEventListener("click", () => {
+  if (audioCtx.state === "suspended") {
+    audioCtx.resume()
+  }
+})
+
 // Gain nodes
 const trackGainNode = audioCtx.createGain()
 const ambianceGainNode = audioCtx.createGain()
@@ -14,22 +20,14 @@ const trackAudio = new Audio()
 const ambianceAudio = new Audio()
 const mapAudio = new Audio()
 
-/* Experimental */
-trackAudio.addEventListener("ended", () => {
-  trackAudio.currentTime = 0
-  trackAudio.play()
-})
+const audios = [trackAudio, ambianceAudio, mapAudio]
 
-ambianceAudio.addEventListener("ended", () => {
-  ambianceAudio.currentTime = 0
-  ambianceAudio.play()
+audios.forEach((audio) => {
+  audio.addEventListener("ended", () => {
+    audio.currentTime = 0
+    audio.play()
+  })
 })
-
-mapAudio.addEventListener("ended", () => {
-  mapAudio.currentTime = 0
-  mapAudio.play()
-})
-/* --- */
 
 // Source nodes
 const trackSourceNode = audioCtx.createMediaElementSource(trackAudio)
