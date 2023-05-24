@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit"
 
 const initialState = {
   isMuted: false,
+  volume: 1,
 }
 
 export const audioSlice = createSlice({
@@ -10,6 +11,7 @@ export const audioSlice = createSlice({
   reducers: {
     toggleMute: (state) => {
       state.isMuted = !state.isMuted
+      state.volume = state.isMuted ? 0 : 1
     },
   },
 })

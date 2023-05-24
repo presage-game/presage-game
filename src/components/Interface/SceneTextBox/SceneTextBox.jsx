@@ -17,11 +17,13 @@ export const SceneTextBox = ({
   isVoiceOver,
   setIsVoiceOver,
 }) => {
+  const [introPlayed, setIntroPlayed] = useState(false)
   const [showOptions, setShowOptions] = useState(false)
   const [textIndex, setTextIndex] = useState(0)
   const [optionIndex, setOptionIndex] = useState(0)
   const [key, setKey] = useState(0)
 
+  /* Text and options */
   const getTextEmitter = () =>
     !isVoiceOver
       ? scriptData[sceneIndex]?.spots[spotIndex]?.spotVoiceover[textIndex]?.emitter
@@ -44,7 +46,6 @@ export const SceneTextBox = ({
   const hasOptions = () =>
     scriptData[sceneIndex]?.spots[spotIndex]?.spotVoiceover[textIndex]?.options?.length > 0
 
-  // Show the next text in the voiceover array
   const showMore = () => {
     setTextIndex(textIndex + 1)
     setKey((prevKey) => prevKey + 1)
@@ -74,6 +75,8 @@ export const SceneTextBox = ({
       setIsVoiceOver(false)
       setShowText(true)
       setShowOptions(true)
+    } else if (spotIndex === null && introPlayed) {
+      setTextIndex(null)
     }
   }, [spotIndex])
 
@@ -90,6 +93,7 @@ export const SceneTextBox = ({
     }
   }, [sceneIndex])
 
+  /* Voiceover */
   useEffect(() => {
     if (!hasMoreIntroText()) {
       setIntroPlayed(true)
@@ -97,8 +101,14 @@ export const SceneTextBox = ({
   }, [textIndex])
 
   const { isMuted, volume } = useSelector((state) => state.audio)
+
   const currentAudio = new Audio()
-  currentAudio.volume = 0.75
+  currentAudio.volume = 0.75 * volume
+
+  useEffect(() => {
+    currentAudio.muted = isMuted
+    currentAudio.volume = 0.75 * volume
+  }, [isMuted])
 
   const getAudioFile = (filePath) =>
     fetch(filePath, { method: "HEAD" })
@@ -106,7 +116,6 @@ export const SceneTextBox = ({
       .catch(() => null)
 
   const [audioFile, setAudioFile] = useState(null)
-  const [introPlayed, setIntroPlayed] = useState(false)
 
   useEffect(() => {
     if (spotIndex === null && !introPlayed && getIntroText()) {
@@ -127,9 +136,8 @@ export const SceneTextBox = ({
   }, [spotIndex, textIndex, sceneIndex, introPlayed])
 
   useEffect(() => {
-    if (audioFile !== null) {
+    if (audioFile !== null && textIndex !== null) {
       currentAudio.src = audioFile
-      currentAudio.load()
       currentAudio.play()
     }
 
@@ -162,7 +170,7 @@ export const SceneTextBox = ({
               <h2 className="narrator narrator--npc">{getTextLabel()}</h2>
             )}
 
-            {isVoiceOver && (
+            {isVoiceOver && getIntroText() && (
               <p className="content">
                 {getIntroText()
                   .split(" ")
@@ -178,7 +186,7 @@ export const SceneTextBox = ({
                   ))}
               </p>
             )}
-            {!isVoiceOver && showOptions && (
+            {!isVoiceOver && showOptions && getSpotText() && (
               <p className="content">
                 {getSpotText()
                   .split(" ")
@@ -194,7 +202,7 @@ export const SceneTextBox = ({
                   ))}
               </p>
             )}
-            {hasOptions() && !isVoiceOver && !showOptions && (
+            {hasOptions() && !isVoiceOver && !showOptions && getOptionResponse() && (
               <p className="content">
                 {getOptionResponse()
                   .split(" ")
