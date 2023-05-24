@@ -7,7 +7,7 @@ export const Car = ({ animationsName = "Run" }) => {
   const animations = useAnimations(car.animations, car.scene)
   const [turnSound] = useState(() => new Audio("assets/vehicules/truck/turn.mp3"))
   const [runSound] = useState(() => new Audio("assets/vehicules/truck/run.mp3"))
-  const [smoke, setSmoke] = useState(false)
+
   const engine = animations.actions["Car engine"]
   engine.reset().fadeIn(0.5).play()
 
@@ -23,8 +23,6 @@ export const Car = ({ animationsName = "Run" }) => {
       runSound.loop = true
       runSound.volume = 0.8
       runSound.play()
-
-      setSmoke(true)
 
       return () => {
         wheel_left.stop()
@@ -51,11 +49,11 @@ export const Car = ({ animationsName = "Run" }) => {
         rotation={[0, -Math.PI / 2, 0]}
         position={[0, 0.2, 0]}
       />
-
-      <>
-        <Smoke position={{ x: -1, y: 0, z: 0.8 }} />
-        <Smoke position={{ x: 1, y: 0, z: 0.8 }} />
-      </>
+      {animationsName === "Run" && (
+        <>
+          <Smoke position={{ x: -1, y: 0, z: 0.8 }} /> <Smoke position={{ x: 1, y: 0, z: 0.8 }} />
+        </>
+      )}
     </group>
   )
 }

@@ -1,5 +1,5 @@
 import * as THREE from "three"
-import React, { useRef, useState } from "react"
+import React, { useRef, useState, useEffect } from "react"
 import { useFrame } from "@react-three/fiber"
 
 export const Smoke = ({ position }) => {
