@@ -13,6 +13,7 @@ export const Scene = ({ goOnScene, goOnPinpoint, resetScene, resetPinpoint }) =>
 
   const [pinpointAudio, setPinpointAudio] = useState(null)
   const [audioPlaying, setAudioPlaying] = useState(false)
+  const [startSound] = useState(() => new Audio("assets/vehicules/truck/start.mp3"))
 
   const map = useGLTF("assets/scenes/map1.glb")
   const navMesh = useGLTF("assets/scenes/navMesh1.glb")
@@ -50,6 +51,8 @@ export const Scene = ({ goOnScene, goOnPinpoint, resetScene, resetPinpoint }) =>
     followCam.add(camRef.current)
     pivot.add(followCam)
     resetScene()
+    startSound.currentTime = 0
+    startSound.play()
   }, [])
 
   const click = (e) => {
@@ -170,7 +173,7 @@ export const Scene = ({ goOnScene, goOnPinpoint, resetScene, resetPinpoint }) =>
         visible={false}
       />
       <group ref={voitureGrpRef}>
-          <Car animationsName={pointerDown ? "Take 001" : "Take 001"} />
+        <Car animationsName={pointerDown ? "Run" : null} />
       </group>
       <Box
         ref={(el) => (cubeRef.current[0] = el)}

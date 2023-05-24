@@ -1,17 +1,39 @@
 import { useAnimations, useGLTF } from "@react-three/drei"
-import React, { useEffect } from "react"
+import React, { useEffect, useState } from "react"
 import { Smoke } from "./Smoke"
 
-export const Car = ({ animationsName = "Take 001" }) => {
-  const car = useGLTF("assets/vehicules/testplane-transformed.glb")
+export const Car = ({ animationsName = "Run" }) => {
+  const car = useGLTF("assets/vehicules/truck/truck.glb")
   const animations = useAnimations(car.animations, car.scene)
+  const [turnSound] = useState(() => new Audio("assets/vehicules/truck/turn.mp3"))
+  const [runSound] = useState(() => new Audio("assets/vehicules/truck/run.mp3"))
+
+  const engine = animations.actions["Car engine"]
+  engine.reset().fadeIn(0.5).play()
+
+  turnSound.currentTime = 0
+  turnSound.loop = true
+  turnSound.play()
 
   useEffect(() => {
-    const action = animations.actions[animationsName]
-    action.reset().fadeIn(0.5).play()
+    if (animationsName) {
+      const wheel_left = animations.actions["wheel_left"]
+      wheel_left.play()
 
-    return () => {
-      action.fadeOut(0.5)
+      const wheel_right = animations.actions["wheel_right"]
+      wheel_right.play()
+
+      turnSound.pause()
+      runSound.currentTime = 0
+      runSound.loop = true
+      runSound.play()
+
+      return () => {
+        wheel_left.stop()
+        wheel_right.stop()
+        turnSound.play()
+        runSound.pause()
+      }
     }
   }, [animationsName])
 
@@ -22,11 +44,15 @@ export const Car = ({ animationsName = "Take 001" }) => {
 
   return (
     <group>
-      <primitive object={car.scene} scale={2.5} />
-      {animationsName === "Take 001" && (
+      <primitive
+        object={car.scene}
+        scale={0.007}
+        rotation={[0, -Math.PI / 2, 0]}
+        position={[0, 0.2, 0]}
+      />
+      {animationsName === "Car engine" && (
         <>
-          <Smoke position={{ x: -0.5, y: 0, z: 0.5 }} />{" "}
-          <Smoke position={{ x: 0.5, y: 0, z: 0.5 }} />
+          <Smoke position={{ x: -1, y: 0, z: 0.8 }} /> <Smoke position={{ x: 1, y: 0, z: 0.8 }} />
         </>
       )}
     </group>
