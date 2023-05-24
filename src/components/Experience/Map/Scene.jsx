@@ -1,7 +1,7 @@
 import React, { useRef, useMemo, useEffect, useState } from "react"
 import { useSelector } from "react-redux"
-import { Box3, Object3D, Quaternion, Vector3, Raycaster, Vector2 } from "three"
-import { Box, useGLTF, OrthographicCamera } from "@react-three/drei"
+import { Box3, Object3D, Quaternion, Vector3, CameraHelper, BoxHelper, Raycaster, Vector2 } from "three"
+import { Box, useGLTF, OrthographicCamera, Gltf, useHelper } from "@react-three/drei"
 import { useFrame } from "@react-three/fiber"
 import { Pathfinding, PathfindingHelper } from "three-pathfinding"
 import { Car } from "./Car"
@@ -13,6 +13,7 @@ export const Scene = ({ goOnScene, goOnPinpoint, resetScene, resetPinpoint }) =>
 
   const [pinpointAudio, setPinpointAudio] = useState(null)
   const [audioPlaying, setAudioPlaying] = useState(false)
+  const [startSound] = useState(() => new Audio("assets/vehicules/truck/start.mp3"))
 
   const map = useGLTF("assets/scenes/map1.glb")
   const navMesh = useGLTF("assets/scenes/navMesh1.glb")
@@ -56,6 +57,8 @@ export const Scene = ({ goOnScene, goOnPinpoint, resetScene, resetPinpoint }) =>
     followCam.add(camRef.current)
     pivot.add(followCam)
     resetScene()
+    startSound.currentTime = 0
+    startSound.play()
   }, [])
 
   const click = (e, delta) => {
@@ -172,6 +175,8 @@ export const Scene = ({ goOnScene, goOnPinpoint, resetScene, resetPinpoint }) =>
     }
   })
 
+  useHelper(voitureGrpRef, BoxHelper, "cyan")
+
   return (
     <>
       <primitive object={map.scene} dispose={null} onPointerUp={() => setPointerDown(false)} />
@@ -182,7 +187,7 @@ export const Scene = ({ goOnScene, goOnPinpoint, resetScene, resetPinpoint }) =>
         visible={false}
       />
       <group ref={voitureGrpRef}>
-        <Car animationsName={pointerDown ? "Run" : "Survey"} />
+        <Car animationsName={pointerDown ? "Run" : null} />
       </group>
       <Box
         ref={(el) => (cubeRef.current[0] = el)}
