@@ -6,12 +6,11 @@ import { toggleMute } from "@/store/reducers/audioReducer"
 import scriptData from "@/assets/data/chapterOne/scenes.json"
 import pinpointsData from "@/assets/data/chapterOne/pinpoints.json"
 
-import { SceneTextBox } from "@/components/Interface/SceneTextBox/SceneTextBox"
-import { MapTextBox } from "@/components/Interface/MapTextBox/MapTextBox"
-import { IntersectionPopup } from "@/components/Interface/IntersectionPopup/IntersectionPopup"
-import { Collection } from "@/components/Interface/Collection/Collection"
-import { Options } from "@/components/Interface/Options/Options"
-import { Cursor } from "./Cursor/Cursor"
+import { SceneTextBox } from "./SceneTextBox/SceneTextBox"
+import { MapTextBox } from "./MapTextBox/MapTextBox"
+import { IntersectionPopup } from "./IntersectionPopup/IntersectionPopup"
+import { Collection } from "./Collection/Collection"
+import { Options } from "./Options/Options"
 
 export const Interface = ({
   mapActive,
@@ -91,7 +90,6 @@ export const Interface = ({
           />
         </>
       )}
-      <Cursor />
       <Collection />
       <Options />
     </>
