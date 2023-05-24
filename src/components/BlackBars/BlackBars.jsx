@@ -1,7 +1,7 @@
 import { motion, AnimatePresence } from "framer-motion"
 import { useSelector } from "react-redux"
 
-import styles from "./BlackBars.module.scss"
+import "./BlackBars.scss"
 
 export const BlackBars = () => {
   const { showBlackBars } = useSelector((state) => state.ui)
@@ -9,18 +9,18 @@ export const BlackBars = () => {
   return (
     <AnimatePresence>
       {showBlackBars && (
-        <div className={styles.root}>
+        <div className="BlackBars">
           <motion.div
-            key="topBar"
-            className={styles.topBar}
+            key="barTop"
+            className="bar bar--top"
             initial={{ y: -100 }}
             animate={{ y: 0 }}
             exit={{ y: -100 }}
             transition={{ duration: 1.7 }}
           />
           <motion.div
-            key="bottomBar"
-            className={styles.bottomBar}
+            key="barBottom"
+            className="bar bar--bottom"
             initial={{ y: 100 }}
             animate={{ y: 0 }}
             exit={{ y: 100 }}

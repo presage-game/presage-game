@@ -1,24 +1,41 @@
 import React, { useState } from "react"
-import { useDispatch } from "react-redux"
-import { answerPrompt } from "@/store/reducers/introductionReducer"
 import { motion, AnimatePresence } from "framer-motion"
-import styles from "./Prompts.module.scss"
+import { Button } from "@/components/Button/Button"
+import { useDispatch } from "react-redux"
+import { setScore } from "@/store/reducers/userReducer"
+
+import "./Prompts.scss"
 
 export const Prompts = ({ introduction, currentIndex, setCurrentIndex }) => {
   const dispatch = useDispatch()
+  // const { score, scenario } = useSelector((state) => state.user)
+  const TIPPING_POINT = Object.keys(introduction).length
 
   const [showFollowing, setShowFollowing] = useState(false)
   const [followingToShow, setFollowingToShow] = useState(null)
-  const [key, setKey] = useState(0)
+  const [isPromptComplete, setIsPromptComplete] = useState(false)
+  // const [key, setKey] = useState(0)
 
-  // Hide the following text for a prompt, update local state, and record user's answer
+  const answerPrompt = (data) => {
+    dispatch(setScore(data))
+  }
+
+  // const completePrompts = (state) => {
+  //   setIsPromptComplete(true)
+
+  //   if (score <= TIPPING_POINT) {
+  //     scenario = "1"
+  //   } else {
+  //     scenario = "2"
+  //   }
+  // }
+
   const goToNext = (data) => {
     setCurrentIndex(currentIndex + 1)
     setShowFollowing(false)
-    dispatch(answerPrompt(data))
+    answerPrompt(data)
   }
 
-  // Show the following text for a prompt and update local state
   const showFollowingText = (index) => {
     setFollowingToShow(index)
     setShowFollowing(true)
@@ -33,22 +50,22 @@ export const Prompts = ({ introduction, currentIndex, setCurrentIndex }) => {
     } else {
       return (
         <AnimatePresence>
-          <div className={styles.root} key={index}>
+          <div className="Prompts" key={index}>
             {!showFollowing && (
-              <>
+              <div className="item item--prompt">
                 <motion.div
-                  className={styles.baseline}
+                  className="baseline"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -20 }}
                   transition={{ duration: 1 }}
                 >
-                  <span className={styles.date}>{section.date}</span>
-                  <p>{section.baseline}</p>
+                  <span className="baseline__date">{section.date}</span>
+                  <p className="baseline__content">{section.baseline}</p>
                 </motion.div>
                 <motion.div
                   key="options"
-                  className={styles.options}
+                  className="options"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -20 }}
@@ -56,26 +73,29 @@ export const Prompts = ({ introduction, currentIndex, setCurrentIndex }) => {
                 >
                   {section.options.map((option, i) => {
                     return (
-                      <div className={styles.option} key={i} onClick={() => showFollowingText(i)}>
-                        {option.label}
-                      </div>
+                      <Button
+                        text={option.label}
+                        key={i}
+                        onClick={() => showFollowingText(i)}
+                        variant="splashScreen"
+                      />
                     )
                   })}
                 </motion.div>
-              </>
+              </div>
             )}
             {showFollowing && (
-              <>
+              <div className="item item--following">
                 <motion.div
                   key="following"
-                  className={`${styles.baseline} ${true && styles.active}`}
+                  className="baseline"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -20 }}
                   transition={{ duration: 1 }}
                 >
-                  <span className={styles.date}>{section.date}</span>
-                  <p>{section.options[followingToShow].following}</p>
+                  <span className="baseline__date">{section.date}</span>
+                  <p className="baseline__content">{section.options[followingToShow].following}</p>
                 </motion.div>
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
@@ -83,14 +103,12 @@ export const Prompts = ({ introduction, currentIndex, setCurrentIndex }) => {
                   exit={{ opacity: 0, y: -20 }}
                   transition={{ duration: 1, delay: 2 }}
                 >
-                  <button
-                    className={styles.nextButton}
+                  <Button
+                    text="Continuer"
                     onClick={() => goToNext(section.options[followingToShow]?.version)}
-                  >
-                    Suite...
-                  </button>
+                  />
                 </motion.div>
-              </>
+              </div>
             )}
           </div>
         </AnimatePresence>

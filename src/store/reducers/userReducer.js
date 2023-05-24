@@ -2,7 +2,9 @@ import { createSlice } from "@reduxjs/toolkit"
 
 const initialState = {
   gameCode: null,
+  score: 0,
   scenario: "",
+  isPromptComplete: false,
   hasExperienceStarted: false,
   onFocusCamera: false,
   onFocusCameraPosition: {
@@ -35,6 +37,15 @@ export const userSlice = createSlice({
   name: "user",
   initialState,
   reducers: {
+    setScore: (state, action) => {
+      state.score += action.payload
+    },
+    completePrompts: (state) => {
+      state.isPromptComplete = true
+    },
+    startExperience: (state) => {
+      state.hasExperienceStarted = true
+    },
     changeGameCode: (state, action) => {
       state.gameCode = action.payload
     },
@@ -50,7 +61,14 @@ export const userSlice = createSlice({
   },
 })
 
-export const { changeGameCode, changeOnFocusCamera, changeOnFocusCameraPosition } =
-  userSlice.actions
+export const {
+  setScore,
+  completePrompts,
+  startExperience,
+  changeGameCode,
+  changeOnFocusCamera,
+  changeOnFocusCameraPosition,
+  collectAdinkra
+} = userSlice.actions
 
 export default userSlice.reducer

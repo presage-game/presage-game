@@ -4,21 +4,21 @@ import { useSelector, useDispatch } from "react-redux"
 import introductionData from "@/assets/data/introduction.json"
 import ambiance from "@/assets/audios/introduction/ambiance.mp3"
 import carEngine from "@/assets/audios/introduction/car-engine.mp3"
-import styles from "./Introduction.module.scss"
 
-import { completePrompts } from "../../store/reducers/introductionReducer"
-import { changeGameCode } from "@/store/reducers/userReducer"
+import { completePrompts, changeGameCode } from "@/store/reducers/userReducer"
 import { createGame } from "@/database/gamecode"
 
 import { Prompts } from "./Prompts/Prompts"
 import { SplashScreen } from "./SplashScreen/SplashScreen"
 import { Footer } from "./Footer/Footer"
 
+import "./Introduction.scss"
+
 export const Introduction = () => {
   const introduction = introductionData
 
   const dispatch = useDispatch()
-  const { isPromptComplete, hasExperienceStarted } = useSelector((state) => state.introduction)
+  const { isPromptComplete, hasExperienceStarted } = useSelector((state) => state.user)
   const { gameCode } = useSelector((state) => state.user)
 
   const [currentIndex, setCurrentIndex] = useState(0)
@@ -68,7 +68,7 @@ export const Introduction = () => {
 
   return (
     !hasExperienceStarted && (
-      <section className={styles.root}>
+      <section className="Introduction">
         {!showIntroduction && <SplashScreen setShowIntroduction={setShowIntroduction} />}
         {showIntroduction && (
           <>

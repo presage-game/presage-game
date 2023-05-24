@@ -1,18 +1,25 @@
 import { useEffect, useState } from "react"
 import { useSelector, useDispatch } from "react-redux"
-import { toggleBlackBars, toggleMap } from "@/store/reducers/uiReducer"
+import { toggleBlackBars } from "@/store/reducers/uiReducer"
 
 import scriptData from "@/assets/data/chapterOne/scenes.json"
 import pinpointsData from "@/assets/data/chapterOne/pinpoints.json"
-import styles from "./Interface.module.scss"
 
 import { SceneTextBox } from "@/components/Interface/SceneTextBox/SceneTextBox"
 import { MapTextBox } from "@/components/Interface/MapTextBox/MapTextBox"
 import { IntersectionPopup } from "@/components/Interface/IntersectionPopup/IntersectionPopup"
 import { Collection } from "@/components/Interface/Collection/Collection"
 import { Options } from "@/components/Interface/Options/Options"
+import { Cursor } from "./Cursor/Cursor"
 
-export const Interface = ({ mapActive, spotIndex }) => {
+export const Interface = ({
+  mapActive,
+  spotIndex,
+  showText,
+  setShowText,
+  isVoiceOver,
+  setIsVoiceOver,
+}) => {
   const dispatch = useDispatch()
 
   const {
@@ -23,12 +30,8 @@ export const Interface = ({ mapActive, spotIndex }) => {
 
   const [isPopupVisible, setIsPopupVisible] = useState(true)
 
-  useEffect(() => {
-    console.log("spotIndex", spotIndex)
-  }, [spotIndex])
-
   return (
-    <div className={styles.root}>
+    <>
       <div
         style={{
           position: "absolute",
@@ -39,11 +42,6 @@ export const Interface = ({ mapActive, spotIndex }) => {
           transform: "translateX(-50%)",
         }}
       >
-        {sceneIndex !== null && !mapActive && (
-          <button style={{ cursor: "pointer" }} onClick={() => dispatch(toggleMap())}>
-            {mapActive ? "Close map" : "[Go to map]"}
-          </button>
-        )}
         <button
           style={{ marginLeft: "3rem", cursor: "pointer" }}
           onClick={() => {
@@ -59,6 +57,10 @@ export const Interface = ({ mapActive, spotIndex }) => {
           sceneIndex={sceneIndex}
           scriptData={scriptData}
           spotIndex={spotIndex}
+          showText={showText}
+          setShowText={setShowText}
+          isVoiceOver={isVoiceOver}
+          setIsVoiceOver={setIsVoiceOver}
         />
       )}
       {mapActive && (
@@ -81,8 +83,9 @@ export const Interface = ({ mapActive, spotIndex }) => {
           />
         </>
       )}
+      <Cursor />
       <Collection />
       <Options />
-    </div>
+    </>
   )
 }

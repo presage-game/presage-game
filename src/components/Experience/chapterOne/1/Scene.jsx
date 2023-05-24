@@ -1,6 +1,4 @@
 import { Model } from "./Model"
-import { CustomCamera } from "../../tools/CustomCamera/CustomCamera"
-import { Environment } from "@react-three/drei"
 import { WelcomeSign } from "../../objects/interactive/WelcomeSign/WelcomeSign"
 
 export const Scene = ({
@@ -13,7 +11,7 @@ export const Scene = ({
 }) => {
   return (
     <>
-      <Model position={[9, -15, 93]} variant={variant} setVariant={setVariant} />
+      <Model position={[11, -15, 93]} variant={variant} setVariant={setVariant} />
       <WelcomeSign
         pubClicked={pubClicked}
         setPubClicked={setPubClicked}

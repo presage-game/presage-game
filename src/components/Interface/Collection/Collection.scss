@@ -1,0 +1,36 @@
+.Collection {
+  position: absolute;
+  top: 3rem;
+  right: 3rem;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+
+  .item {
+    height: 6rem;
+    width: 6rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 0.1rem dashed #f0edd9;
+    opacity: 0.5;
+
+    &:not(:first-child) {
+      margin-top: 1.25rem;
+    }
+
+    &__icon {
+      width: 60%;
+      display: none;
+    }
+
+    &--active {
+      opacity: 1;
+
+      .item__icon {
+        display: block;
+      }
+    }
+  }
+}
