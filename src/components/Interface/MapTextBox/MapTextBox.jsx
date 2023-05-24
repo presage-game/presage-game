@@ -192,6 +192,7 @@ export const MapTextBox = ({ pinpointsData, pinpointIndex, mapActive }) => {
             <>
               {pinpointsData[pinpointIndex]?.voiceover[textIndex]?.options?.map((option, index) => (
                 <Button
+                  key={index}
                   text={option.text}
                   onClick={() => chooseResponse(index)}
                   variant="splashScreen"
