@@ -9,7 +9,6 @@
   border-radius: 0.8rem;
   border: 0.15rem solid #3e3a2f;
   text-align: center;
-  cursor: pointer;
   transition: ease-in-out 0.25s;
   transition-property: background-color, color, fill;
   color: #3e3a2f;
@@ -21,7 +20,6 @@
 
   &:hover {
     background-color: #fdc463;
-    // transform: translateX(-50%) scale(1.05) !important;
   }
 
   &__title {
