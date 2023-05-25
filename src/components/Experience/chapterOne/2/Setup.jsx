@@ -3,12 +3,12 @@ import { Scene } from "./Scene"
 import { useDispatch } from "react-redux"
 import { changeOnFocusCamera, changeOnFocusCameraPosition } from "@/store/reducers/userReducer"
 import { CustomCamera } from "../../tools/CustomCamera/CustomCamera"
-import { Environment } from "@react-three/drei"
+import { Environment, Sky } from "@react-three/drei"
 import { CloudsEffect } from "../../effects/CloudsEffect"
 import { GoToMap } from "../../objects/interactive/GoToMap/GoToMap"
 import { TempestEffect } from "../../effects/TempestEffect"
 
-export const Setup = ({variant}) => {
+export const Setup = ({ variant }) => {
   const [adinkraFocused, setAdinkraFocused] = useState(false)
 
   const dispatch = useDispatch()
@@ -38,6 +38,7 @@ export const Setup = ({variant}) => {
   return (
     <>
       <Environment preset="forest" />
+
       <CustomCamera />
       <directionalLight
         intensity={variant === "default" ? 0.9 : 0.5}
@@ -47,12 +48,22 @@ export const Setup = ({variant}) => {
       />
       <GoToMap args={[5, 5, 5]} position={[40, -2.5, -90]} />
       {variant === "default" ? (
-        <CloudsEffect />
+        <>
+          <Sky
+            sunPosition={[10, 1, 2]}
+            azimuth={180}
+            rayleigh={2.0}
+            mieCoefficient={0.05}
+            mieDirectionalG={0.828}
+          />
+          <CloudsEffect />
+        </>
       ) : (
         <>
+          <color attach={"background"} args={["#be915b"]} />
           <fog attach={"fog"} args={["#be915b", 1, 50]} />
           <TempestEffect />
-          <ambientLight color={"#C65948"} intensity={0.5} />
+          <ambientLight color={"#be915b"} intensity={0.5} />
         </>
       )}
       <Scene

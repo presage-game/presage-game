@@ -9,7 +9,7 @@ export const Scene = ({
 }) => {
   return (
     <>
-      <Model position={[9, -15, 93]} variant={variant} />
+      <Model position={[10, -15, 92]} variant={variant} />
       <AdinkraOne adinkraFocused={adinkraFocused} setAdinkraFocused={setAdinkraFocused} />
       <Environment preset="park" />
     </>
