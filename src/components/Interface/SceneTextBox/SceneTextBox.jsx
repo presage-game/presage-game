@@ -170,9 +170,6 @@ export const SceneTextBox = ({
           transition={{ x: { type: "spring", stiffness: 100 } }}
         >
           <div className="TextBox__inner">
-            {spotIndex === null && <p>this is intro</p>}
-            <p>spot index: {spotIndex}</p>
-            <p>text index: {textIndex}</p>
             {getTextEmitter() === "narrator" && <h2 className="narrator">Le narrateur</h2>}
             {getTextEmitter() === "innerVoice" && (
               <h2 className="narrator narrator--innerVoice">Voix de la radio</h2>
