@@ -8,6 +8,8 @@ export const Car = ({ animationsName = "Run" }) => {
   const [turnSound] = useState(() => new Audio("assets/vehicules/truck/turn.mp3"))
   const [runSound] = useState(() => new Audio("assets/vehicules/truck/run.mp3"))
 
+  
+
   const engine = animations.actions["Car engine"]
   engine.reset().fadeIn(0.5).play()
 
@@ -37,15 +39,21 @@ export const Car = ({ animationsName = "Run" }) => {
     runSound.loop = true
     runSound.volume = 0.1
     turnSound.volume = 0.2
+
+    let timeout = setTimeout(() => {
+      // animations.actions.Walk.play()
+      // animations.actions.Walk.crossFadeFrom(animations.actions.Run, 1)
+  
+      turnSound.loop = true
+      turnSound.play()
+    }, 1600)
+
+    return () => {
+      turnSound.pause()
+      runSound.pause()
+      clearTimeout(timeout)
+    }
   }, [])
-
-  window.setTimeout(() => {
-    // animations.actions.Walk.play()
-    // animations.actions.Walk.crossFadeFrom(animations.actions.Run, 1)
-
-    turnSound.loop = true
-    turnSound.play()
-  }, 1600)
 
   return (
     <group>
