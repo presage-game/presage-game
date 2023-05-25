@@ -58,7 +58,6 @@ export const Interface = ({
         >
           [Cinematic mode]
         </button>
-        <span style={{ marginLeft: "3rem", cursor: "none" }}>spotIndex: {spotIndex}</span>
       </div>
       {!mapActive && (
         <SceneTextBox
