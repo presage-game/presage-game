@@ -58,6 +58,7 @@ export const Scene = ({ goOnScene, goOnPinpoint, resetScene, resetPinpoint }) =>
     pivot.add(followCam)
     resetScene()
     startSound.currentTime = 0
+    startSound.volume = 0.3
     startSound.play()
   }, [])
 

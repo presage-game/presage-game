@@ -21,17 +21,23 @@ export const Car = ({ animationsName = "Run" }) => {
 
       turnSound.volume = 0
       runSound.loop = true
-      runSound.volume = 0.8
+      runSound.volume = 0.1
       runSound.play()
 
       return () => {
         wheel_left.stop()
         wheel_right.stop()
-        turnSound.volume = 1
+        turnSound.volume = 0.2
         runSound.pause()
       }
     }
   }, [animationsName])
+
+  useEffect(() => {
+    runSound.loop = true
+    runSound.volume = 0.1
+    turnSound.volume = 0.2
+  }, [])
 
   window.setTimeout(() => {
     // animations.actions.Walk.play()
