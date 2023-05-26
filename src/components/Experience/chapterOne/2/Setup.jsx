@@ -3,11 +3,12 @@ import { Scene } from "./Scene"
 import { useDispatch } from "react-redux"
 import { changeOnFocusCamera, changeOnFocusCameraPosition } from "@/store/reducers/userReducer"
 import { CustomCamera } from "../../tools/CustomCamera/CustomCamera"
-import { Environment } from "@react-three/drei"
+import { Environment, Sky } from "@react-three/drei"
+import { CloudsEffect } from "../../effects/CloudsEffect"
 import { GoToMap } from "../../objects/interactive/GoToMap/GoToMap"
+import { TempestEffect } from "../../effects/TempestEffect"
 
-export const Setup = () => {
-  const [variant, setVariant] = useState("default")
+export const Setup = ({ variant }) => {
   const [adinkraFocused, setAdinkraFocused] = useState(false)
 
   const dispatch = useDispatch()
@@ -34,24 +35,6 @@ export const Setup = () => {
     }
   }, [adinkraFocused])
 
-  /*
-  const switchLerp = (value) => {
-    changeFocusPosition({
-      position: {
-        x: -50,
-        y: 0,
-        z: 60,
-      },
-      rotation: {
-        x: -Math.PI / 3,
-        y: 0,
-        z: 0,
-      },
-    })
-    changeFocus(value)
-  }
-  */
-
   return (
     <>
       <Environment preset="forest" />
@@ -62,11 +45,28 @@ export const Setup = () => {
         position={[-50, 50, 50]}
         rotation={[-Math.PI / 2, 0, 0]}
       />
-      {variant !== "default" && <ambientLight color={"#C65948"} intensity={0.5} />}
       <GoToMap args={[5, 5, 5]} position={[40, -2.5, -90]} />
+      {variant === "default" ? (
+        <>
+          <Sky
+            sunPosition={[10, 1, 2]}
+            azimuth={180}
+            rayleigh={2.0}
+            mieCoefficient={0.05}
+            mieDirectionalG={0.828}
+          />
+          <CloudsEffect position={[0, 40, -300]} variant={variant} numberOfClouds={20} />
+        </>
+      ) : (
+        <>
+          <color attach={"background"} args={["#be915b"]} />
+          <fog attach={"fog"} args={["#be915b", 1, 50]} />
+          <TempestEffect />
+          <ambientLight color={"#be915b"} intensity={0.5} />
+        </>
+      )}
       <Scene
-        variant={variant}
-        setVariant={setVariant}
+        variant={"default"}
         adinkraFocused={adinkraFocused}
         setAdinkraFocused={setAdinkraFocused}
       />
