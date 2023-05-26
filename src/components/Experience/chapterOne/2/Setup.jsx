@@ -38,7 +38,6 @@ export const Setup = ({ variant }) => {
   return (
     <>
       <Environment preset="forest" />
-
       <CustomCamera />
       <directionalLight
         intensity={variant === "default" ? 0.9 : 0.5}
@@ -56,7 +55,7 @@ export const Setup = ({ variant }) => {
             mieCoefficient={0.05}
             mieDirectionalG={0.828}
           />
-          <CloudsEffect />
+          <CloudsEffect position={[0, 40, -300]} variant={variant} numberOfClouds={20} />
         </>
       ) : (
         <>
