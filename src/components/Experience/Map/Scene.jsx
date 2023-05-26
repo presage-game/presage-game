@@ -1,6 +1,15 @@
 import React, { useRef, useMemo, useEffect, useState } from "react"
 import { useSelector } from "react-redux"
-import { Box3, Object3D, Quaternion, Vector3, CameraHelper, BoxHelper, Raycaster, Vector2 } from "three"
+import {
+  Box3,
+  Object3D,
+  Quaternion,
+  Vector3,
+  CameraHelper,
+  BoxHelper,
+  Raycaster,
+  Vector2,
+} from "three"
 import { Box, useGLTF, OrthographicCamera, Gltf, useHelper } from "@react-three/drei"
 import { useFrame } from "@react-three/fiber"
 import { Pathfinding, PathfindingHelper } from "three-pathfinding"
@@ -168,7 +177,7 @@ export const Scene = ({
     }
   })
 
-  useHelper(voitureGrpRef, BoxHelper, "cyan")
+  // useHelper(voitureGrpRef, BoxHelper, "cyan")
 
   return (
     <>
