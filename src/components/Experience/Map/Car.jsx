@@ -21,13 +21,13 @@ export const Car = ({ animationsName = "Run" }) => {
 
       turnSound.volume = 0
       runSound.loop = true
-      runSound.volume = 0.1
+      runSound.volume = 0.05
       runSound.play()
 
       return () => {
         wheel_left.stop()
         wheel_right.stop()
-        turnSound.volume = 0.2
+        turnSound.volume = 0.05
         runSound.pause()
       }
     }
@@ -35,8 +35,8 @@ export const Car = ({ animationsName = "Run" }) => {
 
   useEffect(() => {
     runSound.loop = true
-    runSound.volume = 0.1
-    turnSound.volume = 0.2
+    runSound.volume = 0.05
+    turnSound.volume = 0.05
 
     let timeout = setTimeout(() => {
       // animations.actions.Walk.play()
