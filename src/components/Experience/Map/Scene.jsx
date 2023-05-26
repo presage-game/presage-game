@@ -144,15 +144,15 @@ export const Scene = ({
     })
 
     // Not intersecting with any scene
-    if (!isSceneIntersecting && pinpointIndex === null && sceneIndex !== null) {
+    if (!isSceneIntersecting) {
       intersectScene(false)
       resetScene()
     }
 
     // Not intersecting with any pinpoint
     if (!isPinpointIntersecting) {
-      pinpointIndex !== null && resetPinpoint()
       intersectPinpoint(false)
+      resetPinpoint()
     }
   }
 
