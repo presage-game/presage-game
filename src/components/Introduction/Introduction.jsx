@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react"
 import { useSelector, useDispatch } from "react-redux"
 
 import introductionData from "@/assets/data/introduction.json"
-import ambiance from "@/assets/audios/introduction/ambiance.mp3"
-import carEngine from "@/assets/audios/introduction/car-engine.mp3"
+import ambiance from "/audios/introduction/ambiance.mp3"
+import carEngine from "/audios/introduction/car-engine.mp3"
 
 import { completePrompts, changeGameCode } from "@/store/reducers/userReducer"
 import { createGame } from "@/database/gamecode"

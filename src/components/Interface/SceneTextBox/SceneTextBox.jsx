@@ -1,5 +1,8 @@
 import { useState, useEffect } from "react"
+import { useSelector } from "react-redux"
+
 import { motion, AnimatePresence } from "framer-motion"
+
 import { Button } from "@/components/Button/Button"
 
 import "./TextBox.scss"
@@ -14,33 +17,40 @@ export const SceneTextBox = ({
   isVoiceOver,
   setIsVoiceOver,
 }) => {
+  const [introPlayed, setIntroPlayed] = useState(false)
   const [showOptions, setShowOptions] = useState(false)
   const [textIndex, setTextIndex] = useState(0)
   const [optionIndex, setOptionIndex] = useState(0)
   const [key, setKey] = useState(0)
 
+  /* Text and options */
   const getTextEmitter = () =>
     !isVoiceOver
       ? scriptData[sceneIndex]?.spots[spotIndex]?.spotVoiceover[textIndex]?.emitter
       : scriptData[sceneIndex]?.voiceover[textIndex]?.emitter
+
   const getTextLabel = () => (!isVoiceOver ? scriptData[sceneIndex].spots[spotIndex]?.label : null)
 
   const getIntroText = () =>
     scriptData[sceneIndex]?.voiceover && scriptData[sceneIndex]?.voiceover[textIndex]?.text
+
   const getSpotText = () => scriptData[sceneIndex]?.spots[spotIndex]?.spotVoiceover[textIndex]?.text
 
   const hasMore = () => (isVoiceOver ? hasMoreIntroText() : hasMoreSpotText())
+
   const hasMoreIntroText = () => scriptData[sceneIndex]?.voiceover?.length > textIndex + 1
+
   const hasMoreSpotText = () =>
     scriptData[sceneIndex].spots[spotIndex]?.spotVoiceover?.length > textIndex + 1
+
   const hasOptions = () =>
     scriptData[sceneIndex]?.spots[spotIndex]?.spotVoiceover[textIndex]?.options?.length > 0
 
-  // Show the next text in the voiceover array
   const showMore = () => {
     setTextIndex(textIndex + 1)
     setKey((prevKey) => prevKey + 1)
   }
+
   const showMoreNPC = () => {
     setTextIndex(textIndex + 1)
     setShowOptions(true)
@@ -52,6 +62,7 @@ export const SceneTextBox = ({
       scriptData[sceneIndex]?.spots[spotIndex]?.spotVoiceover[textIndex]?.options[optionIndex]
     return option.response
   }
+
   const chooseResponse = (data) => {
     setOptionIndex(data)
     setShowOptions(false)
@@ -64,6 +75,8 @@ export const SceneTextBox = ({
       setIsVoiceOver(false)
       setShowText(true)
       setShowOptions(true)
+    } else if (spotIndex === null && introPlayed) {
+      setTextIndex(null)
     }
   }, [spotIndex])
 
@@ -79,6 +92,71 @@ export const SceneTextBox = ({
       setShowText(true)
     }
   }, [sceneIndex])
+
+  /* Voiceover */
+  useEffect(() => {
+    if (!hasMoreIntroText()) {
+      setIntroPlayed(true)
+    }
+  }, [textIndex])
+
+  const { isMuted, volume } = useSelector((state) => state.audio)
+
+  const currentAudio = new Audio()
+  currentAudio.volume = 0.75 * volume
+
+  useEffect(() => {
+    currentAudio.muted = isMuted
+    currentAudio.volume = 0.75 * volume
+  }, [isMuted])
+
+  const getAudioFile = (filePath) =>
+    fetch(filePath, { method: "HEAD" })
+      .then((response) => (response.ok ? filePath : null))
+      .catch(() => null)
+
+  const [audioFile, setAudioFile] = useState(null)
+
+  useEffect(() => {
+    if (spotIndex === null && !introPlayed && getIntroText()) {
+      getAudioFile(`audios/scenes/${sceneIndex}/voiceover/intro-${textIndex}.mp3`).then((file) => {
+        if (file) {
+          setAudioFile(file)
+        }
+      })
+    } else if (spotIndex !== null && getSpotText()) {
+      getAudioFile(`audios/scenes/${sceneIndex}/voiceover/${spotIndex}-${textIndex}.mp3`).then(
+        (file) => {
+          if (file) {
+            setAudioFile(file)
+          }
+        }
+      )
+    }
+  }, [spotIndex, textIndex, sceneIndex, introPlayed])
+
+  useEffect(() => {
+    if (audioFile !== null && textIndex !== null) {
+      if (!currentAudio.paused) {
+        currentAudio.pause()
+      }
+
+      currentAudio.src = audioFile
+      currentAudio.load()
+
+      const playPromise = currentAudio.play()
+      if (playPromise !== undefined) {
+        playPromise.catch((error) => {
+          return
+        })
+      }
+    }
+
+    return () => {
+      currentAudio.currentTime = 0
+      currentAudio.pause()
+    }
+  }, [audioFile, textIndex])
 
   return (
     <AnimatePresence>
@@ -100,7 +178,7 @@ export const SceneTextBox = ({
               <h2 className="narrator narrator--npc">{getTextLabel()}</h2>
             )}
 
-            {isVoiceOver && (
+            {isVoiceOver && getIntroText() && (
               <p className="content">
                 {getIntroText()
                   .split(" ")
@@ -116,7 +194,7 @@ export const SceneTextBox = ({
                   ))}
               </p>
             )}
-            {!isVoiceOver && showOptions && (
+            {!isVoiceOver && showOptions && getSpotText() && (
               <p className="content">
                 {getSpotText()
                   .split(" ")
@@ -132,7 +210,7 @@ export const SceneTextBox = ({
                   ))}
               </p>
             )}
-            {hasOptions() && !isVoiceOver && !showOptions && (
+            {hasOptions() && !isVoiceOver && !showOptions && getOptionResponse() && (
               <p className="content">
                 {getOptionResponse()
                   .split(" ")

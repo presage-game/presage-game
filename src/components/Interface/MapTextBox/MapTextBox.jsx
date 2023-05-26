@@ -7,7 +7,7 @@ import { Button } from "@/components/Button/Button"
 import "@/components/Interface/SceneTextBox/TextBox.scss"
 
 export const MapTextBox = ({ pinpointsData, pinpointIndex, mapActive }) => {
-  const { isPinpointActive } = useSelector((state) => state.map)
+  const { isPinpointIntersecting, isPinpointActive } = useSelector((state) => state.map)
 
   const [showText, setShowText] = useState(pinpointIndex !== null)
   const [showOptions, setShowOptions] = useState(pinpointIndex !== null)
@@ -27,7 +27,10 @@ export const MapTextBox = ({ pinpointsData, pinpointIndex, mapActive }) => {
 
   const getTextEmitter = () => pinpointsData[pinpointIndex]?.voiceover[textIndex]?.emitter
 
-  const getTextLabel = () => pinpointsData[pinpointIndex]?.name
+  const getTextLabel = () =>
+    pinpointsData[pinpointIndex]?.voiceover[textIndex]?.label
+      ? pinpointsData[pinpointIndex]?.voiceover[textIndex]?.label
+      : pinpointsData[pinpointIndex]?.name
 
   const getText = () => pinpointsData[pinpointIndex]?.voiceover[textIndex]?.text
 
@@ -42,7 +45,6 @@ export const MapTextBox = ({ pinpointsData, pinpointIndex, mapActive }) => {
     setKey((prevKey) => prevKey + 1)
   }
 
-  // Show the next text in the voiceover array
   const showMore = () => {
     setTextIndex(textIndex + 1)
     setKey((prevKey) => prevKey + 1)
@@ -59,7 +61,7 @@ export const MapTextBox = ({ pinpointsData, pinpointIndex, mapActive }) => {
   const hasOptions = () => pinpointsData[pinpointIndex]?.voiceover[textIndex]?.options?.length > 0
 
   useEffect(() => {
-    if (pinpointIndex >= 0) {
+    if (pinpointIndex >= 0 && isPinpointActive) {
       setTextIndex(0)
       setOptionIndex(0)
       setShowText(true)
@@ -67,9 +69,60 @@ export const MapTextBox = ({ pinpointsData, pinpointIndex, mapActive }) => {
     }
   }, [pinpointIndex, isPinpointActive])
 
+  /* Voiceover */
+  const { isMuted, volume } = useSelector((state) => state.audio)
+
+  const currentAudio = new Audio()
+  currentAudio.volume = 0.75 * volume
+
+  useEffect(() => {
+    currentAudio.muted = isMuted
+    currentAudio.volume = 0.75 * volume
+  }, [isMuted])
+
+  const getAudioFile = (filePath) =>
+    fetch(filePath, { method: "HEAD" })
+      .then((response) => (response.ok ? filePath : null))
+      .catch(() => null)
+
+  const [audioFile, setAudioFile] = useState(null)
+
+  useEffect(() => {
+    if (textIndex !== null && isPinpointActive) {
+      getAudioFile(`audios/pinpoints/${pinpointIndex}/voiceover/${textIndex}.mp3`).then((file) => {
+        if (file) {
+          setAudioFile(file)
+        }
+      })
+    }
+  }, [textIndex, pinpointIndex, isPinpointActive])
+
+  useEffect(() => {
+    if (audioFile !== null && textIndex !== null && isPinpointActive) {
+      if (!currentAudio.paused) {
+        currentAudio.pause()
+      }
+
+      currentAudio.src = audioFile
+      currentAudio.load()
+
+      const playPromise = currentAudio.play()
+      if (playPromise !== undefined) {
+        playPromise.catch((error) => {
+          return
+        })
+      }
+    }
+
+    return () => {
+      currentAudio.currentTime = 0
+      currentAudio.pause()
+    }
+  }, [audioFile, textIndex])
+
   return (
     <AnimatePresence>
-      {isPinpointActive && showText && pinpointIndex !== null && pinpointIndex >= 0 && (
+      {isPinpointActive && showText && isPinpointIntersecting && (
         <motion.div
           key="textBox"
           className="TextBox TextBox--bottom"
@@ -128,8 +181,8 @@ export const MapTextBox = ({ pinpointsData, pinpointIndex, mapActive }) => {
             <Button
               text="Fermer"
               onClick={() => {
-                setShowText(false)
                 setTextIndex(0)
+                setShowText(false)
                 setShowOptions(false)
                 dispatch(showPinpoint())
               }}

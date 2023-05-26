@@ -6,18 +6,21 @@ import { useFrame } from "@react-three/fiber"
 import { Pathfinding, PathfindingHelper } from "three-pathfinding"
 import { Car } from "./Car"
 
-export const Scene = ({ goOnScene, goOnPinpoint, resetScene, resetPinpoint }) => {
-  const audioPath = "src/assets/audios/chapterOne/pinpoints/pinpoint" // TODO: Update this path
-
+export const Scene = ({
+  goOnScene,
+  goOnPinpoint,
+  resetScene,
+  resetPinpoint,
+  intersectScene,
+  intersectPinpoint,
+}) => {
   const { pinpoint: pinpointIndex, scene: sceneIndex } = useSelector((state) => state.map)
-
-  const [pinpointAudio, setPinpointAudio] = useState(null)
-  const [audioPlaying, setAudioPlaying] = useState(false)
-  const [startSound] = useState(() => new Audio("assets/vehicules/truck/start.mp3"))
 
   const map = useGLTF("assets/scenes/map1.glb")
   const navMesh = useGLTF("assets/scenes/navMesh1.glb")
   const camRef = useRef()
+
+  const [startSound] = useState(() => new Audio("assets/vehicules/truck/start.mp3"))
 
   const [pointerDown, setPointerDown] = useState(false)
 
@@ -29,7 +32,7 @@ export const Scene = ({ goOnScene, goOnPinpoint, resetScene, resetPinpoint }) =>
   const pathfinding = useMemo(() => new Pathfinding(), [])
   const pathfindinghelper = useMemo(() => new PathfindingHelper(), [])
   const ZONE = "level1"
-  const SPEED = 8
+  const SPEED = 10
   let navPath = null
 
   navMesh.scene.traverse((node) => {
@@ -118,6 +121,7 @@ export const Scene = ({ goOnScene, goOnPinpoint, resetScene, resetPinpoint }) =>
           sceneIndex !== cubeRef.current[index].scene && goOnScene(cubeRef.current[index].scene)
 
           isSceneIntersecting = true
+          intersectScene(true)
         }
       }
     })
@@ -133,34 +137,22 @@ export const Scene = ({ goOnScene, goOnPinpoint, resetScene, resetPinpoint }) =>
           pinpointIndex !== smallCubeRef.current[index].pinpoint &&
             goOnPinpoint(smallCubeRef.current[index].pinpoint)
 
-          if (!audioPlaying) {
-            const audio = new Audio(`${audioPath}-${smallCubeRef.current[index].pinpoint}.mp3`)
-            audio.volume = 1
-            audio.play()
-
-            setAudioPlaying(true)
-            setPinpointAudio(audio)
-          }
-
           isPinpointIntersecting = true
+          intersectPinpoint(true)
         }
       }
     })
 
     // Not intersecting with any scene
-    if (!isSceneIntersecting && pinpointIndex === null && sceneIndex !== null) {
+    if (!isSceneIntersecting) {
+      intersectScene(false)
       resetScene()
     }
 
     // Not intersecting with any pinpoint
-    if (!isPinpointIntersecting && pinpointAudio !== null) {
-      pinpointAudio.pause()
-      pinpointAudio.currentTime = 0
-
-      setAudioPlaying(false)
-      setPinpointAudio(null)
-
-      pinpointIndex !== null && resetPinpoint()
+    if (!isPinpointIntersecting) {
+      intersectPinpoint(false)
+      resetPinpoint()
     }
   }
 
@@ -194,32 +186,32 @@ export const Scene = ({ goOnScene, goOnPinpoint, resetScene, resetPinpoint }) =>
         ref={(el) => (cubeRef.current[0] = el)}
         scene={0}
         args={[5, 1, 5]}
-        position={[-13, 0, -13]}
+        position={[-13, 0.1, -13]}
       />
       <Box
         ref={(el) => (cubeRef.current[1] = el)}
         scene={1}
         args={[5, 1, 5]}
-        position={[10, 0, -80]}
+        position={[10, 0.1, -80]}
       />
       <Box
         ref={(el) => (cubeRef.current[2] = el)}
         scene={2}
         args={[5, 1, 5]}
-        position={[15, 0, -55]}
+        position={[15, 0.1, -55]}
       />
       <Box
         ref={(el) => (smallCubeRef.current[0] = el)}
         pinpoint={0}
         args={[5, 1, 5]}
-        position={[-7, 0, -3]}
+        position={[-7, 0.1, -3]}
         material-color="hotpink"
       />
       <Box
         ref={(el) => (smallCubeRef.current[1] = el)}
         pinpoint={1}
         args={[5, 1, 5]}
-        position={[10, 0, -15]}
+        position={[10, 0.1, -15]}
         material-color="hotpink"
       />
       <primitive object={pivot} dispose={null} />

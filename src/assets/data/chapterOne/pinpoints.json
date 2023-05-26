@@ -21,11 +21,15 @@
     ]
   },
   {
-    "name": "Autostoppeur",
+    "name": "Memsen",
     "voiceover": [
       {
-        "text": "Un autostoppeur se tient debout, sur le bord de la route. Il est vêtu d’un manteau de fourrure et d’un chapeau de feutre. Il a l’air d’avoir oublié de se raser depuis quelques jours.",
+        "text": "Un petit village de fortune s’élève sur des pilotis plantés dans le sol, cinq mètres en-dessous de la surface du lac. Des planches en bois servent de passerelles pour naviguer entre des baraquements recouverts de bâches colorées. Et au plus loin que tes yeux peuvent voir : un littoral garni de frondaisons.",
         "emitter": "narrator"
+      },
+      {
+        "text": "Bizuté par un lourd soleil qui se réfléchit sur un immense lac ocre, tu sens des relents de sulfure d’hydrogène pénétrer tes narines. Autour du lac, des femmes et des hommes rient, font des tours dans l’eau, et sifflotent le même air enjoué. Sur la carte, cet endroit a pourtant l’air d’être le bout du monde.",
+        "emitter": "innerVoice"
       },
       {
         "text": "Hey. Il se passe quoi dans le coin ?",
@@ -39,7 +43,12 @@
             "response": "D'accord."
           }
         ],
-        "emitter": "npc"
+        "emitter": "npc",
+        "label": "Groupe de pêcheurs"
+      },
+      {
+        "text": "Ces pêcheurs ne connaissent pas la vérité. Il y a bien longtemps que les enfants d’An-Uua n’ont plus rien à voir avec cette histoire. Non ; si le lac est de cette couleur, c’est à cause de la pollution et des algues.",
+        "emitter": "innerVoice"
       }
     ]
   }

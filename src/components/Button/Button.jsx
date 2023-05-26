@@ -16,7 +16,7 @@ export const Button = ({ text, onClick, variant }) => {
     <button
       onPointerEnter={() => dispatch(changeMouseVariant("buttonHover"))}
       onPointerLeave={() => dispatch(changeMouseVariant("default"))}
-      className={`${variant === "main" && "Button--main"} Button`}
+      className={`${variant === "main" ? "Button--main" : ""} Button`}
       onClick={() => onClick()}
     >
       <div className="Button__border">{text}</div>
