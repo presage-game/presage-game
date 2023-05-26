@@ -5,17 +5,18 @@ import { useSelector } from "react-redux"
 
 export const Cursor = () => {
   const { mouseVariant } = useSelector((state) => state.ui)
+
   const variants = {
     default: {
       scale: 1,
       background: "#f0edd9",
     },
     large: {
-      scale: 2,
+      scale: 3.5,
       background: "#f0edd9",
     },
     buttonHover: {
-      background: "#fdc463",
+      background: "#f0edd9",
     },
   }
   const [mousePos, setMousePos] = useState({
@@ -37,7 +38,7 @@ export const Cursor = () => {
 
   return (
     <motion.div
-      style={{ top: mousePos.y - 10, left: mousePos.x - 10 }}
+      style={{ top: mousePos.y - 7.5, left: mousePos.x - 7.5 }}
       variants={variants}
       animate={mouseVariant}
       className="Cursor"

@@ -49,8 +49,8 @@ export const Prompts = ({ introduction, currentIndex, setCurrentIndex }) => {
       return null
     } else {
       return (
-        <AnimatePresence>
-          <div className="Prompts" key={index}>
+        <AnimatePresence key={index}>
+          <div className="Prompts">
             {!showFollowing && (
               <div className="item item--prompt">
                 <motion.div
