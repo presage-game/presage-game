@@ -177,7 +177,7 @@ export const Scene = ({
     }
   })
 
-  // useHelper(voitureGrpRef, BoxHelper, "cyan")
+  useHelper(voitureGrpRef, BoxHelper, "cyan")
 
   return (
     <>
