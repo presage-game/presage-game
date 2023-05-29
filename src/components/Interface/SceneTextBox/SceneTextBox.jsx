@@ -23,19 +23,73 @@ export const SceneTextBox = ({
   const [optionIndex, setOptionIndex] = useState(0)
   const [key, setKey] = useState(0)
 
-  /* Text and options */
-  const getTextEmitter = () =>
-    !isVoiceOver
-      ? scriptData[sceneIndex]?.spots[spotIndex]?.spotVoiceover[textIndex]?.emitter
-      : scriptData[sceneIndex]?.voiceover[textIndex]?.emitter
+  // TODO: Set this state from Supabase data
+  const [variant, setVariant] = useState("b")
 
+  /* Text and options */
+  const getTextEmitter = () => {
+    if (!isVoiceOver) {
+      const spot = scriptData[sceneIndex]?.spots[spotIndex]?.spotVoiceover[textIndex]
+
+      if (!variant || typeof spot.text === "string") {
+        return spot.emitter
+      }
+
+      if (variant === "a") {
+        return spot.text[0]?.emitter
+      } else if (variant === "b") {
+        return spot.text[1]?.emitter
+      }
+    } else {
+      const voiceover = scriptData[sceneIndex]?.voiceover[textIndex]
+
+      if (!variant || typeof voiceover.text === "string") {
+        return voiceover.emitter
+      } else {
+        if (variant === "a") {
+          return voiceover.text[0]?.emitter
+        } else if (variant === "b") {
+          return voiceover.text[1]?.emitter
+        }
+      }
+    }
+  }
+
+  // Get label
   const getTextLabel = () => (!isVoiceOver ? scriptData[sceneIndex].spots[spotIndex]?.label : null)
 
-  const getIntroText = () =>
-    scriptData[sceneIndex]?.voiceover && scriptData[sceneIndex]?.voiceover[textIndex]?.text
+  // Get text
+  const getIntroText = () => {
+    if (scriptData[sceneIndex]?.voiceover) {
+      const textObject = scriptData[sceneIndex]?.voiceover[textIndex]?.text
 
-  const getSpotText = () => scriptData[sceneIndex]?.spots[spotIndex]?.spotVoiceover[textIndex]?.text
+      if (!variant || typeof textObject === "string") {
+        return textObject
+      }
 
+      if (variant === "a") {
+        return textObject[0]?.a
+      } else if (variant === "b") {
+        return textObject[1]?.b
+      }
+    }
+  }
+
+  const getSpotText = () => {
+    const textObject = scriptData[sceneIndex]?.spots[spotIndex]?.spotVoiceover[textIndex]?.text
+
+    if (!variant || !Array.isArray(textObject)) {
+      return textObject
+    }
+
+    if (variant === "a") {
+      return textObject[0]?.a
+    } else if (variant === "b") {
+      return textObject[1]?.b
+    }
+  }
+
+  // Get options
   const hasMore = () => (isVoiceOver ? hasMoreIntroText() : hasMoreSpotText())
 
   const hasMoreIntroText = () => scriptData[sceneIndex]?.voiceover?.length > textIndex + 1
@@ -147,7 +201,8 @@ export const SceneTextBox = ({
       const playPromise = currentAudio.play()
       if (playPromise !== undefined) {
         playPromise.catch((error) => {
-          return
+          // return
+          console.log(error)
         })
       }
     }
@@ -177,7 +232,6 @@ export const SceneTextBox = ({
             {getTextEmitter() === "npc" && (
               <h2 className="narrator narrator--npc">{getTextLabel()}</h2>
             )}
-
             {isVoiceOver && getIntroText() && (
               <p className="content">
                 {getIntroText()
