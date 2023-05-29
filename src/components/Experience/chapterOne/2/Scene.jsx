@@ -3,6 +3,7 @@ import { Model } from "./Model"
 import { Environment } from "@react-three/drei"
 import { AdinkraOne } from "../../objects/interactive/AdinkraOne/AdinkraOne"
 import { getMaterials } from "@/helpers/materials/Materials"
+import { Fence } from "../../objects/interactive/Fence/Fence"
 
 export const Scene = ({ variant, adinkraFocused, setAdinkraFocused }) => {
   const [Materials, setMaterials] = useState(null)
@@ -22,7 +23,13 @@ export const Scene = ({ variant, adinkraFocused, setAdinkraFocused }) => {
   return (
     <>
       <Model position={[10, -15, 92]} Materials={Materials} />
-      <AdinkraOne position={[10, -15, 92]} Materials={Materials} adinkraFocused={adinkraFocused} setAdinkraFocused={setAdinkraFocused} />
+      <AdinkraOne
+        position={[10, -15, 92]}
+        Materials={Materials}
+        adinkraFocused={adinkraFocused}
+        setAdinkraFocused={setAdinkraFocused}
+      />
+      <Fence position={[10, -15, 92]} Materials={Materials} />
       <Environment preset="park" />
     </>
   )
