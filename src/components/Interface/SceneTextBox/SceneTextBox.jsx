@@ -31,14 +31,14 @@ export const SceneTextBox = ({
     if (!isVoiceOver) {
       const spot = scriptData[sceneIndex]?.spots[spotIndex]?.spotVoiceover[textIndex]
 
-      if (!variant || typeof spot.text === "string") {
+      if (!variant || typeof spot?.text === "string") {
         return spot.emitter
       }
 
       if (variant === "a") {
-        return spot.text[0]?.emitter
+        return spot?.text[0]?.emitter
       } else if (variant === "b") {
-        return spot.text[1]?.emitter
+        return spot?.text[1]?.emitter
       }
     } else {
       const voiceover = scriptData[sceneIndex]?.voiceover[textIndex]
@@ -47,9 +47,9 @@ export const SceneTextBox = ({
         return voiceover.emitter
       } else {
         if (variant === "a") {
-          return voiceover.text[0]?.emitter
+          return voiceover?.text[0]?.emitter
         } else if (variant === "b") {
-          return voiceover.text[1]?.emitter
+          return voiceover?.text[1]?.emitter
         }
       }
     }
