@@ -10,6 +10,7 @@ import { TempestEffect } from "../../effects/TempestEffect"
 
 export const Setup = ({ variant }) => {
   const [adinkraFocused, setAdinkraFocused] = useState(false)
+  const [fenceFocused, setFenceFocused] = useState(false)
 
   const dispatch = useDispatch()
   const changeFocus = (value) => dispatch(changeOnFocusCamera(value))
@@ -30,10 +31,24 @@ export const Setup = ({ variant }) => {
         },
       })
       changeFocus(true)
+    } else if (fenceFocused) {
+      changeFocusPosition({
+        position: {
+          x: 35,
+          y: 4,
+          z: 60,
+        },
+        rotation: {
+          x: Math.PI / 6,
+          y: -Math.PI / 3,
+          z: 0,
+        },
+      })
+      changeFocus(true)
     } else {
       changeFocus(false)
     }
-  }, [adinkraFocused])
+  }, [adinkraFocused, fenceFocused])
 
   return (
     <>
@@ -69,6 +84,8 @@ export const Setup = ({ variant }) => {
         variant={"default"}
         adinkraFocused={adinkraFocused}
         setAdinkraFocused={setAdinkraFocused}
+        fenceFocused={fenceFocused}
+        setFenceFocused={setFenceFocused}
       />
     </>
   )

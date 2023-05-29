@@ -1,19 +1,19 @@
-import { useState } from "react"
 import { Plane, useGLTF } from "@react-three/drei"
+import { useState } from "react"
 
-export const Fence = ({ position, Materials }) => {
+export const Fence = ({ fenceFocused, setFenceFocused, position, Materials }) => {
   const { nodes } = useGLTF("assets/objects/fences/fence.glb")
   const [isHovered, setIsHovered] = useState(false)
-
   const selectedOulineMaterial = isHovered ? Materials.selectedMaterial : Materials.outlineMaterial
 
   return (
     <group
       onPointerEnter={() => setIsHovered(true)}
       onPointerLeave={() => setIsHovered(false)}
+      onClick={() => setFenceFocused(!fenceFocused)}
       position={position}
     >
-      <Plane args={[12, 3]} position={[-18.7, 13, -109]} rotation={[0,-Math.PI / 6,0]}>
+      <Plane args={[12, 3]} position={[-18.7, 13, -109]} rotation={[0, -Math.PI / 6, 0]}>
         <meshBasicMaterial transparent opacity={0} />
       </Plane>
       <group position={[-13.79, 14.39, -106.77]} rotation={[1.58, 0.03, 0.42]} scale={0.41}>

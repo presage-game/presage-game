@@ -5,7 +5,13 @@ import { AdinkraOne } from "../../objects/interactive/AdinkraOne/AdinkraOne"
 import { getMaterials } from "@/helpers/materials/Materials"
 import { Fence } from "../../objects/interactive/Fence/Fence"
 
-export const Scene = ({ variant, adinkraFocused, setAdinkraFocused }) => {
+export const Scene = ({
+  variant,
+  adinkraFocused,
+  setAdinkraFocused,
+  fenceFocused,
+  setFenceFocused,
+}) => {
   const [Materials, setMaterials] = useState(null)
 
   useEffect(() => {
@@ -29,7 +35,12 @@ export const Scene = ({ variant, adinkraFocused, setAdinkraFocused }) => {
         adinkraFocused={adinkraFocused}
         setAdinkraFocused={setAdinkraFocused}
       />
-      <Fence position={[10, -15, 92]} Materials={Materials} />
+      <Fence
+        position={[10, -15, 92]}
+        Materials={Materials}
+        fenceFocused={fenceFocused}
+        setFenceFocused={setFenceFocused}
+      />
       <Environment preset="park" />
     </>
   )
