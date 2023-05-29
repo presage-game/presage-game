@@ -1,0 +1,23 @@
+[
+  {
+    "name": "Ancienne mine de phosphate",
+    "voiceover": [
+      {
+        "text": "Tu es accueilli par les restes d’un portail que le vent fait cliqueter par cycles, et sur lequel tu réussis à lire “JOUVENCE ALUFER MINERALS (JAM)”. La rouille est en train d’oxyder les barreaux des échafaudages.",
+        "emitter": "narrator"
+      },
+      {
+        "text": "Tu sens le vent s’engouffrer à l’intérieur du site d’excavation.",
+        "emitter": "innerVoice"
+      },
+      {
+        "text": "Un engin colossal monté sur des chenilles envahit la mine à ciel ouvert. C’est une excavatrice à godets, construite dans les années 20. Elle n’a pas été utilisée depuis longtemps.",
+        "emitter": "narrator"
+      },
+      {
+        "text": "Tu te sens tout petit à côté de cette machine.",
+        "emitter": "innerVoice"
+      }
+    ]
+  }
+]

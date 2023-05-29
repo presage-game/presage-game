@@ -1,0 +1,121 @@
+[
+  {
+    "name": "Entrée de la région",
+    "voiceover": [
+      {
+        "text": "Le soleil trône au-dessus de toi, dans un ciel bleu moucheté de résidus opalins. Loin devant, les contours brouillés d’une ville se dessinent dans l’air brûlant du désert.",
+        "emitter": "narrator"
+      },
+      {
+        "text": "Tirés entre des pylônes électriques, les lignes à haute tension ondulent au vent, au-dessus de la route.",
+        "emitter": "narrator"
+      },
+      {
+        "text": [
+          {
+            "a": "C'est un texte d'intro qui n'existe que dans le monde A.",
+            "emitter": "narrator"
+          },
+          {
+            "b": "C'est un texte d'intro qui n'existe que dans le monde B.",
+            "emitter": "innerVoice"
+          }
+        ]
+      }
+    ],
+    "spots": [
+      {
+        "index": 0,
+        "label": "Panneau routier",
+        "spotVoiceover": []
+      },
+      {
+        "index": 1,
+        "label": "Carte routière",
+        "spotVoiceover": [
+          {
+            "text": "Une carte de la région recouvre le panneau de gauche. Elle s’orne de pastilles de couleur rouge décrivant des curiosités ; lesquelles se voient perforées d’un tracé jaune, qui s’étend sur la toute la hauteur du support.",
+            "emitter": "narrator"
+          },
+          {
+            "text": "Soudain, la radio de la voiture s’allume dans un grésillement. Une voix baigne dans la friture électromagnétique et les parasites, mais parvient tout de même à trouver son chemin jusque dans l’habitacle.",
+            "emitter": "narrator"
+          },
+          {
+            "text": "Un acarien monochrome cherche à rejoindre le sud de la région en suivant la nationale, qui fait comme une longue cicatrice sinueuse. C’est toi.",
+            "emitter": "innerVoice"
+          },
+          {
+            "text": [
+              {
+                "a": "C'est un texte qui doit supposément apparaître si la variante est A.",
+                "emitter": "narrator"
+              },
+              {
+                "b": "C'est un texte qui doit supposément apparaître si la variante est B.",
+                "emitter": "innerVoice"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Cercles mégalithiques",
+    "voiceover": [
+      {
+        "text": "Des rafales de vent soulèvent des volutes de poussière qui s’assemblent, et qui forment des brumes de sable opacifiant l’atmosphère. Il est difficile de voir à plus de dix mètres.",
+        "emitter": "narrator"
+      },
+      {
+        "text": "Une colonie de mégalithes a choisi de s’établir ici, sur un site grand de plusieurs hectares. Des centaines de piliers de latérite taillée forment des cercles.",
+        "emitter": "narrator"
+      },
+      {
+        "text": "Ces pierres surmontent des sépultures. Tu ressens les âmes de milliers d’habitants du Nyalaandé reposer sous tes pieds. Mais leur corps n’est plus là.",
+        "emitter": "innerVoice"
+      }
+    ],
+    "spots": [
+      {
+        "index": 0,
+        "label": "Cercles de pierre",
+        "spotVoiceover": [
+          {
+            "text": "Tu as l'impression que les pierres émettent un son lorsque tu les touches.",
+            "emitter": "innerVoice"
+          }
+        ]
+      },
+      {
+        "index": 1,
+        "label": "Clôtures",
+        "spotVoiceover": [
+          {
+            "text": "Des clôtures métalliques hautes de deux mètres courent tout autour du site fantôme. Le vent les secoue, fendant l’air d’un tintement qu’on finit presque par oublier.",
+            "emitter": "narrator"
+          },
+          {
+            "text": "Des entreprises ont essayé de se réapproprier cet endroit. Et quelque chose les a fait partir avant qu’elles n’y parviennent.",
+            "emitter": "innerVoice"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Premier arbre à palabres",
+    "voiceover": [
+      {
+        "text": "Un baobab singulier et trapu se dresse le long de la route, dépliant ses couronnes vertes en-dessous du ciel. Perchées sur une branche, deux perruches aux couleurs vives te dévisagent placidement.",
+        "emitter": "narrator"
+      },
+      {
+        "text": "Quelque chose cloche avec ce baobab. D’une manière ou d’une autre, il n’est pas censé être là. Tu aimerais l’ignorer et tracer ta route, mais sa présence t’en empêche.",
+        "emitter": "innerVoice"
+      }
+    ],
+    "spots": []
+  }
+]
