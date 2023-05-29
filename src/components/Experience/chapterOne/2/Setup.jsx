@@ -19,13 +19,13 @@ export const Setup = ({ variant }) => {
     if (adinkraFocused) {
       changeFocusPosition({
         position: {
-          x: 61,
+          x: -10,
           y: -2,
-          z: 140,
+          z: 120,
         },
         rotation: {
           x: Math.PI / 6,
-          y: Math.PI / 6,
+          y: -Math.PI / 6,
           z: 0,
         },
       })
