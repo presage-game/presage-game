@@ -10,24 +10,31 @@
         "text": "Tirés entre des pylônes électriques, les lignes à haute tension ondulent au vent, au-dessus de la route.",
         "emitter": "narrator"
       },
+      [
+        {
+          "text": "C'est un texte d'intro qui n'existe que dans le monde A.",
+          "emitter": "narrator"
+        },
+        {
+          "text": "C'est un texte d'intro qui n'existe que dans le monde B.",
+          "emitter": "innerVoice"
+        }
+      ],
       {
-        "text": [
-          {
-            "a": "C'est un texte d'intro qui n'existe que dans le monde A.",
-            "emitter": "narrator"
-          },
-          {
-            "b": "C'est un texte d'intro qui n'existe que dans le monde B.",
-            "emitter": "innerVoice"
-          }
-        ]
+        "text": "Ce texte est commun, à nouveau. Tu es sur le point d’entrer dans le Nyalaandé.",
+        "emitter": "narrator"
       }
     ],
     "spots": [
       {
         "index": 0,
         "label": "Panneau routier",
-        "spotVoiceover": []
+        "spotVoiceover": [
+          {
+            "text": "Un panneau routier indique que tu entres dans le Nyalaandé. La route est bordée de part et d’autre par des arbres aux troncs noueux, qui s’élèvent vers le ciel.",
+            "emitter": "narrator"
+          }
+        ]
       },
       {
         "index": 1,
@@ -45,18 +52,16 @@
             "text": "Un acarien monochrome cherche à rejoindre le sud de la région en suivant la nationale, qui fait comme une longue cicatrice sinueuse. C’est toi.",
             "emitter": "innerVoice"
           },
-          {
-            "text": [
-              {
-                "a": "C'est un texte qui doit supposément apparaître si la variante est A.",
-                "emitter": "narrator"
-              },
-              {
-                "b": "C'est un texte qui doit supposément apparaître si la variante est B.",
-                "emitter": "innerVoice"
-              }
-            ]
-          }
+          [
+            {
+              "text": "C'est un texte qui n'existe que dans le monde A.",
+              "emitter": "narrator"
+            },
+            {
+              "text": "C'est un texte qui n'existe que dans le monde B.",
+              "emitter": "innerVoice"
+            }
+          ]
         ]
       }
     ]

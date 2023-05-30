@@ -32,25 +32,29 @@ export const SceneTextBox = ({
       const spot = scriptData[sceneIndex]?.spots[spotIndex]?.spotVoiceover[textIndex]
 
       if (!variant || typeof spot?.text === "string") {
-        return spot.emitter
+        return spot?.emitter
       }
 
-      if (variant === "a") {
-        return spot?.text[0]?.emitter
-      } else if (variant === "b") {
-        return spot?.text[1]?.emitter
+      if (variant === "a" && spot[0]?.emitter !== undefined) {
+        return spot[0]?.emitter
+      }
+
+      if (variant === "b" && spot[1]?.emitter !== undefined) {
+        return spot[1]?.emitter
       }
     } else {
-      const voiceover = scriptData[sceneIndex]?.voiceover[textIndex]
+      const intro = scriptData[sceneIndex]?.voiceover[textIndex]
 
-      if (!variant || typeof voiceover.text === "string") {
-        return voiceover.emitter
-      } else {
-        if (variant === "a") {
-          return voiceover?.text[0]?.emitter
-        } else if (variant === "b") {
-          return voiceover?.text[1]?.emitter
-        }
+      if (!variant || typeof intro?.text === "string") {
+        return intro?.emitter
+      }
+
+      if (variant === "a" && intro[0]?.emitter !== undefined) {
+        return intro[0]?.emitter
+      }
+
+      if (variant === "b" && intro[1]?.emitter !== undefined) {
+        return intro[1]?.emitter
       }
     }
   }
@@ -61,31 +65,37 @@ export const SceneTextBox = ({
   // Get text
   const getIntroText = () => {
     if (scriptData[sceneIndex]?.voiceover) {
-      const textObject = scriptData[sceneIndex]?.voiceover[textIndex]?.text
+      const intro = scriptData[sceneIndex]?.voiceover[textIndex]
 
-      if (!variant || typeof textObject === "string") {
-        return textObject
+      if (!variant || typeof intro?.text === "string") {
+        return intro?.text
       }
 
-      if (variant === "a") {
-        return textObject[0]?.a
-      } else if (variant === "b") {
-        return textObject[1]?.b
+      if (variant === "a" && intro[0]?.text !== undefined) {
+        return intro[0]?.text
       }
+
+      if (variant === "b" && intro[1]?.text !== undefined) {
+        return intro[1]?.text
+      }
+
+      return
     }
   }
 
   const getSpotText = () => {
-    const textObject = scriptData[sceneIndex]?.spots[spotIndex]?.spotVoiceover[textIndex]?.text
+    const spot = scriptData[sceneIndex]?.spots[spotIndex]?.spotVoiceover[textIndex]
 
-    if (!variant || !Array.isArray(textObject)) {
-      return textObject
-    }
-
-    if (variant === "a") {
-      return textObject[0]?.a
-    } else if (variant === "b") {
-      return textObject[1]?.b
+    if (!variant || typeof spot?.text === "string") {
+      return spot?.text
+    } else {
+      if (variant === "a" && typeof spot === "object") {
+        return spot[0]?.text ? spot[0]?.text : null
+        // return spot[0]?.text
+      } else if (variant === "b" && typeof spot === "object") {
+        return spot[1]?.text ? spot[1]?.text : null
+        // return spot[1]?.text
+      }
     }
   }
 
