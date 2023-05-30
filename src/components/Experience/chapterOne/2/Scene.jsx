@@ -41,7 +41,6 @@ export const Scene = ({
         fenceFocused={fenceFocused}
         setFenceFocused={setFenceFocused}
       />
-      <Environment preset="park" />
     </>
   )
 }
