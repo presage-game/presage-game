@@ -15,6 +15,7 @@ export const GoToMap = ({ position, args }) => {
         dispatch(changeMouseVariant("default"))
         dispatch(toggleMap())
       }}
+      dispose={null}
     >
       <meshBasicMaterial transparent opacity={0.3} />
     </Box>

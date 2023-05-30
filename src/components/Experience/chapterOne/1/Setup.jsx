@@ -105,8 +105,9 @@ export const Setup = ({ setSpotIndex, setShowText, isVoiceOver }) => {
         decay={2}
         position={[-50, 50, 50]}
         rotation={[-Math.PI / 2, 0, 0]}
+        dispose={null}
       />
-      {variant !== "default" && <ambientLight color={"#C65948"} intensity={0.5} />}
+      {variant !== "default" && <ambientLight color={"#C65948"} intensity={0.5} dispose={null} />}
       {/* <HotGround
         scale={2}
         args={[30, 0.3, 500, 50]}
