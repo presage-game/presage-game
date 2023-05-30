@@ -7,322 +7,388 @@ import React, { useRef } from 'react'
 import { useGLTF } from '@react-three/drei'
 
 export function Model(props) {
-  const { nodes, materials } = useGLTF('/assets/scenes/baobab_1.glb')
+  const { nodes, materials } = useGLTF('assets/scenes/baobab_1.glb')
   return (
     <group {...props} dispose={null}>
-      <group position={[-14.04, 12.17, 195.81]} rotation={[Math.PI, -0.2, Math.PI]} scale={[-3.59, 2.88, 3.29]}>
-        <mesh geometry={nodes.Cube048.geometry} material={materials['Wood cercles']} />
-        <mesh geometry={nodes.Cube048_1.geometry} material={materials.Border} />
-      </group>
-      <group position={[-24.69, 10.67, 20.01]} rotation={[-Math.PI, 1.46, -Math.PI]} scale={[0.41, 0.41, 0.76]}>
-        <mesh geometry={nodes.Cube057.geometry} material={materials['Wood cercles']} />
-        <mesh geometry={nodes.Cube057_1.geometry} material={materials.Border} />
-      </group>
-      <group position={[-27.27, 10.89, 12.73]} rotation={[-Math.PI, 0.78, -Math.PI]} scale={[1.23, 0.4, 1.19]}>
-        <mesh geometry={nodes.Cube235.geometry} material={materials['Wood cercles']} />
-        <mesh geometry={nodes.Cube235_1.geometry} material={materials.Border} />
-      </group>
-      <group position={[-3.81, 11.81, 213.01]} rotation={[-Math.PI, 0.47, -Math.PI]} scale={0.26}>
-        <mesh geometry={nodes.Cube186.geometry} material={materials['Wood cercles']} />
-        <mesh geometry={nodes.Cube186_1.geometry} material={materials.Border} />
-      </group>
-      <group position={[-14.88, 11.91, 198.49]} rotation={[-Math.PI, -0.85, -Math.PI]} scale={[0.36, 0.26, 0.38]}>
-        <mesh geometry={nodes.Cube005_1.geometry} material={materials['Wood cercles']} />
-        <mesh geometry={nodes.Cube005_2.geometry} material={materials.Border} />
-      </group>
-      <group position={[-7.42, 12.81, 195.76]} rotation={[2.73, 1.47, -2.74]} scale={[0.16, 0.04, 0.07]}>
-        <mesh geometry={nodes.Sphere008_1.geometry} material={materials['Wood cercles']} />
-        <mesh geometry={nodes.Sphere008_2.geometry} material={materials.Border} />
-      </group>
-      <group position={[-7.66, 12.79, 196.18]} rotation={[2.42, 1.45, -2.44]} scale={[0.27, 0.07, 0.17]}>
-        <mesh geometry={nodes.Sphere008_1.geometry} material={materials['Wood cercles']} />
-        <mesh geometry={nodes.Sphere008_2.geometry} material={materials.Border} />
-      </group>
-      <group position={[-7.67, 11.98, 209.59]} rotation={[-0.18, -0.15, 1.78]} scale={[0.09, 0.09, 0.15]}>
-        <mesh geometry={nodes.Sphere008_1.geometry} material={materials['Wood cercles']} />
-        <mesh geometry={nodes.Sphere008_2.geometry} material={materials.Border} />
-      </group>
-      <group position={[-12.69, 12.56, 168.94]} rotation={[-2.81, 1.46, 2.81]} scale={[0.21, 0.05, 0.13]}>
-        <mesh geometry={nodes.Sphere008_1.geometry} material={materials['Wood cercles']} />
-        <mesh geometry={nodes.Sphere008_2.geometry} material={materials.Border} />
-      </group>
-      <group position={[-12.58, 12.53, 196.6]} rotation={[3.06, -0.67, 2.97]} scale={[0.13, 0.1, 0.18]}>
-        <mesh geometry={nodes.Sphere014_1.geometry} material={materials['Wood cercles']} />
-        <mesh geometry={nodes.Sphere014_2.geometry} material={materials.Border} />
-      </group>
-      <group position={[-4.65, 12.51, 207.44]} rotation={[-2.88, 1.15, 3.06]} scale={[0.13, 0.1, 0.18]}>
-        <mesh geometry={nodes.Sphere014_1.geometry} material={materials['Wood cercles']} />
-        <mesh geometry={nodes.Sphere014_2.geometry} material={materials.Border} />
-      </group>
-      <group position={[-8.06, 11.97, 209.56]} rotation={[0.14, -0.98, 0.18]} scale={[0.15, 0.15, 0.26]}>
-        <mesh geometry={nodes.Sphere010_1.geometry} material={materials['Wood cercles']} />
-        <mesh geometry={nodes.Sphere010_2.geometry} material={materials.Border} />
-      </group>
-      <group position={[-4.28, 12.18, 202.61]} rotation={[0.01, 0.02, 0.08]} scale={[0.25, 0.13, 0.22]}>
-        <mesh geometry={nodes.Sphere009_1.geometry} material={materials['Wood cercles']} />
-        <mesh geometry={nodes.Sphere009_2.geometry} material={materials.Border} />
-      </group>
-      <group position={[-32.63, 12.2, 193.79]} rotation={[0.01, 0.02, 0.08]} scale={[0.34, 0.17, 0.31]}>
-        <mesh geometry={nodes.Sphere009_1.geometry} material={materials['Wood cercles']} />
-        <mesh geometry={nodes.Sphere009_2.geometry} material={materials.Border} />
-      </group>
-      <group position={[-12.93, 12.49, 197.81]} rotation={[3.12, -0.74, 3.05]} scale={[0.32, 0.17, 0.29]}>
-        <mesh geometry={nodes.Sphere013_1.geometry} material={materials['Wood cercles']} />
-        <mesh geometry={nodes.Sphere013_2.geometry} material={materials.Border} />
-      </group>
-      <group position={[-5.06, 12.55, 206.6]} rotation={[-2.97, 1.12, 3.05]} scale={[0.43, 0.22, 0.39]}>
-        <mesh geometry={nodes.Sphere013_1.geometry} material={materials['Wood cercles']} />
-        <mesh geometry={nodes.Sphere013_2.geometry} material={materials.Border} />
-      </group>
-      <group position={[-11.97, 12.57, 168.22]} rotation={[-0.11, 0.94, 2.53]} scale={[0.06, 0.06, 0.11]}>
-        <mesh geometry={nodes.Sphere007_1.geometry} material={materials['Wood cercles']} />
-        <mesh geometry={nodes.Sphere007_2.geometry} material={materials.Border} />
-      </group>
-      <group position={[-12.41, 12.55, 168.13]} rotation={[-2.81, 1.46, 2.81]} scale={[0.43, 0.1, 0.19]}>
-        <mesh geometry={nodes.Sphere005_1.geometry} material={materials['Wood cercles']} />
-        <mesh geometry={nodes.Sphere005_2.geometry} material={materials.Border} />
-      </group>
-      <group position={[-19.84, 12.41, 189.33]} rotation={[-0.14, 0.71, 1.95]} scale={[0.06, 0.06, 0.11]}>
-        <mesh geometry={nodes.Sphere002_1.geometry} material={materials['Wood cercles']} />
-        <mesh geometry={nodes.Sphere002_2.geometry} material={materials.Border} />
-      </group>
-      <group position={[-20.01, 12.36, 189.53]} rotation={[0.43, 0, 0]} scale={[0.1, 0.1, 0.18]}>
-        <mesh geometry={nodes.Sphere002_1.geometry} material={materials['Wood cercles']} />
-        <mesh geometry={nodes.Sphere002_2.geometry} material={materials.Border} />
-      </group>
-      <group position={[-10.25, 10.44, 81.77]} scale={[174.33, 78.88, 73.17]}>
-        <mesh geometry={nodes.Plane006.geometry} material={materials['Wood cercles']} />
-        <mesh geometry={nodes.Plane006_1.geometry} material={materials.Border} />
-      </group>
-      <group position={[-148.48, 8.94, -634.25]} rotation={[0.33, 0.15, -0.04]} scale={[552.83, 96.68, 78.63]}>
-        <mesh geometry={nodes.Plane005.geometry} material={materials['Wood cercles']} />
-        <mesh geometry={nodes.Plane005_1.geometry} material={materials.Border} />
-      </group>
-      <group position={[-112.45, 7.52, -264.98]} rotation={[0.17, 0, 0]} scale={[506.75, 81.86, 137.18]}>
-        <mesh geometry={nodes.Plane003.geometry} material={materials['Wood cercles']} />
-        <mesh geometry={nodes.Plane003_1.geometry} material={materials.Border} />
-      </group>
-      <group position={[-1.64, 11.02, 81.77]} scale={[174.33, 43.66, 73.17]}>
-        <mesh geometry={nodes.Plane004.geometry} material={materials['Wood cercles']} />
-        <mesh geometry={nodes.Plane004_1.geometry} material={materials.Border} />
-      </group>
-      <group position={[-19.28, 12.07, 149.35]} scale={[174.33, 26.31, -79.77]}>
-        <mesh geometry={nodes.Plane002.geometry} material={materials['Wood cercles']} />
-        <mesh geometry={nodes.Plane002_1.geometry} material={materials.Border} />
-      </group>
-      <group position={[242.39, 14.49, -379.14]} rotation={[Math.PI / 2, 0, 2.59]} scale={[-0.02, 0.03, 0.01]}>
-        <mesh geometry={nodes.Mesh001.geometry} material={materials['Wood cercles']} />
-        <mesh geometry={nodes.Mesh001_1.geometry} material={materials.Border} />
-      </group>
-      <group position={[247.67, 14.2, -570.91]} rotation={[Math.PI / 2, 0, -0.03]} scale={[0.04, 0.02, 0.01]}>
-        <mesh geometry={nodes.Mesh027.geometry} material={materials['Wood cercles']} />
-        <mesh geometry={nodes.Mesh027_1.geometry} material={materials.Border} />
-      </group>
-      <group position={[-221.23, 18.22, -570.91]} rotation={[Math.PI / 2, 0, 1.96]} scale={[0.04, 0.03, 0.01]}>
-        <mesh geometry={nodes.Mesh024.geometry} material={materials['Wood cercles']} />
-        <mesh geometry={nodes.Mesh024_1.geometry} material={materials.Border} />
-      </group>
-      <group position={[120.23, 16.25, -576.83]} rotation={[Math.PI / 2, 0, -3.13]} scale={[-0.04, 0.02, 0.01]}>
-        <mesh geometry={nodes.Mesh014.geometry} material={materials['Wood cercles']} />
-        <mesh geometry={nodes.Mesh014_1.geometry} material={materials.Border} />
-      </group>
-      <group position={[-571.23, 16.25, -568.84]} rotation={[Math.PI / 2, 0, 3.13]} scale={[0.04, 0.02, 0.01]}>
-        <mesh geometry={nodes.Mesh006.geometry} material={materials['Wood cercles']} />
-        <mesh geometry={nodes.Mesh006_1.geometry} material={materials.Border} />
-      </group>
-      <group position={[-345.6, 5.5, -442.05]} rotation={[Math.PI / 2, 0, 2.98]} scale={[0.03, 0.04, 0.02]}>
-        <mesh geometry={nodes.Mesh061.geometry} material={materials['Wood cercles']} />
-        <mesh geometry={nodes.Mesh061_1.geometry} material={materials.Border} />
-      </group>
-      <group position={[-105.89, 16.25, -576.83]} rotation={[Math.PI / 2, 0, 3.13]} scale={[0.04, 0.02, 0.01]}>
-        <mesh geometry={nodes.Mesh003.geometry} material={materials['Wood cercles']} />
-        <mesh geometry={nodes.Mesh003_1.geometry} material={materials.Border} />
-      </group>
-      <group position={[-368.37, 2.9, -265.17]} rotation={[Math.PI / 2, 0, 1.38]} scale={0.01}>
-        <mesh geometry={nodes.Mesh012.geometry} material={materials['Wood cercles']} />
-        <mesh geometry={nodes.Mesh012_1.geometry} material={materials.Border} />
-      </group>
-      <group position={[-117.72, 3.23, -300.92]} rotation={[Math.PI / 2, 0, 1.76]} scale={[0.01, 0.04, 0.01]}>
-        <mesh geometry={nodes.Mesh054.geometry} material={materials['Wood cercles']} />
-        <mesh geometry={nodes.Mesh054_1.geometry} material={materials.Border} />
-      </group>
-      <group position={[63.04, 5.42, -265.17]} rotation={[Math.PI / 2, 0, 2.48]} scale={0.01}>
-        <mesh geometry={nodes.Mesh053.geometry} material={materials['Wood cercles']} />
-        <mesh geometry={nodes.Mesh053_1.geometry} material={materials.Border} />
-      </group>
-      <group position={[-19.46, 23.62, 196.67]} rotation={[-0.31, -1.06, -0.35]} scale={[-1.26, 0.65, 1.78]}>
-        <mesh geometry={nodes.Icosphere007.geometry} material={materials['Wood cercles']} />
-        <mesh geometry={nodes.Icosphere007_1.geometry} material={materials.Border} />
-      </group>
-      <group position={[-16.13, 23.34, 197.62]} rotation={[2.7, 1.37, -2.71]} scale={[-1.26, 0.47, 1.3]}>
-        <mesh geometry={nodes.Icosphere007.geometry} material={materials['Wood cercles']} />
-        <mesh geometry={nodes.Icosphere007_1.geometry} material={materials.Border} />
-      </group>
-      <group position={[-9.73, 22.78, 194.88]} rotation={[-2.36, -1.36, -2.46]} scale={[-1.73, 0.65, 1.79]}>
-        <mesh geometry={nodes.Icosphere007.geometry} material={materials['Wood cercles']} />
-        <mesh geometry={nodes.Icosphere007_1.geometry} material={materials.Border} />
-      </group>
-      <group position={[-14.89, 23.74, 191.68]} rotation={[0.02, 0.65, -0.01]} scale={[-1.44, 0.64, 2.43]}>
-        <mesh geometry={nodes.Icosphere006.geometry} material={materials['Wood cercles']} />
-        <mesh geometry={nodes.Icosphere006_1.geometry} material={materials.Border} />
-      </group>
-      <group position={[-12.73, 22.38, 200.73]} rotation={[3.12, -0.34, 3.14]} scale={[-1.2, 0.64, 2.17]}>
-        <mesh geometry={nodes.Icosphere006.geometry} material={materials['Wood cercles']} />
-        <mesh geometry={nodes.Icosphere006_1.geometry} material={materials.Border} />
-      </group>
-      <group position={[-19.91, 11.71, 215.19]} rotation={[-3.03, -0.21, 3.13]} scale={[-0.86, 0.86, 0.86]}>
-        <mesh geometry={nodes.Circle192.geometry} material={materials['Wood cercles']} />
-        <mesh geometry={nodes.Circle192_1.geometry} material={materials.Border} />
-      </group>
-      <group position={[-30.17, 12.34, 15.17]} rotation={[-0.51, -0.99, 0]} scale={1.5}>
-        <mesh geometry={nodes.Circle127.geometry} material={materials['Wood cercles']} />
-        <mesh geometry={nodes.Circle127_1.geometry} material={materials.Border} />
-      </group>
-      <group position={[-6.69, 12.48, 202.9]} rotation={[0, -0.99, 0]} scale={1.5}>
-        <mesh geometry={nodes.Circle127.geometry} material={materials['Wood cercles']} />
-        <mesh geometry={nodes.Circle127_1.geometry} material={materials.Border} />
-      </group>
-      <group position={[-37.12, 12.41, 188.46]} rotation={[3.12, 0.06, -3.14]} scale={0.95}>
-        <mesh geometry={nodes.Circle110.geometry} material={materials['Wood cercles']} />
-        <mesh geometry={nodes.Circle110_1.geometry} material={materials.Border} />
-      </group>
-      <group position={[-36.79, 12.27, 205.18]} rotation={[3.11, -0.36, 3.13]} scale={0.95}>
-        <mesh geometry={nodes.Circle109.geometry} material={materials['Wood cercles']} />
-        <mesh geometry={nodes.Circle109_1.geometry} material={materials.Border} />
-      </group>
-      <group position={[-56.18, 12.18, 134.19]} rotation={[0.23, 0.62, -0.04]} scale={0.95}>
-        <mesh geometry={nodes.Circle107.geometry} material={materials['Wood cercles']} />
-        <mesh geometry={nodes.Circle107_1.geometry} material={materials.Border} />
-      </group>
-      <group position={[-45.76, 11.86, 132.87]} rotation={[0.38, 0, -0.02]} scale={0.95}>
-        <mesh geometry={nodes.Circle104.geometry} material={materials['Wood cercles']} />
-        <mesh geometry={nodes.Circle104_1.geometry} material={materials.Border} />
-      </group>
-      <group position={[-32.37, 12.27, 182.25]} rotation={[0.04, 0.23, -0.05]} scale={[-0.95, 0.95, 0.95]}>
-        <mesh geometry={nodes.Circle771.geometry} material={materials['Wood cercles']} />
-        <mesh geometry={nodes.Circle771_1.geometry} material={materials.Border} />
-      </group>
-      <group position={[-20.74, 12.31, 169.44]} rotation={[0.03, 0, 0]} scale={0.95}>
-        <mesh geometry={nodes.Circle543.geometry} material={materials['Wood cercles']} />
-        <mesh geometry={nodes.Circle543_1.geometry} material={materials.Border} />
-      </group>
-      <group position={[-6.36, 12.29, 201.02]} rotation={[3.13, -0.2, 3.14]} scale={[-0.86, 0.86, 0.86]}>
-        <mesh geometry={nodes.Circle006.geometry} material={materials['Wood cercles']} />
-        <mesh geometry={nodes.Circle006_1.geometry} material={materials.Border} />
-      </group>
-      <group position={[-4.8, 12.16, 215.48]} rotation={[-Math.PI, 1, -Math.PI]} scale={1.28}>
-        <mesh geometry={nodes.Circle218.geometry} material={materials['Wood cercles']} />
-        <mesh geometry={nodes.Circle218_1.geometry} material={materials.Border} />
-      </group>
-      <group position={[-14.59, 12.42, 140.9]} rotation={[-Math.PI, 1, -Math.PI]} scale={1.99}>
-        <mesh geometry={nodes.Circle218.geometry} material={materials['Wood cercles']} />
-        <mesh geometry={nodes.Circle218_1.geometry} material={materials.Border} />
-      </group>
-      <group position={[8.39, 12.31, 202.15]} rotation={[-Math.PI, 0.21, -Math.PI]} scale={1.12}>
-        <mesh geometry={nodes.Circle773.geometry} material={materials['Wood cercles']} />
-        <mesh geometry={nodes.Circle773_1.geometry} material={materials.Border} />
-      </group>
-      <group position={[-124.37, 18.33, 59.44]} rotation={[-0.11, -0.98, -0.06]} scale={0.01}>
-        <mesh geometry={nodes.Mesh008.geometry} material={materials['Wood cercles']} />
-        <mesh geometry={nodes.Mesh008_1.geometry} material={materials.Border} />
-      </group>
-      <group position={[-84.71, 18.33, 95.46]} rotation={[-0.08, 0.63, 0.07]} scale={0.02}>
-        <mesh geometry={nodes.Mesh008.geometry} material={materials['Wood cercles']} />
-        <mesh geometry={nodes.Mesh008_1.geometry} material={materials.Border} />
-      </group>
-      <group position={[-124.8, 18.33, 97.91]} rotation={[-0.11, -0.98, -0.06]} scale={0.01}>
-        <mesh geometry={nodes.Mesh009.geometry} material={materials['Wood cercles']} />
-        <mesh geometry={nodes.Mesh009_1.geometry} material={materials.Border} />
-      </group>
-      <mesh geometry={nodes.Plane001001.geometry} material={materials['Wood cercles']} position={[-106.06, 23.28, 95.31]} rotation={[Math.PI, -0.89, Math.PI]} scale={[-0.04, 0.04, -0.04]} />
-      <mesh geometry={nodes.Plane001003.geometry} material={materials['Wood cercles']} position={[-110.41, 17.59, 100.57]} rotation={[0, -0.68, 0]} scale={[0.07, 0.06, 0.06]} />
-      <mesh geometry={nodes.group_0_ID4002.geometry} material={materials['Wood cercles']} position={[-122.3, 14.6, 12.33]} rotation={[Math.PI / 2, 0, 1.57]} scale={1.34} />
-      <mesh geometry={nodes.group_0_ID4003.geometry} material={materials['Wood cercles']} position={[-122.3, 10.35, 12.33]} rotation={[Math.PI / 2, 0, 1.57]} scale={1.34} />
-      <mesh geometry={nodes.Cube005.geometry} material={materials['Wood cercles']} position={[-104.44, 19.68, 93.12]} rotation={[Math.PI, -0.89, Math.PI]} scale={[7.65, 3.05, 10.1]} />
-      <mesh geometry={nodes.Cube007.geometry} material={materials['Wood cercles']} position={[-104.4, 14.09, 93.47]} rotation={[Math.PI, -0.89, Math.PI]} scale={[7.5, 2.54, 10.01]} />
-      <mesh geometry={nodes.Cube009.geometry} material={materials['Wood cercles']} position={[-107.42, 14.34, 43.43]} rotation={[Math.PI, -1.57, Math.PI]} scale={[7.87, 2.66, 12.52]} />
-      <mesh geometry={nodes.Cube011.geometry} material={materials['Wood cercles']} position={[-107.42, 23.81, 43.43]} rotation={[Math.PI, -1.57, Math.PI]} scale={[8.02, 1.32, 13.82]} />
-      <mesh geometry={nodes.Cube012.geometry} material={materials['Wood cercles']} position={[-107.86, 19.76, 43.43]} rotation={[Math.PI, -1.57, Math.PI]} scale={[7.87, 2.76, 13.82]} />
-      <mesh geometry={nodes.Box001001.geometry} material={materials['Wood cercles']} position={[-107.39, 25.07, 36.21]} rotation={[1.57, 0, 1.57]} scale={[0.29, -0.3, -0.3]} />
-      <mesh geometry={nodes.Box001002.geometry} material={materials['Wood cercles']} position={[-107.43, 18.31, 52.42]} rotation={[-1.58, 0, 0]} scale={[0.28, 0.3, -0.3]} />
-      <group position={[-87.54, 18.21, 76.21]} rotation={[3.14, -0.29, 3.14]} scale={0.01}>
-        <mesh geometry={nodes.Mesh041.geometry} material={materials['Wood cercles']} />
-        <mesh geometry={nodes.Mesh041_1.geometry} material={materials.Border} />
-      </group>
-      <group position={[24.96, 13.42, 103.93]} rotation={[0, -0.44, 0]} scale={1.42}>
-        <mesh geometry={nodes.Cube058.geometry} material={materials['Wood cercles']} />
-        <mesh geometry={nodes.Cube058_1.geometry} material={materials.Border} />
-      </group>
-      <group position={[28.56, 11.5, 68.48]} rotation={[0, 0.69, -0.01]} scale={[-0.74, 0.74, 0.74]}>
-        <mesh geometry={nodes.Cube179.geometry} material={materials['Wood cercles']} />
-        <mesh geometry={nodes.Cube179_1.geometry} material={materials.Border} />
-      </group>
-      <group position={[31.21, 20.01, 68.42]} rotation={[0, 0.69, -0.12]} scale={[-0.74, 0.74, 0.74]}>
-        <mesh geometry={nodes.Cube177.geometry} material={materials['Wood cercles']} />
-        <mesh geometry={nodes.Cube177_1.geometry} material={materials.Border} />
-      </group>
-      <group position={[26.76, 18.41, 70.43]} rotation={[0, 0.24, -0.12]} scale={[-0.38, 0.38, 0.38]}>
-        <mesh geometry={nodes.Cube176.geometry} material={materials['Wood cercles']} />
-        <mesh geometry={nodes.Cube176_1.geometry} material={materials.Border} />
-      </group>
-      <group position={[31.57, 23.22, 112.13]} rotation={[2.96, -1.16, 2.78]} scale={[-0.74, 0.74, 0.74]}>
-        <mesh geometry={nodes.Cube168.geometry} material={materials['Wood cercles']} />
-        <mesh geometry={nodes.Cube168_1.geometry} material={materials.Border} />
-      </group>
-      <group position={[35.65, 18.69, 100.37]} rotation={[Math.PI, -1.18, -3.01]} scale={[-0.68, 0.56, 0.72]}>
-        <mesh geometry={nodes.Cube167.geometry} material={materials['Wood cercles']} />
-        <mesh geometry={nodes.Cube167_1.geometry} material={materials.Border} />
-      </group>
-      <group position={[32.93, 22.73, 101.54]} rotation={[-Math.PI, -1.18, -Math.PI]} scale={[-0.96, 0.8, 1.02]}>
-        <mesh geometry={nodes.Cube166.geometry} material={materials['Wood cercles']} />
-        <mesh geometry={nodes.Cube166_1.geometry} material={materials.Border} />
-      </group>
-      <group position={[34.37, 11.56, 106.92]} rotation={[-Math.PI, -1.18, -Math.PI]} scale={[-0.74, 0.74, 0.74]}>
-        <mesh geometry={nodes.Cube158_1.geometry} material={materials['Wood cercles']} />
-        <mesh geometry={nodes.Cube158_2.geometry} material={materials.Border} />
-      </group>
-      <group position={[18.95, 24.67, 102.23]} rotation={[-0.09, 0.03, 0.07]} scale={[-0.96, 0.8, 1.02]}>
-        <mesh geometry={nodes.Cube142.geometry} material={materials['Wood cercles']} />
-        <mesh geometry={nodes.Cube142_1.geometry} material={materials.Border} />
-      </group>
-      <group position={[19.28, 26.55, 107.14]} rotation={[0, 1.04, 0]} scale={[-0.96, 0.8, 1.02]}>
-        <mesh geometry={nodes.Cube141.geometry} material={materials['Wood cercles']} />
-        <mesh geometry={nodes.Cube141_1.geometry} material={materials.Border} />
-      </group>
-      <group position={[17.89, 17.28, 107.88]} rotation={[0, 1.04, 0]} scale={[-0.82, 0.74, 0.54]}>
-        <mesh geometry={nodes.Cube139.geometry} material={materials['Wood cercles']} />
-        <mesh geometry={nodes.Cube139_1.geometry} material={materials.Border} />
-      </group>
-      <group position={[19.37, 11.31, 104.35]} rotation={[0, 1.04, 0]} scale={[-0.74, 0.74, 0.74]}>
-        <mesh geometry={nodes.Cube137_1.geometry} material={materials['Wood cercles']} />
-        <mesh geometry={nodes.Cube137_2.geometry} material={materials.Border} />
-      </group>
-      <mesh geometry={nodes.Plateau_winter_004001.geometry} material={materials['Wood cercles']} position={[42.75, 10.63, 40.01]} rotation={[Math.PI / 2, 0, -2.17]} scale={0.01} />
-      <group position={[20.21, 10.16, 62.28]} rotation={[Math.PI / 2, 0, -0.56]} scale={[0.02, 0.01, 0.01]}>
-        <mesh geometry={nodes.Mesh055.geometry} material={materials['Wood cercles']} />
-        <mesh geometry={nodes.Mesh055_1.geometry} material={materials.Border} />
-      </group>
-      <mesh geometry={nodes.tronco005.geometry} material={materials['Material.010']} position={[-76.51, 10.87, 74]} rotation={[-Math.PI, 0.75, -Math.PI]} scale={0.25} />
-      <mesh geometry={nodes.tronco004.geometry} material={materials['Material.010']} position={[-74.28, 10.58, 80.31]} rotation={[-Math.PI, 0.75, -Math.PI]} scale={0.25} />
-      <mesh geometry={nodes.tronco003.geometry} material={materials['Material.010']} position={[-82.4, 10.7, 78.99]} rotation={[-Math.PI, 0.75, -Math.PI]} scale={0.25} />
-      <group position={[-76.51, 10.85, 74]} rotation={[-Math.PI, 0.75, -Math.PI]} scale={0.25}>
-        <mesh geometry={nodes.Plane010.geometry} material={materials['Material.010']} />
-        <mesh geometry={nodes.Plane010_1.geometry} material={materials['Material.010']} />
-      </group>
-      <group position={[-73.14, 21.52, 81.69]} rotation={[-Math.PI, 0.75, -Math.PI]} scale={0.25}>
-        <mesh geometry={nodes.Plane009.geometry} material={materials['Material.010']} />
-        <mesh geometry={nodes.Plane009_1.geometry} material={materials['Material.010']} />
-      </group>
-      <group position={[-83.27, 20.81, 78.5]} rotation={[-Math.PI, 0.75, -Math.PI]} scale={0.25}>
-        <mesh geometry={nodes.Plane007.geometry} material={materials['Material.010']} />
-        <mesh geometry={nodes.Plane007_1.geometry} material={materials['Material.010']} />
-      </group>
-      <group position={[29.99, 4.29, 110.82]} rotation={[Math.PI / 2, 0, -1.08]} scale={[0.01, 0.02, 0.01]}>
-        <mesh geometry={nodes.Mesh057.geometry} material={materials.Border} />
-        <mesh geometry={nodes.Mesh057_1.geometry} material={materials['Wood cercles']} />
-      </group>
+      <group position={[52.27, 11.82, -234.06]} rotation={[3.14, 0.47, -Math.PI]} scale={[0.01, 0.01, -0.01]}>
+        <mesh geometry={nodes.pCube2_Ext_4006.geometry} material={materials.M_Gas_Pump_2} />
+        <mesh geometry={nodes.pCylinder6.geometry} material={materials['Sand new']} />
+        <mesh geometry={nodes.SmartCombine_109.geometry} material={materials['Sand new']} />
+        <mesh geometry={nodes.SmartCombine_111.geometry} material={materials['Sand new']} />
+        <mesh geometry={nodes.SmartCombine_96.geometry} material={materials['Sand new']} />
+        <mesh geometry={nodes.SmartCombine_98.geometry} material={materials['Sand new']} />
+        <mesh geometry={nodes.SmartDuplicate_45.geometry} material={materials['Border.003']} />
+        <mesh geometry={nodes.SmartExtract_43.geometry} material={materials['Sand new']} />
+        <mesh geometry={nodes.SmartSeparate_41.geometry} material={materials['Sand new']} />
+        <mesh geometry={nodes.SmartSeparate_70.geometry} material={materials.lambert1} />
+        <mesh geometry={nodes.SmartSeparate_71.geometry} material={materials.lambert1} />
+      </group>
+      <group position={[45.91, 11.82, -237.22]} rotation={[3.14, 0.47, -Math.PI]} scale={[0.01, 0.01, -0.01]}>
+        <mesh geometry={nodes.pCube2_Ext_4001.geometry} material={materials.M_Gas_Pump_2} />
+        <mesh geometry={nodes.SmartCombine_109001.geometry} material={materials['Sand new']} />
+        <mesh geometry={nodes.SmartCombine_96001.geometry} material={materials['Sand new']} />
+        <mesh geometry={nodes.SmartCombine_98001.geometry} material={materials['Sand new']} />
+        <mesh geometry={nodes.SmartDuplicate_45001.geometry} material={materials['Border.003']} />
+        <mesh geometry={nodes.SmartExtract_43001.geometry} material={materials['Sand new']} />
+        <mesh geometry={nodes.SmartSeparate_41001.geometry} material={materials['Sand new']} />
+        <mesh geometry={nodes.SmartSeparate_70001.geometry} material={materials.lambert1} />
+        <mesh geometry={nodes.SmartSeparate_71001.geometry} material={materials.lambert1} />
+      </group>
+      <group position={[41.85, 11.82, -228.98]} rotation={[3.14, 0.47, -Math.PI]} scale={[0.01, 0.01, -0.01]}>
+        <mesh geometry={nodes.pCube2_Ext_4002.geometry} material={materials.M_Gas_Pump_2} />
+        <mesh geometry={nodes.pCylinder6002.geometry} material={materials['Sand new']} />
+        <mesh geometry={nodes.SmartCombine_109002.geometry} material={materials['Sand new']} />
+        <mesh geometry={nodes.SmartCombine_111002.geometry} material={materials['Sand new']} />
+        <mesh geometry={nodes.SmartCombine_96002.geometry} material={materials['Sand new']} />
+        <mesh geometry={nodes.SmartCombine_98002.geometry} material={materials['Sand new']} />
+        <mesh geometry={nodes.SmartDuplicate_45002.geometry} material={materials['Border.003']} />
+        <mesh geometry={nodes.SmartExtract_43002.geometry} material={materials['Sand new']} />
+        <mesh geometry={nodes.SmartSeparate_41002.geometry} material={materials['Sand new']} />
+        <mesh geometry={nodes.SmartSeparate_70002.geometry} material={materials.lambert1} />
+        <mesh geometry={nodes.SmartSeparate_71002.geometry} material={materials.lambert1} />
+        <mesh geometry={nodes.SmartCombine_100002.geometry} material={materials['Border.003']} />
+        <mesh geometry={nodes.SmartCombine_104002.geometry} material={materials.M_Gas_Pump_2} />
+        <mesh geometry={nodes.SmartCombine_105002.geometry} material={materials['Sand new']} />
+        <mesh geometry={nodes.SmartCombine_107002.geometry} material={materials['Border.003']} />
+        <mesh geometry={nodes.SmartCombine_110002.geometry} material={materials['Sand new']} />
+        <mesh geometry={nodes.SmartCombine_112002.geometry} material={materials['Sand new']} />
+        <mesh geometry={nodes.SmartCombine_114002.geometry} material={materials['Sand new']} />
+        <mesh geometry={nodes.SmartCombine_115002.geometry} material={materials['Sand new']} />
+        <mesh geometry={nodes.SmartCombine_34002.geometry} material={materials['Sand new']} />
+        <mesh geometry={nodes.SmartCombine_61002.geometry} material={materials['Sand new']} />
+        <mesh geometry={nodes.SmartCombine_76002.geometry} material={materials.M_Gas_Pump_2} />
+        <mesh geometry={nodes.SmartCombine_90002.geometry} material={materials['Sand new']} />
+        <mesh geometry={nodes.SmartCombine_92002.geometry} material={materials['Border.003']} />
+        <mesh geometry={nodes.SmartCombine_93002.geometry} material={materials['Sand new']} />
+        <mesh geometry={nodes.SmartCombine_97002.geometry} material={materials['Sand new']} />
+        <mesh geometry={nodes.SmartCombine_99002.geometry} material={materials['Sand new']} />
+        <mesh geometry={nodes.SmartDuplicate_54002.geometry} material={materials['Border.003']} />
+        <mesh geometry={nodes.SmartDuplicate_55002.geometry} material={materials['Sand new']} />
+        <mesh geometry={nodes.SmartDuplicate_58002.geometry} material={materials['Border.003']} />
+        <mesh geometry={nodes.SmartExtract_26002.geometry} material={materials['Sand new']} />
+        <mesh geometry={nodes.SmartExtract_42002.geometry} material={materials['Border.003']} />
+        <mesh geometry={nodes.SmartSeparate_47002.geometry} material={materials.M_Gas_Pump_03} />
+        <mesh geometry={nodes.SmartSeparate_72002.geometry} material={materials['Sand new']} />
+        <mesh geometry={nodes.SmartSeparate_75002.geometry} material={materials['Border.003']} />
+      </group>
+      <group position={[48.23, 11.82, -225.84]} rotation={[3.14, 0.47, -Math.PI]} scale={[0.01, 0.01, -0.01]}>
+        <mesh geometry={nodes.pCube2_Ext_4003.geometry} material={materials.M_Gas_Pump_2} />
+        <mesh geometry={nodes.pCylinder6003.geometry} material={materials['Sand new']} />
+        <mesh geometry={nodes.SmartCombine_109003.geometry} material={materials['Sand new']} />
+        <mesh geometry={nodes.SmartCombine_111003.geometry} material={materials['Sand new']} />
+        <mesh geometry={nodes.SmartCombine_96003.geometry} material={materials['Sand new']} />
+        <mesh geometry={nodes.SmartCombine_98003.geometry} material={materials['Sand new']} />
+        <mesh geometry={nodes.SmartDuplicate_45003.geometry} material={materials['Border.003']} />
+        <mesh geometry={nodes.SmartExtract_43003.geometry} material={materials['Sand new']} />
+        <mesh geometry={nodes.SmartSeparate_41003.geometry} material={materials['Sand new']} />
+        <mesh geometry={nodes.SmartSeparate_70003.geometry} material={materials.lambert1} />
+        <mesh geometry={nodes.SmartSeparate_71003.geometry} material={materials.lambert1} />
+        <mesh geometry={nodes.SmartCombine_100003.geometry} material={materials['Border.003']} />
+        <mesh geometry={nodes.SmartCombine_104003.geometry} material={materials.M_Gas_Pump_2} />
+        <mesh geometry={nodes.SmartCombine_105003.geometry} material={materials['Sand new']} />
+        <mesh geometry={nodes.SmartCombine_107003.geometry} material={materials['Border.003']} />
+        <mesh geometry={nodes.SmartCombine_110003.geometry} material={materials['Sand new']} />
+        <mesh geometry={nodes.SmartCombine_112003.geometry} material={materials['Sand new']} />
+        <mesh geometry={nodes.SmartCombine_114003.geometry} material={materials['Sand new']} />
+        <mesh geometry={nodes.SmartCombine_115003.geometry} material={materials['Sand new']} />
+        <mesh geometry={nodes.SmartCombine_34003.geometry} material={materials['Sand new']} />
+        <mesh geometry={nodes.SmartCombine_61003.geometry} material={materials['Sand new']} />
+        <mesh geometry={nodes.SmartCombine_76003.geometry} material={materials.M_Gas_Pump_2} />
+        <mesh geometry={nodes.SmartCombine_90003.geometry} material={materials['Sand new']} />
+        <mesh geometry={nodes.SmartCombine_92003.geometry} material={materials['Border.003']} />
+        <mesh geometry={nodes.SmartCombine_93003.geometry} material={materials['Sand new']} />
+        <mesh geometry={nodes.SmartCombine_97003.geometry} material={materials['Sand new']} />
+        <mesh geometry={nodes.SmartDuplicate_54003.geometry} material={materials['Border.003']} />
+        <mesh geometry={nodes.SmartDuplicate_55003.geometry} material={materials['Sand new']} />
+        <mesh geometry={nodes.SmartDuplicate_58003.geometry} material={materials['Border.003']} />
+        <mesh geometry={nodes.SmartExtract_26003.geometry} material={materials['Sand new']} />
+        <mesh geometry={nodes.SmartExtract_42003.geometry} material={materials['Border.003']} />
+        <mesh geometry={nodes.SmartSeparate_47003.geometry} material={materials.M_Gas_Pump_03} />
+        <mesh geometry={nodes.SmartSeparate_72003.geometry} material={materials['Sand new']} />
+        <mesh geometry={nodes.SmartSeparate_75003.geometry} material={materials['Border.003']} />
+      </group>
+      <group position={[44.02, 11.82, -217.33]} rotation={[3.14, 0.47, -Math.PI]} scale={[0.01, 0.01, -0.01]}>
+        <mesh geometry={nodes.pCube2_Ext_4004.geometry} material={materials.M_Gas_Pump_2} />
+        <mesh geometry={nodes.pCylinder6004.geometry} material={materials['Sand new']} />
+        <mesh geometry={nodes.SmartCombine_109004.geometry} material={materials['Sand new']} />
+        <mesh geometry={nodes.SmartCombine_111004.geometry} material={materials['Sand new']} />
+        <mesh geometry={nodes.SmartCombine_96004.geometry} material={materials['Sand new']} />
+        <mesh geometry={nodes.SmartCombine_98004.geometry} material={materials['Sand new']} />
+        <mesh geometry={nodes.SmartDuplicate_45004.geometry} material={materials['Border.003']} />
+        <mesh geometry={nodes.SmartExtract_43004.geometry} material={materials['Sand new']} />
+        <mesh geometry={nodes.SmartSeparate_41004.geometry} material={materials['Sand new']} />
+        <mesh geometry={nodes.SmartSeparate_70004.geometry} material={materials.lambert1} />
+        <mesh geometry={nodes.SmartSeparate_71004.geometry} material={materials.lambert1} />
+        <mesh geometry={nodes.SmartCombine_100004.geometry} material={materials['Border.003']} />
+        <mesh geometry={nodes.SmartCombine_104004.geometry} material={materials.M_Gas_Pump_2} />
+        <mesh geometry={nodes.SmartCombine_105004.geometry} material={materials['Sand new']} />
+        <mesh geometry={nodes.SmartCombine_107004.geometry} material={materials['Border.003']} />
+        <mesh geometry={nodes.SmartCombine_110004.geometry} material={materials['Sand new']} />
+        <mesh geometry={nodes.SmartCombine_112004.geometry} material={materials['Sand new']} />
+        <mesh geometry={nodes.SmartCombine_114004.geometry} material={materials['Sand new']} />
+        <mesh geometry={nodes.SmartCombine_115004.geometry} material={materials['Sand new']} />
+        <mesh geometry={nodes.SmartCombine_34004.geometry} material={materials['Sand new']} />
+        <mesh geometry={nodes.SmartCombine_61004.geometry} material={materials['Sand new']} />
+        <mesh geometry={nodes.SmartCombine_76004.geometry} material={materials.M_Gas_Pump_2} />
+        <mesh geometry={nodes.SmartCombine_90004.geometry} material={materials['Sand new']} />
+        <mesh geometry={nodes.SmartCombine_92004.geometry} material={materials['Border.003']} />
+        <mesh geometry={nodes.SmartCombine_93004.geometry} material={materials['Sand new']} />
+        <mesh geometry={nodes.SmartCombine_97004.geometry} material={materials['Sand new']} />
+        <mesh geometry={nodes.SmartCombine_99004.geometry} material={materials['Sand new']} />
+        <mesh geometry={nodes.SmartDuplicate_54004.geometry} material={materials['Border.003']} />
+        <mesh geometry={nodes.SmartDuplicate_55004.geometry} material={materials['Sand new']} />
+        <mesh geometry={nodes.SmartDuplicate_58004.geometry} material={materials['Border.003']} />
+        <mesh geometry={nodes.SmartExtract_26004.geometry} material={materials['Sand new']} />
+        <mesh geometry={nodes.SmartExtract_42004.geometry} material={materials['Border.003']} />
+        <mesh geometry={nodes.SmartSeparate_47004.geometry} material={materials.M_Gas_Pump_03} />
+        <mesh geometry={nodes.SmartSeparate_72004.geometry} material={materials['Sand new']} />
+        <mesh geometry={nodes.SmartSeparate_75004.geometry} material={materials['Border.003']} />
+      </group>
+      <group position={[37.64, 11.82, -220.49]} rotation={[3.14, 0.47, -Math.PI]} scale={[0.01, 0.01, -0.01]}>
+        <mesh geometry={nodes.pCube2_Ext_4005.geometry} material={materials.M_Gas_Pump_2} />
+        <mesh geometry={nodes.pCylinder6005.geometry} material={materials['Sand new']} />
+        <mesh geometry={nodes.SmartCombine_109005.geometry} material={materials['Sand new']} />
+        <mesh geometry={nodes.SmartCombine_111005.geometry} material={materials['Sand new']} />
+        <mesh geometry={nodes.SmartCombine_96005.geometry} material={materials['Sand new']} />
+        <mesh geometry={nodes.SmartCombine_98005.geometry} material={materials['Sand new']} />
+        <mesh geometry={nodes.SmartDuplicate_45005.geometry} material={materials['Border.003']} />
+        <mesh geometry={nodes.SmartExtract_43005.geometry} material={materials['Sand new']} />
+        <mesh geometry={nodes.SmartSeparate_41005.geometry} material={materials['Sand new']} />
+        <mesh geometry={nodes.SmartSeparate_70005.geometry} material={materials.lambert1} />
+        <mesh geometry={nodes.SmartSeparate_71005.geometry} material={materials.lambert1} />
+        <mesh geometry={nodes.SmartCombine_100005.geometry} material={materials['Border.003']} />
+        <mesh geometry={nodes.SmartCombine_104005.geometry} material={materials.M_Gas_Pump_2} />
+        <mesh geometry={nodes.SmartCombine_105005.geometry} material={materials['Sand new']} />
+        <mesh geometry={nodes.SmartCombine_107005.geometry} material={materials['Border.003']} />
+        <mesh geometry={nodes.SmartCombine_110005.geometry} material={materials['Sand new']} />
+        <mesh geometry={nodes.SmartCombine_112005.geometry} material={materials['Sand new']} />
+        <mesh geometry={nodes.SmartCombine_114005.geometry} material={materials['Sand new']} />
+        <mesh geometry={nodes.SmartCombine_115005.geometry} material={materials['Sand new']} />
+        <mesh geometry={nodes.SmartCombine_34005.geometry} material={materials['Sand new']} />
+        <mesh geometry={nodes.SmartCombine_61005.geometry} material={materials['Sand new']} />
+        <mesh geometry={nodes.SmartCombine_76005.geometry} material={materials.M_Gas_Pump_2} />
+        <mesh geometry={nodes.SmartCombine_90005.geometry} material={materials['Sand new']} />
+        <mesh geometry={nodes.SmartCombine_92005.geometry} material={materials['Border.003']} />
+        <mesh geometry={nodes.SmartCombine_93005.geometry} material={materials['Sand new']} />
+        <mesh geometry={nodes.SmartCombine_97005.geometry} material={materials['Sand new']} />
+        <mesh geometry={nodes.SmartCombine_99005.geometry} material={materials['Sand new']} />
+        <mesh geometry={nodes.SmartDuplicate_54005.geometry} material={materials['Border.003']} />
+        <mesh geometry={nodes.SmartDuplicate_55005.geometry} material={materials['Sand new']} />
+        <mesh geometry={nodes.SmartDuplicate_58005.geometry} material={materials['Border.003']} />
+        <mesh geometry={nodes.SmartExtract_26005.geometry} material={materials['Sand new']} />
+        <mesh geometry={nodes.SmartExtract_42005.geometry} material={materials['Border.003']} />
+        <mesh geometry={nodes.SmartSeparate_47005.geometry} material={materials.M_Gas_Pump_03} />
+        <mesh geometry={nodes.SmartSeparate_72005.geometry} material={materials['Sand new']} />
+        <mesh geometry={nodes.SmartSeparate_75005.geometry} material={materials['Border.003']} />
+      </group>
+      <mesh geometry={nodes.petronas001_Cube_3_Instance_0135.geometry} material={materials['Sand new']} position={[47.5, 11.79, -222.29]} rotation={[Math.PI / 2, 0, 2.03]} scale={1.18} />
+      <mesh geometry={nodes.Sand_2.geometry} material={materials['Sand new']} position={[-10.25, 11.02, -237.63]} scale={[174.33, 43.66, 73.17]} />
+      <mesh geometry={nodes.Sphere.geometry} material={materials['Sand new']} position={[-20.01, 12.36, -129.87]} rotation={[0.43, 0, 0]} scale={[0.1, 0.1, 0.18]} />
+      <mesh geometry={nodes.Sphere001.geometry} material={materials['Sand new']} position={[-5.06, 12.55, -112.8]} rotation={[-2.97, 1.12, 3.05]} scale={[0.43, 0.22, 0.39]} />
+      <mesh geometry={nodes.Sphere002.geometry} material={materials['Sand new']} position={[-19.84, 12.41, -130.07]} rotation={[-0.14, 0.71, 1.95]} scale={[0.06, 0.06, 0.11]} />
+      <mesh geometry={nodes.Sphere003.geometry} material={materials['Sand new']} position={[-32.63, 12.2, -125.61]} rotation={[0.01, 0.02, 0.08]} scale={[0.34, 0.17, 0.31]} />
+      <mesh geometry={nodes.Sphere004.geometry} material={materials['Sand new']} position={[-4.65, 12.51, -111.96]} rotation={[-2.88, 1.15, 3.06]} scale={[0.13, 0.1, 0.18]} />
+      <mesh geometry={nodes.Sphere005.geometry} material={materials['Sand new']} position={[-12.41, 12.3, -149.2]} rotation={[-2.81, 1.46, 2.81]} scale={[0.43, 0.1, 0.19]} />
+      <mesh geometry={nodes.Sphere006.geometry} material={materials['Sand new']} position={[-12.69, 12.29, -148.4]} rotation={[-2.81, 1.46, 2.81]} scale={[0.21, 0.05, 0.13]} />
+      <mesh geometry={nodes.Sphere007.geometry} material={materials['Sand new']} position={[-9.94, 12.23, -149.57]} rotation={[0.08, 0.96, 2.25]} scale={[0.06, 0.06, 0.11]} />
+      <mesh geometry={nodes.Sphere009.geometry} material={materials['Sand new']} position={[-4.28, 12.18, -116.79]} rotation={[0.01, 0.02, 0.08]} scale={[0.25, 0.13, 0.22]} />
+      <mesh geometry={nodes.Sphere010.geometry} material={materials['Sand new']} position={[-8.06, 11.97, -109.84]} rotation={[0.14, -0.98, 0.18]} scale={[0.15, 0.15, 0.26]} />
+      <mesh geometry={nodes.Sphere011.geometry} material={materials['Sand new']} position={[-7.67, 11.98, -109.81]} rotation={[-0.18, -0.15, 1.78]} scale={[0.09, 0.09, 0.15]} />
+      <mesh geometry={nodes.Sphere012.geometry} material={materials['Sand new']} position={[-7.66, 12.79, -123.22]} rotation={[2.42, 1.45, -2.44]} scale={[0.27, 0.07, 0.17]} />
+      <mesh geometry={nodes.Sphere014.geometry} material={materials['Sand new']} position={[-7.42, 12.81, -123.64]} rotation={[2.73, 1.47, -2.74]} scale={[0.16, 0.04, 0.07]} />
+      <mesh geometry={nodes.Sphere008.geometry} material={materials['Sand new']} position={[-12.93, 12.49, -121.59]} rotation={[3.12, -0.74, 3.05]} scale={[0.32, 0.17, 0.29]} />
+      <mesh geometry={nodes.Sphere013.geometry} material={materials['Sand new']} position={[-12.58, 12.53, -122.8]} rotation={[3.06, -0.67, 2.97]} scale={[0.13, 0.1, 0.18]} />
+      <mesh geometry={nodes['Stone-18'].geometry} material={materials['Sand new']} position={[-26.66, 10.67, -299.39]} rotation={[-Math.PI, 1.46, -Math.PI]} scale={[0.41, 0.41, 0.76]} />
+      <mesh geometry={nodes.Sand_1001.geometry} material={materials['Sand new']} position={[-19.28, 12.07, -170.05]} scale={[174.33, 26.31, -79.77]} />
+      <mesh geometry={nodes.Sand_2001.geometry} material={materials['Sand new']} position={[-112.45, 7.52, -584.38]} rotation={[0.17, 0, 0]} scale={[506.75, 81.86, 137.18]} />
+      <mesh geometry={nodes['Stone-8001'].geometry} material={materials['Sand new']} position={[-42.04, 11.74, -138.74]} rotation={[-Math.PI, 0.68, -Math.PI]} scale={[0.45, 0.37, 0.39]} />
+      <mesh geometry={nodes['Stone-6009'].geometry} material={materials['Sand new']} position={[-24.55, 11.03, -127.89]} rotation={[3.11, 0.67, -3.1]} scale={0.43} />
+      <mesh geometry={nodes['Stone-12002'].geometry} material={materials['Sand new']} position={[-27.27, 10.89, -306.67]} rotation={[-Math.PI, 0.78, -Math.PI]} scale={[1.23, 0.4, 1.19]} />
+      <mesh geometry={nodes['Stone-11003'].geometry} material={materials['Sand new']} position={[-25.96, 11.45, -125.96]} rotation={[-Math.PI, 1.02, -Math.PI]} scale={0.26} />
+      <mesh geometry={nodes['Stone-11004'].geometry} material={materials['Sand new']} position={[-3.81, 11.81, -106.39]} rotation={[-Math.PI, 0.47, -Math.PI]} scale={0.26} />
+      <mesh geometry={nodes.Sand_2002.geometry} material={materials['Sand new']} position={[-148.48, 0.77, -917.51]} rotation={[0.33, 0.15, -0.04]} scale={[583.9, 119.49, 183.1]} />
+      <mesh geometry={nodes.terrain001.geometry} material={materials['Sand new']} position={[28.04, 19.81, -268.15]} rotation={[-0.11, -0.98, -0.06]} scale={0.01} />
+      <mesh geometry={nodes.Sole_ville.geometry} material={materials['Sand new']} position={[62.94, 9.05, -291.51]} scale={[32.05, 2.81, -176.3]} />
+      <mesh geometry={nodes.Cube096.geometry} material={materials['Sand new']} position={[60.78, 15.02, -218.78]} rotation={[-Math.PI, 0.46, -Math.PI]} scale={[-6.29, -3.16, -13.16]} />
+      <mesh geometry={nodes.terrain002.geometry} material={materials['Sand new']} position={[32.85, 18.71, -347.67]} rotation={[-0.11, -0.98, -0.06]} scale={0.01} />
+      <mesh geometry={nodes['Stone-11001'].geometry} material={materials['Sand new']} position={[-14.88, 11.91, -120.91]} rotation={[-Math.PI, -0.85, -Math.PI]} scale={[0.36, 0.26, 0.38]} />
+      <mesh geometry={nodes['Stone-11002'].geometry} material={materials['Sand new']} position={[-15.09, 11.91, -106.79]} rotation={[-Math.PI, -0.85, -Math.PI]} scale={[0.96, 0.26, 1.14]} />
+      <mesh geometry={nodes.Sand_2003.geometry} material={materials['Sand new']} position={[-10.25, 10.44, -237.63]} scale={[174.33, 78.88, 73.17]} />
+      <mesh geometry={nodes.BezierCurve.geometry} material={materials['Sand new']} position={[8.48, 12.2, -169.44]} scale={7.84} />
+      <mesh geometry={nodes.Route_2001.geometry} material={materials['Sand new']} position={[-3.44, 12.2, -261.49]} rotation={[0, 0.52, 0]} scale={[2.09, 1, 2.72]} />
+      <mesh geometry={nodes.Route_2002.geometry} material={materials['Sand new']} position={[-3.44, 11.92, -261.49]} rotation={[0, 0.52, 0]} scale={[2.09, 1, 2.72]} />
+      <mesh geometry={nodes.Bush00.geometry} material={materials['Sand new']} position={[0.7, 14.53, -90.51]} scale={0.97} />
+      <mesh geometry={nodes.Grass00.geometry} material={materials['Sand new']} position={[4.12, 14.53, -90.51]} scale={1.81} />
+      <mesh geometry={nodes.Grass00001.geometry} material={materials['Sand new']} position={[-14.59, 12.42, -178.5]} rotation={[-Math.PI, 1, -Math.PI]} scale={1.99} />
+      <mesh geometry={nodes.Grass00002.geometry} material={materials['Sand new']} position={[8.39, 12.31, -117.25]} rotation={[-Math.PI, 0.21, -Math.PI]} scale={1.12} />
+      <mesh geometry={nodes.Grass00003.geometry} material={materials['Sand new']} position={[-4.8, 12.16, -103.92]} rotation={[-Math.PI, 1, -Math.PI]} scale={1.28} />
+      <mesh geometry={nodes.Grass00004.geometry} material={materials['Sand new']} position={[-21.19, 12.16, -112.07]} rotation={[0, 0.79, 0]} scale={1.28} />
+      <mesh geometry={nodes.Grass01.geometry} material={materials['Sand new']} position={[2.98, 14.53, -90.51]} scale={1.81} />
+      <mesh geometry={nodes.Grass02001.geometry} material={materials['Sand new']} position={[-21.19, 12.12, -111.53]} rotation={[0, -0.99, 0]} scale={1.5} />
+      <mesh geometry={nodes.Grass02002.geometry} material={materials['Sand new']} position={[110.79, 12.16, -77.78]} scale={1.5} />
+      <mesh geometry={nodes.Grass02003.geometry} material={materials['Sand new']} position={[110.95, 12.16, -78.18]} rotation={[0, 0.84, 0]} scale={1.5} />
+      <mesh geometry={nodes.Grass02004.geometry} material={materials['Sand new']} position={[111.54, 12.16, -78.14]} rotation={[-Math.PI, 0.22, -Math.PI]} scale={1.5} />
+      <mesh geometry={nodes.Grass02005.geometry} material={materials['Sand new']} position={[111.29, 12.16, -77.78]} rotation={[Math.PI, -0.62, Math.PI]} scale={1.5} />
+      <mesh geometry={nodes.Grass02006.geometry} material={materials['Sand new']} position={[110.97, 12.16, -77.01]} rotation={[0, -0.17, 0]} scale={1.5} />
+      <mesh geometry={nodes.Grass02007.geometry} material={materials['Sand new']} position={[111.2, 12.16, -77.38]} rotation={[0, 0.68, 0]} scale={1.5} />
+      <mesh geometry={nodes.Grass02008.geometry} material={materials['Sand new']} position={[111.77, 12.16, -77.24]} rotation={[-Math.PI, 0.39, -Math.PI]} scale={1.5} />
+      <mesh geometry={nodes.Grass02009.geometry} material={materials['Sand new']} position={[111.46, 12.16, -76.93]} rotation={[Math.PI, -0.46, Math.PI]} scale={1.5} />
+      <mesh geometry={nodes.Grass02010.geometry} material={materials['Sand new']} position={[112.57, 12.16, -78.24]} rotation={[Math.PI, -0.23, Math.PI]} scale={1.5} />
+      <mesh geometry={nodes.Grass02011.geometry} material={materials['Sand new']} position={[112.5, 12.16, -77.82]} rotation={[Math.PI, -1.07, Math.PI]} scale={1.5} />
+      <mesh geometry={nodes.Grass02012.geometry} material={materials['Sand new']} position={[111.92, 12.16, -77.73]} rotation={[0, 0.01, 0]} scale={1.5} />
+      <mesh geometry={nodes.Grass02013.geometry} material={materials['Sand new']} position={[112.09, 12.16, -78.13]} rotation={[0, 0.85, 0]} scale={1.5} />
+      <mesh geometry={nodes.Grass02014.geometry} material={materials['Sand new']} position={[109.88, 12.16, -76.86]} rotation={[0, 0.08, 0]} scale={1.5} />
+      <mesh geometry={nodes.Grass02015.geometry} material={materials['Sand new']} position={[110.01, 12.16, -77.27]} rotation={[0, 0.93, 0]} scale={1.5} />
+      <mesh geometry={nodes.Grass02016.geometry} material={materials['Sand new']} position={[110.6, 12.16, -77.27]} rotation={[-Math.PI, 0.14, -Math.PI]} scale={1.5} />
+      <mesh geometry={nodes.Grass02017.geometry} material={materials['Sand new']} position={[110.38, 12.16, -76.9]} rotation={[-Math.PI, -0.7, -Math.PI]} scale={1.5} />
+      <mesh geometry={nodes.Grass02018.geometry} material={materials['Sand new']} position={[110.11, 12.16, -78.57]} rotation={[-Math.PI, -1.29, -Math.PI]} scale={1.5} />
+      <mesh geometry={nodes.Grass02019.geometry} material={materials['Sand new']} position={[110.45, 12.16, -78.3]} rotation={[0, -1.01, 0]} scale={1.5} />
+      <mesh geometry={nodes.Grass02020.geometry} material={materials['Sand new']} position={[110.25, 12.16, -77.75]} rotation={[0, 1.07, 0]} scale={1.5} />
+      <mesh geometry={nodes.Grass02021.geometry} material={materials['Sand new']} position={[109.98, 12.16, -78.08]} rotation={[-Math.PI, 1.23, -Math.PI]} scale={1.5} />
+      <mesh geometry={nodes.Grass02022.geometry} material={materials['Sand new']} position={[112.32, 12.16, -76.45]} rotation={[0, 1.06, 0]} scale={1.5} />
+      <mesh geometry={nodes.Grass02023.geometry} material={materials['Sand new']} position={[112.05, 12.16, -76.79]} rotation={[-Math.PI, 1.23, -Math.PI]} scale={1.5} />
+      <mesh geometry={nodes.Grass02024.geometry} material={materials['Sand new']} position={[112.38, 12.16, -77.28]} rotation={[-Math.PI, -0.84, -Math.PI]} scale={1.5} />
+      <mesh geometry={nodes.Grass02026.geometry} material={materials['Sand new']} position={[112.32, 12.16, -76.45]} rotation={[0, 1.06, 0]} scale={1.5} />
+      <mesh geometry={nodes.Grass02027.geometry} material={materials['Sand new']} position={[112.05, 12.16, -76.79]} rotation={[-Math.PI, 1.23, -Math.PI]} scale={1.5} />
+      <mesh geometry={nodes.Grass02028.geometry} material={materials['Sand new']} position={[112.38, 12.16, -77.28]} rotation={[-Math.PI, -0.84, -Math.PI]} scale={1.5} />
+      <mesh geometry={nodes.Grass02029.geometry} material={materials['Sand new']} position={[112.56, 12.16, -76.89]} rotation={[0, -1.45, 0]} scale={1.5} />
+      <mesh geometry={nodes.Grass02102.geometry} material={materials['Sand new']} position={[-6.69, 12.48, -116.5]} rotation={[0, -0.99, 0]} scale={1.5} />
+      <mesh geometry={nodes.Grass02130.geometry} material={materials['Sand new']} position={[-30.17, 12.34, -304.23]} rotation={[-0.51, -0.99, 0]} scale={1.5} />
+      <mesh geometry={nodes.Grass02031.geometry} material={materials['Sand new']} position={[-13.68, 12.66, -105.21]} rotation={[Math.PI, -0.86, Math.PI]} scale={1.5} />
+      <mesh geometry={nodes.Grass02032.geometry} material={materials['Sand new']} position={[-20.77, 12.12, -111.79]} rotation={[-Math.PI, 0.81, -Math.PI]} scale={1.5} />
+      <mesh geometry={nodes.Grass02033.geometry} material={materials['Sand new']} position={[-8.17, 12.64, -204.48]} rotation={[-0.13, -0.97, -0.14]} scale={1.5} />
+      <mesh geometry={nodes.Grass02034.geometry} material={materials['Sand new']} position={[-7.75, 12.61, -204.75]} rotation={[3.05, 0.79, -3.03]} scale={1.5} />
+      <mesh geometry={nodes.pCube2_Ext_4.geometry} material={materials.M_Gas_Pump_2} />
+      <mesh geometry={nodes.Grass02067.geometry} material={materials['Sand new']} position={[-20.74, 12.31, -149.96]} rotation={[0.03, 0, 0]} scale={0.95} />
+      <mesh geometry={nodes.Grass02104.geometry} material={materials['Sand new']} position={[-45.76, 11.86, -186.54]} rotation={[0.38, 0, -0.02]} scale={0.95} />
+      <mesh geometry={nodes.Grass02105.geometry} material={materials['Sand new']} position={[-56.18, 12.18, -185.21]} rotation={[0.23, 0.62, -0.04]} scale={0.95} />
+      <mesh geometry={nodes.Grass02115.geometry} material={materials['Sand new']} position={[-36.79, 12.27, -114.22]} rotation={[3.11, -0.36, 3.13]} scale={0.95} />
+      <mesh geometry={nodes.Grass02116.geometry} material={materials['Sand new']} position={[-37.12, 12.41, -130.95]} rotation={[3.12, 0.06, -3.14]} scale={0.95} />
+      <mesh geometry={nodes.Grass02099.geometry} material={materials['Sand new']} position={[-32.37, 12.27, -137.15]} rotation={[0.04, 0.23, -0.05]} scale={[-0.95, 0.95, 0.95]} />
+      <mesh geometry={nodes.Grass02187.geometry} material={materials['Sand new']} position={[-19.91, 11.71, -104.21]} rotation={[-3.03, -0.21, 3.13]} scale={[-0.86, 0.86, 0.86]} />
+      <mesh geometry={nodes.Grass02030.geometry} material={materials['Sand new']} position={[-6.36, 12.29, -118.39]} rotation={[3.13, -0.2, 3.14]} scale={[-0.86, 0.86, 0.86]} />
+      <mesh geometry={nodes.Plateau_winter_001.geometry} material={materials['Sand new']} position={[63.04, 5.42, -584.57]} rotation={[Math.PI / 2, 0, 2.48]} scale={0.01} />
+      <mesh geometry={nodes.Plateau_winter_001001.geometry} material={materials['Sand new']} position={[-117.72, 3.23, -620.32]} rotation={[Math.PI / 2, 0, 1.76]} scale={[0.01, 0.04, 0.01]} />
+      <mesh geometry={nodes.Plateau_winter_001004.geometry} material={materials['Sand new']} position={[-345.6, 5.5, -761.45]} rotation={[Math.PI / 2, 0, 2.98]} scale={[0.03, 0.04, 0.02]} />
+      <mesh geometry={nodes.Plateau_winter_002003.geometry} material={materials['Sand new']} position={[-442.19, 17.57, -681.93]} rotation={[Math.PI / 2, 0, -2.59]} scale={[0.02, 0.03, 0.01]} />
+      <mesh geometry={nodes.Plateau_winter_001003.geometry} material={materials['Sand new']} position={[-105.89, 16.25, -896.23]} rotation={[Math.PI / 2, 0, 3.13]} scale={[0.04, 0.02, 0.01]} />
+      <mesh geometry={nodes.Plateau_winter_001007.geometry} material={materials['Sand new']} position={[120.23, 16.25, -896.23]} rotation={[Math.PI / 2, 0, -3.13]} scale={[-0.04, 0.02, 0.01]} />
+      <mesh geometry={nodes.Plateau_winter_002004.geometry} material={materials['Sand new']} position={[-221.23, 18.22, -890.31]} rotation={[Math.PI / 2, 0, 1.96]} scale={[0.04, 0.03, 0.01]} />
+      <mesh geometry={nodes.Plateau_winter_002005.geometry} material={materials['Sand new']} position={[247.67, 14.2, -890.31]} rotation={[Math.PI / 2, 0, -0.03]} scale={[0.04, 0.02, 0.01]} />
+      <mesh geometry={nodes.Plateau_winter_001006.geometry} material={materials['Sand new']} position={[-571.23, 16.25, -888.24]} rotation={[Math.PI / 2, 0, 3.13]} scale={[0.04, 0.02, 0.01]} />
+      <mesh geometry={nodes.group_0_ID4.geometry} material={materials['Sand new']} position={[34.68, 10.35, -357.88]} rotation={[Math.PI / 2, 0, 1.57]} scale={1.34} />
+      <mesh geometry={nodes.group_0_ID4001.geometry} material={materials['Sand new']} position={[34.68, 14.6, -357.88]} rotation={[Math.PI / 2, 0, 1.57]} scale={1.34} />
+      <mesh geometry={nodes.terrain007.geometry} material={materials['Sand new']} position={[32.78, 18.51, -257.3]} rotation={[0, 0.3, 0]} scale={0.01} />
+      <mesh geometry={nodes.terrain004.geometry} material={materials['Sand new']} position={[32.84, 18.5, -303.92]} rotation={[0, 0.14, 0]} scale={0.01} />
+      <mesh geometry={nodes.terrain006.geometry} material={materials['Sand new']} position={[-3.22, 18.17, -107.86]} rotation={[0, 0.62, 0]} scale={0.01} />
+      <mesh geometry={nodes.Moyen_feuillage001.geometry} material={materials['Sand new']} position={[-10.19, 21.07, -124.3]} rotation={[-2.36, -1.36, -2.46]} scale={[-1.45, 0.54, 1.5]} />
+      <mesh geometry={nodes.Moyen_feuillage002.geometry} material={materials['Sand new']} position={[-15.53, 21.54, -122.01]} rotation={[2.7, 1.37, -2.71]} scale={[-1.05, 0.39, 1.09]} />
+      <mesh geometry={nodes.Moyen_feuillage003.geometry} material={materials['Sand new']} position={[-18.31, 21.77, -122.8]} rotation={[-0.31, -1.06, -0.35]} scale={[-1.05, 0.54, 1.49]} />
+      <mesh geometry={nodes.Moyen_feuillage_2001.geometry} material={materials['Sand new']} position={[-12.69, 20.73, -119.42]} rotation={[3.12, -0.34, 3.14]} scale={[-1.01, 0.53, 1.82]} />
+      <mesh geometry={nodes.Moyen_feuillage_2003.geometry} material={materials['Sand new']} position={[-14.5, 21.87, -126.97]} rotation={[0.02, 0.65, -0.01]} scale={[-1.21, 0.53, 2.03]} />
+      <mesh geometry={nodes.Tronc001.geometry} material={materials['Sand new']} position={[-13.79, 12.21, -123.52]} rotation={[Math.PI, -0.2, Math.PI]} scale={[-3, 2.41, 2.75]} />
+      <mesh geometry={nodes.Route001.geometry} material={materials['Sand new']} position={[2.23, 11.88, -152.67]} rotation={[0, 0.81, 0]} scale={[3.87, 0.61, 1.7]} />
+      <mesh geometry={nodes.Route.geometry} material={materials['Sand new']} position={[2.23, 11.88, -152.67]} rotation={[0, 0.81, 0]} scale={[3.87, 0.61, 1.7]} />
+      <mesh geometry={nodes.Cube088.geometry} material={materials['Sand new']} position={[-51.68, 12.98, -187.9]} scale={0.55} />
+      <mesh geometry={nodes.Cube089.geometry} material={materials['Sand new']} position={[-50.04, 19.28, -184.95]} rotation={[0.07, 1.25, 0.05]} scale={[0.49, 0.55, 0.78]} />
+      <mesh geometry={nodes.Cube090.geometry} material={materials['Sand new']} position={[-50.47, 18.73, -189.39]} rotation={[0, 1.25, 0]} scale={[0.49, 0.55, 0.78]} />
+      <mesh geometry={nodes.Cube091.geometry} material={materials['Sand new']} position={[-48.03, 17.27, -187.31]} rotation={[-Math.PI, 0.82, -Math.PI]} scale={[0.69, 0.46, 0.94]} />
+      <mesh geometry={nodes.Cube165.geometry} material={materials['Sand new']} position={[-79.1, 12.15, -204.22]} rotation={[0, -0.77, 0]} scale={0.45} />
+      <mesh geometry={nodes.Cube183.geometry} material={materials['Sand new']} position={[-77.75, 18.46, -202.03]} rotation={[0, -1.14, 0]} scale={0.69} />
+      <mesh geometry={nodes.Cube184.geometry} material={materials['Sand new']} position={[-80.61, 18.99, -203.91]} rotation={[0, -0.77, 0]} scale={0.74} />
+      <mesh geometry={nodes.Cube059.geometry} material={materials['Sand new']} position={[-58.32, 19.23, -179.76]} rotation={[-Math.PI, 0.38, -Math.PI]} scale={[0.49, 0.37, 0.54]} />
+      <mesh geometry={nodes.Cube060.geometry} material={materials['Sand new']} position={[-61.1, 18.48, -177.52]} rotation={[-Math.PI, 0.38, -Math.PI]} scale={[0.49, 0.37, 0.54]} />
+      <mesh geometry={nodes.Cube084.geometry} material={materials['Sand new']} position={[-56.28, 18.66, -175.22]} rotation={[-3.14, 0.39, -3.11]} scale={0.54} />
+      <mesh geometry={nodes.Cube085.geometry} material={materials['Sand new']} position={[-53.78, 19.32, -178.04]} rotation={[-3.14, 0.56, -3.11]} scale={0.54} />
+      <mesh geometry={nodes.Cube086.geometry} material={materials['Sand new']} position={[-49.77, 18.61, -175.95]} rotation={[-3.14, 0.39, -3.11]} scale={0.54} />
+      <mesh geometry={nodes.Cube087.geometry} material={materials['Sand new']} position={[-55.29, 16.84, -177.37]} rotation={[-Math.PI, 0.38, -Math.PI]} scale={0.54} />
+      <mesh geometry={nodes.bin.geometry} material={materials['Sand new']} position={[36.54, 12.03, -221.06]} rotation={[Math.PI / 2, 0, -2.64]} scale={2.02} />
+      <mesh geometry={nodes.bin001.geometry} material={materials['Sand new']} position={[42.86, 12.03, -217.99]} rotation={[Math.PI / 2, 0, -2.64]} scale={2.02} />
+      <mesh geometry={nodes.bin002.geometry} material={materials['Sand new']} position={[47.01, 12.03, -226.6]} rotation={[Math.PI / 2, 0, -2.64]} scale={2.02} />
+      <mesh geometry={nodes.bin003.geometry} material={materials['Sand new']} position={[51.21, 12.03, -234.62]} rotation={[Math.PI / 2, 0, -2.64]} scale={2.02} />
+      <mesh geometry={nodes.bin004.geometry} material={materials['Sand new']} position={[40.5, 12.03, -229.68]} rotation={[Math.PI / 2, 0, -2.7]} scale={2.02} />
+      <mesh geometry={nodes.bin005.geometry} material={materials['Sand new']} position={[44.7, 12.03, -237.83]} rotation={[Math.PI / 2, 0, -2.7]} scale={2.02} />
+      <mesh geometry={nodes.can.geometry} material={materials['Sand new']} position={[48.49, 12.92, -247.09]} rotation={[-Math.PI, 0.18, -Math.PI]} scale={2.39} />
+      <mesh geometry={nodes.can001.geometry} material={materials['Sand new']} position={[49.03, 14.96, -246.8]} rotation={[0, -0.12, 0]} scale={2.39} />
+      <mesh geometry={nodes.Cube016.geometry} material={materials['Sand new']} position={[30.61, 12.04, -205.5]} rotation={[Math.PI / 2, 0, -2.68]} scale={0.75} />
+      <mesh geometry={nodes.Cube017.geometry} material={materials['Sand new']} position={[43.29, 11.77, -199.19]} rotation={[Math.PI / 2, 0, -2.68]} scale={0.75} />
+      <mesh geometry={nodes.jerrycan_red.geometry} material={materials['Sand new']} position={[41.12, 12.41, -229.44]} rotation={[Math.PI, -0.63, Math.PI]} scale={1.92} />
+      <mesh geometry={nodes.jerrycan_red002.geometry} material={materials['Sand new']} position={[28.96, 12.43, -205.9]} rotation={[-2.44, -0.84, -2.46]} scale={1.92} />
+      <mesh geometry={nodes.petronas001_Cube_3_Instance_0001.geometry} material={materials['Sand new']} position={[44.88, 19.54, -227.97]} rotation={[Math.PI / 2, 0, 2.03]} scale={1.18} />
+      <mesh geometry={nodes.petronas001_Cube_3_Instance_0002.geometry} material={materials['Sand new']} position={[52.69, 18.18, -214.16]} rotation={[Math.PI / 2, 0, 2.03]} scale={1.18} />
+      <mesh geometry={nodes.petronas001_Cube_3_Instance_0003.geometry} material={materials['Sand new']} position={[56.36, 18.18, -221.6]} rotation={[Math.PI / 2, 0, 2.03]} scale={1.18} />
+      <mesh geometry={nodes.petronas001_Cube_3_Instance_0004.geometry} material={materials['Sand new']} position={[60.04, 18.18, -229.03]} rotation={[Math.PI / 2, 0, 2.03]} scale={1.18} />
+      <mesh geometry={nodes.petronas001_Cube_3_Instance_0032.geometry} material={materials['Sand new']} position={[56.65, 13.41, -224.67]} rotation={[Math.PI / 2, 0, 2.03]} scale={1.21} />
+      <mesh geometry={nodes.petronas001_Cube_3_Instance_0039.geometry} material={materials['Sand new']} position={[27.28, 13.94, -207.35]} rotation={[Math.PI / 2, 0, 2.03]} scale={1.18} />
+      <mesh geometry={nodes.petronas001_Cube_3_Instance_0041.geometry} material={materials['Sand new']} position={[26.36, 12.84, -207.8]} rotation={[Math.PI / 2, 0, 2.03]} scale={1.18} />
+      <mesh geometry={nodes.petronas001_Cube_3_Instance_0043.geometry} material={materials['Sand new']} position={[27.99, 13.09, -207.8]} rotation={[Math.PI / 2, 0, 2.03]} scale={1.18} />
+      <mesh geometry={nodes.petronas001_Cube_3_Instance_0044.geometry} material={materials['Sand new']} position={[39.09, 11.92, -248.54]} rotation={[Math.PI / 2, 0, 2.03]} scale={1.18} />
+      <mesh geometry={nodes.petronas001_Cube_3_Instance_0047.geometry} material={materials['Sand new']} position={[46.73, 14.84, -236.76]} rotation={[Math.PI / 2, 0, 2.03]} scale={1.18} />
+      <mesh geometry={nodes.petronas001_Cube_3_Instance_0048.geometry} material={materials['Sand new']} position={[46.15, 16.83, -237.08]} rotation={[Math.PI / 2, 0, 2.03]} scale={1.18} />
+      <mesh geometry={nodes.petronas001_Cube_3_Instance_0049.geometry} material={materials['Sand new']} position={[45.59, 17.89, -237.35]} rotation={[Math.PI / 2, 0, 2.03]} scale={1.18} />
+      <mesh geometry={nodes.petronas001_Cube_3_Instance_0050.geometry} material={materials['Sand new']} position={[45.92, 11.91, -237.2]} rotation={[Math.PI / 2, 0, 2.03]} scale={1.18} />
+      <mesh geometry={nodes.petronas001_Cube_3_Instance_0053.geometry} material={materials['Sand new']} position={[43.93, 12.62, -238.17]} rotation={[Math.PI / 2, 0, 2.03]} scale={1.18} />
+      <mesh geometry={nodes.petronas001_Cube_3_Instance_0054.geometry} material={materials['Sand new']} position={[46.59, 16.05, -237.02]} rotation={[Math.PI / 2, 0, 2.03]} scale={1.18} />
+      <mesh geometry={nodes.petronas001_Cube_3_Instance_0055.geometry} material={materials['Sand new']} position={[47.6, 12.87, -236.36]} rotation={[Math.PI / 2, 0, 2.03]} scale={1.18} />
+      <mesh geometry={nodes.petronas001_Cube_3_Instance_0056.geometry} material={materials['Sand new']} position={[47.96, 12.53, -236.18]} rotation={[Math.PI / 2, 0, 2.03]} scale={1.18} />
+      <mesh geometry={nodes.petronas001_Cube_3_Instance_0058.geometry} material={materials['Sand new']} position={[45.92, 12.03, -237.2]} rotation={[Math.PI / 2, 0, 2.03]} scale={1.18} />
+      <mesh geometry={nodes.petronas001_Cube_3_Instance_0059.geometry} material={materials['Sand new']} position={[43.88, 12.32, -238.2]} rotation={[Math.PI / 2, 0, 2.03]} scale={1.18} />
+      <mesh geometry={nodes.petronas001_Cube_3_Instance_0061.geometry} material={materials['Sand new']} position={[53.1, 14.84, -233.61]} rotation={[Math.PI / 2, 0, 2.03]} scale={1.18} />
+      <mesh geometry={nodes.petronas001_Cube_3_Instance_0062.geometry} material={materials['Sand new']} position={[52.52, 16.83, -233.93]} rotation={[Math.PI / 2, 0, 2.03]} scale={1.18} />
+      <mesh geometry={nodes.petronas001_Cube_3_Instance_0063.geometry} material={materials['Sand new']} position={[51.96, 17.89, -234.2]} rotation={[Math.PI / 2, 0, 2.03]} scale={1.18} />
+      <mesh geometry={nodes.petronas001_Cube_3_Instance_0064.geometry} material={materials['Sand new']} position={[52.29, 11.91, -234.05]} rotation={[Math.PI / 2, 0, 2.03]} scale={1.18} />
+      <mesh geometry={nodes.petronas001_Cube_3_Instance_0068.geometry} material={materials['Sand new']} position={[52.97, 16.05, -233.88]} rotation={[Math.PI / 2, 0, 2.03]} scale={1.18} />
+      <mesh geometry={nodes.petronas001_Cube_3_Instance_0070.geometry} material={materials['Sand new']} position={[54.33, 12.53, -233.03]} rotation={[Math.PI / 2, 0, 2.03]} scale={1.18} />
+      <mesh geometry={nodes.petronas001_Cube_3_Instance_0071.geometry} material={materials['Sand new']} position={[50.27, 12.08, -235.04]} rotation={[Math.PI / 2, 0, 2.03]} scale={1.18} />
+      <mesh geometry={nodes.petronas001_Cube_3_Instance_0072.geometry} material={materials['Sand new']} position={[52.29, 12.03, -234.05]} rotation={[Math.PI / 2, 0, 2.03]} scale={1.18} />
+      <mesh geometry={nodes.petronas001_Cube_3_Instance_0075.geometry} material={materials['Sand new']} position={[42.66, 14.84, -228.54]} rotation={[Math.PI / 2, 0, 2.03]} scale={1.18} />
+      <mesh geometry={nodes.petronas001_Cube_3_Instance_0076.geometry} material={materials['Sand new']} position={[42.08, 16.83, -228.85]} rotation={[Math.PI / 2, 0, 2.03]} scale={1.18} />
+      <mesh geometry={nodes.petronas001_Cube_3_Instance_0077.geometry} material={materials['Sand new']} position={[41.53, 17.89, -229.13]} rotation={[Math.PI / 2, 0, 2.03]} scale={1.18} />
+      <mesh geometry={nodes.petronas001_Cube_3_Instance_0080.geometry} material={materials['Sand new']} position={[39.89, 13.24, -229.94]} rotation={[Math.PI / 2, 0, 2.03]} scale={1.18} />
+      <mesh geometry={nodes.petronas001_Cube_3_Instance_0082.geometry} material={materials['Sand new']} position={[42.53, 16.05, -228.8]} rotation={[Math.PI / 2, 0, 2.03]} scale={1.18} />
+      <mesh geometry={nodes.petronas001_Cube_3_Instance_0086.geometry} material={materials['Sand new']} position={[41.85, 12.03, -228.98]} rotation={[Math.PI / 2, 0, 2.03]} scale={1.18} />
+      <mesh geometry={nodes.petronas001_Cube_3_Instance_0088.geometry} material={materials['Sand new']} position={[43.6, 12.09, -228.1]} rotation={[Math.PI / 2, 0, 2.03]} scale={1.18} />
+      <mesh geometry={nodes.petronas001_Cube_3_Instance_0089.geometry} material={materials['Sand new']} position={[49.03, 14.84, -225.39]} rotation={[Math.PI / 2, 0, 2.03]} scale={1.18} />
+      <mesh geometry={nodes.petronas001_Cube_3_Instance_0090.geometry} material={materials['Sand new']} position={[48.46, 16.83, -225.7]} rotation={[Math.PI / 2, 0, 2.03]} scale={1.18} />
+      <mesh geometry={nodes.petronas001_Cube_3_Instance_0091.geometry} material={materials['Sand new']} position={[47.9, 17.89, -225.98]} rotation={[Math.PI / 2, 0, 2.03]} scale={1.18} />
+      <mesh geometry={nodes.petronas001_Cube_3_Instance_0096.geometry} material={materials['Sand new']} position={[48.9, 16.05, -225.65]} rotation={[Math.PI / 2, 0, 2.03]} scale={1.18} />
+      <mesh geometry={nodes.petronas001_Cube_3_Instance_0100.geometry} material={materials['Sand new']} position={[48.22, 12.03, -225.83]} rotation={[Math.PI / 2, 0, 2.03]} scale={1.18} />
+      <mesh geometry={nodes.petronas001_Cube_3_Instance_0104.geometry} material={materials['Sand new']} position={[38.46, 14.84, -220.04]} rotation={[Math.PI / 2, 0, 2.03]} scale={1.18} />
+      <mesh geometry={nodes.petronas001_Cube_3_Instance_0105.geometry} material={materials['Sand new']} position={[37.88, 16.83, -220.36]} rotation={[Math.PI / 2, 0, 2.03]} scale={1.18} />
+      <mesh geometry={nodes.petronas001_Cube_3_Instance_0106.geometry} material={materials['Sand new']} position={[37.33, 17.89, -220.63]} rotation={[Math.PI / 2, 0, 2.03]} scale={1.18} />
+      <mesh geometry={nodes.petronas001_Cube_3_Instance_0110.geometry} material={materials['Sand new']} position={[38.33, 16.05, -220.3]} rotation={[Math.PI / 2, 0, 2.03]} scale={1.18} />
+      <mesh geometry={nodes.petronas001_Cube_3_Instance_0114.geometry} material={materials['Sand new']} position={[37.65, 12.03, -220.48]} rotation={[Math.PI / 2, 0, 2.03]} scale={1.18} />
+      <mesh geometry={nodes.petronas001_Cube_3_Instance_0117.geometry} material={materials['Sand new']} position={[44.84, 14.84, -216.89]} rotation={[Math.PI / 2, 0, 2.03]} scale={1.18} />
+      <mesh geometry={nodes.petronas001_Cube_3_Instance_0118.geometry} material={materials['Sand new']} position={[44.26, 16.83, -217.21]} rotation={[Math.PI / 2, 0, 2.03]} scale={1.18} />
+      <mesh geometry={nodes.petronas001_Cube_3_Instance_0119.geometry} material={materials['Sand new']} position={[43.7, 17.89, -217.48]} rotation={[Math.PI / 2, 0, 2.03]} scale={1.18} />
+      <mesh geometry={nodes.petronas001_Cube_3_Instance_0120.geometry} material={materials['Sand new']} position={[44.03, 11.91, -217.33]} rotation={[Math.PI / 2, 0, 2.03]} scale={1.18} />
+      <mesh geometry={nodes.petronas001_Cube_3_Instance_0124.geometry} material={materials['Sand new']} position={[44.7, 16.05, -217.15]} rotation={[Math.PI / 2, 0, 2.03]} scale={1.18} />
+      <mesh geometry={nodes.petronas001_Cube_3_Instance_0131.geometry} material={materials['Sand new']} position={[47.81, 20.1, -225.81]} rotation={[Math.PI / 2, 0, 2.03]} scale={1.18} />
+      <mesh geometry={nodes.petronas001_Cube_3_Instance_0132.geometry} material={materials['Sand new']} position={[28.59, 11.94, -206.62]} rotation={[Math.PI / 2, 0, 2.03]} scale={1.18} />
+      <mesh geometry={nodes.petronas001_Cube_3_Instance_0133.geometry} material={materials['Sand new']} position={[47.81, 18.91, -225.81]} rotation={[Math.PI / 2, 0, 2.03]} scale={1.18} />
+      <mesh geometry={nodes.petronas001_Cube_3_Instance_0134.geometry} material={materials['Sand new']} position={[57.65, 19.52, -220.95]} rotation={[Math.PI / 2, 0, 2.03]} scale={1.18} />
+      <mesh geometry={nodes.Rusty_can.geometry} material={materials['Sand new']} position={[49.61, 12.91, -246.53]} rotation={[-Math.PI, 0.18, -Math.PI]} scale={2.39} />
+      <mesh geometry={nodes.Rusty_can001.geometry} material={materials['Sand new']} position={[47.36, 12.91, -247.63]} rotation={[-Math.PI, 0.18, -Math.PI]} scale={2.39} />
+      <mesh geometry={nodes.Rusty_can003.geometry} material={materials['Sand new']} position={[47.36, 12.91, -247.63]} rotation={[-Math.PI, 0.18, -Math.PI]} scale={2.39} />
+      <mesh geometry={nodes.Rusty_can002.geometry} material={materials['Sand new']} position={[47.84, 14.93, -247.37]} rotation={[-0.17, -0.46, -0.1]} scale={2.39} />
+      <mesh geometry={nodes.Rusty_can004.geometry} material={materials['Sand new']} position={[47.84, 14.93, -247.37]} rotation={[-0.17, -0.46, -0.1]} scale={2.39} />
+      <mesh geometry={nodes.Curve002.geometry} material={materials['Sand new']} position={[31.04, 19.68, -215.83]} rotation={[Math.PI / 2, 0, -2.68]} scale={[-0.67, -0.34, 0.72]} />
+      <mesh geometry={nodes.Cube012.geometry} material={materials['Sand new']} position={[45.55, 14.35, -326.68]} rotation={[0, -1.57, 0]} scale={[7.87, 2.67, 12.54]} />
+      <mesh geometry={nodes.Cube013.geometry} material={materials['Sand new']} position={[45.55, 17.85, -326.53]} rotation={[0, -1.57, 0]} scale={[0.36, 6.21, 12.18]} />
+      <mesh geometry={nodes.Cube014.geometry} material={materials['Sand new']} position={[45.55, 23.83, -326.68]} rotation={[0, -1.57, 0]} scale={[8.03, 1.32, 13.83]} />
+      <mesh geometry={nodes.Cube015.geometry} material={materials['Sand new']} position={[45.12, 19.77, -326.68]} rotation={[0, -1.57, 0]} scale={[7.87, 2.76, 13.83]} />
+      <mesh geometry={nodes.Box001001.geometry} material={materials['Sand new']} position={[45.58, 25.09, -333.9]} rotation={[1.57, 0, 1.57]} scale={[0.29, -0.3, -0.3]} />
+      <mesh geometry={nodes.Box001002.geometry} material={materials['Sand new']} position={[45.55, 18.32, -317.68]} rotation={[-1.58, 0, 0]} scale={[0.29, 0.3, -0.3]} />
+      <mesh geometry={nodes.Cube009.geometry} material={materials['Sand new']} position={[48.46, 14.22, -276.78]} rotation={[Math.PI, -0.89, Math.PI]} scale={[7.39, 2.5, 9.86]} />
+      <mesh geometry={nodes.Cube011.geometry} material={materials['Sand new']} position={[48.43, 19.73, -277.13]} rotation={[Math.PI, -0.89, Math.PI]} scale={[7.53, 3.01, 9.95]} />
+      <mesh geometry={nodes.Plane001007.geometry} material={materials['Sand new']} position={[46.81, 23.27, -274.99]} rotation={[Math.PI, -0.89, Math.PI]} scale={[-0.04, 0.04, -0.04]} />
+      <mesh geometry={nodes.Plane001003.geometry} material={materials['Sand new']} position={[47.63, 23.27, -382.48]} rotation={[0, -1.04, 0]} scale={[-0.04, 0.04, -0.04]} />
+      <mesh geometry={nodes.Plane001008.geometry} material={materials['Sand new']} position={[42.49, 17.66, -269.83]} rotation={[0, -0.69, 0]} scale={[0.07, 0.06, 0.06]} />
+      <mesh geometry={nodes.Plane001001.geometry} material={materials['Sand new']} position={[50.99, 17.66, -376.65]} rotation={[0, 0.54, 0]} scale={[0.07, 0.06, 0.06]} />
+      <mesh geometry={nodes.Cube005.geometry} material={materials['Sand new']} position={[46.17, 19.73, -384.73]} rotation={[0, -1.04, 0]} scale={[7.53, 3.01, 9.95]} />
+      <mesh geometry={nodes.Cube007.geometry} material={materials['Sand new']} position={[46.5, 14.22, -384.64]} rotation={[0, -1.04, 0]} scale={[7.39, 2.5, 9.86]} />
     </group>
   )
 }
 
-useGLTF.preload('/assets/scenes/baobab_1.glb')
+useGLTF.preload('assets/scenes/baobab_1.glb')
