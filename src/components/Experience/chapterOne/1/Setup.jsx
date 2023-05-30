@@ -76,17 +76,29 @@ export const Setup = ({ setSpotIndex, setShowText, isVoiceOver }) => {
     })
     changeFocus(value)
   }
+
+  base sky pour keur gnialo
+    <Sky
+        sunPosition={[10000, 1, 10]}
+        azimuth={180}
+        rayleigh={20.0}
+        mieCoefficient={0.05}
+        mieDirectionalG={0.828}
+        inclination={100}
+      />
+
   */
   return (
     <>
       <Environment preset="park" />
       <CustomCamera />
       <Sky
-        sunPosition={[10, 1, 2]}
-        azimuth={180}
-        rayleigh={2.0}
+        sunPosition={[0, 13, 70]}
+        azimuth={90}
+        rayleigh={1.0}
         mieCoefficient={0.05}
         mieDirectionalG={0.828}
+        inclination={10}
       />
       <directionalLight
         intensity={variant === "default" ? 0.9 : 0.5}
