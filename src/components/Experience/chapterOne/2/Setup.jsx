@@ -64,9 +64,9 @@ export const Setup = ({ variant }) => {
       {variant === "default" ? (
         <>
           <Sky
-            sunPosition={[10, 1, 2]}
+            sunPosition={[40, 10, 40]}
             azimuth={180}
-            rayleigh={2.0}
+            rayleigh={10.0}
             mieCoefficient={0.05}
             mieDirectionalG={0.828}
           />
