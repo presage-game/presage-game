@@ -216,7 +216,7 @@ export const SceneTextBox = ({
         }
       })
     }
-  }, [spotIndex, textIndex, sceneIndex, introPlayed])
+  }, [spotIndex, textIndex, introPlayed])
 
   useEffect(() => {
     if (audioFile !== null && textIndex !== null) {
