@@ -5,15 +5,15 @@ import {
   Object3D,
   Quaternion,
   Vector3,
-  CameraHelper,
   BoxHelper,
   Raycaster,
   Vector2,
 } from "three"
-import { Box, useGLTF, OrthographicCamera, Gltf, useHelper } from "@react-three/drei"
+import { Box, useGLTF, OrthographicCamera, useHelper } from "@react-three/drei"
 import { useFrame } from "@react-three/fiber"
 import { Pathfinding, PathfindingHelper } from "three-pathfinding"
 import { Car } from "./Car"
+import { Model } from "./Model"
 
 export const Scene = ({
   goOnScene,
@@ -25,7 +25,6 @@ export const Scene = ({
 }) => {
   const { pinpoint: pinpointIndex, scene: sceneIndex } = useSelector((state) => state.map)
 
-  const map = useGLTF("assets/scenes/map1.glb")
   const navMesh = useGLTF("assets/scenes/navMesh1.glb")
   const camRef = useRef()
 
@@ -73,8 +72,6 @@ export const Scene = ({
     startSound.volume = 0.05
     startSound.play()
   }, [])
-
-  useEffect(() => console.log(map),[map])
 
   const click = (e, delta) => {
     let target = e.point
@@ -184,7 +181,7 @@ export const Scene = ({
   return (
     <>
       <Suspense fallback={null}>
-        <primitive object={map.scene} dispose={null} onPointerUp={() => setPointerDown(false)} />
+        <Model onPointerUp={() => setPointerDown(false)} />
         <primitive
           onPointerDown={() => setPointerDown(true)}
           object={navMesh.scene}
