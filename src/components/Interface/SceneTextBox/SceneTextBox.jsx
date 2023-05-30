@@ -69,14 +69,12 @@ export const SceneTextBox = ({
 
       if (!variant || typeof intro?.text === "string") {
         return intro?.text
-      }
-
-      if (variant === "a" && intro[0]?.text !== undefined) {
-        return intro[0]?.text
-      }
-
-      if (variant === "b" && intro[1]?.text !== undefined) {
-        return intro[1]?.text
+      } else {
+        if (variant === "a" && intro[0]?.text !== undefined) {
+          return intro[0]?.text
+        } else if (variant === "b" && intro[1]?.text !== undefined) {
+          return intro[1]?.text
+        }
       }
 
       return
@@ -91,10 +89,8 @@ export const SceneTextBox = ({
     } else {
       if (variant === "a" && typeof spot === "object") {
         return spot[0]?.text ? spot[0]?.text : null
-        // return spot[0]?.text
       } else if (variant === "b" && typeof spot === "object") {
         return spot[1]?.text ? spot[1]?.text : null
-        // return spot[1]?.text
       }
     }
   }
