@@ -16,10 +16,19 @@ export const CloudsEffect = ({ position, variant, numberOfClouds }) => {
       const y = Math.random() * 30
       const z = Math.random() * 200
 
+      const scalex = Math.random() * (0.05 - 0.03) + 0.03
+      const scaley = Math.random() * (0.05 - 0.03) + 0.03
+      const scalez = Math.random() * (0.02 - 0.01) + 0.01
+
       tab.push({
         x: x * xdir,
         y: y,
         z: z,
+        scale: {
+          x: scalex,
+          y: scaley,
+          z: scalez,
+        },
       })
     }
 
@@ -68,7 +77,7 @@ export const CloudsEffect = ({ position, variant, numberOfClouds }) => {
           <group
             key={i}
             rotation={[Math.PI / 2, 0, -0.09]}
-            scale={[0.03, 0.02, 0.01]}
+            scale={[cloud.scale.x, cloud.scale.y, cloud.scale.z]}
             position={[cloud.x, cloud.y, cloud.z]}
           >
             <mesh geometry={nodes.Mesh077.geometry} material={Materials.cloudMaterial} />
