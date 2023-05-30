@@ -157,6 +157,7 @@ export const SceneTextBox = ({
   useEffect(() => {
     if (!hasMoreIntroText()) {
       setIntroPlayed(true)
+      console.log("debug")
     }
   }, [textIndex])
 
@@ -207,8 +208,7 @@ export const SceneTextBox = ({
       const playPromise = currentAudio.play()
       if (playPromise !== undefined) {
         playPromise.catch((error) => {
-          // return
-          console.log(error)
+          return // TODO: catch the error, and show a message only if the error is not related to a missing file
         })
       }
     }
@@ -247,7 +247,7 @@ export const SceneTextBox = ({
                       key={`${textIndex}-${spotIndex}-${index}-${key}`}
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
-                      transition={{ duration: 0.25, delay: index * 0.1 }}
+                      transition={{ duration: 0.6, delay: index * 0.15 }}
                     >
                       {word}{" "}
                     </motion.span>
@@ -263,7 +263,7 @@ export const SceneTextBox = ({
                       key={`${textIndex}-${spotIndex}-${index}-${key}`}
                       initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.25, delay: index * 0.1 }}
+                      transition={{ duration: 0.6, delay: index * 0.15 }}
                     >
                       {word}{" "}
                     </motion.span>
@@ -279,7 +279,7 @@ export const SceneTextBox = ({
                       key={`${textIndex}-${spotIndex}-${index}-${key}`}
                       initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.25, delay: index * 0.1 }}
+                      transition={{ duration: 0.6, delay: index * 0.15 }}
                     >
                       {word}{" "}
                     </motion.span>
