@@ -12,6 +12,7 @@ export const Fence = ({ fenceFocused, setFenceFocused, position, Materials }) =>
       onPointerLeave={() => setIsHovered(false)}
       onClick={() => setFenceFocused(!fenceFocused)}
       position={position}
+      dispose={null}
     >
       <Plane args={[12, 3]} position={[-18.7, 13, -109]} rotation={[0, -Math.PI / 6, 0]}>
         <meshBasicMaterial transparent opacity={0} />

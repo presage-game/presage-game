@@ -54,7 +54,7 @@ export const WindEffect = () => {
 
   return (
     <>
-      <group ref={lineRef}>
+      <group ref={lineRef} dispose={null}>
         {config.linePositions.map((position, index) => (
           <Line
             key={index}

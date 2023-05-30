@@ -45,8 +45,8 @@ export const Setup = () => {
 
   return (
     <>
-      <directionalLight intensity={1} />
-      <ambientLight intensity={0.2} />
+      <directionalLight intensity={1} dispose={null} />
+      <ambientLight intensity={0.2} dispose={null} />
       <Scene
         goOnScene={goOnScene}
         goOnPinpoint={goOnPinpoint}

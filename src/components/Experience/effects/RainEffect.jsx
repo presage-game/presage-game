@@ -52,7 +52,7 @@ export const RainEffect = () => {
 
   return (
     <>
-      <group ref={lineRef}>
+      <group ref={lineRef} dispose={null}>
         <points
           material={new PointsMaterial({ transparent: true, sizeAttenuation: true, size: 0.5, alphaTest: 0.8, color: 0x000000, map: disc })}
           geometry={rainGeometry}

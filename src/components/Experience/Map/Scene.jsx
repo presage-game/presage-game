@@ -1,19 +1,19 @@
-import React, { useRef, useMemo, useEffect, useState } from "react"
+import React, { useRef, useMemo, useEffect, useState, Suspense } from "react"
 import { useSelector } from "react-redux"
 import {
   Box3,
   Object3D,
   Quaternion,
   Vector3,
-  CameraHelper,
   BoxHelper,
   Raycaster,
   Vector2,
 } from "three"
-import { Box, useGLTF, OrthographicCamera, Gltf, useHelper } from "@react-three/drei"
+import { Box, useGLTF, OrthographicCamera, useHelper } from "@react-three/drei"
 import { useFrame } from "@react-three/fiber"
 import { Pathfinding, PathfindingHelper } from "three-pathfinding"
 import { Car } from "./Car"
+import { Model } from "./Model"
 
 export const Scene = ({
   goOnScene,
@@ -25,7 +25,6 @@ export const Scene = ({
 }) => {
   const { pinpoint: pinpointIndex, scene: sceneIndex } = useSelector((state) => state.map)
 
-  const map = useGLTF("assets/scenes/map1.glb")
   const navMesh = useGLTF("assets/scenes/navMesh1.glb")
   const camRef = useRef()
 
@@ -181,14 +180,16 @@ export const Scene = ({
 
   return (
     <>
-      <primitive object={map.scene} dispose={null} onPointerUp={() => setPointerDown(false)} />
-      <primitive
-        onPointerDown={() => setPointerDown(true)}
-        object={navMesh.scene}
-        dispose={null}
-        visible={false}
-      />
-      <group ref={voitureGrpRef}>
+      <Suspense fallback={null}>
+        <Model onPointerUp={() => setPointerDown(false)} />
+        <primitive
+          onPointerDown={() => setPointerDown(true)}
+          object={navMesh.scene}
+          dispose={null}
+          visible={false}
+        />
+      </Suspense>
+      <group ref={voitureGrpRef} dispose={null}>
         <Car animationsName={pointerDown ? "Run" : null} />
       </group>
       <Box
@@ -196,18 +197,21 @@ export const Scene = ({
         scene={0}
         args={[5, 1, 5]}
         position={[-13, 0.1, -13]}
+        dispose={null}
       />
       <Box
         ref={(el) => (cubeRef.current[1] = el)}
         scene={1}
         args={[5, 1, 5]}
         position={[10, 0.1, -80]}
+        dispose={null}
       />
       <Box
         ref={(el) => (cubeRef.current[2] = el)}
         scene={2}
         args={[5, 1, 5]}
         position={[15, 0.1, -55]}
+        dispose={null}
       />
       <Box
         ref={(el) => (smallCubeRef.current[0] = el)}
@@ -215,6 +219,7 @@ export const Scene = ({
         args={[5, 1, 5]}
         position={[-7, 0.1, -3]}
         material-color="hotpink"
+        dispose={null}
       />
       <Box
         ref={(el) => (smallCubeRef.current[1] = el)}
@@ -222,6 +227,7 @@ export const Scene = ({
         args={[5, 1, 5]}
         position={[10, 0.1, -15]}
         material-color="hotpink"
+        dispose={null}
       />
       <primitive object={pivot} dispose={null} />
       <primitive object={pathfindinghelper} dispose={null} />
@@ -232,6 +238,7 @@ export const Scene = ({
         zoom={20}
         near={-50}
         far={100}
+        dispose={null}
       />
     </>
   )
