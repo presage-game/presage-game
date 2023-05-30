@@ -24,7 +24,7 @@ export const SceneTextBox = ({
   const [key, setKey] = useState(0)
 
   // TODO: Set this state from Supabase data
-  const [variant, setVariant] = useState("b")
+  const [variant, setVariant] = useState("a")
 
   /* Text and options */
   const getTextEmitter = () => {
@@ -157,18 +157,16 @@ export const SceneTextBox = ({
   useEffect(() => {
     if (!hasMoreIntroText()) {
       setIntroPlayed(true)
-      console.log("debug")
     }
   }, [textIndex])
 
-  const { isMuted, volume } = useSelector((state) => state.audio)
+  const { isMuted } = useSelector((state) => state.audio)
 
   const currentAudio = new Audio()
-  currentAudio.volume = 0.75 * volume
+  currentAudio.volume = 0.75
 
   useEffect(() => {
     currentAudio.muted = isMuted
-    currentAudio.volume = 0.75 * volume
   }, [isMuted])
 
   const getAudioFile = (filePath) =>
@@ -180,19 +178,43 @@ export const SceneTextBox = ({
 
   useEffect(() => {
     if (spotIndex === null && !introPlayed && getIntroText()) {
-      getAudioFile(`audios/scenes/${sceneIndex}/voiceover/intro-${textIndex}.mp3`).then((file) => {
+      const intro = scriptData[sceneIndex]?.voiceover[textIndex]
+      let audioPath
+
+      if (!variant || typeof intro?.text === "string") {
+        audioPath = `audios/scenes/${sceneIndex}/voiceover/intro-${textIndex}.mp3`
+      } else {
+        if (variant === "a" && intro[0]?.text !== undefined) {
+          audioPath = `audios/scenes/${sceneIndex}/voiceover/intro-${textIndex}-a.mp3`
+        } else if (variant === "b" && intro[1]?.text !== undefined) {
+          audioPath = `audios/scenes/${sceneIndex}/voiceover/intro-${textIndex}-b.mp3`
+        }
+      }
+
+      getAudioFile(audioPath).then((file) => {
         if (file) {
           setAudioFile(file)
         }
       })
     } else if (spotIndex !== null && getSpotText()) {
-      getAudioFile(`audios/scenes/${sceneIndex}/voiceover/${spotIndex}-${textIndex}.mp3`).then(
-        (file) => {
-          if (file) {
-            setAudioFile(file)
-          }
+      const spot = scriptData[sceneIndex]?.spots[spotIndex]?.spotVoiceover[textIndex]
+      let audioPath
+
+      if (!variant || typeof spot?.text === "string") {
+        audioPath = `audios/scenes/${sceneIndex}/voiceover/${spotIndex}-${textIndex}.mp3`
+      } else {
+        if (variant === "a" && typeof spot === "object") {
+          audioPath = `audios/scenes/${sceneIndex}/voiceover/${spotIndex}-${textIndex}-a.mp3`
+        } else if (variant === "b" && typeof spot === "object") {
+          audioPath = `audios/scenes/${sceneIndex}/voiceover/${spotIndex}-${textIndex}-b.mp3`
         }
-      )
+      }
+
+      getAudioFile(audioPath).then((file) => {
+        if (file) {
+          setAudioFile(file)
+        }
+      })
     }
   }, [spotIndex, textIndex, sceneIndex, introPlayed])
 
