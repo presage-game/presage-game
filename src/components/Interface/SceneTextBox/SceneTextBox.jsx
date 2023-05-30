@@ -132,9 +132,10 @@ export const SceneTextBox = ({
   useEffect(() => {
     if (spotIndex !== null) {
       setTextIndex(0)
-      setIsVoiceOver(false)
       setShowText(true)
       setShowOptions(true)
+      setIntroPlayed(true)
+      setIsVoiceOver(false)
     } else if (spotIndex === null && introPlayed) {
       setTextIndex(null)
     }

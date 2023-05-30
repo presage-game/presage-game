@@ -41,7 +41,7 @@
         "label": "Carte routière",
         "spotVoiceover": [
           {
-            "text": "Une carte de la région recouvre le panneau de gauche. Elle s’orne de pastilles de couleur rouge décrivant des curiosités ; lesquelles se voient perforées d’un tracé jaune, qui s’étend sur la toute la hauteur du support.",
+            "text": "Une carte de la région recouvre le panneau de gauche. Elle s’orne de pastilles de couleur rouge décrivant des curiosités ; lesquelles se voient perforées d’un tracé jaune, qui s’étend sur toute la hauteur du support.",
             "emitter": "narrator"
           },
           {
