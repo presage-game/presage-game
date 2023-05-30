@@ -86,7 +86,7 @@ gl_FragColor.a*=vBlend;
 
   let wind_x = 0
   let wind_y = -0.04
-  let wind_z = -0.08
+  let wind_z = -0.06
 
   let particles_smoke_a = []
 
@@ -97,14 +97,14 @@ gl_FragColor.a*=vBlend;
     radius_1: 0.02,
     radius_2: 0.4,
     radius_height: 5,
-    add_time: 0.01,
+    add_time: 0.005,
     elapsed: 0,
     live_time_from: 0.1,
     live_time_to: 0.2,
-    opacity_decrease: 0.004,
+    opacity_decrease: 0.03,
     rotation_from: 2,
     rotation_to: 3,
-    speed_from: 0.04,
+    speed_from: 0.03,
     speed_to: 0.05,
     scale_from: 0.1,
     scale_increase: 0.003,

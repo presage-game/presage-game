@@ -1,15 +1,7 @@
 import React, { useRef, useMemo, useEffect, useState, Suspense } from "react"
 import { useSelector } from "react-redux"
-import {
-  Box3,
-  Object3D,
-  Quaternion,
-  Vector3,
-  BoxHelper,
-  Raycaster,
-  Vector2,
-} from "three"
-import { Box, useGLTF, OrthographicCamera, useHelper } from "@react-three/drei"
+import { Box3, Object3D, Quaternion, Vector3, BoxHelper, Raycaster, Vector2 } from "three"
+import { Box, useGLTF, OrthographicCamera, Gltf, useHelper } from "@react-three/drei"
 import { useFrame } from "@react-three/fiber"
 import { Pathfinding, PathfindingHelper } from "three-pathfinding"
 import { Car } from "./Car"
@@ -31,6 +23,7 @@ export const Scene = ({
   const [startSound] = useState(() => new Audio("assets/vehicules/truck/start.mp3"))
 
   const [pointerDown, setPointerDown] = useState(false)
+  let speed = 1
 
   const voitureGrpRef = useRef(null)
   const cubeRef = useRef([])
@@ -40,7 +33,7 @@ export const Scene = ({
   const pathfinding = useMemo(() => new Pathfinding(), [])
   const pathfindinghelper = useMemo(() => new PathfindingHelper(), [])
   const ZONE = "level1"
-  const SPEED = 10
+  const MAX_SPEED = 5
   let navPath = null
 
   navMesh.scene.traverse((node) => {
@@ -64,7 +57,7 @@ export const Scene = ({
   }
 
   useEffect(() => {
-    camRef.current.lookAt(5, 0, 0)
+    camRef.current.lookAt(0, 0, 0)
     followCam.add(camRef.current)
     pivot.add(followCam)
     resetScene()
@@ -89,6 +82,7 @@ export const Scene = ({
       pathfindinghelper.setTargetPosition(target)
       pathfindinghelper.setPath(navPath)
     }
+
     move(delta)
   }
 
@@ -99,18 +93,23 @@ export const Scene = ({
     let targetPosition = navPath[0]
     const distance = targetPosition.clone().sub(voitureGrpRef.current.position)
 
-    if (distance.lengthSq() > 0.05 * 0.05) {
+    if (distance.lengthSq() > 0.5) {
+      if (speed < MAX_SPEED) {
+        speed += 0.05
+      }
+
       distance.normalize()
       // Move player to target
-      voitureGrpRef.current.position.add(distance.multiplyScalar(delta * SPEED))
-      // do a slowly turn to the target
+      voitureGrpRef.current.position.add(distance.multiplyScalar(delta * speed))
+      // do a slowly turn to the target direction
       const targetRotation = new Quaternion().setFromUnitVectors(
         new Vector3(0, 0, 1),
-        distance.clone().normalize()
+        new Vector3(distance.x, 0, distance.z).normalize()
       )
-      voitureGrpRef.current.quaternion.slerp(targetRotation, delta * SPEED)
+      voitureGrpRef.current.quaternion.slerp(targetRotation, delta * speed)
+
       // Move camera to target
-      pivot.position.lerp(voitureGrpRef.current.position, delta * SPEED)
+      pivot.position.lerp(voitureGrpRef.current.position, delta * speed)
     } else {
       // Remove node from the path we calculated
       navPath.shift()
@@ -176,7 +175,7 @@ export const Scene = ({
     }
   })
 
-  useHelper(voitureGrpRef, BoxHelper, "cyan")
+  useHelper(voitureGrpRef, BoxHelper, "transparent")
 
   return (
     <>
@@ -230,12 +229,12 @@ export const Scene = ({
         dispose={null}
       />
       <primitive object={pivot} dispose={null} />
-      <primitive object={pathfindinghelper} dispose={null} />
+      {/* <primitive object={pathfindinghelper} dispose={null} /> */}
       <OrthographicCamera
         makeDefault
         ref={camRef}
-        position={[15, 15, 15]}
-        zoom={20}
+        position={[-7, 5, 15]}
+        zoom={150}
         near={-50}
         far={100}
         dispose={null}
