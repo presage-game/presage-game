@@ -215,6 +215,7 @@ const Sand = ({ position }) => {
 
   return (
     <mesh
+      dispose={null}
       ref={meshRef}
       position={position}
       geometry={new BoxGeometry(10, 5, 10)}

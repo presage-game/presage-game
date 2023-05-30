@@ -72,7 +72,7 @@ export const CloudsEffect = ({ position, variant, numberOfClouds }) => {
 
   return (
     <>
-      <group position={position} ref={cloudsRef}>
+      <group position={position} ref={cloudsRef} dispose={null}>
         {cloudsPositions.map((cloud, i) => (
           <group
             key={i}

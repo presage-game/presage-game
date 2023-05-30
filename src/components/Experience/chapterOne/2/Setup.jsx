@@ -59,6 +59,7 @@ export const Setup = ({ variant }) => {
         decay={2}
         position={[-50, 50, 50]}
         rotation={[-Math.PI / 2, 0, 0]}
+        dispose={null}
       />
       <GoToMap args={[5, 5, 5]} position={[40, -2.5, -90]} />
       {variant === "default" ? (
@@ -77,7 +78,7 @@ export const Setup = ({ variant }) => {
           <color attach={"background"} args={["#be915b"]} />
           <fog attach={"fog"} args={["#be915b", 1, 50]} />
           <TempestEffect />
-          <ambientLight color={"#be915b"} intensity={0.5} />
+          <ambientLight color={"#be915b"} intensity={0.5} dispose={null} />
         </>
       )}
       <Scene
