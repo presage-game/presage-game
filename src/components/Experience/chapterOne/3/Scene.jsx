@@ -3,7 +3,7 @@ import { Model } from "./Model"
 export const Scene = () => {
   return (
     <>
-      <Model position={[10, -15, 92]} />
+      <Model position={[14, -15, 92]} />
     </>
   )
 }
