@@ -4,9 +4,8 @@ Command: npx gltfjsx@6.1.10 baobab.glb --transform
 */
 
 import React, { useState, useEffect } from "react"
-import { Plane, useGLTF } from "@react-three/drei"
+import { useGLTF } from "@react-three/drei"
 import { getMaterials } from "@/helpers/materials/Materials"
-import { DoubleSide, MeshBasicMaterial } from "three"
 
 export function Model(props) {
   const { nodes, materials } = useGLTF("assets/scenes/baobab_1.glb")
@@ -497,9 +496,9 @@ export function Model(props) {
       </group>
       <mesh
         geometry={nodes.BezierCurve.geometry}
-        material={new MeshBasicMaterial({ color: "yellow", side: DoubleSide })}
-        position={[8.48, 12.2, -169.44]}
-        scale={7.84}
+        material={Materials.roadMaterials.line}
+        position={[8.28, 12.34, -169.44]}
+        scale={[7.84, 2.84, 7.84]}
       />
       <group position={[-29.7, 12.66, -119.23]} rotation={[0, 0.51, 0]} scale={1.5}>
         <mesh geometry={nodes.Circle001.geometry} material={Materials.grassMaterial} />
@@ -1404,7 +1403,7 @@ export function Model(props) {
         rotation={[0, -1.57, 0]}
         scale={[8.03, 1.32, 13.83]}
       >
-        <mesh geometry={nodes.Cube014_1.geometry} material={Materials.houseMaterial} />
+        <mesh geometry={nodes.Cube014_1.geometry} material={Materials.houseMaterials.main} />
         <mesh geometry={nodes.Cube014_2.geometry} material={Materials.outlineMaterial} />
       </group>
       <group
@@ -1421,11 +1420,11 @@ export function Model(props) {
         rotation={[1.57, 0, 1.57]}
         scale={[0.29, -0.3, -0.3]}
       >
-        <mesh geometry={nodes.Mesh039.geometry} material={Materials.houseMaterial} />
+        <mesh geometry={nodes.Mesh039.geometry} material={Materials.houseMaterials.main} />
         <mesh geometry={nodes.Mesh039_1.geometry} material={Materials.outlineMaterial} />
       </group>
       <group position={[45.55, 18.32, -317.68]} rotation={[-1.58, 0, 0]} scale={[0.29, 0.3, -0.3]}>
-        <mesh geometry={nodes.Mesh041.geometry} material={Materials.houseMaterial} />
+        <mesh geometry={nodes.Mesh041.geometry} material={Materials.houseMaterials.main} />
         <mesh geometry={nodes.Mesh041_1.geometry} material={Materials.outlineMaterial} />
       </group>
       <group
@@ -1437,8 +1436,12 @@ export function Model(props) {
         <mesh geometry={nodes.Cube021.geometry} material={Materials.houseMaterials.backwall} />
         <mesh geometry={nodes.Cube021_1.geometry} material={Materials.outlineMaterial} />
       </group>
-      <mesh position={[56.442, 270.63, 14.278]} rotation={[Math.PI, -0.89, Math.PI]} material={Materials.outlineMaterial}>
-        <planeGeometry args={[100,100]} />
+      <mesh
+        position={[56.442, 270.63, 14.278]}
+        rotation={[Math.PI, -0.89, Math.PI]}
+        material={Materials.outlineMaterial}
+      >
+        <planeGeometry args={[100, 100]} />
       </mesh>
       <group
         position={[48.43, 19.73, -277.13]}
@@ -1454,15 +1457,15 @@ export function Model(props) {
         rotation={[Math.PI, -0.89, Math.PI]}
         scale={[-0.04, 0.04, -0.04]}
       >
-        <mesh geometry={nodes.Mesh265.geometry} material={Materials.houseMaterial} />
+        <mesh geometry={nodes.Mesh265.geometry} material={Materials.houseMaterials.main} />
         <mesh geometry={nodes.Mesh265_1.geometry} material={Materials.outlineMaterial} />
       </group>
       <group position={[42.49, 17.66, -269.83]} rotation={[0, -0.69, 0]} scale={[0.07, 0.06, 0.06]}>
-        <mesh geometry={nodes.Mesh266.geometry} material={Materials.houseMaterial} />
+        <mesh geometry={nodes.Mesh266.geometry} material={Materials.houseMaterials.main} />
         <mesh geometry={nodes.Mesh266_1.geometry} material={Materials.outlineMaterial} />
       </group>
       <group position={[50.99, 17.66, -376.65]} rotation={[0, 0.54, 0]} scale={[0.07, 0.06, 0.06]}>
-        <mesh geometry={nodes.Mesh269.geometry} material={Materials.houseMaterial} />
+        <mesh geometry={nodes.Mesh269.geometry} material={Materials.houseMaterials.main} />
         <mesh geometry={nodes.Mesh269_1.geometry} material={Materials.outlineMaterial} />
       </group>
       <group position={[46.17, 19.73, -384.73]} rotation={[0, -1.04, 0]} scale={[7.53, 3.01, 9.95]}>

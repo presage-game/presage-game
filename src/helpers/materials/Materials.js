@@ -12,12 +12,16 @@ import {
 const defaultMaterials = {
   floorMaterial: "#F6B791",
   roadMaterial: "#2D2D2C",
+  road: {
+    main: "#2D2D2C",
+    line: "#E4C629",
+  },
   fenceMaterial: "#757271",
   concreteMaterial: "#988FA1",
   houseMaterial: "#8D6363",
   house: {
     wall: "#D4C1AA",
-    main: "#8D6363"
+    main: "#8D6363",
   },
   leafMaterial: "#4F7552",
   grassMaterial: "#626F52",
@@ -38,12 +42,16 @@ const defaultMaterials = {
 const variantMaterials = {
   floorMaterial: "#918E8D",
   roadMaterial: "#2D2D2C",
+  road: {
+    main: "#2D2D2C",
+    line: "#E4C629",
+  },
   fenceMaterial: "#757271",
   concreteMaterial: "#988FA1",
   houseMaterial: "#8D6363",
   house: {
     wall: "#D4C1AA",
-    main: "#8D6363"
+    main: "#8D6363",
   },
   leafMaterial: "#D8BF66",
   grassMaterial: "#626F52",
@@ -97,6 +105,16 @@ export const getMaterials = async (variant) =>
       side: DoubleSide,
     })
 
+    const roadMaterials = {
+      main: new MeshStandardMaterial({
+        color: MaterialsColor.road.main,
+        side: DoubleSide,
+      }),
+      line: new MeshBasicMaterial({
+        color: MaterialsColor.road.line,
+      }),
+    }
+
     const fenceMaterial = new MeshToonMaterial({
       color: MaterialsColor.fenceMaterial,
       gradientMap: toonFiveTone,
@@ -113,19 +131,19 @@ export const getMaterials = async (variant) =>
     })
 
     const houseMaterials = {
-      wall : new MeshToonMaterial({
+      wall: new MeshToonMaterial({
         color: MaterialsColor.house.wall,
-        gradientMap: toonFiveTone
+        gradientMap: toonFiveTone,
       }),
       backwall: new MeshToonMaterial({
         color: "#AB8D72",
         gradientMap: toonFiveTone,
-        side: BackSide
+        side: BackSide,
       }),
       main: new MeshToonMaterial({
         color: MaterialsColor.house.main,
-        gradientMap: toonFiveTone
-      })
+        gradientMap: toonFiveTone,
+      }),
     }
 
     const leafMaterial = new MeshToonMaterial({
@@ -193,13 +211,14 @@ export const getMaterials = async (variant) =>
       }),
       jerrycan: new MeshToonMaterial({
         color: "#B70F0F",
-        gradientMap: toonThreeTone
-      })
+        gradientMap: toonThreeTone,
+      }),
     }
 
     return {
       floorMaterial,
       roadMaterial,
+      roadMaterials,
       fenceMaterial,
       concreteMaterial,
       houseMaterial,
