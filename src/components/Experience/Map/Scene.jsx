@@ -1,7 +1,7 @@
-import React, { useRef, useMemo, useEffect, useState, Suspense } from "react"
+import React, { useRef, useMemo, useEffect, useState } from "react"
 import { useSelector } from "react-redux"
 import { Box3, Object3D, Quaternion, Vector3, Raycaster, Vector2 } from "three"
-import { Box, useGLTF, OrthographicCamera} from "@react-three/drei"
+import { Box, useGLTF, OrthographicCamera } from "@react-three/drei"
 import { useFrame } from "@react-three/fiber"
 import { Pathfinding, PathfindingHelper } from "three-pathfinding"
 import { Car } from "./Car"
@@ -177,15 +177,13 @@ export const Scene = ({
 
   return (
     <>
-      <Suspense fallback={null}>
-        <Model onPointerUp={() => setPointerDown(false)} />
-        <primitive
-          onPointerDown={() => setPointerDown(true)}
-          object={navMesh.scene}
-          dispose={null}
-          visible={false}
-        />
-      </Suspense>
+      <Model onPointerUp={() => setPointerDown(false)} />
+      <primitive
+        onPointerDown={() => setPointerDown(true)}
+        object={navMesh.scene}
+        dispose={null}
+        visible={false}
+      />
       <group ref={voitureGrpRef} dispose={null}>
         <Car animationsName={pointerDown ? "Run" : null} />
       </group>
@@ -207,7 +205,7 @@ export const Scene = ({
         ref={(el) => (cubeRef.current[2] = el)}
         scene={2}
         args={[5, 1, 5]}
-        position={[15, 0.1, -55]}
+        position={[20, 0.1, -35]}
         dispose={null}
       />
       <Box
