@@ -8,8 +8,14 @@ export const Car = ({ animationsName = "Run" }) => {
   const [turnSound] = useState(() => new Audio("assets/vehicules/truck/turn.mp3"))
   const [runSound] = useState(() => new Audio("assets/vehicules/truck/run.mp3"))
 
-  const engine = animations.actions["Car engine"]
-  engine.reset().fadeIn(0.5).play()
+  useEffect(() => {
+    const engine = animations.actions["Car engine"]
+    engine.reset().fadeIn(0.5).play()
+
+    return () => {
+      turnSound.volume = 0
+    }
+  }, [])
 
   useEffect(() => {
     if (animationsName) {
@@ -57,14 +63,13 @@ export const Car = ({ animationsName = "Run" }) => {
     <group>
       <primitive
         object={car.scene}
-        scale={0.007}
+        scale={0.0012}
         rotation={[0, -Math.PI / 2, 0]}
-        position={[0, 0.2, 0]}
+        position={[0, 0.08, 0]}
       />
       {animationsName === "Run" && (
         <>
-          <Smoke position={{ x: -1, y: 0, z: 0.8 }} />
-          <Smoke position={{ x: 1, y: 0, z: 0.8 }} />
+          <Smoke position={{ x: -0.15, y: 0, z: 0.25 }} /> <Smoke position={{ x: 0.15, y: 0, z: 0.25 }} />
         </>
       )}
     </group>
