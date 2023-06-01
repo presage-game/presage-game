@@ -1,4 +1,4 @@
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { Scene } from "./Scene"
 import {
@@ -9,8 +9,12 @@ import {
   intersectScene,
   intersectPinpoint,
 } from "@/store/reducers/mapReducer"
+import { button, useControls } from "leva"
+import { toggleMap } from "@/store/reducers/uiReducer"
 
 export const Setup = () => {
+  const [sceneNumber, setSceneNumber] = useState(0)
+  const [changeSceneState, setChangeSceneState] = useState(false)
   const dispatch = useDispatch()
 
   const goOnScene = (number) => {
@@ -36,6 +40,29 @@ export const Setup = () => {
   const intersectPinpointFunction = (intersect) => {
     dispatch(intersectPinpoint(intersect))
   }
+
+  const gui = useControls({
+    RegionEntranceOne: button(() => {
+      setSceneNumber(0)
+      setChangeSceneState(true)
+    }),
+    MegalithicCircles: button(() => {
+      setSceneNumber(1)
+      setChangeSceneState(true)
+    }),
+    BaobabOne: button(() => {
+      setSceneNumber(2)
+      setChangeSceneState(true)
+    })
+  })
+
+  useEffect(() => {
+    if (changeSceneState === true) {
+      console.log("yes")
+      goOnScene(sceneNumber)
+      dispatch(toggleMap())
+    }
+  }, [changeSceneState])
 
   useEffect(() => {
     return () => {
