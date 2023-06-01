@@ -3,8 +3,8 @@ import { useSelector, useDispatch } from "react-redux"
 import { toggleBlackBars, toggleMap } from "@/store/reducers/uiReducer"
 import { toggleMute } from "@/store/reducers/audioReducer"
 
-import scriptData from "@/assets/data/chapterOne/scenes.json"
-import pinpointsData from "@/assets/data/chapterOne/pinpoints.json"
+import scriptData from "@/assets/data/scenes.json"
+import pinpointsData from "@/assets/data/pinpoints.json"
 
 import { SceneTextBox } from "./SceneTextBox/SceneTextBox"
 import { MapTextBox } from "./MapTextBox/MapTextBox"

@@ -23,19 +23,77 @@ export const SceneTextBox = ({
   const [optionIndex, setOptionIndex] = useState(0)
   const [key, setKey] = useState(0)
 
-  /* Text and options */
-  const getTextEmitter = () =>
-    !isVoiceOver
-      ? scriptData[sceneIndex]?.spots[spotIndex]?.spotVoiceover[textIndex]?.emitter
-      : scriptData[sceneIndex]?.voiceover[textIndex]?.emitter
+  // TODO: Set this state from Supabase data
+  const [variant, setVariant] = useState("b")
 
+  /* Text and options */
+  const getTextEmitter = () => {
+    if (!isVoiceOver) {
+      const spot = scriptData[sceneIndex]?.spots[spotIndex]?.spotVoiceover[textIndex]
+
+      if (!variant || typeof spot?.text === "string") {
+        return spot?.emitter
+      } else {
+        if (variant === "a" && spot[0]?.emitter !== undefined) {
+          return spot[0]?.emitter
+        } else if (variant === "b" && spot[1]?.emitter !== undefined) {
+          return spot[1]?.emitter
+        }
+      }
+
+      return
+    } else {
+      const intro = scriptData[sceneIndex]?.voiceover[textIndex]
+
+      if (!variant || typeof intro?.text === "string") {
+        return intro?.emitter
+      } else {
+        if (variant === "a" && intro[0]?.emitter !== undefined) {
+          return intro[0]?.emitter
+        } else if (variant === "b" && intro[1]?.emitter !== undefined) {
+          return intro[1]?.emitter
+        }
+      }
+    }
+  }
+
+  // Get label
   const getTextLabel = () => (!isVoiceOver ? scriptData[sceneIndex].spots[spotIndex]?.label : null)
 
-  const getIntroText = () =>
-    scriptData[sceneIndex]?.voiceover && scriptData[sceneIndex]?.voiceover[textIndex]?.text
+  // Get text
+  const getIntroText = () => {
+    if (scriptData[sceneIndex]?.voiceover) {
+      const intro = scriptData[sceneIndex]?.voiceover[textIndex]
 
-  const getSpotText = () => scriptData[sceneIndex]?.spots[spotIndex]?.spotVoiceover[textIndex]?.text
+      if (!variant || typeof intro?.text === "string") {
+        return intro?.text
+      } else {
+        if (variant === "a" && intro[0]?.text !== undefined) {
+          return intro[0]?.text
+        } else if (variant === "b" && intro[1]?.text !== undefined) {
+          return intro[1]?.text
+        }
+      }
 
+      return
+    }
+  }
+
+  const getSpotText = () => {
+    const spot = scriptData[sceneIndex]?.spots[spotIndex]?.spotVoiceover[textIndex]
+
+    if (!variant || typeof spot?.text === "string") {
+      return spot?.text
+    } else {
+      if (variant === "a" && typeof spot === "object") {
+        return spot[0]?.text ? spot[0]?.text : null
+      } else if (variant === "b" && typeof spot === "object") {
+        return spot[1]?.text ? spot[1]?.text : null
+      }
+    }
+  }
+
+  // Get options
   const hasMore = () => (isVoiceOver ? hasMoreIntroText() : hasMoreSpotText())
 
   const hasMoreIntroText = () => scriptData[sceneIndex]?.voiceover?.length > textIndex + 1
@@ -72,9 +130,10 @@ export const SceneTextBox = ({
   useEffect(() => {
     if (spotIndex !== null) {
       setTextIndex(0)
-      setIsVoiceOver(false)
       setShowText(true)
       setShowOptions(true)
+      setIntroPlayed(true)
+      setIsVoiceOver(false)
     } else if (spotIndex === null && introPlayed) {
       setTextIndex(null)
     }
@@ -100,14 +159,13 @@ export const SceneTextBox = ({
     }
   }, [textIndex])
 
-  const { isMuted, volume } = useSelector((state) => state.audio)
+  const { isMuted } = useSelector((state) => state.audio)
 
   const currentAudio = new Audio()
-  currentAudio.volume = 0.75 * volume
+  currentAudio.volume = 0.75
 
   useEffect(() => {
     currentAudio.muted = isMuted
-    currentAudio.volume = 0.75 * volume
   }, [isMuted])
 
   const getAudioFile = (filePath) =>
@@ -119,21 +177,45 @@ export const SceneTextBox = ({
 
   useEffect(() => {
     if (spotIndex === null && !introPlayed && getIntroText()) {
-      getAudioFile(`audios/scenes/${sceneIndex}/voiceover/intro-${textIndex}.mp3`).then((file) => {
+      const intro = scriptData[sceneIndex]?.voiceover[textIndex]
+      let audioPath
+
+      if (!variant || typeof intro?.text === "string") {
+        audioPath = `audios/scenes/${sceneIndex}/voiceover/intro-${textIndex}.mp3`
+      } else {
+        if (variant === "a" && intro[0]?.text !== undefined) {
+          audioPath = `audios/scenes/${sceneIndex}/voiceover/intro-${textIndex}-a.mp3`
+        } else if (variant === "b" && intro[1]?.text !== undefined) {
+          audioPath = `audios/scenes/${sceneIndex}/voiceover/intro-${textIndex}-b.mp3`
+        }
+      }
+
+      getAudioFile(audioPath).then((file) => {
         if (file) {
           setAudioFile(file)
         }
       })
     } else if (spotIndex !== null && getSpotText()) {
-      getAudioFile(`audios/scenes/${sceneIndex}/voiceover/${spotIndex}-${textIndex}.mp3`).then(
-        (file) => {
-          if (file) {
-            setAudioFile(file)
-          }
+      const spot = scriptData[sceneIndex]?.spots[spotIndex]?.spotVoiceover[textIndex]
+      let audioPath
+
+      if (!variant || typeof spot?.text === "string") {
+        audioPath = `audios/scenes/${sceneIndex}/voiceover/${spotIndex}-${textIndex}.mp3`
+      } else {
+        if (variant === "a" && typeof spot === "object") {
+          audioPath = `audios/scenes/${sceneIndex}/voiceover/${spotIndex}-${textIndex}-a.mp3`
+        } else if (variant === "b" && typeof spot === "object") {
+          audioPath = `audios/scenes/${sceneIndex}/voiceover/${spotIndex}-${textIndex}-b.mp3`
         }
-      )
+      }
+
+      getAudioFile(audioPath).then((file) => {
+        if (file) {
+          setAudioFile(file)
+        }
+      })
     }
-  }, [spotIndex, textIndex, sceneIndex, introPlayed])
+  }, [spotIndex, textIndex, introPlayed])
 
   useEffect(() => {
     if (audioFile !== null && textIndex !== null) {
@@ -147,7 +229,7 @@ export const SceneTextBox = ({
       const playPromise = currentAudio.play()
       if (playPromise !== undefined) {
         playPromise.catch((error) => {
-          return
+          return // TODO: catch the error, and show a message only if the error is not related to a missing file
         })
       }
     }
@@ -177,7 +259,6 @@ export const SceneTextBox = ({
             {getTextEmitter() === "npc" && (
               <h2 className="narrator narrator--npc">{getTextLabel()}</h2>
             )}
-
             {isVoiceOver && getIntroText() && (
               <p className="content">
                 {getIntroText()
@@ -187,7 +268,7 @@ export const SceneTextBox = ({
                       key={`${textIndex}-${spotIndex}-${index}-${key}`}
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
-                      transition={{ duration: 0.25, delay: index * 0.1 }}
+                      transition={{ duration: 0.6, delay: index * 0.1 }}
                     >
                       {word}{" "}
                     </motion.span>
@@ -203,7 +284,7 @@ export const SceneTextBox = ({
                       key={`${textIndex}-${spotIndex}-${index}-${key}`}
                       initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.25, delay: index * 0.1 }}
+                      transition={{ duration: 0.6, delay: index * 0.1 }}
                     >
                       {word}{" "}
                     </motion.span>
@@ -219,7 +300,7 @@ export const SceneTextBox = ({
                       key={`${textIndex}-${spotIndex}-${index}-${key}`}
                       initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.25, delay: index * 0.1 }}
+                      transition={{ duration: 0.6, delay: index * 0.1 }}
                     >
                       {word}{" "}
                     </motion.span>
