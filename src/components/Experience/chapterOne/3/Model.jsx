@@ -32,9 +32,15 @@ export function Model(props) {
         <mesh geometry={nodes.pCylinder6.geometry} material={Materials.floorMaterial} />
         <mesh geometry={nodes.SmartCombine_109.geometry} material={Materials.floorMaterial} />
         <mesh geometry={nodes.SmartCombine_111.geometry} material={Materials.floorMaterial} />
-        <mesh geometry={nodes.SmartCombine_96.geometry} material={Materials.gasPumpMaterials.orange} />
+        <mesh
+          geometry={nodes.SmartCombine_96.geometry}
+          material={Materials.gasPumpMaterials.orange}
+        />
         <mesh geometry={nodes.SmartDuplicate_45.geometry} material={Materials.outlineMaterial} />
-        <mesh geometry={nodes.SmartExtract_43.geometry} material={Materials.gasPumpMaterials.orange} />
+        <mesh
+          geometry={nodes.SmartExtract_43.geometry}
+          material={Materials.gasPumpMaterials.orange}
+        />
         <mesh geometry={nodes.SmartSeparate_70.geometry} material={materials.lambert1} />
         <mesh geometry={nodes.SmartSeparate_71.geometry} material={materials.lambert1} />
         <mesh geometry={nodes.Mesh082.geometry} material={Materials.gasPumpMaterials.green} />
@@ -68,9 +74,15 @@ export function Model(props) {
         <mesh geometry={nodes.pCylinder6002.geometry} material={Materials.floorMaterial} />
         <mesh geometry={nodes.SmartCombine_109002.geometry} material={Materials.floorMaterial} />
         <mesh geometry={nodes.SmartCombine_111002.geometry} material={Materials.floorMaterial} />
-        <mesh geometry={nodes.SmartCombine_96002.geometry} material={Materials.gasPumpMaterials.orange} />
+        <mesh
+          geometry={nodes.SmartCombine_96002.geometry}
+          material={Materials.gasPumpMaterials.orange}
+        />
         <mesh geometry={nodes.SmartDuplicate_45002.geometry} material={Materials.outlineMaterial} />
-        <mesh geometry={nodes.SmartExtract_43002.geometry} material={Materials.gasPumpMaterials.orange} />
+        <mesh
+          geometry={nodes.SmartExtract_43002.geometry}
+          material={Materials.gasPumpMaterials.orange}
+        />
         <mesh geometry={nodes.SmartSeparate_70002.geometry} material={materials.lambert1} />
         <mesh geometry={nodes.SmartSeparate_71002.geometry} material={materials.lambert1} />
         <mesh
@@ -104,9 +116,15 @@ export function Model(props) {
         <mesh geometry={nodes.pCylinder6003.geometry} material={Materials.floorMaterial} />
         <mesh geometry={nodes.SmartCombine_109003.geometry} material={Materials.floorMaterial} />
         <mesh geometry={nodes.SmartCombine_111003.geometry} material={Materials.floorMaterial} />
-        <mesh geometry={nodes.SmartCombine_96003.geometry} material={Materials.gasPumpMaterials.orange} />
+        <mesh
+          geometry={nodes.SmartCombine_96003.geometry}
+          material={Materials.gasPumpMaterials.orange}
+        />
         <mesh geometry={nodes.SmartDuplicate_45003.geometry} material={Materials.outlineMaterial} />
-        <mesh geometry={nodes.SmartExtract_43003.geometry} material={Materials.gasPumpMaterials.orange} />
+        <mesh
+          geometry={nodes.SmartExtract_43003.geometry}
+          material={Materials.gasPumpMaterials.orange}
+        />
         <mesh geometry={nodes.SmartSeparate_70003.geometry} material={materials.lambert1} />
         <mesh geometry={nodes.SmartSeparate_71003.geometry} material={materials.lambert1} />
         <mesh
@@ -145,9 +163,15 @@ export function Model(props) {
         <mesh geometry={nodes.pCylinder6004.geometry} material={Materials.floorMaterial} />
         <mesh geometry={nodes.SmartCombine_109004.geometry} material={Materials.floorMaterial} />
         <mesh geometry={nodes.SmartCombine_111004.geometry} material={Materials.floorMaterial} />
-        <mesh geometry={nodes.SmartCombine_96004.geometry} material={Materials.gasPumpMaterials.orange} />
+        <mesh
+          geometry={nodes.SmartCombine_96004.geometry}
+          material={Materials.gasPumpMaterials.orange}
+        />
         <mesh geometry={nodes.SmartDuplicate_45004.geometry} material={Materials.outlineMaterial} />
-        <mesh geometry={nodes.SmartExtract_43004.geometry} material={Materials.gasPumpMaterials.orange} />
+        <mesh
+          geometry={nodes.SmartExtract_43004.geometry}
+          material={Materials.gasPumpMaterials.orange}
+        />
         <mesh geometry={nodes.SmartSeparate_70004.geometry} material={materials.lambert1} />
         <mesh geometry={nodes.SmartSeparate_71004.geometry} material={materials.lambert1} />
         <mesh
@@ -163,7 +187,10 @@ export function Model(props) {
           geometry={nodes.SmartCombine_76004.geometry}
           material={materials["M_Gas_Pump_2.001"]}
         />
-        <mesh geometry={nodes.SmartCombine_90004.geometry} material={Materials.gasPumpMaterials.white} />
+        <mesh
+          geometry={nodes.SmartCombine_90004.geometry}
+          material={Materials.gasPumpMaterials.white}
+        />
         <mesh geometry={nodes.SmartDuplicate_54004.geometry} material={Materials.outlineMaterial} />
         <mesh geometry={nodes.SmartDuplicate_58004.geometry} material={Materials.outlineMaterial} />
         <mesh geometry={nodes.SmartSeparate_75004.geometry} material={Materials.outlineMaterial} />
@@ -175,7 +202,6 @@ export function Model(props) {
         <mesh geometry={nodes.SmartSeparate_72004.geometry} material={Materials.floorMaterial} />
         <mesh geometry={nodes.SmartCombine_112004.geometry} material={Materials.floorMaterial} />
         <mesh geometry={nodes.SmartCombine_114004.geometry} material={Materials.floorMaterial} />
-        <mesh geometry={nodes.SmartCombine_97004.geometry} material={Materials.floorMaterial} />
         <mesh geometry={nodes.SmartDuplicate_55004.geometry} material={Materials.floorMaterial} />
         <mesh geometry={nodes.SmartExtract_26004.geometry} material={Materials.floorMaterial} />
         <mesh geometry={nodes.SmartExtract_42004.geometry} material={Materials.outlineMaterial} />
@@ -191,11 +217,26 @@ export function Model(props) {
       >
         <mesh geometry={nodes.pCube2_Ext_4005.geometry} material={materials["M_Gas_Pump_2.001"]} />
         <mesh geometry={nodes.pCylinder6005.geometry} material={Materials.floorMaterial} />
-        <mesh geometry={nodes.SmartCombine_109005.geometry} material={Materials.gasPumpMaterials.orange} />
-        <mesh geometry={nodes.SmartCombine_111005.geometry} material={Materials.gasPumpMaterials.orange} />
-        <mesh geometry={nodes.SmartCombine_96005.geometry} material={Materials.gasPumpMaterials.orange} />
-        <mesh geometry={nodes.SmartDuplicate_45005.geometry} material={Materials.gasPumpMaterials.orange} />
-        <mesh geometry={nodes.SmartExtract_43005.geometry} material={Materials.gasPumpMaterials.orange} />
+        <mesh
+          geometry={nodes.SmartCombine_109005.geometry}
+          material={Materials.gasPumpMaterials.orange}
+        />
+        <mesh
+          geometry={nodes.SmartCombine_111005.geometry}
+          material={Materials.gasPumpMaterials.orange}
+        />
+        <mesh
+          geometry={nodes.SmartCombine_96005.geometry}
+          material={Materials.gasPumpMaterials.orange}
+        />
+        <mesh
+          geometry={nodes.SmartDuplicate_45005.geometry}
+          material={Materials.gasPumpMaterials.orange}
+        />
+        <mesh
+          geometry={nodes.SmartExtract_43005.geometry}
+          material={Materials.gasPumpMaterials.orange}
+        />
         <mesh geometry={nodes.SmartSeparate_70005.geometry} material={materials.lambert1} />
         <mesh geometry={nodes.SmartSeparate_71005.geometry} material={materials.lambert1} />
         <mesh
@@ -203,7 +244,10 @@ export function Model(props) {
           material={Materials.gasPumpMaterials.orange}
         />
         <mesh geometry={nodes.SmartCombine_105005.geometry} material={Materials.floorMaterial} />
-        <mesh geometry={nodes.SmartCombine_107005.geometry} material={Materials.gasPumpMaterials.orange} />
+        <mesh
+          geometry={nodes.SmartCombine_107005.geometry}
+          material={Materials.gasPumpMaterials.orange}
+        />
         <mesh geometry={nodes.SmartCombine_110005.geometry} material={Materials.floorMaterial} />
         <mesh geometry={nodes.SmartCombine_115005.geometry} material={Materials.floorMaterial} />
         <mesh geometry={nodes.SmartCombine_61005.geometry} material={Materials.floorMaterial} />
@@ -211,7 +255,10 @@ export function Model(props) {
           geometry={nodes.SmartCombine_76005.geometry}
           material={materials["M_Gas_Pump_2.001"]}
         />
-        <mesh geometry={nodes.SmartCombine_90005.geometry} material={Materials.gasPumpMaterials.white} />
+        <mesh
+          geometry={nodes.SmartCombine_90005.geometry}
+          material={Materials.gasPumpMaterials.white}
+        />
         <mesh geometry={nodes.SmartDuplicate_54005.geometry} material={Materials.outlineMaterial} />
         <mesh geometry={nodes.SmartDuplicate_58005.geometry} material={Materials.outlineMaterial} />
         <mesh geometry={nodes.SmartSeparate_75005.geometry} material={Materials.outlineMaterial} />
@@ -219,9 +266,11 @@ export function Model(props) {
         <mesh geometry={nodes.SmartCombine_34005.geometry} material={Materials.floorMaterial} />
         <mesh geometry={nodes.SmartCombine_92005.geometry} material={Materials.outlineMaterial} />
         <mesh geometry={nodes.SmartCombine_93005.geometry} material={Materials.floorMaterial} />
-        <mesh geometry={nodes.SmartSeparate_47005.geometry} material={Materials.gasPumpMaterials.green} />
+        <mesh
+          geometry={nodes.SmartSeparate_47005.geometry}
+          material={Materials.gasPumpMaterials.green}
+        />
         <mesh geometry={nodes.SmartSeparate_72005.geometry} material={Materials.floorMaterial} />
-        <mesh geometry={nodes.SmartCombine_97005.geometry} material={Materials.floorMaterial} />
         <mesh geometry={nodes.SmartExtract_26005.geometry} material={Materials.floorMaterial} />
         <mesh geometry={nodes.SmartExtract_42005.geometry} material={Materials.outlineMaterial} />
         <mesh geometry={nodes.Mesh082.geometry} material={Materials.gasPumpMaterials.green} />
@@ -439,7 +488,7 @@ export function Model(props) {
         rotation={[-Math.PI, -0.85, -Math.PI]}
         scale={[0.96, 0.26, 1.14]}
       >
-        <mesh geometry={nodes.Cube005_1.geometry} material={Materials.stoneMaterial} />
+        <mesh geometry={nodes.Cube005_1.geometry} material={Materials.floorMaterial} />
         <mesh geometry={nodes.Cube005_2.geometry} material={Materials.outlineMaterial} />
       </group>
       <group position={[-10.25, 10.44, -237.63]} scale={[174.33, 78.88, 73.17]}>
@@ -657,7 +706,7 @@ export function Model(props) {
         rotation={[Math.PI / 2, 0, 1.76]}
         scale={[0.01, 0.04, 0.01]}
       >
-        <mesh geometry={nodes.Mesh054.geometry} material={Materials.stoneMaterial} />
+        <mesh geometry={nodes.Mesh054.geometry} material={Materials.floorMaterial} />
         <mesh geometry={nodes.Mesh054_1.geometry} material={Materials.outlineMaterial} />
       </group>
       <group
@@ -673,7 +722,7 @@ export function Model(props) {
         rotation={[Math.PI / 2, 0, -2.59]}
         scale={[0.02, 0.03, 0.01]}
       >
-        <mesh geometry={nodes.Mesh007.geometry} material={Materials.stoneMaterial} />
+        <mesh geometry={nodes.Mesh007.geometry} material={Materials.floorMaterial} />
         <mesh geometry={nodes.Mesh007_1.geometry} material={Materials.outlineMaterial} />
       </group>
       <group
@@ -1339,12 +1388,13 @@ export function Model(props) {
         rotation={[0, -1.57, 0]}
         scale={[7.87, 2.67, 12.54]}
       >
-        <mesh geometry={nodes.Cube007_1.geometry} material={Materials.houseMaterial} />
+        <mesh geometry={nodes.Cube007_1.geometry} material={Materials.houseMaterials.wall} />
+        <mesh geometry={nodes.Cube007_1.geometry} material={Materials.houseMaterials.backwall} />
         <mesh geometry={nodes.Cube007_2.geometry} material={Materials.outlineMaterial} />
       </group>
       <mesh
         geometry={nodes.Cube013.geometry}
-        material={Materials.fenceMaterial}
+        material={Materials.houseMaterials.backwall}
         position={[45.55, 17.85, -326.53]}
         rotation={[0, -1.57, 0]}
         scale={[0.36, 6.21, 12.18]}
@@ -1362,7 +1412,8 @@ export function Model(props) {
         rotation={[0, -1.57, 0]}
         scale={[7.87, 2.76, 13.83]}
       >
-        <mesh geometry={nodes.Cube015_1.geometry} material={Materials.houseMaterial} />
+        <mesh geometry={nodes.Cube015_1.geometry} material={Materials.houseMaterials.wall} />
+        <mesh geometry={nodes.Cube015_1.geometry} material={Materials.houseMaterials.backwall} />
         <mesh geometry={nodes.Cube015_2.geometry} material={Materials.outlineMaterial} />
       </group>
       <group
@@ -1374,7 +1425,7 @@ export function Model(props) {
         <mesh geometry={nodes.Mesh039_1.geometry} material={Materials.outlineMaterial} />
       </group>
       <group position={[45.55, 18.32, -317.68]} rotation={[-1.58, 0, 0]} scale={[0.29, 0.3, -0.3]}>
-        <mesh geometry={nodes.Mesh041.geometry} material={Materials.fenceMaterial} />
+        <mesh geometry={nodes.Mesh041.geometry} material={Materials.houseMaterial} />
         <mesh geometry={nodes.Mesh041_1.geometry} material={Materials.outlineMaterial} />
       </group>
       <group
@@ -1386,12 +1437,14 @@ export function Model(props) {
         <mesh geometry={nodes.Cube021.geometry} material={Materials.houseMaterials.backwall} />
         <mesh geometry={nodes.Cube021_1.geometry} material={Materials.outlineMaterial} />
       </group>
+      <mesh position={[56.442, 270.63, 14.278]} rotation={[Math.PI, -0.89, Math.PI]} material={Materials.outlineMaterial}>
+        <planeGeometry args={[100,100]} />
+      </mesh>
       <group
         position={[48.43, 19.73, -277.13]}
         rotation={[Math.PI, -0.89, Math.PI]}
         scale={[7.53, 3.01, 9.95]}
       >
-        <Plane position={[4,2,0]} args={[10,10]} color="red" />
         <mesh geometry={nodes.Cube024.geometry} material={Materials.houseMaterials.wall} />
         <mesh geometry={nodes.Cube024.geometry} material={Materials.houseMaterials.backwall} />
         <mesh geometry={nodes.Cube024_1.geometry} material={Materials.outlineMaterial} />
@@ -1413,11 +1466,11 @@ export function Model(props) {
         <mesh geometry={nodes.Mesh269_1.geometry} material={Materials.outlineMaterial} />
       </group>
       <group position={[46.17, 19.73, -384.73]} rotation={[0, -1.04, 0]} scale={[7.53, 3.01, 9.95]}>
-        <mesh geometry={nodes.Cube027.geometry} material={Materials.houseMaterial} />
+        <mesh geometry={nodes.Cube027.geometry} material={Materials.houseMaterials.wall} />
         <mesh geometry={nodes.Cube027_1.geometry} material={Materials.outlineMaterial} />
       </group>
       <group position={[46.5, 14.22, -384.64]} rotation={[0, -1.04, 0]} scale={[7.39, 2.5, 9.86]}>
-        <mesh geometry={nodes.Cube028.geometry} material={Materials.houseMaterial} />
+        <mesh geometry={nodes.Cube028.geometry} material={Materials.houseMaterials.wall} />
         <mesh geometry={nodes.Cube028_1.geometry} material={Materials.outlineMaterial} />
       </group>
     </group>

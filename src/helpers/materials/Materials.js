@@ -118,7 +118,7 @@ export const getMaterials = async (variant) =>
         gradientMap: toonFiveTone
       }),
       backwall: new MeshToonMaterial({
-        color: "gray",
+        color: "#AB8D72",
         gradientMap: toonFiveTone,
         side: BackSide
       }),
