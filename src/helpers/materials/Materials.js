@@ -6,13 +6,19 @@ import {
   MeshBasicMaterial,
   NearestFilter,
   TextureLoader,
+  BackSide,
 } from "three"
 
 const defaultMaterials = {
   floorMaterial: "#F6B791",
   roadMaterial: "#2D2D2C",
   fenceMaterial: "#757271",
-  houseMaterial: '#8D6363',
+  concreteMaterial: "#988FA1",
+  houseMaterial: "#8D6363",
+  house: {
+    wall: "#D4C1AA",
+    main: "#8D6363"
+  },
   leafMaterial: "#4F7552",
   grassMaterial: "#626F52",
   megalithicMaterial: "#D4C1AA",
@@ -20,13 +26,25 @@ const defaultMaterials = {
   stoneMaterial: "#7A675C",
   cloudMaterial: "#C3FDFD",
   backgroundMaterial: "#69D6FF",
+  gasPumpMaterials: {
+    green: "#84A58D",
+    orange: "#ED9746",
+    ledScreen: "#354927",
+    wall: "#DFD2CB",
+    white: "#FFF6FA",
+  },
 }
 
 const variantMaterials = {
   floorMaterial: "#918E8D",
   roadMaterial: "#2D2D2C",
   fenceMaterial: "#757271",
-  houseMaterial: '#8D6363',
+  concreteMaterial: "#988FA1",
+  houseMaterial: "#8D6363",
+  house: {
+    wall: "#D4C1AA",
+    main: "#8D6363"
+  },
   leafMaterial: "#D8BF66",
   grassMaterial: "#626F52",
   megalithicMaterial: "#D4C1AA",
@@ -34,6 +52,13 @@ const variantMaterials = {
   stoneMaterial: "#7A675C",
   cloudMaterial: "#C65948",
   backgroundMaterial: "#C65948",
+  gasPumpMaterials: {
+    green: "#84A58D",
+    orange: "#ED9746",
+    ledScreen: "#354927",
+    wall: "#DFD2CB",
+    white: "#FFF6FA",
+  },
 }
 
 const getTextures = () =>
@@ -77,10 +102,31 @@ export const getMaterials = async (variant) =>
       gradientMap: toonFiveTone,
     })
 
+    const concreteMaterial = new MeshToonMaterial({
+      color: MaterialsColor.concreteMaterial,
+      gradientMap: toonFiveTone,
+    })
+
     const houseMaterial = new MeshToonMaterial({
       color: MaterialsColor.houseMaterial,
       gradientMap: toonFiveTone,
     })
+
+    const houseMaterials = {
+      wall : new MeshToonMaterial({
+        color: MaterialsColor.house.wall,
+        gradientMap: toonFiveTone
+      }),
+      backwall: new MeshToonMaterial({
+        color: "gray",
+        gradientMap: toonFiveTone,
+        side: BackSide
+      }),
+      main: new MeshToonMaterial({
+        color: MaterialsColor.house.main,
+        gradientMap: toonFiveTone
+      })
+    }
 
     const leafMaterial = new MeshToonMaterial({
       color: MaterialsColor.leafMaterial,
@@ -113,22 +159,51 @@ export const getMaterials = async (variant) =>
     })
 
     const backgroundMaterial = new MeshToonMaterial({
-      color: MaterialsColor.backgroundMaterial
+      color: MaterialsColor.backgroundMaterial,
     })
-    
+
     const outlineMaterial = new MeshBasicMaterial({
-      color: "#000000"
+      color: "#000000",
     })
 
     const selectedMaterial = new MeshBasicMaterial({
-      color: "#FFFFFF"
+      color: "#FFFFFF",
     })
+
+    const gasPumpMaterials = {
+      green: new MeshToonMaterial({
+        color: MaterialsColor.gasPumpMaterials.green,
+        gradientMap: toonFiveTone,
+      }),
+      orange: new MeshToonMaterial({
+        color: MaterialsColor.gasPumpMaterials.orange,
+        gradientMap: toonFiveTone,
+      }),
+      ledScreen: new MeshToonMaterial({
+        color: MaterialsColor.gasPumpMaterials.ledScreen,
+        gradientMap: toonThreeTone,
+      }),
+      wall: new MeshToonMaterial({
+        color: MaterialsColor.gasPumpMaterials.wall,
+        gradientMap: toonFiveTone,
+      }),
+      white: new MeshToonMaterial({
+        color: MaterialsColor.gasPumpMaterials.white,
+        gradientMap: toonFiveTone,
+      }),
+      jerrycan: new MeshToonMaterial({
+        color: "#B70F0F",
+        gradientMap: toonThreeTone
+      })
+    }
 
     return {
       floorMaterial,
       roadMaterial,
       fenceMaterial,
+      concreteMaterial,
       houseMaterial,
+      houseMaterials,
       leafMaterial,
       grassMaterial,
       megalithicMaterial,
@@ -137,6 +212,7 @@ export const getMaterials = async (variant) =>
       cloudMaterial,
       backgroundMaterial,
       outlineMaterial,
-      selectedMaterial
+      selectedMaterial,
+      gasPumpMaterials,
     }
   })
