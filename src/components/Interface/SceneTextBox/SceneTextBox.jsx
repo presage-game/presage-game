@@ -24,7 +24,7 @@ export const SceneTextBox = ({
   const [key, setKey] = useState(0)
 
   // TODO: Set this state from Supabase data
-  const [variant, setVariant] = useState("a")
+  const [variant, setVariant] = useState("b")
 
   /* Text and options */
   const getTextEmitter = () => {
@@ -33,28 +33,26 @@ export const SceneTextBox = ({
 
       if (!variant || typeof spot?.text === "string") {
         return spot?.emitter
+      } else {
+        if (variant === "a" && spot[0]?.emitter !== undefined) {
+          return spot[0]?.emitter
+        } else if (variant === "b" && spot[1]?.emitter !== undefined) {
+          return spot[1]?.emitter
+        }
       }
 
-      if (variant === "a" && spot[0]?.emitter !== undefined) {
-        return spot[0]?.emitter
-      }
-
-      if (variant === "b" && spot[1]?.emitter !== undefined) {
-        return spot[1]?.emitter
-      }
+      return
     } else {
       const intro = scriptData[sceneIndex]?.voiceover[textIndex]
 
       if (!variant || typeof intro?.text === "string") {
         return intro?.emitter
-      }
-
-      if (variant === "a" && intro[0]?.emitter !== undefined) {
-        return intro[0]?.emitter
-      }
-
-      if (variant === "b" && intro[1]?.emitter !== undefined) {
-        return intro[1]?.emitter
+      } else {
+        if (variant === "a" && intro[0]?.emitter !== undefined) {
+          return intro[0]?.emitter
+        } else if (variant === "b" && intro[1]?.emitter !== undefined) {
+          return intro[1]?.emitter
+        }
       }
     }
   }
@@ -270,7 +268,7 @@ export const SceneTextBox = ({
                       key={`${textIndex}-${spotIndex}-${index}-${key}`}
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
-                      transition={{ duration: 0.6, delay: index * 0.15 }}
+                      transition={{ duration: 0.6, delay: index * 0.1 }}
                     >
                       {word}{" "}
                     </motion.span>
@@ -286,7 +284,7 @@ export const SceneTextBox = ({
                       key={`${textIndex}-${spotIndex}-${index}-${key}`}
                       initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.6, delay: index * 0.15 }}
+                      transition={{ duration: 0.6, delay: index * 0.1 }}
                     >
                       {word}{" "}
                     </motion.span>
@@ -302,7 +300,7 @@ export const SceneTextBox = ({
                       key={`${textIndex}-${spotIndex}-${index}-${key}`}
                       initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.6, delay: index * 0.15 }}
+                      transition={{ duration: 0.6, delay: index * 0.1 }}
                     >
                       {word}{" "}
                     </motion.span>

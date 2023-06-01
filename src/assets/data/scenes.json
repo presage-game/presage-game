@@ -9,20 +9,6 @@
       {
         "text": "Tirés entre des pylônes électriques, les lignes à haute tension ondulent au vent, au-dessus de la route.",
         "emitter": "narrator"
-      },
-      [
-        {
-          "text": "C'est un texte d'intro qui n'existe que dans le monde A.",
-          "emitter": "narrator"
-        },
-        {
-          "text": "C'est un texte d'intro qui n'existe que dans le monde B.",
-          "emitter": "innerVoice"
-        }
-      ],
-      {
-        "text": "Ce texte est commun, à nouveau. Tu es sur le point d’entrer dans le Nyalaandé.",
-        "emitter": "narrator"
       }
     ],
     "spots": [
@@ -51,17 +37,7 @@
           {
             "text": "Un acarien monochrome cherche à rejoindre le sud de la région en suivant la nationale, qui fait comme une longue cicatrice sinueuse. C’est toi.",
             "emitter": "innerVoice"
-          },
-          [
-            {
-              "text": "C'est un texte qui n'existe que dans le monde A.",
-              "emitter": "narrator"
-            },
-            {
-              "text": "C'est un texte qui n'existe que dans le monde B.",
-              "emitter": "innerVoice"
-            }
-          ]
+          }
         ]
       }
     ]
@@ -69,10 +45,16 @@
   {
     "name": "Cercles mégalithiques",
     "voiceover": [
-      {
-        "text": "Des rafales de vent soulèvent des volutes de poussière qui s’assemblent, et qui forment des brumes de sable opacifiant l’atmosphère. Il est difficile de voir à plus de dix mètres.",
-        "emitter": "narrator"
-      },
+      [
+        {
+          "text": "Des rafales de vent soulèvent des volutes de poussière qui s’assemblent, et qui forment des brumes de sable opacifiant l’atmosphère. Il est difficile de voir à plus de dix mètres.",
+          "emitter": "narrator"
+        },
+        {
+          "text": "Il n’y a plus aucun nuage dans le ciel, mais seulement du bleu à perte de vue. Le soleil, lui, continue inlassablement de cogner.",
+          "emitter": "narrator"
+        }
+      ],
       {
         "text": "Une colonie de mégalithes a choisi de s’établir ici, sur un site grand de plusieurs hectares. Des centaines de piliers de latérite taillée forment des cercles.",
         "emitter": "narrator"
@@ -98,7 +80,7 @@
         "label": "Clôtures",
         "spotVoiceover": [
           {
-            "text": "Des clôtures métalliques hautes de deux mètres courent tout autour du site fantôme. Le vent les secoue, fendant l’air d’un tintement qu’on finit presque par oublier.",
+            "text": "Des clôtures métalliques courent tout autour du site fantôme. Le vent les secoue, fendant l’air d’un tintement qu’on finit presque par oublier.",
             "emitter": "narrator"
           },
           {

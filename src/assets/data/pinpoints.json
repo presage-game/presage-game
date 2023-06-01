@@ -6,16 +6,67 @@
         "text": "Tu es accueilli par les restes d’un portail que le vent fait cliqueter par cycles, et sur lequel tu réussis à lire “JOUVENCE ALUFER MINERALS (JAM)”. La rouille est en train d’oxyder les barreaux des échafaudages.",
         "emitter": "narrator"
       },
+      [
+        {
+          "text": "Un engin colossal monté sur des chenilles envahit la mine à ciel ouvert. C’est une excavatrice à godets, construite dans les années 20. Elle n’a pas été utilisée depuis longtemps.",
+          "emitter": "narrator"
+        },
+        {
+          "text": "Un éboulement a eu lieu près de l’entrée du site d’excavation, empêchant de pénétrer à l’intérieur.",
+          "emitter": "narrator"
+        }
+      ],
+      [
+        {
+          "text": "Tu te sens tout petit à côté de cette machine.",
+          "emitter": "innerVoice"
+        },
+        {}
+      ],
       {
         "text": "Tu sens le vent s’engouffrer à l’intérieur du site d’excavation.",
         "emitter": "innerVoice"
-      },
+      }
+    ]
+  },
+  {
+    "name": "Pont effondré",
+    "voiceover": [
       {
-        "text": "Un engin colossal monté sur des chenilles envahit la mine à ciel ouvert. C’est une excavatrice à godets, construite dans les années 20. Elle n’a pas été utilisée depuis longtemps.",
+        "text": "Autrefois, un pont enjambait le bras d’une large rivière d’est en ouest. Quelques kilomètres plus loin, la rivière se déverse dans un grand lac rose, en bordure du Nyalaandé.",
         "emitter": "narrator"
       },
       {
-        "text": "Tu te sens tout petit à côté de cette machine.",
+        "text": "Le pont s’est effondré.",
+        "emitter": "narrator"
+      },
+      {
+        "text": "Tu regardes intensément l’édifice, et des silhouettes allogènes s’insèrent dans ton champ de vision. Une scène se joue sous tes yeux, et tu vois des fantômes discuter près d’un chantier qui n’était pas là avant.",
+        "emitter": "innerVoice"
+      },
+      {
+        "text": "Les Européens sont en train de tout installer. La station de pompage des eaux est bientôt prête. Le commerce d’ivoire fait circuler l’argent à Boroma, la capitale. On joue du jazz dans les hôtels.",
+        "emitter": "innerVoice"
+      },
+      {
+        "text": "Tu clignes des yeux et tout s’en va. Tu te retrouves seul, à nouveau. C’est comme si le pont s’effondrait une deuxième fois.",
+        "emitter": "innerVoice"
+      }
+    ]
+  },
+  {
+    "name": "Memsen",
+    "voiceover": [
+      {
+        "text": "Un petit village de fortune s’élève sur des pilotis plantés dans le sol, cinq mètres en-dessous de la surface du lac. Des planches en bois servent de passerelles pour naviguer entre des baraquements recouverts de bâches colorées. Et au plus loin que tes yeux peuvent voir : un littoral garni de frondaisons.",
+        "emitter": "narrator"
+      },
+      {
+        "text": "Bizuté par un lourd soleil qui se réfléchit sur un immense lac ocre, tu sens des relents de sulfure d’hydrogène pénétrer tes narines. Autour du lac, des femmes et des hommes rient, font des tours dans l’eau, et sifflotent le même air enjoué. Sur la carte, cet endroit a pourtant l’air d’être le bout du monde.",
+        "emitter": "innerVoice"
+      },
+      {
+        "text": "Ces pêcheurs ne connaissent pas la vérité. Il y a bien longtemps que les enfants d’An-Uua n’ont plus rien à voir avec cette histoire. Non ; si le lac est de cette couleur, c’est à cause de la pollution et des algues.",
         "emitter": "innerVoice"
       }
     ]

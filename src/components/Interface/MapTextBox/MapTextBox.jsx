@@ -17,6 +17,9 @@ export const MapTextBox = ({ pinpointsData, pinpointIndex, mapActive }) => {
 
   const dispatch = useDispatch()
 
+  // TODO: Set this state from Supabase data
+  const [variant, setVariant] = useState("a")
+
   useEffect(() => {
     if (!mapActive) {
       setShowText(false)
@@ -25,18 +28,48 @@ export const MapTextBox = ({ pinpointsData, pinpointIndex, mapActive }) => {
     }
   }, [mapActive])
 
-  const getTextEmitter = () => pinpointsData[pinpointIndex]?.voiceover[textIndex]?.emitter
+  const getTextEmitter = () => {
+    const pinpoint = pinpointsData[pinpointIndex]?.voiceover[textIndex]
+
+    if (typeof pinpoint?.text === "string") {
+      return pinpoint?.emitter
+    } else {
+      if (variant === "a") {
+        return pinpoint[0]?.emitter
+      } else if (variant === "b") {
+        return pinpoint[1]?.emitter
+      }
+    }
+  }
 
   const getTextLabel = () =>
     pinpointsData[pinpointIndex]?.voiceover[textIndex]?.label
       ? pinpointsData[pinpointIndex]?.voiceover[textIndex]?.label
       : pinpointsData[pinpointIndex]?.name
 
-  const getText = () => pinpointsData[pinpointIndex]?.voiceover[textIndex]?.text
+  const getText = () => {
+    const pinpoint = pinpointsData[pinpointIndex]?.voiceover[textIndex]
+
+    if (typeof pinpoint?.text === "string") {
+      return pinpoint?.text
+    } else if (variant === "a" && pinpoint[0]?.text !== undefined) {
+      return pinpoint[0]?.text
+    } else if (variant === "b" && pinpoint[1]?.text !== undefined) {
+      return pinpoint[1]?.text
+    } else {
+      showMore() // or show more NPC?
+      return ""
+    }
+  }
 
   const getOptionResponse = () => {
-    const option = pinpointsData[pinpointIndex]?.voiceover[textIndex]?.options[optionIndex]
-    return option.response
+    const pinpoint = pinpointsData[pinpointIndex]?.voiceover[textIndex]
+
+    if (typeof pinpoint?.text === "string") {
+      return pinpoint?.options[optionIndex]?.response
+    } else {
+      return pinpoint[variant === "a" ? 0 : 1]?.options[optionIndex]?.response
+    }
   }
 
   const chooseResponse = (data) => {
@@ -58,7 +91,18 @@ export const MapTextBox = ({ pinpointsData, pinpointIndex, mapActive }) => {
 
   const hasMore = () => pinpointsData[pinpointIndex]?.voiceover?.length > textIndex + 1
 
-  const hasOptions = () => pinpointsData[pinpointIndex]?.voiceover[textIndex]?.options?.length > 0
+  const hasOptions = () => {
+    const pinpoint = pinpointsData[pinpointIndex]?.voiceover[textIndex]
+
+    if (typeof pinpoint?.text === "string") {
+      const options = pinpointsData[pinpointIndex]?.voiceover[textIndex]?.options
+      return options?.length > 0
+    } else if (variant) {
+      const options =
+        pinpointsData[pinpointIndex]?.voiceover[textIndex][variant === "a" ? 0 : 1]?.options
+      return options?.length > 0
+    }
+  }
 
   useEffect(() => {
     if (pinpointIndex >= 0 && isPinpointActive) {
@@ -89,7 +133,20 @@ export const MapTextBox = ({ pinpointsData, pinpointIndex, mapActive }) => {
 
   useEffect(() => {
     if (textIndex !== null && isPinpointActive) {
-      getAudioFile(`audios/pinpoints/${pinpointIndex}/voiceover/${textIndex}.mp3`).then((file) => {
+      const pinpoint = pinpointsData[pinpointIndex]?.voiceover[textIndex]
+      let audioPath
+
+      if (!variant || typeof pinpoint?.text === "string") {
+        audioPath = `audios/pinpoints/${pinpointIndex}/voiceover/${textIndex}.mp3`
+      } else {
+        if (variant === "a" && typeof pinpoint === "object") {
+          audioPath = `audios/pinpoints/${pinpointIndex}/voiceover/${textIndex}-a.mp3`
+        } else if (variant === "b" && typeof pinpoint === "object") {
+          audioPath = `audios/pinpoints/${pinpointIndex}/voiceover/${textIndex}-b.mp3`
+        }
+      }
+
+      getAudioFile(audioPath).then((file) => {
         if (file) {
           setAudioFile(file)
         }
@@ -148,7 +205,7 @@ export const MapTextBox = ({ pinpointsData, pinpointIndex, mapActive }) => {
                       key={`${textIndex}-${index}-${key}`}
                       initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.25, delay: index * 0.1 }}
+                      transition={{ duration: 0.6, delay: index * 0.1 }}
                     >
                       {word}{" "}
                     </motion.span>
@@ -164,7 +221,7 @@ export const MapTextBox = ({ pinpointsData, pinpointIndex, mapActive }) => {
                       key={`${textIndex}-${index}-${key}`}
                       initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.25, delay: index * 0.1 }}
+                      transition={{ duration: 0.6, delay: index * 0.1 }}
                     >
                       {word}{" "}
                     </motion.span>
@@ -177,7 +234,7 @@ export const MapTextBox = ({ pinpointsData, pinpointIndex, mapActive }) => {
           )}
           {!hasOptions() && hasMore() && <Button text="Suite" onClick={showMore} />}
           {((showOptions && !hasOptions() && !hasMore()) ||
-            (!hasMore() && !showOptions && hasOptions())) && (
+            (!showOptions && hasOptions() && !hasMore())) && (
             <Button
               text="Fermer"
               onClick={() => {
@@ -191,6 +248,20 @@ export const MapTextBox = ({ pinpointsData, pinpointIndex, mapActive }) => {
           {hasOptions() && showOptions && (
             <>
               {pinpointsData[pinpointIndex]?.voiceover[textIndex]?.options?.map((option, index) => (
+                <Button
+                  key={index}
+                  text={option.text}
+                  onClick={() => chooseResponse(index)}
+                  variant="splashScreen"
+                />
+              ))}
+            </>
+          )}
+          {hasOptions() && showOptions && variant && (
+            <>
+              {pinpointsData[pinpointIndex]?.voiceover[textIndex][
+                variant === "a" ? 0 : 1
+              ]?.options?.map((option, index) => (
                 <Button
                   key={index}
                   text={option.text}
