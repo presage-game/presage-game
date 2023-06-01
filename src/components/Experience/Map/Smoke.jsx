@@ -1,6 +1,7 @@
 import * as THREE from "three"
 import React, { useRef, useState, useEffect } from "react"
 import { useFrame } from "@react-three/fiber"
+import { Box } from "@react-three/drei"
 
 export const Smoke = ({ position }) => {
   let vs = []
@@ -121,7 +122,7 @@ gl_FragColor.a*=vBlend;
 
   // ____________________ PARTICLES EMMITER EMMIT ____________________
 
-  function particles_emmiter_emmit(item) {
+  const particles_emmiter_emmit = (item) => {
     let radius_1 = item.radius_1 * Math.sqrt(Math.random())
     let theta = 2 * Math.PI * Math.random()
     let x_1 = item.position.x + radius_1 * Math.cos(theta)
@@ -180,7 +181,7 @@ gl_FragColor.a*=vBlend;
 
   // ____________________ PERTICLES EMMITER UPDATE ____________________
 
-  function particles_emmiter_update(delta) {
+  const particles_emmiter_update = (delta) => {
     let max = particles_emmiter.length
 
     for (let n = 0; n < max; n++) {
@@ -243,7 +244,7 @@ gl_FragColor.a*=vBlend;
     particles_smoke_a = alive
   }
 
-  function particles_update(delta) {
+  const particles_update = (delta) => {
     particles_emmiter_update(delta)
 
     particles = []
@@ -359,10 +360,7 @@ gl_FragColor.a*=vBlend;
   })
 
   mesh["sprite"] = new THREE.Mesh(geometry, mat["sprite"])
-  mesh["sprite"].frustumCulled = false
-  mesh["sprite"].matrixAutoUpdate = false
-  mesh["sprite"].updateMatrixWorld = function () {}
-
+  
   /**
    * Animate
    */
@@ -376,8 +374,12 @@ gl_FragColor.a*=vBlend;
   })
 
   return (
-    <>
-      <primitive object={mesh["sprite"]} />
-    </>
+    <mesh
+      geometry={mesh["sprite"].geometry}
+      material={mat["sprite"]}
+      position={position}
+      frustumCulled={false}
+      matrixAutoUpdate={false}
+    ></mesh>
   )
 }

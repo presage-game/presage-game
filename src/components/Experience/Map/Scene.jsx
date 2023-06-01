@@ -1,7 +1,7 @@
 import React, { useRef, useMemo, useEffect, useState, Suspense } from "react"
 import { useSelector } from "react-redux"
-import { Box3, Object3D, Quaternion, Vector3, BoxHelper, Raycaster, Vector2 } from "three"
-import { Box, useGLTF, OrthographicCamera, Gltf, useHelper } from "@react-three/drei"
+import { Box3, Object3D, Quaternion, Vector3, Raycaster, Vector2 } from "three"
+import { Box, useGLTF, OrthographicCamera, Gltf } from "@react-three/drei"
 import { useFrame } from "@react-three/fiber"
 import { Pathfinding, PathfindingHelper } from "three-pathfinding"
 import { Car } from "./Car"
@@ -24,6 +24,7 @@ export const Scene = ({
 
   const [pointerDown, setPointerDown] = useState(false)
   let speed = 1
+  let max_speed = 5
 
   const voitureGrpRef = useRef(null)
   const cubeRef = useRef([])
@@ -33,7 +34,6 @@ export const Scene = ({
   const pathfinding = useMemo(() => new Pathfinding(), [])
   const pathfindinghelper = useMemo(() => new PathfindingHelper(), [])
   const ZONE = "level1"
-  const MAX_SPEED = 5
   let navPath = null
 
   navMesh.scene.traverse((node) => {
@@ -94,8 +94,24 @@ export const Scene = ({
     const distance = targetPosition.clone().sub(voitureGrpRef.current.position)
 
     if (distance.lengthSq() > 0.5) {
-      if (speed < MAX_SPEED) {
+      if (distance.lengthSq() < 6) {
+        max_speed = 4
+      } else {
+        max_speed = 5
+      }
+
+      if (distance.lengthSq() < 4) {
+        max_speed = 3
+      }
+
+      if (distance.lengthSq() < 2) {
+        max_speed = 2
+      }
+
+      if (speed < max_speed) {
         speed += 0.05
+      } else {
+        speed -= 0.05
       }
 
       distance.normalize()
@@ -175,8 +191,6 @@ export const Scene = ({
     }
   })
 
-  useHelper(voitureGrpRef, BoxHelper, "transparent")
-
   return (
     <>
       <Suspense fallback={null}>
@@ -191,6 +205,7 @@ export const Scene = ({
       <group ref={voitureGrpRef} dispose={null}>
         <Car animationsName={pointerDown ? "Run" : null} />
       </group>
+
       <Box
         ref={(el) => (cubeRef.current[0] = el)}
         scene={0}
