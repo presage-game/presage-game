@@ -11,21 +11,20 @@ import {
 
 const defaultMaterials = {
   floorMaterial: "#F6B791",
-  roadMaterial: "#2D2D2C",
+  adinkraMaterial: "#E3D9D6",
   road: {
     main: "#2D2D2C",
     line: "#E4C629",
   },
   fenceMaterial: "#757271",
   concreteMaterial: "#988FA1",
-  houseMaterial: "#8D6363",
   house: {
     wall: "#D4C1AA",
     main: "#8D6363",
   },
   leafMaterial: "#4F7552",
   grassMaterial: "#626F52",
-  megalithicMaterial: "#D4C1AA",
+  megalithicMaterial: "#A26656",
   treeMaterial: "#704D46",
   stoneMaterial: "#7A675C",
   cloudMaterial: "#C3FDFD",
@@ -41,21 +40,20 @@ const defaultMaterials = {
 
 const variantMaterials = {
   floorMaterial: "#918E8D",
-  roadMaterial: "#2D2D2C",
+  adinkraMaterial: "#E3D9D6",
   road: {
     main: "#2D2D2C",
     line: "#E4C629",
   },
   fenceMaterial: "#757271",
   concreteMaterial: "#988FA1",
-  houseMaterial: "#8D6363",
   house: {
     wall: "#D4C1AA",
     main: "#8D6363",
   },
   leafMaterial: "#D8BF66",
   grassMaterial: "#626F52",
-  megalithicMaterial: "#D4C1AA",
+  megalithicMaterial: "#A26656",
   treeMaterial: "#704D46",
   stoneMaterial: "#7A675C",
   cloudMaterial: "#C65948",
@@ -95,16 +93,6 @@ export const getMaterials = async (variant) =>
       gradientMap: toonFiveTone,
     })
 
-    // const roadMaterial = new MeshToonMaterial({
-    //   color: variant === "default" ? defaultMaterials.roadMaterial : variantMaterials.roadMaterial,
-    //   side: DoubleSide,
-    // })
-
-    const roadMaterial = new MeshStandardMaterial({
-      color: MaterialsColor.roadMaterial,
-      side: DoubleSide,
-    })
-
     const roadMaterials = {
       main: new MeshStandardMaterial({
         color: MaterialsColor.road.main,
@@ -115,6 +103,11 @@ export const getMaterials = async (variant) =>
       }),
     }
 
+    const adinkraMaterial = new MeshToonMaterial({
+      color: MaterialsColor.adinkraMaterial,
+      gradientMap: toonFiveTone
+    })
+
     const fenceMaterial = new MeshToonMaterial({
       color: MaterialsColor.fenceMaterial,
       gradientMap: toonFiveTone,
@@ -122,11 +115,6 @@ export const getMaterials = async (variant) =>
 
     const concreteMaterial = new MeshToonMaterial({
       color: MaterialsColor.concreteMaterial,
-      gradientMap: toonFiveTone,
-    })
-
-    const houseMaterial = new MeshToonMaterial({
-      color: MaterialsColor.houseMaterial,
       gradientMap: toonFiveTone,
     })
 
@@ -217,11 +205,10 @@ export const getMaterials = async (variant) =>
 
     return {
       floorMaterial,
-      roadMaterial,
       roadMaterials,
+      adinkraMaterial,
       fenceMaterial,
       concreteMaterial,
-      houseMaterial,
       houseMaterials,
       leafMaterial,
       grassMaterial,

@@ -832,7 +832,7 @@ export function Model(props) {
       </group>
       <mesh
         geometry={nodes.Route001.geometry}
-        material={Materials.roadMaterial}
+        material={Materials.roadMaterials.main}
         position={[2.23, 11.88, -152.67]}
         rotation={[0, 0.81, 0]}
         scale={[3.87, 0.61, 1.7]}

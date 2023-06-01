@@ -6,7 +6,6 @@ Command: npx gltfjsx@6.1.11 scene_1_final.glb --transform
 import React, { useEffect, useState } from "react"
 import { useGLTF } from "@react-three/drei"
 import { getMaterials } from "@/helpers/materials/Materials"
-import { MeshBasicMaterial, DoubleSide } from "three"
 
 export function Model(props) {
   const { nodes, materials } = useGLTF("/assets/scenes/scene_1.glb")
@@ -1097,10 +1096,7 @@ export function Model(props) {
       </group>
       <mesh
         geometry={nodes.Route_2003.geometry}
-        material={new MeshBasicMaterial({
-          color: "#000000",
-          side: DoubleSide
-        })}
+        material={Materials.roadMaterials.main}
         position={[-3.44, 12, -261.49]}
         rotation={[0, 0.52, 0]}
         scale={[2.09, 1, 2.72]}
@@ -1290,7 +1286,7 @@ export function Model(props) {
         rotation={[Math.PI, -1.37, Math.PI]}
         scale={[1.68, 1.11, 1.31]}
       >
-        <mesh geometry={nodes.Cube182_1.geometry} material={Materials.houseMaterial} />
+        <mesh geometry={nodes.Cube182_1.geometry} material={Materials.houseMaterials.main} />
         <mesh geometry={nodes.Cube182_2.geometry} material={Materials.outlineMaterial} />
       </group>
       <group
@@ -1298,7 +1294,7 @@ export function Model(props) {
         rotation={[Math.PI, -1.37, Math.PI]}
         scale={[1.68, 1.11, 1.31]}
       >
-        <mesh geometry={nodes.Cube182_1.geometry} material={Materials.houseMaterial} />
+        <mesh geometry={nodes.Cube182_1.geometry} material={Materials.houseMaterials.main} />
         <mesh geometry={nodes.Cube182_2.geometry} material={Materials.outlineMaterial} />
       </group>
       <group
@@ -1306,7 +1302,7 @@ export function Model(props) {
         rotation={[Math.PI, -1.37, Math.PI]}
         scale={[1.68, 1.11, 1.31]}
       >
-        <mesh geometry={nodes.Cube182_1.geometry} material={Materials.houseMaterial} />
+        <mesh geometry={nodes.Cube182_1.geometry} material={Materials.houseMaterials.main} />
         <mesh geometry={nodes.Cube182_2.geometry} material={Materials.outlineMaterial} />
       </group>
     </group>
