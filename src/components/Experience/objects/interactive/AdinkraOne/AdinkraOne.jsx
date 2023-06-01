@@ -80,7 +80,7 @@ export const AdinkraOne = ({ adinkraFocused, setAdinkraFocused, Materials, posit
       <group onClick={checkFocused} position={position} dispose={null}>
         <mesh
           geometry={nodes.Curve.geometry}
-          material={new MeshBasicMaterial({ color: "gray" })}
+          material={Materials.adinkraMaterial}
           position={[-3.62, 14.33, -124.01]}
           rotation={[1.25, 0, 0.69]}
           scale={1.35}
