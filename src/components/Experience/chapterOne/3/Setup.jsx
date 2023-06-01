@@ -2,8 +2,37 @@ import { Environment, Sky } from "@react-three/drei"
 import { CustomCamera } from "../../tools/CustomCamera/CustomCamera"
 import { CloudsEffect } from "../../effects/CloudsEffect"
 import { Scene } from "./Scene"
+import { useEffect, useState } from "react"
+import { useDispatch } from "react-redux"
+import { changeOnFocusCamera, changeOnFocusCameraPosition } from "@/store/reducers/userReducer"
 
 export const Setup = ({ setSpotIndex, setShowText, isVoiceOver }) => {
+  const [treeFocused, setTreeFocused] = useState(false)
+
+  const dispatch = useDispatch()
+  const changeFocus = (value) => dispatch(changeOnFocusCamera(value))
+  const changeFocusPosition = (value) => dispatch(changeOnFocusCameraPosition(value))
+
+  useEffect(() => {
+    if (treeFocused) {
+      changeFocusPosition({
+        position: {
+          x: 0,
+          y: 2,
+          z: 100,
+        },
+        rotation: {
+          x: -Math.PI / 2,
+          y: 0,
+          z: 0,
+        },
+      })
+      changeFocus(true)
+    } else {
+      changeFocus(false)
+    }
+  }, [treeFocused])
+
   return (
     <>
       <Environment preset="forest" />
@@ -23,7 +52,7 @@ export const Setup = ({ setSpotIndex, setShowText, isVoiceOver }) => {
         mieDirectionalG={0.828}
       />
       <CloudsEffect position={[0, 40, -300]} variant={"default"} numberOfClouds={20} />
-      <Scene />
+      <Scene treeFocused={treeFocused} setTreeFocused={setTreeFocused} />
     </>
   )
 }
