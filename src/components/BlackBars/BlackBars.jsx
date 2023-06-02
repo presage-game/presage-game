@@ -13,7 +13,7 @@ export const BlackBars = () => {
           <motion.div
             key="barTop"
             className="bar bar--top"
-            initial={{ y: -170 }}
+            initial={{ y: 0 }}
             animate={{ y: 0 }}
             exit={{ y: -170 }}
             transition={{ duration: 6 }}
@@ -21,7 +21,7 @@ export const BlackBars = () => {
           <motion.div
             key="barBottom"
             className="bar bar--bottom"
-            initial={{ y: 170 }}
+            initial={{ y: 0 }}
             animate={{ y: 0 }}
             exit={{ y: 170 }}
             transition={{ duration: 6 }}

@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit"
 
 const initialState = {
-  showBlackBars: false,
+  showBlackBars: true,
   curtainStatus: 0,
   mapActive: false,
   mouseVariant: "default",

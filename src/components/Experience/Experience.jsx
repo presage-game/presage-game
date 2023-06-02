@@ -1,5 +1,5 @@
-import { useState } from "react"
-import { useSelector } from "react-redux"
+import { useEffect, useState } from "react"
+import { useDispatch, useSelector } from "react-redux"
 
 import { Canvas } from "@react-three/fiber"
 
@@ -14,17 +14,27 @@ import { BlackBars } from "@/components/BlackBars/BlackBars"
 import { AudioManager } from "@/components/Experience/tools/AudioManager/AudioManager"
 
 import "./Experience.scss"
-import { Preload, Stats } from "@react-three/drei"
+import { Preload, Stats, useProgress } from "@react-three/drei"
 import { Curtain } from "../Curtain/Curtain"
+import { changeCurtainStatus } from "@/store/reducers/uiReducer"
 
 export const Experience = () => {
   const { scene, pinpoint } = useSelector((state) => state.map)
   const { mapActive } = useSelector((state) => state.ui)
+  const { active, progress, errors, item, loaded, total } = useProgress()
+  const dispatch = useDispatch()
 
   const [spotIndex, setSpotIndex] = useState(null)
   const [showText, setShowText] = useState(false)
   const [isVoiceOver, setIsVoiceOver] = useState(false)
   const [showPresage, setShowPresage] = useState(false)
+
+  useEffect(() => {
+    console.log(progress)
+    if (progress === 100) {
+      setTimeout(() => dispatch(changeCurtainStatus(1)), 2000)
+    }
+  }, [progress])
 
   return (
     <div className="Experience">

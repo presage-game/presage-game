@@ -5,5 +5,33 @@
   top: 0;
   left: 0;
   z-index: 100;
-  background-color: black;
+
+  .bar {
+    width: 50%;
+    height: 100%;
+    background-color: black;
+    position: absolute;
+
+    &--left {
+      top: 0;
+      left: 0;
+    }
+
+    &--right {
+      top: 0;
+      right: 0;
+    }
+
+  }
+
+  .text {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: 'Outfit';
+    font-weight: 500;
+  }
+
+  
 }
