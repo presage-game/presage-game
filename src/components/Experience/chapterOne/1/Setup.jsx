@@ -113,20 +113,20 @@ export const Setup = ({ setSpotIndex, setShowText, isVoiceOver }) => {
       <Suspense fallback={null}>
         <PositionalAudio
           autoplay
-          url="/assets/audios/atmospheric/1/wind.mp3"
+          url="/audios/scenes/0/atmospheric/wind.mp3"
           loop
           distance={4}
           position={[-12, -2.5, -50]}
         />
         <PositionalAudio
-          url="/assets/audios/atmospheric/1/metal.mp3"
+          url="/audios/scenes/0/atmospheric/metal.mp3"
           loop
           autoplay
           distance={0.6}
           position={[5, -2.2, -40]}
         />
         <PositionalAudio
-          url="/assets/audios/atmospheric/1/metal2.mp3"
+          url="/audios/scenes/0/atmospheric/metal2.mp3"
           loop
           autoplay
           distance={0.6}
@@ -134,7 +134,6 @@ export const Setup = ({ setSpotIndex, setShowText, isVoiceOver }) => {
         />
       </Suspense>
       <WindEffect />
-      <RainEffect />
       <CloudsEffect position={[0, 40, -300]} variant={variant} numberOfClouds={20} />
       <Scene
         variant={variant}
