@@ -30,7 +30,6 @@ export const Experience = () => {
   const [showPresage, setShowPresage] = useState(false)
 
   useEffect(() => {
-    console.log(progress)
     if (progress === 100) {
       setTimeout(() => dispatch(changeCurtainStatus(1)), 2000)
     }
