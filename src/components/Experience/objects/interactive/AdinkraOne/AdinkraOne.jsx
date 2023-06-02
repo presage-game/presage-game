@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react"
 import { useGLTF } from "@react-three/drei"
-import { MeshBasicMaterial } from "three"
 import { useDispatch, useSelector } from "react-redux"
 import { collectAdinkra } from "@/store/reducers/userReducer"
 
