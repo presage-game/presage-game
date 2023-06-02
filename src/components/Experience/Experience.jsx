@@ -15,6 +15,7 @@ import { AudioManager } from "@/components/Experience/tools/AudioManager/AudioMa
 
 import "./Experience.scss"
 import { Preload, Stats } from "@react-three/drei"
+import { Curtain } from "../Curtain/Curtain"
 
 export const Experience = () => {
   const { scene, pinpoint } = useSelector((state) => state.map)
@@ -28,6 +29,7 @@ export const Experience = () => {
   return (
     <div className="Experience">
       <BlackBars />
+      <Curtain />
       <Interface
         mapActive={mapActive}
         spotIndex={spotIndex}
