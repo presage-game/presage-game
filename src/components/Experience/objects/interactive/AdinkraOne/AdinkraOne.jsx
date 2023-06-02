@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react"
 import { useGLTF } from "@react-three/drei"
-import { MeshBasicMaterial } from "three"
 import { useDispatch, useSelector } from "react-redux"
 import { collectAdinkra } from "@/store/reducers/userReducer"
 
@@ -13,8 +12,8 @@ export const AdinkraOne = ({ adinkraFocused, setAdinkraFocused, Materials, posit
 
   const goodMelodic = [1, 2, 3, 4]
 
-  const rizzPlayer = new Audio("/assets/audio/adinkraOne/Rizz.mp3")
-  const pianoPlayer = new Audio("/assets/audio/adinkraOne/Piano.mp3")
+  const rizzPlayer = new Audio("/audios/scenes/1/adinkraOne/Rizz.mp3")
+  const pianoPlayer = new Audio("/audios/scenes/1/adinkraOne/Piano.mp3")
 
   const checkFocused = () => {
     console.log("check")

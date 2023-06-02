@@ -23,12 +23,12 @@ export const RainEffect = () => {
     y: {
       min: 100,
       max: -100,
-      speed: 0.3,
+      speed: 20,
     },
     z: {
       min: -90,
       max: -60,
-      speed: 0.1,
+      speed: 7,
     },
     lineWidth: 1,
     linePositions: [
@@ -39,9 +39,9 @@ export const RainEffect = () => {
     ],
   }
 
-  useFrame(() => {
-    lineRef.current.position.y -= config.y.speed
-    lineRef.current.position.z += config.z.speed
+  useFrame((state, delta) => {
+    lineRef.current.position.y -= config.y.speed * delta
+    lineRef.current.position.z += config.z.speed * delta
     if (lineRef.current.position.y <= config.y.max) {
       lineRef.current.position.y = config.y.min
       if (lineRef.current.position.z >= config.z.max) {

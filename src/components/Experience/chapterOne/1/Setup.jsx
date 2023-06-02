@@ -7,6 +7,7 @@ import { Environment, PositionalAudio, Sky } from "@react-three/drei"
 import { WindEffect } from "../../effects/WindEffect"
 import { GoToMap } from "../../objects/interactive/GoToMap/GoToMap"
 import { CloudsEffect } from "../../effects/CloudsEffect"
+import { RainEffect } from "../../effects/RainEffect"
 
 export const Setup = ({ setSpotIndex, setShowText, isVoiceOver }) => {
   const [variant, setVariant] = useState("default")
@@ -108,30 +109,24 @@ export const Setup = ({ setSpotIndex, setShowText, isVoiceOver }) => {
         dispose={null}
       />
       {variant !== "default" && <ambientLight color={"#C65948"} intensity={0.5} dispose={null} />}
-      {/* <HotGround
-        scale={2}
-        args={[30, 0.3, 500, 50]}
-        position={[-30, 1, 0]}
-        rotation={[-Math.PI / 2, Math.PI / 6, Math.PI / 2]}
-      /> */}
       <GoToMap args={[5, 5, 50]} position={[-1, -2.5, -80]} />
       <Suspense fallback={null}>
         <PositionalAudio
           autoplay
-          url="/assets/audios/atmospheric/1/wind.mp3"
+          url="/audios/scenes/0/atmospheric/wind.mp3"
           loop
           distance={4}
           position={[-12, -2.5, -50]}
         />
         <PositionalAudio
-          url="/assets/audios/atmospheric/1/metal.mp3"
+          url="/audios/scenes/0/atmospheric/metal.mp3"
           loop
           autoplay
           distance={0.6}
           position={[5, -2.2, -40]}
         />
         <PositionalAudio
-          url="/assets/audios/atmospheric/1/metal2.mp3"
+          url="/audios/scenes/0/atmospheric/metal2.mp3"
           loop
           autoplay
           distance={0.6}
