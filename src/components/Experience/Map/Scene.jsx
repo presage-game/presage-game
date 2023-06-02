@@ -5,7 +5,7 @@ import { Box, useGLTF, OrthographicCamera } from "@react-three/drei"
 import { useFrame } from "@react-three/fiber"
 import { Pathfinding, PathfindingHelper } from "three-pathfinding"
 import { Car } from "./Car"
-import { Model } from "./Model"
+import { Model } from "./Model9"
 
 export const Scene = ({
   goOnScene,
@@ -17,7 +17,7 @@ export const Scene = ({
 }) => {
   const { pinpoint: pinpointIndex, scene: sceneIndex } = useSelector((state) => state.map)
 
-  const navMesh = useGLTF("assets/scenes/navMeshT.glb")
+  const navMesh = useGLTF("assets/scenes/navMesh9.glb")
   const camRef = useRef()
   const navMeshRef = useRef()
 
@@ -34,7 +34,7 @@ export const Scene = ({
   const pathfinding = useMemo(() => new Pathfinding(), [])
   const pathfindinghelper = useMemo(() => new PathfindingHelper(), [])
   const ZONE = "level1"
-  const MAX_SPEED = 5
+  const MAX_SPEED = 3.5
   let navPath = null
 
   navMesh.scene.traverse((node) => {
@@ -63,7 +63,6 @@ export const Scene = ({
     startSound.play()
   }, [])
 
-  console.log(camRef.current)
 
   const click = (e, delta) => {
     let target = e.point
@@ -93,10 +92,10 @@ export const Scene = ({
     const distance = targetPosition.clone().sub(voitureGrpRef.current.position)
 
     // anti jitter
-    // if (distance.length() < 0.1) {
-    // navPath.shift()
-    // return
-    // }
+    if (distance.length() < 0.1) {
+    navPath.shift()
+    return
+    }
 
     if (navPath.length > 1 || distance.length() > 0.5) {
       if (speed < MAX_SPEED) {
@@ -236,7 +235,7 @@ export const Scene = ({
         makeDefault
         ref={camRef}
         position={[-7, 5, 15]}
-        zoom={100}
+        zoom={150}
         near={-50}
         far={100}
         dispose={null}
