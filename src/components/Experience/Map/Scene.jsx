@@ -17,8 +17,9 @@ export const Scene = ({
 }) => {
   const { pinpoint: pinpointIndex, scene: sceneIndex } = useSelector((state) => state.map)
 
-  const navMesh = useGLTF("assets/scenes/navMesh.glb")
+  const navMesh = useGLTF("assets/scenes/navMeshT.glb")
   const camRef = useRef()
+  const navMeshRef = useRef()
 
   const [startSound] = useState(() => new Audio("assets/vehicules/truck/start.mp3"))
 
@@ -51,10 +52,6 @@ export const Scene = ({
   }, [])
 
   const raycaster = useMemo(() => new Raycaster(), [])
-  const lastMouse = {
-    x: 0,
-    y: 0,
-  }
 
   useEffect(() => {
     camRef.current.lookAt(0, 0, 0)
@@ -65,6 +62,8 @@ export const Scene = ({
     startSound.volume = 0.05
     startSound.play()
   }, [])
+
+  console.log(camRef.current)
 
   const click = (e, delta) => {
     let target = e.point
@@ -93,11 +92,16 @@ export const Scene = ({
     let targetPosition = navPath[0]
     const distance = targetPosition.clone().sub(voitureGrpRef.current.position)
 
-    if (distance.lengthSq() > 0.5) {
+    // anti jitter
+    // if (distance.length() < 0.1) {
+    // navPath.shift()
+    // return
+    // }
+
+    if (navPath.length > 1 || distance.length() > 0.5) {
       if (speed < MAX_SPEED) {
         speed += 0.05
       }
-
       distance.normalize()
       // Move player to target
       voitureGrpRef.current.position.add(distance.multiplyScalar(delta * speed))
@@ -167,22 +171,24 @@ export const Scene = ({
     if (pointerDown) {
       let pointer = new Vector2(state.mouse.x, state.mouse.y)
       raycaster.setFromCamera(pointer, state.camera)
-      const objects = raycaster.intersectObjects(state.scene.children)
-
-      if (objects.length > 1) {
-        click({ point: objects[1].point }, delta)
+      const objects = raycaster.intersectObjects([navMeshRef.current], true)
+      if (objects && objects.length > 0) {
+        click({ point: objects[0].point }, delta)
+      } else {
+        click({ point: new Vector3(0, 0, 0) }, delta)
       }
     }
   })
 
   return (
     <>
-      <Model onPointerUp={() => setPointerDown(false)} />
+      <Model onPointerUp={() => setPointerDown(false)} visible={true} />
       <primitive
         onPointerDown={() => setPointerDown(true)}
         object={navMesh.scene}
+        visible={true}
+        ref={navMeshRef}
         dispose={null}
-        visible={false}
       />
       <group ref={voitureGrpRef} dispose={null}>
         <Car animationsName={pointerDown ? "Run" : null} />
@@ -230,7 +236,7 @@ export const Scene = ({
         makeDefault
         ref={camRef}
         position={[-7, 5, 15]}
-        zoom={150}
+        zoom={100}
         near={-50}
         far={100}
         dispose={null}
