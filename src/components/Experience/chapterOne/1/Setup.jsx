@@ -7,6 +7,7 @@ import { Environment, PositionalAudio, Sky } from "@react-three/drei"
 import { WindEffect } from "../../effects/WindEffect"
 import { GoToMap } from "../../objects/interactive/GoToMap/GoToMap"
 import { CloudsEffect } from "../../effects/CloudsEffect"
+import { RainEffect } from "../../effects/RainEffect"
 
 export const Setup = ({ setSpotIndex, setShowText, isVoiceOver }) => {
   const [variant, setVariant] = useState("default")
@@ -108,12 +109,6 @@ export const Setup = ({ setSpotIndex, setShowText, isVoiceOver }) => {
         dispose={null}
       />
       {variant !== "default" && <ambientLight color={"#C65948"} intensity={0.5} dispose={null} />}
-      {/* <HotGround
-        scale={2}
-        args={[30, 0.3, 500, 50]}
-        position={[-30, 1, 0]}
-        rotation={[-Math.PI / 2, Math.PI / 6, Math.PI / 2]}
-      /> */}
       <GoToMap args={[5, 5, 50]} position={[-1, -2.5, -80]} />
       <Suspense fallback={null}>
         <PositionalAudio
@@ -139,6 +134,7 @@ export const Setup = ({ setSpotIndex, setShowText, isVoiceOver }) => {
         />
       </Suspense>
       <WindEffect />
+      <RainEffect />
       <CloudsEffect position={[0, 40, -300]} variant={variant} numberOfClouds={20} />
       <Scene
         variant={variant}
