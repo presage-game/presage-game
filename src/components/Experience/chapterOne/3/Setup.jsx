@@ -35,7 +35,7 @@ export const Setup = ({ setSpotIndex, setShowText, isVoiceOver }) => {
 
   return (
     <>
-      <Environment preset="forest" />
+      <Environment files="/assets/hdri/forest_slope_1k.hdr" />
       <CustomCamera />
       <directionalLight
         intensity={0.9}

@@ -91,7 +91,7 @@ export const Setup = ({ setSpotIndex, setShowText, isVoiceOver }) => {
   */
   return (
     <>
-      <Environment preset="park" />
+      <Environment files="/assets/hdri/rooitou_park_1k.hdr" />
       <CustomCamera />
       <Sky
         sunPosition={[0, 13, 70]}

@@ -52,7 +52,7 @@ export const Setup = ({ variant }) => {
 
   return (
     <>
-      <Environment preset="forest" />
+      <Environment files="/assets/hdri/forest_slope_1k.hdr" />
       <CustomCamera />
       <directionalLight
         intensity={variant === "default" ? 0.9 : 0.5}

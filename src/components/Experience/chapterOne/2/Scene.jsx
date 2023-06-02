@@ -21,7 +21,7 @@ export const Scene = ({
   if (Materials === null) {
     return (
       <>
-        <Environment preset="park" />
+        <Environment files="/assets/hdri/rooitou_park_1k.hdr" />
       </>
     )
   }
