@@ -10,7 +10,7 @@ import {
   intersectPinpoint,
 } from "@/store/reducers/mapReducer"
 import { button, useControls } from "leva"
-import { toggleMap } from "@/store/reducers/uiReducer"
+import { changeBlackBarsStatus, toggleMap } from "@/store/reducers/uiReducer"
 
 export const Setup = ({ setShowText }) => {
   const [sceneNumber, setSceneNumber] = useState(0)
@@ -18,6 +18,7 @@ export const Setup = ({ setShowText }) => {
   const dispatch = useDispatch()
 
   const goOnScene = (number) => {
+    dispatch(changeBlackBarsStatus("closed"))
     dispatch(changeScene(number))
   }
 

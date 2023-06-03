@@ -1,6 +1,6 @@
 import { useState, useEffect} from "react"
 import { useSelector, useDispatch } from "react-redux"
-import { toggleBlackBars } from "@/store/reducers/uiReducer"
+import { changeBlackBarsStatus, toggleBlackBars, toggleMap } from "@/store/reducers/uiReducer"
 import { toggleMute } from "@/store/reducers/audioReducer"
 
 import scriptData from "@/assets/data/scenes.json"
@@ -26,6 +26,8 @@ export const Interface = ({
 }) => {
   const dispatch = useDispatch()
 
+  const { blackBarsStatus } = useSelector((state) => state.ui)
+  const OpenBlackBars = () => dispatch(changeBlackBarsStatus("opened"))
   const {
     scene: sceneIndex,
     isPinpointActive,
@@ -68,7 +70,7 @@ export const Interface = ({
           [Cinematic mode]
         </button>
       </div>
-      {!mapActive && (
+      {!mapActive && blackBarsStatus !== "closed" && blackBarsStatus !== "window" && (
         <SceneTextBox
           mapActive={mapActive}
           sceneIndex={sceneIndex}
@@ -78,6 +80,7 @@ export const Interface = ({
           setShowText={setShowText}
           isVoiceOver={isVoiceOver}
           setIsVoiceOver={setIsVoiceOver}
+          OpenBlackBars={OpenBlackBars}
         />
       )}
       {/* Work in progress */}

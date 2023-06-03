@@ -10,8 +10,7 @@ export const BlackBars = () => {
 
   const blackBarsClick = () => {
     if (blackBarsStatus === "window") {
-      console.log("yes")
-      dispatch(changeBlackBarsStatus("opened"))
+      dispatch(changeBlackBarsStatus("cinema"))
     }
   }
 
@@ -19,28 +18,47 @@ export const BlackBars = () => {
     <>
       <AnimatePresence>
         {blackBarsStatus !== "opened" && (
-          <div className="BlackBars" onClick={blackBarsClick}>
+          <div
+            className="BlackBars"
+            onClick={blackBarsClick}
+            style={{
+              pointerEvents:
+                (blackBarsStatus === "cinema" || blackBarsStatus === "closed") && "none",
+            }}
+          >
             <motion.div
               key="barTop"
               className="bar bar--top"
               initial={{ y: 0 }}
-              animate={{ y: blackBarsStatus === "closed" ? 0 : "-30%" }}
+              animate={{
+                y:
+                  blackBarsStatus === "closed" ? 0 : blackBarsStatus === "cinema" ? "-70%" : "-30%",
+              }}
               exit={{ y: "-100%" }}
-              transition={{ duration: 6, type: "spring" }}
+              transition={{ duration: 6, type: "spring", bounce: 0.2, restSpeed: 0.05 }}
             />
             <motion.div
               key="barBottom"
               className="bar bar--bottom"
               initial={{ y: 0 }}
-              animate={{ y: blackBarsStatus === "closed" ? 0 : "30%" }}
+              animate={{
+                y: blackBarsStatus === "closed" ? 0 : blackBarsStatus === "cinema" ? "70%" : "30%",
+              }}
               exit={{ y: "100%" }}
-              transition={{ duration: 6, type: "spring" }}
+              transition={{ duration: 6, type: "spring", bounce: 0.2, restSpeed: 0.05 }}
             />
             <motion.div
               key="barLeft"
               className="wbar wbar--left"
               initial={{ x: 0 }}
-              animate={{ x: blackBarsStatus === "closed" ? "0%" : "-15%" }}
+              animate={{
+                x:
+                  blackBarsStatus === "closed"
+                    ? "0%"
+                    : blackBarsStatus === "cinema"
+                    ? "-100%"
+                    : "-15%",
+              }}
               exit={{ x: "-100%" }}
               transition={{
                 duration: blackBarsStatus === "closed" ? 0 : 4,
@@ -53,7 +71,14 @@ export const BlackBars = () => {
               key="barRight"
               className="wbar wbar--right"
               initial={{ x: 0 }}
-              animate={{ x: blackBarsStatus === "closed" ? "0%" : "15%" }}
+              animate={{
+                x:
+                  blackBarsStatus === "closed"
+                    ? "0%"
+                    : blackBarsStatus === "cinema"
+                    ? "100%"
+                    : "15%",
+              }}
               exit={{ x: "100%" }}
               transition={{
                 duration: blackBarsStatus === "closed" ? 0 : 4,

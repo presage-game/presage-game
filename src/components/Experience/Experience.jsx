@@ -29,7 +29,7 @@ export const Experience = () => {
   const [showPresage, setShowPresage] = useState(false)
 
   useEffect(() => {
-    if (progress === 100) {
+    if (progress === 100 || mapActive === false) {
       setTimeout(() => dispatch(changeBlackBarsStatus("window")), 2000)
     }
   }, [progress])
