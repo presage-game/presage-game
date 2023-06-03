@@ -1,6 +1,6 @@
 import { useState, useEffect} from "react"
 import { useSelector, useDispatch } from "react-redux"
-import { changeBlackBarsStatus, toggleBlackBars, toggleMap } from "@/store/reducers/uiReducer"
+import { changeBlackBarsStatus, toggleMap } from "@/store/reducers/uiReducer"
 import { toggleMute } from "@/store/reducers/audioReducer"
 
 import scriptData from "@/assets/data/scenes.json"
@@ -60,14 +60,6 @@ export const Interface = ({
           onClick={() => dispatch(toggleMute())}
         >
           {isMuted ? "Unmute" : "Mute"}
-        </button>
-        <button
-          style={{ marginLeft: "3rem", cursor: "none" }}
-          onClick={() => {
-            dispatch(toggleBlackBars())
-          }}
-        >
-          [Cinematic mode]
         </button>
       </div>
       {!mapActive && blackBarsStatus !== "closed" && blackBarsStatus !== "window" && (

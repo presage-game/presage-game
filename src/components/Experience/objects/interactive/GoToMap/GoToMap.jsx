@@ -1,10 +1,11 @@
 import { Box } from "@react-three/drei"
 import { useState } from "react"
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { toggleMap, changeMouseVariant } from "@/store/reducers/uiReducer"
 
 export const GoToMap = ({ position, args }) => {
   const dispatch = useDispatch()
+  const { blackBarsStatus } = useSelector((state) => state.ui)
 
   const [timer, setTimer] = useState(null)
 
@@ -25,6 +26,12 @@ export const GoToMap = ({ position, args }) => {
       onPointerLeave={() => dispatch(changeMouseVariant("default"))}
       onPointerDown={holdClick}
       onPointerUp={() => clearTimeout(timer)}
+      onClick={() => {
+        if (blackBarsStatus === "opened") {
+          dispatch(changeMouseVariant("default"))
+          dispatch(toggleMap())
+        }
+      }}
       dispose={null}
     >
       <meshBasicMaterial transparent opacity={0} />
