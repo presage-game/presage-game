@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit"
 
 const initialState = {
   showBlackBars: true,
-  curtainStatus: 0,
+  blackBarsStatus: "closed",
   mapActive: false,
   mouseVariant: "default",
 }
@@ -14,8 +14,8 @@ export const uiSlice = createSlice({
     toggleBlackBars: (state) => {
       state.showBlackBars = !state.showBlackBars
     },
-    changeCurtainStatus: (state, action) => {
-      state.curtainStatus = action.payload
+    changeBlackBarsStatus: (state, action) => {
+      state.blackBarsStatus = action.payload
     },
     toggleMap: (state) => {
       state.mapActive = !state.mapActive
@@ -26,7 +26,7 @@ export const uiSlice = createSlice({
   },
 })
 
-export const { toggleBlackBars, changeCurtainStatus, toggleMap, changeMouseVariant } =
+export const { toggleBlackBars, changeBlackBarsStatus, toggleMap, changeMouseVariant } =
   uiSlice.actions
 
 export default uiSlice.reducer

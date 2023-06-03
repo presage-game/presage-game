@@ -15,8 +15,7 @@ import { AudioManager } from "@/components/Experience/tools/AudioManager/AudioMa
 
 import "./Experience.scss"
 import { Preload, Stats, useProgress } from "@react-three/drei"
-import { Curtain } from "../Curtain/Curtain"
-import { changeCurtainStatus } from "@/store/reducers/uiReducer"
+import { changeBlackBarsStatus } from "@/store/reducers/uiReducer"
 
 export const Experience = () => {
   const { scene, pinpoint } = useSelector((state) => state.map)
@@ -31,14 +30,13 @@ export const Experience = () => {
 
   useEffect(() => {
     if (progress === 100) {
-      setTimeout(() => dispatch(changeCurtainStatus(1)), 2000)
+      setTimeout(() => dispatch(changeBlackBarsStatus("window")), 2000)
     }
   }, [progress])
 
   return (
     <div className="Experience">
       <BlackBars />
-      <Curtain />
       <Interface
         mapActive={mapActive}
         spotIndex={spotIndex}
