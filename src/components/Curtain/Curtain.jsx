@@ -17,7 +17,12 @@ export const Curtain = () => {
             initial={{ x: 0 }}
             animate={{ x: curtainStatus === 0 ? "0%" : "-15%" }}
             exit={{ x: "-100%" }}
-            transition={{ duration: curtainStatus === 0 ? 0 : curtainStatus === 1 ? 4 : 2 }}
+            transition={{
+              duration:  curtainStatus === 0 ? 0 : 4,
+              type: "spring",
+              bounce: 0.2,
+              restSpeed: 0.05,
+            }}
           />
           <motion.div
             key="barRight"
@@ -25,15 +30,21 @@ export const Curtain = () => {
             initial={{ x: 0 }}
             animate={{ x: curtainStatus === 0 ? "0%" : "15%" }}
             exit={{ x: "100%" }}
-            transition={{ duration: curtainStatus === 0 ? 0 : 4 }}
+            transition={{
+              duration: curtainStatus === 0 ? 0 : 4,
+              type: "spring",
+              bounce: 0.2,
+              restSpeed: 0.05,
+            }}
           />
           <motion.p
             className="text"
             initial={{ opacity: 0 }}
             animate={{ opacity: curtainStatus === 1 ? 0.8 : 0 }}
             transition={{
-              delay: curtainStatus === 1 ? 4 : 2,
+              delay: curtainStatus === 1 ? 4 : 0,
               duration: curtainStatus === 1 ? 3 : 2,
+              type: "spring",
             }}
             exit={{ opacity: 0 }}
           >
