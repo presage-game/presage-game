@@ -130,12 +130,6 @@ export const SceneTextBox = ({
     }
   }, [sceneIndex])
 
-  useEffect(() => {
-    if (introPlayed && isVoiceOver && showText === false) {
-      dispatch(toggleBlackBars())
-    }
-  }, [showText])
-
   /* Voiceover */
   useEffect(() => {
     if (!hasMoreIntroText()) {
