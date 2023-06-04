@@ -4,19 +4,19 @@ import { WelcomeSign } from "../../objects/interactive/WelcomeSign/WelcomeSign"
 export const Scene = ({
   variant,
   setVariant,
-  pubClicked,
-  setPubClicked,
-  mapClicked,
-  setMapClicked,
+  pubFocused,
+  setPubFocused,
+  mapFocused,
+  setMapFocused,
 }) => {
   return (
     <>
       <Model position={[11, -15, 93]} variant={variant} setVariant={setVariant} />
       <WelcomeSign
-        pubClicked={pubClicked}
-        setPubClicked={setPubClicked}
-        mapClicked={mapClicked}
-        setMapClicked={setMapClicked}
+        pubFocused={pubFocused}
+        setPubFocused={setPubFocused}
+        mapFocused={mapFocused}
+        setMapFocused={setMapFocused}
       />
     </>
   )

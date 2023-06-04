@@ -71,7 +71,7 @@ export const AudioManager = ({ sceneIndex, pinpointIndex, mapActive }) => {
     if (sceneIndex !== null && !isSceneIntersecting && !mapActive && !isMuted) {
       trackAudio.src = `/audios/scenes/${sceneIndex}/sounds/track.mp3`
       trackAudio.play()
-      trackGainNode.gain.linearRampToValueAtTime(0.75, audioCtx.currentTime + 4)
+      trackGainNode.gain.linearRampToValueAtTime(0.5, audioCtx.currentTime + 4)
 
       // If ambianceAudio is not already playing
       // if (ambianceAudio.currentTime === 0) {
@@ -97,9 +97,10 @@ export const AudioManager = ({ sceneIndex, pinpointIndex, mapActive }) => {
 
   useEffect(() => {
     if (isMuted) {
-      trackGainNode.gain.linearRampToValueAtTime(0, audioCtx.currentTime + 2)
-      ambianceGainNode.gain.linearRampToValueAtTime(0, audioCtx.currentTime + 2)
-      mapGainNode.gain.linearRampToValueAtTime(0, audioCtx.currentTime + 2)
+      // TODO: fix this
+      // trackGainNode.gain.isMuted = true
+      // ambianceGainNode.gain.isMuted = true
+      // console.log("lets mute");
     }
   }, [isMuted])
 }

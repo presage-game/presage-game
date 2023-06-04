@@ -7,20 +7,19 @@ import { Environment, PositionalAudio, Sky } from "@react-three/drei"
 import { WindEffect } from "../../effects/WindEffect"
 import { GoToMap } from "../../objects/interactive/GoToMap/GoToMap"
 import { CloudsEffect } from "../../effects/CloudsEffect"
-import { RainEffect } from "../../effects/RainEffect"
 
 export const Setup = ({ setSpotIndex, setShowText, isVoiceOver }) => {
   const [variant, setVariant] = useState("default")
-  const [pubClicked, setPubClicked] = useState(false)
-  const [mapClicked, setMapClicked] = useState(false)
+  const [pubFocused, setPubFocused] = useState(false)
+  const [mapFocused, setMapFocused] = useState(false)
 
   const dispatch = useDispatch()
   const changeFocus = (value) => dispatch(changeOnFocusCamera(value))
   const changeFocusPosition = (value) => dispatch(changeOnFocusCameraPosition(value))
 
   useEffect(() => {
-    if (pubClicked) {
-      setMapClicked(false)
+    if (pubFocused) {
+      setMapFocused(false)
       setSpotIndex(0)
       changeFocusPosition({
         position: {
@@ -35,8 +34,8 @@ export const Setup = ({ setSpotIndex, setShowText, isVoiceOver }) => {
         },
       })
       changeFocus(true)
-    } else if (mapClicked) {
-      setPubClicked(false)
+    } else if (mapFocused) {
+      setPubFocused(false)
       setSpotIndex(1)
       changeFocusPosition({
         position: {
@@ -59,7 +58,7 @@ export const Setup = ({ setSpotIndex, setShowText, isVoiceOver }) => {
         setShowText(false)
       }
     }
-  }, [pubClicked, mapClicked])
+  }, [pubFocused, mapFocused])
 
   /*
   const switchLerp = (value) => {
@@ -138,10 +137,10 @@ export const Setup = ({ setSpotIndex, setShowText, isVoiceOver }) => {
       <Scene
         variant={variant}
         setVariant={setVariant}
-        mapClicked={mapClicked}
-        setMapClicked={setMapClicked}
-        pubClicked={pubClicked}
-        setPubClicked={setPubClicked}
+        mapFocused={mapFocused}
+        setMapFocused={setMapFocused}
+        pubFocused={pubFocused}
+        setPubFocused={setPubFocused}
       />
     </>
   )

@@ -67,16 +67,6 @@
     "spots": [
       {
         "index": 0,
-        "label": "Cercles de pierre",
-        "spotVoiceover": [
-          {
-            "text": "Tu as l'impression que les pierres émettent un son lorsque tu les touches.",
-            "emitter": "innerVoice"
-          }
-        ]
-      },
-      {
-        "index": 1,
         "label": "Clôtures",
         "spotVoiceover": [
           {
@@ -85,6 +75,16 @@
           },
           {
             "text": "Des entreprises ont essayé de se réapproprier cet endroit. Et quelque chose les a fait partir avant qu’elles n’y parviennent.",
+            "emitter": "innerVoice"
+          }
+        ]
+      },
+      {
+        "index": 1,
+        "label": "Cercles de pierre",
+        "spotVoiceover": [
+          {
+            "text": "Tu as l'impression que les pierres émettent un son lorsque tu les touches.",
             "emitter": "innerVoice"
           }
         ]
