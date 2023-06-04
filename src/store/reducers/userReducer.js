@@ -30,6 +30,11 @@ const initialState = {
       name: "Adinkra 2",
       description: "Adinkra 2 description",
     },
+    {
+      id: 3,
+      name: "Adinkra 3",
+      description: "Adinkra 3 description",
+    },
   ],
 }
 
@@ -68,7 +73,7 @@ export const {
   changeGameCode,
   changeOnFocusCamera,
   changeOnFocusCameraPosition,
-  collectAdinkra
+  collectAdinkra,
 } = userSlice.actions
 
 export default userSlice.reducer

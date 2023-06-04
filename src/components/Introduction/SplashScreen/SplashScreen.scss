@@ -1,13 +1,10 @@
 .SplashScreen {
   &__title {
-    font-size: 15rem;
-    letter-spacing: -1.5rem;
-    font-weight: 700;
-    color: #fefff1;
-    text-align: center;
-    display: block;
-    font-family: "Rowdies", cursive;
-    text-transform: uppercase;
+    margin-bottom: 6rem;
+    
+    svg {
+      height: 35rem;
+    }
   }
 
   &__container {

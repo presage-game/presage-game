@@ -103,10 +103,23 @@ export const Prompts = ({ introduction, currentIndex, setCurrentIndex }) => {
                   exit={{ opacity: 0, y: -20 }}
                   transition={{ duration: 1, delay: 2 }}
                 >
-                  <Button
-                    text="Continuer"
+                  <button
+                    className="next-button"
                     onClick={() => goToNext(section.options[followingToShow]?.version)}
-                  />
+                  >
+                    <svg
+                      width="25"
+                      height="13"
+                      viewBox="0 0 25 13"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M0 6.50001L24 6.50001M24 6.50001L17 0.499999M24 6.50001L17 12.5"
+                        stroke="#2E2724"
+                      />
+                    </svg>
+                  </button>
                 </motion.div>
               </div>
             )}

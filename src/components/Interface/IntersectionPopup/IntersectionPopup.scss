@@ -1,22 +1,16 @@
 .IntersectionPopup {
   position: absolute;
-  top: 25%;
+  top: 30%;
   left: 50%;
-  transform: translate(-50%, -50%);
   z-index: 10;
-  background-color: #fff3e7;
+  background-color: #fff3e7e6;
   padding: 1rem 2rem;
-  border-radius: 0.8rem;
-  border: 0.15rem solid #3e3a2f;
+  border: 0.1rem solid #3e3a2f;
   text-align: center;
   transition: ease-in-out 0.25s;
   transition-property: background-color, color, fill;
   color: #3e3a2f;
-
-  svg path {
-    fill: #3e3a2f;
-    stroke: #3e3a2f;
-  }
+  // border-radius: 0.6rem;
 
   &:hover {
     background-color: #fdc463;
@@ -33,5 +27,10 @@
   &__icon svg {
     width: 3.5rem;
     margin: 0.5rem auto 0 auto;
+
+    path {
+      stroke: #3e3a2f;
+      fill: #3e3a2f;
+    }
   }
 }

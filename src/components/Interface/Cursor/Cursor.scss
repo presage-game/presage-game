@@ -1,11 +1,60 @@
 .Cursor {
-    width: 1.5rem;
-    height: 1.5rem;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 30;
+  pointer-events: none;
+
+  &__svg {
+    transform: rotate(-35deg) scale(1);
+    transition: 0.5s cubic-bezier(0.215, 0.61, 0.355, 1);
+    transition-property: transform;
+
+    &--active {
+      transform: rotate(0deg) scale(0.1);
+    }
+  }
+
+  &__pastil {
     position: absolute;
+    top: -7.5px;
+    left: -7.5px;
     border-radius: 50%;
-    top: 0;
-    left: 0;
-    z-index: 30;
-    pointer-events: none;
+    transform: scale(0) translate(-50%, -50%);
     border: 0.1rem solid #3e3a2f;
+    background-color: #fff3e7e6;
+    height: 5rem;
+    width: 5rem;
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.5s cubic-bezier(0.215, 0.61, 0.355, 1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+
+    svg {
+      path {
+        stroke: #3e3a2f;
+        fill: #3e3a2f;
+      }
+    }
+
+    &--inner {
+      position: absolute;
+      transition: 0.5s cubic-bezier(0.215, 0.61, 0.355, 1);
+      background-color: #fdc463;
+      width: 100%;
+      height: 5rem;
+      transform: translateY(105%);
+      left: 0;
+      z-index: -1;
+    }
+
+    &--active {
+      opacity: 1;
+      visibility: visible;
+      transform: scale(1);
+    }
+  }
 }

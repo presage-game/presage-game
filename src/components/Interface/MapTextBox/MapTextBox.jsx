@@ -183,9 +183,9 @@ export const MapTextBox = ({ pinpointsData, pinpointIndex, mapActive }) => {
         <motion.div
           key="textBox"
           className="TextBox TextBox--bottom"
-          initial={{ opacity: 0, y: 20, x: "-50%" }}
-          animate={{ opacity: 1, y: 0, x: "-50%" }}
-          exit={{ opacity: 0, y: -20, x: "-50%" }}
+          initial={{ opacity: 0, y: "-60%", x: "-50%" }}
+          animate={{ opacity: 1, y: "-50%", x: "-50%" }}
+          exit={{ opacity: 0, y: -20, y: "-60%", x: "-50%" }}
           transition={{ y: { type: "spring", stiffness: 100 } }}
         >
           <div className="TextBox__inner">
@@ -230,20 +230,43 @@ export const MapTextBox = ({ pinpointsData, pinpointIndex, mapActive }) => {
             )}
           </div>
           {hasOptions() && hasMore() && !showOptions && (
-            <Button text="Suite" onClick={showMoreNPC} />
+            <Button text="show more npc" onClick={showMoreNPC} />
           )}
-          {!hasOptions() && hasMore() && <Button text="Suite" onClick={showMore} />}
+          {!hasOptions() && hasMore() && (
+            <button className="next-button" onClick={showMore}>
+              <svg
+                width="25"
+                height="13"
+                viewBox="0 0 25 13"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M0 6.50001L24 6.50001M24 6.50001L17 0.499999M24 6.50001L17 12.5"
+                  stroke="#2E2724"
+                />
+              </svg>
+            </button>
+          )}
           {((showOptions && !hasOptions() && !hasMore()) ||
             (!showOptions && hasOptions() && !hasMore())) && (
-            <Button
-              text="Fermer"
+            <button
+              className="close-button"
               onClick={() => {
-                setTextIndex(0)
                 setShowText(false)
-                setShowOptions(false)
                 dispatch(showPinpoint())
               }}
-            />
+            >
+              <svg
+                width="17"
+                height="17"
+                viewBox="0 0 17 17"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path d="M1 1L16 16M16 1L1 16" stroke="#2E2724" />
+              </svg>
+            </button>
           )}
           {hasOptions() && showOptions && (
             <>

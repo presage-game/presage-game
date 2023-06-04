@@ -1,5 +1,10 @@
 .TextBox {
   z-index: 20;
+  position: absolute;
+  background-color: #fff3e7e6;
+  border: 0.1rem solid #3e3a2f;
+  color: #3e3a2f;
+  // border-radius: 0.6rem;
 
   &__inner {
     margin-bottom: 3rem;
@@ -14,7 +19,7 @@
     letter-spacing: 0.1rem;
 
     &--innerVoice {
-      color: #9c66da;
+      color: #953afc;
     }
   }
 
@@ -23,43 +28,49 @@
     font-weight: 500;
   }
 
+  .next-button,
+  .close-button {
+    border-radius: 50%;
+    border: 0.1rem solid #3e3a2f;
+    height: 5rem;
+    width: 5rem;
+    margin: 0 auto;
+    transition: 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:hover {
+      background-color: #3e3a2f;
+      transform: scale(1.1);
+
+      svg {
+        path {
+          stroke: white;
+          fill: white;
+        }
+      }
+    }
+  }
+
   &--aside {
     max-width: 100%;
     width: 50rem;
     left: 2rem;
-    padding: 2rem;
-    position: absolute;
+    padding: 3rem;
     top: 50%;
     transform: translateY(-50%);
-    border-radius: 0.8rem;
-    background-color: #fff3e7ca;
-    border: 0.1rem solid #3e3a2f;
-    color: #3e3a2f;
   }
 
   &--bottom {
-    width: 100%;
     max-width: 80rem;
+    width: 100%;
+    top: 50%;
     left: 50%;
-    transform: translateX(-50%);
     padding: 2rem;
-    position: absolute;
-    bottom: 2rem;
-    background-color: #fff3e7ca;
-    border: 0.1rem solid #3e3a2f;
-    color: #3e3a2f;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: flex-start;
-    border-radius: 0.8rem;
-  }
-
-  .Button {
-    margin: 0 auto;
-
-    &:not(:last-child) {
-      margin-bottom: 1rem;
-    }
   }
 }
