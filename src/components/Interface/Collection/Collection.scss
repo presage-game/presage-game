@@ -22,12 +22,13 @@
     }
 
     &:hover {
-      background-color: #746f6aaa;
-      border: .1rem solid white;
+      background-color: #943afc6c;
+      border: 0.1rem solid white;
     }
 
     &--active {
-      &::before, &::after {
+      &::before,
+      &::after {
         content: "";
         position: absolute;
         top: -10%;
