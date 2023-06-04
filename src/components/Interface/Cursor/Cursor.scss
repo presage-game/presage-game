@@ -33,6 +33,13 @@
     justify-content: center;
     overflow: hidden;
 
+    svg {
+      path {
+        stroke: #3e3a2f;
+        fill: #3e3a2f;
+      }
+    }
+
     &--inner {
       position: absolute;
       transition: 0.5s cubic-bezier(0.215, 0.61, 0.355, 1);

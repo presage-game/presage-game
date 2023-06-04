@@ -20,11 +20,8 @@ export const SceneTextBox = ({
 }) => {
   const [introPlayed, setIntroPlayed] = useState(false)
   const [textIndex, setTextIndex] = useState(0)
-  const [optionIndex, setOptionIndex] = useState(0)
   const [key, setKey] = useState(0)
-
-  const dispatch = useDispatch()
-
+  
   // TODO: Set this state from Supabase data
   const [variant, setVariant] = useState("b")
 
