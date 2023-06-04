@@ -21,7 +21,7 @@ export const SceneTextBox = ({
   const [introPlayed, setIntroPlayed] = useState(false)
   const [textIndex, setTextIndex] = useState(0)
   const [key, setKey] = useState(0)
-  
+
   // TODO: Set this state from Supabase data
   const [variant, setVariant] = useState("b")
 
@@ -73,9 +73,8 @@ export const SceneTextBox = ({
           return intro[1]?.text
         }
       }
-
-      return
     }
+    return
   }
 
   const getSpotText = () => {
