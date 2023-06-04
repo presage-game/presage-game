@@ -1,4 +1,4 @@
-import { motion, AnimatePresence } from "framer-motion"
+import { motion, AnimatePresence, MotionConfig } from "framer-motion"
 import { changeBlackBarsStatus } from "@/store/reducers/uiReducer"
 import { useDispatch, useSelector } from "react-redux"
 
@@ -26,67 +26,78 @@ export const BlackBars = () => {
                 (blackBarsStatus === "cinema" || blackBarsStatus === "closed") && "none",
             }}
           >
-            <motion.div
-              key="barTop"
-              className="bar bar--top"
-              initial={{ y: 0 }}
-              animate={{
-                y:
-                  blackBarsStatus === "closed" ? 0 : blackBarsStatus === "cinema" ? "-70%" : "-30%",
+            <MotionConfig
+              transition={{
+                duration: 6,
+                type: "spring",
+                bounce: 0.2,
+                restSpeed: 0.05,
+                restDelta: 0.5,
               }}
-              exit={{ y: "-100%" }}
-              transition={{ duration: 6, type: "spring", bounce: 0.2, restSpeed: 0.05 }}
-            />
-            <motion.div
-              key="barBottom"
-              className="bar bar--bottom"
-              initial={{ y: 0 }}
-              animate={{
-                y: blackBarsStatus === "closed" ? 0 : blackBarsStatus === "cinema" ? "70%" : "30%",
-              }}
-              exit={{ y: "100%" }}
-              transition={{ duration: 6, type: "spring", bounce: 0.2, restSpeed: 0.05 }}
-            />
-            <motion.div
-              key="barLeft"
-              className="wbar wbar--left"
-              initial={{ x: 0 }}
-              animate={{
-                x:
-                  blackBarsStatus === "closed"
-                    ? "0%"
-                    : blackBarsStatus === "cinema"
-                    ? "-100%"
-                    : "-15%",
-              }}
-              exit={{ x: "-100%" }}
+            >
+              <motion.div
+                key="barTop"
+                className="bar bar--top"
+                initial={{ y: 0 }}
+                animate={{
+                  y:
+                    blackBarsStatus === "closed"
+                      ? 0
+                      : blackBarsStatus === "cinema"
+                      ? "-70%"
+                      : "-30%",
+                }}
+                exit={{ y: "-100%" }}
+              />
+              <motion.div
+                key="barBottom"
+                className="bar bar--bottom"
+                initial={{ y: 0 }}
+                animate={{
+                  y:
+                    blackBarsStatus === "closed" ? 0 : blackBarsStatus === "cinema" ? "70%" : "30%",
+                }}
+                exit={{ y: "100%" }}
+              />
+            </MotionConfig>
+            <MotionConfig
               transition={{
                 duration: blackBarsStatus === "closed" ? 0 : 4,
                 type: "spring",
                 bounce: 0.2,
                 restSpeed: 0.05,
+                restDelta: 0.5,
               }}
-            />
-            <motion.div
-              key="barRight"
-              className="wbar wbar--right"
-              initial={{ x: 0 }}
-              animate={{
-                x:
-                  blackBarsStatus === "closed"
-                    ? "0%"
-                    : blackBarsStatus === "cinema"
-                    ? "100%"
-                    : "15%",
-              }}
-              exit={{ x: "100%" }}
-              transition={{
-                duration: blackBarsStatus === "closed" ? 0 : 4,
-                type: "spring",
-                bounce: 0.2,
-                restSpeed: 0.05,
-              }}
-            />
+            >
+              <motion.div
+                key="barLeft"
+                className="wbar wbar--left"
+                initial={{ x: 0 }}
+                animate={{
+                  x:
+                    blackBarsStatus === "closed"
+                      ? "0%"
+                      : blackBarsStatus === "cinema"
+                      ? "-100%"
+                      : "-15%",
+                }}
+                exit={{ x: "-100%" }}
+              />
+              <motion.div
+                key="barRight"
+                className="wbar wbar--right"
+                initial={{ x: 0 }}
+                animate={{
+                  x:
+                    blackBarsStatus === "closed"
+                      ? "0%"
+                      : blackBarsStatus === "cinema"
+                      ? "100%"
+                      : "15%",
+                }}
+                exit={{ x: "100%" }}
+              />
+            </MotionConfig>
             <motion.p
               className="text"
               initial={{ opacity: 0 }}
