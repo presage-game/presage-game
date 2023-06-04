@@ -30,9 +30,6 @@ export const MapTextBox = ({ pinpointsData, pinpointIndex, mapActive }) => {
         return pinpoint[0]?.emitter
       } else if (variant === "b") {
         return pinpoint[1]?.emitter
-      } else {
-        showMore() // or show more NPC?
-        return ""
       }
     }
   }
@@ -51,9 +48,6 @@ export const MapTextBox = ({ pinpointsData, pinpointIndex, mapActive }) => {
       return pinpoint[0]?.text
     } else if (variant === "b" && pinpoint[1]?.text !== undefined) {
       return pinpoint[1]?.text
-    } else {
-      showMore() // or show more NPC?
-      return ""
     }
   }
 
