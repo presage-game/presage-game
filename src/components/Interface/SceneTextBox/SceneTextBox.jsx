@@ -115,16 +115,14 @@ export const SceneTextBox = ({
   }, [spotIndex])
 
   useEffect(() => {
-    setTextIndex(0)
-    setShowText(false)
-  }, [mapActive])
-
-  useEffect(() => {
-    if (scriptData[sceneIndex].voiceover.length > 0) {
+    if (mapActive) {
+      setTextIndex(0)
+      setShowText(false)
+    } else {
       setIsVoiceOver(true)
       setShowText(true)
     }
-  }, [sceneIndex])
+  }, [mapActive])
 
   /* Voiceover */
   useEffect(() => {

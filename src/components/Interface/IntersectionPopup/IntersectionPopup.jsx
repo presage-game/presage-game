@@ -81,7 +81,7 @@ export const IntersectionPopup = ({
                 <path
                   d="M9.99999 0L9.99999 32.5M9.99999 32.5L19 22M9.99999 32.5L0.999993 22"
                   stroke="#2E2724"
-                  stroke-width="1.5"
+                  strokeWidth="1.5"
                 />
               </svg>
             </div>

@@ -18,15 +18,7 @@ export const MapTextBox = ({ pinpointsData, pinpointIndex, mapActive }) => {
   const dispatch = useDispatch()
 
   // TODO: Set this state from Supabase data
-  const [variant, setVariant] = useState("a")
-
-  useEffect(() => {
-    if (!mapActive) {
-      setShowText(false)
-      setShowOptions(false)
-      setTextIndex(0)
-    }
-  }, [mapActive])
+  const [variant, setVariant] = useState("b")
 
   const getTextEmitter = () => {
     const pinpoint = pinpointsData[pinpointIndex]?.voiceover[textIndex]
@@ -38,6 +30,9 @@ export const MapTextBox = ({ pinpointsData, pinpointIndex, mapActive }) => {
         return pinpoint[0]?.emitter
       } else if (variant === "b") {
         return pinpoint[1]?.emitter
+      } else {
+        showMore() // or show more NPC?
+        return ""
       }
     }
   }
@@ -254,6 +249,7 @@ export const MapTextBox = ({ pinpointsData, pinpointIndex, mapActive }) => {
               className="close-button"
               onClick={() => {
                 setShowText(false)
+                setShowOptions(false)
                 dispatch(showPinpoint())
               }}
             >
