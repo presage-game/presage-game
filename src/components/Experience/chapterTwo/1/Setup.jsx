@@ -6,7 +6,7 @@ import { Scene } from "./Scene"
 export const Setup = ({ setSpotIndex, setShowText, isVoiceOver }) => {
   return (
     <>
-      <Environment files="/assets/hdri/rooitou_park_1k.hdr" />
+      <Environment files="/assets/hdri/forest_slope_1k.hdr" />
       <CustomCamera />
       <directionalLight
         intensity={0.9}
@@ -17,12 +17,11 @@ export const Setup = ({ setSpotIndex, setShowText, isVoiceOver }) => {
       />
       <CloudsEffect position={[0, 40, -300]} variant={"default"} numberOfClouds={20} />
       <Sky
-        sunPosition={[0, 13, 70]}
-        azimuth={90}
-        rayleigh={1.0}
+        sunPosition={[40, 10, 40]}
+        azimuth={180}
+        rayleigh={10.0}
         mieCoefficient={0.05}
         mieDirectionalG={0.828}
-        inclination={10}
       />
       <Scene />
     </>
