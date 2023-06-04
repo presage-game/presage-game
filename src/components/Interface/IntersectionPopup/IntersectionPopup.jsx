@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux"
 import { changeScene, showPinpoint } from "@/store/reducers/mapReducer"
-import { changeMouseVariant, toggleMap } from "@/store/reducers/uiReducer"
+import { toggleMap } from "@/store/reducers/uiReducer"
 
 import { motion, AnimatePresence } from "framer-motion"
 
@@ -27,7 +27,6 @@ export const IntersectionPopup = ({
   }
 
   const triggerScene = (index) => {
-    dispatch(changeMouseVariant("default"))
     dispatch(toggleMap())
     dispatch(changeScene(index))
   }
@@ -38,11 +37,9 @@ export const IntersectionPopup = ({
         <motion.div
           className="IntersectionPopup"
           onClick={triggerPinpoint}
-          onPointerEnter={() => dispatch(changeMouseVariant("buttonHover"))}
-          onPointerLeave={() => dispatch(changeMouseVariant("default"))}
-          initial={{ opacity: 0, x: "-50%", scale: 0.9 }}
-          animate={{ opacity: 1, x: "-50%", scale: 1 }}
-          exit={{ opacity: 0, x: "-50%", scale: 0.9 }}
+          initial={{ opacity: 0, x: "-50%", y: "-50%", scale: 0.9 }}
+          animate={{ opacity: 1, x: "-50%", y: "-50%", scale: 1 }}
+          exit={{ opacity: 0, x: "-50%", y: "-50%", scale: 0.9 }}
           transition={{ scale: { type: "spring", stiffness: 100 } }}
         >
           <div className="IntersectionPopup__inner">
@@ -66,28 +63,25 @@ export const IntersectionPopup = ({
         <motion.div
           className="IntersectionPopup"
           onClick={() => triggerScene(sceneIndex)}
-          onPointerEnter={() => dispatch(changeMouseVariant("buttonHover"))}
-          onPointerLeave={() => dispatch(changeMouseVariant("default"))}
-          initial={{ opacity: 0, x: "-50%", scale: 0.9 }}
-          animate={{ opacity: 1, x: "-50%", scale: 1 }}
-          exit={{ opacity: 0, x: "-50%", scale: 0.9 }}
+          initial={{ opacity: 0, y: "-50%", x: "-50%", scale: 0.9 }}
+          animate={{ opacity: 1, y: "-50%", x: "-50%", scale: 1 }}
+          exit={{ opacity: 0, x: "-50%", y: "-50%", scale: 0.9 }}
           transition={{ scale: { type: "spring", stiffness: 100 } }}
         >
           <div className="IntersectionPopup__inner">
             <h2 className="IntersectionPopup__title">{scriptData[sceneIndex]?.name}</h2>
             <div className="IntersectionPopup__icon">
               <svg
-                width="165"
-                height="30"
-                viewBox="0 0 165 290"
+                width="20"
+                height="34"
+                viewBox="0 0 20 34"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
               >
                 <path
-                  d="M82.5 0V280M82.5 280L157 205.5M82.5 280L8 205.5"
-                  stroke="white"
-                  strokeWidth="20"
-                  strokeLinejoin="round"
+                  d="M9.99999 0L9.99999 32.5M9.99999 32.5L19 22M9.99999 32.5L0.999993 22"
+                  stroke="#2E2724"
+                  stroke-width="1.5"
                 />
               </svg>
             </div>

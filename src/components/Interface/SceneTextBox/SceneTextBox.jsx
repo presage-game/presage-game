@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react"
-import { useSelector } from "react-redux"
+import { useSelector, useDispatch } from "react-redux"
+
+import { toggleBlackBars } from "@/store/reducers/uiReducer"
+import { Button } from "@/components/Button/Button"
 
 import { motion, AnimatePresence } from "framer-motion"
-
-import { Button } from "@/components/Button/Button"
 
 import "./TextBox.scss"
 
@@ -18,15 +19,16 @@ export const SceneTextBox = ({
   setIsVoiceOver,
 }) => {
   const [introPlayed, setIntroPlayed] = useState(false)
-  const [showOptions, setShowOptions] = useState(false)
   const [textIndex, setTextIndex] = useState(0)
   const [optionIndex, setOptionIndex] = useState(0)
   const [key, setKey] = useState(0)
 
+  const dispatch = useDispatch()
+
   // TODO: Set this state from Supabase data
   const [variant, setVariant] = useState("b")
 
-  /* Text and options */
+  /* Text */
   const getTextEmitter = () => {
     if (!isVoiceOver) {
       const spot = scriptData[sceneIndex]?.spots[spotIndex]?.spotVoiceover[textIndex]
@@ -93,7 +95,6 @@ export const SceneTextBox = ({
     }
   }
 
-  // Get options
   const hasMore = () => (isVoiceOver ? hasMoreIntroText() : hasMoreSpotText())
 
   const hasMoreIntroText = () => scriptData[sceneIndex]?.voiceover?.length > textIndex + 1
@@ -101,29 +102,8 @@ export const SceneTextBox = ({
   const hasMoreSpotText = () =>
     scriptData[sceneIndex].spots[spotIndex]?.spotVoiceover?.length > textIndex + 1
 
-  const hasOptions = () =>
-    scriptData[sceneIndex]?.spots[spotIndex]?.spotVoiceover[textIndex]?.options?.length > 0
-
   const showMore = () => {
     setTextIndex(textIndex + 1)
-    setKey((prevKey) => prevKey + 1)
-  }
-
-  const showMoreNPC = () => {
-    setTextIndex(textIndex + 1)
-    setShowOptions(true)
-    setKey((prevKey) => prevKey + 1)
-  }
-
-  const getOptionResponse = () => {
-    const option =
-      scriptData[sceneIndex]?.spots[spotIndex]?.spotVoiceover[textIndex]?.options[optionIndex]
-    return option.response
-  }
-
-  const chooseResponse = (data) => {
-    setOptionIndex(data)
-    setShowOptions(false)
     setKey((prevKey) => prevKey + 1)
   }
 
@@ -131,7 +111,6 @@ export const SceneTextBox = ({
     if (spotIndex !== null) {
       setTextIndex(0)
       setShowText(true)
-      setShowOptions(true)
       setIntroPlayed(true)
       setIsVoiceOver(false)
     } else if (spotIndex === null && introPlayed) {
@@ -142,7 +121,6 @@ export const SceneTextBox = ({
   useEffect(() => {
     setTextIndex(0)
     setShowText(false)
-    setShowOptions(false)
   }, [mapActive])
 
   useEffect(() => {
@@ -151,6 +129,12 @@ export const SceneTextBox = ({
       setShowText(true)
     }
   }, [sceneIndex])
+
+  useEffect(() => {
+    if (introPlayed && isVoiceOver && showText === false) {
+      dispatch(toggleBlackBars())
+    }
+  }, [showText])
 
   /* Voiceover */
   useEffect(() => {
@@ -215,7 +199,7 @@ export const SceneTextBox = ({
         }
       })
     }
-  }, [spotIndex, textIndex, introPlayed])
+  }, [spotIndex, textIndex, introPlayed]) // Improve?
 
   useEffect(() => {
     if (audioFile !== null && textIndex !== null) {
@@ -275,7 +259,7 @@ export const SceneTextBox = ({
                   ))}
               </p>
             )}
-            {!isVoiceOver && showOptions && getSpotText() && (
+            {!isVoiceOver && getSpotText() && (
               <p className="content">
                 {getSpotText()
                   .split(" ")
@@ -291,41 +275,40 @@ export const SceneTextBox = ({
                   ))}
               </p>
             )}
-            {hasOptions() && !isVoiceOver && !showOptions && getOptionResponse() && (
-              <p className="content">
-                {getOptionResponse()
-                  .split(" ")
-                  .map((word, index) => (
-                    <motion.span
-                      key={`${textIndex}-${spotIndex}-${index}-${key}`}
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.6, delay: index * 0.1 }}
-                    >
-                      {word}{" "}
-                    </motion.span>
-                  ))}
-              </p>
-            )}
           </div>
-          {hasOptions() && hasMore() && !showOptions && <Button text="Suite" onClick={showMore} />}
-          {!hasOptions() && hasMore() && <Button text="Suite" onClick={showMoreNPC} />}
+          {hasMore() && (
+            <button className="next-button" onClick={showMore}>
+              <svg
+                width="25"
+                height="13"
+                viewBox="0 0 25 13"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M0 6.50001L24 6.50001M24 6.50001L17 0.499999M24 6.50001L17 12.5"
+                  stroke="#2E2724"
+                />
+              </svg>
+            </button>
+          )}
           {!hasMore() && (
-            <Button
-              text="Fermer"
+            <button
+              className="close-button"
               onClick={() => {
                 setShowText(false)
               }}
-            />
-          )}
-          {hasOptions() && showOptions && (
-            <div className="options">
-              {scriptData[sceneIndex]?.spots[spotIndex]?.spotVoiceover[textIndex]?.options.map(
-                (option, index) => (
-                  <Button text={option?.text} onClick={() => chooseResponse(index)} />
-                )
-              )}
-            </div>
+            >
+              <svg
+                width="17"
+                height="17"
+                viewBox="0 0 17 17"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path d="M1 1L16 16M16 1L1 16" stroke="#2E2724" />
+              </svg>
+            </button>
           )}
         </motion.div>
       )}
