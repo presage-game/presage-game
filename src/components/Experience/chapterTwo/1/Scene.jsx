@@ -1,4 +1,4 @@
-import { Model } from "./Model"
+import { Model } from "./Keur_gnialo"
 
 export const Scene = () => {
   return (
