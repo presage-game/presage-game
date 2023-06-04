@@ -50,6 +50,7 @@ export const Cursor = () => {
       return () => {
         window.removeEventListener("pointerdown", pointerDown)
         window.removeEventListener("pointerup", pointerUp)
+        innerPastil.style.transform = `translateY(${100}%)`
         clearInterval(timer)
       }
     }
