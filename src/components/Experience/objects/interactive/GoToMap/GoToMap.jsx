@@ -1,9 +1,21 @@
 import { Box } from "@react-three/drei"
+import { useState } from "react"
 import { useDispatch } from "react-redux"
 import { toggleMap, changeMouseVariant } from "@/store/reducers/uiReducer"
 
 export const GoToMap = ({ position, args }) => {
   const dispatch = useDispatch()
+
+  const [timer, setTimer] = useState(null)
+
+  const holdClick = () => {
+    setTimer(
+      setTimeout(() => {
+        dispatch(toggleMap())
+        dispatch(changeMouseVariant("default"))
+      }, 2500)
+    )
+  }
 
   return (
     <Box
@@ -11,13 +23,11 @@ export const GoToMap = ({ position, args }) => {
       position={position}
       onPointerEnter={() => dispatch(changeMouseVariant("large"))}
       onPointerLeave={() => dispatch(changeMouseVariant("default"))}
-      onClick={() => {
-        dispatch(changeMouseVariant("default"))
-        dispatch(toggleMap())
-      }}
+      onPointerDown={holdClick}
+      onPointerUp={() => clearTimeout(timer)}
       dispose={null}
     >
-      <meshBasicMaterial transparent opacity={0.3} />
+      <meshBasicMaterial transparent opacity={0} />
     </Box>
   )
 }
