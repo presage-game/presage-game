@@ -53,7 +53,11 @@ export const Setup = () => {
     BaobabOne: button(() => {
       setSceneNumber(2)
       setChangeSceneState(true)
-    })
+    }),
+    KeurGnialo: button(() => {
+      setSceneNumber(3)
+      setChangeSceneState(true)
+    }),
   })
 
   useEffect(() => {
