@@ -18,7 +18,7 @@ export const MapTextBox = ({ pinpointsData, pinpointIndex, mapActive }) => {
   const dispatch = useDispatch()
 
   // TODO: Set this state from Supabase data
-  const [variant, setVariant] = useState("b")
+  const [variant, setVariant] = useState("a")
 
   const getTextEmitter = () => {
     const pinpoint = pinpointsData[pinpointIndex]?.voiceover[textIndex]

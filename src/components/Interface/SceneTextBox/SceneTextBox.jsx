@@ -1,9 +1,5 @@
 import { useState, useEffect } from "react"
-import { useSelector, useDispatch } from "react-redux"
-
-import { toggleBlackBars } from "@/store/reducers/uiReducer"
-import { Button } from "@/components/Button/Button"
-
+import { useSelector} from "react-redux"
 import { motion, AnimatePresence } from "framer-motion"
 
 import "./TextBox.scss"
