@@ -2,8 +2,36 @@ import { Environment, Sky } from "@react-three/drei"
 import { CustomCamera } from "../../tools/CustomCamera/CustomCamera"
 import { CloudsEffect } from "../../effects/CloudsEffect"
 import { Scene } from "./Scene"
+import { useEffect, useState } from "react"
+import { useDispatch } from "react-redux"
+import { changeOnFocusCamera, changeOnFocusCameraPosition } from "@/store/reducers/userReducer"
 
 export const Setup = ({ setSpotIndex, setShowText, isVoiceOver }) => {
+  const dispatch = useDispatch()
+  const changeFocus = (value) => dispatch(changeOnFocusCamera(value))
+  const changeFocusPosition = (value) => dispatch(changeOnFocusCameraPosition(value))
+  const [adinkraFocused, setAdinkraFocused] = useState(false)
+
+  useEffect(() => {
+    if (adinkraFocused) {
+      changeFocusPosition({
+        position: {
+          x: 220,
+          y: -2,
+          z: 250,
+        },
+        rotation: {
+          x: 0,
+          y: Math.PI / 2 + Math.PI / 3,
+          z: 0,
+        },
+      })
+      changeFocus(true)
+    } else {
+      changeFocus(false)
+    }
+  }, [adinkraFocused])
+
   return (
     <>
       <Environment files="/assets/hdri/forest_slope_1k.hdr" />
@@ -23,7 +51,7 @@ export const Setup = ({ setSpotIndex, setShowText, isVoiceOver }) => {
         mieCoefficient={0.05}
         mieDirectionalG={0.828}
       />
-      <Scene />
+      <Scene adinkraFocused={adinkraFocused} setAdinkraFocused={setAdinkraFocused} />
     </>
   )
 }

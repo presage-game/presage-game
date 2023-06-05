@@ -1,5 +1,6 @@
 import { Html, Plane, Box, useTexture, Decal } from "@react-three/drei"
 import { useRef, useState } from "react"
+import { DoubleSide } from "three"
 
 const initialData = {
   prevX: 0,
@@ -31,8 +32,16 @@ const draw = (ctx, data) => {
   ctx.closePath()
 }
 
-export const AdinkraTwo = ({ switchLerp }) => {
+export const AdinkraTwo = ({
+  position,
+  rotation,
+  adinkraFocused,
+  setAdinkraFocused,
+  nodes,
+  Materials,
+}) => {
   const sankofaTexture = useTexture("/assets/images/sankofa.png")
+  const [localFocused, setLocalFocused] = useState(false)
   const [game, setGame] = useState(false)
   const canvasRef = useRef(null)
   const [data, setData] = useState(initialData)
@@ -41,8 +50,8 @@ export const AdinkraTwo = ({ switchLerp }) => {
     let mouse = getMousePos(canvasRef.current, e)
     let prevX = data.currX !== 0 ? data.currX : mouse.x
     let prevY = data.currY !== 0 ? data.currY : mouse.y
-    let currX = mouse.x - canvasRef.current.offsetLeft
-    let currY = mouse.y - canvasRef.current.offsetTop
+    let currX = mouse.x + canvasRef.current.offsetLeft
+    let currY = mouse.y + canvasRef.current.offsetTop
     let ctx = canvasRef.current.getContext("2d")
 
     let flag = true
@@ -139,34 +148,65 @@ export const AdinkraTwo = ({ switchLerp }) => {
 
   return (
     <>
-      <Plane args={[10, 6]} rotation={[0, 0, 0]} position={[8, 0.8, -20]}>
-        <meshBasicMaterial transparent color="#ffffff" opacity={0.1} />
-        <Html position={[0, 0, 0]} transform>
-          <div
-            onPointerEnter={() => {
-              if (!game) {
-                initCanvas()
-                setGame(true)
-              }
-              switchLerp(true)
-            }}
-            onPointerLeave={() => switchLerp(false)}
-          >
-            <canvas
-              onMouseDown={(e) => handleMDown(e)}
-              onMouseUp={() => {
-                clearCanvas()
-              }}
-              onMouseMove={(e) => handleMMove(e)}
-              ref={canvasRef}
-            ></canvas>
-          </div>
-        </Html>
-      </Plane>
-      <Box args={[2, 2]} position={[8, 0, -22]} rotation={[0, 0, 0]}>
-        <meshBasicMaterial />
-        <Decal position={[0, 0, 0.5]} map={sankofaTexture} />
-      </Box>
+      <group
+        position={position}
+        rotation={rotation}
+        dispose={null}
+        onPointerEnter={() => {
+          if (!adinkraFocused) {
+            setAdinkraFocused(true)
+            setTimeout(() => {
+              setLocalFocused(true)
+            }, 2500)
+          }
+        }}
+      >
+        {!localFocused ? (
+          <Plane args={[10, 6]}>
+            <meshBasicMaterial color="black" side={DoubleSide} />
+          </Plane>
+        ) : (
+          <Plane args={[10, 6]}>
+            <meshBasicMaterial transparent color="#ffffff" opacity={0.1} />
+            <Html position={[0, 0, 0]} zIndexRange={9} transform>
+              <div
+                onPointerEnter={() => {
+                  if (adinkraFocused) {
+                    if (!game) {
+                      initCanvas()
+                      setGame(true)
+                    }
+                  }
+                }}
+              >
+                <canvas
+                  onMouseDown={(e) => {
+                    if (adinkraFocused === true) {
+                      handleMDown(e)
+                    }
+                  }}
+                  onMouseUp={() => {
+                    clearCanvas()
+                  }}
+                  onMouseMove={(e) => {
+                    if (adinkraFocused === true) {
+                      handleMMove(e)
+                    }
+                  }}
+                  ref={canvasRef}
+                ></canvas>
+              </div>
+            </Html>
+          </Plane>
+        )}
+        <mesh
+          geometry={nodes.Curve003.geometry}
+          material={Materials.outlineMaterial}
+          position={[0.1, 0, 0.1]}
+          rotation={[-Math.PI / 4, Math.PI / 2, -Math.PI / 2]}
+          scale={1.7}
+        />
+      </group>
     </>
   )
 }
