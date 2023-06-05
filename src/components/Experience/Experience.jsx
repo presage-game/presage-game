@@ -17,7 +17,7 @@ import "./Experience.scss"
 import { Preload, Stats, useProgress } from "@react-three/drei"
 import { changeBlackBarsStatus } from "@/store/reducers/uiReducer"
 
-export const Experience = () => {
+export const Experience = ({ activateBlackBars }) => {
   const { scene, pinpoint } = useSelector((state) => state.map)
   const { mapActive } = useSelector((state) => state.ui)
   const { active, progress, errors, item, loaded, total } = useProgress()
@@ -36,7 +36,7 @@ export const Experience = () => {
 
   return (
     <div className="Experience">
-      <BlackBars />
+      {activateBlackBars && <BlackBars />}
       <Interface
         mapActive={mapActive}
         spotIndex={spotIndex}
