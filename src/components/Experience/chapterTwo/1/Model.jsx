@@ -4,13 +4,15 @@ Command: npx gltfjsx@6.1.10 keur_gnialo.glb --transform
 */
 
 import React, { useState, useEffect } from "react"
-import { useGLTF } from "@react-three/drei"
+import { useGLTF, useTexture } from "@react-three/drei"
 import { getMaterials } from "@/helpers/materials/Materials"
 import { MeshBasicMaterial } from "three"
 
 export function Model(props) {
   const { nodes, materials } = useGLTF("/assets/scenes/keur_gnialo.glb")
 
+  const pubTexture = useTexture("/assets/images/keurgnialo_pub.jpg")
+  pubTexture.flipY = false
   const [Materials, setMaterials] = useState(null)
 
   useEffect(() => {
@@ -783,25 +785,11 @@ export function Model(props) {
         scale={[0.2, -0.21, -0.21]}
       />
       <mesh
-        geometry={nodes.Box001007.geometry}
-        material={Materials.houseMaterials.main}
-        position={[-45.17, 18.87, 58.52]}
-        rotation={[1.57, 0, -0.8]}
-        scale={[0.14, -0.15, -0.15]}
-      />
-      <mesh
         geometry={nodes.Cube008.geometry}
         material={Materials.houseMaterials.wall}
         position={[-49.8, 18.42, 26.41]}
         rotation={[0, -0.63, 0]}
         scale={[5.38, 1.89, 9.46]}
-      />
-      <mesh
-        geometry={nodes.Cube013.geometry}
-        material={Materials.houseMaterials.wall}
-        position={[-45.55, 17.27, 56.71]}
-        rotation={[0, 0.8, 0]}
-        scale={[3.95, 1.39, 6.94]}
       />
       <mesh
         geometry={nodes.Cube009.geometry}
@@ -818,32 +806,11 @@ export function Model(props) {
         scale={[5.49, 4.51, 9.46]}
       />
       <mesh
-        geometry={nodes.Cube015.geometry}
-        material={Materials.stoneMaterial}
-        position={[-46.54, 15.74, 58.83]}
-        rotation={[0, 0.8, 0]}
-        scale={[3.03, 2.75, 6.94]}
-      />
-      <mesh
         geometry={nodes.Cube011.geometry}
         material={Materials.houseMaterials.wall}
         position={[-50.27, 14.66, 26.91]}
         rotation={[0, -0.63, 0]}
         scale={[5.38, 1.82, 8.57]}
-      />
-      <mesh
-        geometry={nodes.Cube014.geometry}
-        material={Materials.houseMaterials.wall}
-        position={[-45.23, 14.51, 57.11]}
-        rotation={[0, 0.8, 0]}
-        scale={[3.95, 1.34, 6.29]}
-      />
-      <mesh
-        geometry={nodes.Box001002.geometry}
-        material={Materials.houseMaterials.main}
-        position={[-44.82, 18.86, 57.02]}
-        rotation={[1.57, 0, -2.37]}
-        scale={[0.14, -0.15, -0.15]}
       />
       <group position={[-75.05, 18.52, -12.27]} rotation={[0, -0.18, 0]} scale={[5.38, 1.89, 9.46]}>
         <mesh geometry={nodes.Cube029_1.geometry} material={Materials.houseMaterials.wall} />
@@ -1886,9 +1853,9 @@ export function Model(props) {
       <mesh
         geometry={nodes.Curve003.geometry}
         material={Materials.adinkraMaterial}
-        position={[38.39, 15.3, 31.74]}
-        rotation={[Math.PI / 2, 0, -0.02]}
-        scale={1.3}
+        position={[30, 16.3, 27.74]}
+        rotation={[0, 0, -Math.PI / 2]}
+        scale={1.7}
       />
       <mesh
         geometry={nodes.BezierCurve.geometry}
@@ -1918,7 +1885,10 @@ export function Model(props) {
         scale={[0.12, 2.55, -3.62]}
       >
         <mesh geometry={nodes.Cube196.geometry} material={Materials.outlineMaterial} />
-        <mesh geometry={nodes.Cube196_1.geometry} material={new MeshBasicMaterial({color: "yellow"})} />
+        <mesh
+          geometry={nodes.Cube196_1.geometry}
+          material={new MeshBasicMaterial({ map: pubTexture })}
+        />
       </group>
       <group
         position={[-32.84, 17.31, 18.2]}

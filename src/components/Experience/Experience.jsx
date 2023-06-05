@@ -46,7 +46,7 @@ export const Experience = () => {
           />
         ) : scene === 1 ? (
           <MegalithicCircles
-            variant={"default"}
+            variant={"defaultt"}
             setSpotIndex={setSpotIndex}
             setShowText={setShowText}
             isVoiceOver={isVoiceOver}
