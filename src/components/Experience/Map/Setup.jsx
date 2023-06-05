@@ -12,7 +12,7 @@ import {
 import { button, useControls } from "leva"
 import { toggleMap } from "@/store/reducers/uiReducer"
 
-export const Setup = () => {
+export const Setup = ({ setShowText }) => {
   const [sceneNumber, setSceneNumber] = useState(0)
   const [changeSceneState, setChangeSceneState] = useState(false)
   const dispatch = useDispatch()
@@ -58,13 +58,14 @@ export const Setup = () => {
 
   useEffect(() => {
     if (changeSceneState === true) {
-      console.log("yes")
       goOnScene(sceneNumber)
       dispatch(toggleMap())
     }
   }, [changeSceneState])
 
   useEffect(() => {
+    setShowText(false)
+
     return () => {
       dispatch(intersectScene(false))
     }
