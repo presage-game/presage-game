@@ -14,7 +14,7 @@ const initialData = {
 function getMousePos(canvas, evt) {
   var rect = canvas.getBoundingClientRect()
   return {
-    x: ((evt.clientX - rect.left) / (rect.right - rect.left)) * canvas.width,
+    x: ((evt.clientX - rect.right) / (rect.left - rect.right)) * canvas.width,
     y: ((evt.clientY - rect.top) / (rect.bottom - rect.top)) * canvas.height,
   }
 }
@@ -203,8 +203,8 @@ export const AdinkraTwo = ({
           geometry={nodes.Curve003.geometry}
           material={Materials.outlineMaterial}
           position={[0.1, 0, 0.1]}
-          rotation={[-Math.PI / 4, Math.PI / 2, -Math.PI / 2]}
-          scale={1.7}
+          rotation={[-Math.PI / 2, Math.PI, 0]}
+          scale={4}
         />
       </group>
     </>
