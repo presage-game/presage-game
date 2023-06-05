@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { useDispatch } from "react-redux"
 import { motion, AnimatePresence } from "framer-motion"
 import { Button } from "@/components/Button/Button"
@@ -6,8 +6,14 @@ import { toggleMap } from "@/store/reducers/uiReducer"
 
 import "@/components/Interface/SceneTextBox/TextBox.scss"
 
-export const PresageTextBox = ({ presagesData, mapActive, sceneIndex, spotIndex }) => {
-  const [showText, setShowText] = useState(true)
+export const PresageTextBox = ({
+  presagesData,
+  mapActive,
+  sceneIndex,
+  spotIndex,
+  showText,
+  setShowText,
+}) => {
   const [showOptions, setShowOptions] = useState(true)
   const [textIndex, setTextIndex] = useState(0)
   const [optionIndex, setOptionIndex] = useState(0)
@@ -52,6 +58,13 @@ export const PresageTextBox = ({ presagesData, mapActive, sceneIndex, spotIndex 
   const hasMore = () => {
     return textIndex < data?.prompts.length - 1
   }
+
+  useEffect(() => {
+    if (mapActive) {
+      setTextIndex(0)
+      setShowText(false)
+    }
+  }, [mapActive])
 
   return (
     <>
