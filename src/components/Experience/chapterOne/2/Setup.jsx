@@ -53,7 +53,7 @@ export const Setup = ({ setSpotIndex, setShowText, isVoiceOver, variant }) => {
       setSpotIndex(null)
       changeFocus(false)
 
-      if (!isVoiceOver && introPlayed) {
+      if (!isVoiceOver) {
         setShowText(false)
       }
     }
