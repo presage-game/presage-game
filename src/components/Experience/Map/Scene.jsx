@@ -5,7 +5,7 @@ import { Box, useGLTF, OrthographicCamera } from "@react-three/drei"
 import { useFrame } from "@react-three/fiber"
 import { Pathfinding, PathfindingHelper } from "three-pathfinding"
 import { Car } from "./Car"
-import { Model } from "./Model9"
+import { Model } from "./Model"
 
 export const Scene = ({
   goOnScene,
@@ -17,7 +17,7 @@ export const Scene = ({
 }) => {
   const { pinpoint: pinpointIndex, scene: sceneIndex } = useSelector((state) => state.map)
 
-  const navMesh = useGLTF("assets/scenes/navMesh9.glb")
+  const navMesh = useGLTF("assets/scenes/navMesh.glb")
   const camRef = useRef()
   const navMeshRef = useRef()
 
