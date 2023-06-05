@@ -154,6 +154,8 @@ export const AdinkraTwo = ({
       ctx.fillRect(0, 0, canvasRef.current.width, canvasRef.current.height)
       ctx.closePath()
       ctx.globalCompositeOperation = "destination-out"
+    } else {
+      initCanvas()
     }
   }
 
