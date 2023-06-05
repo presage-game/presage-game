@@ -154,8 +154,6 @@ export const AdinkraTwo = ({
       ctx.fillRect(0, 0, canvasRef.current.width, canvasRef.current.height)
       ctx.closePath()
       ctx.globalCompositeOperation = "destination-out"
-    } else {
-      initCanvas()
     }
   }
 
@@ -168,7 +166,9 @@ export const AdinkraTwo = ({
   }, [localFocused])
 
   useEffect(() => {
-    initCanvas()
+    setTimeout(() => {
+      initCanvas()
+    }, [1000])
   }, [])
 
   return (
