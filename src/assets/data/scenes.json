@@ -114,5 +114,54 @@
       ]
     ],
     "spots": []
+  },
+  {
+    "name": "Keur Gnìalo",
+    "voiceover": [
+      {
+        "text": "Une station-essence toute neuve tranche radicalement avec l’amalgame que forme les bâtisses au style colonial et les rangées de quincailleries.",
+        "emitter": "narrator"
+      },
+      {
+        "text": "Béton, poussière et métal se coagulent sous tes yeux pour former Keur Gnìalo. La fomentation urbaine se mêle au bruit du trafic.",
+        "emitter": "narrator"
+      }
+    ],
+    "spots": [
+      {
+        "index": 0,
+        "label": "Boutique de la station-essence",
+        "spotVoiceover": [
+          [
+            {
+              "text": "Des conducteurs se sont arrêtés ici avant toi. Tu sens leur présence au fond de tes poumons. L’odeur du gazole se répand aux abords de la ville, et bizarrement, tu trouves cela agréable.",
+              "emitter": "innerVoice"
+            },
+            {
+              "text": "La boutique de la station-essence est fermée. Une note manuscrite rédigée en français a été placardée sur la porte.",
+              "emitter": "narrator"
+            },
+            {
+              "text": "Bienvenue! Remplacer cela par un texte de NPC (à écrire)",
+              "emitter": "narrator"
+            }
+          ],
+          [
+            {
+              "text": "Tu entres dans la boutique de la station-essence.",
+              "emitter": "narrator"
+            },
+            {
+              "text": "La note dit: “Boutique fermée en raison de la pénurie de carburant. Approvisionnements perturbés et retards importants de la part des fournisseurs. Merci de votre compréhension.”",
+              "emitter": "narrator"
+            },
+            {
+              "text": "Tu assistes à la défaite du modèle libéral. Des jerricanes de secours dorment sagement à l’arrière de ton véhicule, tous les deux blottis l’un contre l’autre.",
+              "emitter": "innerVoice"
+            }
+          ]
+        ]
+      }
+    ]
   }
 ]
