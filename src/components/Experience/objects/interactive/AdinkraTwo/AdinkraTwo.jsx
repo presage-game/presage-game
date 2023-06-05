@@ -54,7 +54,7 @@ export const AdinkraTwo = ({
     let prevY = data.currY !== 0 ? data.currY : mouse.y
     let currX = mouse.x + canvasRef.current.offsetLeft
     let currY = mouse.y + canvasRef.current.offsetTop
-    let ctx = canvasRef.current.getContext("2d")
+    let ctx = canvasRef.current.getContext("2d", { willReadFrequently: true })
 
     let flag = true
     let dot_flag = true
@@ -91,7 +91,7 @@ export const AdinkraTwo = ({
         currY: currY,
       })
 
-      draw(canvasRef.current.getContext("2d"), data)
+      draw(canvasRef.current.getContext("2d", { willReadFrequently: true }), data)
     }
   }
 
@@ -100,7 +100,7 @@ export const AdinkraTwo = ({
       ...initialData,
     })
     let imgData = canvasRef.current
-      .getContext("2d")
+      .getContext("2d", { willReadFrequently: true })
       .getImageData(0, 0, canvasRef.current.width, canvasRef.current.height, { colorSpace: "srgb" })
     let red = []
     let green = []
@@ -148,7 +148,7 @@ export const AdinkraTwo = ({
 
   const initCanvas = () => {
     if (canvasRef.current !== null) {
-      let ctx = canvasRef.current.getContext("2d")
+      let ctx = canvasRef.current.getContext("2d", { willReadFrequently: true })
       ctx.clearRect(0, 0, canvasRef.current.width, canvasRef.current.height)
       ctx.beginPath()
       ctx.fillRect(0, 0, canvasRef.current.width, canvasRef.current.height)
