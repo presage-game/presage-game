@@ -30,6 +30,7 @@ export const Experience = ({ activateBlackBars }) => {
 
   useEffect(() => {
     if (progress === 100 && mapActive === false) {
+      setIsVoiceOver(true)
       setTimeout(() => dispatch(changeBlackBarsStatus("window")), 2000)
     }
   }, [active, mapActive])

@@ -158,7 +158,6 @@ export const SceneTextBox = ({
       setShowText(false)
       setShowOptions(false)
     } else {
-      setIsVoiceOver(true)
       setShowText(true)
       setShowOptions(true)
     }
