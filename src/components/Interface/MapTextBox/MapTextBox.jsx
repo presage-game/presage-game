@@ -6,7 +6,7 @@ import { Button } from "@/components/Button/Button"
 
 import "@/components/Interface/SceneTextBox/TextBox.scss"
 
-export const MapTextBox = ({ pinpointsData, pinpointIndex, mapActive }) => {
+export const MapTextBox = ({ pinpointsData, pinpointIndex }) => {
   const { isPinpointIntersecting, isPinpointActive } = useSelector((state) => state.map)
 
   const [showText, setShowText] = useState(pinpointIndex !== null)
@@ -174,7 +174,7 @@ export const MapTextBox = ({ pinpointsData, pinpointIndex, mapActive }) => {
           className="TextBox TextBox--bottom"
           initial={{ opacity: 0, y: "-60%", x: "-50%" }}
           animate={{ opacity: 1, y: "-50%", x: "-50%" }}
-          exit={{ opacity: 0, y: -20, y: "-60%", x: "-50%" }}
+          exit={{ opacity: 0, y: "-60%", x: "-50%" }}
           transition={{ y: { type: "spring", stiffness: 100 } }}
         >
           <div className="TextBox__inner">

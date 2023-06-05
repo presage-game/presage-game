@@ -60,6 +60,10 @@ export const Setup = ({ setSpotIndex, setShowText, isVoiceOver, variant }) => {
 
   useEffect(() => {
     setShowText(true)
+
+    return () => {
+      setSpotIndex(null)
+    }
   }, [])
 
   return (

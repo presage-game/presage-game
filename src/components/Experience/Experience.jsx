@@ -37,7 +37,7 @@ export const Experience = () => {
       />
       <Canvas style={{ position: "absolute", top: "0%", height: "100%" }}>
         {mapActive ? (
-          <Map />
+          <Map setShowText={setShowText} />
         ) : scene === 0 ? (
           <RegionEntranceOne
             setSpotIndex={setSpotIndex}

@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react"
-import { useSelector} from "react-redux"
+import { useSelector } from "react-redux"
 import { motion, AnimatePresence } from "framer-motion"
 
 import "./TextBox.scss"
@@ -19,34 +19,32 @@ export const SceneTextBox = ({
   const [key, setKey] = useState(0)
 
   // TODO: Set this state from Supabase data
-  const [variant, setVariant] = useState("b")
+  const [variant, setVariant] = useState("a")
 
   /* Text */
   const getTextEmitter = () => {
     if (!isVoiceOver) {
       const spot = scriptData[sceneIndex]?.spots[spotIndex]?.spotVoiceover[textIndex]
 
-      if (!variant || typeof spot?.text === "string") {
+      if (typeof spot?.text === "string") {
         return spot?.emitter
       } else {
-        if (variant === "a" && spot[0]?.emitter !== undefined) {
-          return spot[0]?.emitter
-        } else if (variant === "b" && spot[1]?.emitter !== undefined) {
-          return spot[1]?.emitter
+        if (variant === "a" && spot[0] !== undefined) {
+          return spot[0]?.emitter ? spot[0]?.emitter : null
+        } else if (variant === "b" && spot[1] !== undefined) {
+          return spot[1]?.emitter ? spot[1]?.emitter : null
         }
       }
-
-      return
     } else {
       const intro = scriptData[sceneIndex]?.voiceover[textIndex]
 
-      if (!variant || typeof intro?.text === "string") {
+      if (typeof intro?.text === "string") {
         return intro?.emitter
       } else {
-        if (variant === "a" && intro[0]?.emitter !== undefined) {
-          return intro[0]?.emitter
-        } else if (variant === "b" && intro[1]?.emitter !== undefined) {
-          return intro[1]?.emitter
+        if (variant === "a" && intro[0] !== undefined) {
+          return intro[0]?.emitter ? intro[0]?.emitter : null
+        } else if (variant === "b" && intro[1] !== undefined) {
+          return intro[1]?.emitter ? intro[1]?.emitter : null
         }
       }
     }
@@ -60,13 +58,13 @@ export const SceneTextBox = ({
     if (scriptData[sceneIndex]?.voiceover) {
       const intro = scriptData[sceneIndex]?.voiceover[textIndex]
 
-      if (!variant || typeof intro?.text === "string") {
+      if (typeof intro?.text === "string") {
         return intro?.text
       } else {
         if (variant === "a" && intro[0]?.text !== undefined) {
-          return intro[0]?.text
+          return intro[0]?.text ? intro[0]?.text : null
         } else if (variant === "b" && intro[1]?.text !== undefined) {
-          return intro[1]?.text
+          return intro[1]?.text ? intro[1]?.text : null
         }
       }
     }
@@ -76,7 +74,7 @@ export const SceneTextBox = ({
   const getSpotText = () => {
     const spot = scriptData[sceneIndex]?.spots[spotIndex]?.spotVoiceover[textIndex]
 
-    if (!variant || typeof spot?.text === "string") {
+    if (typeof spot?.text === "string") {
       return spot?.text
     } else {
       if (variant === "a" && typeof spot === "object") {
@@ -101,12 +99,13 @@ export const SceneTextBox = ({
 
   useEffect(() => {
     if (spotIndex !== null) {
+      console.log("spot")
       setTextIndex(0)
       setShowText(true)
       setIntroPlayed(true)
       setIsVoiceOver(false)
     } else if (spotIndex === null && introPlayed) {
-      setTextIndex(null)
+      setTextIndex(0)
     }
   }, [spotIndex])
 
@@ -148,7 +147,7 @@ export const SceneTextBox = ({
       const intro = scriptData[sceneIndex]?.voiceover[textIndex]
       let audioPath
 
-      if (!variant || typeof intro?.text === "string") {
+      if (typeof intro?.text === "string") {
         audioPath = `audios/scenes/${sceneIndex}/voiceover/intro-${textIndex}.mp3`
       } else {
         if (variant === "a" && intro[0]?.text !== undefined) {
@@ -167,7 +166,7 @@ export const SceneTextBox = ({
       const spot = scriptData[sceneIndex]?.spots[spotIndex]?.spotVoiceover[textIndex]
       let audioPath
 
-      if (!variant || typeof spot?.text === "string") {
+      if (typeof spot?.text === "string") {
         audioPath = `audios/scenes/${sceneIndex}/voiceover/${spotIndex}-${textIndex}.mp3`
       } else {
         if (variant === "a" && typeof spot === "object") {
@@ -186,27 +185,19 @@ export const SceneTextBox = ({
   }, [spotIndex, textIndex, introPlayed]) // Improve?
 
   useEffect(() => {
-    if (audioFile !== null && textIndex !== null) {
-      if (!currentAudio.paused) {
-        currentAudio.pause()
-      }
-
+    if (audioFile) {
       currentAudio.src = audioFile
-      currentAudio.load()
-
-      const playPromise = currentAudio.play()
-      if (playPromise !== undefined) {
-        playPromise.catch((error) => {
-          return // TODO: catch the error, and show a message only if the error is not related to a missing file
-        })
-      }
+      currentAudio.play()
+    } else {
+      currentAudio.pause()
     }
 
     return () => {
-      currentAudio.currentTime = 0
       currentAudio.pause()
+      currentAudio.src = ""
+      currentAudio.currentTime = 0
     }
-  }, [audioFile, textIndex])
+  }, [audioFile])
 
   return (
     <AnimatePresence>
