@@ -14,10 +14,6 @@ export const Setup = ({ setSpotIndex, setShowText, isVoiceOver }) => {
   const changeFocus = (value) => dispatch(changeOnFocusCamera(value))
   const changeFocusPosition = (value) => dispatch(changeOnFocusCameraPosition(value))
 
-  // useEffect(() => {
-  //   setShowText(true)
-  // }, [])
-
   useEffect(() => {
     if (treeFocused) {
       changeFocusPosition({
@@ -42,6 +38,10 @@ export const Setup = ({ setSpotIndex, setShowText, isVoiceOver }) => {
       }
     }
   }, [treeFocused])
+
+  useEffect(() => {
+    setShowText(true)
+  }, [])
 
   return (
     <>

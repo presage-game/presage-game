@@ -64,6 +64,10 @@ export const Setup = ({ setSpotIndex, setShowText, isVoiceOver }) => {
     }
   }, [pubFocused, mapFocused])
 
+  useEffect(() => {
+    setShowText(true)
+  }, [])
+
   /*
   const switchLerp = (value) => {
     changeFocusPosition({

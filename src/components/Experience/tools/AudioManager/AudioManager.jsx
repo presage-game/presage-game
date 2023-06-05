@@ -97,10 +97,9 @@ export const AudioManager = ({ sceneIndex, pinpointIndex, mapActive }) => {
 
   useEffect(() => {
     if (isMuted) {
-      // TODO: fix this
-      // trackGainNode.gain.isMuted = true
-      // ambianceGainNode.gain.isMuted = true
-      // console.log("lets mute");
+      trackGainNode.gain.value = 0
+      ambianceGainNode.gain.value = 0
+      mapGainNode.gain.value = 0
     }
   }, [isMuted])
 }
