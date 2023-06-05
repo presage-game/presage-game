@@ -16,6 +16,10 @@ export const Setup = ({ setSpotIndex, setShowText, isVoiceOver, variant }) => {
   const changeFocus = (value) => dispatch(changeOnFocusCamera(value))
   const changeFocusPosition = (value) => dispatch(changeOnFocusCameraPosition(value))
 
+  // useEffect(() => {
+  //   setShowText(true)
+  // }, [])
+
   useEffect(() => {
     if (adinkraFocused) {
       setFenceFocused(false)
