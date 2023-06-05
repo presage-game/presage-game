@@ -62,7 +62,7 @@ export const PresageTextBox = ({ presagesData, mapActive, sceneIndex, spotIndex 
             className="TextBox TextBox--bottom"
             initial={{ opacity: 0, y: "-60%", x: "-50%" }}
             animate={{ opacity: 1, y: "-50%", x: "-50%" }}
-            exit={{ opacity: 0, y: -20, y: "-60%", x: "-50%" }}
+            exit={{ opacity: 0, y: "-60%", x: "-50%" }}
             transition={{ y: { type: "spring", stiffness: 100 } }}
           >
             <div className="TextBox__inner">
