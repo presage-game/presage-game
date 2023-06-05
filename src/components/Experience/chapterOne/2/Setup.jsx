@@ -4,7 +4,6 @@ import { useDispatch } from "react-redux"
 import { changeOnFocusCamera, changeOnFocusCameraPosition } from "@/store/reducers/userReducer"
 import { CustomCamera } from "../../tools/CustomCamera/CustomCamera"
 import { Environment, PositionalAudio, Sky } from "@react-three/drei"
-import { CloudsEffect } from "../../effects/CloudsEffect"
 import { GoToMap } from "../../objects/interactive/GoToMap/GoToMap"
 import { TempestEffect } from "../../effects/TempestEffect"
 
@@ -64,7 +63,7 @@ export const Setup = ({ setSpotIndex, setShowText, isVoiceOver, variant }) => {
   }, [])
 
   return (
-    <>
+    <group dispose={null}>
       <Environment files="/assets/hdri/forest_slope_1k.hdr" />
       <CustomCamera />
       <directionalLight
@@ -94,13 +93,11 @@ export const Setup = ({ setSpotIndex, setShowText, isVoiceOver, variant }) => {
       {variant === "default" ? (
         <>
           <Sky
-            sunPosition={[40, 10, 40]}
-            azimuth={180}
-            rayleigh={10.0}
-            mieCoefficient={0.05}
-            mieDirectionalG={0.828}
+            sunPosition={[80, 100, 80]}
+            rayleigh={0.13}
+            mieCoefficient={0.002}
+            mieDirectionalG={1}
           />
-          <CloudsEffect position={[0, 40, -300]} variant={variant} numberOfClouds={20} />
         </>
       ) : (
         <>
@@ -117,6 +114,6 @@ export const Setup = ({ setSpotIndex, setShowText, isVoiceOver, variant }) => {
         fenceFocused={fenceFocused}
         setFenceFocused={setFenceFocused}
       />
-    </>
+    </group>
   )
 }
