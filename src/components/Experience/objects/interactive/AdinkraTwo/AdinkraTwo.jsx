@@ -1,6 +1,7 @@
-import { Html, Plane, Box, useTexture, Decal } from "@react-three/drei"
-import { useRef, useState } from "react"
-import { DoubleSide } from "three"
+import { collectAdinkra } from "@/store/reducers/userReducer"
+import { Html, Plane } from "@react-three/drei"
+import { useEffect, useRef, useState } from "react"
+import { useDispatch } from "react-redux"
 
 const initialData = {
   prevX: 0,
@@ -40,9 +41,10 @@ export const AdinkraTwo = ({
   nodes,
   Materials,
 }) => {
-  const sankofaTexture = useTexture("/assets/images/sankofa.png")
+  const dispatch = useDispatch()
   const [localFocused, setLocalFocused] = useState(false)
   const [game, setGame] = useState(false)
+  const [gameFinished, setGameFinished] = useState(false)
   const canvasRef = useRef(null)
   const [data, setData] = useState(initialData)
 
@@ -132,6 +134,15 @@ export const AdinkraTwo = ({
       console.log("perdu")
     } else {
       console.log("gagné")
+      dispatch(
+        collectAdinkra({
+          id: 2,
+          name: "Adinkra 2",
+          description: "Adinkra 2 description good",
+        })
+      )
+      setGameFinished(true)
+      setAdinkraFocused(false)
     }
   }
 
@@ -146,59 +157,52 @@ export const AdinkraTwo = ({
     }
   }
 
+  useEffect(() => {
+    if (localFocused && !gameFinished) {
+      if (!game) {
+        setGame(true)
+      }
+    }
+  }, [localFocused])
+
+  useEffect(() => {
+    initCanvas()
+  }, [])
+
   return (
     <>
-      <group
-        position={position}
-        rotation={rotation}
-        dispose={null}
-        onPointerEnter={() => {
-          if (!adinkraFocused) {
-            setAdinkraFocused(true)
-            setTimeout(() => {
-              setLocalFocused(true)
-            }, 2500)
-          }
-        }}
-      >
-        {!localFocused ? (
-          <Plane args={[10, 6]}>
-            <meshBasicMaterial color="black" side={DoubleSide} />
-          </Plane>
-        ) : (
-          <Plane args={[10, 6]}>
-            <meshBasicMaterial transparent color="#ffffff" opacity={0.1} />
-            <Html position={[0, 0, 0]} zIndexRange={9} transform>
-              <div
-                onPointerEnter={() => {
-                  if (adinkraFocused) {
-                    if (!game) {
-                      initCanvas()
-                      setGame(true)
-                    }
+      <group position={position} rotation={rotation} dispose={null}>
+        <Plane args={[10, 6]}>
+          <meshBasicMaterial transparent color="#ffffff" opacity={0.1} />
+          <Html position={[0, 0, 0]} zIndexRange={9} transform>
+            <div>
+              <canvas
+                onClick={() => {
+                  if (!adinkraFocused) {
+                    setAdinkraFocused(true)
+                    setTimeout(() => {
+                      setLocalFocused(true)
+                    }, 2500)
                   }
                 }}
-              >
-                <canvas
-                  onMouseDown={(e) => {
-                    if (adinkraFocused === true) {
-                      handleMDown(e)
-                    }
-                  }}
-                  onMouseUp={() => {
-                    clearCanvas()
-                  }}
-                  onMouseMove={(e) => {
-                    if (adinkraFocused === true) {
-                      handleMMove(e)
-                    }
-                  }}
-                  ref={canvasRef}
-                ></canvas>
-              </div>
-            </Html>
-          </Plane>
-        )}
+                onMouseDown={(e) => {
+                  if (adinkraFocused === true) {
+                    handleMDown(e)
+                  }
+                }}
+                onMouseUp={() => {
+                  clearCanvas()
+                }}
+                onMouseMove={(e) => {
+                  if (adinkraFocused === true) {
+                    handleMMove(e)
+                  }
+                }}
+                ref={canvasRef}
+              ></canvas>
+            </div>
+          </Html>
+        </Plane>
         <mesh
           geometry={nodes.Curve003.geometry}
           material={Materials.outlineMaterial}
