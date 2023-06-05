@@ -34,8 +34,8 @@ export const Cursor = () => {
         timer = setInterval(() => {
           if (isNaN(progress)) progress = 0
           progress++
-          innerPastil.style.transform = `translateY(${100 - progress / 2.25}%)`
-        }, 10)
+          innerPastil.style.transform = `translateY(${progress / 100}%)`
+        }, 100)
       }
 
       const pointerUp = () => {

@@ -13,7 +13,7 @@ export const GoToMap = ({ position, args }) => {
       setTimeout(() => {
         dispatch(toggleMap())
         dispatch(changeMouseVariant("default"))
-      }, 2500)
+      }, 750)
     )
   }
 
