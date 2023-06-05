@@ -26,246 +26,222 @@ export function Model(props) {
         <mesh geometry={nodes.pCube2_Ext_4.geometry} material={materials.M_Gas_Pump_2} />
         <mesh geometry={nodes.pCylinder6.geometry} material={Materials.floorMaterial} />
         <mesh geometry={nodes.SmartCombine_100.geometry} material={Materials.outlineMaterial} />
-        <mesh geometry={nodes.SmartCombine_104.geometry} material={materials.M_Gas_Pump_2} />
         <mesh geometry={nodes.SmartCombine_105.geometry} material={Materials.gasPumpMaterials.ledScreen} />
         <mesh geometry={nodes.SmartCombine_107.geometry} material={Materials.outlineMaterial} />
-        <mesh geometry={nodes.SmartCombine_110.geometry} material={Materials.floorMaterial} />
         <mesh geometry={nodes.SmartCombine_111.geometry} material={Materials.gasPumpMaterials.ledScreen} />
-        <mesh geometry={nodes.SmartCombine_112.geometry} material={Materials.floorMaterial} />
-        <mesh geometry={nodes.SmartCombine_114.geometry} material={Materials.floorMaterial} />
         <mesh geometry={nodes.SmartCombine_115.geometry} material={Materials.gasPumpMaterials.ledScreen} />
-        <mesh geometry={nodes.SmartCombine_34.geometry} material={Materials.floorMaterial} />
-        <mesh geometry={nodes.SmartCombine_61.geometry} material={Materials.metalMaterials.main} />
-        <mesh geometry={nodes.SmartCombine_76.geometry} material={materials.M_Gas_Pump_2} />
+        <mesh geometry={nodes.SmartCombine_34.geometry} material={Materials.gasPumpMaterials.orange} />
+        <mesh geometry={nodes.SmartCombine_61.geometry} material={Materials.gasPumpMaterials.ledScreen} />
+        <mesh geometry={nodes.SmartCombine_76.geometry} material={Materials.metalMaterials.main} />
         <mesh geometry={nodes.SmartCombine_92.geometry} material={Materials.outlineMaterial} />
-        <mesh geometry={nodes.SmartCombine_93.geometry} material={Materials.floorMaterial} />
-        <mesh geometry={nodes.SmartCombine_97.geometry} material={Materials.floorMaterial} />
-        <mesh geometry={nodes.SmartCombine_99.geometry} material={Materials.floorMaterial} />
+        <mesh geometry={nodes.SmartCombine_93.geometry} material={Materials.gasPumpMaterials.white} />
+        <mesh geometry={nodes.SmartCombine_97.geometry} material={Materials.gasPumpMaterials.white} />
+        <mesh geometry={nodes.SmartCombine_99.geometry} material={Materials.outlineMaterial} />
         <mesh geometry={nodes.SmartDuplicate_45.geometry} material={Materials.outlineMaterial} />
         <mesh geometry={nodes.SmartDuplicate_54.geometry} material={Materials.outlineMaterial} />
         <mesh geometry={nodes.SmartDuplicate_58.geometry} material={Materials.outlineMaterial} />
         <mesh geometry={nodes.SmartExtract_42.geometry} material={Materials.gasPumpMaterials.ledScreen} />
-        <mesh geometry={nodes.SmartSeparate_47.geometry} material={materials.M_Gas_Pump_03} />
-        <mesh geometry={nodes.SmartSeparate_70.geometry} material={materials.lambert1} />
-        <mesh geometry={nodes.SmartSeparate_71.geometry} material={materials.lambert1} />
-        <mesh geometry={nodes.SmartSeparate_72.geometry} material={Materials.floorMaterial} />
+        <mesh geometry={nodes.SmartSeparate_47.geometry} material={Materials.metalMaterials.main} />
+        <mesh geometry={nodes.SmartSeparate_70.geometry} material={Materials.metalMaterials.main} />
+        <mesh geometry={nodes.SmartSeparate_71.geometry} material={Materials.metalMaterials.main} />
+        <mesh geometry={nodes.SmartSeparate_72.geometry} material={Materials.metalMaterials.main} />
         <mesh geometry={nodes.SmartSeparate_75.geometry} material={Materials.outlineMaterial} />
         <mesh geometry={nodes.SmartSeparate_87.geometry} material={Materials.gasPumpMaterials.ledScreen} />
-        <mesh geometry={nodes.Mesh040.geometry} material={Materials.floorMaterial} />
+        <mesh geometry={nodes.Mesh040.geometry} material={Materials.gasPumpMaterials.white} />
         <mesh geometry={nodes.Mesh040_1.geometry} material={Materials.outlineMaterial} />
-        <mesh geometry={nodes.Mesh042.geometry} material={Materials.floorMaterial} />
+        <mesh geometry={nodes.Mesh042.geometry} material={Materials.gasPumpMaterials.orange} />
         <mesh geometry={nodes.Mesh042_1.geometry} material={Materials.outlineMaterial} />
-        <mesh geometry={nodes.Mesh012.geometry} material={Materials.floorMaterial} />
+        <mesh geometry={nodes.Mesh012.geometry} material={Materials.gasPumpMaterials.white} />
         <mesh geometry={nodes.Mesh012_1.geometry} material={Materials.outlineMaterial} />
-        <mesh geometry={nodes.Mesh049.geometry} material={Materials.floorMaterial} />
+        <mesh geometry={nodes.Mesh049.geometry} material={Materials.gasPumpMaterials.green} />
         <mesh geometry={nodes.Mesh049_1.geometry} material={Materials.outlineMaterial} />
-        <mesh geometry={nodes.Mesh046.geometry} material={Materials.floorMaterial} />
+        <mesh geometry={nodes.Mesh046.geometry} material={Materials.gasPumpMaterials.green} />
         <mesh geometry={nodes.Mesh046_1.geometry} material={Materials.outlineMaterial} />
-        <mesh geometry={nodes.Mesh047.geometry} material={Materials.floorMaterial} />
+        <mesh geometry={nodes.Mesh047.geometry} material={Materials.metalMaterials.main} />
         <mesh geometry={nodes.Mesh047_1.geometry} material={Materials.outlineMaterial} />
-        <mesh geometry={nodes.Mesh043.geometry} material={Materials.floorMaterial} />
+        <mesh geometry={nodes.Mesh043.geometry} material={Materials.gasPumpMaterials.orange} />
         <mesh geometry={nodes.Mesh043_1.geometry} material={Materials.outlineMaterial} />
-        <mesh geometry={nodes.Mesh044.geometry} material={Materials.floorMaterial} />
+        <mesh geometry={nodes.Mesh044.geometry} material={Materials.gasPumpMaterials.green} />
         <mesh geometry={nodes.Mesh044_1.geometry} material={Materials.outlineMaterial} />
       </group>
       <group position={[45.27, 13.08, 14.97]} rotation={[3.02, 1.55, -3.02]} scale={[0.01, 0.01, -0.01]}>
-        <mesh geometry={nodes.pCube2_Ext_4001.geometry} material={materials.M_Gas_Pump_2} />
+        <mesh geometry={nodes.pCube2_Ext_4001.geometry} material={Materials.gasPumpMaterials.orange} />
         <mesh geometry={nodes.pCylinder6001.geometry} material={Materials.floorMaterial} />
         <mesh geometry={nodes.SmartCombine_100001.geometry} material={Materials.outlineMaterial} />
-        <mesh geometry={nodes.SmartCombine_104001.geometry} material={materials.M_Gas_Pump_2} />
         <mesh geometry={nodes.SmartCombine_105001.geometry} material={Materials.gasPumpMaterials.ledScreen} />
         <mesh geometry={nodes.SmartCombine_107001.geometry} material={Materials.outlineMaterial} />
-        <mesh geometry={nodes.SmartCombine_110001.geometry} material={Materials.floorMaterial} />
         <mesh geometry={nodes.SmartCombine_111001.geometry} material={Materials.gasPumpMaterials.ledScreen} />
-        <mesh geometry={nodes.SmartCombine_112001.geometry} material={Materials.floorMaterial} />
-        <mesh geometry={nodes.SmartCombine_114001.geometry} material={Materials.floorMaterial} />
         <mesh geometry={nodes.SmartCombine_115001.geometry} material={Materials.gasPumpMaterials.ledScreen} />
-        <mesh geometry={nodes.SmartCombine_34001.geometry} material={Materials.floorMaterial} />
-        <mesh geometry={nodes.SmartCombine_61001.geometry} material={Materials.floorMaterial} />
-        <mesh geometry={nodes.SmartCombine_76001.geometry} material={materials.M_Gas_Pump_2} />
+        <mesh geometry={nodes.SmartCombine_34001.geometry} material={Materials.gasPumpMaterials.orange} />
+        <mesh geometry={nodes.SmartCombine_61001.geometry} material={Materials.gasPumpMaterials.ledScreen} />
+        <mesh geometry={nodes.SmartCombine_76001.geometry} material={Materials.metalMaterials.main} />
         <mesh geometry={nodes.SmartCombine_92001.geometry} material={Materials.outlineMaterial} />
-        <mesh geometry={nodes.SmartCombine_93001.geometry} material={Materials.floorMaterial} />
-        <mesh geometry={nodes.SmartCombine_97001.geometry} material={Materials.floorMaterial} />
-        <mesh geometry={nodes.SmartCombine_99001.geometry} material={Materials.floorMaterial} />
+        <mesh geometry={nodes.SmartCombine_93001.geometry} material={Materials.gasPumpMaterials.white} />
+        <mesh geometry={nodes.SmartCombine_97001.geometry} material={Materials.gasPumpMaterials.white} />
+        <mesh geometry={nodes.SmartCombine_99001.geometry} material={Materials.outlineMaterial} />
         <mesh geometry={nodes.SmartDuplicate_45001.geometry} material={Materials.outlineMaterial} />
         <mesh geometry={nodes.SmartDuplicate_54001.geometry} material={Materials.outlineMaterial} />
         <mesh geometry={nodes.SmartDuplicate_58001.geometry} material={Materials.outlineMaterial} />
         <mesh geometry={nodes.SmartExtract_42001.geometry} material={Materials.outlineMaterial} />
-        <mesh geometry={nodes.SmartSeparate_47001.geometry} material={materials.M_Gas_Pump_03} />
-        <mesh geometry={nodes.SmartSeparate_70001.geometry} material={materials.lambert1} />
-        <mesh geometry={nodes.SmartSeparate_71001.geometry} material={materials.lambert1} />
-        <mesh geometry={nodes.SmartSeparate_72001.geometry} material={Materials.floorMaterial} />
+        <mesh geometry={nodes.SmartSeparate_47001.geometry} material={Materials.metalMaterials.main} />
+        <mesh geometry={nodes.SmartSeparate_70001.geometry} material={Materials.metalMaterials.main} />
+        <mesh geometry={nodes.SmartSeparate_71001.geometry} material={Materials.metalMaterials.main} />
+        <mesh geometry={nodes.SmartSeparate_72001.geometry} material={Materials.metalMaterials.main} />
         <mesh geometry={nodes.SmartSeparate_75001.geometry} material={Materials.outlineMaterial} />
         <mesh geometry={nodes.SmartSeparate_87001.geometry} material={Materials.gasPumpMaterials.ledScreen} />
-        <mesh geometry={nodes.SmartCombine_109001.geometry} material={Materials.floorMaterial} />
-        <mesh geometry={nodes.SmartCombine_90001.geometry} material={Materials.floorMaterial} />
-        <mesh geometry={nodes.SmartCombine_96001.geometry} material={Materials.floorMaterial} />
+        <mesh geometry={nodes.SmartCombine_109001.geometry} material={Materials.gasPumpMaterials.white} />
+        <mesh geometry={nodes.SmartCombine_90001.geometry} material={Materials.gasPumpMaterials.orange} />
+        <mesh geometry={nodes.SmartCombine_96001.geometry} material={Materials.gasPumpMaterials.white} />
         <mesh geometry={nodes.SmartDuplicate_55001.geometry} material={Materials.gasPumpMaterials.ledScreen} />
-        <mesh geometry={nodes.SmartExtract_26001.geometry} material={Materials.floorMaterial} />
-        <mesh geometry={nodes.SmartExtract_43001.geometry} material={Materials.floorMaterial} />
-        <mesh geometry={nodes.Mesh049.geometry} material={Materials.floorMaterial} />
+        <mesh geometry={nodes.SmartExtract_26001.geometry} material={Materials.gasPumpMaterials.green} />
+        <mesh geometry={nodes.SmartExtract_43001.geometry} material={Materials.gasPumpMaterials.orange} />
+        <mesh geometry={nodes.Mesh049.geometry} material={Materials.gasPumpMaterials.green} />
         <mesh geometry={nodes.Mesh049_1.geometry} material={Materials.outlineMaterial} />
-        <mesh geometry={nodes.Mesh044.geometry} material={Materials.floorMaterial} />
+        <mesh geometry={nodes.Mesh044.geometry} material={Materials.gasPumpMaterials.green} />
         <mesh geometry={nodes.Mesh044_1.geometry} material={Materials.outlineMaterial} />
       </group>
       <group position={[32.68, 13.08, 15.29]} rotation={[3.02, 1.55, -3.02]} scale={[0.01, 0.01, -0.01]}>
-        <mesh geometry={nodes.pCube2_Ext_4002.geometry} material={materials.M_Gas_Pump_2} />
+        <mesh geometry={nodes.pCube2_Ext_4002.geometry} material={Materials.gasPumpMaterials.orange} />
         <mesh geometry={nodes.pCylinder6002.geometry} material={Materials.floorMaterial} />
         <mesh geometry={nodes.SmartCombine_100002.geometry} material={Materials.outlineMaterial} />
-        <mesh geometry={nodes.SmartCombine_104002.geometry} material={materials.M_Gas_Pump_2} />
         <mesh geometry={nodes.SmartCombine_105002.geometry} material={Materials.gasPumpMaterials.ledScreen} />
         <mesh geometry={nodes.SmartCombine_107002.geometry} material={Materials.outlineMaterial} />
-        <mesh geometry={nodes.SmartCombine_110002.geometry} material={Materials.floorMaterial} />
         <mesh geometry={nodes.SmartCombine_111002.geometry} material={Materials.gasPumpMaterials.ledScreen} />
-        <mesh geometry={nodes.SmartCombine_112002.geometry} material={Materials.floorMaterial} />
-        <mesh geometry={nodes.SmartCombine_114002.geometry} material={Materials.floorMaterial} />
         <mesh geometry={nodes.SmartCombine_115002.geometry} material={Materials.gasPumpMaterials.ledScreen} />
-        <mesh geometry={nodes.SmartCombine_34002.geometry} material={Materials.floorMaterial} />
-        <mesh geometry={nodes.SmartCombine_61002.geometry} material={Materials.floorMaterial} />
-        <mesh geometry={nodes.SmartCombine_76002.geometry} material={materials.M_Gas_Pump_2} />
+        <mesh geometry={nodes.SmartCombine_34002.geometry} material={Materials.gasPumpMaterials.orange} />
+        <mesh geometry={nodes.SmartCombine_61002.geometry} material={Materials.gasPumpMaterials.ledScreen} />
+        <mesh geometry={nodes.SmartCombine_76002.geometry} material={Materials.metalMaterials.main} />
         <mesh geometry={nodes.SmartCombine_92002.geometry} material={Materials.outlineMaterial} />
-        <mesh geometry={nodes.SmartCombine_93002.geometry} material={Materials.floorMaterial} />
-        <mesh geometry={nodes.SmartCombine_97002.geometry} material={Materials.floorMaterial} />
-        <mesh geometry={nodes.SmartCombine_99002.geometry} material={Materials.floorMaterial} />
+        <mesh geometry={nodes.SmartCombine_93002.geometry} material={Materials.gasPumpMaterials.white} />
+        <mesh geometry={nodes.SmartCombine_97002.geometry} material={Materials.gasPumpMaterials.white} />
+        <mesh geometry={nodes.SmartCombine_99002.geometry} material={Materials.outlineMaterial} />
         <mesh geometry={nodes.SmartDuplicate_45002.geometry} material={Materials.outlineMaterial} />
         <mesh geometry={nodes.SmartDuplicate_54002.geometry} material={Materials.outlineMaterial} />
         <mesh geometry={nodes.SmartDuplicate_58002.geometry} material={Materials.outlineMaterial} />
         <mesh geometry={nodes.SmartExtract_42002.geometry} material={Materials.outlineMaterial} />
-        <mesh geometry={nodes.SmartSeparate_47002.geometry} material={materials.M_Gas_Pump_03} />
-        <mesh geometry={nodes.SmartSeparate_70002.geometry} material={materials.lambert1} />
-        <mesh geometry={nodes.SmartSeparate_71002.geometry} material={materials.lambert1} />
-        <mesh geometry={nodes.SmartSeparate_72002.geometry} material={Materials.floorMaterial} />
+        <mesh geometry={nodes.SmartSeparate_47002.geometry} material={Materials.metalMaterials.main} />
+        <mesh geometry={nodes.SmartSeparate_70002.geometry} material={Materials.metalMaterials.main} />
+        <mesh geometry={nodes.SmartSeparate_71002.geometry} material={Materials.metalMaterials.main} />
+        <mesh geometry={nodes.SmartSeparate_72002.geometry} material={Materials.metalMaterials.main} />
         <mesh geometry={nodes.SmartSeparate_75002.geometry} material={Materials.outlineMaterial} />
         <mesh geometry={nodes.SmartSeparate_87002.geometry} material={Materials.gasPumpMaterials.ledScreen} />
-        <mesh geometry={nodes.SmartCombine_109002.geometry} material={Materials.floorMaterial} />
-        <mesh geometry={nodes.SmartCombine_90002.geometry} material={Materials.floorMaterial} />
-        <mesh geometry={nodes.SmartDuplicate_55002.geometry} material={Materials.floorMaterial} />
+        <mesh geometry={nodes.SmartCombine_109002.geometry} material={Materials.gasPumpMaterials.white} />
+        <mesh geometry={nodes.SmartCombine_90002.geometry} material={Materials.gasPumpMaterials.orange} />
+        <mesh geometry={nodes.SmartDuplicate_55002.geometry} material={Materials.gasPumpMaterials.white} />
         <mesh geometry={nodes.SmartExtract_26002.geometry} material={Materials.gasPumpMaterials.ledScreen} />
-        <mesh geometry={nodes.SmartExtract_43002.geometry} material={Materials.floorMaterial} />
-        <mesh geometry={nodes.SmartCombine_96002.geometry} material={Materials.floorMaterial} />
-        <mesh geometry={nodes.Mesh049.geometry} material={Materials.floorMaterial} />
+        <mesh geometry={nodes.SmartExtract_43002.geometry} material={Materials.gasPumpMaterials.orange} />
+        <mesh geometry={nodes.SmartCombine_96002.geometry} material={Materials.gasPumpMaterials.white} />
+        <mesh geometry={nodes.Mesh049.geometry} material={Materials.gasPumpMaterials.green} />
         <mesh geometry={nodes.Mesh049_1.geometry} material={Materials.outlineMaterial} />
-        <mesh geometry={nodes.Mesh044.geometry} material={Materials.floorMaterial} />
+        <mesh geometry={nodes.Mesh044.geometry} material={Materials.gasPumpMaterials.green} />
         <mesh geometry={nodes.Mesh044_1.geometry} material={Materials.outlineMaterial} />
       </group>
       <group position={[32.93, 13.08, 25.05]} rotation={[3.02, 1.55, -3.02]} scale={[0.01, 0.01, -0.01]}>
-        <mesh geometry={nodes.pCube2_Ext_4003.geometry} material={materials.M_Gas_Pump_2} />
+        <mesh geometry={nodes.pCube2_Ext_4003.geometry} material={Materials.gasPumpMaterials.orange} />
         <mesh geometry={nodes.pCylinder6003.geometry} material={Materials.floorMaterial} />
         <mesh geometry={nodes.SmartCombine_100003.geometry} material={Materials.outlineMaterial} />
-        <mesh geometry={nodes.SmartCombine_104003.geometry} material={materials.M_Gas_Pump_2} />
         <mesh geometry={nodes.SmartCombine_105003.geometry} material={Materials.gasPumpMaterials.ledScreen} />
         <mesh geometry={nodes.SmartCombine_107003.geometry} material={Materials.outlineMaterial} />
-        <mesh geometry={nodes.SmartCombine_110003.geometry} material={Materials.floorMaterial} />
         <mesh geometry={nodes.SmartCombine_111003.geometry} material={Materials.gasPumpMaterials.ledScreen} />
-        <mesh geometry={nodes.SmartCombine_112003.geometry} material={Materials.floorMaterial} />
-        <mesh geometry={nodes.SmartCombine_114003.geometry} material={Materials.floorMaterial} />
         <mesh geometry={nodes.SmartCombine_115003.geometry} material={Materials.gasPumpMaterials.ledScreen} />
-        <mesh geometry={nodes.SmartCombine_34003.geometry} material={Materials.floorMaterial} />
-        <mesh geometry={nodes.SmartCombine_61003.geometry} material={Materials.floorMaterial} />
-        <mesh geometry={nodes.SmartCombine_76003.geometry} material={materials.M_Gas_Pump_2} />
+        <mesh geometry={nodes.SmartCombine_34003.geometry} material={Materials.gasPumpMaterials.orange} />
+        <mesh geometry={nodes.SmartCombine_61003.geometry} material={Materials.gasPumpMaterials.ledScreen} />
+        <mesh geometry={nodes.SmartCombine_76003.geometry} material={Materials.metalMaterials.main} />
         <mesh geometry={nodes.SmartCombine_92003.geometry} material={Materials.outlineMaterial} />
-        <mesh geometry={nodes.SmartCombine_93003.geometry} material={Materials.floorMaterial} />
-        <mesh geometry={nodes.SmartCombine_97003.geometry} material={Materials.floorMaterial} />
-        <mesh geometry={nodes.SmartCombine_99003.geometry} material={Materials.floorMaterial} />
+        <mesh geometry={nodes.SmartCombine_93003.geometry} material={Materials.gasPumpMaterials.white} />
+        <mesh geometry={nodes.SmartCombine_97003.geometry} material={Materials.gasPumpMaterials.white} />
+        <mesh geometry={nodes.SmartCombine_99003.geometry} material={Materials.outlineMaterial} />
         <mesh geometry={nodes.SmartDuplicate_45003.geometry} material={Materials.outlineMaterial} />
         <mesh geometry={nodes.SmartDuplicate_54003.geometry} material={Materials.outlineMaterial} />
         <mesh geometry={nodes.SmartDuplicate_58003.geometry} material={Materials.outlineMaterial} />
         <mesh geometry={nodes.SmartExtract_42003.geometry} material={Materials.outlineMaterial} />
-        <mesh geometry={nodes.SmartSeparate_47003.geometry} material={materials.M_Gas_Pump_03} />
-        <mesh geometry={nodes.SmartSeparate_70003.geometry} material={materials.lambert1} />
-        <mesh geometry={nodes.SmartSeparate_71003.geometry} material={materials.lambert1} />
-        <mesh geometry={nodes.SmartSeparate_72003.geometry} material={Materials.floorMaterial} />
+        <mesh geometry={nodes.SmartSeparate_47003.geometry} material={Materials.metalMaterials.main} />
+        <mesh geometry={nodes.SmartSeparate_70003.geometry} material={Materials.metalMaterials.main} />
+        <mesh geometry={nodes.SmartSeparate_71003.geometry} material={Materials.metalMaterials.main} />
+        <mesh geometry={nodes.SmartSeparate_72003.geometry} material={Materials.metalMaterials.main} />
         <mesh geometry={nodes.SmartSeparate_75003.geometry} material={Materials.outlineMaterial} />
         <mesh geometry={nodes.SmartSeparate_87003.geometry} material={Materials.gasPumpMaterials.ledScreen} />
-        <mesh geometry={nodes.SmartCombine_109003.geometry} material={Materials.floorMaterial} />
-        <mesh geometry={nodes.SmartCombine_90003.geometry} material={Materials.floorMaterial} />
-        <mesh geometry={nodes.SmartDuplicate_55003.geometry} material={Materials.floorMaterial} />
+        <mesh geometry={nodes.SmartCombine_109003.geometry} material={Materials.gasPumpMaterials.white} />
+        <mesh geometry={nodes.SmartCombine_90003.geometry} material={Materials.gasPumpMaterials.orange} />
+        <mesh geometry={nodes.SmartDuplicate_55003.geometry} material={Materials.gasPumpMaterials.white} />
         <mesh geometry={nodes.SmartExtract_26003.geometry} material={Materials.gasPumpMaterials.ledScreen} />
-        <mesh geometry={nodes.SmartExtract_43003.geometry} material={Materials.floorMaterial} />
-        <mesh geometry={nodes.SmartCombine_96003.geometry} material={Materials.floorMaterial} />
-        <mesh geometry={nodes.Mesh049.geometry} material={Materials.floorMaterial} />
+        <mesh geometry={nodes.SmartExtract_43003.geometry} material={Materials.gasPumpMaterials.orange} />
+        <mesh geometry={nodes.SmartCombine_96003.geometry} material={Materials.gasPumpMaterials.white} />
+        <mesh geometry={nodes.Mesh049.geometry} material={Materials.gasPumpMaterials.green} />
         <mesh geometry={nodes.Mesh049_1.geometry} material={Materials.outlineMaterial} />
-        <mesh geometry={nodes.Mesh044.geometry} material={Materials.floorMaterial} />
+        <mesh geometry={nodes.Mesh044.geometry} material={Materials.gasPumpMaterials.green} />
         <mesh geometry={nodes.Mesh044_1.geometry} material={Materials.outlineMaterial} />
       </group>
       <group position={[19.91, 13.08, 25.36]} rotation={[3.02, 1.55, -3.02]} scale={[0.01, 0.01, -0.01]}>
-        <mesh geometry={nodes.pCube2_Ext_4004.geometry} material={materials.M_Gas_Pump_2} />
+        <mesh geometry={nodes.pCube2_Ext_4004.geometry} material={Materials.gasPumpMaterials.orange} />
         <mesh geometry={nodes.pCylinder6004.geometry} material={Materials.floorMaterial} />
         <mesh geometry={nodes.SmartCombine_100004.geometry} material={Materials.outlineMaterial} />
-        <mesh geometry={nodes.SmartCombine_104004.geometry} material={materials.M_Gas_Pump_2} />
         <mesh geometry={nodes.SmartCombine_105004.geometry} material={Materials.gasPumpMaterials.ledScreen} />
         <mesh geometry={nodes.SmartCombine_107004.geometry} material={Materials.outlineMaterial} />
-        <mesh geometry={nodes.SmartCombine_110004.geometry} material={Materials.floorMaterial} />
         <mesh geometry={nodes.SmartCombine_111004.geometry} material={Materials.gasPumpMaterials.ledScreen} />
-        <mesh geometry={nodes.SmartCombine_112004.geometry} material={Materials.floorMaterial} />
-        <mesh geometry={nodes.SmartCombine_114004.geometry} material={Materials.floorMaterial} />
         <mesh geometry={nodes.SmartCombine_115004.geometry} material={Materials.gasPumpMaterials.ledScreen} />
-        <mesh geometry={nodes.SmartCombine_34004.geometry} material={Materials.floorMaterial} />
-        <mesh geometry={nodes.SmartCombine_61004.geometry} material={Materials.floorMaterial} />
-        <mesh geometry={nodes.SmartCombine_76004.geometry} material={materials.M_Gas_Pump_2} />
+        <mesh geometry={nodes.SmartCombine_34004.geometry} material={Materials.gasPumpMaterials.orange} />
+        <mesh geometry={nodes.SmartCombine_61004.geometry} material={Materials.gasPumpMaterials.ledScreen} />
+        <mesh geometry={nodes.SmartCombine_76004.geometry} material={Materials.metalMaterials.main} />
         <mesh geometry={nodes.SmartCombine_92004.geometry} material={Materials.outlineMaterial} />
-        <mesh geometry={nodes.SmartCombine_93004.geometry} material={Materials.floorMaterial} />
-        <mesh geometry={nodes.SmartCombine_97004.geometry} material={Materials.floorMaterial} />
-        <mesh geometry={nodes.SmartCombine_99004.geometry} material={Materials.floorMaterial} />
+        <mesh geometry={nodes.SmartCombine_93004.geometry} material={Materials.gasPumpMaterials.white} />
+        <mesh geometry={nodes.SmartCombine_97004.geometry} material={Materials.gasPumpMaterials.white} />
+        <mesh geometry={nodes.SmartCombine_99004.geometry} material={Materials.outlineMaterial} />
         <mesh geometry={nodes.SmartDuplicate_45004.geometry} material={Materials.outlineMaterial} />
         <mesh geometry={nodes.SmartDuplicate_54004.geometry} material={Materials.outlineMaterial} />
         <mesh geometry={nodes.SmartDuplicate_58004.geometry} material={Materials.outlineMaterial} />
         <mesh geometry={nodes.SmartExtract_42004.geometry} material={Materials.outlineMaterial} />
-        <mesh geometry={nodes.SmartSeparate_47004.geometry} material={materials.M_Gas_Pump_03} />
-        <mesh geometry={nodes.SmartSeparate_70004.geometry} material={materials.lambert1} />
-        <mesh geometry={nodes.SmartSeparate_71004.geometry} material={materials.lambert1} />
-        <mesh geometry={nodes.SmartSeparate_72004.geometry} material={Materials.floorMaterial} />
+        <mesh geometry={nodes.SmartSeparate_47004.geometry} material={Materials.metalMaterials.main} />
+        <mesh geometry={nodes.SmartSeparate_70004.geometry} material={Materials.metalMaterials.main} />
+        <mesh geometry={nodes.SmartSeparate_71004.geometry} material={Materials.metalMaterials.main} />
+        <mesh geometry={nodes.SmartSeparate_72004.geometry} material={Materials.metalMaterials.main} />
         <mesh geometry={nodes.SmartSeparate_75004.geometry} material={Materials.outlineMaterial} />
         <mesh geometry={nodes.SmartSeparate_87004.geometry} material={Materials.gasPumpMaterials.ledScreen} />
-        <mesh geometry={nodes.SmartCombine_109004.geometry} material={Materials.floorMaterial} />
-        <mesh geometry={nodes.SmartCombine_90004.geometry} material={Materials.floorMaterial} />
-        <mesh geometry={nodes.SmartDuplicate_55004.geometry} material={Materials.floorMaterial} />
+        <mesh geometry={nodes.SmartCombine_109004.geometry} material={Materials.gasPumpMaterials.white} />
+        <mesh geometry={nodes.SmartCombine_90004.geometry} material={Materials.gasPumpMaterials.orange} />
+        <mesh geometry={nodes.SmartDuplicate_55004.geometry} material={Materials.gasPumpMaterials.white} />
         <mesh geometry={nodes.SmartExtract_26004.geometry} material={Materials.gasPumpMaterials.ledScreen} />
-        <mesh geometry={nodes.SmartExtract_43004.geometry} material={Materials.floorMaterial} />
-        <mesh geometry={nodes.SmartCombine_96004.geometry} material={Materials.floorMaterial} />
-        <mesh geometry={nodes.Mesh049.geometry} material={Materials.floorMaterial} />
+        <mesh geometry={nodes.SmartExtract_43004.geometry} material={Materials.gasPumpMaterials.orange} />
+        <mesh geometry={nodes.SmartCombine_96004.geometry} material={Materials.gasPumpMaterials.white} />
+        <mesh geometry={nodes.Mesh049.geometry} material={Materials.gasPumpMaterials.green} />
         <mesh geometry={nodes.Mesh049_1.geometry} material={Materials.outlineMaterial} />
-        <mesh geometry={nodes.Mesh044.geometry} material={Materials.floorMaterial} />
+        <mesh geometry={nodes.Mesh044.geometry} material={Materials.gasPumpMaterials.green} />
         <mesh geometry={nodes.Mesh044_1.geometry} material={Materials.outlineMaterial} />
       </group>
       <group position={[19.68, 13.08, 15.6]} rotation={[3.02, 1.55, -3.02]} scale={[0.01, 0.01, -0.01]}>
-        <mesh geometry={nodes.pCube2_Ext_4005.geometry} material={materials.M_Gas_Pump_2} />
+        <mesh geometry={nodes.pCube2_Ext_4005.geometry} material={Materials.gasPumpMaterials.orange} />
         <mesh geometry={nodes.pCylinder6005.geometry} material={Materials.floorMaterial} />
         <mesh geometry={nodes.SmartCombine_100005.geometry} material={Materials.outlineMaterial} />
-        <mesh geometry={nodes.SmartCombine_104005.geometry} material={materials.M_Gas_Pump_2} />
         <mesh geometry={nodes.SmartCombine_105005.geometry} material={Materials.gasPumpMaterials.ledScreen} />
         <mesh geometry={nodes.SmartCombine_107005.geometry} material={Materials.outlineMaterial} />
-        <mesh geometry={nodes.SmartCombine_110005.geometry} material={Materials.floorMaterial} />
         <mesh geometry={nodes.SmartCombine_111005.geometry} material={Materials.gasPumpMaterials.ledScreen} />
-        <mesh geometry={nodes.SmartCombine_112005.geometry} material={Materials.floorMaterial} />
-        <mesh geometry={nodes.SmartCombine_114005.geometry} material={Materials.floorMaterial} />
         <mesh geometry={nodes.SmartCombine_115005.geometry} material={Materials.gasPumpMaterials.ledScreen} />
-        <mesh geometry={nodes.SmartCombine_34005.geometry} material={Materials.floorMaterial} />
-        <mesh geometry={nodes.SmartCombine_61005.geometry} material={Materials.floorMaterial} />
-        <mesh geometry={nodes.SmartCombine_76005.geometry} material={materials.M_Gas_Pump_2} />
+        <mesh geometry={nodes.SmartCombine_34005.geometry} material={Materials.gasPumpMaterials.orange} />
+        <mesh geometry={nodes.SmartCombine_61005.geometry} material={Materials.gasPumpMaterials.ledScreen} />
+        <mesh geometry={nodes.SmartCombine_76005.geometry} material={Materials.metalMaterials.main} />
         <mesh geometry={nodes.SmartCombine_92005.geometry} material={Materials.outlineMaterial} />
-        <mesh geometry={nodes.SmartCombine_93005.geometry} material={Materials.floorMaterial} />
-        <mesh geometry={nodes.SmartCombine_97005.geometry} material={Materials.floorMaterial} />
-        <mesh geometry={nodes.SmartCombine_99005.geometry} material={Materials.floorMaterial} />
+        <mesh geometry={nodes.SmartCombine_93005.geometry} material={Materials.gasPumpMaterials.white} />
+        <mesh geometry={nodes.SmartCombine_97005.geometry} material={Materials.gasPumpMaterials.white} />
+        <mesh geometry={nodes.SmartCombine_99005.geometry} material={Materials.outlineMaterial} />
         <mesh geometry={nodes.SmartDuplicate_45005.geometry} material={Materials.outlineMaterial} />
         <mesh geometry={nodes.SmartDuplicate_54005.geometry} material={Materials.outlineMaterial} />
         <mesh geometry={nodes.SmartDuplicate_58005.geometry} material={Materials.outlineMaterial} />
         <mesh geometry={nodes.SmartExtract_42005.geometry} material={Materials.outlineMaterial} />
-        <mesh geometry={nodes.SmartSeparate_47005.geometry} material={materials.M_Gas_Pump_03} />
-        <mesh geometry={nodes.SmartSeparate_70005.geometry} material={materials.lambert1} />
-        <mesh geometry={nodes.SmartSeparate_71005.geometry} material={materials.lambert1} />
-        <mesh geometry={nodes.SmartSeparate_72005.geometry} material={Materials.floorMaterial} />
+        <mesh geometry={nodes.SmartSeparate_47005.geometry} material={Materials.metalMaterials.main} />
+        <mesh geometry={nodes.SmartSeparate_70005.geometry} material={Materials.metalMaterials.main} />
+        <mesh geometry={nodes.SmartSeparate_71005.geometry} material={Materials.metalMaterials.main} />
+        <mesh geometry={nodes.SmartSeparate_72005.geometry} material={Materials.metalMaterials.main} />
         <mesh geometry={nodes.SmartSeparate_75005.geometry} material={Materials.outlineMaterial} />
         <mesh geometry={nodes.SmartSeparate_87005.geometry} material={Materials.gasPumpMaterials.ledScreen} />
-        <mesh geometry={nodes.SmartCombine_109005.geometry} material={Materials.floorMaterial} />
-        <mesh geometry={nodes.SmartCombine_90005.geometry} material={Materials.floorMaterial} />
-        <mesh geometry={nodes.SmartDuplicate_55005.geometry} material={Materials.floorMaterial} />
+        <mesh geometry={nodes.SmartCombine_109005.geometry} material={Materials.gasPumpMaterials.white} />
+        <mesh geometry={nodes.SmartCombine_90005.geometry} material={Materials.gasPumpMaterials.orange} />
+        <mesh geometry={nodes.SmartDuplicate_55005.geometry} material={Materials.gasPumpMaterials.white} />
         <mesh geometry={nodes.SmartExtract_26005.geometry} material={Materials.gasPumpMaterials.ledScreen} />
-        <mesh geometry={nodes.SmartExtract_43005.geometry} material={Materials.floorMaterial} />
-        <mesh geometry={nodes.SmartCombine_96005.geometry} material={Materials.floorMaterial} />
-        <mesh geometry={nodes.Mesh049.geometry} material={Materials.floorMaterial} />
+        <mesh geometry={nodes.SmartExtract_43005.geometry} material={Materials.gasPumpMaterials.orange} />
+        <mesh geometry={nodes.SmartCombine_96005.geometry} material={Materials.gasPumpMaterials.white} />
+        <mesh geometry={nodes.Mesh049.geometry} material={Materials.gasPumpMaterials.green} />
         <mesh geometry={nodes.Mesh049_1.geometry} material={Materials.outlineMaterial} />
-        <mesh geometry={nodes.Mesh044.geometry} material={Materials.floorMaterial} />
+        <mesh geometry={nodes.Mesh044.geometry} material={Materials.gasPumpMaterials.green} />
         <mesh geometry={nodes.Mesh044_1.geometry} material={Materials.outlineMaterial} />
       </group>
       <mesh geometry={nodes.petronas001_Cube_3_Instance_0135.geometry} material={Materials.floorMaterial} position={[28.15, 13.04, 26.42]} rotation={[Math.PI / 2, 0, 3.12]} scale={1.63} />
@@ -274,7 +250,7 @@ export function Model(props) {
         <mesh geometry={nodes.Cube119_1.geometry} material={Materials.outlineMaterial} />
       </group>
       <group position={[-12.92, 12.47, -13.65]} rotation={[-Math.PI, 1.52, -Math.PI]} scale={0.35}>
-        <mesh geometry={nodes.Cube004_1.geometry} material={Materials.floorMaterial} />
+        <mesh geometry={nodes.Cube004_1.geometry} material={Materials.stoneMaterial} />
         <mesh geometry={nodes.Cube004_2.geometry} material={Materials.outlineMaterial} />
       </group>
       <group position={[-4.7, 12.98, -14.3]} rotation={[-0.15, 1.03, 0.16]} scale={[0.34, 0.17, 0.31]}>
@@ -289,7 +265,7 @@ export function Model(props) {
         <mesh geometry={nodes.Plane002.geometry} material={Materials.floorMaterial} />
         <mesh geometry={nodes.Plane002_1.geometry} material={Materials.outlineMaterial} />
       </group>
-      <mesh geometry={nodes.Route.geometry} material={Materials.floorMaterial} position={[-8.35, 11.42, -6.34]} rotation={[-Math.PI, 1, -Math.PI]} scale={[4.17, 2, 5.43]} />
+      <mesh geometry={nodes.Route.geometry} material={Materials.roadMaterials.main} position={[-8.35, 11.42, -6.34]} rotation={[-Math.PI, 1, -Math.PI]} scale={[4.17, 2, 5.43]} />
       <group position={[-63.54, 20.67, 5.38]} rotation={[-0.03, -0.33, 0]} scale={0.01}>
         <mesh geometry={nodes.Mesh002.geometry} material={Materials.fenceMaterial} />
         <mesh geometry={nodes.Mesh002_1.geometry} material={Materials.outlineMaterial} />
@@ -513,27 +489,27 @@ export function Model(props) {
         <mesh geometry={nodes.petronas001_Cube_3_Instance_0137_2.geometry} material={Materials.outlineMaterial} />
       </group>
       <group position={[19.67, 13.37, 13.9]} rotation={[Math.PI / 2, 0, -1.56]} scale={2.77}>
-        <mesh geometry={nodes.bin001_1.geometry} material={Materials.floorMaterial} />
+        <mesh geometry={nodes.bin001_1.geometry} material={Materials.gasPumpMaterials.green} />
         <mesh geometry={nodes.bin001_2.geometry} material={Materials.outlineMaterial} />
       </group>
       <group position={[19.97, 13.37, 23.53]} rotation={[Math.PI / 2, 0, -1.56]} scale={2.77}>
-        <mesh geometry={nodes.bin001_1.geometry} material={Materials.floorMaterial} />
+        <mesh geometry={nodes.bin001_1.geometry} material={Materials.gasPumpMaterials.green} />
         <mesh geometry={nodes.bin001_2.geometry} material={Materials.outlineMaterial} />
       </group>
       <group position={[33.08, 13.37, 23.08]} rotation={[Math.PI / 2, 0, -1.56]} scale={2.77}>
-        <mesh geometry={nodes.bin001_1.geometry} material={Materials.floorMaterial} />
+        <mesh geometry={nodes.bin001_1.geometry} material={Materials.gasPumpMaterials.green} />
         <mesh geometry={nodes.bin001_2.geometry} material={Materials.outlineMaterial} />
       </group>
       <group position={[45.48, 13.37, 23.06]} rotation={[Math.PI / 2, 0, -1.56]} scale={2.77}>
-        <mesh geometry={nodes.bin001_1.geometry} material={Materials.floorMaterial} />
+        <mesh geometry={nodes.bin001_1.geometry} material={Materials.gasPumpMaterials.green} />
         <mesh geometry={nodes.bin001_2.geometry} material={Materials.outlineMaterial} />
       </group>
       <group position={[32.67, 13.37, 13.21]} rotation={[Math.PI / 2, 0, -1.61]} scale={2.77}>
-        <mesh geometry={nodes.bin001_1.geometry} material={Materials.floorMaterial} />
+        <mesh geometry={nodes.bin001_1.geometry} material={Materials.gasPumpMaterials.green} />
         <mesh geometry={nodes.bin001_2.geometry} material={Materials.outlineMaterial} />
       </group>
       <group position={[45.24, 13.37, 13.11]} rotation={[Math.PI / 2, 0, -1.61]} scale={2.77}>
-        <mesh geometry={nodes.bin001_1.geometry} material={Materials.floorMaterial} />
+        <mesh geometry={nodes.bin001_1.geometry} material={Materials.gasPumpMaterials.green} />
         <mesh geometry={nodes.bin001_2.geometry} material={Materials.outlineMaterial} />
       </group>
       <group position={[32.76, 13.89, 14.11]} rotation={[-Math.PI, 0.45, -Math.PI]} scale={2.63}>
@@ -598,35 +574,35 @@ export function Model(props) {
         <mesh geometry={nodes.Cube185_1.geometry} material={Materials.outlineMaterial} />
       </group>
       <group position={[-10.48, 18.9, -16.23]} rotation={[-Math.PI, -1.08, -3.03]} scale={[0.27, 0.23, 0.28]}>
-        <mesh geometry={nodes.Cube325.geometry} material={Materials.floorMaterial} />
+        <mesh geometry={nodes.Cube325.geometry} material={Materials.leafMaterial} />
         <mesh geometry={nodes.Cube325_1.geometry} material={Materials.outlineMaterial} />
       </group>
       <group position={[-9.96, 18.33, -14.05]} rotation={[-Math.PI, 0.05, -3.03]} scale={[0.23, 0.23, 0.24]}>
-        <mesh geometry={nodes.Cube324.geometry} material={Materials.floorMaterial} />
+        <mesh geometry={nodes.Cube324.geometry} material={Materials.leafMaterial} />
         <mesh geometry={nodes.Cube324_1.geometry} material={Materials.outlineMaterial} />
       </group>
       <group position={[-9.48, 13.63, -14.66]} rotation={[-Math.PI, 0.5, -Math.PI]} scale={0.55}>
-        <mesh geometry={nodes.Cube323.geometry} material={Materials.floorMaterial} />
+        <mesh geometry={nodes.Cube323.geometry} material={Materials.treeMaterial} />
         <mesh geometry={nodes.Cube323_1.geometry} material={Materials.outlineMaterial} />
       </group>
       <group position={[-7.21, 19.9, -13.08]} rotation={[-Math.PI, 0.5, -Math.PI]} scale={[0.69, 0.39, 0.59]}>
-        <mesh geometry={nodes.Cube322.geometry} material={Materials.floorMaterial} />
+        <mesh geometry={nodes.Cube322.geometry} material={Materials.leafMaterial} />
         <mesh geometry={nodes.Cube322_1.geometry} material={Materials.outlineMaterial} />
       </group>
       <group position={[58.72, 18.72, -17.18]} rotation={[-Math.PI, -1.15, -3.03]} scale={[0.35, 0.29, 0.35]}>
-        <mesh geometry={nodes.Cube013_1.geometry} material={Materials.floorMaterial} />
+        <mesh geometry={nodes.Cube013_1.geometry} material={Materials.leafMaterial} />
         <mesh geometry={nodes.Cube013_2.geometry} material={Materials.outlineMaterial} />
       </group>
       <group position={[59.57, 18, -14.46]} rotation={[-Math.PI, 0.65, -3.03]} scale={[0.3, 0.29, 0.31]}>
-        <mesh geometry={nodes.Cube014_1.geometry} material={Materials.floorMaterial} />
+        <mesh geometry={nodes.Cube014_1.geometry} material={Materials.leafMaterial} />
         <mesh geometry={nodes.Cube014_2.geometry} material={Materials.outlineMaterial} />
       </group>
       <group position={[60.12, 12.03, -15.27]} rotation={[-Math.PI, 0.43, -Math.PI]} scale={0.7}>
-        <mesh geometry={nodes.Cube015_1.geometry} material={Materials.floorMaterial} />
+        <mesh geometry={nodes.Cube015_1.geometry} material={Materials.treeMaterial} />
         <mesh geometry={nodes.Cube015_2.geometry} material={Materials.outlineMaterial} />
       </group>
       <group position={[63.14, 19.74, -13.79]} rotation={[-Math.PI, 0.43, -Math.PI]} scale={[0.72, 0.4, 0.61]}>
-        <mesh geometry={nodes.Cube026_1.geometry} material={Materials.floorMaterial} />
+        <mesh geometry={nodes.Cube026_1.geometry} material={Materials.leafMaterial} />
         <mesh geometry={nodes.Cube026_2.geometry} material={Materials.outlineMaterial} />
       </group>
       <mesh geometry={nodes.Cylinder003.geometry} material={Materials.floorMaterial} position={[-61.86, 14.85, -3.77]} rotation={[-Math.PI, 0.33, -Math.PI]} scale={[0.03, 1.85, 0.03]} />
@@ -654,11 +630,11 @@ export function Model(props) {
       <mesh geometry={nodes.Bar_3002.geometry} material={Materials.floorMaterial} position={[-37.1, 17.5, -1.43]} rotation={[-Math.PI, 0.52, -Math.PI]} scale={[0.29, 0.85, 0.29]} />
       <mesh geometry={nodes.Cube029.geometry} material={Materials.floorMaterial} position={[-43.62, 14.85, 25.04]} rotation={[-0.02, 0.1, -0.63]} scale={[1.13, 0.13, 1.61]} />
       <group position={[-37.38, 15.14, 1.02]} rotation={[-0.02, -0.43, -0.64]} scale={[1.13, 0.13, 1.61]}>
-        <mesh geometry={nodes.Cube028.geometry} material={Materials.floorMaterial} />
+        <mesh geometry={nodes.Cube028.geometry} material={Materials.metalMaterials.rusty} />
         <mesh geometry={nodes.Cube028_1.geometry} material={Materials.outlineMaterial} />
       </group>
       <group position={[-62.03, 14.53, -1.57]} rotation={[0, -0.43, -0.6]} scale={[1.13, 0.13, 1.61]}>
-        <mesh geometry={nodes.Cube028.geometry} material={Materials.floorMaterial} />
+        <mesh geometry={nodes.Cube028.geometry} material={Materials.metalMaterials.rusty} />
         <mesh geometry={nodes.Cube028_1.geometry} material={Materials.outlineMaterial} />
       </group>
       <group position={[-37.25, 13.78, -0.11]} scale={[0.09, 1.37, 0.09]}>
@@ -666,15 +642,15 @@ export function Model(props) {
         <mesh geometry={nodes.Cylinder028_1.geometry} material={Materials.outlineMaterial} />
       </group>
       <group position={[-46.34, 13.51, -11.67]} rotation={[Math.PI / 2, 0, 0.32]} scale={0.49}>
-        <mesh geometry={nodes.box3_v108_f74_Sphere004_1.geometry} material={Materials.floorMaterial} />
+        <mesh geometry={nodes.box3_v108_f74_Sphere004_1.geometry} material={Materials.treeMaterial} />
         <mesh geometry={nodes.box3_v108_f74_Sphere004_2.geometry} material={Materials.outlineMaterial} />
       </group>
       <group position={[-37.41, 15.65, -0.2]} rotation={[1.75, -0.44, 2.01]} scale={0.34}>
-        <mesh geometry={nodes.box4_v95_f58_Sphere009_1.geometry} material={Materials.floorMaterial} />
+        <mesh geometry={nodes.box4_v95_f58_Sphere009_1.geometry} material={Materials.treeMaterial} />
         <mesh geometry={nodes.box4_v95_f58_Sphere009_2.geometry} material={Materials.outlineMaterial} />
       </group>
       <group position={[-36.97, 15.3, 0.02]} rotation={[1.73, -0.39, 2.01]} scale={0.34}>
-        <mesh geometry={nodes.box4_v95_f58_Sphere009_1.geometry} material={Materials.floorMaterial} />
+        <mesh geometry={nodes.box4_v95_f58_Sphere009_1.geometry} material={Materials.treeMaterial} />
         <mesh geometry={nodes.box4_v95_f58_Sphere009_2.geometry} material={Materials.outlineMaterial} />
       </group>
       <group position={[-32.97, 13.64, -8.57]} rotation={[Math.PI / 2, 0, 2.17]} scale={0.34}>
@@ -698,11 +674,11 @@ export function Model(props) {
         <mesh geometry={nodes.box7_v140_f78_Sphere017_2.geometry} material={Materials.outlineMaterial} />
       </group>
       <group position={[-34.02, 13.63, -5.61]} rotation={[Math.PI / 2, 0, 1.03]} scale={0.34}>
-        <mesh geometry={nodes.box_with_mesh_v602_f324_Sphere012_1.geometry} material={Materials.floorMaterial} />
+        <mesh geometry={nodes.box_with_mesh_v602_f324_Sphere012_1.geometry} material={Materials.treeMaterial} />
         <mesh geometry={nodes.box_with_mesh_v602_f324_Sphere012_2.geometry} material={Materials.outlineMaterial} />
       </group>
       <group position={[-32.73, 13.79, -4.55]} rotation={[Math.PI / 2, 0, 2.02]} scale={0.37}>
-        <mesh geometry={nodes.box_with_one_handle_v44_f30_Sphere016_1.geometry} material={Materials.floorMaterial} />
+        <mesh geometry={nodes.box_with_one_handle_v44_f30_Sphere016_1.geometry} material={Materials.treeMaterial} />
         <mesh geometry={nodes.box_with_one_handle_v44_f30_Sphere016_2.geometry} material={Materials.outlineMaterial} />
       </group>
       <group position={[-35.2, 13.48, 1.67]} rotation={[Math.PI / 2, 0, 2.06]} scale={0.34}>
@@ -725,21 +701,21 @@ export function Model(props) {
         <mesh geometry={nodes.shelving1_v359_f350_Sphere013_1.geometry} material={Materials.floorMaterial} />
         <mesh geometry={nodes.shelving1_v359_f350_Sphere013_2.geometry} material={Materials.outlineMaterial} />
       </group>
-      <mesh geometry={nodes.shelving2_v562_f346_Sphere004.geometry} material={Materials.floorMaterial} position={[-34.15, 19.18, 42.1]} rotation={[Math.PI / 2, 0, 3.11]} scale={0.34} />
-      <mesh geometry={nodes.shelving2_v562_f346_Sphere005.geometry} material={Materials.floorMaterial} position={[-35.97, 19.22, 42.18]} rotation={[Math.PI / 2, 0, 3.11]} scale={0.34} />
-      <mesh geometry={nodes.shelving2_v562_f346_Sphere003.geometry} material={Materials.floorMaterial} position={[-37.83, 19.22, 42.26]} rotation={[Math.PI / 2, 0, 3.11]} scale={0.34} />
-      <mesh geometry={nodes.shelving2_v562_f346_Sphere006.geometry} material={Materials.floorMaterial} position={[-39.63, 19.22, 42.35]} rotation={[Math.PI / 2, 0, 3.11]} scale={0.34} />
-      <mesh geometry={nodes.shelving2_v562_f346_Sphere007.geometry} material={Materials.floorMaterial} position={[-40.79, 14, 27.11]} rotation={[Math.PI / 2, 0, 3.09]} scale={0.34} />
+      <mesh geometry={nodes.shelving2_v562_f346_Sphere004.geometry} material={Materials.metalMaterials.rusty} position={[-34.15, 19.18, 42.1]} rotation={[Math.PI / 2, 0, 3.11]} scale={0.34} />
+      <mesh geometry={nodes.shelving2_v562_f346_Sphere005.geometry} material={Materials.metalMaterials.rusty} position={[-35.97, 19.22, 42.18]} rotation={[Math.PI / 2, 0, 3.11]} scale={0.34} />
+      <mesh geometry={nodes.shelving2_v562_f346_Sphere003.geometry} material={Materials.metalMaterials.rusty} position={[-37.83, 19.22, 42.26]} rotation={[Math.PI / 2, 0, 3.11]} scale={0.34} />
+      <mesh geometry={nodes.shelving2_v562_f346_Sphere006.geometry} material={Materials.metalMaterials.rusty} position={[-39.63, 19.22, 42.35]} rotation={[Math.PI / 2, 0, 3.11]} scale={0.34} />
+      <mesh geometry={nodes.shelving2_v562_f346_Sphere007.geometry} material={Materials.metalMaterials.rusty} position={[-40.79, 14, 27.11]} rotation={[Math.PI / 2, 0, 3.09]} scale={0.34} />
       <group position={[-35.98, 14.19, 4.23]} rotation={[Math.PI / 2, 0, -2.66]} scale={0.34}>
-        <mesh geometry={nodes.shelving2_v562_f346_Sphere014_1.geometry} material={Materials.floorMaterial} />
+        <mesh geometry={nodes.shelving2_v562_f346_Sphere014_1.geometry} material={Materials.metalMaterials.rusty} />
         <mesh geometry={nodes.shelving2_v562_f346_Sphere014_2.geometry} material={Materials.outlineMaterial} />
       </group>
       <group position={[-58.79, 13.85, 0.82]} rotation={[Math.PI / 2, 0, -1.28]} scale={0.34}>
-        <mesh geometry={nodes.shelving2_v562_f346_Sphere014_1.geometry} material={Materials.floorMaterial} />
+        <mesh geometry={nodes.shelving2_v562_f346_Sphere014_1.geometry} material={Materials.metalMaterials.rusty} />
         <mesh geometry={nodes.shelving2_v562_f346_Sphere014_2.geometry} material={Materials.outlineMaterial} />
       </group>
       <group position={[-46.89, 14, 7.76]} rotation={[Math.PI / 2, 0, -1.04]} scale={0.34}>
-        <mesh geometry={nodes.shelving2_v562_f346_Sphere014_1.geometry} material={Materials.floorMaterial} />
+        <mesh geometry={nodes.shelving2_v562_f346_Sphere014_1.geometry} material={Materials.metalMaterials.rusty} />
         <mesh geometry={nodes.shelving2_v562_f346_Sphere014_2.geometry} material={Materials.outlineMaterial} />
       </group>
       <group position={[-62.88, 13.21, -0.9]} scale={[0.09, 1.45, 0.09]}>
@@ -749,69 +725,69 @@ export function Model(props) {
       <mesh geometry={nodes.fiberCover003.geometry} material={Materials.floorMaterial} position={[-42.3, 11.15, 25.04]} rotation={[-Math.PI, -0.01, -Math.PI]} scale={[0.29, 0.72, 0.29]} />
       <mesh geometry={nodes.Bar_3003.geometry} material={Materials.floorMaterial} position={[-44.62, 17.2, 22.79]} rotation={[-Math.PI, -0.01, -Math.PI]} scale={[0.29, 0.85, 0.29]} />
       <mesh geometry={nodes.Cylinder002.geometry} material={Materials.floorMaterial} position={[-44.08, 13.49, 24.01]} rotation={[0, 0.53, 0]} scale={[0.09, 1.37, 0.09]} />
-      <mesh geometry={nodes.box4_v95_f58_Sphere004.geometry} material={Materials.floorMaterial} position={[-44.27, 15.36, 24.01]} rotation={[1.48, -0.47, 1.42]} scale={0.34} />
-      <mesh geometry={nodes.box4_v95_f58_Sphere005.geometry} material={Materials.floorMaterial} position={[-43.77, 15.01, 23.98]} rotation={[1.5, -0.41, 1.43]} scale={0.34} />
+      <mesh geometry={nodes.box4_v95_f58_Sphere004.geometry} material={Materials.metalMaterials.rusty} position={[-44.27, 15.36, 24.01]} rotation={[1.48, -0.47, 1.42]} scale={0.34} />
+      <mesh geometry={nodes.box4_v95_f58_Sphere005.geometry} material={Materials.metalMaterials.rusty} position={[-43.77, 15.01, 23.98]} rotation={[1.5, -0.41, 1.43]} scale={0.34} />
       <mesh geometry={nodes.long_box_v124_f96__Sphere002.geometry} material={Materials.floorMaterial} position={[-40.08, 13.33, 23.72]} rotation={[Math.PI / 2, 0, 1.53]} scale={0.34} />
       <mesh geometry={nodes.long_wide_drawer_v156_f118_Sphere002.geometry} material={Materials.floorMaterial} position={[-40.02, 13.4, 25.26]} rotation={[Math.PI / 2, 0, 1.53]} scale={0.34} />
       <mesh geometry={nodes.Curve001.geometry} material={Materials.gasPumpMaterials.green} position={[48.91, 17.55, 4.11]} rotation={[Math.PI / 2, 0, -1.66]} scale={[0.58, 2.06, 0.6]} />
       <group position={[39.25, 13.06, -11.81]} rotation={[Math.PI, -1.56, Math.PI]} scale={1.5}>
-        <mesh geometry={nodes.Circle038.geometry} material={Materials.floorMaterial} />
+        <mesh geometry={nodes.Circle038.geometry} material={Materials.leafMaterial} />
         <mesh geometry={nodes.Circle038_1.geometry} material={Materials.outlineMaterial} />
       </group>
       <group position={[39.13, 13.07, -12.57]} rotation={[Math.PI, -0.37, Math.PI]} scale={1.5}>
-        <mesh geometry={nodes.Circle038.geometry} material={Materials.floorMaterial} />
+        <mesh geometry={nodes.Circle038.geometry} material={Materials.leafMaterial} />
         <mesh geometry={nodes.Circle038_1.geometry} material={Materials.outlineMaterial} />
       </group>
       <group position={[38.13, 13.12, -11.38]} rotation={[Math.PI, -0.14, Math.PI]} scale={1.5}>
-        <mesh geometry={nodes.Circle038.geometry} material={Materials.floorMaterial} />
+        <mesh geometry={nodes.Circle038.geometry} material={Materials.leafMaterial} />
         <mesh geometry={nodes.Circle038_1.geometry} material={Materials.outlineMaterial} />
       </group>
       <group position={[38.42, 13.12, -12.33]} rotation={[0, 0.51, 0]} scale={1.5}>
-        <mesh geometry={nodes.Circle038.geometry} material={Materials.floorMaterial} />
+        <mesh geometry={nodes.Circle038.geometry} material={Materials.leafMaterial} />
         <mesh geometry={nodes.Circle038_1.geometry} material={Materials.outlineMaterial} />
       </group>
       <group position={[39.44, 13, -13.84]} rotation={[0, 1.19, 0]} scale={1.5}>
-        <mesh geometry={nodes.Circle038.geometry} material={Materials.floorMaterial} />
+        <mesh geometry={nodes.Circle038.geometry} material={Materials.leafMaterial} />
         <mesh geometry={nodes.Circle038_1.geometry} material={Materials.outlineMaterial} />
       </group>
       <group position={[39.7, 12.96, -13.06]} rotation={[0, -0.39, 0]} scale={1.5}>
-        <mesh geometry={nodes.Circle038.geometry} material={Materials.floorMaterial} />
+        <mesh geometry={nodes.Circle038.geometry} material={Materials.leafMaterial} />
         <mesh geometry={nodes.Circle038_1.geometry} material={Materials.outlineMaterial} />
       </group>
       <group position={[38.89, 13.04, -13.31]} rotation={[-Math.PI, -1.56, -Math.PI]} scale={1.5}>
-        <mesh geometry={nodes.Circle038.geometry} material={Materials.floorMaterial} />
+        <mesh geometry={nodes.Circle038.geometry} material={Materials.leafMaterial} />
         <mesh geometry={nodes.Circle038_1.geometry} material={Materials.outlineMaterial} />
       </group>
       <group position={[33.6, 13.01, -3.13]} rotation={[0, -0.06, 0]} scale={1.5}>
-        <mesh geometry={nodes.Circle038.geometry} material={Materials.floorMaterial} />
+        <mesh geometry={nodes.Circle038.geometry} material={Materials.leafMaterial} />
         <mesh geometry={nodes.Circle038_1.geometry} material={Materials.outlineMaterial} />
       </group>
       <group position={[32.94, 13.07, -3.6]} rotation={[Math.PI, -0.31, Math.PI]} scale={1.5}>
-        <mesh geometry={nodes.Circle038.geometry} material={Materials.floorMaterial} />
+        <mesh geometry={nodes.Circle038.geometry} material={Materials.leafMaterial} />
         <mesh geometry={nodes.Circle038_1.geometry} material={Materials.outlineMaterial} />
       </group>
       <group position={[32.76, 13.12, -2.64]} rotation={[0, 0.45, 0]} scale={1.5}>
-        <mesh geometry={nodes.Circle038.geometry} material={Materials.floorMaterial} />
+        <mesh geometry={nodes.Circle038.geometry} material={Materials.leafMaterial} />
         <mesh geometry={nodes.Circle038_1.geometry} material={Materials.outlineMaterial} />
       </group>
       <group position={[33.48, 13, -4.93]} rotation={[0, 1.12, 0]} scale={1.5}>
-        <mesh geometry={nodes.Circle038.geometry} material={Materials.floorMaterial} />
+        <mesh geometry={nodes.Circle038.geometry} material={Materials.leafMaterial} />
         <mesh geometry={nodes.Circle038_1.geometry} material={Materials.outlineMaterial} />
       </group>
       <group position={[33.64, 12.96, -4.14]} rotation={[0, -0.45, 0]} scale={1.5}>
-        <mesh geometry={nodes.Circle038.geometry} material={Materials.floorMaterial} />
+        <mesh geometry={nodes.Circle038.geometry} material={Materials.leafMaterial} />
         <mesh geometry={nodes.Circle038_1.geometry} material={Materials.outlineMaterial} />
       </group>
       <group position={[32.77, 13.04, -4.42]} rotation={[-Math.PI, -1.5, -Math.PI]} scale={1.5}>
-        <mesh geometry={nodes.Circle038.geometry} material={Materials.floorMaterial} />
+        <mesh geometry={nodes.Circle038.geometry} material={Materials.leafMaterial} />
         <mesh geometry={nodes.Circle038_1.geometry} material={Materials.outlineMaterial} />
       </group>
       <group position={[-8.88, 12.94, -12.89]} rotation={[Math.PI, -1.48, Math.PI]} scale={1.5}>
-        <mesh geometry={nodes.Circle038.geometry} material={Materials.floorMaterial} />
+        <mesh geometry={nodes.Circle038.geometry} material={Materials.leafMaterial} />
         <mesh geometry={nodes.Circle038_1.geometry} material={Materials.outlineMaterial} />
       </group>
       <group position={[-10.03, 13, -12.55]} rotation={[Math.PI, -0.05, Math.PI]} scale={1.5}>
-        <mesh geometry={nodes.Circle038.geometry} material={Materials.floorMaterial} />
+        <mesh geometry={nodes.Circle038.geometry} material={Materials.leafMaterial} />
         <mesh geometry={nodes.Circle038_1.geometry} material={Materials.outlineMaterial} />
       </group>
       <group position={[48.67, 20.24, 4.13]} rotation={[0, 0.02, 0]} scale={[0.42, 3.82, 1.25]}>
