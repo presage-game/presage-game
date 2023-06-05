@@ -37,7 +37,7 @@ const defaultMaterials = {
     green: "#84A58D",
     orange: "#ED9746",
     ledScreen: "#354927",
-    wall: "#DFD2CB",
+    wall: "#E7DEB4",
     white: "#FFF6FA",
   },
 }
@@ -70,7 +70,7 @@ const variantMaterials = {
     green: "#84A58D",
     orange: "#ED9746",
     ledScreen: "#354927",
-    wall: "#DFD2CB",
+    wall: "#F0D547",
     white: "#FFF6FA",
   },
 }
