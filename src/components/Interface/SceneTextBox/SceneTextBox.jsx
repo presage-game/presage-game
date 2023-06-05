@@ -1,9 +1,5 @@
 import { useState, useEffect } from "react"
-import { useSelector, useDispatch } from "react-redux"
-
-import { toggleBlackBars } from "@/store/reducers/uiReducer"
-import { Button } from "@/components/Button/Button"
-
+import { useSelector} from "react-redux"
 import { motion, AnimatePresence } from "framer-motion"
 
 import "./TextBox.scss"
@@ -21,7 +17,7 @@ export const SceneTextBox = ({
   const [introPlayed, setIntroPlayed] = useState(false)
   const [textIndex, setTextIndex] = useState(0)
   const [key, setKey] = useState(0)
-  
+
   // TODO: Set this state from Supabase data
   const [variant, setVariant] = useState("b")
 
@@ -73,9 +69,8 @@ export const SceneTextBox = ({
           return intro[1]?.text
         }
       }
-
-      return
     }
+    return
   }
 
   const getSpotText = () => {
@@ -116,16 +111,14 @@ export const SceneTextBox = ({
   }, [spotIndex])
 
   useEffect(() => {
-    setTextIndex(0)
-    setShowText(false)
-  }, [mapActive])
-
-  useEffect(() => {
-    if (scriptData[sceneIndex].voiceover.length > 0) {
+    if (mapActive) {
+      setTextIndex(0)
+      setShowText(false)
+    } else {
       setIsVoiceOver(true)
       setShowText(true)
     }
-  }, [sceneIndex])
+  }, [mapActive])
 
   /* Voiceover */
   useEffect(() => {

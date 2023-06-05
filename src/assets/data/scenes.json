@@ -67,16 +67,6 @@
     "spots": [
       {
         "index": 0,
-        "label": "Cercles de pierre",
-        "spotVoiceover": [
-          {
-            "text": "Tu as l'impression que les pierres émettent un son lorsque tu les touches.",
-            "emitter": "innerVoice"
-          }
-        ]
-      },
-      {
-        "index": 1,
         "label": "Clôtures",
         "spotVoiceover": [
           {
@@ -85,6 +75,16 @@
           },
           {
             "text": "Des entreprises ont essayé de se réapproprier cet endroit. Et quelque chose les a fait partir avant qu’elles n’y parviennent.",
+            "emitter": "innerVoice"
+          }
+        ]
+      },
+      {
+        "index": 1,
+        "label": "Cercles de pierre",
+        "spotVoiceover": [
+          {
+            "text": "Tu as l'impression que les pierres émettent un son lorsque tu les touches.",
             "emitter": "innerVoice"
           }
         ]
@@ -101,8 +101,67 @@
       {
         "text": "Quelque chose cloche avec ce baobab. D’une manière ou d’une autre, il n’est pas censé être là. Tu aimerais l’ignorer et tracer ta route, mais sa présence t’en empêche.",
         "emitter": "innerVoice"
-      }
+      },
+      [
+        {
+          "text": "La pierre que tu as ramassé tout à l’heure s’agite. Tu la tiens maintenant entre tes mains. Une fenêtre s’ouvre à toi, et tu ne sais pas encore si elle donne sur le passé ou le futur.",
+          "emitter": "innerVoice"
+        },
+        {
+          "text": "Les secondes s’étirent, et ton imagination fait son travail. Tu crois entendre un murmure. Trouve d’abord le symbole du passé, et tu pourras reprendre la route. La bonne mélodie saura libérer la pierre de sa sépulture.",
+          "emitter": "innerVoice"
+        }
+      ]
     ],
     "spots": []
+  },
+  {
+    "name": "Keur Gnìalo",
+    "voiceover": [
+      {
+        "text": "Une station-essence toute neuve tranche radicalement avec l’amalgame que forme les bâtisses au style colonial et les rangées de quincailleries.",
+        "emitter": "narrator"
+      },
+      {
+        "text": "Béton, poussière et métal se coagulent sous tes yeux pour former Keur Gnìalo. La fomentation urbaine se mêle au bruit du trafic.",
+        "emitter": "narrator"
+      }
+    ],
+    "spots": [
+      {
+        "index": 0,
+        "label": "Boutique de la station-essence",
+        "spotVoiceover": [
+          [
+            {
+              "text": "Des conducteurs se sont arrêtés ici avant toi. Tu sens leur présence au fond de tes poumons. L’odeur du gazole se répand aux abords de la ville, et bizarrement, tu trouves cela agréable.",
+              "emitter": "innerVoice"
+            },
+            {
+              "text": "La boutique de la station-essence est fermée. Une note manuscrite rédigée en français a été placardée sur la porte.",
+              "emitter": "narrator"
+            },
+            {
+              "text": "Bienvenue! Remplacer cela par un texte de NPC (à écrire)",
+              "emitter": "narrator"
+            }
+          ],
+          [
+            {
+              "text": "Tu entres dans la boutique de la station-essence.",
+              "emitter": "narrator"
+            },
+            {
+              "text": "La note dit: “Boutique fermée en raison de la pénurie de carburant. Approvisionnements perturbés et retards importants de la part des fournisseurs. Merci de votre compréhension.”",
+              "emitter": "narrator"
+            },
+            {
+              "text": "Tu assistes à la défaite du modèle libéral. Des jerricanes de secours dorment sagement à l’arrière de ton véhicule, tous les deux blottis l’un contre l’autre.",
+              "emitter": "innerVoice"
+            }
+          ]
+        ]
+      }
+    ]
   }
 ]

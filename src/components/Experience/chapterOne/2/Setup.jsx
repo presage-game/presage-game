@@ -1,14 +1,14 @@
-import { useState, useEffect } from "react"
+import { useState, useEffect, Suspense } from "react"
 import { Scene } from "./Scene"
 import { useDispatch } from "react-redux"
 import { changeOnFocusCamera, changeOnFocusCameraPosition } from "@/store/reducers/userReducer"
 import { CustomCamera } from "../../tools/CustomCamera/CustomCamera"
-import { Environment, Sky } from "@react-three/drei"
+import { Environment, PositionalAudio, Sky } from "@react-three/drei"
 import { CloudsEffect } from "../../effects/CloudsEffect"
 import { GoToMap } from "../../objects/interactive/GoToMap/GoToMap"
 import { TempestEffect } from "../../effects/TempestEffect"
 
-export const Setup = ({ variant }) => {
+export const Setup = ({ setSpotIndex, setShowText, isVoiceOver, variant }) => {
   const [adinkraFocused, setAdinkraFocused] = useState(false)
   const [fenceFocused, setFenceFocused] = useState(false)
 
@@ -18,6 +18,8 @@ export const Setup = ({ variant }) => {
 
   useEffect(() => {
     if (adinkraFocused) {
+      setFenceFocused(false)
+      setSpotIndex(1)
       changeFocusPosition({
         position: {
           x: -10,
@@ -32,6 +34,8 @@ export const Setup = ({ variant }) => {
       })
       changeFocus(true)
     } else if (fenceFocused) {
+      setAdinkraFocused(false)
+      setSpotIndex(0)
       changeFocusPosition({
         position: {
           x: 35,
@@ -46,9 +50,18 @@ export const Setup = ({ variant }) => {
       })
       changeFocus(true)
     } else {
+      setSpotIndex(null)
       changeFocus(false)
+
+      if (!isVoiceOver) {
+        setShowText(false)
+      }
     }
   }, [adinkraFocused, fenceFocused])
+
+  useEffect(() => {
+    setShowText(true)
+  }, [])
 
   return (
     <>
@@ -62,6 +75,22 @@ export const Setup = ({ variant }) => {
         dispose={null}
       />
       <GoToMap args={[5, 5, 5]} position={[40, -2.5, -90]} />
+      <Suspense fallback={null}>
+        <PositionalAudio
+          autoplay
+          url="/audios/scenes/0/atmospheric/wind.mp3"
+          loop
+          distance={10}
+          position={[-12, -2.5, -50]}
+        />
+        {/* <PositionalAudio
+          autoplay
+          url="/audios/scenes/1/atmospheric/fences.mp3"
+          loop
+          distance={2}
+          position={[0, 5, 10]}
+        /> */}
+      </Suspense>
       {variant === "default" ? (
         <>
           <Sky

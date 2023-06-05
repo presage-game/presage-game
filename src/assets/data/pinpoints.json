@@ -21,12 +21,11 @@
           "text": "Tu te sens tout petit à côté de cette machine.",
           "emitter": "innerVoice"
         },
-        {}
-      ],
-      {
-        "text": "Tu sens le vent s’engouffrer à l’intérieur du site d’excavation.",
-        "emitter": "innerVoice"
-      }
+        {
+          "text": "Tu sens le vent s’engouffrer à l’intérieur du site d’excavation.",
+          "emitter": "innerVoice"
+        }
+      ]
     ]
   },
   {
@@ -69,6 +68,56 @@
         "text": "Ces pêcheurs ne connaissent pas la vérité. Il y a bien longtemps que les enfants d’An-Uua n’ont plus rien à voir avec cette histoire. Non ; si le lac est de cette couleur, c’est à cause de la pollution et des algues.",
         "emitter": "innerVoice"
       }
+    ]
+  },
+  {
+    "name": "Sacosse",
+    "voiceover": [
+      {
+        "text": "Au pied de la montagne, des rizières occupent les vallées fluviales à proximité du village de Sacosse — un regroupement de petites cases surélevées, et séparées par du canisse en bambou.",
+        "emitter": "narrator"
+      },
+      [
+        {
+          "text": "Sacosse est plein de vie, ce soir. Des festivités occupent une vingtaine d’habitants, tous réunis en-dessous du fromager ancestral.",
+          "emitter": "narrator"
+        },
+        {
+          "text": "Malgré l’heure tardive, deux enfants jouent au foot en-dessous du fromager ancestral. Happés, ils ne te remarquent même pas.",
+          "emitter": "narrator"
+        }
+      ],
+      [
+        {
+          "text": "Un homme d’une soixantaine d’années et aux traits taillés au couteau finit par te remarquer, et s’approche de toi. Il te parle dans un mélange de wolof et de français.",
+          "emitter": "narrator"
+        },
+        {
+          "text": "Leurs rires font l’exception parmi les tonalités ténues du soir.",
+          "emitter": "narrator"
+        }
+      ],
+      [
+        {
+          "text": "Ce soir, nous célébrons et nous remercions Uwma pour sa bonne grâce! La moisson a été bonne! Et tu es le bienvenu pour célébrer avec nous.",
+          "options": [
+            {
+              "text": "La moisson?",
+              "response": "Oui! Nos mains récoltent le riz dans les vallées. Et sur les plateaux, on cultive aussi des céréales, des mangues et des noix de cajou."
+            },
+            {
+              "text": "Cet arbre a l'air spécial",
+              "response": "Oh, oui. C’est un kapokier. Ceiba pentandra. Ou encore: arbre aux amoureux. C’est notre symbole sacré! Il nous protège des mauvais *présages*. Et son bois sert à construire des pirogues qu’on offre à un village de pêcheurs, au nord-est d’ici."
+            }
+          ],
+          "emitter": "npc",
+          "label": "Chef du village"
+        },
+        {
+          "text": "Les fenêtres des petites maisons ont des yeux, et tu les sens t’observer en silence. Ce sont tes phares ; ou peut-être le bruit du moteur qui a dû extirper les autochtones de leur lit.",
+          "emitter": "innerVoice"
+        }
+      ]
     ]
   }
 ]

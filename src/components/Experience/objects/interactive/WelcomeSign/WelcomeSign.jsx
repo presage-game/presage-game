@@ -2,7 +2,7 @@ import { useState } from "react"
 import { Model as MapSignModel } from "./MapSign"
 import { Model as CitiesSignModel } from "./CitiesSign"
 
-export const WelcomeSign = ({ mapClicked, setMapClicked, pubClicked, setPubClicked }) => {
+export const WelcomeSign = ({ mapFocused, setMapFocused, pubFocused, setPubFocused }) => {
   const [mapHovered, setMapHovered] = useState(false)
   const [pubHovered, setPubHovered] = useState(false)
 
@@ -13,14 +13,14 @@ export const WelcomeSign = ({ mapClicked, setMapClicked, pubClicked, setPubClick
         rotation={[0, -Math.PI / 2.5, 0]}
         mapHovered={mapHovered}
         setMapHovered={setMapHovered}
-        onMapClick={() => setMapClicked(!mapClicked)}
+        onMapClick={() => setMapFocused(!mapFocused)}
       />
       <CitiesSignModel
         position={[5, -2.2, -40]}
         rotation={[0, -Math.PI / 2, 0]}
         pubHovered={pubHovered}
         setPubHovered={setPubHovered}
-        onPubClick={() => setPubClicked(!pubClicked)}
+        onPubClick={() => setPubFocused(!pubFocused)}
       />
     </>
   )

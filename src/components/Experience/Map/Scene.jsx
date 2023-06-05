@@ -63,7 +63,6 @@ export const Scene = ({
     startSound.play()
   }, [])
 
-
   const click = (e, delta) => {
     let target = e.point
     let groupID = pathfinding.getGroup(ZONE, voitureGrpRef.current.position)
@@ -93,8 +92,8 @@ export const Scene = ({
 
     // anti jitter
     if (distance.length() < 0.1) {
-    navPath.shift()
-    return
+      navPath.shift()
+      return
     }
 
     if (navPath.length > 1 || distance.length() > 0.5) {
@@ -195,36 +194,36 @@ export const Scene = ({
       <Box
         ref={(el) => (cubeRef.current[0] = el)}
         scene={0}
-        args={[5, 1, 5]}
-        position={[-13, 0.1, -13]}
+        args={[-2, 1, 2]}
+        position={[-15, 0.1, 13]}
         dispose={null}
       />
       <Box
         ref={(el) => (cubeRef.current[1] = el)}
         scene={1}
-        args={[5, 1, 5]}
-        position={[10, 0.1, -80]}
+        args={[-2, 1, 2]}
+        position={[-13.5, 0.1, -4.5]}
         dispose={null}
       />
       <Box
         ref={(el) => (cubeRef.current[2] = el)}
         scene={2}
-        args={[5, 1, 5]}
-        position={[20, 0.1, -35]}
+        args={[-2, 1, 2]}
+        position={[0, 0.1, -5]}
         dispose={null}
       />
       <Box
         ref={(el) => (smallCubeRef.current[0] = el)}
         pinpoint={0}
-        args={[5, 1, 5]}
-        position={[-7, 0.1, -3]}
+        args={[2, 1, 2]}
+        position={[-10, 0.1, -3]}
         material-color="hotpink"
         dispose={null}
       />
       <Box
         ref={(el) => (smallCubeRef.current[1] = el)}
         pinpoint={1}
-        args={[5, 1, 5]}
+        args={[2, 1, 2]}
         position={[10, 0.1, -15]}
         material-color="hotpink"
         dispose={null}
@@ -234,10 +233,10 @@ export const Scene = ({
       <OrthographicCamera
         makeDefault
         ref={camRef}
-        position={[-7, 5, 15]}
-        zoom={150}
-        near={-50}
-        far={100}
+        position={[15, 15, 15]}
+        zoom={125}
+        near={0}
+        far={60}
         dispose={null}
       />
     </>
