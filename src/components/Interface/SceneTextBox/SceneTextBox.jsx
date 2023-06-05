@@ -191,13 +191,7 @@ export const SceneTextBox = ({
 
       currentAudio.src = audioFile
       currentAudio.load()
-
-      const playPromise = currentAudio.play()
-      if (playPromise !== undefined) {
-        playPromise.catch((error) => {
-          return // TODO: catch the error, and show a message only if the error is not related to a missing file
-        })
-      }
+      currentAudio.play()
     }
 
     return () => {
