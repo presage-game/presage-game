@@ -3,16 +3,29 @@ import { changeBlackBarsStatus } from "@/store/reducers/uiReducer"
 import { useDispatch, useSelector } from "react-redux"
 
 import "./BlackBars.scss"
+import { useEffect, useState } from "react"
 
 export const BlackBars = () => {
   const { blackBarsStatus } = useSelector((state) => state.ui)
+  const [inAnimation, setInAnimation] = useState(false)
   const dispatch = useDispatch()
 
   const blackBarsClick = () => {
-    if (blackBarsStatus === "window") {
+    if (blackBarsStatus === "window" && !inAnimation) {
       dispatch(changeBlackBarsStatus("cinema"))
     }
   }
+
+  useEffect(() => {
+    setInAnimation(true)
+    let timeout = setTimeout(() => {
+      setInAnimation(false)
+    }, 4000)
+
+    return () => {
+      clearTimeout(timeout)
+    }
+  }, [blackBarsStatus])
 
   return (
     <>
@@ -23,12 +36,12 @@ export const BlackBars = () => {
             onClick={blackBarsClick}
             style={{
               pointerEvents:
-                (blackBarsStatus === "cinema" || blackBarsStatus === "closed") && "none",
+                (blackBarsStatus === "cinema" || blackBarsStatus === "closed" || inAnimation) && "none"
             }}
           >
             <MotionConfig
               transition={{
-                duration: 6,
+                duration: 4,
                 type: "spring",
                 bounce: 0.2,
                 restSpeed: 0.05,
@@ -62,7 +75,7 @@ export const BlackBars = () => {
             </MotionConfig>
             <MotionConfig
               transition={{
-                duration: blackBarsStatus === "closed" ? 0 : 4,
+                duration: blackBarsStatus === "closed" ? 0 : 3,
                 type: "spring",
                 bounce: 0.2,
                 restSpeed: 0.05,
