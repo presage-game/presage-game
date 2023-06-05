@@ -1,5 +1,7 @@
-import { Html, Plane, Box, useTexture, Decal } from "@react-three/drei"
-import { useRef, useState } from "react"
+import { collectAdinkra } from "@/store/reducers/userReducer"
+import { Html, Plane } from "@react-three/drei"
+import { useEffect, useRef, useState } from "react"
+import { useDispatch } from "react-redux"
 
 const initialData = {
   prevX: 0,
@@ -13,7 +15,7 @@ const initialData = {
 function getMousePos(canvas, evt) {
   var rect = canvas.getBoundingClientRect()
   return {
-    x: ((evt.clientX - rect.left) / (rect.right - rect.left)) * canvas.width,
+    x: ((evt.clientX - rect.right) / (rect.left - rect.right)) * canvas.width,
     y: ((evt.clientY - rect.top) / (rect.bottom - rect.top)) * canvas.height,
   }
 }
@@ -31,9 +33,18 @@ const draw = (ctx, data) => {
   ctx.closePath()
 }
 
-export const AdinkraTwo = ({ switchLerp }) => {
-  const sankofaTexture = useTexture("/assets/images/sankofa.png")
+export const AdinkraTwo = ({
+  position,
+  rotation,
+  adinkraFocused,
+  setAdinkraFocused,
+  nodes,
+  Materials,
+}) => {
+  const dispatch = useDispatch()
+  const [localFocused, setLocalFocused] = useState(false)
   const [game, setGame] = useState(false)
+  const [gameFinished, setGameFinished] = useState(false)
   const canvasRef = useRef(null)
   const [data, setData] = useState(initialData)
 
@@ -41,9 +52,9 @@ export const AdinkraTwo = ({ switchLerp }) => {
     let mouse = getMousePos(canvasRef.current, e)
     let prevX = data.currX !== 0 ? data.currX : mouse.x
     let prevY = data.currY !== 0 ? data.currY : mouse.y
-    let currX = mouse.x - canvasRef.current.offsetLeft
-    let currY = mouse.y - canvasRef.current.offsetTop
-    let ctx = canvasRef.current.getContext("2d")
+    let currX = mouse.x + canvasRef.current.offsetLeft
+    let currY = mouse.y + canvasRef.current.offsetTop
+    let ctx = canvasRef.current.getContext("2d", { willReadFrequently: true })
 
     let flag = true
     let dot_flag = true
@@ -80,7 +91,7 @@ export const AdinkraTwo = ({ switchLerp }) => {
         currY: currY,
       })
 
-      draw(canvasRef.current.getContext("2d"), data)
+      draw(canvasRef.current.getContext("2d", { willReadFrequently: true }), data)
     }
   }
 
@@ -89,7 +100,7 @@ export const AdinkraTwo = ({ switchLerp }) => {
       ...initialData,
     })
     let imgData = canvasRef.current
-      .getContext("2d")
+      .getContext("2d", { willReadFrequently: true })
       .getImageData(0, 0, canvasRef.current.width, canvasRef.current.height, { colorSpace: "srgb" })
     let red = []
     let green = []
@@ -123,12 +134,21 @@ export const AdinkraTwo = ({ switchLerp }) => {
       console.log("perdu")
     } else {
       console.log("gagné")
+      dispatch(
+        collectAdinkra({
+          id: 2,
+          name: "Adinkra 2",
+          description: "Adinkra 2 description good",
+        })
+      )
+      setGameFinished(true)
+      setAdinkraFocused(false)
     }
   }
 
   const initCanvas = () => {
     if (canvasRef.current !== null) {
-      let ctx = canvasRef.current.getContext("2d")
+      let ctx = canvasRef.current.getContext("2d", { willReadFrequently: true })
       ctx.clearRect(0, 0, canvasRef.current.width, canvasRef.current.height)
       ctx.beginPath()
       ctx.fillRect(0, 0, canvasRef.current.width, canvasRef.current.height)
@@ -137,36 +157,62 @@ export const AdinkraTwo = ({ switchLerp }) => {
     }
   }
 
+  useEffect(() => {
+    if (localFocused && !gameFinished) {
+      if (!game) {
+        setGame(true)
+      }
+    }
+  }, [localFocused])
+
+  useEffect(() => {
+    setTimeout(() => {
+      initCanvas()
+    }, [1000])
+  }, [])
+
   return (
     <>
-      <Plane args={[10, 6]} rotation={[0, 0, 0]} position={[8, 0.8, -20]}>
-        <meshBasicMaterial transparent color="#ffffff" opacity={0.1} />
-        <Html position={[0, 0, 0]} transform>
-          <div
-            onPointerEnter={() => {
-              if (!game) {
-                initCanvas()
-                setGame(true)
-              }
-              switchLerp(true)
-            }}
-            onPointerLeave={() => switchLerp(false)}
-          >
-            <canvas
-              onMouseDown={(e) => handleMDown(e)}
-              onMouseUp={() => {
-                clearCanvas()
-              }}
-              onMouseMove={(e) => handleMMove(e)}
-              ref={canvasRef}
-            ></canvas>
-          </div>
-        </Html>
-      </Plane>
-      <Box args={[2, 2]} position={[8, 0, -22]} rotation={[0, 0, 0]}>
-        <meshBasicMaterial />
-        <Decal position={[0, 0, 0.5]} map={sankofaTexture} />
-      </Box>
+      <group position={position} rotation={rotation} dispose={null}>
+        <Plane args={[10, 6]}>
+          <meshBasicMaterial transparent color="#ffffff" opacity={0.1} />
+          <Html position={[0, 0, 0]} zIndexRange={9} transform>
+            <div>
+              <canvas
+                onClick={() => {
+                  if (!adinkraFocused) {
+                    setAdinkraFocused(true)
+                    setTimeout(() => {
+                      setLocalFocused(true)
+                    }, 2500)
+                  }
+                }}
+                onMouseDown={(e) => {
+                  if (adinkraFocused === true) {
+                    handleMDown(e)
+                  }
+                }}
+                onMouseUp={() => {
+                  clearCanvas()
+                }}
+                onMouseMove={(e) => {
+                  if (adinkraFocused === true) {
+                    handleMMove(e)
+                  }
+                }}
+                ref={canvasRef}
+              ></canvas>
+            </div>
+          </Html>
+        </Plane>
+        <mesh
+          geometry={nodes.Curve003.geometry}
+          material={Materials.outlineMaterial}
+          position={[0.1, 0, 0.1]}
+          rotation={[-Math.PI / 2, Math.PI, 0]}
+          scale={4}
+        />
+      </group>
     </>
   )
 }

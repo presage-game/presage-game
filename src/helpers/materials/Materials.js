@@ -22,6 +22,10 @@ const defaultMaterials = {
     wall: "#D4C1AA",
     main: "#8D6363",
   },
+  metal: {
+    main: "#A19E98",
+    rusty: "#504D5A"
+  },
   leafMaterial: "#4F7552",
   grassMaterial: "#626F52",
   megalithicMaterial: "#A26656",
@@ -33,7 +37,7 @@ const defaultMaterials = {
     green: "#84A58D",
     orange: "#ED9746",
     ledScreen: "#354927",
-    wall: "#DFD2CB",
+    wall: "#E7DEB4",
     white: "#FFF6FA",
   },
 }
@@ -51,6 +55,10 @@ const variantMaterials = {
     wall: "#D4C1AA",
     main: "#8D6363",
   },
+  metal: {
+    main: "#A19E98",
+    rusty: "#504D5A"
+  },
   leafMaterial: "#D8BF66",
   grassMaterial: "#626F52",
   megalithicMaterial: "#A26656",
@@ -62,7 +70,7 @@ const variantMaterials = {
     green: "#84A58D",
     orange: "#ED9746",
     ledScreen: "#354927",
-    wall: "#DFD2CB",
+    wall: "#F0D547",
     white: "#FFF6FA",
   },
 }
@@ -132,6 +140,17 @@ export const getMaterials = async (variant) =>
         color: MaterialsColor.house.main,
         gradientMap: toonFiveTone,
       }),
+    }
+
+    const metalMaterials = {
+      main: new MeshToonMaterial({
+        color: MaterialsColor.metal.main,
+        gradientMap: toonFiveTone,
+      }),
+      rusty: new MeshToonMaterial({
+        color: MaterialsColor.metal.rusty,
+        gradientMap: toonFiveTone,
+      })
     }
 
     const leafMaterial = new MeshToonMaterial({
@@ -210,6 +229,7 @@ export const getMaterials = async (variant) =>
       fenceMaterial,
       concreteMaterial,
       houseMaterials,
+      metalMaterials,
       leafMaterial,
       grassMaterial,
       megalithicMaterial,
