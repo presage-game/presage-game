@@ -6,7 +6,7 @@ import { Button } from "@/components/Button/Button"
 
 import "@/components/Interface/SceneTextBox/TextBox.scss"
 
-export const MapTextBox = ({ pinpointsData, pinpointIndex, mapActive }) => {
+export const MapTextBox = ({ pinpointsData, pinpointIndex }) => {
   const { isPinpointIntersecting, isPinpointActive } = useSelector((state) => state.map)
 
   const [showText, setShowText] = useState(pinpointIndex !== null)

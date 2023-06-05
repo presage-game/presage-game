@@ -16,6 +16,7 @@ export const Setup = ({ setSpotIndex, setShowText, isVoiceOver }) => {
 
   useEffect(() => {
     if (treeFocused) {
+      setSpotIndex(0)
       changeFocusPosition({
         position: {
           x: 0,

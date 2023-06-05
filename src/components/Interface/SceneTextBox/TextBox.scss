@@ -53,6 +53,18 @@
     }
   }
 
+  &__options {
+    display: flex;
+    align-items: center;
+    margin: 0 auto;
+
+    .Button {
+      &:not(:last-child) {
+        margin-right: 2rem;
+      }
+    }
+  }
+
   &--aside {
     max-width: 100%;
     width: 50rem;

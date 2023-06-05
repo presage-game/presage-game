@@ -113,7 +113,18 @@
         }
       ]
     ],
-    "spots": []
+    "spots": [
+      {
+        "index": 0,
+        "label": "Test",
+        "spotVoiceover": [
+          {
+            "text": "Test",
+            "emitter": "innerVoice"
+          }
+        ]
+      }
+    ]
   },
   {
     "name": "Keur Gnìalo",

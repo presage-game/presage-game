@@ -1,0 +1,104 @@
+[
+  {
+    "sceneIndex": 2,
+    "prompts": [
+      {
+        "text": "Un autre voyageur est déjà en route, et va bientôt traverser la frontière. À son arrivée, la mine de phosphate sera...",
+        "options": [
+          {
+            "text": "Accessible",
+            "response": "Le vent, le métal, les installations. Tout sera là, s'offrant à qui le veux."
+          },
+          {
+            "text": "Inaccessible",
+            "response": "Un éboulement va se produire près de l'entrée du site d'excavation."
+          }
+        ],
+        "emitter": "npc",
+        "label": "Premier arbre à palabres"
+      },
+      {
+        "text": "Qu'en sera-t-il du temps ?",
+        "options": [
+          {
+            "text": "Il fera beau",
+            "response": "Rien que le bleu du ciel."
+          },
+          {
+            "text": "Une tempête arrive",
+            "response": "Quelque chose se profile à l'horizon. Une tempête de sable. Elle va tout recouvrir."
+          }
+        ],
+        "label": "Premier arbre à palabres"
+      }
+    ]
+  },
+  {
+    "sceneIndex": 4,
+    "prompts": [
+      {
+        "text": "Je te pose une première question",
+        "options": [
+          {
+            "text": "Présage A",
+            "response": "D'accord, le présage A va se produire"
+          },
+          {
+            "text": "Présage B",
+            "response": "D'accord, le présage B va se produire"
+          }
+        ],
+        "label": "Deuxième arbre à palabres"
+      },
+      {
+        "text": "Je te pose une deuxième question",
+        "options": [
+          {
+            "text": "Présage A",
+            "response": "D'accord, le présage A va se produire"
+          },
+          {
+            "text": "Présage B",
+            "response": "D'accord, le présage B va se produire"
+          }
+        ],
+        "label": "Deuxième arbre à palabres"
+      }
+    ]
+  },
+  {
+    "sceneIndex": 6,
+    "prompts": [
+      {
+        "text": "Je te pose une première question",
+        "options": [
+          {
+            "text": "Présage A",
+            "response": "D'accord, le présage A va se produire"
+          },
+          {
+            "text": "Présage B",
+            "response": "D'accord, le présage B va se produire"
+          }
+        ],
+        "emitter": "npc",
+        "label": "Troisième arbre à palabres"
+      },
+      {
+        "text": "Je te pose une deuxième question",
+        "options": [
+          {
+            "text": "Présage A",
+            "response": "D'accord, le présage A va se produire"
+          },
+          {
+            "text": "Présage B",
+            "response": "D'accord, le présage B va se produire"
+          }
+        ],
+        "emitter": "npc",
+        "label": "Troisième arbre à palabres"
+      }
+    ]
+  }
+]

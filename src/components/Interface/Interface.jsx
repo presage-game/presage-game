@@ -1,13 +1,15 @@
 import { useState } from "react"
 import { useSelector, useDispatch } from "react-redux"
-import { toggleBlackBars, toggleMap } from "@/store/reducers/uiReducer"
+import { toggleBlackBars } from "@/store/reducers/uiReducer"
 import { toggleMute } from "@/store/reducers/audioReducer"
 
 import scriptData from "@/assets/data/scenes.json"
 import pinpointsData from "@/assets/data/pinpoints.json"
+import presagesData from "@/assets/data/presages.json"
 
 import { SceneTextBox } from "./SceneTextBox/SceneTextBox"
 import { MapTextBox } from "./MapTextBox/MapTextBox"
+import { PresageTextBox } from "./PresageTextBox/PresageTextBox"
 import { IntersectionPopup } from "./IntersectionPopup/IntersectionPopup"
 import { Collection } from "./Collection/Collection"
 import { Options } from "./Options/Options"
@@ -68,6 +70,14 @@ export const Interface = ({
           setShowText={setShowText}
           isVoiceOver={isVoiceOver}
           setIsVoiceOver={setIsVoiceOver}
+        />
+      )}
+      {!mapActive && sceneIndex === 2 && (
+        <PresageTextBox
+          presagesData={presagesData}
+          mapActive={mapActive}
+          sceneIndex={sceneIndex}
+          spotIndex={spotIndex}
         />
       )}
       {mapActive && (

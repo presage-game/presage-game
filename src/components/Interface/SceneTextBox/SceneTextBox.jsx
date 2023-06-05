@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react"
-import { useSelector} from "react-redux"
+import { useSelector } from "react-redux"
 import { motion, AnimatePresence } from "framer-motion"
 
 import "./TextBox.scss"
@@ -19,7 +19,7 @@ export const SceneTextBox = ({
   const [key, setKey] = useState(0)
 
   // TODO: Set this state from Supabase data
-  const [variant, setVariant] = useState("b")
+  const [variant, setVariant] = useState("a")
 
   /* Text */
   const getTextEmitter = () => {
@@ -29,14 +29,12 @@ export const SceneTextBox = ({
       if (!variant || typeof spot?.text === "string") {
         return spot?.emitter
       } else {
-        if (variant === "a" && spot[0]?.emitter !== undefined) {
+        if (variant === "a" && !spot[0]?.emitter) {
           return spot[0]?.emitter
-        } else if (variant === "b" && spot[1]?.emitter !== undefined) {
+        } else if (variant === "b" && !spot[1]?.emitter) {
           return spot[1]?.emitter
         }
       }
-
-      return
     } else {
       const intro = scriptData[sceneIndex]?.voiceover[textIndex]
 
