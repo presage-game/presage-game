@@ -1,7 +1,7 @@
 import React, { useRef, useMemo, useEffect, useState } from "react"
 import { useSelector } from "react-redux"
 import { Box3, Object3D, Quaternion, Vector3, Raycaster, Vector2 } from "three"
-import { Box, useGLTF, OrthographicCamera } from "@react-three/drei"
+import { Box, useGLTF, OrthographicCamera, PerspectiveCamera } from "@react-three/drei"
 import { useFrame } from "@react-three/fiber"
 import { Pathfinding, PathfindingHelper } from "three-pathfinding"
 import { Car } from "./Car"
@@ -184,7 +184,7 @@ export const Scene = ({
       <primitive
         onPointerDown={() => setPointerDown(true)}
         object={navMesh.scene}
-        visible={true}
+        visible={false}
         ref={navMeshRef}
         dispose={null}
       />
@@ -230,13 +230,20 @@ export const Scene = ({
       />
       <primitive object={pivot} dispose={null} />
       {/* <primitive object={pathfindinghelper} dispose={null} /> */}
-      <OrthographicCamera
+      {/* <OrthographicCamera
         makeDefault
         ref={camRef}
         position={[15, 15, 15]}
         zoom={125}
         near={0}
         far={60}
+        dispose={null}
+      /> */}
+      <PerspectiveCamera  
+        makeDefault
+        ref={camRef}
+        position={[15, 15, 15]}
+        zoom={1}
         dispose={null}
       />
     </>
