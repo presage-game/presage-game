@@ -72,12 +72,15 @@ export const Interface = ({
           setIsVoiceOver={setIsVoiceOver}
         />
       )}
+      {/* Work in progress */}
       {!mapActive && sceneIndex === 2 && (
         <PresageTextBox
           presagesData={presagesData}
           mapActive={mapActive}
           sceneIndex={sceneIndex}
           spotIndex={spotIndex}
+          showText={showText}
+          setShowText={setShowText}
         />
       )}
       {mapActive && (
