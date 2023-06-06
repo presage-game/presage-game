@@ -228,6 +228,22 @@ export const Scene = ({
         material-color="hotpink"
         dispose={null}
       />
+      <Box
+        ref={(el) => (smallCubeRef.current[2] = el)}
+        pinpoint={2}
+        args={[2, 1, 2]}
+        position={[12, 0.1, -12]}
+        material-color="red"
+        dispose={null}
+      />
+      <Box
+        ref={(el) => (smallCubeRef.current[3] = el)}
+        pinpoint={3}
+        args={[2, 1, 2]}
+        position={[14, 0.1, -14]}
+        material-color="green"
+        dispose={null}
+      />
       <primitive object={pivot} dispose={null} />
       {/* <primitive object={pathfindinghelper} dispose={null} /> */}
       <OrthographicCamera

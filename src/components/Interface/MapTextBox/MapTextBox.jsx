@@ -6,10 +6,9 @@ import { Button } from "@/components/Button/Button"
 
 import "@/components/Interface/SceneTextBox/TextBox.scss"
 
-export const MapTextBox = ({ pinpointsData, pinpointIndex }) => {
+export const MapTextBox = ({ pinpointsData, pinpointIndex, showText, setShowText }) => {
   const { isPinpointIntersecting, isPinpointActive } = useSelector((state) => state.map)
 
-  const [showText, setShowText] = useState(pinpointIndex !== null)
   const [showOptions, setShowOptions] = useState(pinpointIndex !== null)
   const [textIndex, setTextIndex] = useState(0)
   const [optionIndex, setOptionIndex] = useState(0)
@@ -259,30 +258,20 @@ export const MapTextBox = ({ pinpointsData, pinpointIndex }) => {
             </button>
           )}
           {hasOptions() && showOptions && (
-            <>
+            <div className="TextBox__options">
               {pinpointsData[pinpointIndex]?.voiceover[textIndex]?.options?.map((option, index) => (
-                <Button
-                  key={index}
-                  text={option.text}
-                  onClick={() => chooseResponse(index)}
-                  variant="splashScreen"
-                />
+                <Button key={index} text={option.text} onClick={() => chooseResponse(index)} />
               ))}
-            </>
+            </div>
           )}
           {hasOptions() && showOptions && variant && (
-            <>
+            <div className="TextBox__options">
               {pinpointsData[pinpointIndex]?.voiceover[textIndex][
                 variant === "a" ? 0 : 1
               ]?.options?.map((option, index) => (
-                <Button
-                  key={index}
-                  text={option.text}
-                  onClick={() => chooseResponse(index)}
-                  variant="splashScreen"
-                />
+                <Button key={index} text={option.text} onClick={() => chooseResponse(index)} />
               ))}
-            </>
+            </div>
           )}
         </motion.div>
       )}
