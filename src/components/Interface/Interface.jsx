@@ -64,6 +64,7 @@ export const Interface = ({
           {isMuted ? "Unmute" : "Mute"}
         </button>
       </div>
+      {activateBlackBars && <BlackBars setIsVoiceOver={setIsVoiceOver} mapActive={mapActive} />}
       {!mapActive && blackBarsStatus !== "closed" && blackBarsStatus !== "window" && (
         <SceneTextBox
           mapActive={mapActive}
@@ -76,8 +77,7 @@ export const Interface = ({
           setIsVoiceOver={setIsVoiceOver}
           OpenBlackBars={OpenBlackBars}
         />
-      )}
-      {activateBlackBars && !mapActive && <BlackBars setIsVoiceOver={setIsVoiceOver} />}
+      )}   
       {/* Work in progress */}
       {!mapActive && sceneIndex === 2 && (
         <PresageTextBox

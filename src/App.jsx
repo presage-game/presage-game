@@ -21,7 +21,7 @@ const App = () => {
     if(!gui.BlackBars) {
       dispatch(changeBlackBarsStatus("opened"))
     }
-  },[gui.BlackBars])
+  },[hasExperienceStarted])
 
   return (
     <main className="App">

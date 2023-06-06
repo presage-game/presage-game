@@ -244,7 +244,6 @@ export const SceneTextBox = ({
   }, [audioFile])
 
   useEffect(() => {
-    console.log(introPlayed)
     if(introPlayed) {
       OpenBlackBars()
     }

@@ -25,10 +25,10 @@ export const Experience = ({ activateBlackBars }) => {
   const [showPresage, setShowPresage] = useState(false)
 
   useEffect(() => {
-    if(!mapActive) {
+    if (!mapActive) {
       setIsVoiceOver(true)
     }
-  },[mapActive])
+  }, [mapActive])
 
   return (
     <div className="Experience">
