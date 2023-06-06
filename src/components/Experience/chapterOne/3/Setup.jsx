@@ -7,7 +7,7 @@ import { useDispatch } from "react-redux"
 import { changeOnFocusCamera, changeOnFocusCameraPosition } from "@/store/reducers/userReducer"
 import { GoToMap } from "../../objects/interactive/GoToMap/GoToMap"
 
-export const Setup = ({ setSpotIndex, setShowText, isVoiceOver }) => {
+export const Setup = ({ setSpotIndex, setShowText, isVoiceOver, setShowPresage }) => {
   const [treeFocused, setTreeFocused] = useState(false)
 
   const dispatch = useDispatch()
@@ -16,22 +16,22 @@ export const Setup = ({ setSpotIndex, setShowText, isVoiceOver }) => {
 
   useEffect(() => {
     if (treeFocused) {
-      setSpotIndex(0)
+      setShowPresage(true)
       changeFocusPosition({
         position: {
           x: 0,
-          y: 2,
-          z: 100,
+          y: -100,
+          z: 120,
         },
         rotation: {
-          x: -Math.PI / 2,
+          x: -Math.PI + 8,
           y: 0,
           z: 0,
         },
       })
       changeFocus(true)
     } else {
-      setSpotIndex(null)
+      setShowPresage(false)
       changeFocus(false)
 
       if (!isVoiceOver) {

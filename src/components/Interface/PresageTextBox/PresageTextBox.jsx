@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState, useMemo } from "react"
 import { useDispatch } from "react-redux"
 import { motion, AnimatePresence } from "framer-motion"
 import { Button } from "@/components/Button/Button"
@@ -6,13 +6,14 @@ import { toggleMap } from "@/store/reducers/uiReducer"
 
 import "@/components/Interface/SceneTextBox/TextBox.scss"
 
+const presages = []
+
 export const PresageTextBox = ({
   presagesData,
   mapActive,
   sceneIndex,
-  spotIndex,
-  showText,
-  setShowText,
+  showPresage,
+  setShowPresage,
 }) => {
   const [showOptions, setShowOptions] = useState(true)
   const [textIndex, setTextIndex] = useState(0)
@@ -21,15 +22,16 @@ export const PresageTextBox = ({
 
   const dispatch = useDispatch()
 
-  let data
-
-  if (sceneIndex === 2) {
-    data = presagesData[0]
-  } else if (sceneIndex === 4) {
-    data = presagesData[1]
-  } else if (sceneIndex === 6) {
-    data = presagesData[2]
-  }
+  const data = useMemo(() => {
+    if (sceneIndex === 2) {
+      return presagesData[0]
+    } else if (sceneIndex === 4) {
+      return presagesData[1]
+    } else if (sceneIndex === 6) {
+      return presagesData[2]
+    }
+    return null
+  }, [presagesData, sceneIndex])
 
   const getTextLabel = () => {
     return data?.prompts[textIndex].label
@@ -43,6 +45,8 @@ export const PresageTextBox = ({
     setOptionIndex(data)
     setShowOptions(false)
     setKey((prevKey) => prevKey + 1)
+
+    presages.push(data === 0 ? "a" : "b")
   }
 
   const getOptionResponse = () => {
@@ -62,13 +66,13 @@ export const PresageTextBox = ({
   useEffect(() => {
     if (mapActive) {
       setTextIndex(0)
-      setShowText(false)
+      setShowPresage(false)
     }
   }, [mapActive])
 
   return (
     <>
-      {spotIndex !== null && showText && (
+      {showPresage && (
         <AnimatePresence>
           <motion.div
             key="textBox"
@@ -133,8 +137,10 @@ export const PresageTextBox = ({
               <button
                 className="close-button"
                 onClick={() => {
-                  setShowText(false)
-                  dispatch(toggleMap())
+                  setShowPresage(false)
+                  setTimeout(() => {
+                    dispatch(toggleMap())
+                  }, 1000)
                 }}
               >
                 <svg
