@@ -111,13 +111,8 @@
     "spots": [
       {
         "index": 0,
-        "label": "Test",
-        "spotVoiceover": [
-          {
-            "text": "Test",
-            "emitter": "innerVoice"
-          }
-        ]
+        "label": "Baobab",
+        "spotVoiceover": []
       }
     ]
   },
