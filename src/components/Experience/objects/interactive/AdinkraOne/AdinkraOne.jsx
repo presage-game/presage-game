@@ -5,7 +5,7 @@ import { collectAdinkra } from "@/store/reducers/userReducer"
 
 export const AdinkraOne = ({ adinkraFocused, setAdinkraFocused, Materials, position }) => {
   const { nodes } = useGLTF("/assets/objects/adinkras/adinkraOne.glb")
-  const { collectedAdinkras } = useSelector((state) => state.user)
+  const { adinkras } = useSelector((state) => state.user)
   const dispatch = useDispatch()
   const [melodic, setMelodic] = useState([])
   const [gameFinished, setGameFinished] = useState(false)
@@ -49,14 +49,8 @@ export const AdinkraOne = ({ adinkraFocused, setAdinkraFocused, Materials, posit
       // check melodic
       if (JSON.stringify(melodic) === JSON.stringify(goodMelodic)) {
         console.log("good melodic")
+        dispatch(collectAdinkra(0))
         if (!gameFinished) {
-          dispatch(
-            collectAdinkra({
-              id: 1,
-              name: "Adinkra 1",
-              description: "Adinkra 1 description good",
-            })
-          )
           setGameFinished(true)
         }
       } else {
@@ -68,7 +62,7 @@ export const AdinkraOne = ({ adinkraFocused, setAdinkraFocused, Materials, posit
   }, [melodic])
 
   useEffect(() => {
-    const isAdinkraOneCollected = collectedAdinkras.filter((adinkra) => adinkra.id === 1)
+    const isAdinkraOneCollected = adinkras.filter((adinkra) => adinkra.id === 1)
     if (isAdinkraOneCollected.length > 0) {
       setGameFinished(true)
     }
