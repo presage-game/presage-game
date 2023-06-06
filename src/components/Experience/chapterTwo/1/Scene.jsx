@@ -37,5 +37,3 @@ export const Scene = ({ adinkraFocused, setAdinkraFocused }) => {
     </>
   )
 }
-
-useGLTF.preload("/assets/scenes/keur_gnialo.glb")

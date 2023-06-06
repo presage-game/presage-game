@@ -1035,5 +1035,3 @@ export function Model({ Materials, position }) {
     </group>
   )
 }
-
-useGLTF.preload("/assets/scenes/scene_2.glb")

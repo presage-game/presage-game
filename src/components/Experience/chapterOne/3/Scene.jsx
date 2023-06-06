@@ -24,5 +24,3 @@ export const Scene = ({ treeFocused, setTreeFocused }) => {
     </>
   )
 }
-
-useGLTF.preload("assets/scenes/baobab_1.glb")
