@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, useEffect} from "react"
 import { useSelector, useDispatch } from "react-redux"
 import { toggleBlackBars } from "@/store/reducers/uiReducer"
 import { toggleMute } from "@/store/reducers/audioReducer"
@@ -21,6 +21,8 @@ export const Interface = ({
   setShowText,
   isVoiceOver,
   setIsVoiceOver,
+  showPresage,
+  setShowPresage,
 }) => {
   const dispatch = useDispatch()
 
@@ -32,6 +34,12 @@ export const Interface = ({
   const { isMuted } = useSelector((state) => state.audio)
 
   const [isPopupVisible, setIsPopupVisible] = useState(true)
+
+  useEffect(() => {
+    if(showPresage) {
+      setShowText(false)
+    }
+  }, [showPresage])
 
   return (
     <>
@@ -81,6 +89,8 @@ export const Interface = ({
           spotIndex={spotIndex}
           showText={showText}
           setShowText={setShowText}
+          showPresage={showPresage}
+          setShowPresage={setShowPresage}
         />
       )}
       {mapActive && (
@@ -97,9 +107,8 @@ export const Interface = ({
           <MapTextBox
             pinpointsData={pinpointsData}
             pinpointIndex={pinpointIndex}
-            mapActive={mapActive}
-            isPopupVisible={isPopupVisible}
-            setIsPopupVisible={setIsPopupVisible}
+            showText={showText}
+            setShowText={setShowText}
           />
         </>
       )}
