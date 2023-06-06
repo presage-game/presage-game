@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { useSelector } from "react-redux"
 
 import { Canvas } from "@react-three/fiber"
@@ -13,7 +13,7 @@ import { Interface } from "@/components/Interface/Interface"
 import { AudioManager } from "@/components/Experience/tools/AudioManager/AudioManager"
 
 import "./Experience.scss"
-import { Preload, Stats, useProgress } from "@react-three/drei"
+import { Preload, Stats } from "@react-three/drei"
 
 export const Experience = ({ activateBlackBars }) => {
   const { scene, pinpoint } = useSelector((state) => state.map)
@@ -23,6 +23,12 @@ export const Experience = ({ activateBlackBars }) => {
   const [showText, setShowText] = useState(false)
   const [isVoiceOver, setIsVoiceOver] = useState(false)
   const [showPresage, setShowPresage] = useState(false)
+
+  useEffect(() => {
+    if(!mapActive) {
+      setIsVoiceOver(true)
+    }
+  },[mapActive])
 
   return (
     <div className="Experience">

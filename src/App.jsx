@@ -7,6 +7,8 @@ import { startExperience } from "./store/reducers/userReducer"
 
 import "./App.scss"
 import { useControls } from "leva"
+import { useEffect } from "react"
+import { changeBlackBarsStatus } from "./store/reducers/uiReducer"
 
 const App = () => {
   const dispatch = useDispatch()
@@ -14,6 +16,12 @@ const App = () => {
   const gui = useControls({
     BlackBars: false
   })
+
+  useEffect(() => {
+    if(!gui.BlackBars) {
+      dispatch(changeBlackBarsStatus("opened"))
+    }
+  },[gui.BlackBars])
 
   return (
     <main className="App">
