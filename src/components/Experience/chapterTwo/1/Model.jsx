@@ -4,15 +4,10 @@ Command: npx gltfjsx@6.1.10 keur_gnialo.glb --transform
 */
 
 import React from "react"
-import { useTexture } from "@react-three/drei"
-import { MeshBasicMaterial } from "three"
-
-export function Model({ nodes, Materials, materials, position, rotation }) {
-  const pubTexture = useTexture("/assets/images/keurgnialo_pub.jpg")
-  pubTexture.flipY = false
+export function Model({ nodes, Materials, materials }) {
 
   return (
-    <group position={position} rotation={rotation} dispose={null}>
+    <>
       <group
         position={[45.49, 13.08, 24.71]}
         rotation={[3.02, 1.55, -3.02]}
@@ -1848,8 +1843,9 @@ export function Model({ nodes, Materials, materials, position, rotation }) {
       <mesh
         geometry={nodes.BezierCurve.geometry}
         material={Materials.roadMaterials.line}
-        position={[77.52, 9.17, -6.23]}
-        scale={[19.49, 200.26, 19.49]}
+        position={[77.52, 9.03, -6.23]}
+        scale={[19.49, 202, 20]}
+        rotation={[0,0,0.0007]}
       />
       <group
         position={[-33.05, 19.72, 19.81]}
@@ -1866,17 +1862,6 @@ export function Model({ nodes, Materials, materials, position, rotation }) {
       >
         <mesh geometry={nodes.Cube194.geometry} material={Materials.fenceMaterial} />
         <mesh geometry={nodes.Cube194_1.geometry} material={Materials.outlineMaterial} />
-      </group>
-      <group
-        position={[-32.84, 17.31, 18.2]}
-        rotation={[0, -0.49, -0.01]}
-        scale={[0.12, 2.55, -3.62]}
-      >
-        <mesh geometry={nodes.Cube196.geometry} material={Materials.outlineMaterial} />
-        <mesh
-          geometry={nodes.Cube196_1.geometry}
-          material={new MeshBasicMaterial({ map: pubTexture })}
-        />
       </group>
       <group
         position={[-32.84, 17.31, 18.2]}
@@ -2004,6 +1989,6 @@ export function Model({ nodes, Materials, materials, position, rotation }) {
         <mesh geometry={nodes.Mesh239.geometry} material={Materials.floorMaterial} />
         <mesh geometry={nodes.Mesh239_1.geometry} material={Materials.outlineMaterial} />
       </group>
-    </group>
+    </>
   )
 }

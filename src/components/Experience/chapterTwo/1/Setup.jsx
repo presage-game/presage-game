@@ -12,6 +12,7 @@ export const Setup = ({ setSpotIndex, setShowText, isVoiceOver }) => {
   const changeFocus = (value) => dispatch(changeOnFocusCamera(value))
   const changeFocusPosition = (value) => dispatch(changeOnFocusCameraPosition(value))
   const [adinkraFocused, setAdinkraFocused] = useState(false)
+  const [signFocused, setSignFocused] = useState(false)
 
   useEffect(() => {
     if (adinkraFocused) {
@@ -29,10 +30,24 @@ export const Setup = ({ setSpotIndex, setShowText, isVoiceOver }) => {
         },
       })
       changeFocus(true)
+    } else if (signFocused) {
+      changeFocusPosition({
+        position: {
+          x: -120,
+          y: -4,
+          z: 600,
+        },
+        rotation: {
+          x: 0,
+          y: Math.PI / 2 ,
+          z: 0,
+        },
+      })
+      changeFocus(true)
     } else {
       changeFocus(false)
     }
-  }, [adinkraFocused])
+  }, [adinkraFocused, signFocused])
 
   return (
     <>
@@ -63,7 +78,12 @@ export const Setup = ({ setSpotIndex, setShowText, isVoiceOver }) => {
         mieCoefficient={0.05}
         mieDirectionalG={0.828}
       />
-      <Scene adinkraFocused={adinkraFocused} setAdinkraFocused={setAdinkraFocused} />
+      <Scene
+        adinkraFocused={adinkraFocused}
+        setAdinkraFocused={setAdinkraFocused}
+        signFocused={signFocused}
+        setSignFocused={setSignFocused}
+      />
     </>
   )
 }
