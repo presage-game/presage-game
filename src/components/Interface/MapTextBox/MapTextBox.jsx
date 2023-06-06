@@ -142,28 +142,43 @@ export const MapTextBox = ({ pinpointsData, pinpointIndex, showText, setShowText
     }
   }, [textIndex, pinpointIndex, isPinpointActive])
 
+  // useEffect(() => {
+  //   if (audioFile !== null && textIndex !== null && isPinpointActive) {
+  //     if (!currentAudio.paused) {
+  //       currentAudio.pause()
+  //     }
+
+  //     currentAudio.src = audioFile
+  //     currentAudio.load()
+
+  //     const playPromise = currentAudio.play()
+  //     if (playPromise !== undefined) {
+  //       playPromise.catch((error) => {
+  //         return
+  //       })
+  //     }
+  //   }
+
+  //   return () => {
+  //     currentAudio.currentTime = 0
+  //     currentAudio.pause()
+  //   }
+  // }, [audioFile, textIndex])
+
   useEffect(() => {
-    if (audioFile !== null && textIndex !== null && isPinpointActive) {
-      if (!currentAudio.paused) {
-        currentAudio.pause()
-      }
-
+    if (audioFile) {
       currentAudio.src = audioFile
-      currentAudio.load()
-
-      const playPromise = currentAudio.play()
-      if (playPromise !== undefined) {
-        playPromise.catch((error) => {
-          return
-        })
-      }
+      currentAudio.play()
+    } else {
+      currentAudio.pause()
     }
 
     return () => {
-      currentAudio.currentTime = 0
       currentAudio.pause()
+      currentAudio.src = ""
+      currentAudio.currentTime = 0
     }
-  }, [audioFile, textIndex])
+  }, [audioFile])
 
   return (
     <AnimatePresence>
@@ -218,10 +233,25 @@ export const MapTextBox = ({ pinpointsData, pinpointIndex, showText, setShowText
             )}
           </div>
           {hasOptions() && hasMore() && !showOptions && (
-            <Button text="show more npc" onClick={showMoreNPC} />
+            <button className="next-button" onClick={showMoreNPC}>
+              show more npc
+              <svg
+                width="25"
+                height="13"
+                viewBox="0 0 25 13"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M0 6.50001L24 6.50001M24 6.50001L17 0.499999M24 6.50001L17 12.5"
+                  stroke="#2E2724"
+                />
+              </svg>
+            </button>
           )}
           {!hasOptions() && hasMore() && (
             <button className="next-button" onClick={showMore}>
+              show more
               <svg
                 width="25"
                 height="13"
