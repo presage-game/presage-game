@@ -15,30 +15,32 @@ import { AudioManager } from "@/components/Experience/tools/AudioManager/AudioMa
 
 import "./Experience.scss"
 import { Preload, Stats, useProgress } from "@react-three/drei"
-import { changeBlackBarsStatus } from "@/store/reducers/uiReducer"
 
 export const Experience = ({ activateBlackBars }) => {
   const { scene, pinpoint } = useSelector((state) => state.map)
   const { mapActive } = useSelector((state) => state.ui)
   const { active, progress, errors, item, loaded, total } = useProgress()
-  const dispatch = useDispatch()
 
+  const [localMapActive, setLocalMapActive] = useState(false)
   const [spotIndex, setSpotIndex] = useState(null)
   const [showText, setShowText] = useState(false)
   const [isVoiceOver, setIsVoiceOver] = useState(false)
   const [showPresage, setShowPresage] = useState(false)
 
   useEffect(() => {
-    console.log("here")
-    if (progress === 100 && mapActive === false) {
-      setIsVoiceOver(true)
-      setTimeout(() => dispatch(changeBlackBarsStatus("window")), 2000)
-    }
-  }, [active, mapActive])
+    setLocalMapActive(mapActive)
+  }, [mapActive])
 
   return (
     <div className="Experience">
-      {activateBlackBars && !mapActive && <BlackBars />}
+      {activateBlackBars && !localMapActive && (
+        <BlackBars
+          active={active}
+          progress={progress}
+          mapActive={localMapActive}
+          setIsVoiceOver={setIsVoiceOver}
+        />
+      )}
       <Interface
         mapActive={mapActive}
         spotIndex={spotIndex}
