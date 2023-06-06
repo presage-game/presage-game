@@ -1,12 +1,13 @@
 import { useState, useEffect} from "react"
 import { useSelector, useDispatch } from "react-redux"
-import { toggleBlackBars } from "@/store/reducers/uiReducer"
+import { changeBlackBarsStatus, toggleMap } from "@/store/reducers/uiReducer"
 import { toggleMute } from "@/store/reducers/audioReducer"
 
 import scriptData from "@/assets/data/scenes.json"
 import pinpointsData from "@/assets/data/pinpoints.json"
 import presagesData from "@/assets/data/presages.json"
 
+import { BlackBars } from "@/components/BlackBars/BlackBars"
 import { SceneTextBox } from "./SceneTextBox/SceneTextBox"
 import { MapTextBox } from "./MapTextBox/MapTextBox"
 import { PresageTextBox } from "./PresageTextBox/PresageTextBox"
@@ -23,9 +24,12 @@ export const Interface = ({
   setIsVoiceOver,
   showPresage,
   setShowPresage,
+  activateBlackBars,
 }) => {
   const dispatch = useDispatch()
 
+  const { blackBarsStatus } = useSelector((state) => state.ui)
+  const OpenBlackBars = () => dispatch(changeBlackBarsStatus("opened"))
   const {
     scene: sceneIndex,
     isPinpointActive,
@@ -59,16 +63,9 @@ export const Interface = ({
         >
           {isMuted ? "Unmute" : "Mute"}
         </button>
-        <button
-          style={{ marginLeft: "3rem", cursor: "none" }}
-          onClick={() => {
-            dispatch(toggleBlackBars())
-          }}
-        >
-          [Cinematic mode]
-        </button>
       </div>
-      {!mapActive && (
+      {activateBlackBars && <BlackBars setIsVoiceOver={setIsVoiceOver} mapActive={mapActive} />}
+      {!mapActive && blackBarsStatus !== "closed" && blackBarsStatus !== "window" && (
         <SceneTextBox
           mapActive={mapActive}
           sceneIndex={sceneIndex}
@@ -78,8 +75,9 @@ export const Interface = ({
           setShowText={setShowText}
           isVoiceOver={isVoiceOver}
           setIsVoiceOver={setIsVoiceOver}
+          OpenBlackBars={OpenBlackBars}
         />
-      )}
+      )}   
       {/* Work in progress */}
       {!mapActive && sceneIndex === 2 && (
         <PresageTextBox

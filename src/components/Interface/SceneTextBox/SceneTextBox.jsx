@@ -15,6 +15,7 @@ export const SceneTextBox = ({
   setShowText,
   isVoiceOver,
   setIsVoiceOver,
+  OpenBlackBars
 }) => {
   const [introPlayed, setIntroPlayed] = useState(false)
   const [showOptions, setShowOptions] = useState(false)
@@ -157,7 +158,6 @@ export const SceneTextBox = ({
       setShowText(false)
       setShowOptions(false)
     } else {
-      setIsVoiceOver(true)
       setShowText(true)
       setShowOptions(true)
     }
@@ -242,6 +242,12 @@ export const SceneTextBox = ({
       currentAudio.currentTime = 0
     }
   }, [audioFile])
+
+  useEffect(() => {
+    if(introPlayed) {
+      OpenBlackBars()
+    }
+  },[introPlayed])
 
   return (
     <AnimatePresence>

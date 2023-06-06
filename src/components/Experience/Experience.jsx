@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { useSelector } from "react-redux"
 
 import { Canvas } from "@react-three/fiber"
@@ -10,13 +10,12 @@ import { Setup as BaobabOne } from "./chapterOne/3/Setup"
 import { Setup as KeurGnialo } from "./chapterTwo/1/Setup"
 
 import { Interface } from "@/components/Interface/Interface"
-import { BlackBars } from "@/components/BlackBars/BlackBars"
 import { AudioManager } from "@/components/Experience/tools/AudioManager/AudioManager"
 
 import "./Experience.scss"
 import { Preload, Stats } from "@react-three/drei"
 
-export const Experience = () => {
+export const Experience = ({ activateBlackBars }) => {
   const { scene, pinpoint } = useSelector((state) => state.map)
   const { mapActive } = useSelector((state) => state.ui)
 
@@ -25,9 +24,14 @@ export const Experience = () => {
   const [isVoiceOver, setIsVoiceOver] = useState(false)
   const [showPresage, setShowPresage] = useState(false)
 
+  useEffect(() => {
+    if (!mapActive) {
+      setIsVoiceOver(true)
+    }
+  }, [mapActive])
+
   return (
     <div className="Experience">
-      <BlackBars />
       <Interface
         mapActive={mapActive}
         spotIndex={spotIndex}
@@ -37,6 +41,7 @@ export const Experience = () => {
         setIsVoiceOver={setIsVoiceOver}
         showPresage={showPresage}
         setShowPresage={setShowPresage}
+        activateBlackBars={activateBlackBars}
       />
       <Canvas style={{ position: "absolute", top: "0%", height: "100%" }}>
         {mapActive ? (

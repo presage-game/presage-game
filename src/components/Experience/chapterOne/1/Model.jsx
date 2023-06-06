@@ -1342,5 +1342,3 @@ export function Model(props) {
     </group>
   )
 }
-
-useGLTF.preload("/assets/scenes/scene_1.glb")
