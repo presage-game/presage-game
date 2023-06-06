@@ -1,6 +1,7 @@
-import { useState, useEffect } from "react"
+import { useState, useEffect, useMemo, useRef } from "react"
 import { useSelector } from "react-redux"
 import { motion, AnimatePresence } from "framer-motion"
+import { getTextVariant } from "@/helpers/variants/getTextVariant"
 
 import { Button } from "@/components/Button/Button"
 
@@ -15,7 +16,7 @@ export const SceneTextBox = ({
   setShowText,
   isVoiceOver,
   setIsVoiceOver,
-  OpenBlackBars
+  OpenBlackBars,
 }) => {
   const [introPlayed, setIntroPlayed] = useState(false)
   const [showOptions, setShowOptions] = useState(false)
@@ -23,8 +24,12 @@ export const SceneTextBox = ({
   const [optionIndex, setOptionIndex] = useState(0)
   const [key, setKey] = useState(0)
 
-  // TODO: Set this state from Supabase data
-  const [variant, setVariant] = useState("b")
+  /* --- WIP --- */
+
+  // Utiliser un useMemo? Ou une fonction dédiée?
+  const variant = getTextVariant(sceneIndex, "scene")
+
+  /* ------ */
 
   /* Text */
   const getTextEmitter = () => {
@@ -244,10 +249,10 @@ export const SceneTextBox = ({
   }, [audioFile])
 
   useEffect(() => {
-    if(introPlayed) {
+    if (introPlayed) {
       OpenBlackBars()
     }
-  },[introPlayed])
+  }, [introPlayed])
 
   return (
     <AnimatePresence>

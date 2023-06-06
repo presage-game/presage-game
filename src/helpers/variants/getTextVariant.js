@@ -42,9 +42,33 @@ export const getTextVariant = (index, type) => {
 
   if (isInsideData) {
     if (type === "scene") {
-      console.log("scene with variant", index)
+      let value =
+        index === 1
+          ? infos.currentPresages[0][0].value
+          : index === 3
+          ? infos.currentPresages[1][0].value
+          : index === 5
+          ? infos.currentPresages[2][0].value
+          : "a"
+
+      console.log(`scene ${index} with variant ${value}`)
+
+      return value
     } else if (type === "pinpoint") {
-      console.log("pinpoint with variant", index)
+      let value =
+        index === 0
+          ? infos.currentPresages[0][1].value
+          : index === 2
+          ? infos.currentPresages[1][1].value
+          : index === 3
+          ? infos.currentPresages[2][1].value
+          : "a"
+
+      console.log(`pinpoint ${index} with variant ${value}`)
+
+      return value
     }
+  } else {
+    console.log("this content has no variant")
   }
 }

@@ -12,13 +12,13 @@ const initialState = {
         },
         {
           name: "phosphateMine",
-          value: "a",
+          value: "b",
         },
       ],
       [
         {
           name: "keurGnialo",
-          value: "a",
+          value: "b",
         },
         {
           name: "memsen",
@@ -32,7 +32,7 @@ const initialState = {
         },
         {
           name: "sacosse",
-          value: "a",
+          value: "b",
         },
       ],
     ],

@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { motion, AnimatePresence } from "framer-motion"
 import { showPinpoint } from "@/store/reducers/mapReducer"
 import { Button } from "@/components/Button/Button"
+import { getTextVariant } from "@/helpers/variants/getTextVariant"
 
 import "@/components/Interface/SceneTextBox/TextBox.scss"
 
@@ -16,8 +17,12 @@ export const MapTextBox = ({ pinpointsData, pinpointIndex, showText, setShowText
 
   const dispatch = useDispatch()
 
-  // TODO: Set this state from Supabase data
-  const [variant, setVariant] = useState("a")
+  /* --- WIP --- */
+
+  // Utiliser un useMemo? Ou une fonction dédiée?
+  const variant = getTextVariant(pinpointIndex, "pinpoint")
+
+  /* ------ */
 
   const getTextEmitter = () => {
     const pinpoint = pinpointsData[pinpointIndex]?.voiceover[textIndex]
