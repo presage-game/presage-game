@@ -6,6 +6,7 @@ import { useFrame } from "@react-three/fiber"
 import { Pathfinding, PathfindingHelper } from "three-pathfinding"
 import { Car } from "./Car"
 import { Model } from "./Model"
+import { current } from "@reduxjs/toolkit"
 
 export const Scene = ({
   goOnScene,
@@ -54,6 +55,8 @@ export const Scene = ({
   const raycaster = useMemo(() => new Raycaster(), [])
 
   useEffect(() => {
+    console.log(voitureGrpRef.current.position)
+    camRef.current.lookAt(-17, 0.3, 13.6)
     camRef.current.lookAt(0, 0, 0)
     followCam.add(camRef.current)
     pivot.add(followCam)
@@ -188,7 +191,11 @@ export const Scene = ({
         ref={navMeshRef}
         dispose={null}
       />
-      <group ref={voitureGrpRef} dispose={null}>
+      <group
+        ref={voitureGrpRef}
+        dispose={null}
+        // position={[-17, 0.3, 13.6]}
+      >
         <Car animationsName={pointerDown ? "Run" : null} />
       </group>
       <Box
@@ -230,7 +237,7 @@ export const Scene = ({
       />
       <primitive object={pivot} dispose={null} />
       {/* <primitive object={pathfindinghelper} dispose={null} /> */}
-      {/* <OrthographicCamera
+      <OrthographicCamera
         makeDefault
         ref={camRef}
         position={[15, 15, 15]}
@@ -238,14 +245,8 @@ export const Scene = ({
         near={0}
         far={60}
         dispose={null}
-      /> */}
-      <PerspectiveCamera  
-        makeDefault
-        ref={camRef}
-        position={[15, 15, 15]}
-        zoom={1}
-        dispose={null}
       />
+      {/* <PerspectiveCamera makeDefault ref={camRef} position={[15, 15, 15]} zoom={1} dispose={null} /> */}
     </>
   )
 }
