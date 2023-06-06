@@ -19,21 +19,24 @@ const initialState = {
       z: 0,
     },
   },
-  collectedAdinkras: [
+  adinkras: [
     {
       id: 1,
       name: "Adinkra 1",
       description: "Adinkra 1 description",
+      isCollected: false,
     },
     {
       id: 2,
       name: "Adinkra 2",
       description: "Adinkra 2 description",
+      isCollected: false,
     },
     {
       id: 3,
       name: "Adinkra 3",
       description: "Adinkra 3 description",
+      isCollected: false,
     },
   ],
 }
@@ -61,7 +64,7 @@ export const userSlice = createSlice({
       state.onFocusCameraPosition = action.payload
     },
     collectAdinkra: (state, action) => {
-      state.collectedAdinkras.push(action.payload)
+      state.adinkras[action.payload].isCollected = true
     },
   },
 })

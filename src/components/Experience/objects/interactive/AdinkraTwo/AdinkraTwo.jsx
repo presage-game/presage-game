@@ -134,13 +134,7 @@ export const AdinkraTwo = ({
       console.log("perdu")
     } else {
       console.log("gagné")
-      dispatch(
-        collectAdinkra({
-          id: 2,
-          name: "Adinkra 2",
-          description: "Adinkra 2 description good",
-        })
-      )
+      dispatch(collectAdinkra(1))
       setGameFinished(true)
       setAdinkraFocused(false)
     }
