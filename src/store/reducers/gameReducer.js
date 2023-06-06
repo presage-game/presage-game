@@ -7,11 +7,11 @@ const initialState = {
     currentPresages: [
       [
         {
-          name: "phosphateMine",
+          name: "megalithicCircles",
           value: "a",
         },
         {
-          name: "megalithicCircles",
+          name: "phosphateMine",
           value: "a",
         },
       ],
@@ -27,11 +27,11 @@ const initialState = {
       ],
       [
         {
-          name: "sacosse",
+          name: "trail",
           value: "a",
         },
         {
-          name: "trail",
+          name: "sacosse",
           value: "a",
         },
       ],
@@ -39,3 +39,17 @@ const initialState = {
     nextPresages: [],
   },
 }
+
+export const gameSlice = createSlice({
+  name: "game",
+  initialState,
+  reducers: {
+    setInfos: (state, action) => {
+      state.infos = action.payload
+    },
+  },
+})
+
+export const {} = gameSlice.actions
+
+export default gameSlice.reducer
