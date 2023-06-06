@@ -4,10 +4,15 @@ Command: npx gltfjsx@6.1.10 map.glb --transform
 */
 
 import React, { useRef } from "react"
-import { useGLTF } from "@react-three/drei"
+import { useGLTF, useTexture } from "@react-three/drei"
+import { MeshBasicMaterial, MeshToonMaterial, MeshLambertMaterial, BoxGeometry } from "three"
 
 export function Model(props) {
   const { nodes, materials } = useGLTF("assets/scenes/map.glb")
+
+  const mapTexture = useTexture("assets/images/map_texture.png")
+  mapTexture.flipY = true
+
   return (
     <group {...props} dispose={null}>
       <group position={[-1.87, 0.31, 10.16]} rotation={[0, -0.14, 3.14]} scale={0}>
@@ -374,36 +379,56 @@ export function Model(props) {
         rotation={[Math.PI / 2, 0, -1.44]}
         scale={0.16}
       />
-      <group position={[25.75, -1.65, -25.93]} rotation={[Math.PI / 2, 0, -2.56]} scale={[0.002379, 0.002379, 0.002379]}>
+      <group
+        position={[25.75, -1.65, -25.93]}
+        rotation={[Math.PI / 2, 0, -2.56]}
+        scale={[0.002379, 0.002379, 0.002379]}
+      >
         <mesh geometry={nodes.Mesh009.geometry} material={materials["Montagne orange"]} />
         <mesh geometry={nodes.Mesh009_1.geometry} material={materials.Border} />
       </group>
       <group
-        position={[20.62, -1.53, -19.98]}
+        position={[20.62, -1.53, -22]}
         rotation={[Math.PI / 2, 0, 1.12]}
         scale={[0.004884, 0.007191, 0.004746]}
       >
         <mesh geometry={nodes.Mesh001.geometry} material={materials["Montagne orange"]} />
         <mesh geometry={nodes.Mesh001_1.geometry} material={materials.Border} />
       </group>
-      <group position={[30.78, 0.1, -25.55]} rotation={[Math.PI / 2, 0, 0.22]} scale={[0.002379, 0.002379, 0.002379]}>
+      <group
+        position={[30.78, 0.1, -25.55]}
+        rotation={[Math.PI / 2, 0, 0.22]}
+        scale={[0.002379, 0.002379, 0.002379]}
+      >
         <mesh geometry={nodes.Mesh242.geometry} material={materials["Montagne orange"]} />
         <mesh geometry={nodes.Mesh242_1.geometry} material={materials.Border} />
       </group>
-      <group position={[31.27, 0.01, -20.51]} rotation={[Math.PI / 2, 0, 1.68]} scale={[0.001762, 0.001762, 0.001762]}>
+      <group
+        position={[31.27, 0.01, -20.51]}
+        rotation={[Math.PI / 2, 0, 1.68]}
+        scale={[0.001762, 0.001762, 0.001762]}
+      >
         <mesh geometry={nodes.Mesh243.geometry} material={materials["Montagne orange"]} />
         <mesh geometry={nodes.Mesh243_1.geometry} material={materials.Border} />
       </group>
-      <group position={[30.1, -0.2, -16.55]} rotation={[Math.PI / 2, 0, -2.56]} scale={[0.00149, 0.00149, 0.00149]}>
+      <group
+        position={[28.7, -0.2, -19]}
+        rotation={[Math.PI / 2, 0, -2.56]}
+        scale={[0.00149, 0.00149, 0.00149]}
+      >
         <mesh geometry={nodes.Mesh243.geometry} material={materials["Montagne orange"]} />
         <mesh geometry={nodes.Mesh243_1.geometry} material={materials.Border} />
       </group>
-      <group position={[-6.68, 0.25, 5.26]} rotation={[Math.PI / 2, 0, 2.45]} scale={[0.000697, 0.002015, 0.000358]}>
+      <group
+        position={[-6.68, 0.25, 5.26]}
+        rotation={[Math.PI / 2, 0, 2.45]}
+        scale={[0.000697, 0.002015, 0.000358]}
+      >
         <mesh geometry={nodes.Mesh247.geometry} material={materials["Montagne orange"]} />
         <mesh geometry={nodes.Mesh247_1.geometry} material={materials.Border} />
       </group>
       <group
-        position={[1.55, 1.25, -0.65]}
+        position={[1, 1.25, -0.65]}
         rotation={[0, -0.31, 0]}
         scale={[0.001765, 0.001765, 0.001765]}
       >
@@ -411,14 +436,18 @@ export function Model(props) {
         <mesh geometry={nodes.Mesh139_1.geometry} material={materials.Border} />
       </group>
       <group
-        position={[1.19, 1.25, 7.71]}
+        position={[0.7, 1.25, 7.71]}
         rotation={[0, -0.22, 0]}
         scale={[0.001765, 0.001765, 0.001765]}
       >
         <mesh geometry={nodes.Mesh139.geometry} material={materials["Montagne orange"]} />
         <mesh geometry={nodes.Mesh139_1.geometry} material={materials.Border} />
       </group>
-      <group position={[-17.26, 1.21, 12.7]} rotation={[3.14, 0.7, 1.57]} scale={[0.004167, 0.037456, 0.004167]}>
+      <group
+        position={[-17.26, 1.21, 12.7]}
+        rotation={[3.14, 0.7, 1.57]}
+        scale={[0.004167, 0.037456, 0.004167]}
+      >
         <mesh geometry={nodes.Cube194.geometry} material={materials["Montagne orange"]} />
         <mesh geometry={nodes.Cube194_1.geometry} material={materials.Border} />
       </group>
@@ -430,24 +459,40 @@ export function Model(props) {
         <mesh geometry={nodes.Cube196.geometry} material={materials["Material.013"]} />
         <mesh geometry={nodes.Cube196_1.geometry} material={materials.Border} />
       </group>
-      <group position={[-17.09, 1.21, 12.5]} rotation={[3.14, 0.7, 1.57]} scale={[0.004167, 0.037456, 0.004167]}>
+      <group
+        position={[-17.09, 1.21, 12.5]}
+        rotation={[3.14, 0.7, 1.57]}
+        scale={[0.004167, 0.037456, 0.004167]}
+      >
         <mesh geometry={nodes.Cube195.geometry} material={materials["Montagne orange"]} />
         <mesh geometry={nodes.Cube195_1.geometry} material={materials.Border} />
       </group>
-      <group position={[-17.25, 0.73, 12.5]} rotation={[3.14, 0.7, 0]} scale={[-0.001171, 0.001167, 0.001231]}>
+      <group
+        position={[-17.25, 0.73, 12.5]}
+        rotation={[3.14, 0.7, 0]}
+        scale={[-0.001171, 0.001167, 0.001231]}
+      >
         <mesh geometry={nodes.Mesh039.geometry} material={materials["Montagne orange"]} />
         <mesh geometry={nodes.Mesh039_1.geometry} material={materials.Border} />
       </group>
-      <group position={[-17.25, 1.07, 12.5]} rotation={[3.14, 0.7, 0]} scale={[-0.001171, 0.001167, 0.001231]}>
+      <group
+        position={[-17.25, 1.07, 12.5]}
+        rotation={[3.14, 0.7, 0]}
+        scale={[-0.001171, 0.001167, 0.001231]}
+      >
         <mesh geometry={nodes.Mesh039.geometry} material={materials["Montagne orange"]} />
         <mesh geometry={nodes.Mesh039_1.geometry} material={materials.Border} />
       </group>
-      <group position={[-17.24, 0.41, 12.5]} rotation={[3.14, 0.7, 0]} scale={[-0.001171, 0.001167, 0.001501]}>
+      <group
+        position={[-17.24, 0.41, 12.5]}
+        rotation={[3.14, 0.7, 0]}
+        scale={[-0.001171, 0.001167, 0.001501]}
+      >
         <mesh geometry={nodes.Mesh041.geometry} material={materials["Montagne orange"]} />
         <mesh geometry={nodes.Mesh041_1.geometry} material={materials.Border} />
       </group>
       <group
-        position={[-14.99, 0.26, -6.2]}
+        position={[-15.99, 0.26, -7.2]}
         rotation={[-3.03, -0.52, 2.97]}
         scale={[0.08, 0.09, 0.07]}
       >
@@ -455,7 +500,7 @@ export function Model(props) {
         <mesh geometry={nodes.Cube302_1.geometry} material={materials.Border} />
       </group>
       <group
-        position={[-15.16, 0.27, -5.66]}
+        position={[-16.16, 0.27, -6.66]}
         rotation={[-3.05, 0.21, 2.96]}
         scale={[0.07, 0.11, 0.07]}
       >
@@ -463,7 +508,7 @@ export function Model(props) {
         <mesh geometry={nodes.Cube210_1.geometry} material={materials.Border} />
       </group>
       <group
-        position={[-14.38, 0.3, -6.39]}
+        position={[-15.38, 0.3, -7.39]}
         rotation={[3.11, 0.44, -3.07]}
         scale={[0.05, 0.13, 0.04]}
       >
@@ -471,7 +516,7 @@ export function Model(props) {
         <mesh geometry={nodes.Cube060_2.geometry} material={materials.Border} />
       </group>
       <group
-        position={[-16.03, 1.51, 10.5]}
+        position={[-16.5, 1.51, 10.5]}
         rotation={[-3.12, -0.63, -3.14]}
         scale={[0.001836, 0.001836, 0.001836]}
       >
@@ -479,7 +524,7 @@ export function Model(props) {
         <mesh geometry={nodes.Mesh005_1.geometry} material={materials.Border} />
       </group>
       <group
-        position={[-15.33, 1.51, -3.31]}
+        position={[-16.33, 1.51, -4.31]}
         rotation={[-3.12, -0.76, -3.14]}
         scale={[0.001836, 0.001836, 0.001836]}
       >
@@ -650,24 +695,32 @@ export function Model(props) {
         <mesh geometry={nodes.Mesh229.geometry} material={materials["Montagne orange"]} />
         <mesh geometry={nodes.Mesh229_1.geometry} material={materials.Border} />
       </group>
-      <group position={[-1.86, 0.36, 1.24]} rotation={[Math.PI / 2, 0, -2.03]} scale={[0.001516, 0.001516, 0.000094]}>
+      <group
+        position={[-2.5, 0.36, 1.24]}
+        rotation={[Math.PI / 2, 0, -2.03]}
+        scale={[0.001516, 0.001516, 0.000094]}
+      >
         <mesh geometry={nodes.Mesh229.geometry} material={materials["Montagne orange"]} />
         <mesh geometry={nodes.Mesh229_1.geometry} material={materials.Border} />
       </group>
       <group
-        position={[-22.96, 0.67, -1.61]}
+        position={[-24, 0.67, -3.61]}
         rotation={[Math.PI / 2, 0, -1.6]}
         scale={[0.000975, 0.000975, 0.00037]}
       >
         <mesh geometry={nodes.Mesh229.geometry} material={materials["Montagne orange"]} />
         <mesh geometry={nodes.Mesh229_1.geometry} material={materials.Border} />
       </group>
-      <group position={[27.01, 0.67, 21.46]} rotation={[Math.PI / 2, 0, 3.13]} scale={[0.000964, 0.000964, 0.000366]}>
+      <group
+        position={[27.01, 0.67, 21.46]}
+        rotation={[Math.PI / 2, 0, 3.13]}
+        scale={[0.000964, 0.000964, 0.000366]}
+      >
         <mesh geometry={nodes.Mesh229.geometry} material={materials["Montagne orange"]} />
         <mesh geometry={nodes.Mesh229_1.geometry} material={materials.Border} />
       </group>
       <group
-        position={[-18.02, 0.67, -19.63]}
+        position={[-18.02, 0.67, -21.63]}
         rotation={[Math.PI / 2, 0, 1.73]}
         scale={[0.000758, 0.000758, 0.000288]}
       >
@@ -691,22 +744,34 @@ export function Model(props) {
         <mesh geometry={nodes.Mesh233_1.geometry} material={materials.Border} />
       </group>
       <group
-        position={[-9.48, 0.55, -11.68]}
-        rotation={[-Math.PI / 2, Math.PI, 0.4]}
-        scale={[-0.000596, 0.000699, 0.000412]}
+        position={[-9.48, 0.55, -13.18]}
+        rotation={[-Math.PI / 2, 0, 0.4]}
+        scale={[-0.000596, -0.000699, -0.000412]}
       >
         <mesh geometry={nodes.Mesh234.geometry} material={materials["Montagne orange"]} />
         <mesh geometry={nodes.Mesh234_1.geometry} material={materials.Border} />
       </group>
-      <group position={[32.44, 1.07, 14.43]} rotation={[-1.56, 0, -1.91]} scale={[-0.001773, -0.002079, -0.001225]}>
+      <group
+        position={[32.44, 1.07, 14.43]}
+        rotation={[-1.56, 0, -1.91]}
+        scale={[-0.001773, -0.002079, -0.001225]}
+      >
         <mesh geometry={nodes.Mesh234.geometry} material={materials["Montagne orange"]} />
         <mesh geometry={nodes.Mesh234_1.geometry} material={materials.Border} />
       </group>
-      <group position={[35.45, 0.87, -18.41]} rotation={[-Math.PI / 2, 0, -1.71]} scale={[-0.001257, -0.001475, -0.000869]}>
+      <group
+        position={[33, 0.87, -16.7947]}
+        rotation={[-Math.PI / 2, 0, -1.71]}
+        scale={[-0.001298, -0.003813, -0.002915]}
+      >
         <mesh geometry={nodes.Mesh234.geometry} material={materials["Montagne orange"]} />
         <mesh geometry={nodes.Mesh234_1.geometry} material={materials.Border} />
       </group>
-      <group position={[-3.03, 0.55, -17.82]} rotation={[-Math.PI / 2, 0, -2.95]} scale={[-0.000452, -0.00053, -0.000312]}>
+      <group
+        position={[-3.2, 0.55, -20.2]}
+        rotation={[-Math.PI / 2, 0, -2.95]}
+        scale={[-0.000452, -0.00053, -0.000312]}
+      >
         <mesh geometry={nodes.Mesh234.geometry} material={materials["Montagne orange"]} />
         <mesh geometry={nodes.Mesh234_1.geometry} material={materials.Border} />
       </group>
@@ -718,15 +783,27 @@ export function Model(props) {
         <mesh geometry={nodes.Mesh238.geometry} material={materials["Montagne orange"]} />
         <mesh geometry={nodes.Mesh238_1.geometry} material={materials.Border} />
       </group>
-      <group position={[35.23, 0.8, -2.63]} rotation={[Math.PI / 2, 0, 1.88]} scale={[0.000735, 0.001456, 0.000642]}>
+      <group
+        position={[35.23, 0.8, -2.63]}
+        rotation={[Math.PI / 2, 0, 1.88]}
+        scale={[0.000735, 0.001456, 0.000642]}
+      >
         <mesh geometry={nodes.Mesh240.geometry} material={materials["Montagne orange"]} />
         <mesh geometry={nodes.Mesh240_1.geometry} material={materials.Border} />
       </group>
-      <group position={[21.53, 0.79, 3.95]} rotation={[Math.PI / 2, 0, 1.76]} scale={[0.000622, 0.001274, 0.000265]}>
+      <group
+        position={[21.53, 0.79, 3.95]}
+        rotation={[Math.PI / 2, 0, 1.76]}
+        scale={[0.000622, 0.001274, 0.000265]}
+      >
         <mesh geometry={nodes.Mesh249.geometry} material={materials["Montagne orange"]} />
         <mesh geometry={nodes.Mesh249_1.geometry} material={materials.Border} />
       </group>
-      <group position={[24.13, 0.8, -12.08]} rotation={[Math.PI / 2, 0, -2.3]} scale={[0.001278, 0.002532, 0.003061]}>
+      <group
+        position={[24.13, 0.8, -12.08]}
+        rotation={[Math.PI / 2, 0, -2.3]}
+        scale={[0.001278, 0.002532, 0.003061]}
+      >
         <mesh geometry={nodes.Mesh254.geometry} material={materials["Montagne orange"]} />
         <mesh geometry={nodes.Mesh254_1.geometry} material={materials.Border} />
       </group>
@@ -738,16 +815,24 @@ export function Model(props) {
         <mesh geometry={nodes.Mesh067.geometry} material={materials["Montagne orange"]} />
         <mesh geometry={nodes.Mesh067_1.geometry} material={materials.Border} />
       </group>
-      <group position={[16.75, 0.47, 22.03]} rotation={[Math.PI / 2, 0, -2.85]} scale={[0.000735, 0.000735, 0.000216]}>
+      <group
+        position={[16, 0.47, 23.2]}
+        rotation={[Math.PI / 2, 0, -2.85]}
+        scale={[0.000735, 0.000735, 0.000216]}
+      >
         <mesh geometry={nodes.Mesh211.geometry} material={materials["Montagne orange"]} />
         <mesh geometry={nodes.Mesh211_1.geometry} material={materials.Border} />
       </group>
-      <group position={[31.85, 0.84, -3.02]} rotation={[Math.PI / 2, 0, 1.81]} scale={[0.001054, 0.001054, 0.000639]}>
+      <group
+        position={[31.85, 0.84, -3.02]}
+        rotation={[Math.PI / 2, 0, 1.81]}
+        scale={[0.001054, 0.001054, 0.000639]}
+      >
         <mesh geometry={nodes.Mesh228.geometry} material={materials["Montagne orange"]} />
         <mesh geometry={nodes.Mesh228_1.geometry} material={materials.Border} />
       </group>
       <group
-        position={[-12.56, 0.63, -16.38]}
+        position={[-12.56, 0.63, -19]}
         rotation={[Math.PI / 2, 0, 0.43]}
         scale={[0.001233, 0.001233, 0.000363]}
       >
@@ -924,12 +1009,12 @@ export function Model(props) {
         rotation={[Math.PI / 2, 0, -1.44]}
         scale={0.16}
       />
-      <group position={[-3.45, 0.72, 8.78]} rotation={[0, -0.13, 0]} scale={[-0.82, -0.41, -1.72]}>
+      <group position={[-3.65792, 0.72, 8.78]} rotation={[0, -0.13, 0]} scale={[-1.02253, -0.41, -1.72]}>
         <mesh geometry={nodes.Cube185.geometry} material={materials["Montagne orange"]} />
         <mesh geometry={nodes.Cube185_1.geometry} material={materials.Border} />
       </group>
       <group
-        position={[-16.29, 0.18, -12.47]}
+        position={[-17, 0.18, -14]}
         rotation={[Math.PI / 2, 0, -3]}
         scale={[0.000694, 0.001097, 0.00061]}
       >
@@ -945,18 +1030,26 @@ export function Model(props) {
         <mesh geometry={nodes.Mesh007_1.geometry} material={materials.Border} />
       </group>
       <group
-        position={[-7.44, 0.28, -13.83]}
+        position={[-7.44, 0.28, -15.33]}
         rotation={[-Math.PI / 2, Math.PI, 2]}
         scale={[-0.00069, 0.0008, 0.00033]}
       >
         <mesh geometry={nodes.Mesh007.geometry} material={materials["Montagne orange"]} />
         <mesh geometry={nodes.Mesh007_1.geometry} material={materials.Border} />
       </group>
-      <group position={[24.42, 0.28, 18.04]} rotation={[-Math.PI / 2, 0, -2.4]} scale={[-0.000642, -0.001015, -0.000424]}>
+      <group
+        position={[24, 0.28, 18.5]}
+        rotation={[-Math.PI / 2, 0, -2.4]}
+        scale={[-0.000642, -0.001015, -0.000424]}
+      >
         <mesh geometry={nodes.Mesh007.geometry} material={materials["Montagne orange"]} />
         <mesh geometry={nodes.Mesh007_1.geometry} material={materials.Border} />
       </group>
-      <group position={[34.28, 0.19, 2.55]} rotation={[1.57, 0, 1.53]} scale={[0.001221, 0.00193, 0.001377]}>
+      <group
+        position={[34.28, 0.19, 2.55]}
+        rotation={[1.57, 0, 1.53]}
+        scale={[0.001221, 0.00193, 0.001377]}
+      >
         <mesh geometry={nodes.Mesh007.geometry} material={materials["Montagne orange"]} />
         <mesh geometry={nodes.Mesh007_1.geometry} material={materials.Border} />
       </group>
@@ -968,16 +1061,24 @@ export function Model(props) {
         <mesh geometry={nodes.Mesh007.geometry} material={materials["Montagne orange"]} />
         <mesh geometry={nodes.Mesh007_1.geometry} material={materials.Border} />
       </group>
-      <group position={[26.98, 0.32, 3.02]} rotation={[Math.PI / 2, 0, 1.83]} scale={[0.000295, 0.000466, 0.000259]}>
-        <mesh geometry={nodes.Mesh007.geometry} material={materials["Montagne orange"]} />
-        <mesh geometry={nodes.Mesh007_1.geometry} material={materials.Border} />
-      </group>
-      <group position={[32.8, 0.19, -13.33]} rotation={[1.57, 0, 1.43]} scale={[0.001268, 0.002004, 0.00143]}>
+      <group
+        position={[26.98, 0.32, 3.02]}
+        rotation={[Math.PI / 2, 0, 1.83]}
+        scale={[0.000295, 0.000466, 0.000259]}
+      >
         <mesh geometry={nodes.Mesh007.geometry} material={materials["Montagne orange"]} />
         <mesh geometry={nodes.Mesh007_1.geometry} material={materials.Border} />
       </group>
       <group
-        position={[2.98, 0.19, 10.71]}
+        position={[32.8, 0.19, -13.33]}
+        rotation={[1.57, 0, 1.43]}
+        scale={[0.001268, 0.002004, 0.00143]}
+      >
+        <mesh geometry={nodes.Mesh007.geometry} material={materials["Montagne orange"]} />
+        <mesh geometry={nodes.Mesh007_1.geometry} material={materials.Border} />
+      </group>
+      <group
+        position={[2.6, 0.19, 10.71]}
         rotation={[-Math.PI / 2, 0, 2.68]}
         scale={[-0.000623, -0.000805, -0.000249]}
       >
@@ -985,7 +1086,7 @@ export function Model(props) {
         <mesh geometry={nodes.Mesh007_1.geometry} material={materials.Border} />
       </group>
       <group
-        position={[8.82, 0.23, 16.36]}
+        position={[8.3, 0.23, 16.8]}
         rotation={[-Math.PI / 2, 0, 2.42]}
         scale={[-0.000566, -0.000895, -0.000341]}
       >
@@ -993,7 +1094,7 @@ export function Model(props) {
         <mesh geometry={nodes.Mesh007_1.geometry} material={materials.Border} />
       </group>
       <group
-        position={[-2.11, 0.29, -11.54]}
+        position={[-2.3, 0.29, -13.5]}
         rotation={[Math.PI / 2, 0, 3.3]}
         scale={[0.000451, 0.000713, 0.000451]}
       >
@@ -1001,7 +1102,7 @@ export function Model(props) {
         <mesh geometry={nodes.Mesh007_1.geometry} material={materials.Border} />
       </group>
       <group
-        position={[4.18, 0.28, 22.3]}
+        position={[4, 0.28, 23.5]}
         rotation={[-Math.PI / 2, 0, -1.07]}
         scale={[-0.000385, -0.000498, -0.000207]}
       >
@@ -1016,11 +1117,19 @@ export function Model(props) {
         <mesh geometry={nodes.Mesh007.geometry} material={materials["Montagne orange"]} />
         <mesh geometry={nodes.Mesh007_1.geometry} material={materials.Border} />
       </group>
-      <group position={[34.59, 0.28, 21.82]} rotation={[-Math.PI / 2, 0, 2.58]} scale={[-0.000584, -0.000923, -0.0006]}>
+      <group
+        position={[34.59, 0.28, 22.82]}
+        rotation={[-Math.PI / 2, 0, 2.58]}
+        scale={[-0.000584, -0.000923, -0.0006]}
+      >
         <mesh geometry={nodes.Mesh007.geometry} material={materials["Montagne orange"]} />
         <mesh geometry={nodes.Mesh007_1.geometry} material={materials.Border} />
       </group>
-      <group position={[15.08, 0.19, 17.64]} rotation={[-Math.PI / 2, 0, 2.88]} scale={[-0.000764, -0.000987, -0.00041]}>
+      <group
+        position={[14.6, 0.19, 18.3]}
+        rotation={[-Math.PI / 2, 0, 2.88]}
+        scale={[-0.000764, -0.000987, -0.00041]}
+      >
         <mesh geometry={nodes.Mesh007.geometry} material={materials["Montagne orange"]} />
         <mesh geometry={nodes.Mesh007_1.geometry} material={materials.Border} />
       </group>
@@ -1481,31 +1590,31 @@ export function Model(props) {
         rotation={[Math.PI / 2, 0, 1.36]}
         scale={[0.002259, 0.002259, 0.002259]}
       />
-      <group position={[-0.08, 0.79, -3.34]} rotation={[1.56, -0.01, -2.68]} scale={0.09}>
+      <group position={[-0.58, 0.79, -3.34]} rotation={[1.56, -0.01, -2.68]} scale={0.09}>
         <mesh geometry={nodes.Fence_Cylinder048.geometry} material={materials["Montagne orange"]} />
         <mesh geometry={nodes.Fence_Cylinder048_1.geometry} material={materials.Border} />
       </group>
-      <group position={[-15.47, 0.79, -3.75]} rotation={[1.57, 0.01, 1.93]} scale={0.09}>
+      <group position={[-16.47, 0.79, -4.75]} rotation={[1.57, 0.01, 1.93]} scale={0.09}>
         <mesh geometry={nodes.Fence_Cylinder103.geometry} material={materials["Montagne orange"]} />
         <mesh geometry={nodes.Fence_Cylinder103_1.geometry} material={materials.Border} />
       </group>
-      <group position={[-15.25, 0.79, -4.35]} rotation={[1.57, 0.01, 1.96]} scale={0.09}>
+      <group position={[-16.25, 0.79, -5.35]} rotation={[1.57, 0.01, 1.96]} scale={0.09}>
         <mesh geometry={nodes.Fence_Cylinder103.geometry} material={materials["Montagne orange"]} />
         <mesh geometry={nodes.Fence_Cylinder103_1.geometry} material={materials.Border} />
       </group>
-      <group position={[-13.75, 0.79, -6.61]} rotation={[1.56, 0.01, 2.21]} scale={0.09}>
+      <group position={[-15.75, 0.79, -7.61]} rotation={[1.56, 0.01, 2.21]} scale={0.09}>
         <mesh geometry={nodes.Fence_Cylinder103.geometry} material={materials["Montagne orange"]} />
         <mesh geometry={nodes.Fence_Cylinder103_1.geometry} material={materials.Border} />
       </group>
-      <group position={[-13.37, 0.79, -7.13]} rotation={[1.56, 0.01, 2.21]} scale={0.09}>
+      <group position={[-15.37, 0.79, -8.13]} rotation={[1.56, 0.01, 2.21]} scale={0.09}>
         <mesh geometry={nodes.Fence_Cylinder103.geometry} material={materials["Montagne orange"]} />
         <mesh geometry={nodes.Fence_Cylinder103_1.geometry} material={materials.Border} />
       </group>
-      <group position={[-12.99, 0.79, -7.65]} rotation={[1.57, 0.01, 2.03]} scale={0.09}>
+      <group position={[-14.99, 0.79, -8.65]} rotation={[1.57, 0.01, 2.03]} scale={0.09}>
         <mesh geometry={nodes.Fence_Cylinder103.geometry} material={materials["Montagne orange"]} />
         <mesh geometry={nodes.Fence_Cylinder103_1.geometry} material={materials.Border} />
       </group>
-      <group position={[-15.73, 0.79, -3.17]} rotation={[1.57, 0.01, 1.99]} scale={0.09}>
+      <group position={[-16.73, 0.79, -4.17]} rotation={[1.57, 0.01, 1.99]} scale={0.09}>
         <mesh geometry={nodes.Fence_Cylinder103.geometry} material={materials["Montagne orange"]} />
         <mesh geometry={nodes.Fence_Cylinder103_1.geometry} material={materials.Border} />
       </group>
@@ -1623,13 +1732,24 @@ export function Model(props) {
         scale={0.05}
       />
       <mesh
-        geometry={nodes.Cube.geometry}
-        material={nodes.Cube.material}
+        rotation={[0, 0, 0]}
+        geometry={new BoxGeometry(2, 2, 2)}
+        material={[
+          new MeshLambertMaterial({ color: 0xffffff }),
+          new MeshLambertMaterial({ color: 0xffffff }),
+          new MeshToonMaterial({ map: mapTexture }),
+          new MeshLambertMaterial({ color: 0xffffff }),
+          new MeshLambertMaterial({ color: 0xffffff }),
+          new MeshLambertMaterial({ color: 0xffffff }),
+        ]}
         position={[5.97, -0.75, -0.11]}
         scale={[32.36, 1, 26.05]}
       />
     </group>
   )
 }
+
+// geometry={nodes.Cube.geometry}
+// new MeshToonMaterial({ map: mapTexture })
 
 useGLTF.preload("assets/scenes/map.glb")

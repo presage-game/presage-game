@@ -69,7 +69,8 @@ export const Car = ({ animationsName = "Run" }) => {
       />
       {animationsName === "Run" && (
         <>
-          <Smoke position={{ x: -0.15, y: 0, z: 0.25 }} /> <Smoke position={{ x: 0.15, y: 0, z: 0.25 }} />
+          <Smoke position={{ x: -0.15, y: 0, z: 0.25 }} /> 
+          <Smoke position={{ x: 0.15, y: 0, z: 0.25 }} />
         </>
       )}
     </group>

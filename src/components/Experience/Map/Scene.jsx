@@ -1,11 +1,12 @@
 import React, { useRef, useMemo, useEffect, useState } from "react"
 import { useSelector } from "react-redux"
 import { Box3, Object3D, Quaternion, Vector3, Raycaster, Vector2 } from "three"
-import { Box, useGLTF, OrthographicCamera } from "@react-three/drei"
+import { Box, useGLTF, OrthographicCamera, PerspectiveCamera } from "@react-three/drei"
 import { useFrame } from "@react-three/fiber"
 import { Pathfinding, PathfindingHelper } from "three-pathfinding"
 import { Car } from "./Car"
 import { Model } from "./Model"
+import { current } from "@reduxjs/toolkit"
 
 export const Scene = ({
   goOnScene,
@@ -24,7 +25,6 @@ export const Scene = ({
   const [startSound] = useState(() => new Audio("assets/vehicules/truck/start.mp3"))
 
   const [pointerDown, setPointerDown] = useState(false)
-  let speed = 1
 
   const voitureGrpRef = useRef(null)
   const cubeRef = useRef([])
@@ -35,7 +35,21 @@ export const Scene = ({
   const pathfindinghelper = useMemo(() => new PathfindingHelper(), [])
   const ZONE = "level1"
   const MAX_SPEED = 3.5
+  let speed = 1
+
   let navPath = null
+
+  const cameraPos = {
+    x: 15,
+    y: 15,
+    z: 15,
+  }
+
+  const carPos = {
+    x: -17,
+    y: 0.3,
+    z: 13.6,
+  }
 
   navMesh.scene.traverse((node) => {
     if (node.isObject3D && node.children && node.children.length > 0) {
@@ -43,20 +57,10 @@ export const Scene = ({
     }
   })
 
-  const pivot = useMemo(() => new Object3D(), [])
-
-  const followCam = useMemo(() => {
-    const o = new Object3D()
-    o.position.set(0, 1, 1.5)
-    return o
-  }, [])
-
   const raycaster = useMemo(() => new Raycaster(), [])
 
   useEffect(() => {
-    camRef.current.lookAt(0, 0, 0)
-    followCam.add(camRef.current)
-    pivot.add(followCam)
+    camRef.current.lookAt(carPos.x, carPos.y, carPos.z)
     resetScene()
     startSound.currentTime = 0
     startSound.volume = 0.05
@@ -111,7 +115,13 @@ export const Scene = ({
       voitureGrpRef.current.quaternion.slerp(targetRotation, delta * speed)
 
       // Move camera to target
-      pivot.position.lerp(voitureGrpRef.current.position, delta * speed)
+      camRef.current.position.set(
+        voitureGrpRef.current.position.x + cameraPos.x,
+        cameraPos.y,
+        voitureGrpRef.current.position.z + cameraPos.z
+      )
+
+      // pivot.position.lerp(voitureGrpRef.current.position, delta * speed)
     } else {
       // Remove node from the path we calculated
       navPath.shift()
@@ -184,11 +194,11 @@ export const Scene = ({
       <primitive
         onPointerDown={() => setPointerDown(true)}
         object={navMesh.scene}
-        visible={true}
+        visible={false}
         ref={navMeshRef}
         dispose={null}
       />
-      <group ref={voitureGrpRef} dispose={null}>
+      <group ref={voitureGrpRef} dispose={null} position={[carPos.x, carPos.y, carPos.z]}>
         <Car animationsName={pointerDown ? "Run" : null} />
       </group>
       <Box
@@ -228,17 +238,17 @@ export const Scene = ({
         material-color="hotpink"
         dispose={null}
       />
-      <primitive object={pivot} dispose={null} />
       {/* <primitive object={pathfindinghelper} dispose={null} /> */}
       <OrthographicCamera
         makeDefault
         ref={camRef}
-        position={[15, 15, 15]}
-        zoom={125}
+        position={[carPos.x + cameraPos.x, cameraPos.y, cameraPos.z + carPos.z]}
+        zoom={120}
         near={0}
         far={60}
         dispose={null}
       />
+      {/* <PerspectiveCamera makeDefault ref={camRef} position={[15, 15, 15]} zoom={1} dispose={null} /> */}
     </>
   )
 }
