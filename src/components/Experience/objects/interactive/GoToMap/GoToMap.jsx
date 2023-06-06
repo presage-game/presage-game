@@ -24,14 +24,12 @@ export const GoToMap = ({ position, args }) => {
       position={position}
       onPointerEnter={() => dispatch(changeMouseVariant("large"))}
       onPointerLeave={() => dispatch(changeMouseVariant("default"))}
-      onPointerDown={holdClick}
-      onPointerUp={() => clearTimeout(timer)}
-      onClick={() => {
+      onPointerDown={() => {
         if (blackBarsStatus === "opened") {
-          dispatch(changeMouseVariant("default"))
-          dispatch(toggleMap())
+          holdClick()
         }
       }}
+      onPointerUp={() => clearTimeout(timer)}
       dispose={null}
     >
       <meshBasicMaterial transparent opacity={0} />
