@@ -205,44 +205,56 @@ export const Scene = ({
         ref={(el) => (cubeRef.current[0] = el)}
         scene={0}
         args={[-2, 1, 2]}
-        position={[-15, 0.1, 13]}
+        position={[-16.5, 0.1, 14]}
         dispose={null}
+        visible={false}
       />
       <Box
         ref={(el) => (cubeRef.current[1] = el)}
         scene={1}
         args={[-2, 1, 2]}
-        position={[-13.5, 0.1, -4.5]}
+        position={[-14, 0.1, -6.5]}
         dispose={null}
+        visible={false}
       />
       <Box
         ref={(el) => (cubeRef.current[2] = el)}
         scene={2}
         args={[-2, 1, 2]}
-        position={[0, 0.1, -5]}
+        position={[1, 0.1, -5.5]}
         dispose={null}
+        visible={false}
       />
       <Box
         ref={(el) => (cubeRef.current[3] = el)}
         scene={3}
         args={[-2, 1, 2]}
-        position={[0, 0.1, 13]}
+        position={[1, 0.1, 9]}
         dispose={null}
+        visible={false}
       />
       <Box
         ref={(el) => (smallCubeRef.current[0] = el)}
         pinpoint={0}
         args={[2, 1, 2]}
         position={[-10, 0.1, -3]}
-        material-color="hotpink"
         dispose={null}
+        visible={false}
       />
       <Box
         ref={(el) => (smallCubeRef.current[1] = el)}
         pinpoint={1}
         args={[2, 1, 2]}
-        position={[10, 0.1, -15]}
-        material-color="hotpink"
+        position={[5, 0.1, -2]}
+        visible={false}
+        dispose={null}
+      />
+      <Box
+        ref={(el) => (smallCubeRef.current[2] = el)}
+        pinpoint={2}
+        args={[2, 1, 2]}
+        position={[15, 0.1, -16]}
+        visible={false}
         dispose={null}
       />
       {/* <primitive object={pathfindinghelper} dispose={null} /> */}
