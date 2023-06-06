@@ -234,7 +234,7 @@ export const MapTextBox = ({ pinpointsData, pinpointIndex, showText, setShowText
           </div>
           {hasOptions() && hasMore() && !showOptions && (
             <button className="next-button" onClick={showMoreNPC}>
-              show more npc
+              {/* show more npc */}
               <svg
                 width="25"
                 height="13"
@@ -251,7 +251,7 @@ export const MapTextBox = ({ pinpointsData, pinpointIndex, showText, setShowText
           )}
           {!hasOptions() && hasMore() && (
             <button className="next-button" onClick={showMore}>
-              show more
+              {/* show more */}
               <svg
                 width="25"
                 height="13"

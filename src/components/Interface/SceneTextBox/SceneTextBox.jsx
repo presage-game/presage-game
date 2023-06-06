@@ -262,11 +262,6 @@ export const SceneTextBox = ({
             {getTextEmitter() === "npc" && (
               <h2 className="narrator narrator--npc">{getTextLabel()}</h2>
             )}
-            <p>hasOptions: {hasOptions().toString()}</p>
-            <p>showOptions: {showOptions.toString()}</p>
-            <p>optionIndex: {optionIndex}</p>
-            <p>textIndex: {textIndex}</p>
-            <p>hasMore: {hasMore().toString()}</p>
             {isVoiceOver && getIntroText() && (
               <p className="content">
                 {getIntroText()
@@ -318,7 +313,7 @@ export const SceneTextBox = ({
           </div>
           {hasMore() && showOptions && (
             <button className="next-button" onClick={showMore}>
-              show more
+              {/* show more */}
               <svg
                 width="25"
                 height="13"
@@ -335,7 +330,7 @@ export const SceneTextBox = ({
           )}
           {!hasOptions() && hasMore() && !showOptions && (
             <button className="next-button" onClick={showMoreNPC}>
-              show more npc
+              {/* show more npc */}
               <svg
                 width="25"
                 height="13"
