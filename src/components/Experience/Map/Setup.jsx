@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { useDispatch, useSelector } from "react-redux"
+import { useDispatch } from "react-redux"
 import { Scene } from "./Scene"
 import {
   changeScene,
@@ -10,7 +10,7 @@ import {
   intersectPinpoint,
 } from "@/store/reducers/mapReducer"
 import { button, useControls } from "leva"
-import { changeBlackBarsStatus, toggleMap } from "@/store/reducers/uiReducer"
+import { toggleMap } from "@/store/reducers/uiReducer"
 
 export const Setup = ({ setShowText }) => {
   const [sceneNumber, setSceneNumber] = useState(0)
@@ -18,7 +18,6 @@ export const Setup = ({ setShowText }) => {
   const dispatch = useDispatch()
 
   const goOnScene = (number) => {
-    dispatch(changeBlackBarsStatus("closed"))
     dispatch(changeScene(number))
   }
 
