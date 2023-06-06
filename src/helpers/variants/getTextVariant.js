@@ -2,6 +2,7 @@ import { useSelector } from "react-redux"
 
 export const getTextVariant = (index, type) => {
   const { code, infos } = useSelector((state) => state.game)
+  const { adinkras } = useSelector((state) => state.user)
 
   const data = [
     // Scenes
@@ -68,7 +69,19 @@ export const getTextVariant = (index, type) => {
 
       return value
     }
-  } else {
-    console.log("this content has no variant")
+  } else if (type === "scene") {
+    let value
+
+    if (index === 2) {
+      value = adinkras[0].isCollected ? "a" : "b"
+    } else if (index === 4) {
+      value = adinkras[1].isCollected ? "a" : "b"
+    } else if (index === 6) {
+      value = adinkras[2].isCollected ? "a" : "b"
+    } else {
+      value = "a"
+    }
+
+    return value
   }
 }
