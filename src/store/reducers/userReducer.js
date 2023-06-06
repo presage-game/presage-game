@@ -1,9 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit"
 
 const initialState = {
-  gameCode: null,
-  score: 0,
-  scenario: "",
   isPromptComplete: false,
   hasExperienceStarted: false,
   onFocusCamera: false,
