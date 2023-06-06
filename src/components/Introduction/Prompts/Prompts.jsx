@@ -8,7 +8,6 @@ import "./Prompts.scss"
 
 export const Prompts = ({ introduction, currentIndex, setCurrentIndex }) => {
   const dispatch = useDispatch()
-  // const { score, scenario } = useSelector((state) => state.user)
   const TIPPING_POINT = Object.keys(introduction).length
 
   const [showFollowing, setShowFollowing] = useState(false)
