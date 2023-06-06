@@ -7,6 +7,7 @@ import scriptData from "@/assets/data/scenes.json"
 import pinpointsData from "@/assets/data/pinpoints.json"
 import presagesData from "@/assets/data/presages.json"
 
+import { BlackBars } from "@/components/BlackBars/BlackBars"
 import { SceneTextBox } from "./SceneTextBox/SceneTextBox"
 import { MapTextBox } from "./MapTextBox/MapTextBox"
 import { PresageTextBox } from "./PresageTextBox/PresageTextBox"
@@ -23,6 +24,7 @@ export const Interface = ({
   setIsVoiceOver,
   showPresage,
   setShowPresage,
+  activateBlackBars,
 }) => {
   const dispatch = useDispatch()
 
@@ -75,6 +77,7 @@ export const Interface = ({
           OpenBlackBars={OpenBlackBars}
         />
       )}
+      {activateBlackBars && !mapActive && <BlackBars setIsVoiceOver={setIsVoiceOver} />}
       {/* Work in progress */}
       {!mapActive && sceneIndex === 2 && (
         <PresageTextBox

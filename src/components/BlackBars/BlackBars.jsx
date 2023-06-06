@@ -4,8 +4,9 @@ import { useDispatch, useSelector } from "react-redux"
 
 import "./BlackBars.scss"
 import { useEffect, useState } from "react"
+import { DefaultLoadingManager } from "three"
 
-export const BlackBars = ({ active, progress, mapActive, setIsVoiceOver }) => {
+export const BlackBars = ({ active, progress, setIsVoiceOver }) => {
   const { blackBarsStatus } = useSelector((state) => state.ui)
   const [inAnimation, setInAnimation] = useState(false)
   const dispatch = useDispatch()
@@ -28,13 +29,12 @@ export const BlackBars = ({ active, progress, mapActive, setIsVoiceOver }) => {
   }, [blackBarsStatus])
 
   useEffect(() => {
-    console.log("here")
-    if (progress === 100 && !mapActive) {
+    DefaultLoadingManager.onLoad = () => {
       setIsVoiceOver(true)
       let timer = setTimeout(() => dispatch(changeBlackBarsStatus("window")), 500)
       return () => clearTimeout(timer)
     }
-  }, [active])
+  },[])
 
   return (
     <>

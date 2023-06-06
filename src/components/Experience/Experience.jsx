@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react"
-import { useDispatch, useSelector } from "react-redux"
+import { useState } from "react"
+import { useSelector } from "react-redux"
 
 import { Canvas } from "@react-three/fiber"
 
@@ -10,7 +10,6 @@ import { Setup as BaobabOne } from "./chapterOne/3/Setup"
 import { Setup as KeurGnialo } from "./chapterTwo/1/Setup"
 
 import { Interface } from "@/components/Interface/Interface"
-import { BlackBars } from "@/components/BlackBars/BlackBars"
 import { AudioManager } from "@/components/Experience/tools/AudioManager/AudioManager"
 
 import "./Experience.scss"
@@ -19,28 +18,14 @@ import { Preload, Stats, useProgress } from "@react-three/drei"
 export const Experience = ({ activateBlackBars }) => {
   const { scene, pinpoint } = useSelector((state) => state.map)
   const { mapActive } = useSelector((state) => state.ui)
-  const { active, progress, errors, item, loaded, total } = useProgress()
 
-  const [localMapActive, setLocalMapActive] = useState(false)
   const [spotIndex, setSpotIndex] = useState(null)
   const [showText, setShowText] = useState(false)
   const [isVoiceOver, setIsVoiceOver] = useState(false)
   const [showPresage, setShowPresage] = useState(false)
 
-  useEffect(() => {
-    setLocalMapActive(mapActive)
-  }, [mapActive])
-
   return (
     <div className="Experience">
-      {activateBlackBars && !localMapActive && (
-        <BlackBars
-          active={active}
-          progress={progress}
-          mapActive={localMapActive}
-          setIsVoiceOver={setIsVoiceOver}
-        />
-      )}
       <Interface
         mapActive={mapActive}
         spotIndex={spotIndex}
@@ -50,6 +35,7 @@ export const Experience = ({ activateBlackBars }) => {
         setIsVoiceOver={setIsVoiceOver}
         showPresage={showPresage}
         setShowPresage={setShowPresage}
+        activateBlackBars={activateBlackBars}
       />
       <Canvas style={{ position: "absolute", top: "0%", height: "100%" }}>
         {mapActive ? (

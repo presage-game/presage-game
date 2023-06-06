@@ -88,6 +88,7 @@ export const Scene = ({
   }
 
   function move(delta) {
+    console.log(speed)
     if (!navPath || navPath.length <= 0) return
     carEnterInCube()
 
