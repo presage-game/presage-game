@@ -38,7 +38,7 @@ export const Experience = ({ activateBlackBars }) => {
 
   return (
     <div className="Experience">
-      {activateBlackBars && <BlackBars />}
+      {activateBlackBars && !mapActive && <BlackBars />}
       <Interface
         mapActive={mapActive}
         spotIndex={spotIndex}
