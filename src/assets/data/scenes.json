@@ -15,12 +15,7 @@
       {
         "index": 0,
         "label": "Panneau routier",
-        "spotVoiceover": [
-          {
-            "text": "Un panneau routier indique que tu entres dans le Nyalaandé. La route est bordée de part et d’autre par des arbres aux troncs noueux, qui s’élèvent vers le ciel.",
-            "emitter": "narrator"
-          }
-        ]
+        "spotVoiceover": []
       },
       {
         "index": 1,
@@ -171,6 +166,16 @@
               "emitter": "innerVoice"
             }
           ]
+        ]
+      },
+      {
+        "index": 1,
+        "label": "Mur de la boutique",
+        "spotVoiceover": [
+          {
+            "text": "Tu sens une force étrange émaner de la pierre jaunie et fissurée que revêt ce mur.",
+            "emitter": "innerVoice"
+          }
         ]
       }
     ]

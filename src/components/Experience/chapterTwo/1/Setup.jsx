@@ -14,6 +14,7 @@ export const Setup = ({ setSpotIndex, setShowText, isVoiceOver }) => {
 
   useEffect(() => {
     if (adinkraFocused) {
+      setSpotIndex(1)
       changeFocusPosition({
         position: {
           x: 220,
