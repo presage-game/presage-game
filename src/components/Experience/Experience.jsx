@@ -23,6 +23,7 @@ export const Experience = () => {
   const [spotIndex, setSpotIndex] = useState(null)
   const [showText, setShowText] = useState(false)
   const [isVoiceOver, setIsVoiceOver] = useState(false)
+  const [showPresage, setShowPresage] = useState(false)
 
   return (
     <div className="Experience">
@@ -34,6 +35,8 @@ export const Experience = () => {
         setShowText={setShowText}
         isVoiceOver={isVoiceOver}
         setIsVoiceOver={setIsVoiceOver}
+        showPresage={showPresage}
+        setShowPresage={setShowPresage}
       />
       <Canvas style={{ position: "absolute", top: "0%", height: "100%" }}>
         {mapActive ? (
@@ -56,6 +59,8 @@ export const Experience = () => {
             setSpotIndex={setSpotIndex}
             setShowText={setShowText}
             isVoiceOver={isVoiceOver}
+            showPresage={showPresage}
+            setShowPresage={setShowPresage}
           />
         ) : (
           <KeurGnialo

@@ -20,10 +20,9 @@ export const Setup = ({ setSpotIndex, setShowText, isVoiceOver }) => {
   useEffect(() => {
     if (pubFocused) {
       setMapFocused(false)
-      setSpotIndex(0)
       changeFocusPosition({
         position: {
-          x: -20,
+          x: -29,
           y: -2,
           z: 205,
         },

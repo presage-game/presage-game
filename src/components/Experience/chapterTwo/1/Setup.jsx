@@ -1,10 +1,11 @@
-import { Environment, Sky } from "@react-three/drei"
+import { Environment, PositionalAudio, Sky } from "@react-three/drei"
 import { CustomCamera } from "../../tools/CustomCamera/CustomCamera"
 import { CloudsEffect } from "../../effects/CloudsEffect"
 import { Scene } from "./Scene"
-import { useEffect, useState } from "react"
+import { useEffect, useState, Suspense } from "react"
 import { useDispatch } from "react-redux"
 import { changeOnFocusCamera, changeOnFocusCameraPosition } from "@/store/reducers/userReducer"
+import { GoToMap } from "../../objects/interactive/GoToMap/GoToMap"
 
 export const Setup = ({ setSpotIndex, setShowText, isVoiceOver }) => {
   const dispatch = useDispatch()
@@ -14,6 +15,7 @@ export const Setup = ({ setSpotIndex, setShowText, isVoiceOver }) => {
 
   useEffect(() => {
     if (adinkraFocused) {
+      setSpotIndex(1)
       changeFocusPosition({
         position: {
           x: 220,
@@ -43,6 +45,16 @@ export const Setup = ({ setSpotIndex, setShowText, isVoiceOver }) => {
         rotation={[-Math.PI / 2, 0, 0]}
         dispose={null}
       />
+      <GoToMap args={[5, 5, 5]} position={[28, -2.5, -60]} />
+      <Suspense fallback={null}>
+        <PositionalAudio
+          autoplay
+          url="/audios/scenes/0/atmospheric/wind.mp3"
+          loop
+          distance={10}
+          position={[-12, -2.5, -50]}
+        />
+      </Suspense>
       <CloudsEffect position={[0, 40, -300]} variant={"default"} numberOfClouds={20} />
       <Sky
         sunPosition={[40, 10, 40]}

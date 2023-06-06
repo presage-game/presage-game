@@ -65,6 +65,21 @@
         "emitter": "innerVoice"
       },
       {
+        "text": "Bienvenue, étranger! T'as la pêche ou quoi^^",
+        "options": [
+          {
+            "text": "A",
+            "response": "Nan"
+          },
+          {
+            "text": "B",
+            "response": "Ouais"
+          }
+        ],
+        "emitter": "npc",
+        "label": "Pêcheurs"
+      },
+      {
         "text": "Ces pêcheurs ne connaissent pas la vérité. Il y a bien longtemps que les enfants d’An-Uua n’ont plus rien à voir avec cette histoire. Non ; si le lac est de cette couleur, c’est à cause de la pollution et des algues.",
         "emitter": "innerVoice"
       }

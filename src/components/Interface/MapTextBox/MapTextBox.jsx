@@ -6,10 +6,9 @@ import { Button } from "@/components/Button/Button"
 
 import "@/components/Interface/SceneTextBox/TextBox.scss"
 
-export const MapTextBox = ({ pinpointsData, pinpointIndex }) => {
+export const MapTextBox = ({ pinpointsData, pinpointIndex, showText, setShowText }) => {
   const { isPinpointIntersecting, isPinpointActive } = useSelector((state) => state.map)
 
-  const [showText, setShowText] = useState(pinpointIndex !== null)
   const [showOptions, setShowOptions] = useState(pinpointIndex !== null)
   const [textIndex, setTextIndex] = useState(0)
   const [optionIndex, setOptionIndex] = useState(0)
@@ -143,28 +142,43 @@ export const MapTextBox = ({ pinpointsData, pinpointIndex }) => {
     }
   }, [textIndex, pinpointIndex, isPinpointActive])
 
+  // useEffect(() => {
+  //   if (audioFile !== null && textIndex !== null && isPinpointActive) {
+  //     if (!currentAudio.paused) {
+  //       currentAudio.pause()
+  //     }
+
+  //     currentAudio.src = audioFile
+  //     currentAudio.load()
+
+  //     const playPromise = currentAudio.play()
+  //     if (playPromise !== undefined) {
+  //       playPromise.catch((error) => {
+  //         return
+  //       })
+  //     }
+  //   }
+
+  //   return () => {
+  //     currentAudio.currentTime = 0
+  //     currentAudio.pause()
+  //   }
+  // }, [audioFile, textIndex])
+
   useEffect(() => {
-    if (audioFile !== null && textIndex !== null && isPinpointActive) {
-      if (!currentAudio.paused) {
-        currentAudio.pause()
-      }
-
+    if (audioFile) {
       currentAudio.src = audioFile
-      currentAudio.load()
-
-      const playPromise = currentAudio.play()
-      if (playPromise !== undefined) {
-        playPromise.catch((error) => {
-          return
-        })
-      }
+      currentAudio.play()
+    } else {
+      currentAudio.pause()
     }
 
     return () => {
-      currentAudio.currentTime = 0
       currentAudio.pause()
+      currentAudio.src = ""
+      currentAudio.currentTime = 0
     }
-  }, [audioFile, textIndex])
+  }, [audioFile])
 
   return (
     <AnimatePresence>
@@ -219,10 +233,25 @@ export const MapTextBox = ({ pinpointsData, pinpointIndex }) => {
             )}
           </div>
           {hasOptions() && hasMore() && !showOptions && (
-            <Button text="show more npc" onClick={showMoreNPC} />
+            <button className="next-button" onClick={showMoreNPC}>
+              {/* show more npc */}
+              <svg
+                width="25"
+                height="13"
+                viewBox="0 0 25 13"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M0 6.50001L24 6.50001M24 6.50001L17 0.499999M24 6.50001L17 12.5"
+                  stroke="#2E2724"
+                />
+              </svg>
+            </button>
           )}
           {!hasOptions() && hasMore() && (
             <button className="next-button" onClick={showMore}>
+              {/* show more */}
               <svg
                 width="25"
                 height="13"
@@ -259,30 +288,20 @@ export const MapTextBox = ({ pinpointsData, pinpointIndex }) => {
             </button>
           )}
           {hasOptions() && showOptions && (
-            <>
+            <div className="TextBox__options">
               {pinpointsData[pinpointIndex]?.voiceover[textIndex]?.options?.map((option, index) => (
-                <Button
-                  key={index}
-                  text={option.text}
-                  onClick={() => chooseResponse(index)}
-                  variant="splashScreen"
-                />
+                <Button key={index} text={option.text} onClick={() => chooseResponse(index)} />
               ))}
-            </>
+            </div>
           )}
           {hasOptions() && showOptions && variant && (
-            <>
+            <div className="TextBox__options">
               {pinpointsData[pinpointIndex]?.voiceover[textIndex][
                 variant === "a" ? 0 : 1
               ]?.options?.map((option, index) => (
-                <Button
-                  key={index}
-                  text={option.text}
-                  onClick={() => chooseResponse(index)}
-                  variant="splashScreen"
-                />
+                <Button key={index} text={option.text} onClick={() => chooseResponse(index)} />
               ))}
-            </>
+            </div>
           )}
         </motion.div>
       )}
