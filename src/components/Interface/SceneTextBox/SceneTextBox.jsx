@@ -2,6 +2,8 @@ import { useState, useEffect } from "react"
 import { useSelector } from "react-redux"
 import { motion, AnimatePresence } from "framer-motion"
 
+import { Button } from "@/components/Button/Button"
+
 import "./TextBox.scss"
 
 export const SceneTextBox = ({
@@ -15,7 +17,9 @@ export const SceneTextBox = ({
   setIsVoiceOver,
 }) => {
   const [introPlayed, setIntroPlayed] = useState(false)
+  const [showOptions, setShowOptions] = useState(false)
   const [textIndex, setTextIndex] = useState(0)
+  const [optionIndex, setOptionIndex] = useState(0)
   const [key, setKey] = useState(0)
 
   // TODO: Set this state from Supabase data
@@ -85,6 +89,22 @@ export const SceneTextBox = ({
     }
   }
 
+  const hasOptions = () => {
+    const spot = scriptData[sceneIndex]?.spots[spotIndex]?.spotVoiceover[textIndex]
+
+    if (typeof spot?.text === "string") {
+      const options = scriptData[sceneIndex]?.spots[spotIndex]?.spotVoiceover[textIndex]?.options
+      return options?.length > 0
+    } else if (typeof spot?.text !== "string" && variant) {
+      const options =
+        scriptData[sceneIndex]?.spots[spotIndex]?.spotVoiceover[textIndex][variant === "a" ? 0 : 1]
+          ?.options
+      return options?.length > 0
+    }
+
+    return false
+  }
+
   const hasMore = () => (isVoiceOver ? hasMoreIntroText() : hasMoreSpotText())
 
   const hasMoreIntroText = () => scriptData[sceneIndex]?.voiceover?.length > textIndex + 1
@@ -97,15 +117,37 @@ export const SceneTextBox = ({
     setKey((prevKey) => prevKey + 1)
   }
 
+  const showMoreNPC = () => {
+    setTextIndex(textIndex + 1)
+    setShowOptions(true)
+    setKey((prevKey) => prevKey + 1)
+  }
+
+  const getOptionResponse = () => {
+    const spot = scriptData[sceneIndex]?.spots[spotIndex]?.spotVoiceover[textIndex]
+
+    if (typeof spot?.text === "string") {
+      return spot?.options[optionIndex]?.response
+    } else {
+      return spot[variant === "a" ? 0 : 1]?.options[optionIndex]?.response
+    }
+  }
+
+  const chooseResponse = (data) => {
+    setOptionIndex(data)
+    setShowOptions(false)
+    setKey((prevKey) => prevKey + 1)
+  }
+
   useEffect(() => {
     if (spotIndex !== null) {
-      console.log("spot")
       setTextIndex(0)
       setShowText(true)
       setIntroPlayed(true)
       setIsVoiceOver(false)
     } else if (spotIndex === null && introPlayed) {
       setTextIndex(0)
+      setShowOptions(true)
     }
   }, [spotIndex])
 
@@ -113,9 +155,11 @@ export const SceneTextBox = ({
     if (mapActive) {
       setTextIndex(0)
       setShowText(false)
+      setShowOptions(false)
     } else {
       setIsVoiceOver(true)
       setShowText(true)
+      setShowOptions(true)
     }
   }, [mapActive])
 
@@ -218,6 +262,11 @@ export const SceneTextBox = ({
             {getTextEmitter() === "npc" && (
               <h2 className="narrator narrator--npc">{getTextLabel()}</h2>
             )}
+            <p>hasOptions: {hasOptions().toString()}</p>
+            <p>showOptions: {showOptions.toString()}</p>
+            <p>optionIndex: {optionIndex}</p>
+            <p>textIndex: {textIndex}</p>
+            <p>hasMore: {hasMore().toString()}</p>
             {isVoiceOver && getIntroText() && (
               <p className="content">
                 {getIntroText()
@@ -234,7 +283,7 @@ export const SceneTextBox = ({
                   ))}
               </p>
             )}
-            {!isVoiceOver && getSpotText() && (
+            {!isVoiceOver && showOptions && getSpotText() && (
               <p className="content">
                 {getSpotText()
                   .split(" ")
@@ -250,9 +299,26 @@ export const SceneTextBox = ({
                   ))}
               </p>
             )}
+            {hasOptions() && !isVoiceOver && !showOptions && getOptionResponse() && (
+              <p className="content">
+                {getOptionResponse()
+                  .split(" ")
+                  .map((word, index) => (
+                    <motion.span
+                      key={`${textIndex}-${spotIndex}-${index}-${key}`}
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.25, delay: index * 0.1 }}
+                    >
+                      {word}{" "}
+                    </motion.span>
+                  ))}
+              </p>
+            )}
           </div>
-          {hasMore() && (
+          {hasMore() && showOptions && (
             <button className="next-button" onClick={showMore}>
+              show more
               <svg
                 width="25"
                 height="13"
@@ -267,7 +333,25 @@ export const SceneTextBox = ({
               </svg>
             </button>
           )}
-          {!hasMore() && (
+          {!hasOptions() && hasMore() && !showOptions && (
+            <button className="next-button" onClick={showMoreNPC}>
+              show more npc
+              <svg
+                width="25"
+                height="13"
+                viewBox="0 0 25 13"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M0 6.50001L24 6.50001M24 6.50001L17 0.499999M24 6.50001L17 12.5"
+                  stroke="#2E2724"
+                />
+              </svg>
+            </button>
+          )}
+          {((!hasMore() && hasOptions() && !showOptions) ||
+            (!hasOptions() && showOptions && !hasMore())) && (
             <button
               className="close-button"
               onClick={() => {
@@ -284,6 +368,24 @@ export const SceneTextBox = ({
                 <path d="M1 1L16 16M16 1L1 16" stroke="#2E2724" />
               </svg>
             </button>
+          )}
+          {hasOptions() && showOptions && !variant && (
+            <div className="TextBox__options--alternative">
+              {scriptData[sceneIndex]?.spots[spotIndex]?.spotVoiceover[textIndex]?.options.map(
+                (option, index) => (
+                  <Button text={option?.text} onClick={() => chooseResponse(index)} />
+                )
+              )}
+            </div>
+          )}
+          {hasOptions() && showOptions && variant && (
+            <div className="TextBox__options--alternative">
+              {scriptData[sceneIndex]?.spots[spotIndex]?.spotVoiceover[textIndex][
+                variant === "a" ? 0 : 1
+              ]?.options?.map((option, index) => (
+                <Button key={index} text={option.text} onClick={() => chooseResponse(index)} />
+              ))}
+            </div>
           )}
         </motion.div>
       )}
