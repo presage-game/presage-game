@@ -42,6 +42,7 @@ export const AdinkraTwo = ({
   Materials,
 }) => {
   const dispatch = useDispatch()
+  const [isHovered, setIsHovered] = useState(false)
   const [localFocused, setLocalFocused] = useState(false)
   const [game, setGame] = useState(false)
   const [gameFinished, setGameFinished] = useState(false)
@@ -121,19 +122,16 @@ export const AdinkraTwo = ({
     })
     let blackpixels = 0
     red.map((color, index) => {
-      if (color === 0) {
-        if (green[index] === 0) {
-          if (blue[index] === 0) {
+      if (color === 204) {
+        if (green[index] === 189) {
+          if (blue[index] === 112) {
             blackpixels++
           }
         }
       }
     })
 
-    if (blackpixels < 26500) {
-      console.log("perdu")
-    } else {
-      console.log("gagné")
+    if (blackpixels < 9800) {
       dispatch(collectAdinkra(1))
       setGameFinished(true)
       setAdinkraFocused(false)
@@ -145,6 +143,7 @@ export const AdinkraTwo = ({
       let ctx = canvasRef.current.getContext("2d", { willReadFrequently: true })
       ctx.clearRect(0, 0, canvasRef.current.width, canvasRef.current.height)
       ctx.beginPath()
+      ctx.fillStyle = "#CCBD70"
       ctx.fillRect(0, 0, canvasRef.current.width, canvasRef.current.height)
       ctx.closePath()
       ctx.globalCompositeOperation = "destination-out"
@@ -173,8 +172,13 @@ export const AdinkraTwo = ({
           <Html position={[0, 0, 0]} zIndexRange={9} transform>
             <div>
               <canvas
+                onPointerEnter={() => setIsHovered(true)}
+                onPointerLeave={() => setIsHovered(false)}
+                style={{
+                  border: isHovered && !adinkraFocused && !gameFinished && "solid 3px white",
+                }}
                 onClick={() => {
-                  if (!adinkraFocused) {
+                  if (!adinkraFocused && !gameFinished) {
                     setAdinkraFocused(true)
                     setTimeout(() => {
                       setLocalFocused(true)

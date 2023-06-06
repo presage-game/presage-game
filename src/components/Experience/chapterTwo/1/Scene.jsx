@@ -31,7 +31,7 @@ export const Scene = ({ adinkraFocused, setAdinkraFocused }) => {
         Materials={Materials}
         adinkraFocused={adinkraFocused}
         setAdinkraFocused={setAdinkraFocused}
-        position={[-30, 0.8, -48]}
+        position={[-30, 0.9, -48]}
         rotation={[0, Math.PI / 2 + Math.PI / 3, 0]}
       />
     </>
