@@ -13,7 +13,7 @@ import { SplashScreen } from "./SplashScreen/SplashScreen"
 import { Footer } from "./Footer/Footer"
 
 import "./Introduction.scss"
-import { setCode } from "@/store/reducers/gameReducer"
+import { setCode, setInfos } from "@/store/reducers/gameReducer"
 
 export const Introduction = () => {
   const introduction = introductionData
@@ -67,7 +67,7 @@ export const Introduction = () => {
         const data = await createGame()
         console.log(data)
         dispatch(setCode(data.game_code))
-        //dispatch(setInfos(data.))
+        dispatch(setInfos(data.game_info))
       }
       fetchData()
     }
