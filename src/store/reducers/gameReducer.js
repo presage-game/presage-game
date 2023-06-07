@@ -8,7 +8,7 @@ const initialState = {
       [
         {
           name: "megalithicCircles",
-          value: "a",
+          value: "b",
         },
         {
           name: "phosphateMine",
