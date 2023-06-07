@@ -1,12 +1,31 @@
 import { useState } from "react"
+import { useSelector } from "react-redux"
 
 export const TreeOne = ({ nodes, Materials, position, treeFocused, setTreeFocused }) => {
   const [isHovered, setIsHovered] = useState(false)
+  const { adinkras } = useSelector((state) => state.user)
+  const goodadinkra = adinkras.filter((adinkra) => adinkra.id === 1)
 
-  const selectedOulineMaterial = !treeFocused && isHovered ? Materials.selectedMaterial : Materials.outlineMaterial
+  const selectedOulineMaterial =
+    !treeFocused && isHovered ? Materials.selectedMaterial : Materials.outlineMaterial
 
   return (
-    <group onClick={() => treeFocused !== true && setTreeFocused(!treeFocused)} onPointerEnter={() => setIsHovered(true)} onPointerLeave={() => setIsHovered(false)} position={position} dispose={null}>
+    <group
+      onClick={() =>
+        treeFocused !== true &&
+        goodadinkra.length === 1 &&
+        goodadinkra[0].isCollected &&
+        setTreeFocused(!treeFocused)
+      }
+      onPointerEnter={() =>
+        goodadinkra.length === 1 && goodadinkra[0].isCollected && setIsHovered(true)
+      }
+      onPointerLeave={() =>
+        goodadinkra.length === 1 && goodadinkra[0].isCollected && setIsHovered(false)
+      }
+      position={position}
+      dispose={null}
+    >
       <group
         position={[-10.19, 21.07, -124.3]}
         rotation={[-2.36, -1.36, -2.46]}
