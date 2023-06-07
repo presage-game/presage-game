@@ -1,8 +1,4 @@
-import { useSelector } from "react-redux"
-
-export const getTextVariant = (index, type) => {
-  const { code, infos } = useSelector((state) => state.game)
-  const { adinkras } = useSelector((state) => state.user)
+export const getTextVariant = (index, type, infos, adinkras) => {
 
   const data = [
     // Scenes

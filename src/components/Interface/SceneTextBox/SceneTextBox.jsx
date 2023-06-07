@@ -18,6 +18,8 @@ export const SceneTextBox = ({
   setIsVoiceOver,
   OpenBlackBars,
 }) => {
+  const { code, infos } = useSelector((state) => state.game)
+  const { adinkras } = useSelector((state) => state.user)
   const [introPlayed, setIntroPlayed] = useState(false)
   const [showOptions, setShowOptions] = useState(false)
   const [textIndex, setTextIndex] = useState(0)
@@ -27,7 +29,7 @@ export const SceneTextBox = ({
   /* --- WIP --- */
 
   // Utiliser un useMemo? Ou une fonction dédiée?
-  const variant = getTextVariant(sceneIndex, "scene")
+  const [variant, setVariant] = useState(() => getTextVariant(sceneIndex, "scene", infos, adinkras))
 
   /* ------ */
 

@@ -8,6 +8,8 @@ import { getTextVariant } from "@/helpers/variants/getTextVariant"
 import "@/components/Interface/SceneTextBox/TextBox.scss"
 
 export const MapTextBox = ({ pinpointsData, pinpointIndex, showText, setShowText }) => {
+  const { code, infos } = useSelector((state) => state.game)
+  const { adinkras } = useSelector((state) => state.user)
   const { isPinpointIntersecting, isPinpointActive } = useSelector((state) => state.map)
 
   const [showOptions, setShowOptions] = useState(pinpointIndex !== null)
@@ -20,7 +22,7 @@ export const MapTextBox = ({ pinpointsData, pinpointIndex, showText, setShowText
   /* --- WIP --- */
 
   // Utiliser un useMemo? Ou une fonction dédiée?
-  const variant = getTextVariant(pinpointIndex, "pinpoint")
+  const [variant, setVariant] = useState(() => getTextVariant(pinpointIndex, "pinpoint", infos, adinkras))
 
   /* ------ */
 
@@ -146,6 +148,11 @@ export const MapTextBox = ({ pinpointsData, pinpointIndex, showText, setShowText
       })
     }
   }, [textIndex, pinpointIndex, isPinpointActive])
+
+  useEffect(() => {
+    let variant = getTextVariant(pinpointIndex, "pinpoint", infos, adinkras)
+    setVariant(variant)
+  }, [pinpointIndex])
 
   // useEffect(() => {
   //   if (audioFile !== null && textIndex !== null && isPinpointActive) {
