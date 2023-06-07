@@ -51,8 +51,10 @@ export const BlackBars = ({ active, progress, setIsVoiceOver, mapActive }) => {
   }, [mapActive])
 
   useEffect(() => {
-    dispatch(changeBlackBarsStatus("closed"))
-  },[])
+    if (!mapActive) {
+      dispatch(changeBlackBarsStatus("closed"))
+    }
+  }, [])
 
   return (
     <>

@@ -1,30 +1,43 @@
 import { useState } from "react"
 import { Button } from "@/components/Button/Button"
 import { motion, AnimatePresence } from "framer-motion"
-
+import { changeBlackBarsStatus, toggleMap } from "@/store/reducers/uiReducer"
 import { getGame } from "@/database/gamecode"
 import { useDispatch } from "react-redux"
-import { setCode } from "@/store/reducers/gameReducer"
+import { setCode, setInfos } from "@/store/reducers/gameReducer"
 import { startExperience } from "@/store/reducers/userReducer"
 
 import { Overlay } from "./Overlay/Overlay"
 
 import "./SplashScreen.scss"
+import { resetScene } from "@/store/reducers/mapReducer"
 
 export const SplashScreen = ({ setShowIntroduction }) => {
-  const [code, setCode] = useState(null)
+  const [localCode, setLocalCode] = useState(null)
   const [error, setError] = useState(false)
+  const [errorMessage, setErrorMessage] = useState("Code partie non valide")
   const dispatch = useDispatch()
   const [showCredits, setShowCredits] = useState(false)
 
   const onSubmit = async () => {
-    console.log(code)
+    console.log(localCode)
     try {
-      const data = await getGame(code)
-      dispatch(setCode(data.game_code))
-      dispatch(startExperience())
+      const data = await getGame(localCode)
+      console.log(data)
+      if (data.finished) {
+        setErrorMessage("Partie déjà terminé")
+        setError(true)
+      } else {
+        dispatch(setCode(data.game_code))
+        dispatch(setInfos(data.game_info))
+        dispatch(startExperience())
+        dispatch(resetScene())
+        dispatch(toggleMap())
+        dispatch(changeBlackBarsStatus("opened"))
+      }
     } catch (e) {
       console.error(e)
+      setErrorMessage("Code partie non valide")
       setError(true)
     }
   }
@@ -96,8 +109,8 @@ export const SplashScreen = ({ setShowIntroduction }) => {
               min="0"
               max="999999"
               inputMode="numeric"
-              defaultValue={code}
-              onChange={(e) => setCode(e.target.value)}
+              defaultValue={localCode}
+              onChange={(e) => setLocalCode(e.target.value)}
             />
             <div className="input__border"></div>
           </div>
@@ -126,7 +139,7 @@ export const SplashScreen = ({ setShowIntroduction }) => {
               transition={{ scale: { type: "spring", stiffness: 100 } }}
               className="error-message"
             >
-              Code partie non valide
+              {errorMessage}
             </motion.div>
           </AnimatePresence>
         )}
