@@ -72,6 +72,11 @@ export const createGame = async () => {
     .insert({
       game_code: finalGameCode,
       game_info: {
+        carPos: {
+          x: -17,
+          y: 0.3,
+          z: 13.6,
+        },
         currentChapter: 1,
         currentPresages: newCurrentPresages.game_info.nextPresages,
         nextPresages: [[], [], []],
