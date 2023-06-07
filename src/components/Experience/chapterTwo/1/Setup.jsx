@@ -30,22 +30,9 @@ export const Setup = ({ setSpotIndex, setShowText, isVoiceOver }) => {
       })
       changeFocus(true)
     } else {
-      setSpotIndex(null)
       changeFocus(false)
-
-      if (!isVoiceOver) {
-        setShowText(false)
-      }
     }
   }, [adinkraFocused])
-
-  useEffect(() => {
-    setShowText(true)
-
-    return () => {
-      setSpotIndex(null)
-    }
-  }, [])
 
   return (
     <>
