@@ -1,5 +1,5 @@
 import React, { useRef, useMemo, useEffect, useState } from "react"
-import { useSelector } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { Box3, Object3D, Quaternion, Vector3, Raycaster, Vector2 } from "three"
 import { Box, useGLTF, OrthographicCamera, PerspectiveCamera } from "@react-three/drei"
 import { useFrame } from "@react-three/fiber"
@@ -7,6 +7,7 @@ import { Pathfinding, PathfindingHelper } from "three-pathfinding"
 import { Car } from "./Car"
 import { Model } from "./Model"
 import { current } from "@reduxjs/toolkit"
+import { setCarPos } from "@/store/reducers/gameReducer"
 
 export const Scene = ({
   goOnScene,
@@ -16,7 +17,9 @@ export const Scene = ({
   intersectScene,
   intersectPinpoint,
 }) => {
+  const dispatch = useDispatch()
   const { pinpoint: pinpointIndex, scene: sceneIndex } = useSelector((state) => state.map)
+  const { infos } = useSelector((state) => state.game)
 
   const navMesh = useGLTF("assets/scenes/navMesh.glb")
   const camRef = useRef()
@@ -45,11 +48,7 @@ export const Scene = ({
     z: 15,
   }
 
-  const carPos = {
-    x: -17,
-    y: 0.3,
-    z: 13.6,
-  }
+  const carPos = infos.carPos
 
   navMesh.scene.traverse((node) => {
     if (node.isObject3D && node.children && node.children.length > 0) {
@@ -137,7 +136,16 @@ export const Scene = ({
         const box = new Box3().setFromObject(cubeRef.current[index])
 
         if (box.containsPoint(voitureGrpRef.current.position)) {
-          sceneIndex !== cubeRef.current[index].scene && goOnScene(cubeRef.current[index].scene)
+          if (sceneIndex !== cubeRef.current[index].scene) {
+            dispatch(
+              setCarPos({
+                x: voitureGrpRef.current.position.x,
+                y: voitureGrpRef.current.position.y,
+                z: voitureGrpRef.current.position.z,
+              })
+            )
+            goOnScene(cubeRef.current[index].scene)
+          }
 
           isSceneIntersecting = true
           intersectScene(true)
