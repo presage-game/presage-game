@@ -141,10 +141,6 @@
             {
               "text": "La boutique de la station-essence est fermée. Une note manuscrite rédigée en français a été placardée sur la porte.",
               "emitter": "narrator"
-            },
-            {
-              "text": "Bienvenue! Remplacer cela par un texte de NPC (à écrire)",
-              "emitter": "narrator"
             }
           ],
           [
@@ -155,6 +151,23 @@
             {
               "text": "La note dit: “Boutique fermée en raison de la pénurie de carburant. Approvisionnements perturbés et retards importants de la part des fournisseurs. Merci de votre compréhension.”",
               "emitter": "narrator"
+            }
+          ],
+          [
+            {
+              "text": "Ah, encore une nouvelle tête. Bienvenue dans la plus belle ville du monde. Beaucoup de voyageurs passent par ici, mais ils ne restent jamais bien longtemps. Vous non plus, vous n'allez pas rester longtemps, n'est-ce pas ?”",
+              "options": [
+                {
+                  "text": "La plus belle ville du monde ?",
+                  "response": "Mais oui. Il y a quelque chose dans l’air, ici. Les murmures d’Uwma et de Sali à l’intérieur des murs, les pompes à essence bien alignées. Le marché aux fruits de l’après-midi."
+                },
+                {
+                  "text": "Quelles nouvelles ?",
+                  "response": "Ah. Les entreprises font faillite. Mais pas comme elles le font habituellement, non : je vous parle ici d’une malédiction. Tout le monde a autant peur d’attraper la fièvre que de fermer boutique. Les habitants commencent à partir. Je finirai par partir un jour, moi aussi."
+                }
+              ],
+              "emitter": "npc",
+              "label": "Vendeur"
             },
             {
               "text": "Tu assistes à la défaite du modèle libéral. Des jerricanes de secours dorment sagement à l’arrière de ton véhicule, tous les deux blottis l’un contre l’autre.",

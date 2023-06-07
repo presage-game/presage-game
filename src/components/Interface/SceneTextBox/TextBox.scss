@@ -58,6 +58,16 @@
     align-items: center;
     margin: 0 auto;
 
+    &--alternative {
+      .Button {
+        width: 100%;
+
+        &:not(:last-child) {
+          margin-bottom: 1rem;
+        }
+      }
+    }
+
     .Button {
       &:not(:last-child) {
         margin-right: 2rem;
