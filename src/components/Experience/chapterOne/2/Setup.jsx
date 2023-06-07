@@ -67,7 +67,7 @@ export const Setup = ({ setSpotIndex, setShowText, isVoiceOver, variant }) => {
   }, [])
 
   return (
-    <group dispose={null}>
+    <>
       <Environment files="/assets/hdri/forest_slope_1k.hdr" />
       <CustomCamera />
       <directionalLight
@@ -94,7 +94,7 @@ export const Setup = ({ setSpotIndex, setShowText, isVoiceOver, variant }) => {
           position={[0, 5, 10]}
         /> */}
       </Suspense>
-      {variant === "default" ? (
+      {variant === "b" ? (
         <>
           <Sky
             sunPosition={[80, 100, 80]}
@@ -118,6 +118,6 @@ export const Setup = ({ setSpotIndex, setShowText, isVoiceOver, variant }) => {
         fenceFocused={fenceFocused}
         setFenceFocused={setFenceFocused}
       />
-    </group>
+    </>
   )
 }

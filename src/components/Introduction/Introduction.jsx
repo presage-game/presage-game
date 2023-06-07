@@ -5,7 +5,7 @@ import introductionData from "@/assets/data/introduction.json"
 import ambiance from "/audios/introduction/ambiance.mp3"
 import carEngine from "/audios/introduction/car-engine.mp3"
 
-import { completePrompts, changeGameCode } from "@/store/reducers/userReducer"
+import { completePrompts } from "@/store/reducers/userReducer"
 import { createGame } from "@/database/gamecode"
 
 import { Prompts } from "./Prompts/Prompts"
@@ -13,13 +13,14 @@ import { SplashScreen } from "./SplashScreen/SplashScreen"
 import { Footer } from "./Footer/Footer"
 
 import "./Introduction.scss"
+import { setCode, setInfos } from "@/store/reducers/gameReducer"
 
 export const Introduction = () => {
   const introduction = introductionData
 
   const dispatch = useDispatch()
   const { isPromptComplete, hasExperienceStarted } = useSelector((state) => state.user)
-  const { gameCode } = useSelector((state) => state.user)
+  const { code } = useSelector((state) => state.game)
 
   const [currentIndex, setCurrentIndex] = useState(0)
   const [showIntroduction, setShowIntroduction] = useState(false)
@@ -57,10 +58,16 @@ export const Introduction = () => {
   }, [currentIndex])
 
   useEffect(() => {
-    if (isPromptComplete && gameCode === null) {
+    console.log("isPromptComplete :")
+    console.log(isPromptComplete)
+    console.log("code : ")
+    console.log(code)
+    if (isPromptComplete && code === null) {
       async function fetchData() {
         const data = await createGame()
-        dispatch(changeGameCode(data.game_code))
+        console.log(data)
+        dispatch(setCode(data.game_code))
+        dispatch(setInfos(data.game_info))
       }
       fetchData()
     }

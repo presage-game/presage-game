@@ -3,7 +3,7 @@ import { Button } from "@/components/Button/Button"
 
 import { getGame } from "@/database/gamecode"
 import { useDispatch } from "react-redux"
-import { changeGameCode } from "@/store/reducers/userReducer"
+import { setCode } from "@/store/reducers/gameReducer"
 import { startExperience } from "@/store/reducers/userReducer"
 
 import "./SplashScreen.scss"
@@ -16,7 +16,7 @@ export const SplashScreen = ({ setShowIntroduction }) => {
     console.log(code)
     try {
       const data = await getGame(code)
-      dispatch(changeGameCode(data.game_code))
+      dispatch(setCode(data.game_code))
       dispatch(startExperience())
     } catch (e) {
       console.error(e)

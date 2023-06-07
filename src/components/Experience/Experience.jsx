@@ -14,10 +14,13 @@ import { AudioManager } from "@/components/Experience/tools/AudioManager/AudioMa
 
 import "./Experience.scss"
 import { Preload, Stats } from "@react-three/drei"
+import { getSceneVariants } from "@/helpers/variants/getSceneVariant"
 
 export const Experience = ({ activateBlackBars }) => {
   const { scene, pinpoint } = useSelector((state) => state.map)
   const { mapActive } = useSelector((state) => state.ui)
+  const { code, infos } = useSelector((state) => state.game)
+  const [scenesVariant, setScenesVariant] = useState(() => getSceneVariants(infos))
 
   const [spotIndex, setSpotIndex] = useState(null)
   const [showText, setShowText] = useState(false)
@@ -54,7 +57,7 @@ export const Experience = ({ activateBlackBars }) => {
           />
         ) : scene === 1 ? (
           <MegalithicCircles
-            variant={"default"}
+            variant={scenesVariant[0].value}
             setSpotIndex={setSpotIndex}
             setShowText={setShowText}
             isVoiceOver={isVoiceOver}
@@ -69,6 +72,7 @@ export const Experience = ({ activateBlackBars }) => {
           />
         ) : (
           <KeurGnialo
+            variant={scenesVariant[1].value}
             setSpotIndex={setSpotIndex}
             setShowText={setShowText}
             isVoiceOver={isVoiceOver}

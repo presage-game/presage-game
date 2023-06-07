@@ -1,9 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit"
 
 const initialState = {
-  gameCode: null,
-  score: 0,
-  scenario: "",
   isPromptComplete: false,
   hasExperienceStarted: false,
   onFocusCamera: false,
@@ -54,9 +51,6 @@ export const userSlice = createSlice({
     startExperience: (state) => {
       state.hasExperienceStarted = true
     },
-    changeGameCode: (state, action) => {
-      state.gameCode = action.payload
-    },
     changeOnFocusCamera: (state, action) => {
       state.onFocusCamera = action.payload
     },
@@ -73,7 +67,6 @@ export const {
   setScore,
   completePrompts,
   startExperience,
-  changeGameCode,
   changeOnFocusCamera,
   changeOnFocusCameraPosition,
   collectAdinkra,

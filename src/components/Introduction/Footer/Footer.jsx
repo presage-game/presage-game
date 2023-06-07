@@ -6,13 +6,13 @@ import { startExperience } from "@/store/reducers/userReducer"
 import "./Footer.scss"
 
 export const Footer = () => {
-  const { gameCode } = useSelector((state) => state.user)
+  const { code } = useSelector((state) => state.game)
   const dispatch = useDispatch()
 
   return (
     <footer className="Footer">
       <div className="Footer__baseline">
-        <p>Code partie: {gameCode}</p>
+        <p>Code partie: {code && code}</p>
       </div>
       <Button text="Démarrer" onClick={() => dispatch(startExperience())} />
     </footer>
