@@ -24,7 +24,7 @@ const defaultMaterials = {
   },
   metal: {
     main: "#A19E98",
-    rusty: "#504D5A"
+    rusty: "#504D5A",
   },
   leafMaterial: "#4F7552",
   grassMaterial: "#626F52",
@@ -57,7 +57,7 @@ const variantMaterials = {
   },
   metal: {
     main: "#A19E98",
-    rusty: "#504D5A"
+    rusty: "#504D5A",
   },
   leafMaterial: "#D8BF66",
   grassMaterial: "#626F52",
@@ -113,7 +113,7 @@ export const getMaterials = async (variant) =>
 
     const adinkraMaterial = new MeshToonMaterial({
       color: MaterialsColor.adinkraMaterial,
-      gradientMap: toonFiveTone
+      gradientMap: toonFiveTone,
     })
 
     const fenceMaterial = new MeshToonMaterial({
@@ -150,7 +150,7 @@ export const getMaterials = async (variant) =>
       rusty: new MeshToonMaterial({
         color: MaterialsColor.metal.rusty,
         gradientMap: toonFiveTone,
-      })
+      }),
     }
 
     const leafMaterial = new MeshToonMaterial({
@@ -193,6 +193,11 @@ export const getMaterials = async (variant) =>
 
     const selectedMaterial = new MeshBasicMaterial({
       color: "#FFFFFF",
+    })
+
+    const mapMaterial = new MeshToonMaterial({
+      color: "#e3cfc2",
+      gradientMap: toonFiveTone,
     })
 
     const gasPumpMaterials = {
@@ -239,6 +244,7 @@ export const getMaterials = async (variant) =>
       backgroundMaterial,
       outlineMaterial,
       selectedMaterial,
+      mapMaterial,
       gasPumpMaterials,
     }
   })
