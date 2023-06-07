@@ -38,7 +38,7 @@ export const Scene = ({
   const pathfindinghelper = useMemo(() => new PathfindingHelper(), [])
   const ZONE = "level1"
   const MAX_SPEED = 3.5
-  let speed = 1
+  const speedRef = useRef(1)
 
   let navPath = null
 
@@ -100,18 +100,18 @@ export const Scene = ({
     }
 
     if (navPath.length > 1 || distance.length() > 0.5) {
-      if (speed < MAX_SPEED) {
-        speed += 0.05
+      if (speedRef.current < MAX_SPEED) {
+        speedRef.current += 0.05
       }
       distance.normalize()
       // Move player to target
-      voitureGrpRef.current.position.add(distance.multiplyScalar(delta * speed))
+      voitureGrpRef.current.position.add(distance.multiplyScalar(delta * speedRef.current))
       // do a slowly turn to the target direction
       const targetRotation = new Quaternion().setFromUnitVectors(
         new Vector3(0, 0, 1),
         new Vector3(distance.x, 0, distance.z).normalize()
       )
-      voitureGrpRef.current.quaternion.slerp(targetRotation, delta * speed)
+      voitureGrpRef.current.quaternion.slerp(targetRotation, delta * speedRef.current)
 
       // Move camera to target
       camRef.current.position.set(
@@ -120,7 +120,7 @@ export const Scene = ({
         voitureGrpRef.current.position.z + cameraPos.z
       )
 
-      // pivot.position.lerp(voitureGrpRef.current.position, delta * speed)
+      // pivot.position.lerp(voitureGrpRef.current.position, delta * y)
     } else {
       // Remove node from the path we calculated
       navPath.shift()
@@ -198,7 +198,13 @@ export const Scene = ({
 
   return (
     <>
-      <Model onPointerUp={() => setPointerDown(false)} visible={true} />
+      <Model
+        onPointerUp={() => {
+          setPointerDown(false)
+          speedRef.current = 1
+        }}
+        visible={true}
+      />
       <primitive
         onPointerDown={() => setPointerDown(true)}
         object={navMesh.scene}
@@ -270,7 +276,7 @@ export const Scene = ({
         makeDefault
         ref={camRef}
         position={[carPos.x + cameraPos.x, cameraPos.y, cameraPos.z + carPos.z]}
-        zoom={100}
+        zoom={120}
         near={0}
         far={60}
         dispose={null}
