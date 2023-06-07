@@ -25,10 +25,16 @@ export const Overlay = ({ showBonus, toggleBonus }) => {
             </svg>
           </button>
           <div className="container">
-            <div className="logos"></div>
+            <div className="logos">
+              <div className="gobelins">
+                <img src="/assets/images/gobelins-logo.svg" alt="Gobelins" />
+              </div>
+            </div>
             <div className="description">
               <p className="description__main">Un road trip interactif en 3D</p>
-              <p className="description__secondary">Réalisé à Gobelins Paris</p>
+              <p className="description__secondary">
+                Edward Brunetière, Jimmy Bardou, Nicolas Neveu, Jahnoy Suzon, Victor Cango
+              </p>
             </div>
             <div className="about">
               <h2 className="about__title">À propos</h2>
