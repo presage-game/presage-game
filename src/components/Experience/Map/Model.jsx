@@ -463,7 +463,7 @@ export function Model(props) {
         <mesh geometry={nodes.Cube194_1.geometry} material={Materials.outlineMaterial} />
       </group>
       <group
-        position={[-17.24, 0.84, 12.54]}
+        position={[-17.2, 0.84, 12.5]}
         rotation={[0, -0.7, 3.14]}
         scale={[-0.02, -0.42, -0.26]}
       >
@@ -495,7 +495,7 @@ export function Model(props) {
         <mesh geometry={nodes.Mesh039_1.geometry} material={Materials.outlineMaterial} />
       </group>
       <group
-        position={[-17.24, 0.41, 12.5]}
+        position={[-17.22, 0.41, 12.52]}
         rotation={[3.14, 0.7, 0]}
         scale={[-0.001171, 0.001167, 0.001501]}
       >
