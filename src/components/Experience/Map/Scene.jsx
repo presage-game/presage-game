@@ -262,7 +262,7 @@ export const Scene = ({
         makeDefault
         ref={camRef}
         position={[carPos.x + cameraPos.x, cameraPos.y, cameraPos.z + carPos.z]}
-        zoom={120}
+        zoom={100}
         near={0}
         far={60}
         dispose={null}

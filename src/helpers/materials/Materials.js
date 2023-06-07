@@ -195,6 +195,11 @@ export const getMaterials = async (variant) =>
       color: "#FFFFFF",
     })
 
+    const mapMaterial = new MeshBasicMaterial({
+      color: "#FF0000",
+      gradientMap: toonFiveTone,
+    })
+
     const gasPumpMaterials = {
       green: new MeshToonMaterial({
         color: MaterialsColor.gasPumpMaterials.green,
@@ -239,6 +244,7 @@ export const getMaterials = async (variant) =>
       backgroundMaterial,
       outlineMaterial,
       selectedMaterial,
+      mapMaterial,
       gasPumpMaterials,
     }
   })
