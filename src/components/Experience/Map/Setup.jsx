@@ -9,6 +9,7 @@ import {
   intersectScene,
   intersectPinpoint,
 } from "@/store/reducers/mapReducer"
+import { devUrlChecker } from "@/helpers/checkers/devUrlChecker"
 import { button, useControls } from "leva"
 import { toggleMap } from "@/store/reducers/uiReducer"
 
@@ -41,7 +42,7 @@ export const Setup = ({ setShowText }) => {
     dispatch(intersectPinpoint(intersect))
   }
 
-  const gui = useControls({
+  const gui = devUrlChecker() && useControls({
     RegionEntranceOne: button(() => {
       setSceneNumber(0)
       setChangeSceneState(true)

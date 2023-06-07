@@ -9,24 +9,31 @@ import "./App.scss"
 import { useControls } from "leva"
 import { useEffect } from "react"
 import { changeBlackBarsStatus } from "./store/reducers/uiReducer"
+import { devUrlChecker } from "./helpers/checkers/devUrlChecker"
 
 const App = () => {
   const dispatch = useDispatch()
   const { hasExperienceStarted } = useSelector((state) => state.user)
-  const gui = useControls({
-    BlackBars: false
-  })
+  const gui =
+    devUrlChecker() &&
+    useControls({
+      BlackBars: false,
+    })
 
   useEffect(() => {
-    if(!gui.BlackBars) {
+    if (!gui.BlackBars && devUrlChecker()) {
       dispatch(changeBlackBarsStatus("opened"))
     }
-  },[hasExperienceStarted])
+  }, [hasExperienceStarted])
 
   return (
     <main className="App">
       <Cursor />
-      {!hasExperienceStarted ? <Introduction /> : <Experience activateBlackBars={gui.BlackBars} />}
+      {!hasExperienceStarted ? (
+        <Introduction />
+      ) : (
+        <Experience activateBlackBars={devUrlChecker() ? gui.BlackBars : true} />
+      )}
       {!hasExperienceStarted && (
         <button
           style={{
