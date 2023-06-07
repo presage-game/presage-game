@@ -1048,8 +1048,15 @@ export function Model({ nodes, Materials, materials }) {
       </group>
       <mesh
         geometry={nodes.petronas001_Cube_3_Instance_0086.geometry}
-        material={Materials.concreteMaterial}
+        material={Materials.fenceMaterial}
         position={[32.67, 13.37, 15.3]}
+        rotation={[Math.PI / 2, 0, 3.12]}
+        scale={1.63}
+      />
+      <mesh
+        geometry={nodes.petronas001_Cube_3_Instance_0086.geometry}
+        material={Materials.fenceMaterial}
+        position={[32.86, 13.33, 25.15]}
         rotation={[Math.PI / 2, 0, 3.12]}
         scale={1.63}
       />
