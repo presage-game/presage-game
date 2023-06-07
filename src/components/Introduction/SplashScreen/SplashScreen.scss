@@ -1,4 +1,20 @@
 .SplashScreen {
+  .error-message {
+    text-align: center;
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    background-color: rgb(252, 187, 187);
+    border-radius: 0.6rem;
+    font-size: 1.6rem;
+    padding: 0.8rem;
+    color: rgb(246, 107, 107);
+    letter-spacing: 0.1rem;
+    font-weight: 400;
+    font-family: "Rowdies", cursive;
+    text-transform: uppercase;
+  }
+
   &__title {
     margin-bottom: 6rem;
 
@@ -8,6 +24,8 @@
   }
 
   &__container {
+    // position: relative;
+
     .Button {
       margin: 0 auto;
 

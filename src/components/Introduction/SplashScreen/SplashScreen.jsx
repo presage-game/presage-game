@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { Button } from "@/components/Button/Button"
+import { motion, AnimatePresence } from "framer-motion"
 
 import { getGame } from "@/database/gamecode"
 import { useDispatch } from "react-redux"
@@ -12,8 +13,9 @@ import "./SplashScreen.scss"
 
 export const SplashScreen = ({ setShowIntroduction }) => {
   const [code, setCode] = useState(null)
+  const [error, setError] = useState(false)
   const dispatch = useDispatch()
-  const [showBonus, setShowBonus] = useState(false)
+  const [showCredits, setShowCredits] = useState(false)
 
   const onSubmit = async () => {
     console.log(code)
@@ -23,11 +25,12 @@ export const SplashScreen = ({ setShowIntroduction }) => {
       dispatch(startExperience())
     } catch (e) {
       console.error(e)
+      setError(true)
     }
   }
 
-  const toggleBonus = () => {
-    setShowBonus(!showBonus)
+  const toggleCredits = () => {
+    setShowCredits(!showCredits)
   }
 
   return (
@@ -114,9 +117,22 @@ export const SplashScreen = ({ setShowIntroduction }) => {
             <div className="button__border"></div>
           </button>
         </div>
-        <Button text="Bonus" onClick={() => toggleBonus()} variant="discreet" />
+        {error && (
+          <AnimatePresence>
+            <motion.div
+              initial={{ opacity: 0, x: "-50%", scale: 0 }}
+              animate={{ opacity: 1, x: "-50%", scale: 1 }}
+              exit={{ opacity: 0, x: "-50%", scale: 0 }}
+              transition={{ scale: { type: "spring", stiffness: 100 } }}
+              className="error-message"
+            >
+              Code partie non valide
+            </motion.div>
+          </AnimatePresence>
+        )}
+        <Button text="Crédits" onClick={() => toggleCredits()} variant="discreet" />
       </div>
-      <Overlay showBonus={showBonus} toggleBonus={toggleBonus} />
+      <Overlay showCredits={showCredits} toggleCredits={toggleCredits} />
     </div>
   )
 }

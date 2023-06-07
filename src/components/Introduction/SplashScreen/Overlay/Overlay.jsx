@@ -2,10 +2,10 @@ import { motion, AnimatePresence } from "framer-motion"
 
 import "./Overlay.scss"
 
-export const Overlay = ({ showBonus, toggleBonus }) => {
+export const Overlay = ({ showCredits, toggleCredits }) => {
   return (
     <AnimatePresence>
-      {showBonus && (
+      {showCredits && (
         <motion.div
           key="overlay"
           className="Overlay"
@@ -13,7 +13,7 @@ export const Overlay = ({ showBonus, toggleBonus }) => {
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
         >
-          <button className="close-button" onClick={toggleBonus}>
+          <button className="close-button" onClick={toggleCredits}>
             <svg
               width="17"
               height="17"
@@ -28,6 +28,9 @@ export const Overlay = ({ showBonus, toggleBonus }) => {
             <div className="logos">
               <div className="gobelins">
                 <img src="/assets/images/gobelins-logo.svg" alt="Gobelins" />
+              </div>
+              <div className="cci">
+                <img src="/assets/images/cci-idf.svg" alt="CCI Paris Ile-de-France" />
               </div>
             </div>
             <div className="description">
@@ -95,10 +98,10 @@ export const Overlay = ({ showBonus, toggleBonus }) => {
                 </ul>
               </div>
               <div className="credits__item">
-                <h3 className="role">Remerciements</h3>
+                <h3 className="role">Voix off</h3>
                 <ul className="list">
-                  <li className="list__item">Uriell Semmel</li>
-                  <li className="list__item">Jullian Champenois</li>
+                  <li className="list__item">Uriell Semmel (Radio)</li>
+                  <li className="list__item">Jullian Champenois (Narrateur)</li>
                 </ul>
               </div>
             </div>
