@@ -142,7 +142,7 @@ export const BlackBars = ({ active, progress, setIsVoiceOver, mapActive }) => {
             <motion.p
               className="text"
               initial={{ opacity: 0 }}
-              animate={{ opacity: blackBarsStatus === "window" ? 0.8 : 0 }}
+              animate={{ opacity: blackBarsStatus === "window" ? 0.5 : 0 }}
               transition={{
                 delay: blackBarsStatus === "closed" ? 4 : 0,
                 duration: blackBarsStatus === "closed" ? 3 : 2,
@@ -150,7 +150,7 @@ export const BlackBars = ({ active, progress, setIsVoiceOver, mapActive }) => {
               }}
               exit={{ opacity: 0 }}
             >
-              Cliquer pour entrer dans la scène
+              Cliquez pour entrer
             </motion.p>
           </div>
         )}

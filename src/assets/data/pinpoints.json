@@ -60,29 +60,37 @@
         "text": "Un petit village de fortune s’élève sur des pilotis plantés dans le sol, cinq mètres en-dessous de la surface du lac. Des planches en bois servent de passerelles pour naviguer entre des baraquements recouverts de bâches colorées. Et au plus loin que tes yeux peuvent voir : un littoral garni de frondaisons.",
         "emitter": "narrator"
       },
-      {
-        "text": "Bizuté par un lourd soleil qui se réfléchit sur un immense lac ocre, tu sens des relents de sulfure d’hydrogène pénétrer tes narines. Autour du lac, des femmes et des hommes rient, font des tours dans l’eau, et sifflotent le même air enjoué. Sur la carte, cet endroit a pourtant l’air d’être le bout du monde.",
-        "emitter": "innerVoice"
-      },
-      {
-        "text": "Bienvenue, étranger! T'as la pêche ou quoi^^",
-        "options": [
-          {
-            "text": "A",
-            "response": "Nan"
-          },
-          {
-            "text": "B",
-            "response": "Ouais"
-          }
-        ],
-        "emitter": "npc",
-        "label": "Pêcheurs"
-      },
-      {
-        "text": "Ces pêcheurs ne connaissent pas la vérité. Il y a bien longtemps que les enfants d’An-Uua n’ont plus rien à voir avec cette histoire. Non ; si le lac est de cette couleur, c’est à cause de la pollution et des algues.",
-        "emitter": "innerVoice"
-      }
+      [
+        {
+          "text": "Bizuté par un lourd soleil qui se réfléchit sur un immense lac ocre, tu sens des relents de sulfure d’hydrogène pénétrer tes narines.",
+          "emitter": "innerVoice"
+        },
+        {
+          "text": "C’est bien de voir les gens se baigner et profiter de l’après-midi. Ça rend le travail un peu moins difficile.",
+          "options": [
+            {
+              "text": "Que faites-vous ?",
+              "response": "D’ordinaire, on ramasse le sel dans le lac. Le beurre ne suffit pas à nous protéger la peau et les mains, mais grâce à nous, Memsen se porte bien."
+            },
+            {
+              "text": "Quelles nouvelles ?",
+              "response": "Les gens s’attroupent autour du lac, ces temps-ci. Mais pas pour les mêmes raisons. Ils parlent de pierres *spéciales* qui seraient tombées dans l’eau. Tout le monde veut en trouver une."
+            }
+          ],
+          "emitter": "npc",
+          "label": "Pêcheurs"
+        }
+      ],
+      [
+        {
+          "text": "Autour du lac, des femmes et des hommes rient, font des tours dans l’eau, et sifflotent le même air enjoué. Sur la carte, cet endroit a pourtant l’air d’être le bout du monde.",
+          "emitter": "innerVoice"
+        },
+        {
+          "text": "Ces pêcheurs ne connaissent pas la vérité. Il y a bien longtemps que les enfants d’An-Uua n’ont plus rien à voir avec cette histoire. Non ; si le lac est de cette couleur, c’est à cause de la pollution et des algues.",
+          "emitter": "innerVoice"
+        }
+      ]
     ]
   },
   {
@@ -117,7 +125,7 @@
           "text": "Ce soir, nous célébrons et nous remercions Uwma pour sa bonne grâce! La moisson a été bonne! Et tu es le bienvenu pour célébrer avec nous.",
           "options": [
             {
-              "text": "La moisson?",
+              "text": "La moisson ?",
               "response": "Oui! Nos mains récoltent le riz dans les vallées. Et sur les plateaux, on cultive aussi des céréales, des mangues et des noix de cajou."
             },
             {

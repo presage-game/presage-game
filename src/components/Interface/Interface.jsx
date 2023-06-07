@@ -1,4 +1,4 @@
-import { useState, useEffect} from "react"
+import { useState, useEffect } from "react"
 import { useSelector, useDispatch } from "react-redux"
 import { changeBlackBarsStatus, toggleMap } from "@/store/reducers/uiReducer"
 import { toggleMute } from "@/store/reducers/audioReducer"
@@ -40,7 +40,7 @@ export const Interface = ({
   const [isPopupVisible, setIsPopupVisible] = useState(true)
 
   useEffect(() => {
-    if(showPresage) {
+    if (showPresage) {
       setShowText(false)
     }
   }, [showPresage])
@@ -77,7 +77,7 @@ export const Interface = ({
           setIsVoiceOver={setIsVoiceOver}
           OpenBlackBars={OpenBlackBars}
         />
-      )}   
+      )}
       {/* Work in progress */}
       {!mapActive && sceneIndex === 2 && (
         <PresageTextBox

@@ -20,11 +20,11 @@ export const Setup = ({ setSpotIndex, setShowText, isVoiceOver, setShowPresage }
       changeFocusPosition({
         position: {
           x: 0,
-          y: -100,
-          z: 120,
+          y: -4,
+          z: 70,
         },
         rotation: {
-          x: -Math.PI + 8,
+          x: -Math.PI + 3,
           y: 0,
           z: 0,
         },

@@ -24,7 +24,7 @@ export const SceneTextBox = ({
   const [key, setKey] = useState(0)
 
   // TODO: Set this state from Supabase data
-  const [variant, setVariant] = useState("a")
+  const [variant, setVariant] = useState("b")
 
   /* Text */
   const getTextEmitter = () => {

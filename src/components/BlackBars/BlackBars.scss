@@ -38,15 +38,16 @@
       top: 0;
       right: 0;
     }
-
   }
 
   .text {
     position: absolute;
-    bottom: 20px;
-    left: 50%;
+    bottom: 2rem;
     transform: translateX(-50%);
-    font-family: 'Outfit';
-    font-weight: 500;
+    font-size: 1.6rem;
+    left: 50%;
+    font-weight: 400;
+    letter-spacing: 0.1rem;
+    text-transform: uppercase;
   }
 }
