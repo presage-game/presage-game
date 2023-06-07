@@ -63,7 +63,21 @@ export const SceneTextBox = ({
   }
 
   // Get label
-  const getTextLabel = () => (!isVoiceOver ? scriptData[sceneIndex].spots[spotIndex]?.label : null)
+  const getTextLabel = () => {
+    if (!isVoiceOver) {
+      const spot = scriptData[sceneIndex]?.spots[spotIndex]?.spotVoiceover[textIndex]
+
+      if (typeof spot?.text === "string") {
+        return spot?.label
+      } else {
+        if (variant === "a" && spot[0] !== undefined) {
+          return spot[0]?.label ? spot[0]?.label : null
+        } else if (variant === "b" && spot[1] !== undefined) {
+          return spot[1]?.label ? spot[1]?.label : null
+        }
+      }
+    }
+  }
 
   // Get text
   const getIntroText = () => {
