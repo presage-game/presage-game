@@ -100,12 +100,10 @@ export const Setup = ({ setSpotIndex, setShowText, isVoiceOver }) => {
       <Environment files="/assets/hdri/rooitou_park_1k.hdr" />
       <CustomCamera />
       <Sky
-        sunPosition={[0, 13, 70]}
-        azimuth={90}
-        rayleigh={1.0}
-        mieCoefficient={0.05}
-        mieDirectionalG={0.828}
-        inclination={10}
+        sunPosition={[0.01, 0.15, 3]}
+        rayleigh={0.3}
+        mieCoefficient={0.001}
+        mieDirectionalG={0.5}
       />
       <directionalLight
         intensity={variant === "default" ? 0.9 : 0.5}

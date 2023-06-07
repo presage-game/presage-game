@@ -100,13 +100,7 @@ export const Setup = ({ setSpotIndex, setShowText, isVoiceOver }) => {
         />
       </Suspense>
       <CloudsEffect position={[0, 40, -300]} variant={"default"} numberOfClouds={20} />
-      <Sky
-        sunPosition={[40, 10, 40]}
-        azimuth={180}
-        rayleigh={10.0}
-        mieCoefficient={0.05}
-        mieDirectionalG={0.828}
-      />
+      <Sky sunPosition={[8, 1, 8]} rayleigh={0.6} mieCoefficient={0.001} mieDirectionalG={0.9} />
       <Scene
         adinkraFocused={adinkraFocused}
         setAdinkraFocused={setAdinkraFocused}

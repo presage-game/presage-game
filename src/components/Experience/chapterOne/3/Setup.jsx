@@ -69,13 +69,7 @@ export const Setup = ({ setSpotIndex, setShowText, isVoiceOver, setShowPresage }
           position={[-12, -2.5, -50]}
         />
       </Suspense>
-      <Sky
-        sunPosition={[40, 10, 40]}
-        azimuth={180}
-        rayleigh={10.0}
-        mieCoefficient={0.05}
-        mieDirectionalG={0.828}
-      />
+      <Sky sunPosition={[10, 1, 10]} rayleigh={0.6} mieCoefficient={0.001} mieDirectionalG={0.9} />
       <CloudsEffect position={[0, 40, -300]} variant={"default"} numberOfClouds={20} />
       <Scene treeFocused={treeFocused} setTreeFocused={setTreeFocused} />
     </>
