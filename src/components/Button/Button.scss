@@ -12,7 +12,6 @@
   font-family: "Rowdies", cursive;
   color: #3e3a2f;
   border: 0.1rem solid #3e3a2f;
-  // transform: rotate(-1deg);
   transition: 0.75s cubic-bezier(0.23, 1, 0.32, 1);
 
   &:hover {
@@ -33,16 +32,18 @@
   &--main {
     background-color: #fdc463;
 
-    // &:hover {
-    //   background-color: #f8b643;
-    // }
-
     .Button__border {
       border: 0.1rem solid #d9a957;
     }
+  }
 
-    // &:hover .Button__border {
-    //   border: 0.1rem solid #d8a54b;
-    // }
+  &--discreet {
+    &:hover {
+      background: #f9eada;
+    }
+
+    &:hover .Button__border {
+      border: 0.1rem solid #eddcca;
+    }
   }
 }

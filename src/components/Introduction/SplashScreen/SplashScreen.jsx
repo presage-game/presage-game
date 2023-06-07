@@ -6,11 +6,14 @@ import { useDispatch } from "react-redux"
 import { changeGameCode } from "@/store/reducers/userReducer"
 import { startExperience } from "@/store/reducers/userReducer"
 
+import { Overlay } from "./Overlay/Overlay"
+
 import "./SplashScreen.scss"
 
 export const SplashScreen = ({ setShowIntroduction }) => {
-  const [code, setCode] = useState(1)
+  const [code, setCode] = useState(null)
   const dispatch = useDispatch()
+  const [showBonus, setShowBonus] = useState(false)
 
   const onSubmit = async () => {
     console.log(code)
@@ -21,6 +24,10 @@ export const SplashScreen = ({ setShowIntroduction }) => {
     } catch (e) {
       console.error(e)
     }
+  }
+
+  const toggleBonus = () => {
+    setShowBonus(!showBonus)
   }
 
   return (
@@ -78,23 +85,38 @@ export const SplashScreen = ({ setShowIntroduction }) => {
           }}
           variant="main"
         />
-        <Button text="Continuer" />
-        <Button text="Bonus" />
+        <div className="continue">
+          <div className="input">
+            <input
+              placeholder="Entrer un code partie"
+              type="number"
+              min="0"
+              max="999999"
+              inputMode="numeric"
+              defaultValue={code}
+              onChange={(e) => setCode(e.target.value)}
+            />
+            <div className="input__border"></div>
+          </div>
+          <button className="button" onClick={onSubmit}>
+            <svg
+              width="25"
+              height="13"
+              viewBox="0 0 25 13"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M0 6.50001L24 6.50001M24 6.50001L17 0.499999M24 6.50001L17 12.5"
+                stroke="#2E2724"
+              />
+            </svg>
+            <div className="button__border"></div>
+          </button>
+        </div>
+        <Button text="Bonus" onClick={() => toggleBonus()} variant="discreet" />
       </div>
-      {/* <div className={styles.loadGame}>
-        <label htmlFor="tentacles">Continuer une partie :</label>
-        <input
-          type="number"
-          id="tentacles"
-          name="tentacles"
-          min="1"
-          max="999999"
-          inputMode="numeric"
-          defaultValue={code}
-          onChange={(e) => setCode(e.target.value)}
-        />
-        <button onClick={onSubmit}>Envoyer</button>
-      </div> */}
+      <Overlay showBonus={showBonus} toggleBonus={toggleBonus} />
     </div>
   )
 }
