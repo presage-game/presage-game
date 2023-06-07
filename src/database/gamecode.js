@@ -44,7 +44,7 @@ export const createGame = async () => {
   while (!validCode) {
     const gameCode = Math.floor(Math.random() * (999999 - 100000) + 100000)
     console.log(gameCode)
-    if(gameExists(gameCode) !== false) {
+    if (gameExists(gameCode) !== false) {
       validCode = true
       finalGameCode = gameCode
     }
@@ -55,6 +55,22 @@ export const createGame = async () => {
     .insert({ game_code: finalGameCode })
     .select()
     .single()
+  console.log(data)
+  if (error) {
+    throw new Error(error)
+  }
+  return data
+}
+
+
+const getFinishedGame = async () => {
+  const { data, error } = await supabase
+    .from("Users")
+    .select("finished")
+    .eq("finished", true)
+    .limit(1)
+    .single()
+  console.log("finishedGame : ")
   console.log(data)
   if (error) {
     throw new Error(error)

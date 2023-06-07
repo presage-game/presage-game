@@ -19,7 +19,7 @@ export const Introduction = () => {
 
   const dispatch = useDispatch()
   const { isPromptComplete, hasExperienceStarted } = useSelector((state) => state.user)
-  const { gameCode } = useSelector((state) => state.user)
+  const { code } = useSelector((state) => state.game)
 
   const [currentIndex, setCurrentIndex] = useState(0)
   const [showIntroduction, setShowIntroduction] = useState(false)
@@ -57,9 +57,14 @@ export const Introduction = () => {
   }, [currentIndex])
 
   useEffect(() => {
-    if (isPromptComplete && gameCode === null) {
+    console.log("isPromptComplete :")
+    console.log(isPromptComplete)
+    console.log("code : ")
+    console.log(code)
+    if (isPromptComplete && code === null) {
       async function fetchData() {
         const data = await createGame()
+        console.log(data)
         dispatch(changeGameCode(data.game_code))
       }
       fetchData()
