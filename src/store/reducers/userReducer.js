@@ -51,9 +51,6 @@ export const userSlice = createSlice({
     startExperience: (state) => {
       state.hasExperienceStarted = true
     },
-    changeGameCode: (state, action) => {
-      state.gameCode = action.payload
-    },
     changeOnFocusCamera: (state, action) => {
       state.onFocusCamera = action.payload
     },
@@ -70,7 +67,6 @@ export const {
   setScore,
   completePrompts,
   startExperience,
-  changeGameCode,
   changeOnFocusCamera,
   changeOnFocusCameraPosition,
   collectAdinkra,

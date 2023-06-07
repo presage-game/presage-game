@@ -44,12 +44,15 @@ export const gameSlice = createSlice({
   name: "game",
   initialState,
   reducers: {
+    setCode: (state, action) => {
+      state.code = action.payload
+    },
     setInfos: (state, action) => {
       state.infos = action.payload
     },
   },
 })
 
-export const {} = gameSlice.actions
+export const { setCode, setInfos } = gameSlice.actions
 
 export default gameSlice.reducer

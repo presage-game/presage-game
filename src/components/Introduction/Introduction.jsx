@@ -5,7 +5,7 @@ import introductionData from "@/assets/data/introduction.json"
 import ambiance from "/audios/introduction/ambiance.mp3"
 import carEngine from "/audios/introduction/car-engine.mp3"
 
-import { completePrompts, changeGameCode } from "@/store/reducers/userReducer"
+import { completePrompts } from "@/store/reducers/userReducer"
 import { createGame } from "@/database/gamecode"
 
 import { Prompts } from "./Prompts/Prompts"
@@ -13,6 +13,7 @@ import { SplashScreen } from "./SplashScreen/SplashScreen"
 import { Footer } from "./Footer/Footer"
 
 import "./Introduction.scss"
+import { setCode } from "@/store/reducers/gameReducer"
 
 export const Introduction = () => {
   const introduction = introductionData
@@ -65,7 +66,8 @@ export const Introduction = () => {
       async function fetchData() {
         const data = await createGame()
         console.log(data)
-        dispatch(changeGameCode(data.game_code))
+        dispatch(setCode(data.game_code))
+        //dispatch(setInfos(data.))
       }
       fetchData()
     }
