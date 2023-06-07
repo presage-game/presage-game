@@ -13,9 +13,12 @@ export const audioSlice = createSlice({
       state.isMuted = !state.isMuted
       state.volume = state.isMuted ? 0 : 1
     },
+    changeVolume: (state,action) => {
+      state.volume = action.payload
+    } 
   },
 })
 
-export const { toggleMute } = audioSlice.actions
+export const { toggleMute, changeVolume } = audioSlice.actions
 
 export default audioSlice.reducer
