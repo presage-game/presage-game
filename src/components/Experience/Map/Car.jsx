@@ -60,7 +60,7 @@ export const Car = ({ animationsName = "Run" }) => {
   }, [])
 
   return (
-    <group>
+    <group dispose={null}>
       <primitive
         object={car.scene}
         scale={0.0012}

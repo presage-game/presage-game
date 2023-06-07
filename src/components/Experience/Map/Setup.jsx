@@ -42,24 +42,26 @@ export const Setup = ({ setShowText }) => {
     dispatch(intersectPinpoint(intersect))
   }
 
-  const gui = devUrlChecker() && useControls({
-    RegionEntranceOne: button(() => {
-      setSceneNumber(0)
-      setChangeSceneState(true)
-    }),
-    MegalithicCircles: button(() => {
-      setSceneNumber(1)
-      setChangeSceneState(true)
-    }),
-    BaobabOne: button(() => {
-      setSceneNumber(2)
-      setChangeSceneState(true)
-    }),
-    KeurGnialo: button(() => {
-      setSceneNumber(3)
-      setChangeSceneState(true)
-    }),
-  })
+  const gui =
+    devUrlChecker() &&
+    useControls({
+      RegionEntranceOne: button(() => {
+        setSceneNumber(0)
+        setChangeSceneState(true)
+      }),
+      MegalithicCircles: button(() => {
+        setSceneNumber(1)
+        setChangeSceneState(true)
+      }),
+      BaobabOne: button(() => {
+        setSceneNumber(2)
+        setChangeSceneState(true)
+      }),
+      KeurGnialo: button(() => {
+        setSceneNumber(3)
+        setChangeSceneState(true)
+      }),
+    })
 
   useEffect(() => {
     if (changeSceneState === true) {
@@ -75,6 +77,7 @@ export const Setup = ({ setShowText }) => {
       dispatch(intersectScene(false))
     }
   }, [])
+
 
   return (
     <>

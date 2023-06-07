@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react"
 import { Model } from "./Model"
-import { Environment } from "@react-three/drei"
 import { AdinkraOne } from "../../objects/interactive/AdinkraOne/AdinkraOne"
 import { getMaterials } from "@/helpers/materials/Materials"
 import { Fence } from "../../objects/interactive/Fence/Fence"
@@ -19,11 +18,7 @@ export const Scene = ({
   }, [])
 
   if (Materials === null) {
-    return (
-      <>
-        <Environment files="/assets/hdri/rooitou_park_1k.hdr" />
-      </>
-    )
+    return <group dispose={null}></group>
   }
 
   return (
