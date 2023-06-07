@@ -36,7 +36,7 @@ export const Overlay = ({ showCredits, toggleCredits }) => {
             <div className="description">
               <p className="description__main">Un road trip interactif en 3D</p>
               <p className="description__secondary">
-                Edward Brunetière, Jimmy Bardou, Nicolas Neveu, Jahnoy Suzon, Victor Cango
+                Edward Brunetiere, Jimmy Bardou, Nicolas Neveu, Jahnoy Suzon, Victor Cango
               </p>
             </div>
             <div className="about">
@@ -54,7 +54,7 @@ export const Overlay = ({ showCredits, toggleCredits }) => {
               <div className="credits__item">
                 <h3 className="role">Game Design</h3>
                 <ul className="list">
-                  <li className="list__item">Edward Brunetière</li>
+                  <li className="list__item">Edward Brunetiere</li>
                   <li className="list__item">Victor Cango</li>
                 </ul>
               </div>
@@ -81,7 +81,7 @@ export const Overlay = ({ showCredits, toggleCredits }) => {
                 <h3 className="role">Développement web</h3>
                 <ul className="list">
                   <li className="list__item">Nicolas Neveu</li>
-                  <li className="list__item">Edward Brunetière</li>
+                  <li className="list__item">Edward Brunetiere</li>
                   <li className="list__item">Victor Cango</li>
                 </ul>
               </div>
@@ -98,7 +98,7 @@ export const Overlay = ({ showCredits, toggleCredits }) => {
                 </ul>
               </div>
               <div className="credits__item">
-                <h3 className="role">Voix off</h3>
+                <h3 className="role">Voix</h3>
                 <ul className="list">
                   <li className="list__item">Uriell Semmel (Radio)</li>
                   <li className="list__item">Jullian Champenois (Narrateur)</li>
