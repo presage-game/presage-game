@@ -4,8 +4,16 @@ import { getMaterials } from "@/helpers/materials/Materials"
 import { useState, useEffect } from "react"
 import { useGLTF } from "@react-three/drei"
 import { PromotionalSign } from "../../objects/interactive/PromotionalSign/PromotionalSign"
+import { StationEntry } from "../../objects/interactive/StationEntry/StationEntry"
 
-export const Scene = ({ adinkraFocused, setAdinkraFocused, signFocused, setSignFocused }) => {
+export const Scene = ({
+  adinkraFocused,
+  setAdinkraFocused,
+  signFocused,
+  setSignFocused,
+  entryFocused,
+  setEntryFocused,
+}) => {
   const { nodes, materials } = useGLTF("/assets/scenes/keur_gnialo.glb")
 
   const [Materials, setMaterials] = useState(null)
@@ -31,6 +39,12 @@ export const Scene = ({ adinkraFocused, setAdinkraFocused, signFocused, setSignF
           nodes={nodes}
           signFocused={signFocused}
           setSignFocused={setSignFocused}
+        />
+        <StationEntry
+          Materials={Materials}
+          nodes={nodes}
+          entryFocused={entryFocused}
+          setEntryFocused={setEntryFocused}
         />
       </group>
       <AdinkraTwo
