@@ -14,6 +14,7 @@ import { PresageTextBox } from "./PresageTextBox/PresageTextBox"
 import { IntersectionPopup } from "./IntersectionPopup/IntersectionPopup"
 import { Collection } from "./Collection/Collection"
 import { Options } from "./Options/Options"
+import { devUrlChecker } from "@/helpers/checkers/devUrlChecker"
 
 export const Interface = ({
   mapActive,
@@ -47,23 +48,25 @@ export const Interface = ({
 
   return (
     <>
-      <div
-        style={{
-          position: "absolute",
-          zIndex: "10",
-          mixBlendMode: "difference",
-          top: "2rem",
-          left: "50%",
-          transform: "translateX(-50%)",
-        }}
-      >
-        <button
-          style={{ marginLeft: "3rem", cursor: "none" }}
-          onClick={() => dispatch(toggleMute())}
+      {devUrlChecker() && (
+        <div
+          style={{
+            position: "absolute",
+            zIndex: "10",
+            mixBlendMode: "difference",
+            top: "2rem",
+            left: "50%",
+            transform: "translateX(-50%)",
+          }}
         >
-          {isMuted ? "Unmute" : "Mute"}
-        </button>
-      </div>
+          <button
+            style={{ marginLeft: "3rem", cursor: "none" }}
+            onClick={() => dispatch(toggleMute())}
+          >
+            {isMuted ? "Unmute" : "Mute"}
+          </button>
+        </div>
+      )}
       {activateBlackBars && <BlackBars setIsVoiceOver={setIsVoiceOver} mapActive={mapActive} />}
       {!mapActive && blackBarsStatus !== "closed" && blackBarsStatus !== "window" && (
         <SceneTextBox

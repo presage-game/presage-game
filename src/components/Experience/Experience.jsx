@@ -15,6 +15,7 @@ import { AudioManager } from "@/components/Experience/tools/AudioManager/AudioMa
 import "./Experience.scss"
 import { Preload, Stats } from "@react-three/drei"
 import { getSceneVariants } from "@/helpers/variants/getSceneVariant"
+import { devUrlChecker } from "@/helpers/checkers/devUrlChecker"
 
 export const Experience = ({ activateBlackBars }) => {
   const { scene, pinpoint } = useSelector((state) => state.map)
@@ -79,7 +80,7 @@ export const Experience = ({ activateBlackBars }) => {
           />
         )}
         <Preload all />
-        <Stats />
+        {devUrlChecker() && <Stats />}
       </Canvas>
       <AudioManager sceneIndex={scene} pinpointIndex={pinpoint} mapActive={mapActive} />
     </div>
