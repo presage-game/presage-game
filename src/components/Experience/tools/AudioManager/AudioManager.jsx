@@ -50,7 +50,7 @@ export const AudioManager = ({ sceneIndex, pinpointIndex, mapActive }) => {
     if (isSceneIntersecting && !isMuted) {
       ambianceAudio.src = `/audios/scenes/${sceneIndex}/sounds/ambiance.mp3`
       ambianceAudio.play()
-      ambianceGainNode.gain.linearRampToValueAtTime(0.5, audioCtx.currentTime + 2)
+      ambianceGainNode.gain.linearRampToValueAtTime(0.4, audioCtx.currentTime + 2)
     } else if (!isSceneIntersecting && mapActive) {
       ambianceGainNode.gain.linearRampToValueAtTime(0, audioCtx.currentTime + 2)
     }
@@ -60,7 +60,7 @@ export const AudioManager = ({ sceneIndex, pinpointIndex, mapActive }) => {
     if (isPinpointIntersecting && !isMuted) {
       ambianceAudio.src = `/audios/pinpoints/${pinpointIndex}/sounds/ambiance.mp3`
       ambianceAudio.play()
-      ambianceGainNode.gain.linearRampToValueAtTime(0.5, audioCtx.currentTime + 2)
+      ambianceGainNode.gain.linearRampToValueAtTime(0.4, audioCtx.currentTime + 2)
     } else {
       ambianceGainNode.gain.linearRampToValueAtTime(0, audioCtx.currentTime + 2)
     }
