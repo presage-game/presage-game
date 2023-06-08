@@ -66,15 +66,15 @@
           "emitter": "innerVoice"
         },
         {
-          "text": "C’est bien de voir les gens se baigner et profiter de l’après-midi. Ça rend le travail un peu moins difficile. Et puis, Uwma et Sali nous protègent. Ils ont béni le lac de leur sang. C'est pour cela qu'il est rose.",
+          "text": "''C’est bien de voir les gens se baigner et profiter de l’après-midi. Ça rend le travail un peu moins difficile. Et puis, Uwma et Sali nous protègent. Ils ont béni le lac de leur sang. C'est pour cela qu'il est rose.''",
           "options": [
             {
               "text": "Que faites-vous ?",
-              "response": "D’ordinaire, on ramasse le sel dans le lac. Le beurre ne suffit pas à nous protéger la peau et les mains, mais grâce à nous, Memsen se porte bien."
+              "response": "''D’ordinaire, on ramasse le sel dans le lac. Le beurre ne suffit pas à nous protéger la peau et les mains, mais grâce à nous, Memsen se porte bien.''"
             },
             {
               "text": "Quelles nouvelles ?",
-              "response": "Les gens s’attroupent autour du lac, ces temps-ci. Mais pas pour les mêmes raisons. Ils parlent de pierres *spéciales* qui seraient tombées dans l’eau. Tout le monde veut en trouver une."
+              "response": "''Les gens s’attroupent autour du lac, ces temps-ci. Mais pas pour les mêmes raisons. Ils parlent de pierres *spéciales* qui seraient tombées dans l’eau. Tout le monde veut en trouver une.''"
             }
           ],
           "emitter": "npc",
