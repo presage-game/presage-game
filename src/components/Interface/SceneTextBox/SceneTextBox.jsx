@@ -184,6 +184,12 @@ export const SceneTextBox = ({
     }
   }, [mapActive])
 
+  useEffect(() => {
+    if (!showText && spotIndex === null) {
+      setTextIndex(0)
+    }
+  }, [showText])
+
   /* Voiceover */
   useEffect(() => {
     if (!hasMoreIntroText()) {
