@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit"
 
 const audio = new Audio("/audios/unlock.mp3")
+audio.volume = 0.5
 
 const initialState = {
   isPromptComplete: false,
