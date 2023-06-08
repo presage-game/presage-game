@@ -17,13 +17,13 @@ const initialState = {
         },
         {
           name: "phosphateMine",
-          value: "b",
+          value: "a",
         },
       ],
       [
         {
           name: "keurGnialo",
-          value: "b",
+          value: "a",
         },
         {
           name: "memsen",

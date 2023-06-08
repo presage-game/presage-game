@@ -1,5 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit"
 
+const audio = new Audio("/audios/unlock.mp3")
+audio.volume = 0.5
+
 const initialState = {
   isPromptComplete: false,
   hasExperienceStarted: false,
@@ -59,6 +62,7 @@ export const userSlice = createSlice({
     },
     collectAdinkra: (state, action) => {
       state.adinkras[action.payload].isCollected = true
+      audio.play()
     },
   },
 })
