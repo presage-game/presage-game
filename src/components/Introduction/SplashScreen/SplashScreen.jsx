@@ -25,7 +25,7 @@ export const SplashScreen = ({ setShowIntroduction }) => {
       const data = await getGame(localCode)
       console.log(data)
       if (data.finished) {
-        setErrorMessage("Partie déjà terminé")
+        setErrorMessage("Partie déjà terminée")
         setError(true)
       } else {
         dispatch(setCode(data.game_code))
