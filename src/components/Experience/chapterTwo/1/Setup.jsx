@@ -7,7 +7,7 @@ import { useDispatch } from "react-redux"
 import { changeOnFocusCamera, changeOnFocusCameraPosition } from "@/store/reducers/userReducer"
 import { GoToMap } from "../../objects/interactive/GoToMap/GoToMap"
 
-export const Setup = ({ setSpotIndex, setShowText, isVoiceOver }) => {
+export const Setup = ({ setSpotIndex, setShowText, isVoiceOver, variant }) => {
   const dispatch = useDispatch()
   const changeFocus = (value) => dispatch(changeOnFocusCamera(value))
   const changeFocusPosition = (value) => dispatch(changeOnFocusCameraPosition(value))
@@ -95,9 +95,18 @@ export const Setup = ({ setSpotIndex, setShowText, isVoiceOver }) => {
           autoplay
           url="/audios/scenes/0/atmospheric/wind.mp3"
           loop
-          distance={10}
+          distance={1}
           position={[-12, -2.5, -50]}
         />
+        {variant === "a" && (
+          <PositionalAudio
+            autoplay
+            url="/audios/scenes/3/atmospheric/gas-station.mp3"
+            loop
+            distance={2}
+            position={[-15, 0, -55]}
+          />
+        )}
       </Suspense>
       <CloudsEffect position={[0, 40, -300]} variant={"default"} numberOfClouds={20} />
       <Sky sunPosition={[8, 1, 8]} rayleigh={0.6} mieCoefficient={0.001} mieDirectionalG={0.9} />

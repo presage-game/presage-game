@@ -22,7 +22,9 @@ export const MapTextBox = ({ pinpointsData, pinpointIndex, showText, setShowText
   /* --- WIP --- */
 
   // Utiliser un useMemo? Ou une fonction dédiée?
-  const [variant, setVariant] = useState(() => getTextVariant(pinpointIndex, "pinpoint", infos, adinkras))
+  const [variant, setVariant] = useState(() =>
+    getTextVariant(pinpointIndex, "pinpoint", infos, adinkras)
+  )
 
   /* ------ */
 
@@ -40,10 +42,19 @@ export const MapTextBox = ({ pinpointsData, pinpointIndex, showText, setShowText
     }
   }
 
-  const getTextLabel = () =>
-    pinpointsData[pinpointIndex]?.voiceover[textIndex]?.label
-      ? pinpointsData[pinpointIndex]?.voiceover[textIndex]?.label
-      : pinpointsData[pinpointIndex]?.name
+  const getTextLabel = () => {
+    const pinpoint = pinpointsData[pinpointIndex]?.voiceover[textIndex]
+
+    if (typeof pinpoint?.text === "string") {
+      return pinpoint?.label
+    } else {
+      if (variant === "a") {
+        return pinpoint[0]?.label
+      } else if (variant === "b") {
+        return pinpoint[1]?.label
+      }
+    }
+  }
 
   const getText = () => {
     const pinpoint = pinpointsData[pinpointIndex]?.voiceover[textIndex]
