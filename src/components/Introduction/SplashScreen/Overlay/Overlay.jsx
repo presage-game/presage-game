@@ -106,7 +106,7 @@ export const Overlay = ({ showCredits, toggleCredits }) => {
               </div>
             </div>
             <div className="trailer">
-              <video src="" controls></video>
+              <video src="/videos/trailer.mp4" preload="metadata" controls></video>
             </div>
             <div className="logo">
               <svg
