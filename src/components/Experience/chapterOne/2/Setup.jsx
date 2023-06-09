@@ -106,7 +106,7 @@ export const Setup = ({ setSpotIndex, setShowText, isVoiceOver, variant }) => {
       ) : (
         <>
           <color attach={"background"} args={["#be915b"]} />
-          <fog attach={"fog"} args={["transparent", 1, 50]} />
+          <fog attach={"fog"} args={["#be915b", 1, 50]} />
           <TempestEffect />
           <ambientLight color={"#be915b"} intensity={0.5} dispose={null} />
         </>

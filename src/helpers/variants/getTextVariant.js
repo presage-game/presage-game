@@ -48,7 +48,7 @@ export const getTextVariant = (index, type, infos, adinkras) => {
           ? infos.currentPresages[2][0].value
           : "a"
 
-      console.log(`scene ${index} with variant ${value}`)
+      
 
       return value
     } else if (type === "pinpoint") {
@@ -61,7 +61,7 @@ export const getTextVariant = (index, type, infos, adinkras) => {
           ? infos.currentPresages[2][1].value
           : "a"
 
-      console.log(`pinpoint ${index} with variant ${value}`)
+      
 
       return value
     }

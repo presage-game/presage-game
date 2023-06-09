@@ -20,10 +20,10 @@ export const SplashScreen = ({ setShowIntroduction }) => {
   const [showCredits, setShowCredits] = useState(false)
 
   const onSubmit = async () => {
-    console.log(localCode)
+    
     try {
       const data = await getGame(localCode)
-      console.log(data)
+      
       if (data.finished) {
         setErrorMessage("Partie déjà terminée")
         setError(true)

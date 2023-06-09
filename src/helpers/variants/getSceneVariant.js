@@ -15,10 +15,10 @@ export const getSceneVariants = (infos) => {
   ]
 
   let tab = []
-  console.log(infos)
+  
   for (let i = 0; i < data.length - 1; i++) {
     let lineTab = infos.currentPresages[i].filter((element) => element.name === data[i].name)
-    console.log(lineTab)
+    
     if (lineTab.length > 0) {
       tab.push({ ...lineTab[0], index: data[i].index })
     } else {
@@ -26,6 +26,6 @@ export const getSceneVariants = (infos) => {
     }
   }
 
-  console.log(tab)
+  
   return tab
 }
