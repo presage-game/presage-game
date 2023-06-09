@@ -1,7 +1,18 @@
-import * as THREE from "three"
-import React, { useRef, useState, useEffect } from "react"
+import {
+  TextureLoader,
+  InstancedBufferAttribute,
+  DynamicDrawUsage,
+  InstancedBufferGeometry,
+  Float32BufferAttribute,
+  ShaderMaterial,
+  DoubleSide,
+  CustomBlending,
+  AddEquation,
+  OneFactor,
+  OneMinusSrcAlphaFactor,
+  Mesh,
+} from "three"
 import { useFrame } from "@react-three/fiber"
-import { Box } from "@react-three/drei"
 
 export const Smoke = ({ position }) => {
   let vs = []
@@ -13,7 +24,7 @@ export const Smoke = ({ position }) => {
   /**
    * Textures
    */
-  const textureLoader = new THREE.TextureLoader()
+  const textureLoader = new TextureLoader()
 
   tex["smoke"] = textureLoader.load(
     "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAACXBIWXMAAAsTAAALEwEAmpwYAAAF0WlUWHRYTUw6Y29tLmFkb2JlLnhtcAAAAAAAPD94cGFja2V0IGJlZ2luPSLvu78iIGlkPSJXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQiPz4gPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iQWRvYmUgWE1QIENvcmUgNS42LWMxNDUgNzkuMTYzNDk5LCAyMDE4LzA4LzEzLTE2OjQwOjIyICAgICAgICAiPiA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPiA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtbG5zOmRjPSJodHRwOi8vcHVybC5vcmcvZGMvZWxlbWVudHMvMS4xLyIgeG1sbnM6cGhvdG9zaG9wPSJodHRwOi8vbnMuYWRvYmUuY29tL3Bob3Rvc2hvcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RFdnQ9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZUV2ZW50IyIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ0MgMjAxOSAoV2luZG93cykiIHhtcDpDcmVhdGVEYXRlPSIyMDIwLTEwLTA2VDE3OjEwOjAzKzAzOjAwIiB4bXA6TW9kaWZ5RGF0ZT0iMjAyMi0wMi0wNlQxMzozOTo0MSswMzowMCIgeG1wOk1ldGFkYXRhRGF0ZT0iMjAyMi0wMi0wNlQxMzozOTo0MSswMzowMCIgZGM6Zm9ybWF0PSJpbWFnZS9wbmciIHBob3Rvc2hvcDpDb2xvck1vZGU9IjMiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6MTA5NzNhNjYtNTFmMC1iMDRlLWE5NDMtNzVjZmFjNDYxZTc4IiB4bXBNTTpEb2N1bWVudElE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"
@@ -308,23 +319,21 @@ gl_FragColor.a*=vBlend;
     }
 
     let item = mesh["sprite"].geometry.attributes
-    item.offset = new THREE.InstancedBufferAttribute(offset, 3).setUsage(THREE.DynamicDrawUsage)
-    item.scale = new THREE.InstancedBufferAttribute(scale, 2).setUsage(THREE.DynamicDrawUsage)
-    item.quaternion = new THREE.InstancedBufferAttribute(quaternion, 4).setUsage(
-      THREE.DynamicDrawUsage
-    )
-    item.rotation = new THREE.InstancedBufferAttribute(rotation, 1).setUsage(THREE.DynamicDrawUsage)
-    item.color = new THREE.InstancedBufferAttribute(color, 4).setUsage(THREE.DynamicDrawUsage)
-    item.blend = new THREE.InstancedBufferAttribute(blend, 1).setUsage(THREE.DynamicDrawUsage)
-    item.texture = new THREE.InstancedBufferAttribute(texture, 1).setUsage(THREE.DynamicDrawUsage)
+    item.offset = new InstancedBufferAttribute(offset, 3).setUsage(DynamicDrawUsage)
+    item.scale = new InstancedBufferAttribute(scale, 2).setUsage(DynamicDrawUsage)
+    item.quaternion = new InstancedBufferAttribute(quaternion, 4).setUsage(DynamicDrawUsage)
+    item.rotation = new InstancedBufferAttribute(rotation, 1).setUsage(DynamicDrawUsage)
+    item.color = new InstancedBufferAttribute(color, 4).setUsage(DynamicDrawUsage)
+    item.blend = new InstancedBufferAttribute(blend, 1).setUsage(DynamicDrawUsage)
+    item.texture = new InstancedBufferAttribute(texture, 1).setUsage(DynamicDrawUsage)
 
     mesh["sprite"].geometry._maxInstanceCount = count
   }
 
-  let geometry = new THREE.InstancedBufferGeometry()
+  let geometry = new InstancedBufferGeometry()
   geometry.setAttribute(
     "position",
-    new THREE.Float32BufferAttribute(
+    new Float32BufferAttribute(
       new Float32Array([
         -0.5, 0.5, 0, -0.5, -0.5, 0, 0.5, 0.5, 0, 0.5, -0.5, 0, 0.5, 0.5, 0, -0.5, -0.5, 0,
       ]),
@@ -333,34 +342,34 @@ gl_FragColor.a*=vBlend;
   )
   geometry.setAttribute(
     "uv",
-    new THREE.Float32BufferAttribute(new Float32Array([0, 1, 0, 0, 1, 1, 1, 0, 1, 1, 0, 0]), 2)
+    new Float32BufferAttribute(new Float32Array([0, 1, 0, 0, 1, 1, 1, 0, 1, 1, 0, 0]), 2)
   )
-  geometry.setAttribute("offset", new THREE.InstancedBufferAttribute(new Float32Array(), 3))
-  geometry.setAttribute("scale", new THREE.InstancedBufferAttribute(new Float32Array(), 2))
-  geometry.setAttribute("quaternion", new THREE.InstancedBufferAttribute(new Float32Array(), 4))
-  geometry.setAttribute("rotation", new THREE.InstancedBufferAttribute(new Float32Array(), 1))
-  geometry.setAttribute("color", new THREE.InstancedBufferAttribute(new Float32Array(), 4))
-  geometry.setAttribute("blend", new THREE.InstancedBufferAttribute(new Float32Array(), 1))
-  geometry.setAttribute("texture", new THREE.InstancedBufferAttribute(new Float32Array(), 1))
+  geometry.setAttribute("offset", new InstancedBufferAttribute(new Float32Array(), 3))
+  geometry.setAttribute("scale", new InstancedBufferAttribute(new Float32Array(), 2))
+  geometry.setAttribute("quaternion", new InstancedBufferAttribute(new Float32Array(), 4))
+  geometry.setAttribute("rotation", new InstancedBufferAttribute(new Float32Array(), 1))
+  geometry.setAttribute("color", new InstancedBufferAttribute(new Float32Array(), 4))
+  geometry.setAttribute("blend", new InstancedBufferAttribute(new Float32Array(), 1))
+  geometry.setAttribute("texture", new InstancedBufferAttribute(new Float32Array(), 1))
 
-  mat["sprite"] = new THREE.ShaderMaterial({
+  mat["sprite"] = new ShaderMaterial({
     uniforms: {
       map: { value: [tex["smoke"]] },
       time: { value: 0 },
     },
     vertexShader: vs["sprite"],
     fragmentShader: fs["sprite"],
-    side: THREE.DoubleSide,
+    side: DoubleSide,
     transparent: true,
     depthWrite: false,
-    blending: THREE.CustomBlending,
-    blendEquation: THREE.AddEquation,
-    blendSrc: THREE.OneFactor,
-    blendDst: THREE.OneMinusSrcAlphaFactor,
+    blending: CustomBlending,
+    blendEquation: AddEquation,
+    blendSrc: OneFactor,
+    blendDst: OneMinusSrcAlphaFactor,
   })
 
-  mesh["sprite"] = new THREE.Mesh(geometry, mat["sprite"])
-  
+  mesh["sprite"] = new Mesh(geometry, mat["sprite"])
+
   /**
    * Animate
    */

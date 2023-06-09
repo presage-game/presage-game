@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"
 import { useSelector, useDispatch } from "react-redux"
-import { changeBlackBarsStatus, toggleMap } from "@/store/reducers/uiReducer"
+import { changeBlackBarsStatus } from "@/store/reducers/uiReducer"
 import { toggleMute } from "@/store/reducers/audioReducer"
 
 import scriptData from "@/assets/data/scenes.json"
