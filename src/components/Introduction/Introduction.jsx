@@ -58,14 +58,14 @@ export const Introduction = () => {
   }, [currentIndex])
 
   useEffect(() => {
-    console.log("isPromptComplete :")
-    console.log(isPromptComplete)
-    console.log("code : ")
-    console.log(code)
+    
+    
+    
+    
     if (isPromptComplete && code === null) {
       async function fetchData() {
         const data = await createGame()
-        console.log(data)
+        
         dispatch(setCode(data.game_code))
         dispatch(setInfos(data.game_info))
       }

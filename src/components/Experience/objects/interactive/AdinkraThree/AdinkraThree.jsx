@@ -36,10 +36,10 @@ export const AdinkraThree = ({ switchLerp }) => {
 
   const holdComplete = () => {
     if (active && RightBoxRef.current.position.x === 9) {
-      console.log("hold fini")
+      
       setFinished(true)
     } else {
-      console.log("hold pas terminé")
+      
     }
   }
 

@@ -7,7 +7,7 @@ export const getGame = async (code) => {
     .eq("game_code", code)
     .limit(1)
     .single()
-  console.log(data)
+  
   if (error) {
     throw new Error(error)
   }
@@ -32,7 +32,7 @@ export const saveGame = async (code, partydata) => {
     .from("Users")
     .update({ game_info: partydata })
     .eq("game_code", code)
-  console.log(data)
+  
   if (error) {
     throw new Error(error)
   }
@@ -45,8 +45,8 @@ const getFinishedGame = async () => {
     .eq("finished", true)
     .limit(1)
     .single()
-  console.log("finishedGame : ")
-  console.log(data)
+  
+  
   if (error) {
     throw new Error(error)
   }
@@ -63,7 +63,7 @@ export const createGame = async () => {
       validCode = true
       finalGameCode = gameCode
       newCurrentPresages = await getFinishedGame()
-      console.log(newCurrentPresages)
+      
     }
   }
 
@@ -84,7 +84,7 @@ export const createGame = async () => {
     })
     .select()
     .single()
-  console.log(data)
+  
   if (error) {
     throw new Error(error)
   }

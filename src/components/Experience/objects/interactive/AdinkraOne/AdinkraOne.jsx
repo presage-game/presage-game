@@ -30,7 +30,7 @@ export const AdinkraOne = ({ adinkraFocused, setAdinkraFocused, Materials, posit
   const thirdPlayer = new Audio("/audios/scenes/1/adinkraOne/3.mp3")
 
   const checkFocused = () => {
-    console.log("check")
+    
     if (adinkraFocused === false) {
       setAdinkraFocused(true)
     }
@@ -71,18 +71,18 @@ export const AdinkraOne = ({ adinkraFocused, setAdinkraFocused, Materials, posit
   }
 
   useEffect(() => {
-    console.log(melodic)
+    
     if (melodic.length >= 3) {
-      console.log("final melodic")
+      
       // check melodic
       if (JSON.stringify(melodic) === JSON.stringify(goodMelodic)) {
-        console.log("good melodic")
+        
         dispatch(collectAdinkra(0))
         if (!gameFinished) {
           setGameFinished(true)
         }
       } else {
-        console.log("bad melodic")
+        
       }
       setMelodic([])
       setAdinkraFocused(false)

@@ -1,12 +1,11 @@
 import React, { useRef, useMemo, useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { Box3, Object3D, Quaternion, Vector3, Raycaster, Vector2 } from "three"
-import { Box, useGLTF, OrthographicCamera, PerspectiveCamera } from "@react-three/drei"
+import { Box3, Quaternion, Vector3, Raycaster, Vector2 } from "three"
+import { Box, useGLTF, OrthographicCamera } from "@react-three/drei"
 import { useFrame } from "@react-three/fiber"
 import { Pathfinding, PathfindingHelper } from "three-pathfinding"
 import { Car } from "./Car"
 import { Model } from "./Model"
-import { current } from "@reduxjs/toolkit"
 import { setCarPos } from "@/store/reducers/gameReducer"
 
 export const Scene = ({
