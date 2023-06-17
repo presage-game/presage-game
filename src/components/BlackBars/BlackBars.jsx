@@ -6,26 +6,28 @@ import "./BlackBars.scss"
 import { useEffect, useState } from "react"
 import { DefaultLoadingManager } from "three"
 
-export const BlackBars = ({ active, progress, setIsVoiceOver, mapActive }) => {
+export const BlackBars = ({ setIsVoiceOver, mapActive }) => {
   const { blackBarsStatus } = useSelector((state) => state.ui)
+  const [pointerEvents, setPointerEvents] = useState(false)
   const [inAnimation, setInAnimation] = useState(false)
   const dispatch = useDispatch()
 
   const blackBarsClick = () => {
-    if (blackBarsStatus === "window" && !inAnimation) {
+    if (blackBarsStatus === "window" && !pointerEvents && !inAnimation) {
       dispatch(changeBlackBarsStatus("cinema"))
     }
   }
 
   useEffect(() => {
     if (!mapActive) {
-      setInAnimation(true)
-      let timeout = setTimeout(() => {
-        setInAnimation(false)
-      }, 4000)
+      if (blackBarsStatus === "cinema") {
+        let timeout = setTimeout(() => {
+          setPointerEvents(true)
+        }, 2000)
 
-      return () => {
-        clearTimeout(timeout)
+        return () => {
+          clearTimeout(timeout)
+        }
       }
     }
   }, [blackBarsStatus])
@@ -39,6 +41,8 @@ export const BlackBars = ({ active, progress, setIsVoiceOver, mapActive }) => {
   useEffect(() => {
     DefaultLoadingManager.onStart = () => {
       if (!mapActive) {
+        setPointerEvents(false)
+        setInAnimation(true)
         dispatch(changeBlackBarsStatus("closed"))
       }
     }
@@ -46,6 +50,7 @@ export const BlackBars = ({ active, progress, setIsVoiceOver, mapActive }) => {
       if (!mapActive) {
         setIsVoiceOver(true)
         setTimeout(() => dispatch(changeBlackBarsStatus("window")), 1000)
+        setTimeout(() => setInAnimation(false), 3300)
       }
     }
   }, [mapActive])
@@ -64,9 +69,7 @@ export const BlackBars = ({ active, progress, setIsVoiceOver, mapActive }) => {
             className="BlackBars"
             onClick={blackBarsClick}
             style={{
-              pointerEvents:
-                (blackBarsStatus === "cinema" || blackBarsStatus === "closed" || inAnimation) &&
-                "none",
+              pointerEvents: pointerEvents && "none",
             }}
           >
             <MotionConfig
