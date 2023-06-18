@@ -14,6 +14,7 @@ export const Setup = ({ setSpotIndex, setShowText, isVoiceOver, variant }) => {
   const [adinkraFocused, setAdinkraFocused] = useState(false)
   const [signFocused, setSignFocused] = useState(false)
   const [entryFocused, setEntryFocused] = useState(false)
+  const [playPositionnalAudio, setPlayPositionnalAudio] = useState(false)
 
   useEffect(() => {
     if (adinkraFocused) {
@@ -72,6 +73,7 @@ export const Setup = ({ setSpotIndex, setShowText, isVoiceOver, variant }) => {
 
   useEffect(() => {
     setShowText(true)
+    setPlayPositionnalAudio(true)
 
     return () => {
       setSpotIndex(null)
@@ -90,24 +92,26 @@ export const Setup = ({ setSpotIndex, setShowText, isVoiceOver, variant }) => {
         dispose={null}
       />
       <GoToMap args={[5, 5, 5]} position={[28, -2.5, -60]} />
-      <Suspense fallback={null}>
-        <PositionalAudio
-          autoplay
-          url="/audios/scenes/0/atmospheric/wind.mp3"
-          loop
-          distance={1}
-          position={[-12, -2.5, -50]}
-        />
-        {variant === "a" && (
+      {playPositionnalAudio && (
+        <>
           <PositionalAudio
             autoplay
-            url="/audios/scenes/3/atmospheric/gas-station.mp3"
+            url="/audios/scenes/0/atmospheric/wind.mp3"
             loop
-            distance={2}
-            position={[-15, 0, -55]}
+            distance={1}
+            position={[-12, -2.5, -50]}
           />
-        )}
-      </Suspense>
+          {variant === "a" && (
+            <PositionalAudio
+              autoplay
+              url="/audios/scenes/3/atmospheric/gas-station.mp3"
+              loop
+              distance={2}
+              position={[-15, 0, -55]}
+            />
+          )}
+        </>
+      )}
       <CloudsEffect position={[0, 40, -300]} variant={"default"} numberOfClouds={20} />
       <Sky sunPosition={[8, 1, 8]} rayleigh={0.6} mieCoefficient={0.001} mieDirectionalG={0.9} />
       <Scene

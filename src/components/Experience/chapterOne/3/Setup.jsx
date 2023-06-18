@@ -9,6 +9,7 @@ import { GoToMap } from "../../objects/interactive/GoToMap/GoToMap"
 
 export const Setup = ({ setSpotIndex, setShowText, isVoiceOver, setShowPresage }) => {
   const [treeFocused, setTreeFocused] = useState(false)
+  const [playPositionnalAudio, setPlayPositionnalAudio] = useState(false)
 
   const dispatch = useDispatch()
   const changeFocus = (value) => dispatch(changeOnFocusCamera(value))
@@ -42,6 +43,7 @@ export const Setup = ({ setSpotIndex, setShowText, isVoiceOver, setShowPresage }
 
   useEffect(() => {
     setShowText(true)
+    setPlayPositionnalAudio(true)
 
     return () => {
       setSpotIndex(null)
@@ -60,15 +62,17 @@ export const Setup = ({ setSpotIndex, setShowText, isVoiceOver, setShowPresage }
         dispose={null}
       />
       <GoToMap args={[5, 5, 5]} position={[25, -2.5, -90]} />
-      <Suspense fallback={null}>
-        <PositionalAudio
-          autoplay
-          url="/audios/scenes/0/atmospheric/wind.mp3"
-          loop
-          distance={10}
-          position={[-12, -2.5, -50]}
-        />
-      </Suspense>
+      {playPositionnalAudio && (
+        <>
+          <PositionalAudio
+            autoplay
+            url="/audios/scenes/0/atmospheric/wind.mp3"
+            loop
+            distance={10}
+            position={[-12, -2.5, -50]}
+          />
+        </>
+      )}
       <Sky sunPosition={[10, 1, 10]} rayleigh={0.6} mieCoefficient={0.001} mieDirectionalG={0.9} />
       <CloudsEffect position={[0, 40, -300]} variant={"default"} numberOfClouds={20} />
       <Scene treeFocused={treeFocused} setTreeFocused={setTreeFocused} />

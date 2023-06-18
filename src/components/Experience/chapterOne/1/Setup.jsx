@@ -1,4 +1,4 @@
-import { useState, useEffect, Suspense } from "react"
+import { useState, useEffect } from "react"
 import { Scene } from "./Scene"
 import { useDispatch } from "react-redux"
 import { changeOnFocusCamera, changeOnFocusCameraPosition } from "@/store/reducers/userReducer"
