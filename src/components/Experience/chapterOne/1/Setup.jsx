@@ -12,6 +12,7 @@ export const Setup = ({ setSpotIndex, setShowText, isVoiceOver }) => {
   const [variant, setVariant] = useState("default")
   const [pubFocused, setPubFocused] = useState(false)
   const [mapFocused, setMapFocused] = useState(false)
+  const [playPositionnalAudio, setPlayPositionnalAudio] = useState(false)
 
   const dispatch = useDispatch()
   const changeFocus = (value) => dispatch(changeOnFocusCamera(value))
@@ -61,6 +62,7 @@ export const Setup = ({ setSpotIndex, setShowText, isVoiceOver }) => {
 
   useEffect(() => {
     setShowText(true)
+    setPlayPositionnalAudio(true)
 
     return () => {
       setSpotIndex(null)
@@ -116,7 +118,7 @@ export const Setup = ({ setSpotIndex, setShowText, isVoiceOver }) => {
       <GoToMap args={[5, 5, 50]} position={[-1, -2.5, -80]} />
       <Suspense fallback={null}>
         <PositionalAudio
-          autoplay
+          autoplay={playPositionnalAudio && true}
           url="/audios/scenes/0/atmospheric/wind.mp3"
           loop
           distance={4}
@@ -125,14 +127,14 @@ export const Setup = ({ setSpotIndex, setShowText, isVoiceOver }) => {
         <PositionalAudio
           url="/audios/scenes/0/atmospheric/metal.mp3"
           loop
-          autoplay
+          autoplay={playPositionnalAudio && true}
           distance={0.6}
           position={[5, -2.2, -40]}
         />
         <PositionalAudio
           url="/audios/scenes/0/atmospheric/metal2.mp3"
           loop
-          autoplay
+          autoplay={playPositionnalAudio && true}
           distance={0.6}
           position={[-12, -2.5, -30]}
         />
