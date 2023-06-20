@@ -61,6 +61,10 @@ export const Setup = ({ setShowText }) => {
         setSceneNumber(3)
         setChangeSceneState(true)
       }),
+      BaobabTwo: button(() => {
+        setSceneNumber(4)
+        setChangeSceneState(true)
+      }),
     })
 
   useEffect(() => {
@@ -77,7 +81,6 @@ export const Setup = ({ setShowText }) => {
       dispatch(intersectScene(false))
     }
   }, [])
-
 
   return (
     <>
