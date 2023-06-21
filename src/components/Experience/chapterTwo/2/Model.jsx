@@ -179,7 +179,7 @@ export function Model(props) {
         <mesh geometry={nodes.Plane003.geometry} material={Materials.floorMaterial} />
         <mesh geometry={nodes.Plane003_1.geometry} material={Materials.outlineMaterial} />
       </group>
-      <group position={[-1.64, 11.02, 81.77]} scale={[442.54, 62.21, 73.17]}>
+      <group position={[-1.64, 10.9, 81.77]} scale={[442.54, 62.21, 73.17]}>
         <mesh geometry={nodes.Plane004.geometry} material={Materials.floorMaterial} />
         <mesh geometry={nodes.Plane004_1.geometry} material={Materials.outlineMaterial} />
       </group>
@@ -272,211 +272,211 @@ export function Model(props) {
         <mesh geometry={nodes.Mesh054_1.geometry} material={Materials.outlineMaterial} />
       </group>
       <group position={[-30.17, 12.34, 15.17]} rotation={[-0.51, -0.99, 0]} scale={1.5}>
-        <mesh geometry={nodes.Circle127.geometry} material={Materials.floorMaterial} />
+        <mesh geometry={nodes.Circle127.geometry} material={Materials.grassMaterial} />
         <mesh geometry={nodes.Circle127_1.geometry} material={Materials.outlineMaterial} />
       </group>
       <group position={[-0.38, 11.87, 194.29]} rotation={[0, 0.96, 0]} scale={1.5}>
-        <mesh geometry={nodes.Circle127.geometry} material={Materials.floorMaterial} />
+        <mesh geometry={nodes.Circle127.geometry} material={Materials.grassMaterial} />
         <mesh geometry={nodes.Circle127_1.geometry} material={Materials.outlineMaterial} />
       </group>
       <group position={[-0.53, 12.3, 196.14]} rotation={[0, 0.37, 0]} scale={1.5}>
-        <mesh geometry={nodes.Circle127.geometry} material={Materials.floorMaterial} />
+        <mesh geometry={nodes.Circle127.geometry} material={Materials.grassMaterial} />
         <mesh geometry={nodes.Circle127_1.geometry} material={Materials.outlineMaterial} />
       </group>
       <group position={[-0.77, 12.06, 195.3]} rotation={[0, 1.56, 0]} scale={1.5}>
-        <mesh geometry={nodes.Circle127.geometry} material={Materials.floorMaterial} />
+        <mesh geometry={nodes.Circle127.geometry} material={Materials.grassMaterial} />
         <mesh geometry={nodes.Circle127_1.geometry} material={Materials.outlineMaterial} />
       </group>
       <group position={[-1.34, 12.39, 195.83]} rotation={[-Math.PI, 0, -Math.PI]} scale={1.5}>
-        <mesh geometry={nodes.Circle127.geometry} material={Materials.floorMaterial} />
+        <mesh geometry={nodes.Circle127.geometry} material={Materials.grassMaterial} />
         <mesh geometry={nodes.Circle127_1.geometry} material={Materials.outlineMaterial} />
       </group>
       <group position={[0.44, 12.15, 196.22]} rotation={[-Math.PI, 0.68, -Math.PI]} scale={1.5}>
-        <mesh geometry={nodes.Circle127.geometry} material={Materials.floorMaterial} />
+        <mesh geometry={nodes.Circle127.geometry} material={Materials.grassMaterial} />
         <mesh geometry={nodes.Circle127_1.geometry} material={Materials.outlineMaterial} />
       </group>
       <group position={[1.44, 11.79, 196.14]} rotation={[0, -1.05, 0]} scale={1.5}>
-        <mesh geometry={nodes.Circle127.geometry} material={Materials.floorMaterial} />
+        <mesh geometry={nodes.Circle127.geometry} material={Materials.grassMaterial} />
         <mesh geometry={nodes.Circle127_1.geometry} material={Materials.outlineMaterial} />
       </group>
       <group position={[0.07, 12.27, 195.65]} rotation={[0, -0.82, 0]} scale={1.5}>
-        <mesh geometry={nodes.Circle127.geometry} material={Materials.floorMaterial} />
+        <mesh geometry={nodes.Circle127.geometry} material={Materials.grassMaterial} />
         <mesh geometry={nodes.Circle127_1.geometry} material={Materials.outlineMaterial} />
       </group>
       <group position={[1.01, 11.98, 195.26]} rotation={[0, 0.37, 0]} scale={1.5}>
-        <mesh geometry={nodes.Circle127.geometry} material={Materials.floorMaterial} />
+        <mesh geometry={nodes.Circle127.geometry} material={Materials.grassMaterial} />
         <mesh geometry={nodes.Circle127_1.geometry} material={Materials.outlineMaterial} />
       </group>
       <group position={[-23.91, 12.14, 204.75]} rotation={[Math.PI, -1.36, Math.PI]} scale={1.5}>
-        <mesh geometry={nodes.Circle127.geometry} material={Materials.floorMaterial} />
+        <mesh geometry={nodes.Circle127.geometry} material={Materials.grassMaterial} />
         <mesh geometry={nodes.Circle127_1.geometry} material={Materials.outlineMaterial} />
       </group>
       <group position={[-23.17, 12.04, 205.15]} rotation={[0, -0.59, 0]} scale={1.5}>
-        <mesh geometry={nodes.Circle127.geometry} material={Materials.floorMaterial} />
+        <mesh geometry={nodes.Circle127.geometry} material={Materials.grassMaterial} />
         <mesh geometry={nodes.Circle127_1.geometry} material={Materials.outlineMaterial} />
       </group>
       <group position={[-21.03, 12.03, 204.33]} rotation={[0, 0.99, 0]} scale={1.5}>
-        <mesh geometry={nodes.Circle127.geometry} material={Materials.floorMaterial} />
+        <mesh geometry={nodes.Circle127.geometry} material={Materials.grassMaterial} />
         <mesh geometry={nodes.Circle127_1.geometry} material={Materials.outlineMaterial} />
       </group>
       <group position={[-24.56, 12.13, 205.61]} rotation={[0, 0.32, 0]} scale={1.5}>
-        <mesh geometry={nodes.Circle127.geometry} material={Materials.floorMaterial} />
+        <mesh geometry={nodes.Circle127.geometry} material={Materials.grassMaterial} />
         <mesh geometry={nodes.Circle127_1.geometry} material={Materials.outlineMaterial} />
       </group>
       <group position={[-25.14, 12.2, 206.49]} rotation={[-Math.PI, 0.06, -Math.PI]} scale={1.5}>
-        <mesh geometry={nodes.Circle127.geometry} material={Materials.floorMaterial} />
+        <mesh geometry={nodes.Circle127.geometry} material={Materials.grassMaterial} />
         <mesh geometry={nodes.Circle127_1.geometry} material={Materials.outlineMaterial} />
       </group>
       <group position={[-23.83, 12.15, 205.52]} rotation={[Math.PI, -0.18, Math.PI]} scale={1.5}>
-        <mesh geometry={nodes.Circle127.geometry} material={Materials.floorMaterial} />
+        <mesh geometry={nodes.Circle127.geometry} material={Materials.grassMaterial} />
         <mesh geometry={nodes.Circle127_1.geometry} material={Materials.outlineMaterial} />
       </group>
       <group position={[-23.85, 12.16, 206.28]} rotation={[Math.PI, -1.37, Math.PI]} scale={1.5}>
-        <mesh geometry={nodes.Circle127.geometry} material={Materials.floorMaterial} />
+        <mesh geometry={nodes.Circle127.geometry} material={Materials.grassMaterial} />
         <mesh geometry={nodes.Circle127_1.geometry} material={Materials.outlineMaterial} />
       </group>
       <group position={[-53.63, 12.71, 141.91]} rotation={[Math.PI, -0.62, Math.PI]} scale={1.5}>
-        <mesh geometry={nodes.Circle127.geometry} material={Materials.floorMaterial} />
+        <mesh geometry={nodes.Circle127.geometry} material={Materials.grassMaterial} />
         <mesh geometry={nodes.Circle127_1.geometry} material={Materials.outlineMaterial} />
       </group>
       <group position={[-53.35, 12.34, 142.7]} rotation={[0, -1.33, 0]} scale={1.5}>
-        <mesh geometry={nodes.Circle127.geometry} material={Materials.floorMaterial} />
+        <mesh geometry={nodes.Circle127.geometry} material={Materials.grassMaterial} />
         <mesh geometry={nodes.Circle127_1.geometry} material={Materials.outlineMaterial} />
       </group>
       <group position={[-52.93, 12.42, 142.02]} rotation={[0, 0.25, 0]} scale={1.5}>
-        <mesh geometry={nodes.Circle127.geometry} material={Materials.floorMaterial} />
+        <mesh geometry={nodes.Circle127.geometry} material={Materials.grassMaterial} />
         <mesh geometry={nodes.Circle127_1.geometry} material={Materials.outlineMaterial} />
       </group>
       <group position={[-54.69, 12.69, 142.11]} rotation={[0, -0.42, 0]} scale={1.5}>
-        <mesh geometry={nodes.Circle127.geometry} material={Materials.floorMaterial} />
+        <mesh geometry={nodes.Circle127.geometry} material={Materials.grassMaterial} />
         <mesh geometry={nodes.Circle127_1.geometry} material={Materials.outlineMaterial} />
       </group>
       <group position={[-55.53, 12.35, 142.36]} rotation={[-Math.PI, 0.8, -Math.PI]} scale={1.5}>
-        <mesh geometry={nodes.Circle127.geometry} material={Materials.floorMaterial} />
+        <mesh geometry={nodes.Circle127.geometry} material={Materials.grassMaterial} />
         <mesh geometry={nodes.Circle127_1.geometry} material={Materials.outlineMaterial} />
       </group>
       <group position={[-54.09, 12.63, 142.53]} rotation={[-Math.PI, 0.56, -Math.PI]} scale={1.5}>
-        <mesh geometry={nodes.Circle127.geometry} material={Materials.floorMaterial} />
+        <mesh geometry={nodes.Circle127.geometry} material={Materials.grassMaterial} />
         <mesh geometry={nodes.Circle127_1.geometry} material={Materials.outlineMaterial} />
       </group>
       <group position={[-54.62, 12.61, 143.08]} rotation={[Math.PI, -0.63, Math.PI]} scale={1.5}>
-        <mesh geometry={nodes.Circle127.geometry} material={Materials.floorMaterial} />
+        <mesh geometry={nodes.Circle127.geometry} material={Materials.grassMaterial} />
         <mesh geometry={nodes.Circle127_1.geometry} material={Materials.outlineMaterial} />
       </group>
       <group position={[-47.66, 12.51, 171.4]} rotation={[Math.PI, -0.56, Math.PI]} scale={1.5}>
-        <mesh geometry={nodes.Circle127.geometry} material={Materials.floorMaterial} />
+        <mesh geometry={nodes.Circle127.geometry} material={Materials.grassMaterial} />
         <mesh geometry={nodes.Circle127_1.geometry} material={Materials.outlineMaterial} />
       </group>
       <group position={[-47.44, 12.43, 172.21]} rotation={[0, -1.4, 0]} scale={1.5}>
-        <mesh geometry={nodes.Circle127.geometry} material={Materials.floorMaterial} />
+        <mesh geometry={nodes.Circle127.geometry} material={Materials.grassMaterial} />
         <mesh geometry={nodes.Circle127_1.geometry} material={Materials.outlineMaterial} />
       </group>
       <group position={[-46.92, 12.47, 171.58]} rotation={[0, 0.18, 0]} scale={1.5}>
-        <mesh geometry={nodes.Circle127.geometry} material={Materials.floorMaterial} />
+        <mesh geometry={nodes.Circle127.geometry} material={Materials.grassMaterial} />
         <mesh geometry={nodes.Circle127_1.geometry} material={Materials.outlineMaterial} />
       </group>
       <group position={[-48.74, 12.59, 171.53]} rotation={[0, -0.49, 0]} scale={1.5}>
-        <mesh geometry={nodes.Circle127.geometry} material={Materials.floorMaterial} />
+        <mesh geometry={nodes.Circle127.geometry} material={Materials.grassMaterial} />
         <mesh geometry={nodes.Circle127_1.geometry} material={Materials.outlineMaterial} />
       </group>
       <group position={[-49.7, 12.59, 171.79]} rotation={[-Math.PI, 0.86, -Math.PI]} scale={1.5}>
-        <mesh geometry={nodes.Circle127.geometry} material={Materials.floorMaterial} />
+        <mesh geometry={nodes.Circle127.geometry} material={Materials.grassMaterial} />
         <mesh geometry={nodes.Circle127_1.geometry} material={Materials.outlineMaterial} />
       </group>
       <group position={[-48.16, 12.53, 171.99]} rotation={[-Math.PI, 0.63, -Math.PI]} scale={1.5}>
-        <mesh geometry={nodes.Circle127.geometry} material={Materials.floorMaterial} />
+        <mesh geometry={nodes.Circle127.geometry} material={Materials.grassMaterial} />
         <mesh geometry={nodes.Circle127_1.geometry} material={Materials.outlineMaterial} />
       </group>
       <group position={[-48.73, 12.53, 172.5]} rotation={[Math.PI, -0.56, Math.PI]} scale={1.5}>
-        <mesh geometry={nodes.Circle127.geometry} material={Materials.floorMaterial} />
+        <mesh geometry={nodes.Circle127.geometry} material={Materials.grassMaterial} />
         <mesh geometry={nodes.Circle127_1.geometry} material={Materials.outlineMaterial} />
       </group>
       <group position={[-46.39, 12.51, 168.73]} rotation={[Math.PI, -0.27, Math.PI]} scale={1.5}>
-        <mesh geometry={nodes.Circle127.geometry} material={Materials.floorMaterial} />
+        <mesh geometry={nodes.Circle127.geometry} material={Materials.grassMaterial} />
         <mesh geometry={nodes.Circle127_1.geometry} material={Materials.outlineMaterial} />
       </group>
       <group position={[-46.4, 12.32, 169.57]} rotation={[Math.PI, -1.46, Math.PI]} scale={1.5}>
-        <mesh geometry={nodes.Circle127.geometry} material={Materials.floorMaterial} />
+        <mesh geometry={nodes.Circle127.geometry} material={Materials.grassMaterial} />
         <mesh geometry={nodes.Circle127_1.geometry} material={Materials.outlineMaterial} />
       </group>
       <group position={[-45.72, 12.47, 169.1]} rotation={[0, -0.11, 0]} scale={1.5}>
-        <mesh geometry={nodes.Circle127.geometry} material={Materials.floorMaterial} />
+        <mesh geometry={nodes.Circle127.geometry} material={Materials.grassMaterial} />
         <mesh geometry={nodes.Circle127_1.geometry} material={Materials.outlineMaterial} />
       </group>
       <group position={[-47.45, 12.59, 168.54]} rotation={[0, -0.78, 0]} scale={1.5}>
-        <mesh geometry={nodes.Circle127.geometry} material={Materials.floorMaterial} />
+        <mesh geometry={nodes.Circle127.geometry} material={Materials.grassMaterial} />
         <mesh geometry={nodes.Circle127_1.geometry} material={Materials.outlineMaterial} />
       </group>
       <group position={[-48.13, 12.59, 168.52]} rotation={[-Math.PI, 1.15, -Math.PI]} scale={1.5}>
-        <mesh geometry={nodes.Circle127.geometry} material={Materials.floorMaterial} />
+        <mesh geometry={nodes.Circle127.geometry} material={Materials.grassMaterial} />
         <mesh geometry={nodes.Circle127_1.geometry} material={Materials.outlineMaterial} />
       </group>
       <group position={[-47.03, 12.53, 169.15]} rotation={[-Math.PI, 0.92, -Math.PI]} scale={1.5}>
-        <mesh geometry={nodes.Circle127.geometry} material={Materials.floorMaterial} />
+        <mesh geometry={nodes.Circle127.geometry} material={Materials.grassMaterial} />
         <mesh geometry={nodes.Circle127_1.geometry} material={Materials.outlineMaterial} />
       </group>
       <group position={[-47.72, 12.53, 169.48]} rotation={[Math.PI, -0.27, Math.PI]} scale={1.5}>
-        <mesh geometry={nodes.Circle127.geometry} material={Materials.floorMaterial} />
+        <mesh geometry={nodes.Circle127.geometry} material={Materials.grassMaterial} />
         <mesh geometry={nodes.Circle127_1.geometry} material={Materials.outlineMaterial} />
       </group>
       <group position={[-25.2, 12.2, 205.58]} rotation={[0, -0.01, 0]} scale={1.5}>
-        <mesh geometry={nodes.Circle127.geometry} material={Materials.floorMaterial} />
+        <mesh geometry={nodes.Circle127.geometry} material={Materials.grassMaterial} />
         <mesh geometry={nodes.Circle127_1.geometry} material={Materials.outlineMaterial} />
       </group>
       <group position={[-44.94, 12.04, 141.92]} rotation={[Math.PI, -1.36, Math.PI]} scale={1.5}>
-        <mesh geometry={nodes.Circle127.geometry} material={Materials.floorMaterial} />
+        <mesh geometry={nodes.Circle127.geometry} material={Materials.grassMaterial} />
         <mesh geometry={nodes.Circle127_1.geometry} material={Materials.outlineMaterial} />
       </group>
       <group position={[-44.2, 11.94, 142.32]} rotation={[0, -0.59, 0]} scale={1.5}>
-        <mesh geometry={nodes.Circle127.geometry} material={Materials.floorMaterial} />
+        <mesh geometry={nodes.Circle127.geometry} material={Materials.grassMaterial} />
         <mesh geometry={nodes.Circle127_1.geometry} material={Materials.outlineMaterial} />
       </group>
       <group position={[-45.59, 12.03, 142.78]} rotation={[0, 0.32, 0]} scale={1.5}>
-        <mesh geometry={nodes.Circle127.geometry} material={Materials.floorMaterial} />
+        <mesh geometry={nodes.Circle127.geometry} material={Materials.grassMaterial} />
         <mesh geometry={nodes.Circle127_1.geometry} material={Materials.outlineMaterial} />
       </group>
       <group position={[-46.17, 12.1, 143.66]} rotation={[-Math.PI, 0.06, -Math.PI]} scale={1.5}>
-        <mesh geometry={nodes.Circle127.geometry} material={Materials.floorMaterial} />
+        <mesh geometry={nodes.Circle127.geometry} material={Materials.grassMaterial} />
         <mesh geometry={nodes.Circle127_1.geometry} material={Materials.outlineMaterial} />
       </group>
       <group position={[-44.86, 12.06, 142.69]} rotation={[Math.PI, -0.18, Math.PI]} scale={1.5}>
-        <mesh geometry={nodes.Circle127.geometry} material={Materials.floorMaterial} />
+        <mesh geometry={nodes.Circle127.geometry} material={Materials.grassMaterial} />
         <mesh geometry={nodes.Circle127_1.geometry} material={Materials.outlineMaterial} />
       </group>
       <group position={[-44.88, 12.06, 143.45]} rotation={[Math.PI, -1.37, Math.PI]} scale={1.5}>
-        <mesh geometry={nodes.Circle127.geometry} material={Materials.floorMaterial} />
+        <mesh geometry={nodes.Circle127.geometry} material={Materials.grassMaterial} />
         <mesh geometry={nodes.Circle127_1.geometry} material={Materials.outlineMaterial} />
       </group>
       <group position={[-46.23, 12.1, 142.75]} rotation={[0, -0.01, 0]} scale={1.5}>
-        <mesh geometry={nodes.Circle127.geometry} material={Materials.floorMaterial} />
+        <mesh geometry={nodes.Circle127.geometry} material={Materials.grassMaterial} />
         <mesh geometry={nodes.Circle127_1.geometry} material={Materials.outlineMaterial} />
       </group>
       <group position={[-22.74, 12.3, 170.21]} rotation={[Math.PI, -1.36, Math.PI]} scale={1.5}>
-        <mesh geometry={nodes.Circle127.geometry} material={Materials.floorMaterial} />
+        <mesh geometry={nodes.Circle127.geometry} material={Materials.grassMaterial} />
         <mesh geometry={nodes.Circle127_1.geometry} material={Materials.outlineMaterial} />
       </group>
       <group position={[-22, 12.48, 170.61]} rotation={[0, -0.59, 0]} scale={1.5}>
-        <mesh geometry={nodes.Circle127.geometry} material={Materials.floorMaterial} />
+        <mesh geometry={nodes.Circle127.geometry} material={Materials.grassMaterial} />
         <mesh geometry={nodes.Circle127_1.geometry} material={Materials.outlineMaterial} />
       </group>
       <group position={[-23.74, 12.46, 171.08]} rotation={[0, 0.32, 0]} scale={1.5}>
-        <mesh geometry={nodes.Circle127.geometry} material={Materials.floorMaterial} />
+        <mesh geometry={nodes.Circle127.geometry} material={Materials.grassMaterial} />
         <mesh geometry={nodes.Circle127_1.geometry} material={Materials.outlineMaterial} />
       </group>
       <group position={[-24.32, 12.43, 171.96]} rotation={[-Math.PI, 0.06, -Math.PI]} scale={1.5}>
-        <mesh geometry={nodes.Circle127.geometry} material={Materials.floorMaterial} />
+        <mesh geometry={nodes.Circle127.geometry} material={Materials.grassMaterial} />
         <mesh geometry={nodes.Circle127_1.geometry} material={Materials.outlineMaterial} />
       </group>
       <group position={[-23.01, 12.51, 170.99]} rotation={[Math.PI, -0.18, Math.PI]} scale={1.5}>
-        <mesh geometry={nodes.Circle127.geometry} material={Materials.floorMaterial} />
+        <mesh geometry={nodes.Circle127.geometry} material={Materials.grassMaterial} />
         <mesh geometry={nodes.Circle127_1.geometry} material={Materials.outlineMaterial} />
       </group>
       <group position={[-23.03, 12.48, 171.75]} rotation={[Math.PI, -1.37, Math.PI]} scale={1.5}>
-        <mesh geometry={nodes.Circle127.geometry} material={Materials.floorMaterial} />
+        <mesh geometry={nodes.Circle127.geometry} material={Materials.grassMaterial} />
         <mesh geometry={nodes.Circle127_1.geometry} material={Materials.outlineMaterial} />
       </group>
       <group position={[-24.38, 12.43, 171.05]} rotation={[0, -0.01, 0]} scale={1.5}>
-        <mesh geometry={nodes.Circle127.geometry} material={Materials.floorMaterial} />
+        <mesh geometry={nodes.Circle127.geometry} material={Materials.grassMaterial} />
         <mesh geometry={nodes.Circle127_1.geometry} material={Materials.outlineMaterial} />
       </group>
       <mesh
@@ -486,15 +486,15 @@ export function Model(props) {
         scale={1.81}
       />
       <group position={[-5.76, 12.46, 207.38]} rotation={[-Math.PI, 1, -Math.PI]} scale={1.28}>
-        <mesh geometry={nodes.Circle218.geometry} material={Materials.floorMaterial} />
+        <mesh geometry={nodes.Circle218.geometry} material={Materials.grassMaterial} />
         <mesh geometry={nodes.Circle218_1.geometry} material={Materials.outlineMaterial} />
       </group>
       <group position={[-14.59, 12.42, 140.9]} rotation={[-Math.PI, 1, -Math.PI]} scale={1.99}>
-        <mesh geometry={nodes.Circle218.geometry} material={Materials.floorMaterial} />
+        <mesh geometry={nodes.Circle218.geometry} material={Materials.grassMaterial} />
         <mesh geometry={nodes.Circle218_1.geometry} material={Materials.outlineMaterial} />
       </group>
       <group position={[-25.26, 12.47, 170.45]} rotation={[-Math.PI, 1, -Math.PI]} scale={1.46}>
-        <mesh geometry={nodes.Circle218.geometry} material={Materials.floorMaterial} />
+        <mesh geometry={nodes.Circle218.geometry} material={Materials.grassMaterial} />
         <mesh geometry={nodes.Circle218_1.geometry} material={Materials.outlineMaterial} />
       </group>
       <mesh
@@ -514,11 +514,11 @@ export function Model(props) {
         rotation={[0, 0, -Math.PI]}
         scale={[-32.05, -2.81, -46.43]}
       >
-        <mesh geometry={nodes.Cube012.geometry} material={Materials.floorMaterial} />
+        <mesh geometry={nodes.Cube012.geometry} material={Materials.concreteMaterial} />
         <mesh geometry={nodes.Cube012_1.geometry} material={Materials.outlineMaterial} />
       </group>
       <group position={[-94.93, 21.04, 97.41]} rotation={[-0.04, 0.64, 0.02]} scale={0.01}>
-        <mesh geometry={nodes.Mesh051.geometry} material={Materials.floorMaterial} />
+        <mesh geometry={nodes.Mesh051.geometry} material={Materials.fenceMaterial} />
         <mesh geometry={nodes.Mesh051_1.geometry} material={Materials.outlineMaterial} />
       </group>
       <group position={[32.89, 13.66, 103.86]} rotation={[0, -0.44, 0]} scale={1.62}>
@@ -720,7 +720,7 @@ export function Model(props) {
         rotation={[-1.58, 0, 2.8]}
         scale={[-0.28, -0.3, -0.3]}
       >
-        <mesh geometry={nodes.Mesh273.geometry} material={Materials.floorMaterial} />
+        <mesh geometry={nodes.Mesh273.geometry} material={Materials.houseMaterials.main} />
         <mesh geometry={nodes.Mesh273_1.geometry} material={Materials.outlineMaterial} />
       </group>
       <group
@@ -728,7 +728,7 @@ export function Model(props) {
         rotation={[-1.57, 0, -1.91]}
         scale={[0.29, 0.3, 0.3]}
       >
-        <mesh geometry={nodes.Mesh279.geometry} material={Materials.floorMaterial} />
+        <mesh geometry={nodes.Mesh279.geometry} material={Materials.houseMaterials.main} />
         <mesh geometry={nodes.Mesh279_1.geometry} material={Materials.outlineMaterial} />
       </group>
       <group
@@ -736,12 +736,12 @@ export function Model(props) {
         rotation={[Math.PI, -1.23, Math.PI]}
         scale={[7.96, 1.31, 13.72]}
       >
-        <mesh geometry={nodes.Cube002_1.geometry} material={Materials.floorMaterial} />
+        <mesh geometry={nodes.Cube002_1.geometry} material={Materials.houseMaterials.wall} />
         <mesh geometry={nodes.Cube002_2.geometry} material={Materials.outlineMaterial} />
       </group>
       <mesh
         geometry={nodes.Cube003.geometry}
-        material={Materials.floorMaterial}
+        material={Materials.houseMaterials.backwall}
         position={[-107.36, 17.84, 43.59]}
         rotation={[Math.PI, -1.23, Math.PI]}
         scale={[0.35, 6.15, 12.08]}
@@ -751,13 +751,14 @@ export function Model(props) {
         rotation={[Math.PI, -1.23, Math.PI]}
         scale={[7.81, 2.74, 13.72]}
       >
-        <mesh geometry={nodes.Cube004_1.geometry} material={Materials.floorMaterial} />
+        <mesh geometry={nodes.Cube004_1.geometry} material={Materials.houseMaterials.wall} />
+        <mesh geometry={nodes.Cube004_1.geometry} material={Materials.houseMaterials.backwall} />
         <mesh geometry={nodes.Cube004_2.geometry} material={Materials.outlineMaterial} />
       </group>
-      <group position={[-99.34, 12.3, 64.06]} rotation={[Math.PI / 2, 0, 2.3]} scale={0.49}>
+      <group position={[-99.34, 13.3, 64.06]} rotation={[Math.PI / 2, 0, 2.3]} scale={0.49}>
         <mesh
           geometry={nodes.long_wide_drawer_v156_f118_Sphere001_1.geometry}
-          material={Materials.floorMaterial}
+          material={Materials.grassMaterial}
         />
         <mesh
           geometry={nodes.long_wide_drawer_v156_f118_Sphere001_2.geometry}
@@ -777,7 +778,7 @@ export function Model(props) {
       <group position={[-95.81, 13.16, 54.15]} rotation={[Math.PI / 2, 0, -1.13]} scale={0.49}>
         <mesh
           geometry={nodes.shelving2_v562_f346_Sphere002_1.geometry}
-          material={Materials.floorMaterial}
+          material={Materials.metalMaterials.rusty}
         />
         <mesh
           geometry={nodes.shelving2_v562_f346_Sphere002_2.geometry}
@@ -787,7 +788,7 @@ export function Model(props) {
       <group position={[-91.84, 13.16, 84.96]} rotation={[Math.PI / 2, 0, -0.73]} scale={0.49}>
         <mesh
           geometry={nodes.shelving2_v562_f346_Sphere002_1.geometry}
-          material={Materials.floorMaterial}
+          material={Materials.metalMaterials.rusty}
         />
         <mesh
           geometry={nodes.shelving2_v562_f346_Sphere002_2.geometry}
@@ -797,7 +798,7 @@ export function Model(props) {
       <group position={[-94.72, 12.79, 88.01]} rotation={[Math.PI / 2, 0, -1.11]} scale={0.34}>
         <mesh
           geometry={nodes.shelving2_v562_f346_Sphere002_1.geometry}
-          material={Materials.floorMaterial}
+          material={Materials.metalMaterials.rusty}
         />
         <mesh
           geometry={nodes.shelving2_v562_f346_Sphere002_2.geometry}
@@ -807,7 +808,7 @@ export function Model(props) {
       <group position={[-97.44, 12.76, 63.07]} rotation={[Math.PI / 2, 0, -1.98]} scale={0.34}>
         <mesh
           geometry={nodes.shelving2_v562_f346_Sphere002_1.geometry}
-          material={Materials.floorMaterial}
+          material={Materials.metalMaterials.rusty}
         />
         <mesh
           geometry={nodes.shelving2_v562_f346_Sphere002_2.geometry}
@@ -815,7 +816,7 @@ export function Model(props) {
         />
       </group>
       <group position={[-106.75, 23.46, 95.88]} rotation={[Math.PI, -0.37, Math.PI]} scale={0.04}>
-        <mesh geometry={nodes.Mesh008.geometry} material={Materials.floorMaterial} />
+        <mesh geometry={nodes.Mesh008.geometry} material={Materials.houseMaterials.main} />
         <mesh geometry={nodes.Mesh008_1.geometry} material={Materials.outlineMaterial} />
       </group>
       <group
@@ -823,15 +824,17 @@ export function Model(props) {
         rotation={[-Math.PI, 1.2, -Math.PI]}
         scale={[0.07, 0.06, 0.06]}
       >
-        <mesh geometry={nodes.Mesh009.geometry} material={Materials.floorMaterial} />
+        <mesh geometry={nodes.Mesh009.geometry} material={Materials.houseMaterials.main} />
         <mesh geometry={nodes.Mesh009_1.geometry} material={Materials.outlineMaterial} />
       </group>
       <group position={[-109.11, 14.28, 96.64]} rotation={[0, 0.37, 0]} scale={[7.49, 2.54, 10]}>
-        <mesh geometry={nodes.Cube006_1.geometry} material={Materials.floorMaterial} />
+        <mesh geometry={nodes.Cube006_1.geometry} material={Materials.houseMaterials.wall} />
+        <mesh geometry={nodes.Cube006_1.geometry} material={Materials.houseMaterials.backwall} />
         <mesh geometry={nodes.Cube006_2.geometry} material={Materials.outlineMaterial} />
       </group>
       <group position={[-109.25, 19.86, 96.96]} rotation={[0, 0.37, 0]} scale={[7.64, 3.05, 10.1]}>
-        <mesh geometry={nodes.Cube007.geometry} material={Materials.floorMaterial} />
+        <mesh geometry={nodes.Cube007.geometry} material={Materials.houseMaterials.wall} />
+        <mesh geometry={nodes.Cube007.geometry} material={Materials.houseMaterials.backwall} />
         <mesh geometry={nodes.Cube007_1.geometry} material={Materials.outlineMaterial} />
       </group>
       <mesh
@@ -943,7 +946,7 @@ export function Model(props) {
       >
         <mesh
           geometry={nodes.shelving1_v359_f350_Sphere013_1.geometry}
-          material={Materials.floorMaterial}
+          material={Materials.metalMaterials.main}
         />
         <mesh
           geometry={nodes.shelving1_v359_f350_Sphere013_2.geometry}
@@ -952,13 +955,13 @@ export function Model(props) {
       </group>
       <mesh
         geometry={nodes.Plane001.geometry}
-        material={Materials.floorMaterial}
+        material={Materials.fenceMaterial}
         position={[-97.5, 15.29, 86.56]}
         rotation={[-Math.PI, 0.08, -Math.PI]}
         scale={2.6}
       />
       <group position={[-93.6, 11.88, 79.05]} rotation={[-Math.PI, 0.11, -Math.PI]} scale={0.47}>
-        <mesh geometry={nodes.Plane008.geometry} material={Materials.floorMaterial} />
+        <mesh geometry={nodes.Plane008.geometry} material={Materials.gasPumpMaterials.orange} />
         <mesh geometry={nodes.Plane008_1.geometry} material={Materials.outlineMaterial} />
       </group>
       <group
@@ -966,16 +969,16 @@ export function Model(props) {
         rotation={[-Math.PI, 1.21, -Math.PI]}
         scale={[0.29, 0.72, 0.29]}
       >
-        <mesh geometry={nodes.Plane008.geometry} material={Materials.floorMaterial} />
+        <mesh geometry={nodes.Plane008.geometry} material={Materials.gasPumpMaterials.orange} />
         <mesh geometry={nodes.Plane008_1.geometry} material={Materials.outlineMaterial} />
       </group>
       <group position={[-100.06, 12.35, 87.32]} rotation={[0, 0.24, 0]} scale={[0.09, 1.45, 0.09]}>
-        <mesh geometry={nodes.Cylinder031.geometry} material={Materials.floorMaterial} />
+        <mesh geometry={nodes.Cylinder031.geometry} material={Materials.fenceMaterial} />
         <mesh geometry={nodes.Cylinder031_1.geometry} material={Materials.outlineMaterial} />
       </group>
       <mesh
         geometry={nodes.Cylinder003.geometry}
-        material={Materials.floorMaterial}
+        material={Materials.fenceMaterial}
         position={[-99.76, 13.57, 84.29]}
         rotation={[-Math.PI, 0.08, -Math.PI]}
         scale={[0.03, 1.85, 0.03]}
@@ -985,7 +988,7 @@ export function Model(props) {
         rotation={[0, -0.18, -0.6]}
         scale={[1.13, 0.13, 1.61]}
       >
-        <mesh geometry={nodes.Cube034.geometry} material={Materials.floorMaterial} />
+        <mesh geometry={nodes.Cube034.geometry} material={Materials.fenceMaterial} />
         <mesh geometry={nodes.Cube034_1.geometry} material={Materials.outlineMaterial} />
       </group>
       <group
@@ -993,13 +996,13 @@ export function Model(props) {
         rotation={[-0.04, -1.11, -0.67]}
         scale={[1.13, 0.13, 1.61]}
       >
-        <mesh geometry={nodes.Cube034.geometry} material={Materials.floorMaterial} />
+        <mesh geometry={nodes.Cube034.geometry} material={Materials.fenceMaterial} />
         <mesh geometry={nodes.Cube034_1.geometry} material={Materials.outlineMaterial} />
       </group>
       <group position={[-89.13, 12.26, 88.2]} rotation={[Math.PI / 2, 0, 1.77]} scale={0.37}>
         <mesh
           geometry={nodes.box_with_one_handle_v44_f30_Sphere016_1.geometry}
-          material={Materials.floorMaterial}
+          material={Materials.metalMaterials.rusty}
         />
         <mesh
           geometry={nodes.box_with_one_handle_v44_f30_Sphere016_2.geometry}
@@ -1009,7 +1012,7 @@ export function Model(props) {
       <group position={[-89.59, 12.16, 89.44]} rotation={[Math.PI / 2, 0, 1.99]} scale={0.34}>
         <mesh
           geometry={nodes.box_with_mesh_v602_f324_Sphere012_1.geometry}
-          material={Materials.floorMaterial}
+          material={Materials.metalMaterials.rusty}
         />
         <mesh
           geometry={nodes.box_with_mesh_v602_f324_Sphere012_2.geometry}
@@ -1019,7 +1022,7 @@ export function Model(props) {
       <group position={[-88.67, 12.13, 85.26]} rotation={[Math.PI / 2, 0, 1.63]} scale={0.44}>
         <mesh
           geometry={nodes.box7_v140_f78_Sphere017_1.geometry}
-          material={Materials.floorMaterial}
+          material={Materials.metalMaterials.rusty}
         />
         <mesh
           geometry={nodes.box7_v140_f78_Sphere017_2.geometry}
@@ -1029,7 +1032,7 @@ export function Model(props) {
       <group position={[-88.83, 12.23, 84.1]} rotation={[Math.PI / 2, 0, 1.63]} scale={0.44}>
         <mesh
           geometry={nodes.box6_v34_f19_Sphere015_1.geometry}
-          material={Materials.floorMaterial}
+          material={Materials.metalMaterials.rusty}
         />
         <mesh
           geometry={nodes.box6_v34_f19_Sphere015_2.geometry}
@@ -1039,7 +1042,7 @@ export function Model(props) {
       <group position={[-89.63, 12.09, 86.88]} rotation={[Math.PI / 2, 0, 1.92]} scale={0.34}>
         <mesh
           geometry={nodes.box5_540_f570_Sphere010_1.geometry}
-          material={Materials.floorMaterial}
+          material={Materials.treeMaterial}
         />
         <mesh
           geometry={nodes.box5_540_f570_Sphere010_2.geometry}
@@ -1049,7 +1052,7 @@ export function Model(props) {
       <group position={[-91.09, 12.15, 91.04]} rotation={[Math.PI / 2, 0, -0.78]} scale={0.49}>
         <mesh
           geometry={nodes.box3_v108_f74_Sphere004_1.geometry}
-          material={Materials.floorMaterial}
+          material={Materials.treeMaterial}
         />
         <mesh
           geometry={nodes.box3_v108_f74_Sphere004_2.geometry}
@@ -1061,12 +1064,12 @@ export function Model(props) {
         rotation={[-Math.PI, 0.11, -Math.PI]}
         scale={[0.47, 0.55, 0.47]}
       >
-        <mesh geometry={nodes.Cylinder011_1.geometry} material={Materials.floorMaterial} />
+        <mesh geometry={nodes.Cylinder011_1.geometry} material={Materials.fenceMaterial} />
         <mesh geometry={nodes.Cylinder011_2.geometry} material={Materials.outlineMaterial} />
       </group>
       <mesh
         geometry={nodes.Bar_3002.geometry}
-        material={Materials.floorMaterial}
+        material={Materials.fenceMaterial}
         position={[-94.7, 16.07, 57.99]}
         rotation={[-Math.PI, 1.21, -Math.PI]}
         scale={[0.29, 0.85, 0.29]}
@@ -1074,7 +1077,7 @@ export function Model(props) {
       <group position={[-95.53, 13.87, 59.19]} rotation={[1.94, -0.2, 2.7]} scale={0.34}>
         <mesh
           geometry={nodes.box4_v95_f58_Sphere001_1.geometry}
-          material={Materials.floorMaterial}
+          material={Materials.treeMaterial}
         />
         <mesh
           geometry={nodes.box4_v95_f58_Sphere001_2.geometry}
@@ -1084,7 +1087,7 @@ export function Model(props) {
       <group position={[-95.73, 14.22, 58.74]} rotation={[1.99, -0.23, 2.71]} scale={0.34}>
         <mesh
           geometry={nodes.box4_v95_f58_Sphere001_1.geometry}
-          material={Materials.floorMaterial}
+          material={Materials.treeMaterial}
         />
         <mesh
           geometry={nodes.box4_v95_f58_Sphere001_2.geometry}
@@ -1098,7 +1101,7 @@ export function Model(props) {
       <group position={[-95.21, 12.1, 61.59]} rotation={[Math.PI / 2, 0, 2.49]} scale={0.34}>
         <mesh
           geometry={nodes.long_box_v124_f96__Sphere001_1.geometry}
-          material={Materials.floorMaterial}
+          material={Materials.metalMaterials.rusty}
         />
         <mesh
           geometry={nodes.long_box_v124_f96__Sphere001_2.geometry}
