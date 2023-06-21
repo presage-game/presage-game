@@ -1,4 +1,4 @@
-import { useState, useEffect, Suspense } from "react"
+import { useState, useEffect } from "react"
 import { Scene } from "./Scene"
 import { useDispatch } from "react-redux"
 import { changeOnFocusCamera, changeOnFocusCameraPosition } from "@/store/reducers/userReducer"
@@ -12,6 +12,7 @@ export const Setup = ({ setSpotIndex, setShowText, isVoiceOver }) => {
   const [variant, setVariant] = useState("default")
   const [pubFocused, setPubFocused] = useState(false)
   const [mapFocused, setMapFocused] = useState(false)
+  const [playPositionnalAudio, setPlayPositionnalAudio] = useState(false)
 
   const dispatch = useDispatch()
   const changeFocus = (value) => dispatch(changeOnFocusCamera(value))
@@ -61,6 +62,7 @@ export const Setup = ({ setSpotIndex, setShowText, isVoiceOver }) => {
 
   useEffect(() => {
     setShowText(true)
+    setPlayPositionnalAudio(true)
 
     return () => {
       setSpotIndex(null)
@@ -114,29 +116,32 @@ export const Setup = ({ setSpotIndex, setShowText, isVoiceOver }) => {
       />
       {variant !== "default" && <ambientLight color={"#C65948"} intensity={0.5} dispose={null} />}
       <GoToMap args={[5, 5, 50]} position={[-1, -2.5, -80]} />
-      <Suspense fallback={null}>
-        <PositionalAudio
-          autoplay
-          url="/audios/scenes/0/atmospheric/wind.mp3"
-          loop
-          distance={4}
-          position={[-12, -2.5, -50]}
-        />
-        <PositionalAudio
-          url="/audios/scenes/0/atmospheric/metal.mp3"
-          loop
-          autoplay
-          distance={0.6}
-          position={[5, -2.2, -40]}
-        />
-        <PositionalAudio
-          url="/audios/scenes/0/atmospheric/metal2.mp3"
-          loop
-          autoplay
-          distance={0.6}
-          position={[-12, -2.5, -30]}
-        />
-      </Suspense>
+      {playPositionnalAudio && (
+        <>
+          <PositionalAudio
+            autoplay
+            url="/audios/scenes/0/atmospheric/wind.mp3"
+            loop
+            distance={4}
+            position={[-12, -2.5, -50]}
+          />
+          <PositionalAudio
+            url="/audios/scenes/0/atmospheric/metal.mp3"
+            loop
+            autoplay
+            distance={0.6}
+            position={[5, -2.2, -40]}
+          />
+          <PositionalAudio
+            url="/audios/scenes/0/atmospheric/metal2.mp3"
+            loop
+            autoplay
+            distance={0.6}
+            position={[-12, -2.5, -30]}
+          />
+        </>
+      )}
+
       <WindEffect />
       <CloudsEffect position={[0, 40, -300]} variant={variant} numberOfClouds={20} />
       <Scene

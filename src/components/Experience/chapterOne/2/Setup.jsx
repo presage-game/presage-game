@@ -1,4 +1,4 @@
-import { useState, useEffect, Suspense } from "react"
+import { useState, useEffect } from "react"
 import { Scene } from "./Scene"
 import { useDispatch } from "react-redux"
 import { changeOnFocusCamera, changeOnFocusCameraPosition } from "@/store/reducers/userReducer"
@@ -10,6 +10,7 @@ import { TempestEffect } from "../../effects/TempestEffect"
 export const Setup = ({ setSpotIndex, setShowText, isVoiceOver, variant }) => {
   const [adinkraFocused, setAdinkraFocused] = useState(false)
   const [fenceFocused, setFenceFocused] = useState(false)
+  const [playPositionnalAudio, setPlayPositionnalAudio] = useState(false)
 
   const dispatch = useDispatch()
   const changeFocus = (value) => dispatch(changeOnFocusCamera(value))
@@ -60,6 +61,7 @@ export const Setup = ({ setSpotIndex, setShowText, isVoiceOver, variant }) => {
 
   useEffect(() => {
     setShowText(true)
+    setPlayPositionnalAudio(true)
 
     return () => {
       setSpotIndex(null)
@@ -78,22 +80,24 @@ export const Setup = ({ setSpotIndex, setShowText, isVoiceOver, variant }) => {
         dispose={null}
       />
       <GoToMap args={[5, 5, 5]} position={[40, -2.5, -90]} />
-      <Suspense fallback={null}>
-        <PositionalAudio
-          autoplay
-          url="/audios/scenes/0/atmospheric/wind.mp3"
-          loop
-          distance={10}
-          position={[-12, -2.5, -50]}
-        />
-        {/* <PositionalAudio
+      {playPositionnalAudio && (
+        <>
+          <PositionalAudio
+            autoplay
+            url="/audios/scenes/0/atmospheric/wind.mp3"
+            loop
+            distance={10}
+            position={[-12, -2.5, -50]}
+          />
+          {/* <PositionalAudio
           autoplay
           url="/audios/scenes/1/atmospheric/fences.mp3"
           loop
           distance={2}
           position={[0, 5, 10]}
         /> */}
-      </Suspense>
+        </>
+      )}
       {variant === "b" ? (
         <>
           <Sky
