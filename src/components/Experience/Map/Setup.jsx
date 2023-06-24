@@ -86,6 +86,7 @@ export const Setup = ({ setShowText }) => {
     <>
       <directionalLight intensity={1} dispose={null} />
       <ambientLight intensity={0.2} dispose={null} />
+      <fog attach={"fog"} display={false} />
       <Scene
         goOnScene={goOnScene}
         goOnPinpoint={goOnPinpoint}
