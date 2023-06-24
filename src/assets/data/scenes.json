@@ -192,20 +192,16 @@
     "name": "Deuxième arbre à palabres",
     "voiceover": [
       {
-        "text": "Un baobab singulier et trapu se dresse le long de la route, dépliant ses couronnes vertes en-dessous du ciel. Perchées sur une branche, deux perruches aux couleurs vives te dévisagent placidement.",
+        "text": "Le chant des youyous te parvient depuis la cime des rôniers. Et un autre baobab tient debout, juste là, le long de la route.",
         "emitter": "narrator"
-      },
-      {
-        "text": "Quelque chose cloche avec ce baobab. D’une manière ou d’une autre, il n’est pas censé être là. Tu aimerais l’ignorer et tracer ta route, mais sa présence t’en empêche.",
-        "emitter": "innerVoice"
       },
       [
         {
-          "text": "La pierre que tu as ramassé tout à l’heure s’agite. Tu la tiens maintenant entre tes mains. Une fenêtre s’ouvre à toi, et tu ne sais pas encore si elle donne sur le passé ou le futur.",
+          "text": "Tu revis la même scène que tout à l’heure.",
           "emitter": "innerVoice"
         },
         {
-          "text": "Les secondes s’étirent, et ton imagination fait son travail. Tu crois entendre un murmure. Trouve d’abord le symbole du passé, et tu pourras reprendre la route. La bonne mélodie saura libérer la pierre de sa sépulture.",
+          "text": "Trouve d’abord le symbole de la vérité, et tu pourras reprendre la route. Il est gravé quelque part sur les murs de la ville.",
           "emitter": "innerVoice"
         }
       ]
