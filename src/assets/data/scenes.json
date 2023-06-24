@@ -187,5 +187,31 @@
         ]
       }
     ]
+  },
+  {
+    "name": "Deuxième arbre à palabres",
+    "voiceover": [
+      {
+        "text": "Le chant des youyous te parvient depuis la cime des rôniers. Et un autre baobab tient debout, juste là, le long de la route.",
+        "emitter": "narrator"
+      },
+      [
+        {
+          "text": "Tu revis la même scène que tout à l’heure.",
+          "emitter": "innerVoice"
+        },
+        {
+          "text": "Trouve d’abord le symbole de la vérité, et tu pourras reprendre la route. Il est gravé quelque part sur les murs de la ville.",
+          "emitter": "innerVoice"
+        }
+      ]
+    ],
+    "spots": [
+      {
+        "index": 0,
+        "label": "Baobab",
+        "spotVoiceover": []
+      }
+    ]
   }
 ]
