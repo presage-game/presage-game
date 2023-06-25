@@ -53,7 +53,9 @@ export const Experience = ({ activateBlackBars }) => {
           <Map setShowText={setShowText} />
         ) : scene === 0 ? (
           <RegionEntranceOne
+            spotIndex={spotIndex}
             setSpotIndex={setSpotIndex}
+            showText={showText}
             setShowText={setShowText}
             isVoiceOver={isVoiceOver}
           />
