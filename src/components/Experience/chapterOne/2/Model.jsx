@@ -682,19 +682,19 @@ export function Model({ Materials, position }) {
         rotation={[-3.05, 1.04, 3.04]}
         scale={[0.28, 0.42, 0.3]}
       >
-        <mesh geometry={nodes.Cube089.geometry} material={Materials.megalithicMaterial} />
+        <mesh geometry={nodes.Cube089.geometry} material={Materials.megalithicMaterials.main} />
         <mesh geometry={nodes.Cube089_1.geometry} material={Materials.outlineMaterial} />
       </group>
       <group position={[-2.54, 12.36, -117.68]} rotation={[0, 1.15, 0]} scale={[0.29, 0.36, 0.25]}>
-        <mesh geometry={nodes.Cube301.geometry} material={Materials.megalithicMaterial} />
+        <mesh geometry={nodes.Cube301.geometry} material={Materials.megalithicMaterials.main} />
         <mesh geometry={nodes.Cube301_1.geometry} material={Materials.outlineMaterial} />
       </group>
       <group position={[-4.72, 11.89, -114.66]} rotation={[-Math.PI, 1.3, -Math.PI]} scale={0.26}>
-        <mesh geometry={nodes.Cube185.geometry} material={Materials.megalithicMaterial} />
+        <mesh geometry={nodes.Cube185.geometry} material={Materials.megalithicMaterials.main} />
         <mesh geometry={nodes.Cube185_1.geometry} material={Materials.outlineMaterial} />
       </group>
       <group position={[-1.87, 12.14, -121.06]} rotation={[-Math.PI, 1.38, -Math.PI]} scale={0.25}>
-        <mesh geometry={nodes.Cube119.geometry} material={Materials.megalithicMaterial} />
+        <mesh geometry={nodes.Cube119.geometry} material={Materials.megalithicMaterials.main} />
         <mesh geometry={nodes.Cube119_1.geometry} material={Materials.outlineMaterial} />
       </group>
       <group
@@ -702,7 +702,7 @@ export function Model({ Materials, position }) {
         rotation={[-3.09, 0.48, 3.1]}
         scale={[0.22, 0.33, 0.23]}
       >
-        <mesh geometry={nodes.Cube310.geometry} material={Materials.megalithicMaterial} />
+        <mesh geometry={nodes.Cube310.geometry} material={Materials.megalithicMaterials.main} />
         <mesh geometry={nodes.Cube310_1.geometry} material={Materials.outlineMaterial} />
       </group>
       <group
@@ -710,7 +710,7 @@ export function Model({ Materials, position }) {
         rotation={[-3.05, 0.19, 2.96]}
         scale={[0.32, 0.51, 0.32]}
       >
-        <mesh geometry={nodes.Cube314.geometry} material={Materials.megalithicMaterial} />
+        <mesh geometry={nodes.Cube314.geometry} material={Materials.megalithicMaterials.main} />
         <mesh geometry={nodes.Cube314_1.geometry} material={Materials.outlineMaterial} />
       </group>
       <group
@@ -718,7 +718,7 @@ export function Model({ Materials, position }) {
         rotation={[-3.03, -0.54, 2.98]}
         scale={[0.37, 0.46, 0.32]}
       >
-        <mesh geometry={nodes.Cube316.geometry} material={Materials.megalithicMaterial} />
+        <mesh geometry={nodes.Cube316.geometry} material={Materials.megalithicMaterials.main} />
         <mesh geometry={nodes.Cube316_1.geometry} material={Materials.outlineMaterial} />
       </group>
       <group
@@ -726,7 +726,7 @@ export function Model({ Materials, position }) {
         rotation={[-3.03, -0.54, 2.98]}
         scale={[0.37, 0.46, 0.32]}
       >
-        <mesh geometry={nodes.Cube318.geometry} material={Materials.megalithicMaterial} />
+        <mesh geometry={nodes.Cube318.geometry} material={Materials.megalithicMaterials.main} />
         <mesh geometry={nodes.Cube318_1.geometry} material={Materials.outlineMaterial} />
       </group>
       <group
@@ -734,7 +734,7 @@ export function Model({ Materials, position }) {
         rotation={[-Math.PI, 1.43, -Math.PI]}
         scale={[0.23, 0.28, 0.2]}
       >
-        <mesh geometry={nodes.Cube317.geometry} material={Materials.megalithicMaterial} />
+        <mesh geometry={nodes.Cube317.geometry} material={Materials.megalithicMaterials.main} />
         <mesh geometry={nodes.Cube317_1.geometry} material={Materials.outlineMaterial} />
       </group>
       <group
@@ -742,7 +742,7 @@ export function Model({ Materials, position }) {
         rotation={[Math.PI, 0.32, -2.99]}
         scale={[0.23, 0.5, 0.2]}
       >
-        <mesh geometry={nodes.Cube311.geometry} material={Materials.megalithicMaterial} />
+        <mesh geometry={nodes.Cube311.geometry} material={Materials.megalithicMaterials.main} />
         <mesh geometry={nodes.Cube311_1.geometry} material={Materials.outlineMaterial} />
       </group>
       <group
@@ -750,7 +750,7 @@ export function Model({ Materials, position }) {
         rotation={[3.11, 0.41, -3.07]}
         scale={[0.23, 0.65, 0.21]}
       >
-        <mesh geometry={nodes.Cube315.geometry} material={Materials.megalithicMaterial} />
+        <mesh geometry={nodes.Cube315.geometry} material={Materials.megalithicMaterials.main} />
         <mesh geometry={nodes.Cube315_1.geometry} material={Materials.outlineMaterial} />
       </group>
       <group
@@ -758,7 +758,7 @@ export function Model({ Materials, position }) {
         rotation={[-3.06, -0.93, -3.09]}
         scale={[0.22, 0.33, 0.23]}
       >
-        <mesh geometry={nodes.Cube007.geometry} material={Materials.megalithicMaterial} />
+        <mesh geometry={nodes.Cube007.geometry} material={Materials.megalithicMaterials.main} />
         <mesh geometry={nodes.Cube007_1.geometry} material={Materials.outlineMaterial} />
       </group>
       <group
@@ -766,7 +766,7 @@ export function Model({ Materials, position }) {
         rotation={[-3.06, -0.93, -3.09]}
         scale={[0.22, 0.33, 0.23]}
       >
-        <mesh geometry={nodes.Cube007.geometry} material={Materials.megalithicMaterial} />
+        <mesh geometry={nodes.Cube007.geometry} material={Materials.megalithicMaterials.main} />
         <mesh geometry={nodes.Cube007_1.geometry} material={Materials.outlineMaterial} />
       </group>
       <group
@@ -774,7 +774,7 @@ export function Model({ Materials, position }) {
         rotation={[-0.04, -0.03, -0.01]}
         scale={[0.22, 0.33, 0.23]}
       >
-        <mesh geometry={nodes.Cube007.geometry} material={Materials.megalithicMaterial} />
+        <mesh geometry={nodes.Cube007.geometry} material={Materials.megalithicMaterials.main} />
         <mesh geometry={nodes.Cube007_1.geometry} material={Materials.outlineMaterial} />
       </group>
       <group
@@ -782,7 +782,7 @@ export function Model({ Materials, position }) {
         rotation={[-0.05, 0.23, -0.01]}
         scale={[0.22, 0.33, 0.23]}
       >
-        <mesh geometry={nodes.Cube007.geometry} material={Materials.megalithicMaterial} />
+        <mesh geometry={nodes.Cube007.geometry} material={Materials.megalithicMaterials.main} />
         <mesh geometry={nodes.Cube007_1.geometry} material={Materials.outlineMaterial} />
       </group>
       <group
@@ -790,7 +790,7 @@ export function Model({ Materials, position }) {
         rotation={[-2.89, -1.21, -3.07]}
         scale={[0.32, 0.51, 0.32]}
       >
-        <mesh geometry={nodes.Cube008.geometry} material={Materials.megalithicMaterial} />
+        <mesh geometry={nodes.Cube008.geometry} material={Materials.megalithicMaterials.main} />
         <mesh geometry={nodes.Cube008_1.geometry} material={Materials.outlineMaterial} />
       </group>
       <group
@@ -798,7 +798,7 @@ export function Model({ Materials, position }) {
         rotation={[-2.89, -1.21, -3.07]}
         scale={[0.32, 0.51, 0.32]}
       >
-        <mesh geometry={nodes.Cube008.geometry} material={Materials.megalithicMaterial} />
+        <mesh geometry={nodes.Cube008.geometry} material={Materials.megalithicMaterials.main} />
         <mesh geometry={nodes.Cube008_1.geometry} material={Materials.outlineMaterial} />
       </group>
       <group
@@ -806,7 +806,7 @@ export function Model({ Materials, position }) {
         rotation={[-0.08, 0.26, -0.13]}
         scale={[0.32, 0.51, 0.32]}
       >
-        <mesh geometry={nodes.Cube008.geometry} material={Materials.megalithicMaterial} />
+        <mesh geometry={nodes.Cube008.geometry} material={Materials.megalithicMaterials.main} />
         <mesh geometry={nodes.Cube008_1.geometry} material={Materials.outlineMaterial} />
       </group>
       <group
@@ -814,7 +814,7 @@ export function Model({ Materials, position }) {
         rotation={[-0.1, 0.52, -0.11]}
         scale={[0.32, 0.51, 0.32]}
       >
-        <mesh geometry={nodes.Cube008.geometry} material={Materials.megalithicMaterial} />
+        <mesh geometry={nodes.Cube008.geometry} material={Materials.megalithicMaterials.main} />
         <mesh geometry={nodes.Cube008_1.geometry} material={Materials.outlineMaterial} />
       </group>
       <group
@@ -822,7 +822,7 @@ export function Model({ Materials, position }) {
         rotation={[-0.26, -1.17, -0.46]}
         scale={[0.37, 0.46, 0.32]}
       >
-        <mesh geometry={nodes.Cube011.geometry} material={Materials.megalithicMaterial} />
+        <mesh geometry={nodes.Cube011.geometry} material={Materials.megalithicMaterials.main} />
         <mesh geometry={nodes.Cube011_1.geometry} material={Materials.outlineMaterial} />
       </group>
       <group
@@ -830,7 +830,7 @@ export function Model({ Materials, position }) {
         rotation={[-0.26, -1.17, -0.46]}
         scale={[0.37, 0.46, 0.32]}
       >
-        <mesh geometry={nodes.Cube011.geometry} material={Materials.megalithicMaterial} />
+        <mesh geometry={nodes.Cube011.geometry} material={Materials.megalithicMaterials.main} />
         <mesh geometry={nodes.Cube011_1.geometry} material={Materials.outlineMaterial} />
       </group>
       <group
@@ -838,7 +838,7 @@ export function Model({ Materials, position }) {
         rotation={[-0.18, 0.99, -0.06]}
         scale={[0.37, 0.46, 0.32]}
       >
-        <mesh geometry={nodes.Cube011.geometry} material={Materials.megalithicMaterial} />
+        <mesh geometry={nodes.Cube011.geometry} material={Materials.megalithicMaterials.main} />
         <mesh geometry={nodes.Cube011_1.geometry} material={Materials.outlineMaterial} />
       </group>
       <group
@@ -846,7 +846,7 @@ export function Model({ Materials, position }) {
         rotation={[-0.31, 1.24, 0.06]}
         scale={[0.37, 0.46, 0.32]}
       >
-        <mesh geometry={nodes.Cube011.geometry} material={Materials.megalithicMaterial} />
+        <mesh geometry={nodes.Cube011.geometry} material={Materials.megalithicMaterials.main} />
         <mesh geometry={nodes.Cube011_1.geometry} material={Materials.outlineMaterial} />
       </group>
       <group
@@ -854,7 +854,7 @@ export function Model({ Materials, position }) {
         rotation={[-0.26, -1.17, -0.46]}
         scale={[0.37, 0.46, 0.32]}
       >
-        <mesh geometry={nodes.Cube012.geometry} material={Materials.megalithicMaterial} />
+        <mesh geometry={nodes.Cube012.geometry} material={Materials.megalithicMaterials.main} />
         <mesh geometry={nodes.Cube012_1.geometry} material={Materials.outlineMaterial} />
       </group>
       <group
@@ -862,7 +862,7 @@ export function Model({ Materials, position }) {
         rotation={[-0.26, -1.17, -0.46]}
         scale={[0.37, 0.46, 0.32]}
       >
-        <mesh geometry={nodes.Cube012.geometry} material={Materials.megalithicMaterial} />
+        <mesh geometry={nodes.Cube012.geometry} material={Materials.megalithicMaterials.main} />
         <mesh geometry={nodes.Cube012_1.geometry} material={Materials.outlineMaterial} />
       </group>
       <group
@@ -870,7 +870,7 @@ export function Model({ Materials, position }) {
         rotation={[-0.18, 0.99, -0.06]}
         scale={[0.37, 0.46, 0.32]}
       >
-        <mesh geometry={nodes.Cube012.geometry} material={Materials.megalithicMaterial} />
+        <mesh geometry={nodes.Cube012.geometry} material={Materials.megalithicMaterials.main} />
         <mesh geometry={nodes.Cube012_1.geometry} material={Materials.outlineMaterial} />
       </group>
       <group
@@ -878,7 +878,7 @@ export function Model({ Materials, position }) {
         rotation={[-0.31, 1.24, 0.06]}
         scale={[0.37, 0.46, 0.32]}
       >
-        <mesh geometry={nodes.Cube012.geometry} material={Materials.megalithicMaterial} />
+        <mesh geometry={nodes.Cube012.geometry} material={Materials.megalithicMaterials.main} />
         <mesh geometry={nodes.Cube012_1.geometry} material={Materials.outlineMaterial} />
       </group>
       <group
@@ -886,7 +886,7 @@ export function Model({ Materials, position }) {
         rotation={[-Math.PI, 0.01, -Math.PI]}
         scale={[0.23, 0.28, 0.2]}
       >
-        <mesh geometry={nodes.Cube013.geometry} material={Materials.megalithicMaterial} />
+        <mesh geometry={nodes.Cube013.geometry} material={Materials.megalithicMaterials.main} />
         <mesh geometry={nodes.Cube013_1.geometry} material={Materials.outlineMaterial} />
       </group>
       <group
@@ -894,7 +894,7 @@ export function Model({ Materials, position }) {
         rotation={[-Math.PI, 0.01, -Math.PI]}
         scale={[0.23, 0.28, 0.2]}
       >
-        <mesh geometry={nodes.Cube013.geometry} material={Materials.megalithicMaterial} />
+        <mesh geometry={nodes.Cube013.geometry} material={Materials.megalithicMaterials.main} />
         <mesh geometry={nodes.Cube013_1.geometry} material={Materials.outlineMaterial} />
       </group>
       <group
@@ -902,11 +902,11 @@ export function Model({ Materials, position }) {
         rotation={[0.02, -0.97, 0.01]}
         scale={[0.23, 0.28, 0.2]}
       >
-        <mesh geometry={nodes.Cube013.geometry} material={Materials.megalithicMaterial} />
+        <mesh geometry={nodes.Cube013.geometry} material={Materials.megalithicMaterials.main} />
         <mesh geometry={nodes.Cube013_1.geometry} material={Materials.outlineMaterial} />
       </group>
       <group position={[10.26, 11.61, -142.14]} rotation={[0, -0.72, 0]} scale={[0.23, 0.28, 0.2]}>
-        <mesh geometry={nodes.Cube013.geometry} material={Materials.megalithicMaterial} />
+        <mesh geometry={nodes.Cube013.geometry} material={Materials.megalithicMaterials.main} />
         <mesh geometry={nodes.Cube013_1.geometry} material={Materials.outlineMaterial} />
       </group>
       <group
@@ -914,7 +914,7 @@ export function Model({ Materials, position }) {
         rotation={[Math.PI, -1.1, -2.99]}
         scale={[0.23, 0.5, 0.2]}
       >
-        <mesh geometry={nodes.Cube016.geometry} material={Materials.megalithicMaterial} />
+        <mesh geometry={nodes.Cube016.geometry} material={Materials.megalithicMaterials.main} />
         <mesh geometry={nodes.Cube016_1.geometry} material={Materials.outlineMaterial} />
       </group>
       <group
@@ -922,7 +922,7 @@ export function Model({ Materials, position }) {
         rotation={[Math.PI, -1.1, -2.99]}
         scale={[0.23, 0.5, 0.2]}
       >
-        <mesh geometry={nodes.Cube016.geometry} material={Materials.megalithicMaterial} />
+        <mesh geometry={nodes.Cube016.geometry} material={Materials.megalithicMaterials.main} />
         <mesh geometry={nodes.Cube016_1.geometry} material={Materials.outlineMaterial} />
       </group>
       <group
@@ -930,11 +930,11 @@ export function Model({ Materials, position }) {
         rotation={[0.01, 0.13, 0.16]}
         scale={[0.23, 0.5, 0.2]}
       >
-        <mesh geometry={nodes.Cube016.geometry} material={Materials.megalithicMaterial} />
+        <mesh geometry={nodes.Cube016.geometry} material={Materials.megalithicMaterials.main} />
         <mesh geometry={nodes.Cube016_1.geometry} material={Materials.outlineMaterial} />
       </group>
       <group position={[13.09, 12.43, -148.32]} rotation={[0, 0.39, 0.15]} scale={[0.23, 0.5, 0.2]}>
-        <mesh geometry={nodes.Cube016.geometry} material={Materials.megalithicMaterial} />
+        <mesh geometry={nodes.Cube016.geometry} material={Materials.megalithicMaterials.main} />
         <mesh geometry={nodes.Cube016_1.geometry} material={Materials.outlineMaterial} />
       </group>
       <group
@@ -942,7 +942,7 @@ export function Model({ Materials, position }) {
         rotation={[3.09, -1, -3.13]}
         scale={[0.23, 0.65, 0.21]}
       >
-        <mesh geometry={nodes.Cube039.geometry} material={Materials.megalithicMaterial} />
+        <mesh geometry={nodes.Cube039.geometry} material={Materials.megalithicMaterials.main} />
         <mesh geometry={nodes.Cube039_1.geometry} material={Materials.outlineMaterial} />
       </group>
       <group
@@ -950,7 +950,7 @@ export function Model({ Materials, position }) {
         rotation={[3.09, -1, -3.13]}
         scale={[0.23, 0.65, 0.21]}
       >
-        <mesh geometry={nodes.Cube039.geometry} material={Materials.megalithicMaterial} />
+        <mesh geometry={nodes.Cube039.geometry} material={Materials.megalithicMaterials.main} />
         <mesh geometry={nodes.Cube039_1.geometry} material={Materials.outlineMaterial} />
       </group>
       <group
@@ -958,7 +958,7 @@ export function Model({ Materials, position }) {
         rotation={[0.04, 0.04, 0.06]}
         scale={[0.23, 0.65, 0.21]}
       >
-        <mesh geometry={nodes.Cube039.geometry} material={Materials.megalithicMaterial} />
+        <mesh geometry={nodes.Cube039.geometry} material={Materials.megalithicMaterials.main} />
         <mesh geometry={nodes.Cube039_1.geometry} material={Materials.outlineMaterial} />
       </group>
       <group
@@ -966,7 +966,7 @@ export function Model({ Materials, position }) {
         rotation={[0.03, 0.3, 0.05]}
         scale={[0.23, 0.65, 0.21]}
       >
-        <mesh geometry={nodes.Cube039.geometry} material={Materials.megalithicMaterial} />
+        <mesh geometry={nodes.Cube039.geometry} material={Materials.megalithicMaterials.main} />
         <mesh geometry={nodes.Cube039_1.geometry} material={Materials.outlineMaterial} />
       </group>
       <mesh
