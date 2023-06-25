@@ -101,7 +101,6 @@ export const AdinkraOne = ({ adinkraFocused, setAdinkraFocused, Materials, posit
   }, [volume, isMuted])
 
   useEffect(() => {
-    console.log(adinkras[0])
     if (adinkras[0].isCollected) {
       setGameFinished(true)
     }

@@ -1,7 +1,7 @@
 import { collectAdinkra } from "@/store/reducers/userReducer"
 import { Html, Plane } from "@react-three/drei"
 import { useEffect, useRef, useState } from "react"
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 
 const initialData = {
   prevX: 0,
@@ -41,6 +41,7 @@ export const AdinkraTwo = ({
   nodes,
   Materials,
 }) => {
+  const { adinkras } = useSelector((state) => state.user)
   const dispatch = useDispatch()
   const [isHovered, setIsHovered] = useState(false)
   const [localFocused, setLocalFocused] = useState(false)
@@ -159,9 +160,13 @@ export const AdinkraTwo = ({
   }, [localFocused])
 
   useEffect(() => {
-    setTimeout(() => {
-      initCanvas()
-    }, [1000])
+    if (!adinkras[1].isCollected) {
+      setTimeout(() => {
+        initCanvas()
+      }, [1000])
+    } else {
+      setGameFinished(true)
+    }
   }, [])
 
   return (
@@ -172,8 +177,8 @@ export const AdinkraTwo = ({
           <Html position={[0, 0, 0]} zIndexRange={9} transform>
             <div>
               <canvas
-                onPointerEnter={() => setIsHovered(true)}
-                onPointerLeave={() => setIsHovered(false)}
+                onPointerEnter={() => !gameFinished && setIsHovered(true)}
+                onPointerLeave={() => !gameFinished && setIsHovered(false)}
                 style={{
                   border: isHovered && !adinkraFocused && !gameFinished && "solid 3px white",
                 }}
@@ -186,15 +191,17 @@ export const AdinkraTwo = ({
                   }
                 }}
                 onMouseDown={(e) => {
-                  if (adinkraFocused === true) {
+                  if (adinkraFocused && !gameFinished) {
                     handleMDown(e)
                   }
                 }}
                 onMouseUp={() => {
-                  clearCanvas()
+                  if (!gameFinished) {
+                    clearCanvas()
+                  }
                 }}
                 onMouseMove={(e) => {
-                  if (adinkraFocused === true) {
+                  if (adinkraFocused && !gameFinished) {
                     handleMMove(e)
                   }
                 }}
