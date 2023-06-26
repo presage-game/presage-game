@@ -1847,46 +1847,6 @@ export function Model({ nodes, Materials, materials }) {
         scale={[19.49, 202, 20]}
         rotation={[0,0,0.0007]}
       />
-      <group
-        position={[-33.05, 19.72, 19.81]}
-        rotation={[-3.14, 0.49, 1.59]}
-        scale={[0.02, 0.2, 0.02]}
-      >
-        <mesh geometry={nodes.Cube194.geometry} material={Materials.fenceMaterial} />
-        <mesh geometry={nodes.Cube194_1.geometry} material={Materials.outlineMaterial} />
-      </group>
-      <group
-        position={[-31.62, 19.72, 16.94]}
-        rotation={[-3.14, 0.49, 1.59]}
-        scale={[0.02, 0.2, 0.02]}
-      >
-        <mesh geometry={nodes.Cube194.geometry} material={Materials.fenceMaterial} />
-        <mesh geometry={nodes.Cube194_1.geometry} material={Materials.outlineMaterial} />
-      </group>
-      <group
-        position={[-32.84, 17.31, 18.2]}
-        rotation={[0, -0.49, -0.01]}
-        scale={[0.12, 2.55, -3.62]}
-      >
-        <mesh geometry={nodes.Cube197.geometry} material={Materials.fenceMaterial} />
-        <mesh geometry={nodes.Cube197_1.geometry} material={Materials.outlineMaterial} />
-      </group>
-      <group
-        position={[-32.86, 15.43, 17.79]}
-        rotation={[0, -0.49, -0.01]}
-        scale={[-0.01, 0.01, 0.02]}
-      >
-        <mesh geometry={nodes.Mesh234.geometry} material={Materials.fenceMaterial} />
-        <mesh geometry={nodes.Mesh234_1.geometry} material={Materials.outlineMaterial} />
-      </group>
-      <group
-        position={[-32.81, 18.89, 17.83]}
-        rotation={[0, -0.49, -0.01]}
-        scale={[-0.01, 0.01, 0.02]}
-      >
-        <mesh geometry={nodes.Mesh234.geometry} material={Materials.fenceMaterial} />
-        <mesh geometry={nodes.Mesh234_1.geometry} material={Materials.outlineMaterial} />
-      </group>
       <mesh
         geometry={nodes.Wheel_A001004.geometry}
         material={Materials.floorMaterial}

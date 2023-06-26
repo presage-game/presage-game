@@ -79,7 +79,9 @@ export const Experience = ({ activateBlackBars }) => {
         ) : scene === 3 ? (
           <KeurGnialo
             variant={scenesVariant[1].value}
+            spotIndex={spotIndex}
             setSpotIndex={setSpotIndex}
+            showText={showText}
             setShowText={setShowText}
             isVoiceOver={isVoiceOver}
           />
