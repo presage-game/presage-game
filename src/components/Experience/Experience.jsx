@@ -62,7 +62,9 @@ export const Experience = ({ activateBlackBars }) => {
         ) : scene === 1 ? (
           <MegalithicCircles
             variant={scenesVariant[0].value}
+            spotIndex={spotIndex}
             setSpotIndex={setSpotIndex}
+            showText={showText}
             setShowText={setShowText}
             isVoiceOver={isVoiceOver}
           />

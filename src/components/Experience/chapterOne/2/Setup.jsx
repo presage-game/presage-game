@@ -7,7 +7,7 @@ import { Environment, PositionalAudio, Sky } from "@react-three/drei"
 import { GoToMap } from "../../objects/interactive/GoToMap/GoToMap"
 import { TempestEffect } from "../../effects/TempestEffect"
 
-export const Setup = ({ setSpotIndex, setShowText, isVoiceOver, variant }) => {
+export const Setup = ({ spotIndex, setSpotIndex, showText, setShowText, isVoiceOver, variant }) => {
   const [adinkraFocused, setAdinkraFocused] = useState(false)
   const [fenceFocused, setFenceFocused] = useState(false)
   const [playPositionnalAudio, setPlayPositionnalAudio] = useState(false)
@@ -17,39 +17,54 @@ export const Setup = ({ setSpotIndex, setShowText, isVoiceOver, variant }) => {
   const changeFocusPosition = (value) => dispatch(changeOnFocusCameraPosition(value))
 
   useEffect(() => {
-    if (adinkraFocused) {
-      setFenceFocused(false)
-      setSpotIndex(1)
-      changeFocusPosition({
-        position: {
-          x: -10,
-          y: -2,
-          z: 120,
-        },
-        rotation: {
-          x: Math.PI / 6,
-          y: -Math.PI / 6,
-          z: 0,
-        },
-      })
-      changeFocus(true)
-    } else if (fenceFocused) {
-      setAdinkraFocused(false)
-      setSpotIndex(0)
-      changeFocusPosition({
-        position: {
-          x: 35,
-          y: 4,
-          z: 60,
-        },
-        rotation: {
-          x: Math.PI / 6,
-          y: -Math.PI / 3,
-          z: 0,
-        },
-      })
-      changeFocus(true)
-    } else {
+    if (spotIndex === null) {
+      if (fenceFocused) {
+        setAdinkraFocused(false)
+        setSpotIndex(0)
+        changeFocusPosition({
+          position: {
+            x: 35,
+            y: 4,
+            z: 60,
+          },
+          rotation: {
+            x: Math.PI / 6,
+            y: -Math.PI / 3,
+            z: 0,
+          },
+        })
+        changeFocus(true)
+      } else if (adinkraFocused) {
+        setFenceFocused(false)
+        setSpotIndex(1)
+        changeFocusPosition({
+          position: {
+            x: -10,
+            y: -2,
+            z: 120,
+          },
+          rotation: {
+            x: Math.PI / 6,
+            y: -Math.PI / 6,
+            z: 0,
+          },
+        })
+        changeFocus(true)
+      } else {
+        setSpotIndex(null)
+        changeFocus(false)
+
+        if (!isVoiceOver) {
+          setShowText(false)
+        }
+      }
+    }
+
+    if (spotIndex !== null && showText === false && !adinkraFocused) {
+      if (fenceFocused) {
+        setFenceFocused(false)
+      }
+
       setSpotIndex(null)
       changeFocus(false)
 
@@ -57,7 +72,7 @@ export const Setup = ({ setSpotIndex, setShowText, isVoiceOver, variant }) => {
         setShowText(false)
       }
     }
-  }, [adinkraFocused, fenceFocused])
+  }, [adinkraFocused, fenceFocused, showText])
 
   useEffect(() => {
     setShowText(true)
