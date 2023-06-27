@@ -7,7 +7,15 @@ import { Environment, PositionalAudio, Sky } from "@react-three/drei"
 import { GoToMap } from "../../objects/interactive/GoToMap/GoToMap"
 import { TempestEffect } from "../../effects/TempestEffect"
 
-export const Setup = ({ spotIndex, setSpotIndex, showText, setShowText, isVoiceOver, variant }) => {
+export const Setup = ({
+  spotIndex,
+  setSpotIndex,
+  showText,
+  setShowText,
+  isVoiceOver,
+  variant,
+  devMode,
+}) => {
   const [adinkraFocused, setAdinkraFocused] = useState(false)
   const [fenceFocused, setFenceFocused] = useState(false)
   const [playPositionnalAudio, setPlayPositionnalAudio] = useState(false)
@@ -94,7 +102,11 @@ export const Setup = ({ spotIndex, setSpotIndex, showText, setShowText, isVoiceO
         rotation={[-Math.PI / 2, 0, 0]}
         dispose={null}
       />
-      <GoToMap args={[5, 5, 5]} position={[40, -2.5, -90]} />
+      <GoToMap
+        args={[5, 5, 5]}
+        position={[40, -2.5, -90]}
+        disable={adinkraFocused || fenceFocused || (!devMode && showText && spotIndex === null)}
+      />
       {playPositionnalAudio && (
         <>
           <PositionalAudio

@@ -18,7 +18,7 @@ import { Preload, Stats } from "@react-three/drei"
 import { getSceneVariants } from "@/helpers/variants/getSceneVariant"
 import { devUrlChecker } from "@/helpers/checkers/devUrlChecker"
 
-export const Experience = ({ activateBlackBars }) => {
+export const Experience = ({ activateBlackBars, devMode }) => {
   const { scene, pinpoint } = useSelector((state) => state.map)
   const { mapActive } = useSelector((state) => state.ui)
   const { code, infos } = useSelector((state) => state.game)
@@ -58,6 +58,7 @@ export const Experience = ({ activateBlackBars }) => {
             showText={showText}
             setShowText={setShowText}
             isVoiceOver={isVoiceOver}
+            devMode={devMode}
           />
         ) : scene === 1 ? (
           <MegalithicCircles
@@ -67,14 +68,18 @@ export const Experience = ({ activateBlackBars }) => {
             showText={showText}
             setShowText={setShowText}
             isVoiceOver={isVoiceOver}
+            devMode={devMode}
           />
         ) : scene === 2 ? (
           <BaobabOne
+            spotIndex={spotIndex}
             setSpotIndex={setSpotIndex}
+            showText={showText}
             setShowText={setShowText}
             isVoiceOver={isVoiceOver}
             showPresage={showPresage}
             setShowPresage={setShowPresage}
+            devMode={devMode}
           />
         ) : scene === 3 ? (
           <KeurGnialo
@@ -84,6 +89,7 @@ export const Experience = ({ activateBlackBars }) => {
             showText={showText}
             setShowText={setShowText}
             isVoiceOver={isVoiceOver}
+            devMode={devMode}
           />
         ) : (
           <BaobabTwo />

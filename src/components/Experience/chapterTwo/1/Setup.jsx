@@ -7,7 +7,15 @@ import { useDispatch } from "react-redux"
 import { changeOnFocusCamera, changeOnFocusCameraPosition } from "@/store/reducers/userReducer"
 import { GoToMap } from "../../objects/interactive/GoToMap/GoToMap"
 
-export const Setup = ({ spotIndex, setSpotIndex, showText, setShowText, isVoiceOver, variant }) => {
+export const Setup = ({
+  spotIndex,
+  setSpotIndex,
+  showText,
+  setShowText,
+  isVoiceOver,
+  variant,
+  devMode,
+}) => {
   const dispatch = useDispatch()
   const changeFocus = (value) => dispatch(changeOnFocusCamera(value))
   const changeFocusPosition = (value) => dispatch(changeOnFocusCameraPosition(value))
@@ -109,7 +117,11 @@ export const Setup = ({ spotIndex, setSpotIndex, showText, setShowText, isVoiceO
         rotation={[-Math.PI / 2, 0, 0]}
         dispose={null}
       />
-      <GoToMap args={[5, 5, 5]} position={[28, -2.5, -60]} />
+      <GoToMap
+        args={[5, 5, 5]}
+        position={[28, -2.5, -60]}
+        disable={adinkraFocused || entryFocused || signFocused || (!devMode && showText && spotIndex === null)}
+      />
       {playPositionnalAudio && (
         <>
           <PositionalAudio

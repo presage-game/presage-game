@@ -32,7 +32,10 @@ const App = () => {
       {!hasExperienceStarted ? (
         <Introduction />
       ) : (
-        <Experience activateBlackBars={devUrlChecker() ? gui.BlackBars : true} />
+        <Experience
+          activateBlackBars={devUrlChecker() ? gui.BlackBars : true}
+          devMode={devUrlChecker()}
+        />
       )}
       {!hasExperienceStarted && (
         <button

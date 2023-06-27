@@ -8,7 +8,7 @@ import { WindEffect } from "../../effects/WindEffect"
 import { GoToMap } from "../../objects/interactive/GoToMap/GoToMap"
 import { CloudsEffect } from "../../effects/CloudsEffect"
 
-export const Setup = ({ spotIndex, setSpotIndex, showText, setShowText, isVoiceOver }) => {
+export const Setup = ({ spotIndex, setSpotIndex, showText, setShowText, isVoiceOver, devMode }) => {
   const [variant, setVariant] = useState("default")
   const [pubFocused, setPubFocused] = useState(false)
   const [mapFocused, setMapFocused] = useState(false)
@@ -88,22 +88,6 @@ export const Setup = ({ spotIndex, setSpotIndex, showText, setShowText, isVoiceO
   }, [])
 
   /*
-  const switchLerp = (value) => {
-    changeFocusPosition({
-      position: {
-        x: -50,
-        y: 0,
-        z: 60,
-      },
-      rotation: {
-        x: -Math.PI / 3,
-        y: 0,
-        z: 0,
-      },
-    })
-    changeFocus(value)
-  }
-
   base sky pour keur gnialo
     <Sky
         sunPosition={[10000, 1, 10]}
@@ -113,8 +97,8 @@ export const Setup = ({ spotIndex, setSpotIndex, showText, setShowText, isVoiceO
         mieDirectionalG={0.828}
         inclination={100}
       />
-
   */
+
   return (
     <>
       <Environment files="/assets/hdri/rooitou_park_1k.hdr" />
@@ -133,7 +117,11 @@ export const Setup = ({ spotIndex, setSpotIndex, showText, setShowText, isVoiceO
         dispose={null}
       />
       {variant !== "default" && <ambientLight color={"#C65948"} intensity={0.5} dispose={null} />}
-      <GoToMap args={[5, 5, 50]} position={[-1, -2.5, -80]} />
+      <GoToMap
+        args={[5, 5, 50]}
+        position={[-1, -2.5, -80]}
+        disable={mapFocused || pubFocused || (!devMode && showText && spotIndex === null)}
+      />
       {playPositionnalAudio && (
         <>
           <PositionalAudio

@@ -1,9 +1,7 @@
 import { useState } from "react"
-import { useSelector } from "react-redux"
 
-export const TreeOne = ({ nodes, Materials, position, treeFocused, setTreeFocused }) => {
+export const TreeOne = ({ nodes, Materials, position, treeFocused, setTreeFocused, adinkras }) => {
   const [isHovered, setIsHovered] = useState(false)
-  const { adinkras } = useSelector((state) => state.user)
   const goodadinkra = adinkras.filter((adinkra) => adinkra.id === 1)
 
   const selectedOulineMaterial =
