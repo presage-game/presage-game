@@ -18,7 +18,8 @@ import { Preload, Stats } from "@react-three/drei"
 import { getSceneVariants } from "@/helpers/variants/getSceneVariant"
 import { devUrlChecker } from "@/helpers/checkers/devUrlChecker"
 
-export const Experience = ({ activateBlackBars }) => {
+export const Experience = ({ activateBlackBars, devMode }) => {
+  const activeIntro = () => !devMode && showText && spotIndex === null
   const { scene, pinpoint } = useSelector((state) => state.map)
   const { mapActive } = useSelector((state) => state.ui)
   const { code, infos } = useSelector((state) => state.game)
@@ -53,31 +54,40 @@ export const Experience = ({ activateBlackBars }) => {
           <Map setShowText={setShowText} />
         ) : scene === 0 ? (
           <RegionEntranceOne
+            spotIndex={spotIndex}
             setSpotIndex={setSpotIndex}
+            showText={showText}
             setShowText={setShowText}
             isVoiceOver={isVoiceOver}
+            activeIntro={activeIntro}
           />
         ) : scene === 1 ? (
           <MegalithicCircles
             variant={scenesVariant[0].value}
+            spotIndex={spotIndex}
             setSpotIndex={setSpotIndex}
+            showText={showText}
             setShowText={setShowText}
             isVoiceOver={isVoiceOver}
+            activeIntro={activeIntro}
           />
         ) : scene === 2 ? (
           <BaobabOne
             setSpotIndex={setSpotIndex}
             setShowText={setShowText}
             isVoiceOver={isVoiceOver}
-            showPresage={showPresage}
             setShowPresage={setShowPresage}
+            activeIntro={activeIntro}
           />
         ) : scene === 3 ? (
           <KeurGnialo
             variant={scenesVariant[1].value}
+            spotIndex={spotIndex}
             setSpotIndex={setSpotIndex}
+            showText={showText}
             setShowText={setShowText}
             isVoiceOver={isVoiceOver}
+            activeIntro={activeIntro}
           />
         ) : (
           <BaobabTwo />

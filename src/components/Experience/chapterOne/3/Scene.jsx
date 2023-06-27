@@ -4,7 +4,7 @@ import { getMaterials } from "@/helpers/materials/Materials"
 import { useGLTF } from "@react-three/drei"
 import { TreeOne } from "../../objects/interactive/TreeOne/TreeOne"
 
-export const Scene = ({ treeFocused, setTreeFocused }) => {
+export const Scene = ({ treeFocused, setTreeFocused, adinkras }) => {
   const { nodes, materials } = useGLTF("assets/scenes/baobab_1.glb")
 
   const [Materials, setMaterials] = useState(null)
@@ -20,7 +20,7 @@ export const Scene = ({ treeFocused, setTreeFocused }) => {
   return (
     <>
       <Model nodes={nodes} materials={materials} Materials={Materials} position={[14, -15, 92]} />
-      <TreeOne nodes={nodes} Materials={Materials} position={[14, -15, 92]} treeFocused={treeFocused} setTreeFocused={setTreeFocused} />
+      <TreeOne nodes={nodes} Materials={Materials} position={[14, -15, 92]} treeFocused={treeFocused} setTreeFocused={setTreeFocused} adinkras={adinkras} />
     </>
   )
 }

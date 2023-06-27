@@ -3,11 +3,12 @@ import { CustomCamera } from "../../tools/CustomCamera/CustomCamera"
 import { CloudsEffect } from "../../effects/CloudsEffect"
 import { Scene } from "./Scene"
 import { useState, useEffect } from "react"
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { changeOnFocusCamera, changeOnFocusCameraPosition } from "@/store/reducers/userReducer"
 import { GoToMap } from "../../objects/interactive/GoToMap/GoToMap"
 
-export const Setup = ({ setSpotIndex, setShowText, isVoiceOver, setShowPresage }) => {
+export const Setup = ({ setSpotIndex, setShowText, isVoiceOver, setShowPresage, activeIntro }) => {
+  const { adinkras } = useSelector((state) => state.user)
   const [treeFocused, setTreeFocused] = useState(false)
   const [playPositionnalAudio, setPlayPositionnalAudio] = useState(false)
 
@@ -61,7 +62,11 @@ export const Setup = ({ setSpotIndex, setShowText, isVoiceOver, setShowPresage }
         rotation={[-Math.PI / 2, 0, 0]}
         dispose={null}
       />
-      <GoToMap args={[5, 5, 5]} position={[25, -2.5, -90]} />
+      <GoToMap
+        args={[5, 5, 5]}
+        position={[25, -2.5, -90]}
+        disable={treeFocused || activeIntro() || adinkras[0].isCollected}
+      />
       {playPositionnalAudio && (
         <>
           <PositionalAudio
@@ -75,7 +80,7 @@ export const Setup = ({ setSpotIndex, setShowText, isVoiceOver, setShowPresage }
       )}
       <Sky sunPosition={[10, 1, 10]} rayleigh={0.6} mieCoefficient={0.001} mieDirectionalG={0.9} />
       <CloudsEffect position={[0, 40, -300]} variant={"default"} numberOfClouds={20} />
-      <Scene treeFocused={treeFocused} setTreeFocused={setTreeFocused} />
+      <Scene treeFocused={treeFocused} setTreeFocused={setTreeFocused} adinkras={adinkras} />
     </>
   )
 }

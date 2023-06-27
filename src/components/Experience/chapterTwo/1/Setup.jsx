@@ -7,7 +7,15 @@ import { useDispatch } from "react-redux"
 import { changeOnFocusCamera, changeOnFocusCameraPosition } from "@/store/reducers/userReducer"
 import { GoToMap } from "../../objects/interactive/GoToMap/GoToMap"
 
-export const Setup = ({ setSpotIndex, setShowText, isVoiceOver, variant }) => {
+export const Setup = ({
+  spotIndex,
+  setSpotIndex,
+  showText,
+  setShowText,
+  isVoiceOver,
+  variant,
+  activeIntro,
+}) => {
   const dispatch = useDispatch()
   const changeFocus = (value) => dispatch(changeOnFocusCamera(value))
   const changeFocusPosition = (value) => dispatch(changeOnFocusCameraPosition(value))
@@ -17,51 +25,69 @@ export const Setup = ({ setSpotIndex, setShowText, isVoiceOver, variant }) => {
   const [playPositionnalAudio, setPlayPositionnalAudio] = useState(false)
 
   useEffect(() => {
-    if (adinkraFocused) {
-      setSpotIndex(1)
-      changeFocusPosition({
-        position: {
-          x: 220,
-          y: -2,
-          z: 250,
-        },
-        rotation: {
-          x: 0,
-          y: Math.PI / 2 + Math.PI / 3,
-          z: 0,
-        },
-      })
-      changeFocus(true)
-    } else if (signFocused) {
-      changeFocusPosition({
-        position: {
-          x: -120,
-          y: -4,
-          z: 600,
-        },
-        rotation: {
-          x: 0,
-          y: Math.PI / 2,
-          z: 0,
-        },
-      })
-      changeFocus(true)
-    } else if (entryFocused) {
-      setSpotIndex(0)
-      changeFocusPosition({
-        position: {
-          x: 50,
-          y: -2,
-          z: 250,
-        },
-        rotation: {
-          x: 0,
-          y: -Math.PI / 2,
-          z: 0,
-        },
-      })
-      changeFocus(true)
-    } else {
+    if (spotIndex === null) {
+      if (adinkraFocused) {
+        setSpotIndex(1)
+        changeFocusPosition({
+          position: {
+            x: 220,
+            y: -2,
+            z: 250,
+          },
+          rotation: {
+            x: 0,
+            y: Math.PI / 2 + Math.PI / 3,
+            z: 0,
+          },
+        })
+        changeFocus(true)
+      } else if (signFocused) {
+        changeFocusPosition({
+          position: {
+            x: -120,
+            y: -4,
+            z: 600,
+          },
+          rotation: {
+            x: 0,
+            y: Math.PI / 2,
+            z: 0,
+          },
+        })
+        changeFocus(true)
+      } else if (entryFocused) {
+        setSpotIndex(0)
+        changeFocusPosition({
+          position: {
+            x: 50,
+            y: -2,
+            z: 250,
+          },
+          rotation: {
+            x: 0,
+            y: -Math.PI / 2,
+            z: 0,
+          },
+        })
+        changeFocus(true)
+      } else {
+        setSpotIndex(null)
+        changeFocus(false)
+
+        if (!isVoiceOver) {
+          setShowText(false)
+        }
+      }
+    }
+
+    if (spotIndex !== null && showText === false && !adinkraFocused) {
+      if (signFocused) {
+        setSignFocused(false)
+      }
+      if (entryFocused) {
+        setEntryFocused(false)
+      }
+
       setSpotIndex(null)
       changeFocus(false)
 
@@ -69,7 +95,7 @@ export const Setup = ({ setSpotIndex, setShowText, isVoiceOver, variant }) => {
         setShowText(false)
       }
     }
-  }, [adinkraFocused, signFocused, entryFocused])
+  }, [adinkraFocused, signFocused, entryFocused, showText])
 
   useEffect(() => {
     setShowText(true)
@@ -91,7 +117,11 @@ export const Setup = ({ setSpotIndex, setShowText, isVoiceOver, variant }) => {
         rotation={[-Math.PI / 2, 0, 0]}
         dispose={null}
       />
-      <GoToMap args={[5, 5, 5]} position={[28, -2.5, -60]} />
+      <GoToMap
+        args={[5, 5, 5]}
+        position={[28, -2.5, -60]}
+        disable={adinkraFocused || entryFocused || signFocused || activeIntro()}
+      />
       {playPositionnalAudio && (
         <>
           <PositionalAudio

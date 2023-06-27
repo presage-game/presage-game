@@ -8,7 +8,14 @@ import { WindEffect } from "../../effects/WindEffect"
 import { GoToMap } from "../../objects/interactive/GoToMap/GoToMap"
 import { CloudsEffect } from "../../effects/CloudsEffect"
 
-export const Setup = ({ setSpotIndex, setShowText, isVoiceOver }) => {
+export const Setup = ({
+  spotIndex,
+  setSpotIndex,
+  showText,
+  setShowText,
+  isVoiceOver,
+  activeIntro,
+}) => {
   const [variant, setVariant] = useState("default")
   const [pubFocused, setPubFocused] = useState(false)
   const [mapFocused, setMapFocused] = useState(false)
@@ -19,38 +26,56 @@ export const Setup = ({ setSpotIndex, setShowText, isVoiceOver }) => {
   const changeFocusPosition = (value) => dispatch(changeOnFocusCameraPosition(value))
 
   useEffect(() => {
-    if (pubFocused) {
-      setMapFocused(false)
-      changeFocusPosition({
-        position: {
-          x: -29,
-          y: -2,
-          z: 205,
-        },
-        rotation: {
-          x: Math.PI / 6,
-          y: Math.PI / 15,
-          z: 0,
-        },
-      })
-      changeFocus(true)
-    } else if (mapFocused) {
-      setPubFocused(false)
-      setSpotIndex(1)
-      changeFocusPosition({
-        position: {
-          x: 75,
-          y: -3,
-          z: 120,
-        },
-        rotation: {
-          x: 0,
-          y: -Math.PI / 4,
-          z: 0,
-        },
-      })
-      changeFocus(true)
-    } else {
+    if (spotIndex === null) {
+      if (pubFocused) {
+        setMapFocused(false)
+        changeFocusPosition({
+          position: {
+            x: -29,
+            y: -2,
+            z: 205,
+          },
+          rotation: {
+            x: Math.PI / 6,
+            y: Math.PI / 15,
+            z: 0,
+          },
+        })
+        changeFocus(true)
+      } else if (mapFocused) {
+        setPubFocused(false)
+        setSpotIndex(1)
+        changeFocusPosition({
+          position: {
+            x: 75,
+            y: -3,
+            z: 120,
+          },
+          rotation: {
+            x: 0,
+            y: -Math.PI / 4,
+            z: 0,
+          },
+        })
+        changeFocus(true)
+      } else {
+        setSpotIndex(null)
+        changeFocus(false)
+
+        if (!isVoiceOver) {
+          setShowText(false)
+        }
+      }
+    }
+
+    if (spotIndex !== null && showText === false) {
+      if (pubFocused) {
+        setPubFocused(false)
+      }
+      if (mapFocused) {
+        setMapFocused(false)
+      }
+
       setSpotIndex(null)
       changeFocus(false)
 
@@ -58,7 +83,7 @@ export const Setup = ({ setSpotIndex, setShowText, isVoiceOver }) => {
         setShowText(false)
       }
     }
-  }, [pubFocused, mapFocused])
+  }, [pubFocused, mapFocused, showText])
 
   useEffect(() => {
     setShowText(true)
@@ -70,22 +95,6 @@ export const Setup = ({ setSpotIndex, setShowText, isVoiceOver }) => {
   }, [])
 
   /*
-  const switchLerp = (value) => {
-    changeFocusPosition({
-      position: {
-        x: -50,
-        y: 0,
-        z: 60,
-      },
-      rotation: {
-        x: -Math.PI / 3,
-        y: 0,
-        z: 0,
-      },
-    })
-    changeFocus(value)
-  }
-
   base sky pour keur gnialo
     <Sky
         sunPosition={[10000, 1, 10]}
@@ -95,8 +104,8 @@ export const Setup = ({ setSpotIndex, setShowText, isVoiceOver }) => {
         mieDirectionalG={0.828}
         inclination={100}
       />
-
   */
+
   return (
     <>
       <Environment files="/assets/hdri/rooitou_park_1k.hdr" />
@@ -115,7 +124,11 @@ export const Setup = ({ setSpotIndex, setShowText, isVoiceOver }) => {
         dispose={null}
       />
       {variant !== "default" && <ambientLight color={"#C65948"} intensity={0.5} dispose={null} />}
-      <GoToMap args={[5, 5, 50]} position={[-1, -2.5, -80]} />
+      <GoToMap
+        args={[5, 5, 50]}
+        position={[-1, -2.5, -80]}
+        disable={mapFocused || pubFocused || activeIntro()}
+      />
       {playPositionnalAudio && (
         <>
           <PositionalAudio

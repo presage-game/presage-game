@@ -11,9 +11,10 @@ export const WelcomeSign = ({ mapFocused, setMapFocused, pubFocused, setPubFocus
       <MapSignModel
         position={[-11, -2.5, -29]}
         rotation={[0, -Math.PI / 2.5, 0]}
+        mapFocused={mapFocused}
         mapHovered={mapHovered}
         setMapHovered={setMapHovered}
-        onMapClick={() => setMapFocused(!mapFocused)}
+        onMapClick={() => setMapFocused(true)}
       />
       <CitiesSignModel
         position={[5, -2.2, -40]}
