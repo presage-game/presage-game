@@ -7,15 +7,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { changeOnFocusCamera, changeOnFocusCameraPosition } from "@/store/reducers/userReducer"
 import { GoToMap } from "../../objects/interactive/GoToMap/GoToMap"
 
-export const Setup = ({
-  spotIndex,
-  setSpotIndex,
-  showText,
-  setShowText,
-  isVoiceOver,
-  setShowPresage,
-  devMode,
-}) => {
+export const Setup = ({ setSpotIndex, setShowText, isVoiceOver, setShowPresage, activeIntro }) => {
   const { adinkras } = useSelector((state) => state.user)
   const [treeFocused, setTreeFocused] = useState(false)
   const [playPositionnalAudio, setPlayPositionnalAudio] = useState(false)
@@ -73,9 +65,7 @@ export const Setup = ({
       <GoToMap
         args={[5, 5, 5]}
         position={[25, -2.5, -90]}
-        disable={
-          treeFocused || (!devMode && showText && spotIndex === null && adinkras[0].isCollected)
-        }
+        disable={treeFocused || (activeIntro() && adinkras[0].isCollected)}
       />
       {playPositionnalAudio && (
         <>

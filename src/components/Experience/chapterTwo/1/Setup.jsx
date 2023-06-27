@@ -14,7 +14,7 @@ export const Setup = ({
   setShowText,
   isVoiceOver,
   variant,
-  devMode,
+  activeIntro,
 }) => {
   const dispatch = useDispatch()
   const changeFocus = (value) => dispatch(changeOnFocusCamera(value))
@@ -120,7 +120,7 @@ export const Setup = ({
       <GoToMap
         args={[5, 5, 5]}
         position={[28, -2.5, -60]}
-        disable={adinkraFocused || entryFocused || signFocused || (!devMode && showText && spotIndex === null)}
+        disable={adinkraFocused || entryFocused || signFocused || activeIntro()}
       />
       {playPositionnalAudio && (
         <>

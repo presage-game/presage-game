@@ -8,7 +8,14 @@ import { WindEffect } from "../../effects/WindEffect"
 import { GoToMap } from "../../objects/interactive/GoToMap/GoToMap"
 import { CloudsEffect } from "../../effects/CloudsEffect"
 
-export const Setup = ({ spotIndex, setSpotIndex, showText, setShowText, isVoiceOver, devMode }) => {
+export const Setup = ({
+  spotIndex,
+  setSpotIndex,
+  showText,
+  setShowText,
+  isVoiceOver,
+  activeIntro,
+}) => {
   const [variant, setVariant] = useState("default")
   const [pubFocused, setPubFocused] = useState(false)
   const [mapFocused, setMapFocused] = useState(false)
@@ -120,7 +127,7 @@ export const Setup = ({ spotIndex, setSpotIndex, showText, setShowText, isVoiceO
       <GoToMap
         args={[5, 5, 50]}
         position={[-1, -2.5, -80]}
-        disable={mapFocused || pubFocused || (!devMode && showText && spotIndex === null)}
+        disable={mapFocused || pubFocused || activeIntro()}
       />
       {playPositionnalAudio && (
         <>

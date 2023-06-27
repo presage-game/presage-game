@@ -14,7 +14,7 @@ export const Setup = ({
   setShowText,
   isVoiceOver,
   variant,
-  devMode,
+  activeIntro,
 }) => {
   const [adinkraFocused, setAdinkraFocused] = useState(false)
   const [fenceFocused, setFenceFocused] = useState(false)
@@ -105,7 +105,7 @@ export const Setup = ({
       <GoToMap
         args={[5, 5, 5]}
         position={[40, -2.5, -90]}
-        disable={adinkraFocused || fenceFocused || (!devMode && showText && spotIndex === null)}
+        disable={adinkraFocused || fenceFocused || activeIntro()}
       />
       {playPositionnalAudio && (
         <>
