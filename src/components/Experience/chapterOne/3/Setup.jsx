@@ -65,7 +65,7 @@ export const Setup = ({ setSpotIndex, setShowText, isVoiceOver, setShowPresage, 
       <GoToMap
         args={[5, 5, 5]}
         position={[25, -2.5, -90]}
-        disable={treeFocused || (activeIntro() && adinkras[0].isCollected)}
+        disable={treeFocused || activeIntro() || adinkras[0].isCollected}
       />
       {playPositionnalAudio && (
         <>
