@@ -511,7 +511,7 @@ export function Model({ position, rotation, nodes, materials, Materials }) {
         <mesh geometry={nodes.Mesh051_1.geometry} material={Materials.outlineMaterial} />
       </group>
       <group position={[32.89, 13.66, 103.86]} rotation={[0, -0.44, 0]} scale={1.62}>
-        <mesh geometry={nodes.Cube058.geometry} material={Materials.megalithicMaterial} />
+        <mesh geometry={nodes.Cube058.geometry} material={Materials.megalithicMaterials.main} />
         <mesh geometry={nodes.Cube058_1.geometry} material={Materials.outlineMaterial} />
       </group>
       <group position={[38.8, 23.22, 112.13]} rotation={[-0.18, 1.16, -2.78]} scale={-0.74}>

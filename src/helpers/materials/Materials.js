@@ -28,7 +28,10 @@ const defaultMaterials = {
   },
   leafMaterial: "#4F7552",
   grassMaterial: "#626F52",
-  megalithicMaterial: "#A26656",
+  megalithicMaterials: {
+    main: "#A26656",
+    selected: "#C5806E",
+  },
   treeMaterial: "#704D46",
   stoneMaterial: "#7A675C",
   cloudMaterial: "#C3FDFD",
@@ -61,7 +64,10 @@ const variantMaterials = {
   },
   leafMaterial: "#D8BF66",
   grassMaterial: "#626F52",
-  megalithicMaterial: "#A26656",
+  megalithicMaterials: {
+    main: "#A26656",
+    selected: "#C8A49B",
+  },
   treeMaterial: "#704D46",
   stoneMaterial: "#7A675C",
   cloudMaterial: "#C65948",
@@ -163,10 +169,16 @@ export const getMaterials = async (variant) =>
       gradientMap: toonThreeTone,
     })
 
-    const megalithicMaterial = new MeshToonMaterial({
-      color: MaterialsColor.megalithicMaterial,
-      gradientMap: toonFiveTone,
-    })
+    const megalithicMaterials = {
+      main: new MeshToonMaterial({
+        color: MaterialsColor.megalithicMaterials.main,
+        gradientMap: toonFiveTone,
+      }),
+      selected: new MeshToonMaterial({
+        color: MaterialsColor.megalithicMaterials.selected,
+        gradientMap: toonFiveTone,
+      }),
+    }
 
     const treeMaterial = new MeshToonMaterial({
       color: MaterialsColor.treeMaterial,
@@ -237,7 +249,7 @@ export const getMaterials = async (variant) =>
       metalMaterials,
       leafMaterial,
       grassMaterial,
-      megalithicMaterial,
+      megalithicMaterials,
       treeMaterial,
       stoneMaterial,
       cloudMaterial,
