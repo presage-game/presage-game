@@ -6,6 +6,7 @@ audio.volume = 0.5
 const initialState = {
   isPromptComplete: false,
   hasExperienceStarted: false,
+  sceneEntranceAnimation: false,
   onFocusCamera: false,
   onFocusCameraPosition: {
     position: {
@@ -48,6 +49,9 @@ export const userSlice = createSlice({
     setScore: (state, action) => {
       state.score += action.payload
     },
+    changeSceneEntranceAnimation: (state, action) => {
+      state.sceneEntranceAnimation = action.payload
+    },
     completePrompts: (state) => {
       state.isPromptComplete = true
     },
@@ -69,6 +73,7 @@ export const userSlice = createSlice({
 
 export const {
   setScore,
+  changeSceneEntranceAnimation,
   completePrompts,
   startExperience,
   changeOnFocusCamera,
