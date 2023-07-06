@@ -1,0 +1,217 @@
+[
+  {
+    "name": "Entrée de la région",
+    "intro": [
+      {
+        "text": "Le soleil trône au-dessus de toi, dans un ciel bleu moucheté de résidus opalins. Loin devant, les contours brouillés d’une ville se dessinent dans l’air brûlant du désert.",
+        "emitter": "narrator"
+      },
+      {
+        "text": "Tirés entre des pylônes électriques, les lignes à haute tension ondulent au vent, au-dessus de la route.",
+        "emitter": "narrator"
+      }
+    ],
+    "spots": [
+      {
+        "index": 0,
+        "label": "Panneau routier",
+        "content": []
+      },
+      {
+        "index": 1,
+        "label": "Carte routière",
+        "content": [
+          {
+            "text": "Une carte de la région recouvre le panneau de gauche. Elle s’orne de pastilles de couleur rouge décrivant des curiosités ; lesquelles se voient perforées d’un tracé jaune, qui s’étend sur toute la hauteur du support.",
+            "emitter": "narrator"
+          },
+          {
+            "text": "Soudain, la radio de la voiture s’allume dans un grésillement. Une voix baigne dans la friture électromagnétique et les parasites, mais parvient tout de même à trouver son chemin jusque dans l’habitacle.",
+            "emitter": "narrator"
+          },
+          {
+            "text": "Un acarien monochrome cherche à rejoindre le sud de la région en suivant la nationale, qui fait comme une longue cicatrice sinueuse. C’est toi.",
+            "emitter": "innerVoice"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Cercles mégalithiques",
+    "intro": [
+      [
+        {
+          "text": "Des rafales de vent soulèvent des volutes de poussière qui s’assemblent, et qui forment des brumes de sable opacifiant l’atmosphère. Il est difficile de voir à plus de dix mètres.",
+          "emitter": "narrator"
+        },
+        {
+          "text": "Il n’y a plus aucun nuage dans le ciel, mais seulement du bleu à perte de vue. Le soleil, lui, continue inlassablement de cogner.",
+          "emitter": "narrator"
+        }
+      ],
+      {
+        "text": "Une colonie de mégalithes a choisi de s’établir ici, sur un site grand de plusieurs hectares. Des centaines de piliers de latérite taillée forment des cercles.",
+        "emitter": "narrator"
+      },
+      {
+        "text": "Ces pierres surmontent des sépultures. Tu ressens les âmes de milliers d’habitants du Nyalaandé reposer sous tes pieds. Mais leur corps n’est plus là.",
+        "emitter": "innerVoice"
+      }
+    ],
+    "spots": [
+      {
+        "index": 0,
+        "label": "Clôtures",
+        "content": [
+          {
+            "text": "Des clôtures métalliques courent tout autour du site fantôme. Le vent les secoue, fendant l’air d’un tintement qu’on finit presque par oublier.",
+            "emitter": "narrator"
+          },
+          {
+            "text": "Des entreprises ont essayé de se réapproprier cet endroit. Et quelque chose les a fait partir avant qu’elles n’y parviennent.",
+            "emitter": "innerVoice"
+          }
+        ]
+      },
+      {
+        "index": 1,
+        "label": "Cercles de pierre",
+        "content": [
+          {
+            "text": "Tu as l'impression que les pierres émettent un son lorsque tu les touches.",
+            "emitter": "innerVoice"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Premier arbre à palabres",
+    "intro": [
+      {
+        "text": "Un baobab singulier et trapu se dresse le long de la route, dépliant ses couronnes vertes en-dessous du ciel. Perchées sur une branche, deux perruches aux couleurs vives te dévisagent placidement.",
+        "emitter": "narrator"
+      },
+      {
+        "text": "Quelque chose cloche avec ce baobab. D’une manière ou d’une autre, il n’est pas censé être là. Tu aimerais l’ignorer et tracer ta route, mais sa présence t’en empêche.",
+        "emitter": "innerVoice"
+      },
+      [
+        {
+          "text": "La pierre que tu as ramassé tout à l’heure s’agite. Tu la tiens maintenant entre tes mains. Une fenêtre s’ouvre à toi, et tu ne sais pas encore si elle donne sur le passé ou le futur.",
+          "emitter": "innerVoice"
+        },
+        {
+          "text": "Les secondes s’étirent, et ton imagination fait son travail. Tu crois entendre un murmure. Trouve d’abord le symbole du passé, et tu pourras reprendre la route. La bonne mélodie saura libérer la pierre de sa sépulture.",
+          "emitter": "innerVoice"
+        }
+      ]
+    ],
+    "spots": [
+      {
+        "index": 0,
+        "label": "Baobab",
+        "content": []
+      }
+    ]
+  },
+  {
+    "name": "Keur Gnìalo",
+    "intro": [
+      {
+        "text": "Une station-essence toute neuve tranche radicalement avec l’amalgame que forme les bâtisses au style colonial et les rangées de quincailleries.",
+        "emitter": "narrator"
+      },
+      {
+        "text": "Béton, poussière et métal se coagulent sous tes yeux pour former Keur Gnìalo. La fomentation urbaine se mêle au bruit du trafic.",
+        "emitter": "narrator"
+      }
+    ],
+    "spots": [
+      {
+        "index": 0,
+        "label": "Boutique de la station-essence",
+        "content": [
+          [
+            {
+              "text": "Des conducteurs se sont arrêtés ici avant toi. Tu sens leur présence au fond de tes poumons. L’odeur du gazole se répand aux abords de la ville, et bizarrement, tu trouves cela agréable.",
+              "emitter": "innerVoice"
+            },
+            {
+              "text": "La boutique de la station-essence est fermée. Une note manuscrite rédigée en français a été placardée sur la porte.",
+              "emitter": "narrator"
+            }
+          ],
+          [
+            {
+              "text": "Tu entres dans la boutique de la station-essence.",
+              "emitter": "narrator"
+            },
+            {
+              "text": "La note dit: “Boutique fermée en raison de la pénurie de carburant. Approvisionnements perturbés et retards importants de la part des fournisseurs. Merci de votre compréhension.”",
+              "emitter": "narrator"
+            }
+          ],
+          [
+            {
+              "text": "''Ah, encore une nouvelle tête. Bienvenue dans la plus belle ville du monde. Beaucoup de voyageurs passent par ici, mais ils ne restent jamais bien longtemps. Vous non plus, vous n'allez pas rester longtemps, n'est-ce pas ?''",
+              "options": [
+                {
+                  "text": "La plus belle ville du monde ?",
+                  "response": "''Mais oui. Il y a quelque chose dans l’air, ici. Les murmures d’Uwma et de Sali à l’intérieur des murs, les pompes à essence bien alignées. Le marché aux fruits de l’après-midi.''"
+                },
+                {
+                  "text": "Quelles nouvelles ?",
+                  "response": "''Ah. Les entreprises font faillite. Mais pas comme elles le font habituellement, non : je vous parle ici d’une malédiction. Tout le monde a autant peur d’attraper la fièvre que de fermer boutique. Les habitants commencent à partir. Je finirai par partir un jour, moi aussi.''"
+                }
+              ],
+              "emitter": "npc",
+              "label": "Vendeur de la boutique"
+            },
+            {
+              "text": "Tu assistes à la défaite du modèle libéral. Des jerricanes de secours dorment sagement à l’arrière de ton véhicule, tous les deux blottis l’un contre l’autre.",
+              "emitter": "innerVoice"
+            }
+          ]
+        ]
+      },
+      {
+        "index": 1,
+        "label": "Mur de la boutique",
+        "content": [
+          {
+            "text": "Tu sens une force étrange émaner de la pierre jaunie et fissurée que revêt ce mur.",
+            "emitter": "innerVoice"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Deuxième arbre à palabres",
+    "intro": [
+      {
+        "text": "Le chant des youyous te parvient depuis la cime des rôniers. Et un autre baobab tient debout, juste là, le long de la route.",
+        "emitter": "narrator"
+      },
+      [
+        {
+          "text": "Tu revis la même scène que tout à l’heure.",
+          "emitter": "innerVoice"
+        },
+        {
+          "text": "Trouve d’abord le symbole de la vérité, et tu pourras reprendre la route. Il est gravé quelque part sur les murs de la ville.",
+          "emitter": "innerVoice"
+        }
+      ]
+    ],
+    "spots": [
+      {
+        "index": 0,
+        "label": "Baobab",
+        "content": []
+      }
+    ]
+  }
+]
