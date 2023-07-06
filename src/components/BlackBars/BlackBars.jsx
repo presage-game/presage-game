@@ -6,7 +6,7 @@ import "./BlackBars.scss"
 import { useEffect, useState } from "react"
 import { DefaultLoadingManager } from "three"
 
-export const BlackBars = ({ setIsVoiceOver, mapActive }) => {
+export const BlackBars = ({ setIsIntroActive, mapActive }) => {
   const { blackBarsStatus } = useSelector((state) => state.ui)
   const [pointerEvents, setPointerEvents] = useState(false)
   const [inAnimation, setInAnimation] = useState(false)
@@ -48,7 +48,7 @@ export const BlackBars = ({ setIsVoiceOver, mapActive }) => {
     }
     DefaultLoadingManager.onLoad = () => {
       if (!mapActive) {
-        setIsVoiceOver(true)
+        setIsIntroActive(true)
         setTimeout(() => dispatch(changeBlackBarsStatus("window")), 1000)
         setTimeout(() => setInAnimation(false), 3300)
       }

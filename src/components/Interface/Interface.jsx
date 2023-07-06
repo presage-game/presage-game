@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux"
 import { changeBlackBarsStatus } from "@/store/reducers/uiReducer"
 import { toggleMute } from "@/store/reducers/audioReducer"
 
-import scriptData from "@/assets/data/scenes.json"
+import scenesData from "@/assets/data/newScenes.json"
 import pinpointsData from "@/assets/data/pinpoints.json"
 import presagesData from "@/assets/data/presages.json"
 
@@ -21,8 +21,8 @@ export const Interface = ({
   spotIndex,
   showText,
   setShowText,
-  isVoiceOver,
-  setIsVoiceOver,
+  isIntroActive,
+  setIsIntroActive,
   showPresage,
   setShowPresage,
   activateBlackBars,
@@ -67,17 +67,17 @@ export const Interface = ({
           </button>
         </div>
       )}
-      {activateBlackBars && <BlackBars setIsVoiceOver={setIsVoiceOver} mapActive={mapActive} />}
+      {activateBlackBars && <BlackBars setIsIntroActive={setIsIntroActive} mapActive={mapActive} />}
       {!mapActive && blackBarsStatus !== "closed" && blackBarsStatus !== "window" && (
         <SceneTextBox
           mapActive={mapActive}
           sceneIndex={sceneIndex}
-          scriptData={scriptData}
+          scenesData={scenesData}
           spotIndex={spotIndex}
           showText={showText}
           setShowText={setShowText}
-          isVoiceOver={isVoiceOver}
-          setIsVoiceOver={setIsVoiceOver}
+          isIntroActive={isIntroActive}
+          setIsIntroActive={setIsIntroActive}
           OpenBlackBars={OpenBlackBars}
         />
       )}
@@ -97,7 +97,7 @@ export const Interface = ({
       {mapActive && (
         <>
           <IntersectionPopup
-            scriptData={scriptData}
+            scenesData={scenesData}
             pinpointsData={pinpointsData}
             sceneIndex={sceneIndex}
             pinpointIndex={pinpointIndex}
