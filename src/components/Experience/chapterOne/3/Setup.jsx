@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { changeOnFocusCamera, changeOnFocusCameraPosition } from "@/store/reducers/userReducer"
 import { GoToMap } from "../../objects/interactive/GoToMap/GoToMap"
 
-export const Setup = ({ setSpotIndex, setShowText, isVoiceOver, setShowPresage, activeIntro }) => {
+export const Setup = ({ setSpotIndex, setShowText, isIntroActive, setShowPresage, activeIntro }) => {
   const { adinkras } = useSelector((state) => state.user)
   const [treeFocused, setTreeFocused] = useState(false)
   const [playPositionnalAudio, setPlayPositionnalAudio] = useState(false)
@@ -36,7 +36,7 @@ export const Setup = ({ setSpotIndex, setShowText, isVoiceOver, setShowPresage, 
       setShowPresage(false)
       changeFocus(false)
 
-      if (!isVoiceOver) {
+      if (!isIntroActive) {
         setShowText(false)
       }
     }

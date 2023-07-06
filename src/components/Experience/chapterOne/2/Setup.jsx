@@ -12,7 +12,7 @@ export const Setup = ({
   setSpotIndex,
   showText,
   setShowText,
-  isVoiceOver,
+  isIntroActive,
   variant,
   activeIntro,
 }) => {
@@ -62,7 +62,7 @@ export const Setup = ({
         setSpotIndex(null)
         changeFocus(false)
 
-        if (!isVoiceOver) {
+        if (!isIntroActive) {
           setShowText(false)
         }
       }
@@ -76,7 +76,7 @@ export const Setup = ({
       setSpotIndex(null)
       changeFocus(false)
 
-      if (!isVoiceOver) {
+      if (!isIntroActive) {
         setShowText(false)
       }
     }

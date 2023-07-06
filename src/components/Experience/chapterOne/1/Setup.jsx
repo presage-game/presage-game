@@ -13,7 +13,7 @@ export const Setup = ({
   setSpotIndex,
   showText,
   setShowText,
-  isVoiceOver,
+  isIntroActive,
   activeIntro,
 }) => {
   const [variant, setVariant] = useState("default")
@@ -62,7 +62,7 @@ export const Setup = ({
         setSpotIndex(null)
         changeFocus(false)
 
-        if (!isVoiceOver) {
+        if (!isIntroActive) {
           setShowText(false)
         }
       }
@@ -79,7 +79,7 @@ export const Setup = ({
       setSpotIndex(null)
       changeFocus(false)
 
-      if (!isVoiceOver) {
+      if (!isIntroActive) {
         setShowText(false)
       }
     }

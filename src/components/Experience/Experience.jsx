@@ -22,17 +22,17 @@ export const Experience = ({ activateBlackBars, devMode }) => {
   const activeIntro = () => !devMode && showText && spotIndex === null
   const { scene, pinpoint } = useSelector((state) => state.map)
   const { mapActive } = useSelector((state) => state.ui)
-  const { code, infos } = useSelector((state) => state.game)
+  const { infos } = useSelector((state) => state.game)
   const [scenesVariant, setScenesVariant] = useState(() => getSceneVariants(infos))
 
   const [spotIndex, setSpotIndex] = useState(null)
   const [showText, setShowText] = useState(false)
-  const [isVoiceOver, setIsVoiceOver] = useState(false)
+  const [isIntroActive, setIsIntroActive] = useState(false)
   const [showPresage, setShowPresage] = useState(false)
 
   useEffect(() => {
     if (!mapActive) {
-      setIsVoiceOver(true)
+      setIsIntroActive(true)
     }
   }, [mapActive])
 
@@ -43,8 +43,8 @@ export const Experience = ({ activateBlackBars, devMode }) => {
         spotIndex={spotIndex}
         showText={showText}
         setShowText={setShowText}
-        isVoiceOver={isVoiceOver}
-        setIsVoiceOver={setIsVoiceOver}
+        isIntroActive={isIntroActive}
+        setIsIntroActive={setIsIntroActive}
         showPresage={showPresage}
         setShowPresage={setShowPresage}
         activateBlackBars={activateBlackBars}
@@ -58,7 +58,7 @@ export const Experience = ({ activateBlackBars, devMode }) => {
             setSpotIndex={setSpotIndex}
             showText={showText}
             setShowText={setShowText}
-            isVoiceOver={isVoiceOver}
+            isIntroActive={isIntroActive}
             activeIntro={activeIntro}
           />
         ) : scene === 1 ? (
@@ -68,14 +68,14 @@ export const Experience = ({ activateBlackBars, devMode }) => {
             setSpotIndex={setSpotIndex}
             showText={showText}
             setShowText={setShowText}
-            isVoiceOver={isVoiceOver}
+            isIntroActive={isIntroActive}
             activeIntro={activeIntro}
           />
         ) : scene === 2 ? (
           <BaobabOne
             setSpotIndex={setSpotIndex}
             setShowText={setShowText}
-            isVoiceOver={isVoiceOver}
+            isIntroActive={isIntroActive}
             setShowPresage={setShowPresage}
             activeIntro={activeIntro}
           />
@@ -86,7 +86,7 @@ export const Experience = ({ activateBlackBars, devMode }) => {
             setSpotIndex={setSpotIndex}
             showText={showText}
             setShowText={setShowText}
-            isVoiceOver={isVoiceOver}
+            isIntroActive={isIntroActive}
             activeIntro={activeIntro}
           />
         ) : (
