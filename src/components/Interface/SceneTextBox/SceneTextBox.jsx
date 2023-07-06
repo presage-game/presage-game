@@ -18,7 +18,7 @@ export const SceneTextBox = ({
   setIsVoiceOver,
   OpenBlackBars,
 }) => {
-  const { code, infos } = useSelector((state) => state.game)
+  const { infos } = useSelector((state) => state.game)
   const { adinkras } = useSelector((state) => state.user)
   const [introPlayed, setIntroPlayed] = useState(false)
   const [showOptions, setShowOptions] = useState(false)
@@ -26,12 +26,7 @@ export const SceneTextBox = ({
   const [optionIndex, setOptionIndex] = useState(0)
   const [key, setKey] = useState(0)
 
-  /* --- WIP --- */
-
-  // Utiliser un useMemo? Ou une fonction dédiée?
   const [variant, setVariant] = useState(() => getTextVariant(sceneIndex, "scene", infos, adinkras))
-
-  /* ------ */
 
   /* Text */
   const getTextEmitter = () => {
@@ -190,91 +185,19 @@ export const SceneTextBox = ({
     }
   }, [showText])
 
-  /* Voiceover */
   useEffect(() => {
     if (!hasMoreIntroText()) {
       setIntroPlayed(true)
     }
   }, [textIndex])
 
-  const { isMuted } = useSelector((state) => state.audio)
-
-  const currentAudio = new Audio()
-  currentAudio.volume = 0.75
-
-  useEffect(() => {
-    currentAudio.muted = isMuted
-  }, [isMuted])
-
-  const getAudioFile = (filePath) =>
-    fetch(filePath, { method: "HEAD" })
-      .then((response) => (response.ok ? filePath : null))
-      .catch(() => null)
-
-  const [audioFile, setAudioFile] = useState(null)
-
-  useEffect(() => {
-    if (spotIndex === null && !introPlayed && getIntroText()) {
-      const intro = scriptData[sceneIndex]?.voiceover[textIndex]
-      let audioPath
-
-      if (typeof intro?.text === "string") {
-        audioPath = `audios/scenes/${sceneIndex}/voiceover/intro-${textIndex}.mp3`
-      } else {
-        if (variant === "a" && intro[0]?.text !== undefined) {
-          audioPath = `audios/scenes/${sceneIndex}/voiceover/intro-${textIndex}-a.mp3`
-        } else if (variant === "b" && intro[1]?.text !== undefined) {
-          audioPath = `audios/scenes/${sceneIndex}/voiceover/intro-${textIndex}-b.mp3`
-        }
-      }
-
-      getAudioFile(audioPath).then((file) => {
-        if (file) {
-          setAudioFile(file)
-        }
-      })
-    } else if (spotIndex !== null && getSpotText()) {
-      const spot = scriptData[sceneIndex]?.spots[spotIndex]?.spotVoiceover[textIndex]
-      let audioPath
-
-      if (typeof spot?.text === "string") {
-        audioPath = `audios/scenes/${sceneIndex}/voiceover/${spotIndex}-${textIndex}.mp3`
-      } else {
-        if (variant === "a" && typeof spot === "object") {
-          audioPath = `audios/scenes/${sceneIndex}/voiceover/${spotIndex}-${textIndex}-a.mp3`
-        } else if (variant === "b" && typeof spot === "object") {
-          audioPath = `audios/scenes/${sceneIndex}/voiceover/${spotIndex}-${textIndex}-b.mp3`
-        }
-      }
-
-      getAudioFile(audioPath).then((file) => {
-        if (file) {
-          setAudioFile(file)
-        }
-      })
-    }
-  }, [spotIndex, textIndex, introPlayed]) // Improve?
-
-  useEffect(() => {
-    if (audioFile) {
-      currentAudio.src = audioFile
-      currentAudio.play()
-    } else {
-      currentAudio.pause()
-    }
-
-    return () => {
-      currentAudio.pause()
-      currentAudio.src = ""
-      currentAudio.currentTime = 0
-    }
-  }, [audioFile])
-
   useEffect(() => {
     if (introPlayed) {
       OpenBlackBars()
     }
   }, [introPlayed])
+
+  /* Voiceover */
 
   return (
     <AnimatePresence>
