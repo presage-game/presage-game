@@ -113,10 +113,10 @@ export const Setup = ({
   useFrame((state, delta) => {
     if (lightRef.current && sceneEntranceAnimation) {
       if (lightRef.current.intensity < 0.89) {
-        lightRef.current.intensity = LightLerp(lightRef.current.intensity, 0.9, 0.1 * delta)
+        lightRef.current.intensity = LightLerp(lightRef.current.intensity, 0.9, 0.3 * delta)
       }
       if (lightRef.current.position.y < 49.9) {
-        lightRef.current.position.y = LightLerp(lightRef.current.position.y, 50, 1 * delta)
+        lightRef.current.position.y = LightLerp(lightRef.current.position.y, 50, 0.5 * delta)
       }
     }
   })
