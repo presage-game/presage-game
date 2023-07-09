@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux"
 import "./BlackBars.scss"
 import { useEffect, useState } from "react"
 import { DefaultLoadingManager } from "three"
+import { changeSceneEntranceAnimation } from "@/store/reducers/userReducer"
 
 export const BlackBars = ({ setIsVoiceOver, mapActive }) => {
   const { blackBarsStatus } = useSelector((state) => state.ui)
@@ -15,6 +16,7 @@ export const BlackBars = ({ setIsVoiceOver, mapActive }) => {
   const blackBarsClick = () => {
     if (blackBarsStatus === "window" && !pointerEvents && !inAnimation) {
       dispatch(changeBlackBarsStatus("cinema"))
+      dispatch(changeSceneEntranceAnimation(true))
     }
   }
 

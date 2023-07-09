@@ -1,12 +1,14 @@
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 import { Scene } from "./Scene"
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { changeOnFocusCamera, changeOnFocusCameraPosition } from "@/store/reducers/userReducer"
 import { CustomCamera } from "../../tools/CustomCamera/CustomCamera"
 import { Environment, PositionalAudio, Sky } from "@react-three/drei"
 import { WindEffect } from "../../effects/WindEffect"
 import { GoToMap } from "../../objects/interactive/GoToMap/GoToMap"
 import { CloudsEffect } from "../../effects/CloudsEffect"
+import { useFrame } from "@react-three/fiber"
+import { LightLerp } from "@/helpers/animations/LightLerp"
 
 export const Setup = ({
   spotIndex,
@@ -16,6 +18,8 @@ export const Setup = ({
   isVoiceOver,
   activeIntro,
 }) => {
+  const { sceneEntranceAnimation } = useSelector((state) => state.user)
+  const lightRef = useRef(null)
   const [variant, setVariant] = useState("default")
   const [pubFocused, setPubFocused] = useState(false)
   const [mapFocused, setMapFocused] = useState(false)
@@ -106,6 +110,17 @@ export const Setup = ({
       />
   */
 
+  useFrame((state, delta) => {
+    if (lightRef.current && sceneEntranceAnimation) {
+      if (lightRef.current.intensity < 0.89) {
+        lightRef.current.intensity = LightLerp(lightRef.current.intensity, 0.9, 0.1 * delta)
+      }
+      if (lightRef.current.position.y < 49.9) {
+        lightRef.current.position.y = LightLerp(lightRef.current.position.y, 50, 1 * delta)
+      }
+    }
+  })
+
   return (
     <>
       <Environment files="/assets/hdri/rooitou_park_1k.hdr" />
@@ -117,13 +132,13 @@ export const Setup = ({
         mieDirectionalG={0.5}
       />
       <directionalLight
-        intensity={variant === "default" ? 0.9 : 0.5}
+        intensity={0.2}
         decay={2}
-        position={[-50, 50, 50]}
+        position={[-50, 20, 50]}
         rotation={[-Math.PI / 2, 0, 0]}
         dispose={null}
+        ref={lightRef}
       />
-      {variant !== "default" && <ambientLight color={"#C65948"} intensity={0.5} dispose={null} />}
       <GoToMap
         args={[5, 5, 50]}
         position={[-1, -2.5, -80]}
