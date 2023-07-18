@@ -26,6 +26,7 @@ const defaultMaterials = {
     main: "#A19E98",
     rusty: "#504D5A",
   },
+  moutainMaterial : "#6D4D4A",
   leafMaterial: "#4F7552",
   grassMaterial: "#626F52",
   megalithicMaterials: {
@@ -62,6 +63,7 @@ const variantMaterials = {
     main: "#A19E98",
     rusty: "#504D5A",
   },
+  moutainMaterial : "#A1736F",
   leafMaterial: "#D8BF66",
   grassMaterial: "#626F52",
   megalithicMaterials: {
@@ -159,6 +161,11 @@ export const getMaterials = async (variant) =>
       }),
     }
 
+    const moutainMaterial = new MeshToonMaterial({
+      color: MaterialsColor.moutainMaterial,
+      gradientMap: toonFiveTone,
+    })
+
     const leafMaterial = new MeshToonMaterial({
       color: MaterialsColor.leafMaterial,
       gradientMap: toonThreeTone,
@@ -247,6 +254,7 @@ export const getMaterials = async (variant) =>
       concreteMaterial,
       houseMaterials,
       metalMaterials,
+      moutainMaterial,
       leafMaterial,
       grassMaterial,
       megalithicMaterials,
