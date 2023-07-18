@@ -26,7 +26,7 @@ const defaultMaterials = {
     main: "#A19E98",
     rusty: "#504D5A",
   },
-  moutainMaterial : "#6D4D4A",
+  moutainMaterial: "#6D4D4A",
   leafMaterial: "#4F7552",
   grassMaterial: "#626F52",
   megalithicMaterials: {
@@ -44,6 +44,7 @@ const defaultMaterials = {
     wall: "#E7DEB4",
     white: "#FFF6FA",
   },
+  waterMaterial: "#50709D",
 }
 
 const variantMaterials = {
@@ -63,7 +64,7 @@ const variantMaterials = {
     main: "#A19E98",
     rusty: "#504D5A",
   },
-  moutainMaterial : "#A1736F",
+  moutainMaterial: "#A1736F",
   leafMaterial: "#D8BF66",
   grassMaterial: "#626F52",
   megalithicMaterials: {
@@ -81,6 +82,7 @@ const variantMaterials = {
     wall: "#F0D547",
     white: "#FFF6FA",
   },
+  waterMaterial: "#50709D",
 }
 
 const getTextures = () =>
@@ -246,6 +248,11 @@ export const getMaterials = async (variant) =>
       }),
     }
 
+    const waterMaterial = new MeshToonMaterial({
+      color: MaterialsColor.waterMaterial,
+      gradientMap: toonThreeTone,
+    })
+
     return {
       floorMaterial,
       roadMaterials,
@@ -266,5 +273,6 @@ export const getMaterials = async (variant) =>
       selectedMaterial,
       mapMaterial,
       gasPumpMaterials,
+      waterMaterial
     }
   })
