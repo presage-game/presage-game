@@ -213,5 +213,35 @@
         "spotVoiceover": []
       }
     ]
+  },
+  {
+    "name": "Sentier",
+    "voiceover": [
+      [
+        {
+          "text": "La pluie ricoche contre la pierre, ou finit prise au piège dans le feuillage des arbres. L’eau forme des flaques sur la route, et une partie s’infiltre dans le sol pour gagner les nappes.",
+          "emitter": "narrator"
+        },
+        {
+          "text": "Le ciel est dégagé, ce soir. Des structures surélevées et lointaines se laissent deviner sur fond de lueur naturelle provenant des étoiles. La nuit est douce et agréable.",
+          "emitter": "narrator"
+        }
+      ],
+      {
+        "text": "[Incompréhensible]",
+        "emitter": "innerVoice"
+      },
+      {
+        "text": "Tu viens de perdre le signal de la radio.",
+        "emitter": "narrator"
+      }
+    ],
+    "spots": [
+      {
+        "index": 0,
+        "label": "Baobab",
+        "spotVoiceover": []
+      }
+    ]
   }
 ]
