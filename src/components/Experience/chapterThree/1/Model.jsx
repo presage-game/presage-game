@@ -43,7 +43,7 @@ export function Model(props) {
           castShadow
           receiveShadow
           geometry={nodes.Cube058.geometry}
-          material={Materials.treeMaterial}
+          material={Materials.megalithicMaterials.main}
         />
         <mesh
           castShadow
@@ -124,13 +124,11 @@ export function Model(props) {
         />
       </group>
       <mesh
-        castShadow
-        receiveShadow
         geometry={nodes.Route.geometry}
         material={Materials.roadMaterials.main}
-        position={[-1.555, -0.085, -0.81]}
+        position={[-1.555, -0.083, -0.81]}
         rotation={[-Math.PI, 1.078, -Math.PI]}
-        scale={[0.118, 0.019, 0.052]}
+        scale={[0.116, 0.014, 0.052]}
       />
       <group
         position={[-39.069, 12.679, -45.933]}
@@ -594,7 +592,7 @@ export function Model(props) {
           material={Materials.outlineMaterial}
         />
       </group>
-      <group position={[0.977, 0.062, 0.333]} rotation={[-2.966, -1.488, 0.174]} scale={-0.01}>
+      <group position={[0.977, 0.065, 0.333]} rotation={[-2.966, -1.488, 0.174]} scale={-0.01}>
         <mesh
           castShadow
           receiveShadow
@@ -1666,12 +1664,12 @@ export function Model(props) {
           material={Materials.outlineMaterial}
         />
       </group>
-      <group position={[1.006, -0.014, 0.331]} rotation={[-1.532, -0.359, -2.934]} scale={-0.001}>
+      <group position={[1.006, -0.015, 0.331]} rotation={[-1.532, -0.359, -2.934]} scale={-0.001}>
         <mesh
           castShadow
           receiveShadow
           geometry={nodes.CUBezierCurve001.geometry}
-          material={Materials.moutainMaterial}
+          material={Materials.megalithicMaterials.main}
         />
         <mesh
           castShadow
@@ -1833,8 +1831,8 @@ export function Model(props) {
         castShadow
         receiveShadow
         geometry={nodes.Adinkra.geometry}
-        material={Materials.treeMaterial}
-        position={[-1.732, 0.478, -0.629]}
+        material={Materials.adinkraMaterial}
+        position={[-1.732, 0.488, -0.629]}
         rotation={[1.541, 0.758, 1.592]}
         scale={-0.181}
       />
