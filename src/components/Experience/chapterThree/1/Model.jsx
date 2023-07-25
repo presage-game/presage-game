@@ -166,7 +166,7 @@ export function Model(props) {
         castShadow
         receiveShadow
         geometry={nodes.Landscape_plane.geometry}
-        material={Materials.leafMaterial}
+        material={Materials.swampMaterial}
         rotation={[0, 0, -Math.PI]}
         scale={[-2.509, -2.509, -2.086]}
       />
@@ -919,7 +919,7 @@ export function Model(props) {
           castShadow
           receiveShadow
           geometry={nodes.Mesh007.geometry}
-          material={Materials.floorMaterial}
+          material={Materials.grassMaterial}
         />
         <mesh
           castShadow

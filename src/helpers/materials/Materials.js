@@ -35,6 +35,7 @@ const defaultMaterials = {
   },
   treeMaterial: "#704D46",
   stoneMaterial: "#7A675C",
+  swampMaterial: "#526F5E",
   cloudMaterial: "#C3FDFD",
   backgroundMaterial: "#69D6FF",
   gasPumpMaterials: {
@@ -73,6 +74,7 @@ const variantMaterials = {
   },
   treeMaterial: "#704D46",
   stoneMaterial: "#7A675C",
+  swampMaterial: "#38522C",
   cloudMaterial: "#C65948",
   backgroundMaterial: "#C65948",
   gasPumpMaterials: {
@@ -199,6 +201,11 @@ export const getMaterials = async (variant) =>
       gradientMap: toonFiveTone,
     })
 
+    const swampMaterial = new MeshToonMaterial({
+      color: MaterialsColor.swampMaterial,
+      gradientMap: toonFiveTone,
+    })
+
     const cloudMaterial = new MeshToonMaterial({
       color: MaterialsColor.cloudMaterial,
       gradientMap: toonThreeTone,
@@ -267,6 +274,7 @@ export const getMaterials = async (variant) =>
       megalithicMaterials,
       treeMaterial,
       stoneMaterial,
+      swampMaterial,
       cloudMaterial,
       backgroundMaterial,
       outlineMaterial,

@@ -3,11 +3,23 @@ import { Sky } from "@react-three/drei"
 import { Scene } from "./Scene"
 
 export const Setup = () => {
+  /*
+  ciel onirique
+  <Sky
+        sunPosition={[10000, 1, 10]}
+        azimuth={180}
+        rayleigh={20.0}
+        mieCoefficient={0.05}
+        mieDirectionalG={0.828}
+        inclination={100}
+      />
+  */
+
   return (
     <>
       <CustomCamera />
       <Sky
-        sunPosition={[10000, 1, 10]}
+        sunPosition={[100, 1, 100]}
         azimuth={180}
         rayleigh={20.0}
         mieCoefficient={0.05}
