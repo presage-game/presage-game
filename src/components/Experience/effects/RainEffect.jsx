@@ -9,7 +9,7 @@ export const RainEffect = () => {
   const rainGeometry = new BufferGeometry()
   const rainGeoPositions = []
 
-  for (let i = 0; i < 30000; i++) {
+  for (let i = 0; i < 60000; i++) {
     const x = Math.random() * 400 - 200
     const y = Math.random() * 500 - 250
     const z = Math.random() * 400 - 200
@@ -26,15 +26,15 @@ export const RainEffect = () => {
       speed: 20,
     },
     z: {
-      min: -90,
-      max: -60,
+      min: -130,
+      max: -70,
       speed: 7,
     },
     lineWidth: 1,
     linePositions: [
       [
         [-20, 8, -90],
-        [-20, 9, -90],
+        [-20, 9, -130],
       ],
     ],
   }
@@ -54,7 +54,7 @@ export const RainEffect = () => {
     <>
       <group ref={lineRef} dispose={null}>
         <points
-          material={new PointsMaterial({ transparent: true, sizeAttenuation: true, size: 0.5, alphaTest: 0.8, color: 0x000000, map: disc })}
+          material={new PointsMaterial({ transparent: true, sizeAttenuation: true, size: 0.5, alphaTest: 0.8, color: 0x2A3F60, map: disc })}
           geometry={rainGeometry}
         ></points>
       </group>

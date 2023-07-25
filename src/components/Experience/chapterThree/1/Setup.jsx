@@ -1,8 +1,11 @@
 import { CustomCamera } from "../../tools/CustomCamera/CustomCamera"
 import { Sky } from "@react-three/drei"
 import { Scene } from "./Scene"
+import { RainEffect } from "../../effects/RainEffect"
 
 export const Setup = () => {
+  const variant = "b"
+
   /*
   ciel onirique
   <Sky
@@ -34,6 +37,11 @@ export const Setup = () => {
         dispose={null}
       />
       <Scene />
+      {variant === "b" && (
+        <>
+          <RainEffect />
+        </>
+      )}
     </>
   )
 }
