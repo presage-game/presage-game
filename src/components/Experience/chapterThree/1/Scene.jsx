@@ -5,7 +5,7 @@ import { useGLTF } from "@react-three/drei"
 import { getMaterials } from "@/helpers/materials/Materials"
 import { SentierIslands } from "../../objects/decorative/SentierIslands/SentierIslands"
 
-export const Scene = () => {
+export const Scene = ({ isDream }) => {
   const gui = useControls({
     y: 0,
   })
@@ -23,7 +23,7 @@ export const Scene = () => {
   return (
     <group position={[-3, -0.3, -46]} rotation={[0, -Math.PI / 3, 0]} scale={35} dispose={null}>
       <Model Materials={Materials} materials={materials} nodes={nodes} gui={gui} />
-      <SentierIslands Materials={Materials} materials={materials} nodes={nodes} />
+      {isDream && <SentierIslands Materials={Materials} materials={materials} nodes={nodes} />}
     </group>
   )
 }

@@ -5,6 +5,7 @@ import { RainEffect } from "../../effects/RainEffect"
 
 export const Setup = () => {
   const variant = "b"
+  const isDream = false
 
   /*
   ciel onirique
@@ -36,7 +37,7 @@ export const Setup = () => {
         rotation={[-Math.PI / 2, 0, 0]}
         dispose={null}
       />
-      <Scene />
+      <Scene isDream={isDream} />
       {variant === "b" && (
         <>
           <RainEffect />
