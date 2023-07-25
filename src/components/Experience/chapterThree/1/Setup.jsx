@@ -21,13 +21,13 @@ export const Setup = () => {
       <Sky
         sunPosition={[100, 1, 100]}
         azimuth={180}
-        rayleigh={20.0}
+        rayleigh={50.0}
         mieCoefficient={0.05}
         mieDirectionalG={0.828}
         inclination={100}
       />
       <directionalLight
-        intensity={0.9}
+        intensity={0.6}
         decay={2}
         position={[-50, 50, 50]}
         rotation={[-Math.PI / 2, 0, 0]}

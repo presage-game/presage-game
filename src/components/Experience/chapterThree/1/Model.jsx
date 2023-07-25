@@ -15,7 +15,7 @@ export function Model(props) {
   const [Materials, setMaterials] = useState(null)
 
   useEffect(() => {
-    getMaterials("default").then((result) => setMaterials(result))
+    getMaterials("night").then((result) => setMaterials(result))
   }, [])
 
   if (Materials === null) {

@@ -48,6 +48,45 @@ const defaultMaterials = {
   waterMaterial: "#50709D",
 }
 
+const nightMaterials = {
+  floorMaterial: "#F6B791",
+  adinkraMaterial: "#E3D9D6",
+  road: {
+    main: "#3E5365",
+    line: "#E4C629",
+  },
+  fenceMaterial: "#757271",
+  concreteMaterial: "#988FA1",
+  house: {
+    wall: "#D4C1AA",
+    main: "#8D6363",
+  },
+  metal: {
+    main: "#A19E98",
+    rusty: "#504D5A",
+  },
+  moutainMaterial: "#7B89B2",
+  leafMaterial: "#5B7A93",
+  grassMaterial: "#5B7A93",
+  megalithicMaterials: {
+    main: "#30435E",
+    selected: "#C5806E",
+  },
+  treeMaterial: "#577AAB",
+  stoneMaterial: "#464D5F",
+  swampMaterial: "#516C83",
+  cloudMaterial: "#C3FDFD",
+  backgroundMaterial: "#69D6FF",
+  gasPumpMaterials: {
+    green: "#84A58D",
+    orange: "#ED9746",
+    ledScreen: "#354927",
+    wall: "#E7DEB4",
+    white: "#FFF6FA",
+  },
+  waterMaterial: "#2A3F60",
+}
+
 const variantMaterials = {
   floorMaterial: "#918E8D",
   adinkraMaterial: "#E3D9D6",
@@ -106,7 +145,12 @@ export const getMaterials = async (variant) =>
     toonFiveTone.minFilter = NearestFilter
     toonFiveTone.magFilter = NearestFilter
 
-    const MaterialsColor = variant === "default" ? defaultMaterials : variantMaterials
+    const MaterialsColor =
+      variant === "default"
+        ? defaultMaterials
+        : variant === "night"
+        ? nightMaterials
+        : variantMaterials
 
     const floorMaterial = new MeshToonMaterial({
       color: MaterialsColor.floorMaterial,
@@ -281,6 +325,6 @@ export const getMaterials = async (variant) =>
       selectedMaterial,
       mapMaterial,
       gasPumpMaterials,
-      waterMaterial
+      waterMaterial,
     }
   })
