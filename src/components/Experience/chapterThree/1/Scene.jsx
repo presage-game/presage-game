@@ -5,7 +5,7 @@ import { useGLTF } from "@react-three/drei"
 import { getMaterials } from "@/helpers/materials/Materials"
 import { SentierIslands } from "../../objects/decorative/SentierIslands/SentierIslands"
 
-export const Scene = ({ isDream }) => {
+export const Scene = ({ isDream, isRaining }) => {
   const gui = useControls({
     y: 0,
   })
@@ -13,8 +13,8 @@ export const Scene = ({ isDream }) => {
   const [Materials, setMaterials] = useState(null)
 
   useEffect(() => {
-    getMaterials("night").then((result) => setMaterials(result))
-  }, [])
+    getMaterials(!isDream ? "night" : "dream").then((result) => setMaterials(result))
+  }, [isDream])
 
   if (Materials === null) {
     return <group></group>
