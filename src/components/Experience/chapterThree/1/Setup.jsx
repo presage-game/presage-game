@@ -1,12 +1,26 @@
 import { CustomCamera } from "../../tools/CustomCamera/CustomCamera"
 import { Sky } from "@react-three/drei"
 import { Scene } from "./Scene"
+import { useEffect } from "react"
 import { RainEffect } from "../../effects/RainEffect"
+import { useDispatch } from "react-redux"
+import { toggleRadioModule } from "@/store/reducers/uiReducer"
 
 export const Setup = () => {
+  const dispatch = useDispatch()
   const variant = "b"
   const isRaining = variant === "b" ? true : false
-  const isDream = true
+  const isDream = false
+
+  useEffect(() => {
+    let timeout = setTimeout(() => {
+      dispatch(toggleRadioModule())
+    }, 5000)
+
+    return () => {
+      clearTimeout(timeout)
+    }
+  },[])
 
   /*
   ciel onirique
