@@ -1,4 +1,4 @@
-export const SentierIslands = ({ Materials, materials, nodes }) => {
+export const SentierIslands = ({ Materials, nodes }) => {
   return (
     <>
       <>
