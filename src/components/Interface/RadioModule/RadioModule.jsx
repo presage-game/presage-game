@@ -1,13 +1,24 @@
+import { toggleRadioModule } from "@/store/reducers/uiReducer"
+import { completeRadioModule } from "@/store/reducers/userReducer"
 import { AnimatePresence, motion } from "framer-motion"
 import { useState } from "react"
+import { useDispatch } from "react-redux"
 
 export const RadioModule = () => {
+  const dispatch = useDispatch()
   const [activeFrequency, setActiveFrequency] = useState(0)
   const frequencies = [98.2, 100.8, 110.1, 145.2]
 
   const changeFrequency = (number) => {
     const newFrequency = activeFrequency + number
     newFrequency >= 0 && newFrequency <= 3 && setActiveFrequency(newFrequency)
+  }
+
+  const testFrequency = () => {
+    if (activeFrequency === 3) {
+      dispatch(toggleRadioModule())
+      dispatch(completeRadioModule())
+    }
   }
 
   return (
@@ -28,6 +39,7 @@ export const RadioModule = () => {
             <p>{frequencies[activeFrequency]} Hz</p>
             <button onClick={() => changeFrequency(1)}>plus</button>
           </div>
+          <button onClick={() => testFrequency()}>Valider</button>
         </div>{" "}
       </motion.div>
     </AnimatePresence>

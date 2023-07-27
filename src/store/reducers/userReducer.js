@@ -39,6 +39,7 @@ const initialState = {
       isCollected: false,
     },
   ],
+  radioModuleCompleted: false,
 }
 
 export const userSlice = createSlice({
@@ -64,6 +65,9 @@ export const userSlice = createSlice({
       state.adinkras[action.payload].isCollected = true
       audio.play()
     },
+    completeRadioModule: (state) => {
+      state.radioModuleCompleted = true
+    },
   },
 })
 
@@ -74,6 +78,7 @@ export const {
   changeOnFocusCamera,
   changeOnFocusCameraPosition,
   collectAdinkra,
+  completeRadioModule,
 } = userSlice.actions
 
 export default userSlice.reducer

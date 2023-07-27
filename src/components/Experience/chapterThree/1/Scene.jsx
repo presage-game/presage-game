@@ -5,8 +5,9 @@ import { useGLTF } from "@react-three/drei"
 import { getMaterials } from "@/helpers/materials/Materials"
 import { SentierIslands } from "../../objects/decorative/SentierIslands/SentierIslands"
 import { WaterFlasks } from "../../objects/decorative/WaterFlasks/WaterFlasks"
+import { Radio } from "../../objects/interactive/Radio/Radio"
 
-export const Scene = ({ isDream, isRaining }) => {
+export const Scene = ({ isDream, isRaining, onClick }) => {
   const gui = useControls({
     y: 0,
   })
@@ -24,7 +25,16 @@ export const Scene = ({ isDream, isRaining }) => {
   return (
     <group position={[-3, -0.3, -46]} rotation={[0, -Math.PI / 3, 0]} scale={35} dispose={null}>
       <Model Materials={Materials} materials={materials} nodes={nodes} gui={gui} />
-      {isDream && <SentierIslands Materials={Materials} nodes={nodes} />}
+      {isDream ? (
+        <SentierIslands Materials={Materials} nodes={nodes} />
+      ) : (
+        <Radio
+          rotation={[-Math.PI / 80, Math.PI / 7, 0]}
+          position={[0.9, -0.061, 0.3]}
+          Materials={Materials}
+          onClick={onClick}
+        />
+      )}
       {isRaining && !isDream && <WaterFlasks Materials={Materials} nodes={nodes} />}
     </group>
   )
