@@ -6,12 +6,105 @@ const IslandLerp = (current, add = 0, speed = 0.05) => MathUtils.lerp(current, a
 
 export const SentierIslands = ({ Materials, nodes }) => {
   const islandRef = useRef(null)
+  const island2Ref = useRef(null)
+  const island3Ref = useRef(null)
+  const island4Ref = useRef(null)
+  const island5Ref = useRef(null)
+  const island6Ref = useRef(null)
+  const island7Ref = useRef(null)
 
   useFrame((state, delta) => {
-    if (islandRef.current) {
-      if (islandRef.current.position.y < 1) {
-        islandRef.current.position.y = IslandLerp(islandRef.current.position.y, Math.sin(state.clock.elapsedTime) / 2, 0.25 * delta)
-      }
+    if (
+      islandRef.current &&
+      island2Ref.current &&
+      island3Ref.current &&
+      island4Ref.current &&
+      island5Ref.current &&
+      island6Ref.current &&
+      island7Ref.current
+    ) {
+      islandRef.current.position.y = IslandLerp(
+        islandRef.current.position.y,
+        Math.sin(state.clock.elapsedTime) / 2,
+        0.2 * delta
+      )
+      islandRef.current.position.x = IslandLerp(
+        islandRef.current.position.x,
+        Math.cos(state.clock.elapsedTime) / 4,
+        0.2 * delta
+      )
+
+      island2Ref.current.position.y = IslandLerp(
+        island2Ref.current.position.y,
+        Math.cos(state.clock.elapsedTime) / 6,
+        0.2 * delta
+      )
+      island2Ref.current.position.x = IslandLerp(
+        island2Ref.current.position.x,
+        Math.cos(state.clock.elapsedTime) / 2,
+        0.2 * delta
+      )
+
+      island3Ref.current.position.y = IslandLerp(
+        island3Ref.current.position.y,
+        Math.cos(state.clock.elapsedTime) / 6,
+        0.3 * delta
+      )
+      island3Ref.current.position.x = IslandLerp(
+        island3Ref.current.position.x,
+        Math.cos(state.clock.elapsedTime) / 4,
+        0.2 * delta
+      )
+
+      island4Ref.current.position.y = IslandLerp(
+        island4Ref.current.position.y,
+        Math.sin(state.clock.elapsedTime + 0.5) / 4,
+        0.2 * delta
+      )
+      island4Ref.current.position.x = IslandLerp(
+        island4Ref.current.position.x,
+        Math.sin(state.clock.elapsedTime) / 3,
+        0.2 * delta
+      )
+
+      island5Ref.current.position.y = IslandLerp(
+        island5Ref.current.position.y,
+        Math.sin(state.clock.elapsedTime * 2) / 4,
+        0.2 * delta
+      )
+      island5Ref.current.position.x = IslandLerp(
+        island5Ref.current.position.x,
+        Math.cos(state.clock.elapsedTime) / 4,
+        0.4 * delta
+      )
+
+      island6Ref.current.position.y = IslandLerp(
+        island6Ref.current.position.y,
+        Math.cos(state.clock.elapsedTime * 1.3) / 6,
+        0.2 * delta
+      )
+      island6Ref.current.position.x = IslandLerp(
+        island6Ref.current.position.x,
+        Math.cos(state.clock.elapsedTime) / 4,
+        0.2 * delta
+      )
+
+      island7Ref.current.position.y = IslandLerp(
+        island7Ref.current.position.y,
+        Math.sin(state.clock.elapsedTime * 3) / 4,
+        0.2 * delta
+      )
+      island7Ref.current.position.x = IslandLerp(
+        island7Ref.current.position.x,
+        Math.cos(state.clock.elapsedTime * 1.2) / 4,
+        0.2 * delta
+      )
+
+      island7Ref.current.position.z = IslandLerp(
+        island7Ref.current.position.z,
+        Math.cos(state.clock.elapsedTime) / 2,
+        0.2 * delta
+      )
     }
   })
 
@@ -107,7 +200,7 @@ export const SentierIslands = ({ Materials, nodes }) => {
           />
         </group>
       </group>
-      <>
+      <group ref={island2Ref}>
         <group position={[-12.6, 0.397, -5.023]} rotation={[2.864, 1.178, -2.855]} scale={0.001}>
           <mesh
             castShadow
@@ -275,8 +368,8 @@ export const SentierIslands = ({ Materials, nodes }) => {
             material={Materials.outlineMaterial}
           />
         </group>
-      </>
-      <>
+      </group>
+      <group ref={island3Ref}>
         <group position={[-2.799, 0.337, -1.344]} rotation={[-3.038, -0.741, -3.054]} scale={0.107}>
           <mesh
             castShadow
@@ -360,180 +453,8 @@ export const SentierIslands = ({ Materials, nodes }) => {
             material={Materials.outlineMaterial}
           />
         </group>
-      </>
-      <>
-        <group position={[-6.091, 0.361, -5.637]} rotation={[-0.046, -0.733, -0.004]} scale={0.106}>
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={nodes.Circle039.geometry}
-            material={Materials.leafMaterial}
-          />
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={nodes.Circle039_1.geometry}
-            material={Materials.outlineMaterial}
-          />
-        </group>
-        <group position={[-6.137, 0.114, -5.641]} rotation={[-0.046, -0.733, -0.004]} scale={0.001}>
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={nodes.Mesh014.geometry}
-            material={Materials.stoneMaterial}
-          />
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={nodes.Mesh014_1.geometry}
-            material={Materials.outlineMaterial}
-          />
-        </group>
-        <group position={[-6.091, 0.308, -5.757]} rotation={[-0.046, -0.733, -0.004]} scale={0.001}>
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={nodes.Mesh015.geometry}
-            material={Materials.grassMaterial}
-          />
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={nodes.Mesh015_1.geometry}
-            material={Materials.outlineMaterial}
-          />
-        </group>
-        <group position={[-6.1, 0.215, -5.695]} rotation={[-0.179, -0.46, 0.415]} scale={0.001}>
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={nodes.Mesh017.geometry}
-            material={Materials.grassMaterial}
-          />
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={nodes.Mesh017_1.geometry}
-            material={Materials.outlineMaterial}
-          />
-        </group>
-        <group position={[-6.09, 0.322, -5.682]} rotation={[-0.032, -0.735, -0.035]} scale={0.001}>
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={nodes.Mesh018.geometry}
-            material={Materials.leafMaterial}
-          />
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={nodes.Mesh018_1.geometry}
-            material={Materials.outlineMaterial}
-          />
-        </group>
-        <group position={[-6.191, 0.329, -5.728]} rotation={[-0.046, -0.733, -0.004]} scale={0.001}>
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={nodes.Mesh021.geometry}
-            material={Materials.grassMaterial}
-          />
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={nodes.Mesh021_1.geometry}
-            material={Materials.outlineMaterial}
-          />
-        </group>
-        <group position={[-6.149, 0.402, -5.744]} rotation={[3.109, -1.258, -3.131]} scale={0.001}>
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={nodes.Mesh022.geometry}
-            material={Materials.leafMaterial}
-          />
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={nodes.Mesh022_1.geometry}
-            material={Materials.outlineMaterial}
-          />
-        </group>
-        <group position={[-6.029, 0.372, -5.778]} rotation={[-0.086, 1.163, 0.106]} scale={0.001}>
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={nodes.Mesh023.geometry}
-            material={Materials.treeMaterial}
-          />
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={nodes.Mesh023_1.geometry}
-            material={Materials.outlineMaterial}
-          />
-        </group>
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.terrain021.geometry}
-          material={Materials.grassMaterial}
-          position={[-6.066, 0.325, -5.871]}
-          rotation={[-0.048, -0.947, -0.006]}
-          scale={0.001}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.terrain022.geometry}
-          material={Materials.outlineMaterial}
-          position={[-6.081, 0.335, -5.807]}
-          rotation={[-0.046, -0.733, -0.004]}
-          scale={0.001}
-        />
-        <group position={[-6.177, 0.37, -5.806]} rotation={[-0.046, -0.733, -0.004]} scale={0.001}>
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={nodes.Mesh026.geometry}
-            material={Materials.treeMaterial}
-          />
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={nodes.Mesh026_1.geometry}
-            material={Materials.outlineMaterial}
-          />
-        </group>
-        <group position={[-6.094, 0.229, -5.743]} rotation={[-0.046, -0.733, -0.004]} scale={0.001}>
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={nodes.Mesh027.geometry}
-            material={Materials.stoneMaterial}
-          />
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={nodes.Mesh027_1.geometry}
-            material={Materials.outlineMaterial}
-          />
-        </group>
-        <group position={[-6.103, 0.334, -5.802]} rotation={[-0.046, -0.733, -0.004]} scale={0.001}>
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={nodes.Mesh028.geometry}
-            material={Materials.leafMaterial}
-          />
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={nodes.Mesh028_1.geometry}
-            material={Materials.outlineMaterial}
-          />
-        </group>
+      </group>
+      <group ref={island4Ref}>
         <mesh
           castShadow
           receiveShadow
@@ -738,8 +659,8 @@ export const SentierIslands = ({ Materials, nodes }) => {
           rotation={[-2.41, -1.52, -2.519]}
           scale={0.001}
         />
-      </>
-      <>
+      </group>
+      <group ref={island5Ref}>
         <mesh
           castShadow
           receiveShadow
@@ -921,8 +842,8 @@ export const SentierIslands = ({ Materials, nodes }) => {
             material={Materials.outlineMaterial}
           />
         </group>
-      </>
-      <>
+      </group>
+      <group ref={island6Ref}>
         <group position={[-1.768, 0.525, -0.552]} rotation={[-0.582, -0.477, -0.898]} scale={0.106}>
           <mesh
             castShadow
@@ -1081,8 +1002,8 @@ export const SentierIslands = ({ Materials, nodes }) => {
           rotation={[1.541, 0.758, 1.592]}
           scale={-0.181}
         />
-      </>
-      <>
+      </group>
+      <group ref={island7Ref}>
         <mesh
           castShadow
           receiveShadow
@@ -1560,7 +1481,7 @@ export const SentierIslands = ({ Materials, nodes }) => {
             material={Materials.outlineMaterial}
           />
         </group>
-      </>
+      </group>
     </>
   )
 }
