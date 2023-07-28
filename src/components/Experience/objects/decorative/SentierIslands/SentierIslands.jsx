@@ -1,7 +1,23 @@
+import { useFrame } from "@react-three/fiber"
+import { MathUtils } from "three"
+import { useState, useRef } from "react"
+
+const IslandLerp = (current, add = 0, speed = 0.05) => MathUtils.lerp(current, add, speed)
+
 export const SentierIslands = ({ Materials, nodes }) => {
+  const islandRef = useRef(null)
+
+  useFrame((state, delta) => {
+    if (islandRef.current) {
+      if (islandRef.current.position.y < 1) {
+        islandRef.current.position.y = IslandLerp(islandRef.current.position.y, Math.sin(state.clock.elapsedTime) / 2, 0.25 * delta)
+      }
+    }
+  })
+
   return (
     <>
-      <>
+      <group ref={islandRef}>
         <group position={[-9.757, 0.685, -7.897]} rotation={[-0.109, -0.792, -0.061]} scale={0.124}>
           <mesh
             castShadow
@@ -13,6 +29,20 @@ export const SentierIslands = ({ Materials, nodes }) => {
             castShadow
             receiveShadow
             geometry={nodes.Circle043_1.geometry}
+            material={Materials.outlineMaterial}
+          />
+        </group>
+        <group position={[-9.706, 0.593, -7.925]} rotation={[-0.14, -1.064, 3.059]} scale={0.0004}>
+          <mesh
+            castShadow
+            receiveShadow
+            geometry={nodes.Mesh131.geometry}
+            material={Materials.stoneMaterial}
+          />
+          <mesh
+            castShadow
+            receiveShadow
+            geometry={nodes.Mesh131_1.geometry}
             material={Materials.outlineMaterial}
           />
         </group>
@@ -76,7 +106,7 @@ export const SentierIslands = ({ Materials, nodes }) => {
             material={Materials.outlineMaterial}
           />
         </group>
-      </>
+      </group>
       <>
         <group position={[-12.6, 0.397, -5.023]} rotation={[2.864, 1.178, -2.855]} scale={0.001}>
           <mesh
@@ -1527,82 +1557,6 @@ export const SentierIslands = ({ Materials, nodes }) => {
             castShadow
             receiveShadow
             geometry={nodes.Cylinder218_1.geometry}
-            material={Materials.outlineMaterial}
-          />
-        </group>
-      </>
-      <>
-        <group position={[-9.757, 0.685, -7.897]} rotation={[-0.109, -0.792, -0.061]} scale={0.124}>
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={nodes.Circle043.geometry}
-            material={Materials.leafMaterial}
-          />
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={nodes.Circle043_1.geometry}
-            material={Materials.outlineMaterial}
-          />
-        </group>
-        <group
-          position={[-9.68, 0.682, -7.919]}
-          rotation={[0.015, 0.033, -0.035]}
-          scale={[0.012, 0.012, 0.017]}
-        >
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={nodes.Sphere018.geometry}
-            material={Materials.leafMaterial}
-          />
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={nodes.Sphere018_1.geometry}
-            material={Materials.outlineMaterial}
-          />
-        </group>
-        <group position={[-9.706, 0.593, -7.925]} rotation={[-0.14, -1.064, 3.059]} scale={0.0004}>
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={nodes.Mesh131.geometry}
-            material={Materials.stoneMaterial}
-          />
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={nodes.Mesh131_1.geometry}
-            material={Materials.outlineMaterial}
-          />
-        </group>
-        <group position={[-9.721, 0.638, -7.945]} rotation={[-0.722, 1.477, 0.73]} scale={0.002}>
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={nodes.Mesh132.geometry}
-            material={Materials.grassMaterial}
-          />
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={nodes.Mesh132_1.geometry}
-            material={Materials.outlineMaterial}
-          />
-        </group>
-        <group position={[-9.757, 0.733, -7.95]} rotation={[-0.265, 1.498, 0.222]} scale={0.001}>
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={nodes.Mesh133.geometry}
-            material={Materials.treeMaterial}
-          />
-          <mesh
-            castShadow
-            receiveShadow
-            geometry={nodes.Mesh133_1.geometry}
             material={Materials.outlineMaterial}
           />
         </group>
