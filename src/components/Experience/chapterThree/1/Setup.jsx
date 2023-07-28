@@ -1,18 +1,23 @@
 import { CustomCamera } from "../../tools/CustomCamera/CustomCamera"
 import { Sky } from "@react-three/drei"
 import { Scene } from "./Scene"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { RainEffect } from "../../effects/RainEffect"
 import { useDispatch, useSelector } from "react-redux"
 import { toggleRadioModule } from "@/store/reducers/uiReducer"
+import { changeOnFocusCamera, changeOnFocusCameraPosition } from "@/store/reducers/userReducer"
 
 export const Setup = () => {
   const [clickedRadio, setClickedRadio] = useState(false)
   const { radioModuleCompleted } = useSelector((state) => state.user)
+  const [islandFocused, setIslandFocused] = useState(false)
   const dispatch = useDispatch()
   const variant = "b"
   const isRaining = variant === "b" ? true : false
   const isDream = !radioModuleCompleted ? false : true
+
+  const changeFocus = (value) => dispatch(changeOnFocusCamera(value))
+  const changeFocusPosition = (value) => dispatch(changeOnFocusCameraPosition(value))
 
   const onClick = () => {
     if (!clickedRadio) {
@@ -20,6 +25,26 @@ export const Setup = () => {
       dispatch(toggleRadioModule())
     }
   }
+
+  useEffect(() => {
+    if (islandFocused) {
+      changeFocusPosition({
+        position: {
+          x: -5,
+          y: -1,
+          z: 160,
+        },
+        rotation: {
+          x: -Math.PI + 3,
+          y: -Math.PI / 6,
+          z: 0,
+        },
+      })
+      changeFocus(true)
+    } else {
+      changeFocus(false)
+    }
+  }, [islandFocused])
 
   /*
   ciel onirique
@@ -51,7 +76,7 @@ export const Setup = () => {
         rotation={[-Math.PI / 2, 0, 0]}
         dispose={null}
       />
-      <Scene isDream={isDream} isRaining={isRaining} onClick={onClick} />
+      <Scene isDream={isDream} isRaining={isRaining} onClick={onClick} islandClick={() => setIslandFocused(true)} islandFocused={islandFocused} />
       {isRaining && !isDream && (
         <>
           <RainEffect />

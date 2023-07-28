@@ -4,7 +4,12 @@ import { useState, useRef } from "react"
 
 const IslandLerp = (current, add = 0, speed = 0.05) => MathUtils.lerp(current, add, speed)
 
-export const SentierIslands = ({ Materials, nodes }) => {
+export const SentierIslands = ({ Materials, nodes, islandClick, islandFocused }) => {
+  const [isHovered, setIsHovered] = useState(false)
+
+  const selectedOutlineMaterial =
+    isHovered && !islandFocused ? Materials.selectedMaterial : Materials.outlineMaterial
+
   const islandRef = useRef(null)
   const island2Ref = useRef(null)
   const island3Ref = useRef(null)
@@ -843,7 +848,12 @@ export const SentierIslands = ({ Materials, nodes }) => {
           />
         </group>
       </group>
-      <group ref={island6Ref}>
+      <group
+        ref={island6Ref}
+        onPointerEnter={() => !islandFocused && setIsHovered(true)}
+        onPointerLeave={() => !islandFocused && setIsHovered(false)}
+        onClick={islandClick}
+      >
         <group position={[-1.768, 0.525, -0.552]} rotation={[-0.582, -0.477, -0.898]} scale={0.106}>
           <mesh
             castShadow
@@ -855,7 +865,7 @@ export const SentierIslands = ({ Materials, nodes }) => {
             castShadow
             receiveShadow
             geometry={nodes.Circle036_1.geometry}
-            material={Materials.outlineMaterial}
+            material={selectedOutlineMaterial}
           />
         </group>
         <group position={[-1.949, 0.381, -0.542]} rotation={[-0.582, -0.477, -0.898]} scale={0.001}>
@@ -869,7 +879,7 @@ export const SentierIslands = ({ Materials, nodes }) => {
             castShadow
             receiveShadow
             geometry={nodes.Mesh011_1.geometry}
-            material={Materials.outlineMaterial}
+            material={selectedOutlineMaterial}
           />
         </group>
         <group position={[-1.782, 0.49, -0.658]} rotation={[-0.582, -0.477, -0.898]} scale={0.001}>
@@ -883,7 +893,7 @@ export const SentierIslands = ({ Materials, nodes }) => {
             castShadow
             receiveShadow
             geometry={nodes.Mesh326_1.geometry}
-            material={Materials.outlineMaterial}
+            material={selectedOutlineMaterial}
           />
         </group>
         <group position={[-1.855, 0.421, -0.596]} rotation={[-0.447, -0.211, -0.357]} scale={0.001}>
@@ -897,7 +907,7 @@ export const SentierIslands = ({ Materials, nodes }) => {
             castShadow
             receiveShadow
             geometry={nodes.Mesh327_1.geometry}
-            material={Materials.outlineMaterial}
+            material={selectedOutlineMaterial}
           />
         </group>
         <group position={[-1.839, 0.574, -0.629]} rotation={[-0.582, -0.477, -0.898]} scale={0.001}>
@@ -911,7 +921,7 @@ export const SentierIslands = ({ Materials, nodes }) => {
             castShadow
             receiveShadow
             geometry={nodes.Mesh382_1.geometry}
-            material={Materials.outlineMaterial}
+            material={selectedOutlineMaterial}
           />
         </group>
         <group position={[-1.76, 0.591, -0.645]} rotation={[-2.011, -0.766, -1.841]} scale={0.001}>
@@ -925,7 +935,7 @@ export const SentierIslands = ({ Materials, nodes }) => {
             castShadow
             receiveShadow
             geometry={nodes.Mesh383_1.geometry}
-            material={Materials.outlineMaterial}
+            material={selectedOutlineMaterial}
           />
         </group>
         <group position={[-1.719, 0.51, -0.741]} rotation={[-0.582, -0.477, -0.898]} scale={0.001}>
@@ -939,7 +949,7 @@ export const SentierIslands = ({ Materials, nodes }) => {
             castShadow
             receiveShadow
             geometry={nodes.Mesh384_1.geometry}
-            material={Materials.outlineMaterial}
+            material={selectedOutlineMaterial}
           />
         </group>
         <group position={[-1.792, 0.527, -0.751]} rotation={[-0.784, -0.602, -1.002]} scale={0.001}>
@@ -953,14 +963,14 @@ export const SentierIslands = ({ Materials, nodes }) => {
             castShadow
             receiveShadow
             geometry={nodes.Mesh385_1.geometry}
-            material={Materials.outlineMaterial}
+            material={selectedOutlineMaterial}
           />
         </group>
         <mesh
           castShadow
           receiveShadow
           geometry={nodes.terrain382.geometry}
-          material={Materials.outlineMaterial}
+          material={selectedOutlineMaterial}
           position={[-1.756, 0.502, -0.708]}
           rotation={[-0.582, -0.477, -0.898]}
           scale={0.001}
@@ -976,7 +986,7 @@ export const SentierIslands = ({ Materials, nodes }) => {
             castShadow
             receiveShadow
             geometry={nodes.Mesh387_1.geometry}
-            material={Materials.outlineMaterial}
+            material={selectedOutlineMaterial}
           />
         </group>
         <group position={[-1.838, 0.435, -0.644]} rotation={[-0.582, -0.477, -0.898]} scale={0.001}>
@@ -990,7 +1000,7 @@ export const SentierIslands = ({ Materials, nodes }) => {
             castShadow
             receiveShadow
             geometry={nodes.Mesh422_1.geometry}
-            material={Materials.outlineMaterial}
+            material={selectedOutlineMaterial}
           />
         </group>
         <mesh
