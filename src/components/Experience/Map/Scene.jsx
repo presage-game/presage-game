@@ -255,6 +255,20 @@ export const Scene = ({
         visible={false}
       />
       <Box
+        ref={(el) => (cubeRef.current[5] = el)}
+        scene={5}
+        args={[-2, 1, 2]}
+        position={[29, 0.1, -14.2]}
+        dispose={null}
+        visible={false}
+      />
+      <Box
+        args={[-2, 1, 2]}
+        position={[27.2, 0.1, -16.8]}
+        dispose={null}
+        visible={true}
+      />
+      <Box
         ref={(el) => (smallCubeRef.current[0] = el)}
         pinpoint={0}
         args={[2, 1, 2]}
