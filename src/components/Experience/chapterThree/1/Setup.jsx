@@ -9,8 +9,9 @@ import { changeOnFocusCamera, changeOnFocusCameraPosition } from "@/store/reduce
 
 export const Setup = () => {
   const [clickedRadio, setClickedRadio] = useState(false)
-  const { radioModuleCompleted } = useSelector((state) => state.user)
+  const { radioModuleCompleted, adinkras } = useSelector((state) => state.user)
   const [islandFocused, setIslandFocused] = useState(false)
+  const [adinkraCompleted, setAdinkraCompleted] = useState(false)
   const dispatch = useDispatch()
   const variant = "b"
   const isRaining = variant === "b" ? true : false
@@ -20,7 +21,9 @@ export const Setup = () => {
   const changeFocusPosition = (value) => dispatch(changeOnFocusCameraPosition(value))
 
   const onClick = () => {
+    console.log("click")
     if (!clickedRadio) {
+      console.log("yep")
       setClickedRadio(true)
       dispatch(toggleRadioModule())
     }
@@ -45,6 +48,13 @@ export const Setup = () => {
       changeFocus(false)
     }
   }, [islandFocused])
+
+  useEffect(() => {
+    if (adinkras[2].isCollected) {
+      setAdinkraCompleted(true)
+      setIslandFocused(false)
+    }
+  }, [adinkras])
 
   /*
   ciel onirique
@@ -76,7 +86,14 @@ export const Setup = () => {
         rotation={[-Math.PI / 2, 0, 0]}
         dispose={null}
       />
-      <Scene isDream={isDream} isRaining={isRaining} onClick={onClick} islandClick={() => setIslandFocused(true)} islandFocused={islandFocused} />
+      <Scene
+        isDream={isDream}
+        isRaining={isRaining}
+        onClick={onClick}
+        islandClick={() => !adinkraCompleted && setIslandFocused(true)}
+        islandFocused={islandFocused}
+        adinkraCompleted={adinkraCompleted}
+      />
       {isRaining && !isDream && (
         <>
           <RainEffect />

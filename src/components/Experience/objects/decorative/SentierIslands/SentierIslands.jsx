@@ -4,11 +4,19 @@ import { useState, useRef } from "react"
 
 const IslandLerp = (current, add = 0, speed = 0.05) => MathUtils.lerp(current, add, speed)
 
-export const SentierIslands = ({ Materials, nodes, islandClick, islandFocused }) => {
+export const SentierIslands = ({
+  Materials,
+  nodes,
+  islandClick,
+  islandFocused,
+  adinkraCompleted,
+}) => {
   const [isHovered, setIsHovered] = useState(false)
 
   const selectedOutlineMaterial =
-    isHovered && !islandFocused ? Materials.selectedMaterial : Materials.outlineMaterial
+    isHovered && !islandFocused && !adinkraCompleted
+      ? Materials.selectedMaterial
+      : Materials.outlineMaterial
 
   const islandRef = useRef(null)
   const island2Ref = useRef(null)

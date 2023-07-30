@@ -8,7 +8,14 @@ import { WaterFlasks } from "../../objects/decorative/WaterFlasks/WaterFlasks"
 import { Radio } from "../../objects/interactive/Radio/Radio"
 import { AdinkraThree } from "../../objects/interactive/AdinkraThree/AdinkraThree"
 
-export const Scene = ({ isDream, isRaining, onClick, islandClick, islandFocused }) => {
+export const Scene = ({
+  isDream,
+  isRaining,
+  onClick,
+  islandClick,
+  islandFocused,
+  adinkraCompleted,
+}) => {
   const gui = useControls({
     y: 0,
     x: 0,
@@ -29,7 +36,13 @@ export const Scene = ({ isDream, isRaining, onClick, islandClick, islandFocused 
     <group position={[-3, -0.3, -46]} rotation={[0, -Math.PI / 3, 0]} scale={35} dispose={null}>
       <Model Materials={Materials} materials={materials} nodes={nodes} gui={gui} />
       {isDream ? (
-        <SentierIslands Materials={Materials} nodes={nodes} islandClick={islandClick} islandFocused={islandFocused} />
+        <SentierIslands
+          Materials={Materials}
+          nodes={nodes}
+          islandClick={islandClick}
+          islandFocused={islandFocused}
+          adinkraCompleted={adinkraCompleted}
+        />
       ) : (
         <Radio
           rotation={[-Math.PI / 80, Math.PI / 7, 0]}
@@ -39,7 +52,9 @@ export const Scene = ({ isDream, isRaining, onClick, islandClick, islandFocused 
         />
       )}
       {isRaining && !isDream && <WaterFlasks Materials={Materials} nodes={nodes} />}
-      {islandFocused && <AdinkraThree rotation={[0, Math.PI / 3, 0]} position={[0.6, 0.2, 1.2]} />}
+      {islandFocused && !adinkraCompleted && (
+        <AdinkraThree rotation={[0, Math.PI / 3, 0]} position={[0.6, 0.2, 1.2]} />
+      )}
     </group>
   )
 }
