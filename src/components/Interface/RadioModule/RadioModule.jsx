@@ -6,7 +6,7 @@ import { useDispatch } from "react-redux"
 
 export const RadioModule = () => {
   const dispatch = useDispatch()
-  const [activeFrequency, setActiveFrequency] = useState(0)
+  const [activeFrequency, setActiveFrequency] = useState(1)
   const frequencies = [98.2, 100.8, 110.1, 145.2]
 
   const changeFrequency = (number) => {
@@ -35,9 +35,15 @@ export const RadioModule = () => {
         <div className="TextBox__inner">
           <h2>Retrouve la fréquence radio</h2>
           <div>
-            <button onClick={() => changeFrequency(-1)}>moins</button>
             <p>{frequencies[activeFrequency]} Hz</p>
-            <button onClick={() => changeFrequency(1)}>plus</button>
+            <input
+              type="range"
+              min="1"
+              max="4"
+              step="1"
+              defaultValue={activeFrequency}
+              onChange={(evt) => setActiveFrequency(evt.target.value - 1)}
+            />
           </div>
           <button onClick={() => testFrequency()}>Valider</button>
         </div>{" "}
