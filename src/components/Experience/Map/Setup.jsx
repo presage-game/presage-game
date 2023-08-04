@@ -65,6 +65,10 @@ export const Setup = ({ setShowText }) => {
         setSceneNumber(4)
         setChangeSceneState(true)
       }),
+      Sentier: button(() => {
+        setSceneNumber(5)
+        setChangeSceneState(true)
+      }),
     })
 
   useEffect(() => {

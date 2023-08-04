@@ -9,6 +9,7 @@ import { Setup as MegalithicCircles } from "./chapterOne/2/Setup"
 import { Setup as BaobabOne } from "./chapterOne/3/Setup"
 import { Setup as KeurGnialo } from "./chapterTwo/1/Setup"
 import { Setup as BaobabTwo } from "./chapterTwo/2/Setup"
+import { Setup as Sentier } from "./chapterThree/1/Setup"
 
 import { Interface } from "@/components/Interface/Interface"
 import { AudioManager } from "@/components/Experience/tools/AudioManager/AudioManager"
@@ -89,8 +90,10 @@ export const Experience = ({ activateBlackBars, devMode }) => {
             isVoiceOver={isVoiceOver}
             activeIntro={activeIntro}
           />
-        ) : (
+        ) : scene === 4 ? (
           <BaobabTwo />
+        ) : (
+          <Sentier />
         )}
         <Preload all />
         {devUrlChecker() && <Stats />}

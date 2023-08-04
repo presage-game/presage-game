@@ -15,6 +15,7 @@ import { IntersectionPopup } from "./IntersectionPopup/IntersectionPopup"
 import { Collection } from "./Collection/Collection"
 import { Options } from "./Options/Options"
 import { devUrlChecker } from "@/helpers/checkers/devUrlChecker"
+import { RadioModule } from "./RadioModule/RadioModule"
 
 export const Interface = ({
   mapActive,
@@ -29,7 +30,7 @@ export const Interface = ({
 }) => {
   const dispatch = useDispatch()
 
-  const { blackBarsStatus } = useSelector((state) => state.ui)
+  const { blackBarsStatus, radioModuleActive } = useSelector((state) => state.ui)
   const OpenBlackBars = () => dispatch(changeBlackBarsStatus("opened"))
   const {
     scene: sceneIndex,
@@ -68,6 +69,7 @@ export const Interface = ({
         </div>
       )}
       {activateBlackBars && <BlackBars setIsVoiceOver={setIsVoiceOver} mapActive={mapActive} />}
+      {radioModuleActive && <RadioModule />}
       {!mapActive && blackBarsStatus !== "closed" && blackBarsStatus !== "window" && (
         <SceneTextBox
           mapActive={mapActive}

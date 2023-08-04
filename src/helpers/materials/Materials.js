@@ -26,6 +26,7 @@ const defaultMaterials = {
     main: "#A19E98",
     rusty: "#504D5A",
   },
+  moutainMaterial: "#6D4D4A",
   leafMaterial: "#4F7552",
   grassMaterial: "#626F52",
   megalithicMaterials: {
@@ -34,6 +35,7 @@ const defaultMaterials = {
   },
   treeMaterial: "#704D46",
   stoneMaterial: "#7A675C",
+  swampMaterial: "#526F5E",
   cloudMaterial: "#C3FDFD",
   backgroundMaterial: "#69D6FF",
   gasPumpMaterials: {
@@ -43,13 +45,14 @@ const defaultMaterials = {
     wall: "#E7DEB4",
     white: "#FFF6FA",
   },
+  waterMaterial: "#50709D",
 }
 
-const variantMaterials = {
-  floorMaterial: "#918E8D",
+const nightMaterials = {
+  floorMaterial: "#F6B791",
   adinkraMaterial: "#E3D9D6",
   road: {
-    main: "#2D2D2C",
+    main: "#3E5365",
     line: "#E4C629",
   },
   fenceMaterial: "#757271",
@@ -62,14 +65,55 @@ const variantMaterials = {
     main: "#A19E98",
     rusty: "#504D5A",
   },
-  leafMaterial: "#D8BF66",
-  grassMaterial: "#626F52",
+  moutainMaterial: "#7B89B2",
+  leafMaterial: "#5B7A93",
+  grassMaterial: "#5B7A93",
   megalithicMaterials: {
-    main: "#A26656",
+    main: "#30435E",
+    selected: "#C5806E",
+  },
+  treeMaterial: "#577AAB",
+  stoneMaterial: "#464D5F",
+  swampMaterial: "#516C83",
+  cloudMaterial: "#C3FDFD",
+  backgroundMaterial: "#69D6FF",
+  gasPumpMaterials: {
+    green: "#84A58D",
+    orange: "#ED9746",
+    ledScreen: "#354927",
+    wall: "#E7DEB4",
+    white: "#FFF6FA",
+  },
+  waterMaterial: "#2A3F60",
+}
+
+const variantMaterials = {
+  floorMaterial: "#918E8D",
+  adinkraMaterial: "#E3D9D6",
+  road: {
+    main: "#7B4C56",
+    line: "#E4C629",
+  },
+  fenceMaterial: "#757271",
+  concreteMaterial: "#B35B63",
+  house: {
+    wall: "#D4C1AA",
+    main: "#8D6363",
+  },
+  metal: {
+    main: "#A19E98",
+    rusty: "#504D5A",
+  },
+  moutainMaterial: "#A1736F",
+  leafMaterial: "#935B67",
+  grassMaterial: "#72464F",
+  megalithicMaterials: {
+    main: "#AB575E",
     selected: "#C8A49B",
   },
-  treeMaterial: "#704D46",
-  stoneMaterial: "#7A675C",
+  treeMaterial: "#AB575E",
+  stoneMaterial: "#B27F7B",
+  swampMaterial: "#72464F",
   cloudMaterial: "#C65948",
   backgroundMaterial: "#C65948",
   gasPumpMaterials: {
@@ -79,6 +123,7 @@ const variantMaterials = {
     wall: "#F0D547",
     white: "#FFF6FA",
   },
+  waterMaterial: "#50709D",
 }
 
 const getTextures = () =>
@@ -100,7 +145,12 @@ export const getMaterials = async (variant) =>
     toonFiveTone.minFilter = NearestFilter
     toonFiveTone.magFilter = NearestFilter
 
-    const MaterialsColor = variant === "default" ? defaultMaterials : variantMaterials
+    const MaterialsColor =
+      variant === "default"
+        ? defaultMaterials
+        : variant === "night"
+        ? nightMaterials
+        : variantMaterials
 
     const floorMaterial = new MeshToonMaterial({
       color: MaterialsColor.floorMaterial,
@@ -159,6 +209,11 @@ export const getMaterials = async (variant) =>
       }),
     }
 
+    const moutainMaterial = new MeshToonMaterial({
+      color: MaterialsColor.moutainMaterial,
+      gradientMap: toonFiveTone,
+    })
+
     const leafMaterial = new MeshToonMaterial({
       color: MaterialsColor.leafMaterial,
       gradientMap: toonThreeTone,
@@ -187,6 +242,11 @@ export const getMaterials = async (variant) =>
 
     const stoneMaterial = new MeshToonMaterial({
       color: MaterialsColor.stoneMaterial,
+      gradientMap: toonFiveTone,
+    })
+
+    const swampMaterial = new MeshToonMaterial({
+      color: MaterialsColor.swampMaterial,
       gradientMap: toonFiveTone,
     })
 
@@ -239,6 +299,11 @@ export const getMaterials = async (variant) =>
       }),
     }
 
+    const waterMaterial = new MeshToonMaterial({
+      color: MaterialsColor.waterMaterial,
+      gradientMap: toonThreeTone,
+    })
+
     return {
       floorMaterial,
       roadMaterials,
@@ -247,16 +312,19 @@ export const getMaterials = async (variant) =>
       concreteMaterial,
       houseMaterials,
       metalMaterials,
+      moutainMaterial,
       leafMaterial,
       grassMaterial,
       megalithicMaterials,
       treeMaterial,
       stoneMaterial,
+      swampMaterial,
       cloudMaterial,
       backgroundMaterial,
       outlineMaterial,
       selectedMaterial,
       mapMaterial,
       gasPumpMaterials,
+      waterMaterial,
     }
   })
